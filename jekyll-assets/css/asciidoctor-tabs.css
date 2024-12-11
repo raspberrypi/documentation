@@ -1,3 +1,4 @@
+
 /*! Asciidoctor Tabs | Copyright (c) 2018-present Dan Allen | MIT License */
 .tabs {
   margin-bottom: 1.25em;
@@ -15,7 +16,7 @@
 
 .tablist > ul li {
   align-items: center;
-  background-color: var(--bg);
+  background-color: #eee;
   cursor: pointer;
   display: flex;
   font-weight: bold;
@@ -51,26 +52,18 @@
   right: 0;
 }
 
-.tabs:not(.is-loading) .tablist .is-selected {
-  background-color: var(--tab-bg-colour);
-  color: var(--textcolor);
-  border-left: 1px solid var(--tab-bg-colour);
-  border-right: 1px solid var(--tab-bg-colour);
-  border-top: 1px solid var(--tab-bg-colour);
-}
-
 .tabs.is-loading .tablist li:not(:first-child),
 .tabs:not(.is-loading) .tablist li:not(.is-selected) {
-  background-color: var(--bg);
-  color: var(--subtle-text);
-  border-left: 1px solid var(--tab-bg-colour);
-  border-right: 1px solid var(--tab-bg-colour);
-  border-top: 1px solid var(--tab-bg-colour);
+  background-color: initial;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  border-top: 1px solid #eee;
 }
 
 .tabs.is-loading .tablist li:first-child::after,
 .tabs:not(.is-loading) .tablist li.is-selected::after {
-  border-top: 2px solid var(--accent) !important;
+  background-color: #eee;
+  border-top: 2px solid var(--red);
 }
 
 /*
@@ -86,7 +79,7 @@
 }
 
 .tabpanel {
-  background-color: var(--tab-bg-colour);
+  background-color: #eee;
   padding: 1.25em;
 }
 

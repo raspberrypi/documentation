@@ -60,8 +60,6 @@ Serial Number: HLDDLBB234500054
 Part Number: HM21LB1C2LAE
 Product Name: HAILO-8L AI ACC M.2 B+M KEY MODULE EXT TMP
 ----
-
-NOTE: AI HAT+ devices may show `<N/A>` for `Serial Number`, `Part Number` and `Product Name`. This is expected, and does not impact functionality.
 +
 Additionally, you can run `dmesg | grep -i hailo` to check the kernel logs, which should yield output similar to the following:
 +
@@ -98,12 +96,16 @@ The `rpicam-apps` suite of camera applications implements a xref:camera_software
 
 The following demos use xref:camera_software.adoc#rpicam-hello[`rpicam-hello`], which by default displays a preview window. However, you can use other `rpicam-apps` instead, including xref:camera_software.adoc#rpicam-vid[`rpicam-vid`] and xref:camera_software.adoc#rpicam-still[`rpicam-still`]. You may need to add or modify some command line options to make the demo commands compatible with alternative applications.
 
-To begin, run the following command to install the latest `rpicam-apps` software package:
+To begin, download the post-processing JSON files required for the demos. These files determine which post-processing stages to run and configure the behaviour of each stage. For example, you can enable, disable, strengthen, or weaken the strength of the temporal filtering in the object detection demos. Or you could enable or disable the output mask drawing in the segmentation demo.
+
+To download the entire collection of post-processing JSON files, clone the `rpicam-apps` repo. Run the following command to clone only the most recent commit from the repo, saving space:
 
 [source,console]
 ----
-$ sudo apt update && sudo apt install rpicam-apps
+$ git clone --depth 1 https://github.com/raspberrypi/rpicam-apps.git ~/rpicam-apps
 ----
+
+TIP: The commands provided in subsequent sections use the JSON files in this repository. To make it easy to reference these files, this command creates the cloned `rpicam-apps` directory in your home folder. If you modify the location of this directory, you must also alter the demo commands below to reference the new location of the JSON files.
 
 ==== Object Detection
 
@@ -111,7 +113,7 @@ This demo displays bounding boxes around objects detected by a neural network. T
 
 [source,console]
 ----
-$ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov6_inference.json
+$ rpicam-hello -t 0 --post-process-file ~/rpicam-apps/assets/hailo_yolov6_inference.json --lores-width 640 --lores-height 640
 ----
 
 Alternatively, you can try another model with different trade-offs in performance and efficiency.
@@ -120,21 +122,21 @@ To run the demo with the Yolov8 model, run the following command:
 
 [source,console]
 ----
-$ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov8_inference.json
+$ rpicam-hello -t 0 --post-process-file ~/rpicam-apps/assets/hailo_yolov8_inference.json --lores-width 640 --lores-height 640
 ----
 
 To run the demo with the YoloX model, run the following command:
 
 [source,console]
 ----
-$ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolox_inference.json
+$ rpicam-hello -t 0 --post-process-file ~/rpicam-apps/assets/hailo_yolox_inference.json --lores-width 640 --lores-height 640
 ----
 
 To run the demo with the Yolov5 Person and Face model, run the following command:
 
 [source,console]
 ----
-$ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov5_personface.json
+$ rpicam-hello -t 0 --post-process-file ~/rpicam-apps/assets/hailo_yolov5_personface.json --lores-width 640 --lores-height 640
 ----
 
 ==== Image Segmentation
@@ -143,7 +145,7 @@ This demo performs object detection and segments the object by drawing a colour 
 
 [source,console]
 ----
-$ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov5_segmentation.json --framerate 20
+$ rpicam-hello -t 0 --post-process-file ~/rpicam-apps/assets/hailo_yolov5_segmentation.json --lores-width 640 --lores-height 640 --framerate 20
 ----
 
 ==== Pose Estimation
@@ -152,51 +154,8 @@ This demo performs 17-point human pose estimation, drawing lines connecting the 
 
 [source,console]
 ----
-$ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov8_pose.json
+$ rpicam-hello -t 0 --post-process-file ~/rpicam-apps/assets/hailo_yolov8_pose.json --lores-width 640 --lores-height 640
 ----
-
-=== Alternative Package Versions
-
-The AI Kit and AI HAT+ do not function if there is a version mismatch between the Hailo software packages and device drivers. In addition, Hailo's neural network tooling may require a particular version for generated model files. If you require a specific version, complete the following steps to install the proper versions of all of the dependencies:
-
-. If you have previously used `apt-mark` to hold any of the relevant packages, you may need to unhold them:
-+
-[source,console]
-----
-$ sudo apt-mark unhold hailo-tappas-core hailort hailo-dkms
-----
-
-. Install the required version of the software packages:
-+
-[tabs%sync]
-======
-v4.18::
-To install version 4.18 of Hailo's neural network tooling:
-+
-+
-[source,console]
-----
-$ sudo apt install hailo-tappas-core=3.29.1 hailort=4.18.0 hailo-dkms=4.18.0-2
-----
-+
-[source,console]
-----
-$ sudo apt-mark hold hailo-tappas-core hailort hailo-dkms
-----
-
-v4.17::
-To install version 4.17 of Hailo's neural network tooling:
-+
-[source,console]
-----
-$ sudo apt install hailo-tappas-core-3.28.2 hailort=4.17.0 hailo-dkms=4.17.0-1
-----
-+
-[source,console]
-----
-$ sudo apt-mark hold hailo-tappas-core hailort hailo-dkms
-----
-======
 
 === Further Resources
 

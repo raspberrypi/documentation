@@ -1,199 +1,27 @@
 <!doctype html>
 <html lang="en">
   <head>
-    {% include head.html %}
+    {% include head.html %} 
   </head>
-  <body onload="makeToc()">
-    <script type="text/javascript">initTheme()</script>
-    <input type="checkbox" id="mobile-toggle" />
-    {% include header.html %}
-    <div id="docs-content">
-      <div id="toc-container-container">
-        <div id="toc-container">
-          <div id="toc-inner">
-            <div id="docs-header">
-              <h1 id="docs-header-title">
-                <a href="/documentation">
-                  Documentation
-                </a>
-              </h1>
-              <label class="mobile-menu-toggle" for="mobile-toggle"><div>≣</div></label>
-              {% include theme.html %}
-            </div>
-            <div id="docsearch">
-            </div>
-          </div>
-          <div class="toc">
-          {% for subdir in site.data.nav %}
-          {% if subdir.toc[0] %}
-            <ul class="sectlevel1">
-              <input class="toc-toggle-box" type="checkbox" id="{{ subdir.path }}"
-                {% if page.url contains subdir.path %}
-                checked=true
-                {% endif %}
-              />
-              <li>
-                <span>
-                  <label class="toc-toggle" for="{{ subdir.path }}" onclick="event.stopPropagation()">
-                    <div class="toc-toggle-container">
-                      <a class="level1" href="{{ site.baseurl }}{{ subdir.path }}">
-                        <a title="expand {{ item.title | markdownify }}"
-                          {% if page.url contains subdir.path %}
-                          class="bold toc-item"
-                          {% else %}
-                          class="toc-item"
-                          {% endif %}
-                        >
-                          {{ subdir.title | markdownify }}
-                        </a>
-                      </a>
-                    </div>
-                  </label>
-                </span>
-              </li>
-              {% for item in subdir.toc %}
-              <div class="itemcontents">
-                <ul class="sectlevel1">
-                  <input class="toc-toggle-box" type="checkbox" id="{{ item.path }}"
-                    {% if page.url contains item.path %}
-                    checked=true
-                    {% endif %}
-                  />
-                  <li>
-                    <span>
-                      <label class="toc-toggle" for="{{ item.path }}">
-                        <div class="toc-toggle-container">
-                          <a class="level2" href="{{ site.baseurl }}{{ item.path }}">
-                            <a title="expand {{ item.title | strip_html }}"
-                              {% if page.url contains item.path %}
-                              class="bold toc-item"
-                              {% else %}
-                              class="toc-item" 
-                              {% endif %}
-                            >
-                            {{ item.title | markdownify }}
-                            </a>
-                          </a>
-                        </div>
-                      </label>
-                    </span>
-                  </li>
-                  {% if item.sections[0] %}
-                  {% for entry in item.sections %}
-                  <div class="itemcontents">
-                    <ul class="sectlevel1">
-                      <input class="toc-toggle-box" type="checkbox" id="{{ item.path }}#{{ entry.anchor }}"
-                        {% if endcapture contains entry.anchor %}
-                        checked=true
-                        {% endif %}
-                      />
-                      <li>
-                        <span>
-                          <label class="toc-toggle"
-                            {% if entry.subsections[0] %}
-                            for="{{ item.path }}#{{ entry.anchor }}"
-                            {% else %}
-                            {% endif %}>
-                            <div class="toc-toggle-container">
-                              {% if entry.subsections[0] %}
-                              <a class="level3">
-                                <a
-                                  id="{{ item.path }}#{{entry.anchor}}-toc"
-                                  href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}"
-                                  class="toc-item"
-                                  onclick="document.getElementById('mobile-toggle').checked = false; updateCurrentToc('{{ item.path }}#{{ entry.anchor }}-toc', '{{ item.path }}#{{ entry.anchor }}');"
-                                  title="expand {{ entry.heading | strip_html }}"
-                                >
-                                <script type="text/javascript">if (window.location.hash == '#{{ entry.anchor }}') initialiseCurrentToc('{{ item.path }}#{{entry.anchor}}-toc', '{{ item.path }}#{{ entry.anchor }}');
-                                </script>
-                                  {{ entry.heading | markdownify }}
-                                </a>
-                              </a>
-                              {% else %}
-                              <a class="level3">
-                                <a id="{{ item.path }}#{{entry.anchor}}-toc"
-                                  title="expand {{ entry.heading | strip_html }}"
-                                  href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}"
-                                  onclick="document.getElementById('mobile-toggle').checked = false; updateCurrentToc('{{ item.path }}#{{ entry.anchor }}-toc');"
-                                  class="toc-item no-dropdown"
-                                  >
-                                  <script type="text/javascript">if (window.location.hash == '#{{ entry.anchor }}')
-                                    initialiseCurrentToc('{{ item.path }}#{{entry.anchor}}-toc');
-                                  </script>
-                                  {{ entry.heading | markdownify }}
-                                </a>
-                              </a>
-                              {% endif %}
-                            </div>
-                          </label>
-                        </span>
-                      </li>
-                      {% if entry.subsections[0] %}
-                      {% for subentry in entry.subsections %}
-                      <div class="itemcontents">
-                        <ul class="sectlevel1">
-                          <li>
-                            <span>
-                              <label class="toc-toggle">
-                                <div class="toc-toggle-container">
-                                    <a class="level4">
-                                      <a class="toc-item no-dropdown"
-                                        href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}"
-                                        onclick="document.getElementById('mobile-toggle').checked = false; updateCurrentToc('{{ item.path }}#{{ entry.anchor }}-toc', '{{ item.path }}#{{ entry.anchor }}', '{{ item.path }}#{{ subentry.anchor }}-toc');"
-                                        id="{{ item.path }}#{{subentry.anchor}}-toc"
-                                      >
-                                      <script type="text/javascript">if (window.location.hash == '#{{ subentry.anchor }}') initialiseCurrentToc('{{ item.path }}#{{ entry.anchor }}-toc', '{{ item.path }}#{{ entry.anchor }}', '{{ item.path }}#{{subentry.anchor}}-toc');
-                                      </script>
-                                        {{ subentry.heading | markdownify }}
-                                      </a>
-                                    </a>
-                                  </div>
-                              </label>
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                      {% endfor %}
-                      {% endif %}
-                    </ul>
-                  </div>
-                  {% endfor %}
-                  {% endif %}
-                </ul>
-              </div>
-              {% endfor %}
-            </ul>
-            {% endif %}
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-      <div id="docs-container">
-        <div id="main-window">
-          <section id="content">
-            <h1>{{ page.sub_title | markdownify | remove: '<p>' | remove: '</p>'}}</h1>
-            {{ content }}
-          </section>
+  <body>
+    {% include header.html %}      
+    {% include toptitle.html %}
+    {% include tabs.html %}
 
-          <div id="on-this-page">
-            <div id="on-this-page-inner">
-              <h5>On this page</h5>
-              <div id="toc">
-                {{ page.document | tocify_asciidoc: 3 }}
-              </div>
-              <div id="tocbot">
-              </div>
-            </div>
-          </div>
-        </div>
+    <div id="container">
+      {% include mobile_nav.html %}
+      {% include nav.html %}
 
-        {% include legal.html %}
-        {% include footer.html %}
-        {% include search.html %}
-
-        <script async src="{{ site.baseurl }}/scripts/clipboard.min.js?ver={{ site.time | date: '%s' }}"></script>
-        <script async src="{{ site.baseurl }}/scripts/copy-to-clipboard.js?ver={{ site.time | date: '%s' }}"></script>
-      </div>
+      <section id="content">
+        <h1>{{ page.sub_title | markdownify | remove: '<p>' | remove: '</p>'}}</h1>
+        {{ content }}
+      </section>
     </div>
+
+    {% include copyright.html %} 
+    {% include footer.html %}  
+    {% include scripts.html %}
+    {% include search.html %}
+
   </body>
 </html>
