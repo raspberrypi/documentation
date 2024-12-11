@@ -43,8 +43,8 @@
   --red-tint: #d75a64;
   --top-title-colour: #343434;
   --brand-colour: #cd2355;
-  --code-bg-colour: #e5e6e9;
-  --code-bg-colour-transparent: rgba(229, 229, 229, 0.9);
+  --code-bg-colour: #f5f7fc;
+  --code-bg-colour-transparent: rgba(245, 247, 252, 0.9);
   --toc-hover-colour: #f5f5f5;
   --subtle: #707070;
   --less-subtle: #333;
@@ -394,6 +394,8 @@ input:checked + li span label div .toc-item::before {
   justify-content: left;
   height: 100%;
   width: 100%;
+  max-width: 2200px;
+  margin: auto;
 }
 
 #on-this-page {
