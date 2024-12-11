@@ -54,7 +54,7 @@
                     "subpath": "camera_software.adoc"
                 },
                 {
-                    "title": "AI Kit and AI HAT+ software",
+                    "title": "AI software",
                     "description": "Software and libraries for artificial intelligence on a Raspberry Pi hardware",
                     "image": "full-sized/ai.png",
                     "subpath": "ai.adoc"
