@@ -279,6 +279,7 @@ pre {
   margin-left: 5px;
   margin-right: 5px;
   padding-bottom: 5px;
+  align-content: center;
 }
 
 #theme-toggle {
