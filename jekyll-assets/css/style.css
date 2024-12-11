@@ -1484,10 +1484,6 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
     margin-left: 3px;
   }
 
-  #tab-menu {
-    display: none;
-  }
-
   .mobile-menu-toggle {
     font-size: 3em;
     display: block;
