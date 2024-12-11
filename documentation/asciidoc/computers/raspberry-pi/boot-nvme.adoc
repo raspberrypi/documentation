@@ -1,6 +1,6 @@
 == NVMe SSD boot
 
-NVMe (Non-Volatile Memory express) is a standard for external storage access over a PCIe bus. You can connect NVMe drives via the PCIe slot on a Compute Module 4 (CM4) IO board, Raspberry Pi 5. With some additional configuration, you can boot from an NVMe drive.
+NVMe (Non-Volatile Memory express) is a standard for external storage access over a PCIe bus. You can connect NVMe drives via the PCIe slot on a IO Boards since Compute Module 4 and or Raspberry Pi 5 using an M.2 HAT+. With some additional configuration, you can boot from an NVMe drive.
 
 === Prerequisites
 
@@ -36,7 +36,7 @@ Use the Raspberry Pi Configuration CLI to update the bootloader:
 $ sudo raspi-config
 ----
 
-Under `Advanced Options` > `Bootloader Order` and choose whether the bootloader should attempt to boot from `SD` or `NVMe` first:
+Under `Advanced Options` > `Bootloader Order`, specify that the bootloader should attempt to boot from `NVMe` first:
 
 [source,console]
 ----

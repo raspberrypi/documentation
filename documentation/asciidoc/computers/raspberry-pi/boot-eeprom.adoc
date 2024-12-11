@@ -75,14 +75,14 @@ First, ensure that your Raspberry Pi runs the latest software. Run the following
 $ sudo apt update && sudo apt full-upgrade
 ----
 
-Run the following command to start `raspi-config`.
+Next, run the following command to open `raspi-config`:
 
 [source,console]
 ----
 $ sudo raspi-config
 ----
 
-Navigate to `Advanced Options` and then `Bootloader Version`. Select `Latest` and choose `Yes` to confirm. Select `Finish` and confirm you want to reboot.
+Navigate to `Advanced Options` > `Bootloader Version`. Select `Latest`, then choose `Yes` to confirm. Select `Finish` and confirm that you want to reboot.
 
 If you run `sudo rpi-eeprom-update`, you should see that a more recent version of the bootloader is available and it's the `latest` release.
 
@@ -277,7 +277,7 @@ For more information, see xref:raspberry-pi.adoc#eeprom-boot-flow[EEPROM bootflo
 | Bootloader EEPROM image
 
 | `pieeprom.bin`
-| Bootloader EEPROM image - same as pieeprom.upd but changes recovery.bin behaviour to not rename itself to `RECOVERY.000`.
+| Bootloader EEPROM image - same as `pieeprom.upd` but changes `recovery.bin` behaviour to not rename itself to `RECOVERY.000`.
 
 | `pieeprom.sig`
 | The sha256 checksum of bootloader image (pieeprom.upd/pieeprom.bin)
