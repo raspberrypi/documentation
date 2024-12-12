@@ -1,6 +1,6 @@
 // toggles the site theme between dark and light
 function toggleTheme() {
-  var cookiePermission = document.cookie.indexOf("cookiebanner_accepted");
+  var cookiePermission = document.cookie.indexOf("cookiebanner_accepted=1");
   
   // fetch the theme from local storage (if it exists)
   var theme = localStorage.getItem('theme');
