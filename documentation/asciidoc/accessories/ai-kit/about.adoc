@@ -90,4 +90,4 @@ WARNING: Always disconnect your Raspberry Pi from power before connecting or dis
 
 == Get started with AI on your Raspberry Pi
 
-To start running AI accelerated applications on your Raspberry Pi, check out our xref:../computers/ai.adoc[Getting Started with AI] guide.
+To start running AI accelerated applications on your Raspberry Pi, check out our xref:../computers/ai.adoc[Getting Started with the AI Kit and AI HAT+] guide.

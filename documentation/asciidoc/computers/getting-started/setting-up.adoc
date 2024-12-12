@@ -141,12 +141,10 @@ All variants of the Raspberry Pi 1, 2, 3, and 4 include a 3.5mm auxiliary http:/
 
 The following Raspberry Pi models come with Wi-Fi and Bluetooth connectivity:
 
-* Raspberry Pi 5
-* Raspberry Pi 4
-* Raspberry Pi 3B+
-* Raspberry Pi 3
-* Raspberry Pi Zero W
-* Rsapberry Pi Zero 2 W
+* Flagship models since Raspberry Pi 3 Model B
+* All Zero W models
+* All Pico W models
+* Compute Modules configured with wireless (available since CM4)
 
 The "Model B" suffix indicates variants with an Ethernet port; "Model A" indicates no Ethernet port. If your Raspberry Pi doesn't have an Ethernet port, you can still connect to a wired internet connection using a USB-to-Ethernet adapter.
 
