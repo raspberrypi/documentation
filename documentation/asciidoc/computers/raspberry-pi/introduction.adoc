@@ -158,7 +158,7 @@ a|
 * 2.4/5GHz dual-band 802.11ac Wi-Fi (120Mb/s)
 * Bluetooth 5, Bluetooth Low Energy (BLE)
 * microSD card slot
-* USB-C power (5V, 3A (15W))
+* USB-C power (5V 3A (15W))
 ^.^a|
 .Raspberry Pi 5
 image::images/5.jpg[alt="Raspberry Pi 5"]
@@ -206,7 +206,7 @@ a|
 * 2.4/5GHz dual-band 802.11ac Wi-Fi (120Mb/s)
 * Bluetooth 5, Bluetooth Low Energy (BLE)
 * microSD card slot
-* USB-C power (5V, 3A (15W))
+* USB-C power (5V 3A (15W))
 ^.^a|
 .Raspberry Pi 500
 image::images/500.png[alt="Raspberry Pi 500"]
