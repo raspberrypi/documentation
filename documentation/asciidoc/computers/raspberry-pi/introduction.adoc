@@ -194,6 +194,7 @@ Keyboard series devices use model identifiers of the form `<X00>`, where `X` ind
 [cols="7a,1,2,3,5"]
 |===
 | Model | SoC | Memory | GPIO | Connectivity
+
 ^.^a|
 .Raspberry Pi 400
 image::images/400.jpg[alt="Raspberry Pi 400"]
