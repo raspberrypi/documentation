@@ -167,12 +167,11 @@ $ sudo apt-mark unhold hailo-tappas-core hailort hailo-dkms
 ----
 
 . Install the required version of the software packages:
-+
-[tabs%sync]
+
+[tabs]
 ======
-v4.18::
-To install version 4.18 of Hailo's neural network tooling:
-+
+4.18::
+To install version 4.18 of Hailo's neural network tooling, run the following commands:
 +
 [source,console]
 ----
@@ -184,8 +183,8 @@ $ sudo apt install hailo-tappas-core=3.29.1 hailort=4.18.0 hailo-dkms=4.18.0-2
 $ sudo apt-mark hold hailo-tappas-core hailort hailo-dkms
 ----
 
-v4.17::
-To install version 4.17 of Hailo's neural network tooling:
+4.17::
+To install version 4.17 of Hailo's neural network tooling, run the following commands:
 +
 [source,console]
 ----
