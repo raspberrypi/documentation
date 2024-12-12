@@ -1006,7 +1006,7 @@ td div.listingblock div.content code {
 }
 
 div.imageblock div.title {
-  color: var(--subtle);
+  color: var(--subtle-text);
   font-style: italic;
   font-weight: 300;
   font-size: 0.8em;
