@@ -9,12 +9,6 @@ import re
 def change_file_ext(filename, extension):
     return os.path.splitext(filename)[0] + '.' + extension
 
-def get_global_subitems(src_dir):
-    json_path = os.path.join(src_dir, "global_boxes.json")
-    with open(json_path) as json_fh:
-        items = json.load(json_fh)
-    return items
-
 def build_tab_from_json(tab, adoc_dir, img_dir):
     json_path = os.path.join(adoc_dir, tab['from_json'])
     tab_key = tab['directory']
@@ -47,7 +41,6 @@ if __name__ == "__main__":
     output_json = sys.argv[2]
     input_dir = sys.argv[3]
     images_dir = sys.argv[4]
-    global_subitems = get_global_subitems(os.path.join(input_dir, '..'))
     with open(input_json) as json_fh:
         data = json.load(json_fh)
         found_default_tab = False
@@ -72,12 +65,6 @@ if __name__ == "__main__":
                     del data['tabs'][tab_index]
             else:
                 raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], input_json, 'path', 'from_json'))
-            # add the global boxes
-            if 'subitems' in tab:
-                for item in global_subitems:
-                    tab['subitems'].append(item)
-            else:
-                print("WARNING: no subitems set in {}".format(tab['title']))
         if not found_default_tab:
             print("WARNING: no default_tab set in {} so index page will look odd".format(input_json))
 
