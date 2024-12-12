@@ -1,4 +1,5 @@
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 #__rptl-footer .__rptl-footer-link, #__rptl-footer .__rptl-footer-link--with-icon, #__rptl-footer .__rptl-footer-item, #__rptl-footer .__rptl-footer-list, #__rptl-footer .__rptl-footer-heading, #__rptl-footer .__rptl-footer-column, #__rptl-footer .__rptl-footer-row, #__rptl-footer .__rptl-footer-container, #__rptl-footer {
   box-sizing: border-box;
   margin: 0;
@@ -19,9 +20,10 @@
   -webkit-text-size-adjust: 100%;
      -moz-text-size-adjust: 100%;
           text-size-adjust: 100%;
+  letter-spacing: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f5f6f9;
+  background: var(--rptl-footer-background-color, #f5f6f9);
   overflow: hidden;
 }
 #__rptl-footer .__rptl-footer-container {
@@ -63,7 +65,7 @@
 }
 #__rptl-footer .__rptl-footer-heading {
   font-weight: 700;
-  color: #333333;
+  color: var(--rptl-footer-text-color, #333);
   margin-bottom: 8px;
 }
 #__rptl-footer .__rptl-footer-list {
@@ -75,11 +77,11 @@
 }
 #__rptl-footer .__rptl-footer-icon {
   margin-right: 0.5em;
-  fill: #333;
+  fill: var(--rptl-footer-text-color, #333);
 }
 #__rptl-footer .__rptl-footer-link, #__rptl-footer .__rptl-footer-link--with-icon {
   font-weight: 400;
-  color: #333;
+  color: var(--rptl-footer-text-color, #333);
   text-decoration: none;
 }
 #__rptl-footer .__rptl-footer-link--with-icon {
@@ -97,7 +99,7 @@
         <div class="__rptl-footer-heading">Follow us</div>
         <ul class="__rptl-footer-list">
           <li class="__rptl-footer-item">
-            <a href="/weekly/" class="__rptl-footer-link--with-icon">
+            <a href="https://www.raspberrypi.com/weekly/" class="__rptl-footer-link--with-icon">
               <svg class="__rptl-footer-icon" aria-hidden="true" focusable="false" width="1.25em" height="1.25em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1 6v12a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2Zm19.707 10.293a1 1 0 1 1-1.414 1.414L15 13.414l-.515.515a3.518 3.518 0 0 1-4.97 0L9 13.414l-4.293 4.293a1 1 0 0 1-1.414-1.414L7.586 12 3.293 7.707a1 1 0 0 1 1.414-1.414l5 5 1.222 1.222a1.516 1.516 0 0 0 2.142 0l1.222-1.222 5-5a1 1 0 0 1 1.414 1.414L16.414 12Z"/></svg>
               Sign up to newsletter
             </a>
@@ -151,60 +153,60 @@
       <div class="__rptl-footer-column">
         <div class="__rptl-footer-heading">About Raspberry Pi</div>
         <ul class="__rptl-footer-list">
-          <li class="__rptl-footer-item"><a href="/news/" class="__rptl-footer-link">News</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/news/" class="__rptl-footer-link">News</a></li>
           <li class="__rptl-footer-item"><a href="https://investors.raspberrypi.com/" class="__rptl-footer-link">Investor relations</a></li>
-          <li class="__rptl-footer-item"><a href="/contact/" class="__rptl-footer-link">Contact us</a></li>
-          <li class="__rptl-footer-item"><a href="/trademark-rules/" class="__rptl-footer-link">Trademark</a></li>
-          <li class="__rptl-footer-item"><a href="/about/" class="__rptl-footer-link">About us</a></li>
-          <li class="__rptl-footer-item"><a href="/resellers/" class="__rptl-footer-link">Our Approved Resellers</a></li>
-          <li class="__rptl-footer-item"><a href="/jobs/" class="__rptl-footer-link">Jobs</a></li>
-          <li class="__rptl-footer-item"><a href="/accessibility/" class="__rptl-footer-link">Accessibility</a></li>
-          <li class="__rptl-footer-item"><a href="/terms-and-conditions/" class="__rptl-footer-link">Site use terms and conditions</a></li>
-          <li class="__rptl-footer-item"><a href="/acceptable-use/" class="__rptl-footer-link">Acceptable use</a></li>
-          <li class="__rptl-footer-item"><a href="/cookies/" class="__rptl-footer-link">Cookies</a></li>
-          <li class="__rptl-footer-item"><a href="/licensing/" class="__rptl-footer-link">Licensing</a></li>
-          <li class="__rptl-footer-item"><a href="/terms-conditions-sale/" class="__rptl-footer-link">Terms and conditions of sale</a></li>
-          <li class="__rptl-footer-item"><a href="/privacy/" class="__rptl-footer-link">Privacy</a></li>
-          <li class="__rptl-footer-item"><a href="/contact/security/" class="__rptl-footer-link">Security</a></li>
-          <li class="__rptl-footer-item"><a href="/verify/" class="__rptl-footer-link">Verify our bank details</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/contact/" class="__rptl-footer-link">Contact us</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/trademark-rules/" class="__rptl-footer-link">Trademark</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/about/" class="__rptl-footer-link">About us</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/resellers/" class="__rptl-footer-link">Our Approved Resellers</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/jobs/" class="__rptl-footer-link">Jobs</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/accessibility/" class="__rptl-footer-link">Accessibility</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/terms-and-conditions/" class="__rptl-footer-link">Site use terms and conditions</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/acceptable-use/" class="__rptl-footer-link">Acceptable use</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/cookies/" class="__rptl-footer-link">Cookies</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/licensing/" class="__rptl-footer-link">Licensing</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/terms-conditions-sale/" class="__rptl-footer-link">Terms and conditions of sale</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/privacy/" class="__rptl-footer-link">Privacy</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/contact/security/" class="__rptl-footer-link">Security</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/verify/" class="__rptl-footer-link">Verify our bank details</a></li>
         </ul>
       </div>
       <div class="__rptl-footer-column">
         <div class="__rptl-footer-heading">For home</div>
         <ul class="__rptl-footer-list">
-          <li class="__rptl-footer-item"><a href="/for-home/" class="__rptl-footer-link">Raspberry Pi for home</a></li>
-          <li class="__rptl-footer-item"><a href="/tutorials/" class="__rptl-footer-link">Tutorials</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/for-home/" class="__rptl-footer-link">Raspberry Pi for home</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/tutorials/" class="__rptl-footer-link">Tutorials</a></li>
         </ul>
         <div class="__rptl-footer-heading">For industry</div>
         <ul class="__rptl-footer-list">
-          <li class="__rptl-footer-item"><a href="/for-industry/" class="__rptl-footer-link">Raspberry Pi for industry</a></li>
-          <li class="__rptl-footer-item"><a href="/for-industry/thin-clients/" class="__rptl-footer-link">Thin clients</a></li>
-          <li class="__rptl-footer-item"><a href="/for-industry/space/" class="__rptl-footer-link">Raspberry Pi in space</a></li>
-          <li class="__rptl-footer-item"><a href="/for-industry/powered-by/" class="__rptl-footer-link">Powered by Raspberry Pi</a></li>
-          <li class="__rptl-footer-item"><a href="/for-industry/design-partners/" class="__rptl-footer-link">Design partners</a></li>
-          <li class="__rptl-footer-item"><a href="/success-stories/" class="__rptl-footer-link">Success stories</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/for-industry/" class="__rptl-footer-link">Raspberry Pi for industry</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/for-industry/thin-clients/" class="__rptl-footer-link">Thin clients</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/for-industry/space/" class="__rptl-footer-link">Raspberry Pi in space</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/for-industry/powered-by/" class="__rptl-footer-link">Powered by Raspberry Pi</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/for-industry/design-partners/" class="__rptl-footer-link">Design partners</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/success-stories/" class="__rptl-footer-link">Success stories</a></li>
         </ul>
         <div class="__rptl-footer-heading">Hardware</div>
         <ul class="__rptl-footer-list">
-          <li class="__rptl-footer-item"><a href="/products/#raspberry-pi-computers-and-microcontrollers" class="__rptl-footer-link">Computers and microcontrollers</a></li>
-          <li class="__rptl-footer-item"><a href="/products/#cameras-and-displays" class="__rptl-footer-link">Cameras and displays</a></li>
-          <li class="__rptl-footer-item"><a href="/products/#add-on-boards" class="__rptl-footer-link">Add-on boards</a></li>
-          <li class="__rptl-footer-item"><a href="/products/#power-supplies-and-cables" class="__rptl-footer-link">Power supplies and cables</a></li>
-          <li class="__rptl-footer-item"><a href="/products/#cases" class="__rptl-footer-link">Cases</a></li>
-          <li class="__rptl-footer-item"><a href="/products/#peripherals" class="__rptl-footer-link">Peripherals</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/products/#raspberry-pi-computers-and-microcontrollers" class="__rptl-footer-link">Computers and microcontrollers</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/products/#cameras-and-displays" class="__rptl-footer-link">Cameras and displays</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/products/#add-on-boards" class="__rptl-footer-link">Add-on boards</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/products/#power-supplies-and-cables" class="__rptl-footer-link">Power supplies and cables</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/products/#cases" class="__rptl-footer-link">Cases</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/products/#peripherals" class="__rptl-footer-link">Peripherals</a></li>
         </ul>
       </div>
       <div class="__rptl-footer-column">
         <div class="__rptl-footer-heading">Software</div>
         <ul class="__rptl-footer-list">
-          <li class="__rptl-footer-item"><a href="/software/connect/" class="__rptl-footer-link">Raspberry Pi Connect</a></li>
-          <li class="__rptl-footer-item"><a href="/software/raspberry-pi-desktop/" class="__rptl-footer-link">Raspberry Pi Desktop</a></li>
-          <li class="__rptl-footer-item"><a href="/software/" class="__rptl-footer-link">Raspberry Pi Imager</a></li>
-          <li class="__rptl-footer-item"><a href="/software/operating-systems/#raspberry-pi-os-32-bit" class="__rptl-footer-link">Raspberry Pi OS</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/software/connect/" class="__rptl-footer-link">Raspberry Pi Connect</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/software/raspberry-pi-desktop/" class="__rptl-footer-link">Raspberry Pi Desktop</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/software/" class="__rptl-footer-link">Raspberry Pi Imager</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/software/operating-systems/#raspberry-pi-os-32-bit" class="__rptl-footer-link">Raspberry Pi OS</a></li>
         </ul>
         <div class="__rptl-footer-heading">Documentation</div>
         <ul class="__rptl-footer-list">
-          <li class="__rptl-footer-item"><a href="/documentation/" class="__rptl-footer-link">All categories</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/documentation/" class="__rptl-footer-link">All categories</a></li>
           <li class="__rptl-footer-item"><a href="https://pip.raspberrypi.com" class="__rptl-footer-link">Product information portal</a></li>
           <li class="__rptl-footer-item"><a href="https://datasheets.raspberrypi.com" class="__rptl-footer-link">Datasheets</a></li>
         </ul>
@@ -215,11 +217,11 @@
         </ul>
         <div class="__rptl-footer-heading">Raspberry Pi Store</div>
         <ul class="__rptl-footer-list">
-          <li class="__rptl-footer-item"><a href="/raspberry-pi-store/" class="__rptl-footer-link">Store information</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/raspberry-pi-store/" class="__rptl-footer-link">Store information</a></li>
         </ul>
         <div class="__rptl-footer-heading">Raspberry Pi Press</div>
         <ul class="__rptl-footer-list">
-          <li class="__rptl-footer-item"><a href="/books-magazines/" class="__rptl-footer-link">About Raspberry Pi Press</a></li>
+          <li class="__rptl-footer-item"><a href="https://www.raspberrypi.com/books-magazines/" class="__rptl-footer-link">About Raspberry Pi Press</a></li>
           <li class="__rptl-footer-item"><a href="https://magpi.raspberrypi.com" class="__rptl-footer-link">The MagPi</a></li>
           <li class="__rptl-footer-item"><a href="https://hackspace.raspberrypi.com" class="__rptl-footer-link">HackSpace</a></li>
         </ul>

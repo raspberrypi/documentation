@@ -1,6 +1,6 @@
 == NVMe SSD boot
 
-NVMe (Non-Volatile Memory express) is a standard for external storage access over a PCIe bus. You can connect NVMe drives via the PCIe slot on a Compute Module 4 (CM4) IO board or Raspberry Pi 5. With some additional configuration, you can boot from an NVMe drive.
+NVMe (Non-Volatile Memory express) is a standard for external storage access over a PCIe bus. You can connect NVMe drives via the PCIe slot on a IO Boards since Compute Module 4 and or Raspberry Pi 5 using an M.2 HAT+. With some additional configuration, you can boot from an NVMe drive.
 
 === Prerequisites
 
@@ -20,26 +20,14 @@ brw-rw---- 1 root disk 259, 0 Mar  9 14:58 /dev/nvme0n1
 
 ==== Software
 
-Run the following command to see what firmware you're running:
+First, ensure that your Raspberry Pi runs the latest software. Run the following command to update:
 
 [source,console]
 ----
-$ sudo rpi-eeprom-update
+$ sudo apt update && sudo apt full-upgrade
 ----
 
-For Raspberry Pi 5, you need firmware released December 6, 2023 or later.
-
-For CM4, NVMe boot support was introduced in July 2021. You need a version of the following software released since that date:
-
-* the bootloader
-* VideoCore firmware
-* the Raspberry Pi OS Linux kernel
-
-The latest Raspberry Pi OS release has everything you need. Use  xref:getting-started.adoc#raspberry-pi-imager[Raspberry Pi Imager] to install a Raspberry Pi OS image onto your drive.
-
-=== Edit EEPROM boot order
-
-For Raspberry Pi 5, you need to boot Raspberry Pi OS to edit the boot order. You can boot your Raspberry Pi from an SD card or USB drive for this step. The EEPROM configuration persists even when you change the boot device, since the EEPROM configuration is stored on the board itself.
+=== Edit the bootloader boot priority
 
 Use the Raspberry Pi Configuration CLI to update the bootloader:
 
@@ -48,16 +36,14 @@ Use the Raspberry Pi Configuration CLI to update the bootloader:
 $ sudo raspi-config
 ----
 
-Under `Advanced Options` > `Bootloader Version`, choose `Latest`. Then, exit `raspi-config` with `Finish` or the *Escape* key.
-
-Run the following command to update your firmware to the latest version:
+Under `Advanced Options` > `Bootloader Order`, specify that the bootloader should attempt to boot from `NVMe` first:
 
 [source,console]
 ----
 $ sudo rpi-eeprom-update -a
 ----
 
-Then, reboot with `sudo reboot`. Your Raspberry Pi 5 should boot from NVMe.
+Then, reboot with `sudo reboot`. Your Raspberry Pi should boot from NVMe.
 
 For CM4, use `rpiboot` to update the bootloader. You can find instructions for building `rpiboot` and configuring the IO board to switch the ROM to usbboot mode in the https://github.com/raspberrypi/usbboot[USB boot GitHub repository].
 

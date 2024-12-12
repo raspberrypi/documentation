@@ -1,19 +1,20 @@
 <!doctype html>
 <html lang="en">
   <head>
-    {% include head.html %} 
-    <link rel="stylesheet" href="{{ site.baseurl }}/css/boxes.css?ver={{ site.time | date: '%s' }}">
+    {% include head.html %}
   </head>
-  <body>
-    {% include header.html %}      
-    {% if page.name == "404.adoc" %}
-      {% include toptitle404.html %}
-      {% include subtitle404.html %}
-    {% else %}
-      {% include toptitle.html %}
-      {% include subtitle.html %}
-    {% endif %}
-    {% include tabs.html %}
+  <body onload="makeToc()">
+    <script type="text/javascript">initTheme()</script>
+    {% include header.html %}
+
+    <div class="toptitle">
+      <h1><a href="/documentation/"><b>Raspberry Pi</b> Documentation</a></h1>
+      <div id="search-theme-toggle-container">
+        <div id="docsearch"></div>
+        {% include theme.html %}
+      </div>
+      {% include tabs.html %}
+    </div>
 
     <div id="container">
       <section id="box-content">
@@ -35,9 +36,8 @@
       </section>
     </div>
 
-    {% include contribute.html %} 
-    {% include copyright.html %} 
-    {% include footer.html %}  
+    {% include legal.html %}
+    {% include footer.html %}
     {% include search.html %}
 
   </body>
