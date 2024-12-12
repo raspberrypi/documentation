@@ -1234,7 +1234,14 @@ div.listingblock pre.highlight {
 }
 
 #content td.linenos {
-  padding-right: 10px;
+  padding-right: 5px;
+  user-select: none;
+}
+
+#content td.linenos pre.lineno {
+  padding-top: 15px;
+  background-color: var(--code-bg-colour);
+  color: var(--subtle);
 }
 
 .highlight td.code pre {
