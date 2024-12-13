@@ -4,7 +4,7 @@
     <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/raspberrypi/documentation/refs/heads/develop/pi_light.svg">
     <img alt="Raspberry Pi: computers and microcontrollers"
          src="https://raw.githubusercontent.com/raspberrypi/documentation/refs/heads/develop/pi_light.svg"
-         width="50%">
+         width="16%">
   </picture>
 
 [Website][Raspberry Pi] | [Getting started] | [Documentation] | [Contribute]
