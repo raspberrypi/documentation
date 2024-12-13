@@ -1,9 +1,9 @@
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/raspberrypi/documentation/images/pi_dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/raspberrypi/documentation/images/pi_light.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/raspberrypi/documentation/refs/heads/develop/pi_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/raspberrypi/documentation/refs/heads/develop/pi_light.svg">
     <img alt="Raspberry Pi: computers and microcontrollers"
-         src="https://raw.githubusercontent.com/raspberrypi/documentation/images/pi_light.svg"
+         src="https://raw.githubusercontent.com/raspberrypi/documentation/refs/heads/develop/pi_light.svg"
          width="50%">
   </picture>
 
