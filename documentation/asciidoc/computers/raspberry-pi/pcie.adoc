@@ -55,7 +55,7 @@ WARNING: The Raspberry Pi 5 is not certified for Gen 3.0 speeds. PCIe Gen 3.0 co
 
 By default, Raspberry Pi 5 uses Gen 2.0 speeds (5 GT/s). Use one of the following approaches to force Gen 3.0 (8 GT/s) speeds:
 
-[tabs%sync]
+[tabs]
 ======
 `config.txt`::
 +
