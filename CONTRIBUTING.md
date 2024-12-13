@@ -120,7 +120,7 @@ To build the documentation and start a local server to preview the built site, r
 $ make serve_html
 ```
 
-You can access the virtual server at http://127.0.0.1:4000/documentation/[http://127.0.0.1:4000/documentation/].
+You can access the virtual server at [http://127.0.0.1:4000/documentation/](http://127.0.0.1:4000/documentation/).
 
 > [!TIP]
 > To delete and rebuild the documentation site, run `make clean`, then re-run the build command. You'll need to do this every time you add or remove an Asciidoc, image, or video file.
@@ -130,7 +130,7 @@ You can access the virtual server at http://127.0.0.1:4000/documentation/[http:/
 
 The Raspberry Pi documentation site includes a section of generated Asciidoc that we build from the [Doxygen Pico SDK documentation](https://github.com/raspberrypi/pico-sdk).
 
-We use the tooling in this repository and [doxygentoasciidoc](https://github.com/raspberrypi/doxygentoasciidoc) to generate that documentation section. By default, local documentation builds don't include this section because it takes a bit longer (tens of seconds) than the rest of the site.
+We use the tooling in this repository and [doxygentoasciidoc](https://github.com/raspberrypi/doxygentoasciidoc) to generate that documentation section. By default, local documentation builds don't include this section because it takes a bit longer to build (tens of seconds) than the rest of the site.
 
 Building the Pico C SDK Doxygen documentation requires the following additional package dependencies:
 
