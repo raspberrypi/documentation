@@ -8,7 +8,7 @@ image::images/rp1.jpg[alt="Architecture diagram of the RP1",width="70%"]
 
 RP1 is a 12×12mm, 0.65mm-pitch BGA southbridge, which provides the majority of the I/O capabilities for Raspberry Pi 5.
 
-video::aioB40BGQYU[youtube]
+video::aioB40BGQYU[youtube,width=80%,height=400px]
 
 It provides:
 
