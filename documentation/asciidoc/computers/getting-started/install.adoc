@@ -24,7 +24,7 @@ If you have no other computer to write an image to a boot device, you may be abl
 === Install using Imager
 
 ////
-TODO: Update this video for the new Imager look & flow (video::ntaXWS8Lk34[youtube])
+TODO: Update this video for the new Imager look & flow (video::ntaXWS8Lk34[youtube,width=80%,height=400px])
 ////
 
 You can install Imager in the following ways:
@@ -127,7 +127,7 @@ Network Install enables a Raspberry Pi to install an operating system on a stora
 Network Install only runs on Flagship models since Raspberry Pi 4B and Keyboard models. If your Raspberry Pi runs an older bootloader, you may need to xref:raspberry-pi.adoc#bootloader_update_stable[update the bootloader] to use Network Install.
 
 ////
-TODO: Update this video for the new Imager look & flow video::b1SYVpM9lto[youtube]
+TODO: Update this video for the new Imager look & flow video::b1SYVpM9lto[youtube,width=80%,height=400px]
 ////
 
 Network Install requires the following:

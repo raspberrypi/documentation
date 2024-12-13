@@ -27,14 +27,23 @@ def scan_adoc(adoc_filename, apparent_filename, includes, src_images, dest_image
             includes[adoc_filename].add(include_adoc)
             scan_adoc(include_adoc, apparent_filename, includes, src_images, dest_images, parents.copy())
         # look for image files
-        for image in re.findall(r'image::?(.+?)\[.*\]', contents):
-            if not (image.startswith('http:') or image.startswith('https:')):
-                image_filename = resolve_url(adoc_filename, image)
-                dest_image = resolve_url(apparent_filename, image)
+        for file in re.findall(r'image::?(.+?)\[.*\]', contents):
+            if not (file.startswith('http:') or file.startswith('https:')):
+                image_filename = resolve_url(adoc_filename, file)
+                dest_image = resolve_url(apparent_filename, file)
                 if dest_image in dest_images and dest_images[dest_image] != image_filename:
                     raise Exception("{} and {} would both end up as {}".format(dest_images[dest_image], image_filename, dest_image))
                 src_images[image_filename] = dest_image
                 dest_images[dest_image] = image_filename
+        # look for video webm files, ignore youtube videos and all other formats for now (must update later if this changes)
+        for file in re.findall(r'video::?(.+?)\[.*\]', contents):
+            if file.endswith('.webm'):
+                video_filename = resolve_url(adoc_filename, file)
+                dest_video = resolve_url(apparent_filename, file)
+                if dest_video in dest_images and dest_images[dest_video] != video_filename:
+                    raise Exception("{} and {} would both end up as {}".format(dest_images[dest_video], video_filename, dest_video))
+                src_images[video_filename] = dest_video
+                dest_images[dest_video] = video_filename
 
 def add_entire_directory(tab_dir, dir_path, pages_set, src_images, dest_images):
     #print("Adding all files from {} directory".format(tab_dir))

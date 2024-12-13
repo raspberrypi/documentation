@@ -188,7 +188,7 @@ To install version 4.17 of Hailo's neural network tooling, run the following com
 +
 [source,console]
 ----
-$ sudo apt install hailo-tappas-core-3.28.2 hailort=4.17.0 hailo-dkms=4.17.0-1
+$ sudo apt install hailo-tappas-core=3.28.2 hailort=4.17.0 hailo-dkms=4.17.0-1
 ----
 +
 [source,console]

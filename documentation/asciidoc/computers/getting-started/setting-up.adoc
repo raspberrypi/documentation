@@ -1,7 +1,7 @@
 [[setting-up-your-raspberry-pi]]
 == Getting started with your Raspberry Pi
 
-video::CQtliTJ41ZE[youtube]
+video::CQtliTJ41ZE[youtube,width=80%,height=400px]
 
 To get started with your Raspberry Pi, you'll need the following:
 

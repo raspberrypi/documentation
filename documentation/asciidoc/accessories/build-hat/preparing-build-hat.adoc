@@ -4,7 +4,7 @@ NOTE: Before starting to work with your Raspberry Pi Build HAT you should xref:.
 
 Attach 9mm spacers to the bottom of the board. Seat the Raspberry Pi Build HAT onto your Raspberry Pi. Make sure you put it on the right way up. Unlike other HATs, all the components are on the bottom, leaving room for a breadboard or LEGO® elements on top.  
 
-image::images/fitting-build-hat.gif[width="80%"]
+video::images/fitting-build-hat.webm[width="80%"]
 
 === Access the GPIO Pins
 
@@ -68,7 +68,7 @@ Connect an external power supply — the https://raspberrypi.com/products/build-
 The Build HAT cannot power Keyboard-series devices, since they do not support power supply over the GPIO headers.
 ====
 
-image::images/powering-build-hat.gif[width="80%"]
+video::images/powering-build-hat.webm[width="80%"]
 
 [NOTE]
 ====
