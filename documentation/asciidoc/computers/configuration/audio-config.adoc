@@ -10,7 +10,7 @@ Use the following methods to configure audio output in Raspberry Pi OS:
 
 [[pro-audio-profile]]
 
-[tabs%sync]
+[tabs]
 ======
 Desktop volume control::
 +

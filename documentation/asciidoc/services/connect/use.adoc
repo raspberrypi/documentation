@@ -3,7 +3,7 @@
 
 Now that you've installed and started Connect on your Raspberry Pi device, you must associate your device with your Connect account.
 
-[tabs%sync]
+[tabs]
 ======
 Desktop::
 +

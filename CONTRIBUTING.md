@@ -1,37 +1,157 @@
-# Contributing to Raspberry Pi Documentation
+# Contributing to the Raspberry Pi Documentation
 
-The Raspberry Pi Documentation website is built from Asciidoc source using Asciidoctor and a Jekyll and Python toolchain. The website is automatically deployed to the raspberrypi.com site — pushed to production — using GitHub Actions when a push to the `master` branch occurs.
+The Raspberry Pi Documentation website is built from Asciidoc source using:
 
-Full instructions for building and running the documentation website locally can be found in the top-level [README.md](README.md) file.
+* [Asciidoctor](https://asciidoctor.org/)
+* [Jekyll](https://jekyllrb.com/)
+* [jekyll-asciidoc](https://github.com/asciidoctor/jekyll-asciidoc)
+* Python
 
-## How to Contribute
+The website automatically deploys to [raspberrypi.com/documentation](raspberrypi.com/documentation) using GitHub Actions when new commits appear in the `master` branch.
 
-In order to contribute new or updated documentation, you must first create a GitHub account and fork the original repository to your own account. You can make changes, save them in your forked repository, then [make a pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) against this repository. The pull request will appear [in the repository](https://github.com/raspberrypi/documentation/pulls) where it can be assessed by the maintainers, copy-edited, and if appropriate, merged with the official repository.
+## Contribute
 
-Unless you are opening a pull request which will only make small corrections, for instance, to correct a typo, you are more likely to get traction for your changes if you [open an issue](https://github.com/raspberrypi/documentation/issues) first to discuss the proposed changes. Issues and Pull Requests older than 60 days will [automatically be marked as stale](https://github.com/actions/stale) and then closed 7 days later if there still hasn't been any further activity.
+To contribute or update documentation:
 
-**NOTE:** The default [branch](https://github.com/raspberrypi/documentation/branches) of the repository is the `develop` branch, and this should be the branch you get by default when you initially checkout the repository. You should target any pull requests against the `develop` branch, pull requests against the `master` branch will automatically fail checks and not be accepted.
+1. Create a fork of this repository on your GitHub account.
 
-**NOTE:** Issues and Pull Requests older than 60 days will [automatically be marked as stale](https://github.com/actions/stale) and then closed 7 days later if there still hasn't been any further activity.
+1. Make changes in your fork. Start from the default `develop` branch.
 
-Before starting to write your contribution to the documentation, you should take a look at the [style guide](https://github.com/raspberrypi/style-guide/blob/master/style-guide.md).
+1. Read our [style guide](https://github.com/raspberrypi/style-guide/blob/master/style-guide.md) to ensure that your changes are consistent with the rest of our documentation. Since Raspberry Pi is a British company, be sure to include all of your extra `u`s and transfigure those `z`s (pronounced 'zeds') into `s`s!
 
-**IMPORTANT**: Because the documentation makes use of the Asciidoc `include` statement, the `xref:` statements inside the documentation do not link back to the correct pages on Github, as Github does not support Asciidoc include functionality (see [#2005](https://github.com/raspberrypi/documentation/issues/2005)). However, these links work correctly when the HTML documentation is built and deployed. Please do not submit Pull Requests fixing link destinations unless you're sure that the link is broken [on the documentation site](https://www.raspberrypi.com/documentation/) itself.
+1. [Open a pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) against this repository.
 
-## Type of Content
+1. The maintainers will assess and copy-edit the PR. This can take anywhere from a few minutes to a few days, depending on the size of your PR, the time of year, and the availability of the maintainers.
 
-We welcome contributions from the community, ranging from correcting small typos all the way through to adding entirely new sections to the documentation. However, going forward we're going to be fairly targeted about what sorts of content we add to the documentation. We are looking to keep the repository, and the documentation, focused on Raspberry Pi-specific things, rather than having generic Linux or computing content.
+1. After making any requested improvements to your PR, the maintainers will accept the PR and merge your changes into `develop`.
 
-We are therefore deprecating the more generic documentation around using the Linux operating system, ahead of removing these sections entirely at some point in the future as part of a larger update to the documentation site. This move is happening as we feel these sort of more general topics are, ten years on from when the documentation was initially written, now much better covered elsewhere on the web.
+1. When the maintainers next release the documentation by merging `develop` into `master`, your changes will go public on the production documentation site.
 
-As such, we're not accepting PRs against these sections unless they're correcting errors.
+Alternatively, [open an issue](https://github.com/raspberrypi/documentation/issues) to discuss proposed changes.
 
-**NOTE:** We are willing to consider toolchain-related contributions, but changes to the toolchain may have knock-on effects in other places, so it is possible that apparently benign pull requests that make toolchain changes could be refused for fairly opaque reasons. 
+## Build
 
-## Third-Party Services
+### Install dependencies
 
-In general, we will not accept content that is specific to an individual third-party service or product. We will also not embed, or add links, to YouTube videos showing tutorials on how to configure your Raspberry Pi.
+To build the Raspberry Pi documentation locally, you'll need Ruby, Python, and the Ninja build system.
 
-## Licensing 
+#### Linux
 
-The documentation is under a [Creative Commons Attribution-Sharealike](https://creativecommons.org/licenses/by-sa/4.0/) (CC BY-SA 4.0) licence. By contributing content to this repository, you are agreeing to place your contributions under this licence.
+Use `apt` to install the dependencies:
+
+```console
+$ sudo apt install -y ruby ruby-dev python3 python3-pip make ninja-build
+```
+
+Then, append the following lines to your `~/.bashrc` file (or equivalent shell configuration):
+
+```bash
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$PATH:$GEM_HOME/bin"
+```
+
+Close and re-launch your terminal window to use the new dependencies and configuration.
+
+#### macOS
+
+If you don't already have it, we recommend installing the [Homebrew](https://brew.sh/) package manager: 
+
+```console
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
+
+Next, use Homebrew to install Ruby:
+
+```console
+$ brew install ruby
+```
+
+After installing Ruby, follow the instructions provided by Homebrew to make your new Ruby version easily accessible from the command line.
+
+Then, use Homebrew to install the most recent version of Python:
+
+```console
+$ brew install python
+```
+
+Then, install the [Ninja build system](https://formulae.brew.sh/formula/ninja#default):
+
+```console
+$ brew install ninja
+```
+
+### Set up environment
+
+Use the `gem` package manager to install the [Ruby bundler](https://bundler.io/), which this repository uses to manage Ruby dependencies:
+
+```console
+$ gem install bundler
+```
+
+Configure a Python virtual environment for this project:
+
+```console
+$ python -m venv .env
+```
+
+Activate the virtual environment:
+
+```console
+$ source .env/bin/activate
+```
+
+> [!TIP]
+> When you're using a virtual environment, you should see a `(.venv)` prefix at the start of your terminal prompt. At any time, run the `deactivate` command to exit the virtual environment.
+
+In the virtual environment, install the [YAML module for Python 3](https://formulae.brew.sh/formula/pyyaml#default):
+
+```console
+$ pip3 install pyyaml
+```
+
+### Build HTML
+
+> [!IMPORTANT]
+> If you configured a Python virtual environment as recommended in the previous step, **always** run `source .env/bin/activate` before building. You must activate the virtual environment to access to all of the Python dependencies installed in that virtual environment.
+
+To build the documentation and start a local server to preview the built site, run the following command:
+
+```console
+$ make serve_html
+```
+
+You can access the virtual server at [http://127.0.0.1:4000/documentation/](http://127.0.0.1:4000/documentation/).
+
+> [!TIP]
+> To delete and rebuild the documentation site, run `make clean`, then re-run the build command. You'll need to do this every time you add or remove an Asciidoc, image, or video file.
+
+
+### Build the Pico C SDK Doxygen documentation
+
+The Raspberry Pi documentation site includes a section of generated Asciidoc that we build from the [Doxygen Pico SDK documentation](https://github.com/raspberrypi/pico-sdk).
+
+We use the tooling in this repository and [doxygentoasciidoc](https://github.com/raspberrypi/doxygentoasciidoc) to generate that documentation section. By default, local documentation builds don't include this section because it takes a bit longer to build (tens of seconds) than the rest of the site.
+
+Building the Pico C SDK Doxygen documentation requires the following additional package dependencies:
+
+```console
+$ sudo apt install -y cmake gcc-arm-none-eabi doxygen graphviz
+```
+
+Then, initialise the Git submodules used in the Pico C SDK section build:
+
+```console
+$ git submodule update --init
+```
+
+Run the following command to build the Pico C SDK section Asciidoc files from the Doxygen source:
+
+```console
+$ make build_doxygen_adoc
+```
+
+The next time you build the documentation site, you'll see the Pico C SDK section in your local preview.
+
+> [!TIP]
+> To delete and rebuild the generated files, run `make clean_doxygen_xml`, then re-run the build command.
+

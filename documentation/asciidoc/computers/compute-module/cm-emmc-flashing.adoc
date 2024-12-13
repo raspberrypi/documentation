@@ -23,7 +23,7 @@ TIP: In some cases, USB hubs can prevent the host device from recognising the Co
 
 To begin, physically set up your IO Board. This includes connecting the Compute Module and host device to the IO Board.
 
-[tabs%sync]
+[tabs]
 ======
 Compute Module 5 IO Board::
 +
@@ -56,7 +56,7 @@ Next, let's set up software on the host device.
 
 TIP: For a host device, we recommend a Raspberry Pi 4 or newer running 64-bit Raspberry Pi OS.
 
-[tabs%sync]
+[tabs]
 ======
 Linux::
 +
@@ -87,7 +87,7 @@ To set up software on a macOS host device:
 +
 [source,console]
 ----
-$ sudo ./rpiboot
+$ rpiboot -d mass-storage-gadget64
 ----
 . When the command finishes running, you should see a message stating "The disk you inserted was not readable by this computer." Click **Ignore**. Your Compute Module should now appear as a mass storage device.
 
@@ -129,7 +129,7 @@ You can mount the `/dev/sdX1` and `/dev/sdX2` partitions normally.
 
 === Boot from eMMC
 
-[tabs%sync]
+[tabs]
 ======
 Compute Module 5 IO Board::
 +

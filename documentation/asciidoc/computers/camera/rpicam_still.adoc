@@ -107,7 +107,7 @@ To find the maximum exposure times of official Raspberry Pi cameras, see xref:..
 
 To create a time lapse video, capture a still image at a regular interval, such as once a minute, then use an application to stitch the pictures together into a video.
 
-[tabs%sync]
+[tabs]
 ======
 `rpicam-still` time lapse mode::
 +

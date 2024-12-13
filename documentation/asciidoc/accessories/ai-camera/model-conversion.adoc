@@ -35,7 +35,7 @@ The Model Compression Toolkit generates a quantised model in the following forma
 
 To convert a model, first install the converter tools:
 
-[tabs%sync]
+[tabs]
 ======
 TensorFlow::
 +
@@ -58,7 +58,7 @@ If you need to install both packages, use two separate Python virtual environmen
 
 Next, convert the model:
 
-[tabs%sync]
+[tabs]
 ======
 TensorFlow::
 +
