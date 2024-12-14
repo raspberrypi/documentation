@@ -21,7 +21,7 @@ Additionally, Raspberry Pi makes the *Pico* series of tiny, versatile https://en
 ^.^a|
 .Raspberry Pi Model B
 image::images/model-b.jpg[alt="Raspberry Pi Model B"]
-| xref:processors.adoc#bcm2835[BCM2835]
+| xref:../processors/bcm2835.adoc[BCM2835]
 a|
 256MB
 
@@ -39,7 +39,7 @@ a|
 ^.^a|
 .Raspberry Pi Model A
 image::images/model-a.jpg[alt="Raspberry Pi Model A",width="80%"]
-| xref:processors.adoc#bcm2835[BCM2835] | 256MB | 26-pin GPIO header
+| xref:../processors/bcm2835.adoc[BCM2835] | 256MB | 26-pin GPIO header
 a|
 * HDMI
 * USB 2.0
@@ -52,7 +52,7 @@ a|
 ^.^a|
 .Raspberry Pi Model B+
 image::images/model-b-plus.jpg[alt="Raspberry Pi Model B+"]
-| xref:processors.adoc#bcm2835[BCM2835] | 512MB | 40-pin GPIO header
+| xref:../processors/bcm2835.adoc[BCM2835] | 512MB | 40-pin GPIO header
 a|
 * HDMI
 * 4× USB 2.0
@@ -65,7 +65,7 @@ a|
 ^.^a|
 .Raspberry Pi Model A+
 image::images/model-a-plus.jpg[alt="Raspberry Pi Model A+"]
-| xref:processors.adoc#bcm2835[BCM2835]
+| xref:../processors/bcm2835.adoc[BCM2835]
 a|
 256MB
 
@@ -81,7 +81,7 @@ a|
 ^.^a|
 .Raspberry Pi 2 Model B
 image::images/2-model-b.jpg[alt="Raspberry Pi 2 Model B"]
-| xref:processors.adoc#bcm2836[BCM2836] (in version 1.2, switched to xref:processors.adoc#bcm2837[BCM2837]) | 1 GB | 40-pin GPIO header
+| xref:../processors/bcm2836.adoc[BCM2836] (in version 1.2, switched to xref:../processors/bcm2837.adoc[BCM2837]) | 1 GB | 40-pin GPIO header
 a|
 * HDMI
 * 4× USB 2.0
@@ -94,7 +94,7 @@ a|
 ^.^a|
 .Raspberry Pi 3 Model B
 image::images/3-model-b.jpg[alt="Raspberry Pi 3 Model B"]
-| xref:processors.adoc#bcm2837[BCM2837] | 1 GB | 40-pin GPIO header
+| xref:../processors/bcm2837.adoc[BCM2837] | 1 GB | 40-pin GPIO header
 a|
 * HDMI
 * 4× USB 2.0
@@ -109,7 +109,7 @@ a|
 ^.^a|
 .Raspberry Pi 3 Model B+
 image::images/3-model-b-plus.jpg[alt="Raspberry Pi 3 Model B+"]
-| xref:processors.adoc#bcm2837b0[BCM2837b0] | 1GB | 40-pin GPIO header
+| xref:../processors/bcm2837b0.adoc[BCM2837b0] | 1GB | 40-pin GPIO header
 a|
 * HDMI
 * 4× USB 2.0
@@ -124,7 +124,7 @@ a|
 ^.^a|
 .Raspberry Pi 3 Model A+
 image::images/3-model-a-plus.jpg[alt="Raspberry Pi 3 Model A+"]
-| xref:processors.adoc#bcm2837b0[BCM2837b0] | 512 MB | 40-pin GPIO header
+| xref:../processors/bcm2837b0.adoc[BCM2837b0] | 512 MB | 40-pin GPIO header
 a|
 * HDMI
 * USB 2.0
@@ -138,7 +138,7 @@ a|
 ^.^a|
 .Raspberry Pi 4 Model B
 image::images/4-model-b.jpg[alt="Raspberry Pi 4 Model B"]
-| xref:processors.adoc#bcm2711[BCM2711]
+| xref:../processors/bcm2711.adoc[BCM2711]
 a|
 1GB
 
@@ -162,7 +162,7 @@ a|
 ^.^a|
 .Raspberry Pi 5
 image::images/5.jpg[alt="Raspberry Pi 5"]
-| xref:processors.adoc#bcm2712[BCM2712] (2GB version uses xref:processors.adoc#bcm2712[BCM2712D0])
+| xref:../processors/bcm2712.adoc[BCM2712] (2GB version uses xref:../processors/bcm2712.adoc[BCM2712D0])
 a|
 2GB
 
@@ -198,7 +198,7 @@ Keyboard series devices use model identifiers of the form `<X00>`, where `X` ind
 ^.^a|
 .Raspberry Pi 400
 image::images/400.jpg[alt="Raspberry Pi 400"]
-| xref:processors.adoc#bcm2711[BCM2711] | 4GB | 40-pin GPIO header
+| xref:../processors/bcm2711.adoc[BCM2711] | 4GB | 40-pin GPIO header
 a|
 * 2× micro HDMI
 * USB 2.0
@@ -211,7 +211,7 @@ a|
 ^.^a|
 .Raspberry Pi 500
 image::images/500.png[alt="Raspberry Pi 500"]
-| xref:processors.adoc#bcm2712[BCM2712] | 8GB | 40-pin GPIO header
+| xref:../processors/bcm2712.adoc[BCM2712] | 8GB | 40-pin GPIO header
 a|
 * 2× micro HDMI
 * USB 2.0
@@ -244,32 +244,32 @@ Since version 1.3 of the original Zero, all Zero models also include:
 ^.^a|
 .Raspberry Pi Zero
 image::images/zero.jpg[alt="Raspberry Pi Zero"]
-| xref:processors.adoc#bcm2835[BCM2835] | 512MB | 40-pin GPIO header (unpopulated) ^| none
+| xref:../processors/bcm2835.adoc[BCM2835] | 512MB | 40-pin GPIO header (unpopulated) ^| none
 ^.^a|
 .Raspberry Pi Zero W
 image::images/zero-w.jpg[alt="Raspberry Pi Zero W"]
-| xref:processors.adoc#bcm2835[BCM2835] | 512MB | 40-pin GPIO header (unpopulated)
+| xref:../processors/bcm2835.adoc[BCM2835] | 512MB | 40-pin GPIO header (unpopulated)
 a|
 * 2.4GHz single-band 802.11n Wi-Fi (35Mb/s)
 * Bluetooth 4.0, Bluetooth Low Energy (BLE)
 ^.^a|
 .Raspberry Pi Zero WH
 image::images/zero-wh.jpg[alt="Raspberry Pi Zero WH"]
-| xref:processors.adoc#bcm2835[BCM2835] | 512MB | 40-pin GPIO header
+| xref:../processors/bcm2835.adoc[BCM2835] | 512MB | 40-pin GPIO header
 a|
 * 2.4GHz single-band 802.11n Wi-Fi (35Mb/s)
 * Bluetooth 4.0, Bluetooth Low Energy (BLE)
 ^.^a|
 .Raspberry Pi Zero 2 W
 image::images/zero-2-w.jpg[alt="Raspberry Pi Zero 2 W"]
-| xref:processors.adoc#rp3a0[RP3A0] | 512MB | 40-pin GPIO header (unpopulated)
+| xref:../processors/rp3a0.adoc[RP3A0] | 512MB | 40-pin GPIO header (unpopulated)
 a|
 * 2.4GHz single-band 802.11n Wi-Fi (35Mb/s)
 * Bluetooth 4.2, Bluetooth Low Energy (BLE)
 ^.^a|
 .Raspberry Pi Zero 2 WH
 image::images/zero-2-wh.png[alt="Raspberry Pi Zero 2 WH"]
-| xref:processors.adoc#rp3a0[RP3A0] | 512MB | 40-pin GPIO header
+| xref:../processors/rp3a0.adoc[RP3A0] | 512MB | 40-pin GPIO header
 a|
 * 2.4GHz single-band 802.11n Wi-Fi (35Mb/s)
 * Bluetooth 4.2, Bluetooth Low Energy (BLE)
@@ -284,12 +284,12 @@ a|
 ^.^a|
 .Raspberry Pi Compute Module 1
 image::images/compute-module-1.jpg[alt="Raspberry Pi Compute Module 1"]
-| xref:processors.adoc#bcm2835[BCM2835] | 512MB
+| xref:../processors/bcm2835.adoc[BCM2835] | 512MB
 | 4GB | DDR2 SO-DIMM ^| none
 ^.^a|
 .Raspberry Pi Compute Module 3
 image::images/compute-module-3.jpg[alt="Raspberry Pi Compute Module 3"]
-| xref:processors.adoc#bcm2837[BCM2837] | 1GB
+| xref:../processors/bcm2837.adoc[BCM2837] | 1GB
 a|
 0GB (Lite)
 
@@ -297,7 +297,7 @@ a|
 ^.^a|
 .Raspberry Pi Compute Module 3+
 image::images/compute-module-3-plus.jpg[alt="Raspberry Pi Compute Module 3+"]
-| xref:processors.adoc#bcm2837b0[BCM2837b0] | 1GB
+| xref:../processors/bcm2837b0.adoc[BCM2837b0] | 1GB
 a|
 0GB (Lite)
 
@@ -309,7 +309,7 @@ a|
 ^.^a|
 .Raspberry Pi Compute Module 4S
 image::images/compute-module-4s.jpg[alt="Raspberry Pi Compute Module 4S"]
-| xref:processors.adoc#bcm2711[BCM2711]
+| xref:../processors/bcm2711.adoc[BCM2711]
 a|
 1GB
 
@@ -329,7 +329,7 @@ a|
 ^.^a|
 .Raspberry Pi Compute Module 4
 image::images/compute-module-4.jpg[alt="Raspberry Pi Compute Module 4"]
-| xref:processors.adoc#bcm2711[BCM2711]
+| xref:../processors/bcm2711.adoc[BCM2711]
 a|
 1GB
 
@@ -355,7 +355,7 @@ a| optional:
 ^.^a|
 .Raspberry Pi Compute Module 5
 image::images/compute-module-5.png[alt="Raspberry Pi Compute Module 5"]
-| xref:processors.adoc#bcm2712[BCM2712]
+| xref:../processors/bcm2712.adoc[BCM2712]
 a|
 2GB
 
@@ -392,36 +392,36 @@ Models with the *H* suffix have header pins pre-soldered to the GPIO header. Mod
 |
 .Raspberry Pi Pico
 image::images/pico.png[alt="Raspberry Pi Pico"]
-| xref:../microcontrollers/silicon.adoc#rp2040[RP2040] | 264KB | 2MB | two 20-pin GPIO headers (unpopulated) ^| none
+| xref:../../microcontrollers/silicon/rp2040.adoc[RP2040] | 264KB | 2MB | two 20-pin GPIO headers (unpopulated) ^| none
 |
 .Raspberry Pi Pico H
 image::images/pico-h.png[alt="Raspberry Pi Pico H"]
-| xref:../microcontrollers/silicon.adoc#rp2040[RP2040] | 264KB | 2MB | two 20-pin GPIO headers ^| none
+| xref:../../microcontrollers/silicon/rp2040.adoc[RP2040] | 264KB | 2MB | two 20-pin GPIO headers ^| none
 |
 .Raspberry Pi Pico W
 image::images/pico-w.png[alt="Raspberry Pi Pico W"]
-| xref:../microcontrollers/silicon.adoc#rp2040[RP2040] | 264KB | 2MB | two 20-pin GPIO headers (unpopulated)
+| xref:../../microcontrollers/silicon/rp2040.adoc[RP2040] | 264KB | 2MB | two 20-pin GPIO headers (unpopulated)
 |
 * 2.4GHz single-band 802.11n Wi-Fi (10Mb/s)
 * Bluetooth 5.2, Bluetooth Low Energy (BLE)
 |
 .Raspberry Pi Pico WH
 image::images/pico-wh.png[alt="Raspberry Pi Pico WH"]
-| xref:../microcontrollers/silicon.adoc#rp2040[RP2040] | 264KB | 2MB | two 20-pin GPIO headers
+| xref:../../microcontrollers/silicon/rp2040.adoc[RP2040] | 264KB | 2MB | two 20-pin GPIO headers
 |
 * 2.4GHz single-band 802.11n Wi-Fi (10Mb/s)
 * Bluetooth 5.2, Bluetooth Low Energy (BLE)
 |
 .Raspberry Pi Pico 2
 image::images/pico-2.png[alt="Raspberry Pi Pico 2"]
-| xref:../microcontrollers/silicon.adoc#rp2350[RP2350] | 520KB | 4MB | two 20-pin GPIO headers (unpopulated) ^| none
+| xref:../../microcontrollers/silicon/rp2350.adoc[RP2350] | 520KB | 4MB | two 20-pin GPIO headers (unpopulated) ^| none
 |
 .Raspberry Pi Pico 2 W
 image::images/pico-2-w.png[alt="Raspberry Pi Pico 2 W"]
-| xref:../microcontrollers/silicon.adoc#rp2350[RP2350] | 520KB | 4MB | two 20-pin GPIO headers (unpopulated) a|
+| xref:../../microcontrollers/silicon/rp2350.adoc[RP2350] | 520KB | 4MB | two 20-pin GPIO headers (unpopulated) a|
 * 2.4GHz single-band 802.11n Wi-Fi (10Mb/s)
 * Bluetooth 5.2, Bluetooth Low Energy (BLE)
 
 |===
 
-For more information about Raspberry Pi Pico models, see xref:../microcontrollers/pico-series.adoc[the Pico documentation].
+For more information about Raspberry Pi Pico models, see xref:../../microcontrollers/pico-series.adoc[the Pico documentation].
