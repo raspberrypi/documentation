@@ -76,13 +76,13 @@ Finally, add your wireless hotspot connection to the bridge. You can either add 
 $ sudo nmcli connection modify 'Hotspot' master bridge0
 ----
 
-* If you have not yet created a wireless hotspot connection, create a new interface and add it to the bridge with a single command, replacing the `<hotspot-password>` placeholder with a password of your choice:
+* If you have not yet created a wireless hotspot connection, create a new interface and add it to the bridge with a single command, replacing the `<hotspot-ssid>` and `<hotspot-password>` placeholders with a network name and password of your choice, respectively:
 +
 [source,console?prompt=$]
 ----
 $ sudo nmcli connection add con-name 'Hotspot' \
     ifname wlan0 type wifi slave-type bridge master bridge0 \
-    wifi.mode ap wifi.ssid Hotspot wifi-sec.key-mgmt wpa-psk \
+    wifi.mode ap wifi.ssid <hotspot-ssid> wifi-sec.key-mgmt wpa-psk \
     wifi-sec.proto rsn wifi-sec.pairwise ccmp \
     wifi-sec.psk <hotspot-password>
 ----
