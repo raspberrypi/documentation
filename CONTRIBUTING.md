@@ -7,7 +7,7 @@ The Raspberry Pi Documentation website is built from Asciidoc source using:
 * [jekyll-asciidoc](https://github.com/asciidoctor/jekyll-asciidoc)
 * Python
 
-The website automatically deploys to [raspberrypi.com/documentation](raspberrypi.com/documentation) using GitHub Actions when new commits appear in the `master` branch.
+The website automatically deploys to [www.raspberrypi.com/documentation](https://www.raspberrypi.com/documentation) using GitHub Actions when new commits appear in the `master` branch.
 
 ## Contribute
 
