@@ -5,11 +5,11 @@ You can find a 40-pin GPIO (general-purpose input/output) header on all current 
 
 NOTE: The header is unpopulated (has no headers) on Zero and Pico devices that lack the "H" suffix.
 
-image::images/GPIO-Pinout-Diagram-2.png[alt="GPIO pinout diagram",width="60%"]
+image::images/GPIO-Pinout-Diagram-2.png[alt="GPIO pinout diagram",width="100%"]
 
 General Purpose I/O (GPIO) pins can be configured as either general-purpose input, general-purpose output, or as one of up to six special alternate settings, the functions of which are pin-dependent.
 
-image::images/GPIO.png[alt="GPIO layout",width="60%"]
+image::images/GPIO.png[alt="GPIO layout",width="100%"]
 
 NOTE: The GPIO pin numbering scheme is not in numerical order. GPIO pins 0 and 1 are present on the board (physical pins 27 and 28), but are reserved for advanced use.
 
