@@ -60,7 +60,7 @@ Serial Number: HLDDLBB234500054
 Part Number: HM21LB1C2LAE
 Product Name: HAILO-8L AI ACC M.2 B+M KEY MODULE EXT TMP
 ----
-
++
 NOTE: AI HAT+ devices may show `<N/A>` for `Serial Number`, `Part Number` and `Product Name`. This is expected, and does not impact functionality.
 +
 Additionally, you can run `dmesg | grep -i hailo` to check the kernel logs, which should yield output similar to the following:
