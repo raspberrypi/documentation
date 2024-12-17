@@ -268,10 +268,13 @@
 
         {% include legal.html %}
         {% include footer.html %}
-        {% include search.html %}
 
-        <script async src="{{ site.baseurl }}/scripts/clipboard.min.js?ver={{ site.time | date: '%s' }}"></script>
-        <script async src="{{ site.baseurl }}/scripts/copy-to-clipboard.js?ver={{ site.time | date: '%s' }}"></script>
+        <!-- scripts that manipulate the page, placed at the bottom so they run after the page content has already loaded !-->
+        <script async type="text/javascript" src="{{ site.baseurl }}/scripts/asciidoctor-tabs.js?ver={{ site.time | date: '%s' }}"></script>
+        <script async type="text/javascript" src="{{ site.baseurl }}/scripts/clipboard.min.js?ver={{ site.time | date: '%s' }}"></script>
+        <script async type="text/javascript" src="{{ site.baseurl }}/scripts/copy-to-clipboard.js?ver={{ site.time | date: '%s' }}"></script>
+
+        {% include search.html %}
       </div>
     </div>
   </body>
