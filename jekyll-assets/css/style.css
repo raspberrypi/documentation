@@ -827,7 +827,6 @@ h6 .anchor::before {
   margin-bottom: 15px;
   position: relative;
   width: 99%;
-  overflow-x: scroll;
 }
 
 #content div.admonitionblock div.listingblock {
