@@ -1487,7 +1487,7 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
   }
 
   #mobile-toggle:checked ~ #docs-content .toc {
-    height: 100vh;
+    height: 93vh;
     max-width: 100vw;
   }
 
