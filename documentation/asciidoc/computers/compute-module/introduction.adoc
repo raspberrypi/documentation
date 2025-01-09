@@ -16,7 +16,7 @@ Compute Modules use the following Raspberry Pi SoCs:
 .Compute Module 5
 image::images/cm5.png[alt="Compute Module 5", width="60%"]
 
-The Compute Module 5 (CM5) combines the internals of a Raspberry Pi 5 (the BCM2712 processor and 2GB, 4GB, or 8GB of RAM) with optional 0GB (Lite), 16GB, 32GB or 64GB of eMMC flash storage.
+The Compute Module 5 (CM5) combines the internals of a Raspberry Pi 5 (the BCM2712 processor and 2GB, 4GB, 8GB, or 16GB of RAM) with optional 0GB (Lite), 16GB, 32GB or 64GB of eMMC flash storage.
 
 CM5 uses the same form factor as CM4, featuring two 100-pin high density connectors.
 

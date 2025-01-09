@@ -33,7 +33,7 @@ For more information, see xref:remote-access.adoc#ssh[set up an SSH server]. Onc
 [[configuring-a-user]]
 ==== Configure a user manually
 
-At the root of the first partion of your SD card (the filesystem labeled `bootfs`), create a file named `userconf.txt`.
+At the root of the first partition of your SD card (the filesystem labeled `bootfs`), create a file named `userconf.txt`.
 
 This file should contain a single line of text, consisting of `<username>:<password>`: your desired username, followed immediately by a colon, followed immediately by an *encrypted* representation of the password you want to use.
 
