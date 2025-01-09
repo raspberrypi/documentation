@@ -162,13 +162,15 @@ a|
 ^.^a|
 .Raspberry Pi 5
 image::images/5.jpg[alt="Raspberry Pi 5"]
-| xref:processors.adoc#bcm2712[BCM2712] (2GB version uses xref:processors.adoc#bcm2712[BCM2712D0])
+| xref:processors.adoc#bcm2712[BCM2712]
 a|
 2GB
 
 4GB
 
-8GB | 40-pin GPIO header
+8GB
+
+16GB | 40-pin GPIO header
 a|
 * 2× micro HDMI
 * 2× USB 2.0
