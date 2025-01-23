@@ -26,7 +26,7 @@ https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting st
 
 https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf[Raspberry Pi Pico Datasheet]:: An RP2040-based microcontroller board
 
-https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico]:: C/{cpp} development with Raspberry Pi Pico and other RP2040-based microcontroller boards
+https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico-series Microcontrollers]:: C/{cpp} development with Raspberry Pi Pico-series devices and other Raspberry Pi microcontroller-based boards
 
 === Raspberry Pi Pico 2 W
 
