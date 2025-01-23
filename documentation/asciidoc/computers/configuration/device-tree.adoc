@@ -849,7 +849,7 @@ The firmware uses the special https://www.kernel.org/doc/html/latest/devicetree/
 
 Each property is stored as a 32-bit integer unless indicated otherwise.
 
-`boot-mode`:: The boot-mode used to load the kernel. See xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER].
+`boot-mode`:: The boot-mode used to load the kernel. See the xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER] documentation for a list of possible boot-mode values.
 
 `partition`:: The partition number used during boot. If a `boot.img` ramdisk is loaded then this refers to partition that the ramdisk was loaded from rather than the partition number within the ramdisk.
 
