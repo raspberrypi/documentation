@@ -640,6 +640,30 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 8GB
 | Sony UK
 
+| b04171
+| 5
+| 1.1
+| 2GB
+| Sony UK
+
+| c04171
+| 5
+| 1.1
+| 4GB
+| Sony UK
+
+| d04171
+| 5
+| 1.1
+| 8GB
+| Sony UK
+
+| e04171
+| 5
+| 1.1
+| 16GB
+| Sony UK
+
 | b04180
 | CM5
 | 1.0
