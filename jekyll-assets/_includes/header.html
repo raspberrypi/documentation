@@ -432,7 +432,7 @@
     }
 
     accept.addEventListener("click", function (e) {
-      document.cookie = "cookiebanner_accepted=1; max-age=" + 60 * 60 * 24 * 365 * 2;
+      document.cookie = "cookiebanner_accepted=1; path=/; max-age=" + 60 * 60 * 24 * 365 * 2;
 
       if (typeof window.gtag !== "undefined") {
         window.gtag("consent", "update", {
@@ -444,7 +444,7 @@
     });
 
     reject.addEventListener("click", function (e) {
-      document.cookie = "cookiebanner_accepted=0; max-age=" + 60 * 60 * 24 * 365 * 2;
+      document.cookie = "cookiebanner_accepted=0; path=/; max-age=" + 60 * 60 * 24 * 365 * 2;
 
       cookiebanner.classList.add("__rptl-cookiebanner-hidden");
     });
