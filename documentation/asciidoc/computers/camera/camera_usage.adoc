@@ -12,3 +12,8 @@ Raspberry Pi produces several official camera modules, including:
 For more information about camera hardware, see the xref:../accessories/camera.adoc#about-the-camera-modules[camera hardware documentation].
 
 First, xref:../accessories/camera.adoc#install-a-raspberry-pi-camera[install your camera module]. Then, follow the guides in this section to put your camera module to use.
+
+[WARNING]
+====
+This guide no longer covers the _legacy camera stack_ which was available in Bullseye and earlier Raspberry Pi OS releases. The legacy camera stack, using applications like `raspivid`, `raspistill` and the original `Picamera` (_not_ `Picamera2`) Python library, has been deprecated for many years, and is now unsupported. If you are using the legacy camera stack, it will only have support for the Camera Module 1, Camera Module 2 and the High Quality Camera, and will never support any newer camera modules. Nothing in this document is applicable to the legacy camera stack.
+====
