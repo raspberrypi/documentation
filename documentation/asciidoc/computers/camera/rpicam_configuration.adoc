@@ -38,6 +38,8 @@ Raspberry Pi OS recognises the following overlays in `/boot/firmware/config.txt`
 
 To use one of these overlays, you must disable automatic camera detection. To disable automatic detection, set `camera_auto_detect=0` in `/boot/firmware/config.txt`. If `config.txt` already contains a line assigning an `camera_auto_detect` value, change the value to `0`. Reboot your Raspberry Pi with `sudo reboot` to load your changes.
 
+If your Raspberry Pi has two camera connectors (Raspberry Pi 5 or CM4, for example), then you can specify which one you are referring to by adding `,cam0` or `,cam1` (don't add any spaces) to the `dtoverlay` that you used from the table above. If you do not add either of these, it will default to checking  camera connector 1 (`cam1`). But note that for official Raspberry PI camera modules, auto-detection will correctly identify all the cameras connected to your device.
+
 [[tuning-files]]
 ==== Tweak camera behaviour with tuning files
 
