@@ -132,3 +132,6 @@ Records exactly the specified number of frames. Any non-zero value overrides xre
 
 Records exactly the specified framerate. Accepts a nonzero integer.
 
+==== `low-latency`
+
+On a Pi 5, the `--low-latency` option will reduce the encoding latency, which may be beneficial for real-time streaming applications, in return for (slightly) less good coding efficiency (for example, B frames and arithmethic coding will no longer be used).
