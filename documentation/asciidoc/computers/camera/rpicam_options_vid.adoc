@@ -135,3 +135,7 @@ Records exactly the specified framerate. Accepts a nonzero integer.
 ==== `low-latency`
 
 On a Pi 5, the `--low-latency` option will reduce the encoding latency, which may be beneficial for real-time streaming applications, in return for (slightly) less good coding efficiency (for example, B frames and arithmethic coding will no longer be used).
+
+==== `sync`
+
+Run the camera in software synchronisation mode, where multiple cameras synchronise frames to the same moment in time. The `sync` mode can be set to either `client` or `server`. For more information, please refer to the detailed explanation of xref:camera_software.adoc#software-camera-synchronisation[how software synchronisation works].
