@@ -553,3 +553,11 @@ Flushes output files to disk as soon as a frame finishes writing, instead of wai
 Specifies a JSON file that configures the post-processing applied by the imaging pipeline. This applies to camera images _before_ they reach the application. This works similarly to the legacy `raspicam` "image effects". Accepts a file name path as input.
 
 Post-processing is a large topic and admits the use of third-party software like OpenCV and TensorFlowLite to analyse and manipulate images. For more information, see xref:camera_software.adoc#post-processing-with-rpicam-apps[post-processing].
+
+==== `buffer-count`
+
+The number of buffers to allocate for still image capture or for video recording. The default value of zero lets each application choose a value for itself (1 for still image capture, and 6 for video recording). Increasing the number can sometimes help to reduce the number of frame drops, particularly at higher framerates.
+
+==== `viewfinder-buffer-count`
+
+As the `buffer-count` option, but applies when running in preview mode (that is `rpicam-hello` or the preview, not capture, phase of `rpicam-still`).
