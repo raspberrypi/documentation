@@ -35,7 +35,7 @@ Replacing globally-enabled rpi-connect services with user-enabled ones...
 
 ==== Screen sharing not available
 
-If Connect states that screen sharing is unavailable, one or more requirements for screen sharing support are not met. To help debug the problem, `rpi-connect` and `rpi-connect-lite` include the `rpi-connect doctor` to command to identify any issues with screen sharing.
+If Connect states that screen sharing is unavailable, one or more requirements for screen sharing support are not met. To help debug the problem, `rpi-connect` and `rpi-connect-lite` include the `doctor` command. Use `rpi-connect doctor` to identify issues with screen sharing.
 
 Run the following command:
 
