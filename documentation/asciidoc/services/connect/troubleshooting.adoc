@@ -82,8 +82,7 @@ If Connect can communicate properly on your network, you should see output simil
 
 If Connect can't communicate properly on your network, you'll see an "x" instead of a check next to the failing test case. Ask your network administrator to enable the following connections on your network:
 
-* unauthenticated HTTPS requests to the Raspberry Pi Connect API on port 443 of `api.connect.raspberrypi.com` 
-* authenticated requests to the Raspberry Pi Connect API on port 443 of `api.connect.raspberrypi.com`
+* HTTPS requests to the Raspberry Pi Connect API on port 443 of `api.connect.raspberrypi.com`
 * requests to Raspberry Pi Connect STUN or TURN servers on UDP port 3478 of all of the following:
 ** `stun.raspberrypi.com`
 ** `turn1.raspberrypi.com`
