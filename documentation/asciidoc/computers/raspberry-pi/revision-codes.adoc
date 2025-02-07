@@ -256,103 +256,103 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 | TTTTTTTT (bits 4-11)
 | Type
-| 0: A
+| 0x00: A
 
 |
 |
-| 1: B
+| 0x01: B
 
 |
 |
-| 2: A+
+| 0x02: A+
 
 |
 |
-| 3: B+
+| 0x03: B+
 
 |
 |
-| 4: 2B
+| 0x04: 2B
 
 |
 |
-| 5: Alpha (early prototype)
+| 0x05: Alpha (early prototype)
 
 |
 |
-| 6: CM1
+| 0x06: CM1
 
 |
 |
-| 8: 3B
+| 0x08: 3B
 
 |
 |
-| 9: Zero
+| 0x09: Zero
 
 |
 |
-| a: CM3
+| 0x0a: CM3
 
 |
 |
-| c: Zero W
+| 0x0c: Zero W
 
 |
 |
-| d: 3B+
+| 0x0d: 3B+
 
 |
 |
-| e: 3A+
+| 0x0e: 3A+
 
 |
 |
-| f: Internal use only
+| 0x0f: Internal use only
 
 |
 |
-| 10: CM3+
+| 0x10: CM3+
 
 |
 |
-| 11: 4B
+| 0x11: 4B
 
 |
 |
-| 12: Zero 2 W
+| 0x12: Zero 2 W
 
 |
 |
-| 13: 400
+| 0x13: 400
 
 |
 |
-| 14: CM4
+| 0x14: CM4
 
 |
 |
-| 15: CM4S
+| 0x15: CM4S
 
 |
 |
-| 16: Internal use only
+| 0x16: Internal use only
 
 |
 |
-| 17: 5
+| 0x17: 5
 
 |
 |
-| 18: CM5
+| 0x18: CM5
 
 |
 |
-| 19: 500
+| 0x19: 500
 
 |
 |
-| 1a: CM5 Lite
+| 0x1a: CM5 Lite
 
 | RRRR (bits 0-3)
 | Revision
