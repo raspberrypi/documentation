@@ -2,6 +2,10 @@
 
 The instructions below describe how to run the pre-packaged MobileNet SSD and PoseNet neural network models on the Raspberry Pi AI Camera.
 
+=== Hardware setup
+
+Attach the camera to your Raspberry Pi 5 board following the instructions at xref:../accessories/camera.adoc#install-a-raspberry-pi-camera[Install a Raspberry Pi Camera].
+
 === Prerequisites
 
 These instructions assume you are using the AI Camera attached to either a Raspberry Pi 4 Model B or Raspberry Pi 5 board. With minor changes, you can follow these instructions on other Raspberry Pi models with a camera connector, including the Raspberry Pi Zero 2 W and Raspberry Pi 3 Model B+.

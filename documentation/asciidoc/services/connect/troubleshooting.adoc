@@ -35,14 +35,47 @@ Replacing globally-enabled rpi-connect services with user-enabled ones...
 
 ==== Screen sharing not available
 
-If Connect states that screen sharing is unavailable, it cannot connect to the dedicated Connect WayVNC service.
+If Connect states that screen sharing is unavailable, one or more requirements for screen sharing support are not met. To help debug the problem, `rpi-connect` and `rpi-connect-lite` include the `doctor` command. Use `rpi-connect doctor` to identify issues with screen sharing.
 
-To find out more about the cause of the issue, run the following commands to check the status of the Connect WayVNC service:
+Run the following command:
 
 [source,console]
 ----
-$ systemctl --user status rpi-connect-wayvnc
-$ journalctl --user --follow --unit rpi-connect-wayvnc
+$ rpi-connect doctor
+----
+
+If all is well, you should see output similar to the following:
+
+----
+Screen sharing is supported by this version of rpi-connect
+✓ Wayland compositor available
+✓ Screen sharing services enabled and active
+✓ Communication with Raspberry Pi Connect API
+✓ Authentication with Raspberry Pi Connect API
+✓ Peer-to-peer connection candidate via STUN
+✓ Peer-to-peer connection candidate via TURN
+----
+
+If there is an issue, you will see something like so:
+
+----
+Screen sharing is supported by this version of rpi-connect
+✓ Wayland compositor available
+✗ Screen sharing services enabled and active - Please run rpi-connect on to enable and start all required services
+✓ Communication with Raspberry Pi Connect API
+✓ Authentication with Raspberry Pi Connect API
+✓ Peer-to-peer connection candidate via STUN
+✓ Peer-to-peer connection candidate via TURN
+
+✗ Some checks failed
+----
+
+If you have repeated issues trying to run Connect's required services, run the following commands to check their status in more detail:
+
+[source,console]
+----
+$ systemctl --user status rpi-connect-wayvnc.service rpi-connect-wayvnc-watcher.path
+$ journalctl --user --follow --unit rpi-connect-wayvnc.service --unit rpi-connect-wayvnc-watcher.path
 ----
 
 If the service fails to start or doesn't exist, ensure that your environment meets the following criteria:
@@ -63,7 +96,6 @@ For screen sharing, Connect can only share an existing graphical desktop session
 
 Connect usually communicates between devices without requiring changes to your network or firewall. However, especially restrictive networks can sometimes block Connect communication. To help debug problems with such networks, `rpi-connect` and `rpi-connect-lite` include the `rpi-connect doctor` command. `rpi-connect doctor` runs a series of tests to check that Connect communication functions properly on your network.
 
-
 To run these tests on your device, run the following command:
 
 [source,console]
@@ -74,6 +106,9 @@ $ rpi-connect doctor
 If Connect can communicate properly on your network, you should see output similar to the following:
 
 ----
+Screen sharing is supported by this version of rpi-connect
+✓ Wayland compositor available
+✓ Screen sharing services enabled and active
 ✓ Communication with Raspberry Pi Connect API
 ✓ Authentication with Raspberry Pi Connect API
 ✓ Peer-to-peer connection candidate via STUN
@@ -82,8 +117,7 @@ If Connect can communicate properly on your network, you should see output simil
 
 If Connect can't communicate properly on your network, you'll see an "x" instead of a check next to the failing test case. Ask your network administrator to enable the following connections on your network:
 
-* unauthenticated HTTPS requests to the Raspberry Pi Connect API on port 443 of `api.connect.raspberrypi.com` 
-* authenticated requests to the Raspberry Pi Connect API on port 443 of `api.connect.raspberrypi.com`
+* HTTPS requests to the Raspberry Pi Connect API on port 443 of `api.connect.raspberrypi.com`
 * requests to Raspberry Pi Connect STUN or TURN servers on UDP port 3478 of all of the following:
 ** `stun.raspberrypi.com`
 ** `turn1.raspberrypi.com`

@@ -43,13 +43,17 @@ WARNING: Cameras are sensitive to static. Earth yourself prior to handling the P
 
 === Connect the Camera
 
-The flex cable inserts into the connector labelled CAMERA on the Raspberry Pi, which is located between the Ethernet and HDMI ports. The cable must be inserted with the silver contacts facing the HDMI port. To open the connector, pull the tabs on the top of the connector upwards, then towards the Ethernet port. The flex cable should be inserted firmly into the connector, with care taken not to bend the flex at too acute an angle. To close the connector, push the top part of the connector towards the HDMI port and down, while holding the flex cable in place.
+Before connecting any Camera, shut down your Raspberry Pi and disconnect it from power.
 
-We have created a video to illustrate the process of connecting the camera. The following video shows how to connect the original camera on the original Raspberry Pi 1. The principle is the same for all Raspberry Pi boards with a camera connector, though the Raspberry Pi 5 and all Raspberry Pi Zero models require a https://www.raspberrypi.com/products/camera-cable/[different camera cable].
+The flex cable inserts into the connector labelled CAMERA on the Raspberry Pi, which is located between the Ethernet and HDMI ports. The cable must be inserted with the silver contacts facing the HDMI port. To open the connector, pull the tabs on the top of the connector upwards, then towards the Ethernet port. The flex cable should be inserted firmly into the connector, with care taken not to bend the flex at too acute an angle. To close the connector, push the top part of the connector down and away from the Ethernet port while holding the flex cable in place.
+
+The following video shows how to connect the original camera on the original Raspberry Pi 1:
 
 video::GImeVqHQzsE[youtube,width=80%,height=400px]
 
-Depending on the model, the camera may come with a small piece of translucent blue plastic film covering the lens. This is only present to protect the lens while it is being mailed to you, and needs to be removed by gently peeling it off.
+All Raspberry Pi boards with a camera connector use the same installation method, though the Raspberry Pi 5 and all Raspberry Pi Zero models require a https://www.raspberrypi.com/products/camera-cable/[different camera cable].
+
+Some cameras may come with a small piece of translucent blue plastic film covering the lens. This is only present to protect the lens during shipping. To remove it, gently peel it off.
 
 NOTE: There is additional documentation available around fitting the recommended https://datasheets.raspberrypi.com/hq-camera/cs-mount-lens-guide.pdf[6mm] and https://datasheets.raspberrypi.com/hq-camera/c-mount-lens-guide.pdf[16mm] lens to the HQ Camera.
 

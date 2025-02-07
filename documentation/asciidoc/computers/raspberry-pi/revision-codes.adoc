@@ -256,103 +256,103 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 | TTTTTTTT (bits 4-11)
 | Type
-| 0: A
+| 0x00: A
 
 |
 |
-| 1: B
+| 0x01: B
 
 |
 |
-| 2: A+
+| 0x02: A+
 
 |
 |
-| 3: B+
+| 0x03: B+
 
 |
 |
-| 4: 2B
+| 0x04: 2B
 
 |
 |
-| 5: Alpha (early prototype)
+| 0x05: Alpha (early prototype)
 
 |
 |
-| 6: CM1
+| 0x06: CM1
 
 |
 |
-| 8: 3B
+| 0x08: 3B
 
 |
 |
-| 9: Zero
+| 0x09: Zero
 
 |
 |
-| a: CM3
+| 0x0a: CM3
 
 |
 |
-| c: Zero W
+| 0x0c: Zero W
 
 |
 |
-| d: 3B+
+| 0x0d: 3B+
 
 |
 |
-| e: 3A+
+| 0x0e: 3A+
 
 |
 |
-| f: Internal use only
+| 0x0f: Internal use only
 
 |
 |
-| 10: CM3+
+| 0x10: CM3+
 
 |
 |
-| 11: 4B
+| 0x11: 4B
 
 |
 |
-| 12: Zero 2 W
+| 0x12: Zero 2 W
 
 |
 |
-| 13: 400
+| 0x13: 400
 
 |
 |
-| 14: CM4
+| 0x14: CM4
 
 |
 |
-| 15: CM4S
+| 0x15: CM4S
 
 |
 |
-| 16: Internal use only
+| 0x16: Internal use only
 
 |
 |
-| 17: 5
+| 0x17: 5
 
 |
 |
-| 18: CM5
+| 0x18: CM5
 
 |
 |
-| 19: 500
+| 0x19: 500
 
 |
 |
-| 1a: CM5 Lite
+| 0x1a: CM5 Lite
 
 | RRRR (bits 0-3)
 | Revision
@@ -366,6 +366,8 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 === New-style revision codes in use
 
 NOTE: This list is not exhaustive - there may be codes in use that are not in this table. Please see the next section for best practices on using revision codes to identify boards.
+
+// This table is now sorted by Type (from table above), then Revision, then RAM, and finally Code. This is the most likley order-of-manufacture, which means we'll normally just add new revision-codes to the very bottom of the table, without having to worry about re-ordering entries.
 
 |===
 | Code | Model | Revision | RAM | Manufacturer
@@ -382,54 +384,6 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 512MB
 | Sony UK
 
-| 900092
-| Zero
-| 1.2
-| 512MB
-| Sony UK
-
-| 900093
-| Zero
-| 1.3
-| 512MB
-| Sony UK
-
-| 9000c1
-| Zero W
-| 1.1
-| 512MB
-| Sony UK
-
-| 9020e0
-| 3A+
-| 1.0
-| 512MB
-| Sony UK
-
-| 9020e1
-| 3A+
-| 1.1
-| 512MB
-| Sony UK
-
-| 920092
-| Zero
-| 1.2
-| 512MB
-| Embest
-
-| 920093
-| Zero
-| 1.3
-| 512MB
-| Embest
-
-| 900061
-| CM1
-| 1.1
-| 512MB
-| Sony UK
-
 | a01040
 | 2B
 | 1.0
@@ -442,29 +396,11 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 1GB
 | Sony UK
 
-| a02082
-| 3B
-| 1.2
+| a21041
+| 2B
+| 1.1
 | 1GB
-| Sony UK
-
-| a020a0
-| CM3
-| 1.0
-| 1GB
-| Sony UK
-
-| a020d3
-| 3B+
-| 1.3
-| 1GB
-| Sony UK
-
-| a020d4
-| 3B+
-| 1.4
-| 1GB
-| Sony UK
+| Embest
 
 | a02042
 | 2B (with BCM2837)
@@ -472,27 +408,27 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 1GB
 | Sony UK
 
-| a21041
-| 2B
-| 1.1
-| 1GB
-| Embest
-
 | a22042
 | 2B (with BCM2837)
 | 1.2
 | 1GB
 | Embest
 
-| a22082
+| 900061
+| CM1
+| 1.1
+| 512MB
+| Sony UK
+
+| a02082
 | 3B
 | 1.2
 | 1GB
-| Embest
+| Sony UK
 
-| a220a0
-| CM3
-| 1.0
+| a22082
+| 3B
+| 1.2
 | 1GB
 | Embest
 
@@ -514,6 +450,72 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 1GB
 | Embest
 
+| 900092
+| Zero
+| 1.2
+| 512MB
+| Sony UK
+
+| 920092
+| Zero
+| 1.2
+| 512MB
+| Embest
+
+| 900093
+| Zero
+| 1.3
+| 512MB
+| Sony UK
+
+| 920093
+| Zero
+| 1.3
+| 512MB
+| Embest
+
+| a020a0
+| CM3
+| 1.0
+| 1GB
+| Sony UK
+
+| a220a0
+| CM3
+| 1.0
+| 1GB
+| Embest
+
+| 9000c1
+| Zero W
+| 1.1
+| 512MB
+| Sony UK
+
+| a020d3
+| 3B+
+| 1.3
+| 1GB
+| Sony UK
+
+| a020d4
+| 3B+
+| 1.4
+| 1GB
+| Sony UK
+
+| 9020e0
+| 3A+
+| 1.0
+| 512MB
+| Sony UK
+
+| 9020e1
+| 3A+
+| 1.1
+| 512MB
+| Sony UK
+
 | a02100
 | CM3+
 | 1.0
@@ -532,28 +534,16 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 2GB
 | Sony UK
 
-| b03112
-| 4B
-| 1.2
-| 2GB
-| Sony UK
-
-| b03114
-| 4B
-| 1.4
-| 2GB
-| Sony UK
-
-| b03115
-| 4B
-| 1.5
-| 2GB
-| Sony UK
-
 | c03111
 | 4B
 | 1.1
 | 4GB
+| Sony UK
+
+| b03112
+| 4B
+| 1.2
+| 2GB
 | Sony UK
 
 | c03112
@@ -562,15 +552,15 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 4GB
 | Sony UK
 
+| b03114
+| 4B
+| 1.4
+| 2GB
+| Sony UK
+
 | c03114
 | 4B
 | 1.4
-| 4GB
-| Sony UK
-
-| c03115
-| 4B
-| 1.5
 | 4GB
 | Sony UK
 
@@ -580,10 +570,28 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 8GB
 | Sony UK
 
+| b03115
+| 4B
+| 1.5
+| 2GB
+| Sony UK
+
+| c03115
+| 4B
+| 1.5
+| 4GB
+| Sony UK
+
 | d03115
 | 4B
 | 1.5
 | 8GB
+| Sony UK
+
+| 902120
+| Zero 2 W
+| 1.0
+| 512MB
 | Sony UK
 
 | c03130
@@ -614,12 +622,6 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | CM4
 | 1.0
 | 8GB
-| Sony UK
-
-| 902120
-| Zero 2 W
-| 1.0
-| 512MB
 | Sony UK
 
 | b04170

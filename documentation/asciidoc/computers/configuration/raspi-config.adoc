@@ -271,7 +271,7 @@ Pass a wireless network name (SSID) and passphrase, if required. The following f
 
 The `<hidden>` option indicates the visibility of the SSID. If the network broadcasts an open SSID, pass `0` or omit the option. If your SSID is hidden, pass `1`. Defaults to `0`.
 
-The `<plain>` option indicates whether you intend to pass the passphrase as plaintext. If your passphrase includes a space or a special character like `!`, you must pass `0` and use quotes around your passphrase. Otherwise, you can pass `1` or omit the option. Defaults to `1`.  To pass this option, you must specify a value for `<hidden>`.
+The `<plain>` option indicates whether the given passphrase is wrapped in an extra set of quotation marks. Most users can ignore this option: as an implementation detail, `raspi-config` may need to add quotation marks before passing the passphrase to other parts of the system, and a `<plain>` value of `0` indicates that the quotation marks are already present. A value of `1` indicates that the quotation marks are not present, and the implementation should add them as necessary. Defaults to `1`. To pass this option, you must specify a value for `<hidden>`.
 
 For example, run the following commands to connect to a:
 
@@ -293,7 +293,14 @@ $ sudo raspi-config nonint do_wifi_ssid_passphrase myssid mypassphrase 1
 +
 [source,console]
 ----
-$ sudo raspi-config nonint do_wifi_ssid_passphrase myssid "my passphrase" 0 0
+$ sudo raspi-config nonint do_wifi_ssid_passphrase myssid 'my passphrase'
+----
+
+* non-hidden network named `myssid` with the passphrase `mypassphrase`, where you have already added extra quotes to the passphrase:
++
+[source,console]
+----
+$ sudo raspi-config nonint do_wifi_ssid_passphrase myssid '"mypassphrase"' 0 0
 ----
 
 ==== Audio
