@@ -110,7 +110,8 @@ This is passed to the operating system in the Device Tree, e.g. `/proc/device-tr
 This is passed to the operating system in the Device Tree, e.g. `/proc/device-tree/soc/serial@7d50c000/bluetooth/local-bd-address`
 
 `77-84`:: xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer OTP values]
-86:: board country - The default keyboard country code used by https://github.com/raspberrypi-ui/piwiz[piwiz]
+
+`86`:: board country - The default keyboard country code used by https://github.com/raspberrypi-ui/piwiz[piwiz]
 If set, this is available via Device Tree in `/proc/device-tree/chosen/rpi-country-code`
 
 `87-88`:: xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Ethernet MAC address]
