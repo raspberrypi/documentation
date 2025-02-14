@@ -1,6 +1,6 @@
 == Stream video over a network with `rpicam-apps`
 
-This section describes native streaming from `rpicam-vid`. You can also use the xref:camera_software.adoc#libav-integration-with-rpicam-vid[`libav`] backend for network streaming.
+This section describes how to stream video over a network using `rpicam-vid`. Whilst it's possible to stream very simple formats without using `libav`, for most applications we recommend using the xref:camera_software.adoc#libav-integration-with-rpicam-vid[`libav` backend].
 
 === UDP
 
@@ -8,67 +8,75 @@ To stream video over UDP using a Raspberry Pi as a server, use the following com
 
 [source,console]
 ----
-$ rpicam-vid -t 0 --inline -o udp://<ip-addr>:<port>
+$ rpicam-vid -t 0 -n --inline -o udp://<ip-addr>:<port>
 ----
 
 To view video streamed over UDP using a Raspberry Pi as a client, use the following command, replacing the `<port>` placeholder with the port you would like to stream from:
 
 [source,console]
 ----
-$ vlc udp://@:<port> :demux=h264
+$ ffplay udp://@:<port> -fflags nobuffer -flags low_delay -framedrop
 ----
+As noted previously, `vlc` no longer handles unencapsulated H.264 streams.
 
-Alternatively, use the following command on a client to stream using `ffplay`:
+In fact, support for unencapsulated H.264 can generally be quite poor so it is often better to send an MPEG-2 Transport Stream instead. Making use of `libav`, this can be accomplished with:
 
 [source,console]
 ----
-$ ffplay udp://<ip-addr-of-server>:<port> -fflags nobuffer -flags low_delay -framedrop
+$ rpicam-vid -t 0 -n --codec libav --libav-format mpegts -o udp://<ip-addr>:<port>
+----
+
+In this case, we can also play the stream successfully with `vlc`:
+
+[source,console]
+----
+$ vlc udp://@:<port>
 ----
 
 === TCP
 
-You can also stream video over TCP. To use a Raspberry Pi as a server:
+You can also stream video over TCP. As before, we can send an unencapsulated H.264 stream over the network. To use a Raspberry Pi as a server:
 
 [source,console]
 ----
-$ rpicam-vid -t 0 --inline --listen -o tcp://0.0.0.0:<port>
+$ rpicam-vid -t 0 -n --inline --listen -o tcp://0.0.0.0:<port>
 ----
 
-To view video streamed over TCP using a Raspberry Pi as a client, use the following command:
-
-[source,console]
-----
-$ vlc tcp/h264://<ip-addr-of-server>:<port>
-----
-
-Alternatively, use the following command on a client to stream using `ffplay` at 30 frames per second:
+To view video streamed over TCP using a Raspberry Pi as a client, assuming the server is running at 30 frames per second, use the following command:
 
 [source,console]
 ----
 $ ffplay tcp://<ip-addr-of-server>:<port> -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
 ----
 
+But as with the UDP examples, it is often preferable to send an MPEG-2 Transport Stream as this is generally better supported. To do this, use:
+
+[source,console]
+----
+$ rpicam-vid -t 0 -n --codec libav --libav-format mpegts -o tcp://0.0.0.0:<port>?listen=1
+----
+
+We can now play this back using a variety of media players, including `vlc`:
+
+[source,console]
+----
+$ vlc tcp://<ip-addr-of-server>:<port>
+----
+
 === RTSP
 
-To use VLC to stream video over RTSP using a Raspberry Pi as a server, use the following command:
+We can use VLC as an RTSP server, however, we must send it an MPEG-2 Transport Stream as it no longer understands unencapsulated H.264:
 
 [source,console]
 ----
-$ rpicam-vid -t 0 --inline -o - | cvlc stream:///dev/stdin --sout '#rtp{sdp=rtsp://:8554/stream1}' :demux=h264
-----
-
-For the best performance on Raspberry Pi 5, use the following command instead, which adds libav to force the H264 format:
-
-[source,console]
-----
-$ rpicam-vid -t 0 --inline --libav-format h264 -o - | cvlc stream:///dev/stdin --sout '#rtp{sdp=rtsp://:8554/stream1}' :demux=h264
+$ rpicam-vid -t 0 -n --codec libav --libav-format mpegts -o - | cvlc stream:///dev/stdin --sout '#rtp{sdp=rtsp://:8554/stream1}'
 ----
 
 To view video streamed over RTSP using a Raspberry Pi as a client, use the following command:
 
 [source,console]
 ----
-$ ffplay rtsp://<ip-addr-of-server>:8554/stream1 -vf "setpts=N/30" -fflags nobuffer -flags low_delay -framedrop
+$ ffplay rtsp://<ip-addr-of-server>:8554/stream1 -fflags nobuffer -flags low_delay -framedrop
 ----
 
 Alternatively, use the following command on a client to stream using VLC:
@@ -78,14 +86,13 @@ Alternatively, use the following command on a client to stream using VLC:
 $ vlc rtsp://<ip-addr-of-server>:8554/stream1
 ----
 
-To suppress the preview window on the server, use xref:camera_software.adoc#nopreview[`nopreview`].
+If you want to see a preview window on the server, just drop the `-n` option (see xref:camera_software.adoc#nopreview[`nopreview`]).
 
-Use the xref:camera_software.adoc#inline[`inline`] flag to force stream header information into every intra frame, which helps clients understand the stream if they miss the beginning.
+=== `libav` and Audio
 
-=== `libav`
+We have already been using `libav` as the backend for network streaming. `libav` allows us to add an audio stream, so long as we're using a format - like the MPEG-2 Transport Stream - that permits audio data.
 
-You can use the `libav` backend as a network streaming source for audio/video.
-To stream video over TCP using a Raspberry Pi as a server, use the following command, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+We can take one of our previous commands, like the one for streaming an MPEG-2 Transport Stream over TCP, and simply add the `--libav-audio` option:
 
 [source,console]
 ----
@@ -101,56 +108,99 @@ $ rpicam-vid -t 0 --codec libav --libav-format mpegts --libav-audio  -o "udp://<
 
 === GStreamer
 
-https://gstreamer.freedesktop.org/[GStreamer] is a Linux framework for reading, processing and playing multimedia files. This section shows how to use `rpicam-vid` to stream video over a network.
+https://gstreamer.freedesktop.org/[GStreamer] is a Linux framework for reading, processing and playing multimedia files. We can also use it in conjunction with `rpicam-vid` for network streaming.
 
-This setup uses `rpicam-vid` to output an encoded h.264 bitstream to stdout. Then, we use the GStreamer `fdsrc` element to receive the bitstream, and extra GStreamer elements to send it over the network. On the server, run the following command to start the stream, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+This setup uses `rpicam-vid` to output an  H.264 bitstream to stdout, though as we've done previously, we're going to encapsulate it in an MPEG-2 Transport Stream for better downstream compatibility.
 
-[source,console]
-----
-$ rpicam-vid -t 0 -n --inline -o - | gst-launch-1.0 fdsrc fd=0 ! udpsink host=<ip-addr> port=<port>
-----
-
-On the client, run the following command to receive the stream, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+Then, we use the GStreamer `fdsrc` element to receive the bitstream, and extra GStreamer elements to send it over the network. On the server, run the following command to start the stream, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
 
 [source,console]
 ----
-$ gst-launch-1.0 udpsrc address=<ip-addr> port=<port> ! h264parse ! v4l2h264dec ! autovideosink
+$ rpicam-vid -t 0 -n --codec libav --libav-format mpegts -o - | gst-launch-1.0 fdsrc fd=0 ! udpsink host=<ip-addr> port=<port>
 ----
+
+We could of course use anything (such as vlc) as the client, and the best GStreamer clients for playback are beyond the scope of this document. However, we note that the following pipeline (with the obvious substitutions) would work on a Pi 4 or earlier device:
+
+[source,console]
+----
+$ gst-launch-1.0 udpsrc address=<ip-addr> port=<port> ! tsparse ! tsdemux ! h264parse ! queue ! v4l2h264dec ! autovideosink
+----
+
+For a Pi 5, replace `v4l2h264dec` by `avdec_h264`.
 
 TIP: To test this configuration, run the server and client commands in separate terminals on the same device, using `localhost` as the address.
 
-==== RTP
-
-To stream using RTP, run the following command on the server, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
-
-[source,console]
-----
-$ rpicam-vid -t 0 -n --inline -o - | gst-launch-1.0 fdsrc fd=0 ! h264parse ! rtph264pay ! udpsink host=<ip-addr> port=<port>
-----
-
-To receive over RTP, run the following command on the client, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
-
-[source,console]
-----
-$ gst-launch-1.0 udpsrc address=<ip-addr> port=<port> caps=application/x-rtp ! rtph264depay ! h264parse ! v4l2h264dec ! autovideosink
-----
-
-
-If the client is not a Raspberry Pi it may have different GStreamer elements available. On an x86 device running Linux, you might run the following command instead:
-
-[source,console]
-----
-$ gst-launch-1.0 udpsrc address=<ip-addr> port=<port> caps=application/x-rtp ! rtph264depay ! h264parse ! avdec_h264 ! autovideosink
-----
-
 ==== `libcamerasrc` GStreamer element
 
-`libcamera` provides a `libcamerasrc` GStreamer element which can be used directly instead of `rpicam-vid`. To use this element, run the following command on the server, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
+`libcamera` provides a `libcamerasrc` GStreamer element which can be used directly instead of `rpicam-vid`. To use this element, run the following command on the server, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming. On a Pi 4 or earlier device, use:
 
 [source,console]
 ----
-$ gst-launch-1.0 libcamerasrc ! capsfilter caps=video/x-raw,width=1280,height=720,format=NV12 ! v4l2convert ! v4l2h264enc extra-controls="controls,repeat_sequence_header=1" ! 'video/x-h264,level=(string)4.1' ! h264parse ! rtph264pay ! udpsink host=<ip-addr> port=<port>
+$ gst-launch-1.0 libcamerasrc ! capsfilter caps=video/x-raw,width=640,height=360,format=NV12,interlace-mode=progressive ! v4l2h264enc extra-controls="controls,repeat_sequence_header=1" ! 'video/x-h264,level=(string)4' ! h264parse ! mpegtsmux ! udpsink host=<ip-addr> port=<port>
+----
+On a Pi 5 you would have to replace `v4l2h264enc extra-controls="controls,repeat_sequence_header=1"` by `x264enc speed-preset=1 threads=1`.
+
+On the client we could use the same playback pipeline as we did just above, or other streaming media players.
+
+=== WebRTC
+
+Streaming over WebRTC (for example, to web browsers) is best accomplished using third party software. https://github.com/bluenviron/mediamtx[MediaMTX], for example, includes native Raspberry Pi camera support which makes it easy to use.
+
+To install it, download the latest version from the https://github.com/bluenviron/mediamtx/releases[releases] page. Raspberry Pi OS 64-bit users will want the "linux_arm64v8" compressed tar file (ending `.tar.gz`). Unpack it and you will get a `mediamtx` executable and a configuration file called `mediamtx.yml`.
+
+It's worth backing up the `mediamtx.yml` file because it documents many Raspberry Pi camera options that you may want to investigate later.
+
+To stream the camera, replace the contents of `mediamtx.yml` by:
+----
+paths:
+  cam:
+    source: rpiCamera
+----
+and start the `mediamtx` executable. On a browser, enter `http://<ip-addr>:8889/cam` into the address bar.
+
+If you want MediaMTX to acquire the camera only when the stream is requested, add the following line to the previous `mediamtx.yml`:
+----
+    sourceOnDemand: yes
+----
+Consult the original `mediamtx.yml` for additional configuration parameters that let you select the image size, the camera mode, the bitrate and so on - just search for `rpi`.
+
+==== Customised image streams with WebRTC
+
+MediaMTX is great if you want to stream just the camera images. But what if we want to add some extra information or overlay, or do some extra processing on the images?
+
+Before starting, ensure that you've built a version of `rpicam-apps` that includes OpenCV support. Check it by running
+
+[source,console]
+----
+$ rpicam-hello --post-process-file rpicam-apps/assets/annotate_cv.json
+----
+and looking for the overlaid text information at the top of the image.
+
+Next, paste the following into your `mediamtx.yml` file:
+----
+paths:
+  cam:
+    source: udp://127.0.0.1:1234
 ----
 
-and on the client we use the same playback pipeline as previously.
+Now, start `mediamtx` and then, if you're using a Pi 5, in a new terminal window, enter:
 
+[source,console]
+----
+$ rpicam-vid -t 0 -n --codec libav --libav-video-codec-opts "profile=baseline" --libav-format mpegts -o udp://127.0.0.1:1234?pkt_size=1316 --post-process-file rpicam-apps/assets/annotate_cv.json
+----
+(On a Pi 4 or earlier device, leave out the `--libav-video-codec-opts "profile=baseline"` part of the command.)
+
+On another computer, you can now visit the same address as before, namely `http://<ip-addr-of-pi>:8889/cam`.
+
+The reason for specifying "baseline" profile on a Pi 5 is that MediaMTX doesn't support B frames, so we need to stop the encoder from producing them. On earlier devices, with hardware encoders, B frames are never generated so there is no issue. On a Pi 5 you could alternatively remove this option and replace it with `--low-latency` which will also prevent B frames, and produce a (slightly less well compressed) stream with reduced latency.
+
+[NOTE]
+====
+If you notice occasional pauses in the video stream, this may be because the UDP receive buffers on the Pi (passing data from `rpicam-vid` to MediaMTX) are too small. To increase them permantently, add
+----
+net.core.rmem_default=1000000
+net.core.rmem_max=1000000
+----
+to your `/etc/sysctl.conf` file (and reboot or run `sudo sysctl -p`).
+====
