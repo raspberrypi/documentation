@@ -17,9 +17,9 @@ To view video streamed over UDP using a Raspberry Pi as a client, use the follow
 ----
 $ ffplay udp://@:<port> -fflags nobuffer -flags low_delay -framedrop
 ----
-As noted previously, `vlc` no longer handles unencapsulated h264 streams.
+As noted previously, `vlc` no longer handles unencapsulated H.264 streams.
 
-In fact, support for unencapsulated h264 can generally be quite poor so it is often better to send an MPEG-2 Transport Stream instead. Making use of `libav`, this can be accomplished with:
+In fact, support for unencapsulated H.264 can generally be quite poor so it is often better to send an MPEG-2 Transport Stream instead. Making use of `libav`, this can be accomplished with:
 
 [source,console]
 ----
@@ -35,7 +35,7 @@ $ vlc udp://@:<port>
 
 === TCP
 
-You can also stream video over TCP. As before, we can send an unencapsulated h264 stream over the network. To use a Raspberry Pi as a server:
+You can also stream video over TCP. As before, we can send an unencapsulated H.264 stream over the network. To use a Raspberry Pi as a server:
 
 [source,console]
 ----
@@ -65,7 +65,7 @@ $ vlc tcp://<ip-addr-of-server>:<port>
 
 === RTSP
 
-We can use VLC as an RTSP server, however, we must send it an MPEG-2 Transport Stream as it no longer understands unencapsulated h264:
+We can use VLC as an RTSP server, however, we must send it an MPEG-2 Transport Stream as it no longer understands unencapsulated H.264:
 
 [source,console]
 ----
@@ -110,7 +110,7 @@ $ rpicam-vid -t 0 --codec libav --libav-format mpegts --libav-audio  -o "udp://<
 
 https://gstreamer.freedesktop.org/[GStreamer] is a Linux framework for reading, processing and playing multimedia files. We can also use it in conjunction with `rpicam-vid` for network streaming.
 
-This setup uses `rpicam-vid` to output an encoded h.264 bitstream to stdout. As we've done previously, we're going to encapsulate this in an MPEG-2 Transport Stream for better downstream compatibility.
+This setup uses `rpicam-vid` to output an  H.264 bitstream to stdout, though as we've done previously, we're going to encapsulate it in an MPEG-2 Transport Stream for better downstream compatibility.
 
 Then, we use the GStreamer `fdsrc` element to receive the bitstream, and extra GStreamer elements to send it over the network. On the server, run the following command to start the stream, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming:
 
