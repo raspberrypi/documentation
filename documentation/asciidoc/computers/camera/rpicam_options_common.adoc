@@ -556,7 +556,7 @@ Post-processing is a large topic and admits the use of third-party software like
 
 ==== `buffer-count`
 
-The number of buffers to allocate for still image capture or for video recording. The default value of zero lets each application choose a value for itself (1 for still image capture, and 6 for video recording). Increasing the number can sometimes help to reduce the number of frame drops, particularly at higher framerates.
+The number of buffers to allocate for still image capture or for video recording. The default value of zero lets each application choose a reasonable number for its own use case (1 for still image capture, and 6 for video recording). Increasing the number can sometimes help to reduce the number of frame drops, particularly at higher framerates.
 
 ==== `viewfinder-buffer-count`
 
