@@ -210,6 +210,10 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 5: 8GB
 
+|
+|
+| 6: 16GB
+
 | CCCC (bits 16-19)
 | Manufacturer
 | 0: Sony UK
