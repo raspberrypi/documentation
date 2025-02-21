@@ -89,9 +89,19 @@ Alias: `-t`
 
 Default value: 5000 milliseconds (5 seconds)
 
-Specify how long the application runs before closing. This applies to both video recording and preview windows. When capturing a still image, the application shows a preview window for `timeout` milliseconds before capturing the output image.
+Specify how long the application runs before closing. This value is interpreted as a number of milliseconds unless an optional suffix is used to change the unit. The suffix may be one of:
 
-To run the application indefinitely, specify a value of `0`.
+* `min` - minutes
+* `s` or `sec` - seconds
+* `ms` - milliseconds (the default if no suffix used)
+* `us` - microseconds
+* `ns` - nanoseconds.
+
+This time applies to both video recording and preview windows. When capturing a still image, the application shows a preview window for the length of time specified by the `timeout` parameter before capturing the output image.
+
+To run the application indefinitely, specify a value of `0`. Floating point values are also permitted.
+
+Example: `rpicam-hello -t 0.5min` would run for 30 seconds.
 
 ==== `preview`
 
@@ -553,3 +563,11 @@ Flushes output files to disk as soon as a frame finishes writing, instead of wai
 Specifies a JSON file that configures the post-processing applied by the imaging pipeline. This applies to camera images _before_ they reach the application. This works similarly to the legacy `raspicam` "image effects". Accepts a file name path as input.
 
 Post-processing is a large topic and admits the use of third-party software like OpenCV and TensorFlowLite to analyse and manipulate images. For more information, see xref:camera_software.adoc#post-processing-with-rpicam-apps[post-processing].
+
+==== `buffer-count`
+
+The number of buffers to allocate for still image capture or for video recording. The default value of zero lets each application choose a reasonable number for its own use case (1 for still image capture, and 6 for video recording). Increasing the number can sometimes help to reduce the number of frame drops, particularly at higher framerates.
+
+==== `viewfinder-buffer-count`
+
+As the `buffer-count` option, but applies when running in preview mode (that is `rpicam-hello` or the preview, not capture, phase of `rpicam-still`).
