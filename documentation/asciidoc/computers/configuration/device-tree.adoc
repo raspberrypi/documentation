@@ -845,6 +845,8 @@ The firmware uses the special https://www.kernel.org/doc/html/latest/devicetree/
 
 `rpi-duid`:: _(string)_ Raspberry Pi 5 only. A string representation of the QR code on the PCB.
 
+`rpi-serial64`:: _(string)_ A string representation of the 64-bit serial number. On flagship models since Raspberry Pi 5 this is same as the normal serial number (`/proc/device-tree/serial-number`). On earlier models the default serial number is still 32-bit but with newer firmware a 64-bit serial number is now available and is visible through this node.
+
 ==== Common bootloader properties `/chosen/bootloader`
 
 Each property is stored as a 32-bit integer unless indicated otherwise.
