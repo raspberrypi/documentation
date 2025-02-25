@@ -34,7 +34,7 @@ Default: `0`
 [[UART_BAUD]]
 ==== `UART_BAUD`
 
-Raspberry Pi 5 only.
+Flagship models since Raspberry Pi 5 only.
 
 Changes the baud rate for the bootloader UART.
 
@@ -61,6 +61,15 @@ The dedicated power button on Pi 400 operates even if the processor is switched 
 On Flagship models since Raspberry Pi 5 and Keyboard models since Pi 500, this places the PMIC in `STANDBY` mode where all outputs are switched off. There is no need to set `WAKE_ON_GPIO` and pressing the xref:raspberry-pi.adoc#power-button[dedicated power button] boots the device.
 
 Default: `1` on Compute Modules since CM5 and Keyboard models; otherwise `0`
+
+[[WAIT_FOR_POWER_BUTTON]]
+==== `WAIT_FOR_POWER_BUTTON`
+
+Flagship models since Raspberry Pi 5 only.
+
+If this property and `POWER_OFF_ON_HALT` are both set to `1` then the bootloader will immediately power-off and wait for the power to be pressed on the first boot after the power supply has been removed. This means that instead of booting immediately after power-loss the system will wait for the power button to be pressed.
+
+Default: `0`
 
 [[BOOT_ORDER]]
 ==== `BOOT_ORDER`
