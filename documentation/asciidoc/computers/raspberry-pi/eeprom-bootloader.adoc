@@ -521,6 +521,14 @@ PARTITION=2
 
 Default: 0
 
+[[PARTITION_WALK]]
+==== `PARTITION_WALK`
+This property is designed to improve the reliability of `A/B` boot schemes using `autoboot.txt` by searching for bootable partitions if the specified partition does not appear to be bootable. If `PARTITION_WALK=1` and the requested partition is not bootable and does not have a valid `autoboot.txt` then the bootloader will check each partition in turn (up to 8 and wrapping to 0) to see if it is bootable (contains `start4.elf` on a Pi4, or `config.txt` and a suitable device-tree on Pi 5 or newer).
+
+During the "partition walk" `autoboot.txt` files are not processed to avoid cycling dependencies. It is assumed that the requested boot partition has failed and the system is attempting recovery. 
+
+Default: `0`
+
 [[PSU_MAX_CURRENT]]
 ==== `PSU_MAX_CURRENT`
 
