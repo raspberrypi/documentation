@@ -153,6 +153,24 @@ The number of times that SD boot will be retried after failure before moving to 
 
 Default: `0`
 
+[[SD_QUIRKS]]
+==== `SD_QURIKS`
+
+The `SD_QUIRKS` property provides a set of options to support device bringup and workaround interoperability issues.
+
+The flags are implemented as a bit-field. Undefined bits are reserved for future use and should be set to zero.
+
+[cols="1m,3"]
+|===
+| Value | Behaviour
+
+| 0x1
+| Disable SD High Speed modes. The card clock is limited to 12.5 MHz
+|===
+
+
+Default: `0`
+
 [[NET_BOOT_MAX_RETRIES]]
 ==== `NET_BOOT_MAX_RETRIES`
 
