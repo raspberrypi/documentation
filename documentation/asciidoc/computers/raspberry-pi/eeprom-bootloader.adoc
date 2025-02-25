@@ -499,6 +499,19 @@ Max length: 32 characters
 The `PARTITION` option may be used to specify the boot partition number, if it has not explicitly been set by the `reboot` command (e.g. `sudo reboot N`) or by `boot_partition=N` in `autoboot.txt`.
 This could be used to boot from a rescue partition if the user presses a button.
 
+The latest firmware also allows high partition numbers (> 31) to be overriden. This allows a custom setup of the system hardware watchdog to trigger a reboot with a special high partition number (e.g. 62) which can be detected by the bootloader (using a conditional filter) and remapped to a recovery partition.
+
+Example:
+[source,ini]
+----
+# System watchdog fired - boot the rescue partition with additional options
+# Disable SD high speed mode and enable HDMI diagnostics immediately.
+[partition=62]
+PARTITION=2
+HDMI_DELAY=0
+SD_QUIRKS=1
+----
+
 [source,ini]
 ----
 # Boot from partition 2 if GPIO 7 is pulled low
