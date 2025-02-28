@@ -34,7 +34,7 @@ Default: `0`
 [[UART_BAUD]]
 ==== `UART_BAUD`
 
-Raspberry Pi 5 only.
+Flagship models since Raspberry Pi 5 only.
 
 Changes the baud rate for the bootloader UART.
 
@@ -61,6 +61,15 @@ The dedicated power button on Pi 400 operates even if the processor is switched 
 On Flagship models since Raspberry Pi 5 and Keyboard models since Pi 500, this places the PMIC in `STANDBY` mode where all outputs are switched off. There is no need to set `WAKE_ON_GPIO` and pressing the xref:raspberry-pi.adoc#power-button[dedicated power button] boots the device.
 
 Default: `1` on Compute Modules since CM5 and Keyboard models; otherwise `0`
+
+[[WAIT_FOR_POWER_BUTTON]]
+==== `WAIT_FOR_POWER_BUTTON`
+
+Flagship models since Raspberry Pi 5 only.
+
+If this property and `POWER_OFF_ON_HALT` are both set to `1` then the bootloader will immediately power-off and wait for the power to be pressed on the first boot after the power supply has been removed. This means that instead of booting immediately after power-loss the system will wait for the power button to be pressed.
+
+Default: `0`
 
 [[BOOT_ORDER]]
 ==== `BOOT_ORDER`
@@ -150,6 +159,24 @@ Default: `-1` (infinite)
 The number of times that SD boot will be retried after failure before moving to the next boot-mode defined by `BOOT_ORDER`.
 
 `-1` means infinite retries.
+
+Default: `0`
+
+[[SD_QUIRKS]]
+==== `SD_QURIKS`
+
+The `SD_QUIRKS` property provides a set of options to support device bringup and workaround interoperability issues.
+
+The flags are implemented as a bit-field. Undefined bits are reserved for future use and should be set to zero.
+
+[cols="1m,3"]
+|===
+| Value | Behaviour
+
+| 0x1
+| Disable SD High Speed modes. The card clock is limited to 12.5 MHz
+|===
+
 
 Default: `0`
 
@@ -472,6 +499,19 @@ Max length: 32 characters
 The `PARTITION` option may be used to specify the boot partition number, if it has not explicitly been set by the `reboot` command (e.g. `sudo reboot N`) or by `boot_partition=N` in `autoboot.txt`.
 This could be used to boot from a rescue partition if the user presses a button.
 
+The latest firmware also allows high partition numbers (> 31) to be overriden. This allows a custom setup of the system hardware watchdog to trigger a reboot with a special high partition number (e.g. 62) which can be detected by the bootloader (using a conditional filter) and remapped to a recovery partition.
+
+Example:
+[source,ini]
+----
+# System watchdog fired - boot the rescue partition with additional options
+# Disable SD high speed mode and enable HDMI diagnostics immediately.
+[partition=62]
+PARTITION=2
+HDMI_DELAY=0
+SD_QUIRKS=1
+----
+
 [source,ini]
 ----
 # Boot from partition 2 if GPIO 7 is pulled low
@@ -480,6 +520,14 @@ PARTITION=2
 ----
 
 Default: 0
+
+[[PARTITION_WALK]]
+==== `PARTITION_WALK`
+This property is designed to improve the reliability of `A/B` boot schemes using `autoboot.txt` by searching for bootable partitions if the specified partition does not appear to be bootable. If `PARTITION_WALK=1` and the requested partition is not bootable and does not have a valid `autoboot.txt` then the bootloader will check each partition in turn (up to 8 and wrapping to 0) to see if it is bootable (contains `start4.elf` on a Pi4, or `config.txt` and a suitable device-tree on Pi 5 or newer).
+
+During the "partition walk" `autoboot.txt` files are not processed to avoid cycling dependencies. It is assumed that the requested boot partition has failed and the system is attempting recovery. 
+
+Default: `0`
 
 [[PSU_MAX_CURRENT]]
 ==== `PSU_MAX_CURRENT`
