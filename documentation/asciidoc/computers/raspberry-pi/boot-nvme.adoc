@@ -29,21 +29,14 @@ $ sudo apt update && sudo apt full-upgrade
 
 === Edit the bootloader boot priority
 
-Use the Raspberry Pi Configuration CLI to update the bootloader:
+Use the Raspberry Pi Software Configuration Tool to update the bootloader:
 
 [source,console]
 ----
 $ sudo raspi-config
 ----
 
-Under `Advanced Options` > `Bootloader Order`, specify that the bootloader should attempt to boot from `NVMe` first:
-
-[source,console]
-----
-$ sudo rpi-eeprom-update -a
-----
-
-Then, reboot with `sudo reboot`. Your Raspberry Pi should boot from NVMe.
+Under `Advanced Options` > `Boot Order`, specify an option that includes NVMe.  It will then write these changes to the bootloader and return to the Config Tool, in which you can `Finish` and reboot.  Your Raspberry Pi will use the new boot order now.
 
 For CM4, use `rpiboot` to update the bootloader. You can find instructions for building `rpiboot` and configuring the IO board to switch the ROM to usbboot mode in the https://github.com/raspberrypi/usbboot[USB boot GitHub repository].
 
