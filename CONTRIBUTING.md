@@ -88,6 +88,12 @@ Use the `gem` package manager to install the [Ruby bundler](https://bundler.io/)
 $ gem install bundler
 ```
 
+And then install the required Ruby gems:
+
+```console
+$ bundle install
+```
+
 Configure a Python virtual environment for this project:
 
 ```console
@@ -101,12 +107,12 @@ $ source .env/bin/activate
 ```
 
 > [!TIP]
-> When you're using a virtual environment, you should see a `(.venv)` prefix at the start of your terminal prompt. At any time, run the `deactivate` command to exit the virtual environment.
+> When you're using a virtual environment, you should see a `(.env)` prefix at the start of your terminal prompt. At any time, run the `deactivate` command to exit the virtual environment.
 
-In the virtual environment, install the [YAML module for Python 3](https://formulae.brew.sh/formula/pyyaml#default):
+In the virtual environment, install the required Python modules:
 
 ```console
-$ pip3 install pyyaml
+$ pip3 install -r requirements.txt
 ```
 
 ### Build HTML
