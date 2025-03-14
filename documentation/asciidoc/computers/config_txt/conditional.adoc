@@ -96,6 +96,34 @@ Some models of Raspberry Pi, including Zero, Compute Module, and Keyboard models
 
 The `[none]` filter prevents any settings that follow from being applied to any hardware. Although there is nothing that you can't do without `[none]`, it can be a useful way to keep groups of unused settings in config.txt without having to comment out every line.
 
+=== The `[partition=N]` filter
+This `partition` filter can be be used to select alternate boot flows according to the requested partition number (`sudo reboot N`) or via direct usage of the `PM_RSTS` watchdog register.
+
+[source,ini]
+----
+# Bootloader EEPROM config.
+# If PM_RSTS is partition 62 then set bootloader properties to disable
+# SD high speed and show HDMI diagnostics
+# Boot from partition 2 with debug option.
+[partition=62]
+# Only high (>31) partition can be remapped.
+PARTITION=2
+SD_QUIRKS=0x1
+HDMI_DELAY=0
+----
+
+Example `config.txt` - (Currently Raspberry Pi 5 onwards)
+[source,ini]
+----
+# config.txt - If the original requested partition number in PM_RSTS was a
+# special number then use an alternate cmdline.txt
+[partition=62]
+cmdline=cmdline-recovery.txt
+----
+
+The raw value of the `PM_RSTS` register at bootup is available via `/proc/device-tree/chosen/bootloader/rsts` and the final partition number used for booting is available via `/proc/device-tree/chosen/bootloader/partition`. These are big-endian binary values.
+
+
 === The `[tryboot]` filter
 
 This filter succeeds if the `tryboot` reboot flag was set.

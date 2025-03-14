@@ -11,18 +11,30 @@ For example, the following command writes a ten-second video to a file named `te
 $ rpicam-vid -t 10s -o test.h264
 ----
 
-You can play the resulting file with VLC and other video players:
+You can play the resulting file with ffplay and other video players:
 
 [source,console]
 ----
-$ vlc test.h264
+$ ffplay test.h264
 ----
+
+[WARNING]
+====
+Older versions of vlc were able to play H.264 files correctly, but recent versions do not - displaying only a few, or possibly garbled, frames. You should either use a different media player, or save your files in a more widely supported container format - such as MP4 (see below).
+====
 
 On Raspberry Pi 5, you can output to the MP4 container format directly by specifying the `mp4` file extension for your output file:
 
 [source,console]
 ----
 $ rpicam-vid  -t 10s -o test.mp4
+----
+
+On Raspberry Pi 4, or earlier devices, you can save MP4 files using:
+
+[source,console]
+----
+$ rpicam-vid -t 10s --codec libav -o test.mp4
 ----
 
 ==== Encoders
@@ -76,3 +88,11 @@ To enable the `libav` backend, pass `libav` to the xref:camera_software.adoc#cod
 ----
 $ rpicam-vid --codec libav --libav-format avi --libav-audio --output example.avi
 ----
+
+==== Low latency video with the Pi 5
+
+Pi 5 uses software video encoders. These generally output frames with a longer latency than the old hardware encoders, and this can sometimes be an issue for real-time streaming applications.
+
+In this case, please add the option `--low-latency` to the `rpicam-vid` command. This will alter certain encoder options to output the encoded frame more quickly.
+
+The downside is that coding efficiency is (slightly) less good, and that the processor's multiple cores may be used (slightly) less efficiently. The maximum framerate that can be encoded may be slightly reduced (though it will still easily achieve 1080p30).
