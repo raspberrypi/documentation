@@ -219,14 +219,7 @@ dtoverlay=enc28j60
 
 Reboot with `sudo reboot`.
 
-You should now see an `rtc0` entry in `/dev`. Run the following command to view the hardware clock time:
-
-[source,console]
-----
-$ sudo hwclock
-----
-
-You should also have Ethernet connectivity. Run the following command to test your connectivity:
+If you now run `ifconfig` you should see an aditional `eth<n>` entry for the ENC28J60 NIC. You should also have Ethernet connectivity. Run the following command to test your connectivity:
 
 [source,console]
 ----
