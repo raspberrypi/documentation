@@ -134,13 +134,12 @@ code {
 
 .toptitle h1 {
   font-size: 2.5em;
-  font-weight: lighter;
-  letter-spacing: 1px;
+  font-weight: 300;
   color: var(--bg);
   position: relative;
   margin-top: 0px;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 40px;
   margin-left: 10px;
   flex-grow: 1;
 }
@@ -215,7 +214,7 @@ div.subtitle p {
 
 #search-container {
   width: 50%;
-  margin: auto;
+  margin: 20px auto 0;
   max-width: 900px;
 }
 
@@ -1665,6 +1664,7 @@ div#tab-menu {
   width: 100%;
   height: 80px;
   margin-bottom: -28px;
+  margin-top: 20px;
 }
 
 ul#tab-container {
