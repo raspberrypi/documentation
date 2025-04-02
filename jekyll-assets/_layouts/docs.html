@@ -25,25 +25,14 @@
           </div>
           <div class="toc">
           {% for subdir in site.data.nav %}
-          {% if subdir.toc[0] %}
             <ul class="sectlevel1">
-              <input class="toc-toggle-box" type="checkbox" id="{{ subdir.path }}"
-                {% if page.url contains subdir.path %}
-                checked=true
-                {% endif %}
-              />
+              <input class="toc-toggle-box" type="checkbox" id="{{ subdir.path }}" {% if page.url contains subdir.path %}checked{% endif %} />
               <li>
                 <span>
                   <label class="toc-toggle" for="{{ subdir.path }}" onclick="event.stopPropagation()">
                     <div class="toc-toggle-container">
                       <a class="level1" href="{{ site.baseurl }}{{ subdir.path }}">
-                        <a title="expand {{ item.title | markdownify }}"
-                          {% if page.url contains subdir.path %}
-                          class="bold toc-item"
-                          {% else %}
-                          class="toc-item"
-                          {% endif %}
-                        >
+                        <a title="expand {{ item.title | markdownify }}" class="{% if page.url contains subdir.path %}bold {% endif %}toc-item">
                           {{ subdir.title | markdownify }}
                         </a>
                       </a>
@@ -52,126 +41,55 @@
                 </span>
               </li>
               {% for item in subdir.toc %}
-              <div class="itemcontents">
-                <ul class="sectlevel1">
-                  <input class="toc-toggle-box" type="checkbox" id="{{ item.path }}"
-                    {% if page.url contains item.path %}
-                    checked=true
-                    {% endif %}
-                  />
-                  <li>
-                    <span>
-                      <label class="toc-toggle" for="{{ item.path }}">
-                        <div class="toc-toggle-container">
-                          <a class="level2" href="{{ site.baseurl }}{{ item.path }}">
-                            <a title="expand {{ item.title | strip_html }}"
-                              {% if page.url contains item.path %}
-                              class="bold toc-item"
-                              {% else %}
-                              class="toc-item" 
-                              {% endif %}
-                            >
-                            {{ item.title | markdownify }}
+                <div class="itemcontents">
+                  <ul class="sectlevel1">
+                    <input class="toc-toggle-box" type="checkbox" id="{{ item.path }}" {% if page.url contains item.path %}checked{% endif %} />
+                    <li>
+                      <span>
+                        <label class="toc-toggle" for="{{ item.path }}">
+                          <div class="toc-toggle-container">
+                            <a class="level2" href="{{ site.baseurl }}{{ item.path }}">
+                              <a title="expand {{ item.title | strip_html }}" class="{% if page.url contains item.path %}bold {% endif %}toc-item">
+                                {{ item.title | markdownify }}
+                              </a>
                             </a>
-                          </a>
-                        </div>
-                      </label>
-                    </span>
-                  </li>
-                  {% if item.sections[0] %}
-                  {% for entry in item.sections %}
-                  <div class="itemcontents">
-                    <ul class="sectlevel1">
-                      <input class="toc-toggle-box" type="checkbox" id="{{ item.path }}#{{ entry.anchor }}"
-                        {% if endcapture contains entry.anchor %}
-                        checked=true
-                        {% endif %}
-                      />
-                      <li>
-                        <span>
-                          <label class="toc-toggle"
-                            {% if entry.subsections[0] %}
-                            for="{{ item.path }}#{{ entry.anchor }}"
-                            {% else %}
-                            {% endif %}>
-                            <div class="toc-toggle-container">
-                              {% if entry.subsections[0] %}
-                              <a class="level3">
-                                <a
-                                  id="{{ item.path }}#{{entry.anchor}}-toc"
-                                  href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}"
-                                  class="toc-item"
-                                  onclick="document.getElementById('mobile-toggle').checked = false; updateCurrentToc('{{ item.path }}#{{ entry.anchor }}-toc', '{{ item.path }}#{{ entry.anchor }}');"
-                                  title="expand {{ entry.heading | strip_html }}"
-                                >
-                                <script type="text/javascript">if (window.location.hash == '#{{ entry.anchor }}' && window.location.href.includes('{{ item.path }}')) initialiseCurrentToc('{{ item.path }}#{{entry.anchor}}-toc', '{{ item.path }}#{{ entry.anchor }}');
-                                </script>
-                                  {{ entry.heading | markdownify }}
+                          </div>
+                        </label>
+                      </span>
+                    </li>
+                    {% for entry in item.sections %}
+                    <div class="itemcontents">
+                      <ul class="sectlevel1">
+                        <li>
+                          <span>
+                            <label class="toc-toggle">
+                              <div class="toc-toggle-container">
+                                <a class="level3">
+                                  <a
+                                    href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}"
+                                    onclick="document.getElementById('mobile-toggle').checked = false"
+                                    class="toc-item no-dropdown"
+                                    >
+                                    {{ entry.heading | markdownify }}
+                                  </a>
                                 </a>
-                              </a>
-                              {% else %}
-                              <a class="level3">
-                                <a id="{{ item.path }}#{{entry.anchor}}-toc"
-                                  title="expand {{ entry.heading | strip_html }}"
-                                  href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}"
-                                  onclick="document.getElementById('mobile-toggle').checked = false; updateCurrentToc('{{ item.path }}#{{ entry.anchor }}-toc');"
-                                  class="toc-item no-dropdown"
-                                  >
-                                  <script type="text/javascript">if (window.location.hash == '#{{ entry.anchor }}' && window.location.href.includes('{{ item.path }}'))
-                                    initialiseCurrentToc('{{ item.path }}#{{entry.anchor}}-toc');
-                                  </script>
-                                  {{ entry.heading | markdownify }}
-                                </a>
-                              </a>
-                              {% endif %}
-                            </div>
-                          </label>
-                        </span>
-                      </li>
-                      {% if entry.subsections[0] %}
-                      {% for subentry in entry.subsections %}
-                      <div class="itemcontents">
-                        <ul class="sectlevel1">
-                          <li>
-                            <span>
-                              <label class="toc-toggle">
-                                <div class="toc-toggle-container">
-                                    <a class="level4">
-                                      <a class="toc-item no-dropdown"
-                                        href="{{ site.baseurl }}{{ item.path }}#{{ subentry.anchor }}"
-                                        onclick="document.getElementById('mobile-toggle').checked = false; updateCurrentToc('{{ item.path }}#{{ entry.anchor }}-toc', '{{ item.path }}#{{ entry.anchor }}', '{{ item.path }}#{{ subentry.anchor }}-toc');"
-                                        id="{{ item.path }}#{{subentry.anchor}}-toc"
-                                      >
-                                      <script type="text/javascript">if (window.location.hash == '#{{ subentry.anchor }}' && window.location.href.includes('{{ item.path }}')) initialiseCurrentToc('{{ item.path }}#{{ entry.anchor }}-toc', '{{ item.path }}#{{ entry.anchor }}', '{{ item.path }}#{{ subentry.anchor }}-toc');
-                                      </script>
-                                        {{ subentry.heading | markdownify }}
-                                      </a>
-                                    </a>
-                                  </div>
-                              </label>
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                      {% endfor %}
-                      {% endif %}
-                    </ul>
-                  </div>
+                              </div>
+                            </label>
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
                   {% endfor %}
-                  {% endif %}
                 </ul>
               </div>
               {% endfor %}
             </ul>
-            {% endif %}
-            {% endfor %}
-          
+          {% endfor %}
+
             <ul class="sectlevel1">
-              <input class="toc-toggle-box" type="checkbox" id="datasheets"
-              />
               <li>
                 <span>
-                  <label class="toc-toggle" for="{{ subdir.path }}">
+                  <label class="toc-toggle">
                     <div class="toc-toggle-container">
                       <a class="level1">
                         <a title="PDF documentation" class="toc-item no-dropdown" href="https://datasheets.raspberrypi.com/" target="_blank">
@@ -185,11 +103,9 @@
             </ul>
 
             <ul class="sectlevel1">
-              <input class="toc-toggle-box" type="checkbox" id="pip"
-              />
               <li>
                 <span>
-                  <label class="toc-toggle" for="{{ subdir.path }}">
+                  <label class="toc-toggle">
                     <div class="toc-toggle-container">
                       <a class="level1">
                         <a title="Raspberry Pi compliance documents" class="toc-item no-dropdown" href="https://pip.raspberrypi.com/" target="_blank">
@@ -203,11 +119,9 @@
             </ul>
 
             <ul class="sectlevel1">
-              <input class="toc-toggle-box" type="checkbox" id="tutorials"
-              />
               <li>
                 <span>
-                  <label class="toc-toggle" for="{{ subdir.path }}">
+                  <label class="toc-toggle">
                     <div class="toc-toggle-container">
                       <a class="level1">
                         <a title="Hands-on hardware and software tutorials" class="toc-item no-dropdown" href="https://www.raspberrypi.com/tutorials/" target="_blank">
@@ -221,11 +135,9 @@
             </ul>
 
             <ul class="sectlevel1">
-              <input class="toc-toggle-box" type="checkbox" id="forums"
-              />
               <li>
                 <span>
-                  <label class="toc-toggle" for="{{ subdir.path }}">
+                  <label class="toc-toggle">
                     <div class="toc-toggle-container">
                       <a class="level1">
                         <a title="User and product support forums" class="toc-item no-dropdown" href="https://forums.raspberrypi.com" target="_blank">
