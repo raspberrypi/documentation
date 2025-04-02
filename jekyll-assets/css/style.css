@@ -368,11 +368,6 @@ input:checked + li span label div .toc-item::before {
   margin-bottom: 6px;
 }
 
-/* hide the non-tocbot non-interactive toctree from view -- just needed to generate tocbot version */
-#on-this-page-inner #toc {
-  display: none;
-}
-
 .sectlevel1 {
   flex-grow: 0;
   margin-right: 10px;

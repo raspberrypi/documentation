@@ -3,7 +3,7 @@
   <head>
     {% include head.html %}
   </head>
-  <body onload="makeToc()">
+  <body>
     <input type="checkbox" id="mobile-toggle" />
     {% include header.html %}
     <div id="docs-content">
@@ -162,11 +162,7 @@
           <div id="on-this-page">
             <div id="on-this-page-inner">
               <h5>On this page</h5>
-              <div id="toc">
-                {{ page.document | tocify_asciidoc: 3 }}
-              </div>
-              <div id="tocbot">
-              </div>
+              <div id="tocbot" class="js-toc"></div>
             </div>
           </div>
         </div>
@@ -178,6 +174,14 @@
         <script async type="text/javascript" src="{{ site.baseurl }}/scripts/asciidoctor-tabs.js?ver={{ site.time | date: '%s' }}"></script>
         <script async type="text/javascript" src="{{ site.baseurl }}/scripts/clipboard.min.js?ver={{ site.time | date: '%s' }}"></script>
         <script async type="text/javascript" src="{{ site.baseurl }}/scripts/copy-to-clipboard.js?ver={{ site.time | date: '%s' }}"></script>
+        <script type="text/javascript" src="{{ site.baseurl }}/scripts/tocbot.min.js?ver={{ site.time | date: '%s' }}"></script>
+        <script>
+          tocbot.init({
+              contentSelector: '#content',
+              headingSelector: 'h1, h2, h3, h4',
+              includeHtml: true
+          });
+        </script>
 
         {% include search.html %}
       </div>
