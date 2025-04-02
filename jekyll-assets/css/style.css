@@ -542,11 +542,11 @@ nav#mobile-contents {
 }
 
 @media screen{
-  #tocbot > ul.toc-list{
+  #tocbot > ol.toc-list{
     margin-bottom: 0.5em;
     margin-left: 0.125em
   }
-  #tocbot ul.sectlevel0, #tocbot a.toc-link.node-name--H1 + ul {
+  #tocbot ul.sectlevel0, #tocbot a.toc-link.node-name--H1 + ol {
     padding-left: 0;
   }
   #tocbot a.toc-link{
