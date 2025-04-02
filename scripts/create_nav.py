@@ -122,33 +122,37 @@ if __name__ == "__main__":
                             if m:
                                 header_id = m.group(1)
                             else:
-                                m = re.match(r'^\[(.*)\]\s*$', line)
+                                m = re.match(r'^\[#(.+?)(?:,.*?)\]\s*$', line)
                                 if m:
-                                    attrs = m.group(1).split(',')
-                                    last_line_was_discrete = 'discrete' in attrs
-                                    header_id = None
+                                    header_id = m.group(1)
                                 else:
-                                    m = re.match(r'^(=+)\s+(.+?)\s*$', line)
+                                    m = re.match(r'^\[(.*)\]\s*$', line)
                                     if m:
-                                        newlevel = len(m.group(1))
-                                        # Need to compute anchors for *every* header (updates file_headings)
-                                        heading = strip_adoc(m.group(2))
-                                        heading = re.sub(r"(\[\.contexttag )(\S+)(\]\*\S+\*)", "<strong class=\"contexttag \\2\">\\2</strong>", heading)
-                                        anchor = heading_to_anchor(top_level_file, heading, header_id)
-                                        if anchor in available_anchors[fullpath]:
-                                            raise Exception("Anchor {} appears twice in {}".format(anchor, fullpath))
-                                        available_anchors[fullpath].add(anchor)
-                                        if min_level <= newlevel <= max_level and not last_line_was_discrete:
-                                            entry = {'heading': heading, 'anchor': anchor}
-                                            if newlevel > level:
-                                                nav[-1]['sections'][-1]['subsections'] = []
-                                            level = newlevel
-                                            if level == 2:
-                                                nav[-1]['sections'].append(entry)
-                                            elif level == 3:
-                                                nav[-1]['sections'][-1]['subsections'].append(entry)
-                                    last_line_was_discrete = False
-                                    header_id = None
+                                        attrs = m.group(1).split(',')
+                                        last_line_was_discrete = 'discrete' in attrs
+                                        header_id = None
+                                    else:
+                                        m = re.match(r'^(=+)\s+(.+?)\s*$', line)
+                                        if m:
+                                            newlevel = len(m.group(1))
+                                            # Need to compute anchors for *every* header (updates file_headings)
+                                            heading = strip_adoc(m.group(2))
+                                            heading = re.sub(r"(\[\.contexttag )(\S+)(\]\*\S+\*)", "<strong class=\"contexttag \\2\">\\2</strong>", heading)
+                                            anchor = heading_to_anchor(top_level_file, heading, header_id)
+                                            if anchor in available_anchors[fullpath]:
+                                                raise Exception("Anchor {} appears twice in {}".format(anchor, fullpath))
+                                            available_anchors[fullpath].add(anchor)
+                                            if min_level <= newlevel <= max_level and not last_line_was_discrete:
+                                                entry = {'heading': heading, 'anchor': anchor}
+                                                if newlevel > level:
+                                                    nav[-1]['sections'][-1]['subsections'] = []
+                                                level = newlevel
+                                                if level == 2:
+                                                    nav[-1]['sections'].append(entry)
+                                                elif level == 3:
+                                                    nav[-1]['sections'][-1]['subsections'].append(entry)
+                                        last_line_was_discrete = False
+                                        header_id = None
             elif 'from_json' in tab:
                 tab_dir = os.path.join(adoc_dir, tab['directory'])
                 if os.path.exists(tab_dir):
