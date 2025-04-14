@@ -1,4 +1,4 @@
-== Clocking options
+== Overclocking options
 
 The kernel has a https://www.kernel.org/doc/html/latest/admin-guide/pm/cpufreq.html[CPUFreq] driver with the powersave governor enabled by default, switched to ondemand during boot, when xref:configuration.adoc#raspi-config[raspi-config] is installed. With the ondemand governor, CPU frequency will vary with processor load. You can adjust the minimum values with the `*_min` config options, or disable dynamic clocking by applying a static scaling governor (powersave or performance) or with `force_turbo=1`.
 
