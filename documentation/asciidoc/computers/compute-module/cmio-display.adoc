@@ -64,9 +64,9 @@ ignore_lcd=1
 
 == Attaching the Touch Display 2 LCD panel
 
-Touch Display 2 is a 720p 7" LCD display designed specifailly for Raspberry Pi devices (see https://www.raspberrypi.com/products/touch-display-2/). It connects in much the same way as the original touch display, but the software setup on Compute Modules is slightly different as it uses a different display driver. See xref:../../accessories/touch-display-2/about.adoc[Touch Display 2] for connection details.
+Touch Display 2 is a 720x1280 7" LCD display designed specifically for Raspberry Pi devices (see https://www.raspberrypi.com/products/touch-display-2/). It connects in much the same way as the original touch display, but the software setup on Compute Modules is slightly different as it uses a different display driver. See xref:../../accessories/touch-display-2/about.adoc[Touch Display 2] for connection details.
 
-Edit the /boot./firmware/config.txt file and add the following to enable Touch Display 2 on DSI1.
+Edit the /boot/firmware/config.txt file and add the following to enable Touch Display 2 on DSI1.
 
 [source,ini]
 ----
@@ -77,5 +77,5 @@ To use DSI0 use the following:
 
 [source,ini]
 ----
-dtoverlay=vc4-kms-dsi-ili9881-7inch, dsi0
+dtoverlay=vc4-kms-dsi-ili9881-7inch,dsi0
 ----
