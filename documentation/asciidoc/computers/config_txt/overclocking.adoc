@@ -101,6 +101,10 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 
 | temp_soft_limit
 | *3A+/3B+ only*. CPU speed throttle control. This sets the temperature at which the CPU clock speed throttling system activates. At this temperature, the clock speed is reduced from 1400MHz to 1200MHz.  Defaults to `60`, can be raised to a maximum of `70`, but this may cause instability.
+
+| core_freq_fixed
+| Setting to 1 disables active scaling of the core clock frequency and ensures that any peripherals that use the core clock will maintain a consistent speed. The fixed clock speed is the higher/turbo frequency for the platform in use. Use this in preference to setting specific core_clock frequencies as it provides portability of config files between platforms.
+
 |===
 
 This table gives the default values for the options on various Raspberry Pi models, all frequencies are stated in MHz.
