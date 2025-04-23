@@ -6,11 +6,11 @@ Here, we describe some common ways to improve the security of your Raspberry Pi.
 
 Prefixing a command with `sudo` runs it as a superuser. By default, that does not need a password. However, you can make your Raspberry Pi more secure by requiring a password for all commands run with `sudo`.
 
-To force `sudo` to require a password, edit the `nopasswd` sudoers file for your user account, replacing the `<username>` placeholder in the file name with your username:
+To force `sudo` to require a password, edit the `010_pi-nopasswd` sudoers file:
 
 [source,console]
 ----
-$ sudo visudo /etc/sudoers.d/010_<username>-nopasswd
+$ sudo visudo /etc/sudoers.d/010_pi-nopasswd
 ----
 
 Change the `<username>` entry to the following, replacing `<username>` with your username:
