@@ -10,7 +10,7 @@
 
 * Browsers intercept certain keys and key combinations. As a result, you can't type these keys into your Connect window. Screen sharing includes a toolbar to simulate some of the most popular intercepted keys.
 
-* Upgrading `rpi-connect` and `rpi-connect-lite` using Connect is not supported. The upgrade process will terminate all remote shell sessions and drop all connections.
+* Upgrading `rpi-connect` and `rpi-connect-lite` using Connect's remote shell is not supported. The upgrade process will terminate all remote shell sessions and drop all connections. To upgrade Connect in a remote shell session, use a tool like `screen` or `tmux` to ensure the process continues uninterrupted after your connection is closed.
 
 * To upgrade from version 1 to version 2, you must first upgrade the package you currently have installed before switching between `rpi-connect` and `rpi-connect-lite`. This ensures that Connect's services properly migrate to the version 2 format. If you currently have `rpi-connect` installed, run the following command:
 +

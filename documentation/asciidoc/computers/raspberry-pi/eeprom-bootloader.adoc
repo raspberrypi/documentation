@@ -163,7 +163,7 @@ The number of times that SD boot will be retried after failure before moving to 
 Default: `0`
 
 [[SD_QUIRKS]]
-==== `SD_QURIKS`
+==== `SD_QUIRKS`
 
 The `SD_QUIRKS` property provides a set of options to support device bringup and workaround interoperability issues.
 
