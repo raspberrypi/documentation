@@ -52,7 +52,7 @@ Once all the system packages are updated and firmware files installed, we can st
 
 The xref:../computers/camera_software.adoc#rpicam-apps[`rpicam-apps` camera applications] include IMX500 object detection and pose estimation stages that can be run in the post-processing pipeline. For more information about the post-processing pipeline, see xref:../computers/camera_software.adoc#post-process-file[the post-processing documentation].
 
-The examples on this page use post-processing JSON files located in `/usr/share/rpicam-assets/`.
+The examples on this page use post-processing JSON files located in `/usr/share/rpi-camera-assets/`.
 
 ==== Object detection
 
