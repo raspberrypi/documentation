@@ -132,5 +132,5 @@ dtoverlay=vc4-kms-dsi-ili9881-7inch,sizex=400,invx,invy
 
 All Raspberry Pi SBCs auto-detect the official Touch Displays as the circuitry connecting it to the DSI connector is fixed; this autodetection ensures the correct Device Tree entries are passed to the kernel. However, Compute Modules are intended for industrial applications where the integrator can use any and all GPIOs and interfaces for whatever purposes they require. Autodetection is therefore not feasible, and hence is disabled on Compute Module devices. This means that the Device Tree fragments required to set up the display need to be loaded via some other mechanism, which can be either with a dtoverlay entry in config.txt, via a custom base DT file, or if present, a HAT EEPROM.
 
-Creating a custom base Device tree file is beyond the scope of this documentation, however, it is simple to add an appropriate device tree entry via `config.txt`. See this  xref:../computers/compute-module/cmio-display.adoc#attaching-the-touch-display-2-lcd-panel[page] for configuration details.
+Creating a custom base Device tree file is beyond the scope of this documentation, however, it is simple to add an appropriate device tree entry via `config.txt`. See this  xref:../computers/compute-module.adoc#attaching-the-touch-display-2-lcd-panel[page] for configuration details.
 
