@@ -24,3 +24,20 @@ Headline features include:
 ** H264 1080p30 encode (from ISP) ~30–40% CPU
 
 In aggregate, the new features present in BCM2712 deliver a performance uplift of 2-3× over Raspberry Pi 4 for common CPU or I/O-intensive use cases.
+
+=== Vulnerabilities and mitigations
+
+The Cortex-A76 used on the BCM2712 has known vulnerabilites that are all mitigated in Raspberry Pi OS.
+
+To determine the full list of vulnerabilities and the mitigations, you can use the following on the command line which will list all those in place.
+
+```bash
+$ lscpu | grep Mitigations
+Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:             Mitigation; __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; CSV2, BHB
+```
+
+NOTE: The list above was correct as of April 2025 but may have been superceeded. You should use `lscpu` on your Raspberry Pi to get up to date information. This is especially important when using a non-Raspberry Pi OS, as these may not include all the mitigations in their Linux kernel builds. The Arm processors used by Raspberry Pi Ltd do not use microcode, so all mitigations are at the kernel level.
+
+More information on Arm processor vulnerabiblites can be found on the ARM website. https://developer.arm.com/Arm%20Security%20Center/Speculative%20Processor%20Vulnerability
