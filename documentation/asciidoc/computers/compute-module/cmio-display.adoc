@@ -14,7 +14,7 @@ To connect a display to DISP1/DSI1:
 . _(CM1, CM3, CM3+, and CM4S only)_: Connect the following GPIO pins with jumper cables:
   * `0` to `CD1_SDA`
   * `1` to `CD1_SCL`
-
+. _(CM5)_ On the Compute Module 5 IO board, add the appropriate jumpers to J6, as indicated on the silkscreen.
 . Reconnect the Compute Module to power.
 . Add the following line to xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]:
 +
