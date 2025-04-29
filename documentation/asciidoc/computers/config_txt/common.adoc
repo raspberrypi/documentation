@@ -16,15 +16,15 @@ By default, Raspberry Pi OS includes a line in `/boot/firmware/config.txt` that 
 
 When enabled, the firmware will automatically load overlays for recognised CSI cameras.
 
-To disable, set `camera_auto_detect=0`.
+To disable, set `camera_auto_detect=0` (or remove `camera_auto_detect=1`).
 
 ==== `display_auto_detect`
 
-Enabled by default.
+By default, Raspberry Pi OS includes a line in `/boot/firmware/config.txt` that enables this setting.
 
 When enabled, the firmware will automatically load overlays for recognised DSI displays.
 
-To disable, set `display_auto_detect=0`.
+To disable, set `display_auto_detect=0` (or remove `display_auto_detect=1`).
 
 ==== `dtoverlay`
 
