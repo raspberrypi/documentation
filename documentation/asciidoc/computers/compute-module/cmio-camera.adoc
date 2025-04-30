@@ -65,19 +65,19 @@ dtparam=cam1_reg
 | directive
 
 | v1 camera
-| `dtoverlay=ov5647,cam1`
+| `dtoverlay=ov5647`
 
 | v2 camera
-| `dtoverlay=imx219,cam1`
+| `dtoverlay=imx219`
 
 | v3 camera
-| `dtoverlay=imx708,cam1`
+| `dtoverlay=imx708`
 
 | HQ camera
-| `dtoverlay=imx477,cam1`
+| `dtoverlay=imx477`
 
 | GS camera
-| `dtoverlay=imx296,cam1`
+| `dtoverlay=imx296`
 |===
 
 . Reboot your Compute Module with `sudo reboot`.
