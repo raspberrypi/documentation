@@ -22,6 +22,8 @@ To create a hosted wireless network on the command line, run the following comma
 $ sudo nmcli device wifi hotspot ssid <example-network-name> password <example-password>
 ----
 
+> Note: If the `sudo nmcli` command fails for you, you must install the network-manager package with `sudo apt install network-manager`.
+
 Use another wireless client, such as a laptop or smartphone, to connect to the network. Look for a network with a SSID matching `<example-network-name>`. Enter your network password, and you should connect successfully to the network. If your Raspberry Pi has internet access via an Ethernet connection or a second wireless adapter, you should be able to access the internet.
 
 === Disable hotspot
