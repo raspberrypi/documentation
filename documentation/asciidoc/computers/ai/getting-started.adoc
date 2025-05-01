@@ -174,7 +174,7 @@ v4.19::
 To install version 4.19 of Hailo's neural network tooling, run the following commands:
 +
 [source,console]
----
+----
 sudo apt install hailo-tappas-core=3.30.0-1 hailort=4.19.0-3 hailo-dkms=4.19.0-1 python3-hailort=4.19.0-2
 ----
 +
