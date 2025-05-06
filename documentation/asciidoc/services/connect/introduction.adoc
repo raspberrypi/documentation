@@ -8,6 +8,4 @@ To use Connect, xref:connect.adoc#install-connect[install the Connect software] 
 
 Connect uses a secure, encrypted connection. By default, Connect communicates directly between your Raspberry Pi and your browser. However, when Connect can't establish a direct connection between your Raspberry Pi and your browser, we use a relay server. In such cases, Raspberry Pi only retains the metadata required to operate Connect.
 
-Connect is currently in the Beta phase of development.
-
 NOTE: To use Connect, your Raspberry Pi must run https://www.raspberrypi.com/news/bookworm-the-new-version-of-raspberry-pi-os/[Raspberry Pi OS Bookworm] or later.
