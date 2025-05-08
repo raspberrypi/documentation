@@ -21,17 +21,6 @@ We can use a Raspberry Pi Pico to provide the trigger. Connect any Pico GPIO pin
 
 image::images/pico_wiring.jpg[alt="Image showing Raspberry Pi Pico wiring",width="50%"]
 
-==== Boot up the Raspberry Pi with the camera connected.
-
-Enable external triggering through superuser mode:
-
-[source,console]
-----
-$ sudo su
-$ echo 1 > /sys/module/imx296/parameters/trigger_mode
-$ exit
-----
-
 ==== Raspberry Pi Pico MicroPython Code
 
 [source,python]
@@ -55,15 +44,37 @@ The low pulse width is equal to the shutter time, and the frequency of the PWM e
 
 NOTE: In this example, Pin 28 connects to the XTR touchpoint on the GS camera board.
 
-=== Operation
+=== Camera driver configuration
 
-Run the code on the Pico, and set the camera running:
+This step is only necessary if you have more than one camera with XTR wired in parallel.
+
+Edit `/boot/firmware/config.txt`. Change `camera_auto_detect=1` to `camera_auto_detect=0`.
+
+Append this line:
+[source]
+----
+dtoverlay=imx296,always-on
+----
+When using the CAM0 port on a Raspberry Pi 5, CM4 or CM5, append `,cam0` to that line without a space. If both cameras are on the same Raspberry Pi you will need two dtoverlay lines, only one of them ending with `,cam0`.
+
+If the external trigger will not be started right away, you also need to increase the libcamera timeout xref:camera.adoc#libcamera-configuration[as above].
+
+=== Starting the camera
+
+Enable external triggering:
+
+[source,console]
+----
+$ echo 1 | sudo tee /sys/module/imx296/parameters/trigger_mode
+----
+
+Run the code on the Pico, then set the camera running:
 
 [source,console]
 ----
 $ rpicam-hello -t 0 --qt-preview --shutter 3000
 ----
 
-Every time that the Pico pulses the pin, it should generate a frame. To control the framerate, vary the duration between pulses.
+Every time the Pico pulses the pin, it should capture a frame. However, if `--gain` and `--awbgains` are not set, some frames will be dropped to allow AGC and AWB algorithms to settle.
 
-NOTE: When running `rpicam-apps`, always specify a fixed shutter duration to ensure the AGC does not adjust the camera's shutter speed. The duration does not matter, since it is actually controlled by the external trigger pulse.
+NOTE: When running `rpicam-apps`, always specify a fixed shutter duration, to ensure the AGC does not try to adjust the camera's shutter speed. The value is not important, since it is actually controlled by the external trigger pulse.
