@@ -64,6 +64,7 @@ NOTE: Newer firmware supports the loading of multiple `ramfs` files. You should 
 
 `ramfsaddr` is the memory address to which the `ramfsfile` should be loaded.
 
+[[initramfs]]
 === `initramfs`
 
 The `initramfs` command specifies both the ramfs filename *and* the memory address to which to load it. It performs the actions of both `ramfsfile` and `ramfsaddr` in one parameter. The address can also be `followkernel` (or `0`) to place it in memory after the kernel image. Example values are: `initramfs initramf.gz 0x00800000` or `initramfs init.gz followkernel`. As with `ramfsfile`, newer firmwares allow the loading of multiple files by comma-separating their names.
@@ -73,7 +74,7 @@ NOTE: This option uses different syntax from all the other options, and you shou
 [[auto_initramfs]]
 === `auto_initramfs`
 
-If `auto_initramfs` is set to `1`, look for an `initramfs` file using the same rules as the kernel selection.
+If `auto_initramfs` is set to `1`, the firmware looks for an `initramfs` file to match the kernel. The file must be in the same location as the kernel image, and the name is derived from the name of the kernel by replacing the `kernel` prefix with `initramfs`, and removing any extension such as `.img`, e.g. `kernel8.img` requires `initramfs8`. You can make use of `auto_initramfs` with custom kernel names provided the names begin with `kernel` and `initramfs` respectively and everything else matches (except for the absence of the file extension on the initramfs). Otherwise, an explicit xref:config_txt.adoc#initramfs[`initramfs`] statement is required.
 
 [[disable_poe_fan]]
 === `disable_poe_fan`
