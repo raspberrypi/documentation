@@ -403,14 +403,14 @@ image::images/pico-h.png[alt="Raspberry Pi Pico H"]
 .Raspberry Pi Pico W
 image::images/pico-w.png[alt="Raspberry Pi Pico W"]
 | xref:../microcontrollers/silicon.adoc#rp2040[RP2040] | 264KB | 2MB | two 20-pin GPIO headers (unpopulated)
-|
+a|
 * 2.4GHz single-band 802.11n Wi-Fi (10Mb/s)
 * Bluetooth 5.2, Bluetooth Low Energy (BLE)
 |
 .Raspberry Pi Pico WH
 image::images/pico-wh.png[alt="Raspberry Pi Pico WH"]
 | xref:../microcontrollers/silicon.adoc#rp2040[RP2040] | 264KB | 2MB | two 20-pin GPIO headers
-|
+a|
 * 2.4GHz single-band 802.11n Wi-Fi (10Mb/s)
 * Bluetooth 5.2, Bluetooth Low Energy (BLE)
 |
