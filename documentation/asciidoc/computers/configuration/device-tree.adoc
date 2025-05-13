@@ -833,7 +833,16 @@ For a list of supported overlays and parameters, see the https://github.com/rasp
 [[part4]]
 === Firmware parameters
 
-The firmware uses the special https://www.kernel.org/doc/html/latest/devicetree/usage-model.html#runtime-configuration[/chosen] node to pass parameters between the bootloader and/or firmware and the operating system. Each property is stored as a 32-bit integer unless indicated otherwise.
+The firmware uses the special https://www.kernel.org/doc/html/latest/devicetree/usage-model.html#runtime-configuration[/chosen] node to pass parameters between the bootloader and/or firmware and the operating system. 
+
+* Each property is stored as a 32-bit unsigned integer unless indicated otherwise.
+* Numbers in device-tree are stored in binary and are big-endian.
+
+Example shell command for reading a 32-bit unsigned integer property:
+[source,console]
+----
+printf "%d" "0x$(od "/proc/device-tree/chosen/bootloader/partition" -v -An -t x1 | tr -d ' ' )"
+----
 
 `overlay_prefix`:: _(string)_ The xref:config_txt.adoc#overlay_prefix[overlay_prefix] string selected by `config.txt`.
 
@@ -849,8 +858,6 @@ The firmware uses the special https://www.kernel.org/doc/html/latest/devicetree/
 
 ==== Common bootloader properties `/chosen/bootloader`
 
-Each property is stored as a 32-bit integer unless indicated otherwise.
-
 `boot-mode`:: The boot-mode used to load the kernel. See the xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER] documentation for a list of possible boot-mode values.
 
 `partition`:: The partition number used during boot. If a `boot.img` ramdisk is loaded then this refers to partition that the ramdisk was loaded from rather than the partition number within the ramdisk.
@@ -859,9 +866,17 @@ Each property is stored as a 32-bit integer unless indicated otherwise.
 
 `tryboot`:: Set to `1` if the `tryboot` flag was set at boot.
 
+==== Boot variables `/chosen/bootloader`
+
+Raspberry Pi 5 only.
+
+`arg1`:: The value of the user defined reboot argument from the previous boot. See xref:config_txt.adoc#boot_arg1[boot_arg1]
+
+`count`:: The value of the 8-bit `boot_count` variable when the OS was started. See xref:config_txt.adoc#boot_count[boot_count]
+
 ==== Power supply properties `/chosen/power`
 
-Raspberry Pi 5 only. Each property is stored as a 32-bit integer unless indicated otherwise.
+Raspberry Pi 5 only.
 
 `max_current`:: The maximum current in mA that the power supply can supply. The firmware reports the value indicated by the USB-C, USB-PD or PoE interfaces. For bench power supplies (e.g. connected to the GPIO header) define `PSU_MAX_CURRENT` in the bootloader configuration to indicate the power supply current capability.
 
@@ -898,7 +913,7 @@ The format is defined by the https://usb.org/document-library/usb-power-delivery
 
 ==== BCM2711 and BCM2712 specific bootloader properties `/chosen/bootloader`
 
-The following properties are specific to the BCM2711 and BCM2712 SPI EEPROM bootloaders. Each property is stored as a 32-bit integer unless indicated otherwise.
+The following properties are specific to the BCM2711 and BCM2712 SPI EEPROM bootloaders.
 
 `build_timestamp`:: The UTC build time for the EEPROM bootloader.
 
@@ -959,7 +974,7 @@ The following properties are specific to the BCM2711 and BCM2712 SPI EEPROM boot
 
 ==== BCM2711 and BCM2712 USB boot properties `/chosen/bootloader/usb`
 
-The following properties are defined if the system was booted from USB. These may be used to uniquely identify the USB boot device. Each property is stored as a 32-bit integer.
+The following properties are defined if the system was booted from USB. These may be used to uniquely identify the USB boot device.
 
 `usb-version`:: The USB major protocol version (2 or 3).
 

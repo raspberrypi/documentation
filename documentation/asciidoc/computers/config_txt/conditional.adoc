@@ -96,9 +96,6 @@ Some models of Raspberry Pi, including Zero, Compute Module, and Keyboard models
 
 The `[none]` filter prevents any settings that follow from being applied to any hardware. Although there is nothing that you can't do without `[none]`, it can be a useful way to keep groups of unused settings in config.txt without having to comment out every line.
 
-=== The `[partition=N]` filter
-This `partition` filter can be be used to select alternate boot flows according to the requested partition number (`sudo reboot N`) or via direct usage of the `PM_RSTS` watchdog register.
-
 [source,ini]
 ----
 # Bootloader EEPROM config.
@@ -123,24 +120,107 @@ cmdline=cmdline-recovery.txt
 
 The raw value of the `PM_RSTS` register at bootup is available via `/proc/device-tree/chosen/bootloader/rsts` and the final partition number used for booting is available via `/proc/device-tree/chosen/bootloader/partition`. These are big-endian binary values.
 
-=== The `[boot_partition=N]` filter
-The `boot_partition` filter can be used to select alternate OS files (e.g. `cmdline.txt`) to be loaded, depending on which partition `config.txt` was loaded from after processing `autoboot.txt`. This is intended for use with an `A/B` boot-system with `autoboot.txt` where it is desirable to be able to have identical files installed to the boot partition for both the `A` and `B` images.
+=== The expression filter
 
-Example `config.txt` - select the matching root filesystem for the `A/B` boot file-system.
+The expression filter provides support for comparing unsigned integer "boot variables" to constants using a simple set of operators. It is intended to support OTA update mechanisms, debug and test.
+
+* The "boot variables" are `boot_arg1`, `boot_count`, `boot_partition` and `partition`.
+* Boot variables are always lower case.
+* Integer constants may either be written as decimal or as hex.
+* Expression conditional filters have no side-effects e.g. no assignment operators.
+* As with other filter types the expression filter cannot be nested.
+* Use the `[all]` filter to reset expressions and all other conditional filter types.
+
+Syntax:
 [source,ini]
 ----
+# ARG is a boot-variable
+# VALUE and MASK are unsigned integer constants
+[ARG=VALUE]      # selected if (ARG == VALUE)
+[ARG&MASK]       # selected if ((ARG & VALUE) != 0)
+[ARG&MASK=VALUE] # selected if ((ARG & MASK) == VALUE)
+[ARG<VALUE]      # selected if (ARG < VALUE)
+[ARG>VALUE]      # selected if (ARG > VALUE)
+
+----
+
+==== `boot_arg1`
+Raspberry Pi 5 and newer flagship devices only.
+
+The `boot_arg1` variable is a 32-bit user defined value which is stored in a reset-safe register allowing parameters to be passed accross a reboot.
+
+Setting `boot_arg1` to 42 via `config.txt`:
+[source,ini]
+----
+set_reboot_arg1=42
+----
+The `set_reboot_arg1` property sets the value for the next boot. It does not change the current value as seen by the config parser.
+
+Setting `boot_arg1` to 42 via vcmailbox:
+[source,console]
+----
+sudo vcmailbox 0x0003808c 8 8 1 42
+----
+
+Reading `boot_arg1` via vcmailbox:
+[source,console]
+----
+sudo vcmailbox 0x0003008c 8 8 1 0
+# Example output - boot_arg1 is 42
+# 0x00000020 0x80000000 0x0003008c 0x00000008 0x80000008 0x00000001 0x0000002a 0x0000000
+----
+The value of the `boot_arg1` variable when the OS was started can be read via xref:configuration.adoc#part4[device-tree] at `/proc/device-tree/chosen/bootloader/arg1`
+
+==== `boot_count`
+Raspberry Pi 5 and newer flagship devices only.
+
+The `boot_count` variable is an 8-bit value stored in a reset-safe register that is incremented at boot (wrapping back to zero at 256). It is cleared if power is disconnected.
+
+To read `boot_count` via vcmailbox:
+[source,console]
+----
+sudo vcmailbox 0x0003008d 4 4 0
+# Example - boot count is 3
+# 0x0000001c 0x80000000 0x0003008d 0x00000004 0x80000004 0x00000003 0x00000000
+----
+
+Setting/clearing `boot_count` via vcmailbox:
+[source,console]
+----
+# Clear boot_count by setting it to zero.
+sudo vcmailbox 0x0003808d 4 4 0
+----
+The value of `boot_count` when the OS was started can be read via xref:configuration.adoc#part4[device-tree] at `/proc/device-tree/chosen/bootloader/count`
+
+==== `boot_partition`
+The `boot_partition` variable can be used to select alternate OS files (e.g. `cmdline.txt`) to be loaded, depending on which partition `config.txt` was loaded from after processing xref:config_txt.adoc#autoboot-txt[autoboot.txt]. This is intended for use with an `A/B` boot-system with `autoboot.txt` where it is desirable to be able to have identical files installed to the boot partition for both the `A` and `B` images.
+
+The value of the `boot_partition` can be different to the requested `partition` variable if it was overriden by setting `boot_partition` in xref:config_txt.adoc#autoboot-txt[autoboot.txt] or if the specified partion was not bootable and xref:raspberry-pi.adoc#PARTITION_WALK[PARTITION_WALK] was enabled in the EEPROM config.
+
+Example `config.txt` - select the matching root filesystem for the `A/B` boot file-system:
+[source,ini]
+----
+# Use different cmdline files to point to different root filesystems based on which partition the system booted from.
 [boot_partition=1]
-cmdline=cmdline_rootfs_a.txt
+cmdline=cmdline_rootfs_a.txt  # Points to root filesystem A
 
 [boot_partition=2]
-cmdline=cmdline_rootfs_b.txt
+cmdline=cmdline_rootfs_b.txt  # Points to root filesystem B
 ----
+
+The value of `boot_partition` i.e. the partition used to boot the OS can be read from xref:configuration.adoc#part4[device-tree] at `/proc/device-tree/chosen/bootloader/partition`
+
+==== `partition`
+The `partition` variable can be used to select alternate boot flows according to the requested partition number (`sudo reboot N`) or via direct usage of the `PM_RSTS` watchdog register.
+
 
 === The `[tryboot]` filter
 
 This filter succeeds if the `tryboot` reboot flag was set.
 
 It is intended for use in xref:config_txt.adoc#autoboot-txt[autoboot.txt] to select a different `boot_partition` in `tryboot` mode for fail-safe OS updates.
+
+The value of `tryboot` at the start of boot can be read via xref:configuration.adoc#part4[device-tree] at `/proc/device-tree/chosen/bootloader/tryboot`
 
 === The `[EDID=*]` filter
 
