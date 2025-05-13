@@ -123,6 +123,18 @@ cmdline=cmdline-recovery.txt
 
 The raw value of the `PM_RSTS` register at bootup is available via `/proc/device-tree/chosen/bootloader/rsts` and the final partition number used for booting is available via `/proc/device-tree/chosen/bootloader/partition`. These are big-endian binary values.
 
+=== The `[boot_partition=N]` filter
+The `boot_partition` filter can be used to select alternate OS files (e.g. `cmdline.txt`) to be loaded, depending on which partition `config.txt` was loaded from after processing `autoboot.txt`. This is intended for use with an `A/B` boot-system with `autoboot.txt` where it is desirable to be able to have identical files installed to the boot partition for both the `A` and `B` images.
+
+Example `config.txt` - select the matching root filesystem for the `A/B` boot file-system.
+[source,ini]
+----
+[boot_partition=1]
+cmdline=cmdline_rootfs_a.txt
+
+[boot_partition=2]
+cmdline=cmdline_rootfs_b.txt
+----
 
 === The `[tryboot]` filter
 

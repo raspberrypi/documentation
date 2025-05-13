@@ -70,12 +70,12 @@ Various xref:linux_kernel.adoc#kernel[kernel] image files that correspond to Ras
 
 | `kernel.img`
 | BCM2835
-| Pi Zero, Pi 1
+| Pi Zero, Pi 1, CM1
 |
 
 | `kernel7.img`
 | BCM2836, BCM2837
-| Pi Zero 2 W, Pi 2, Pi 3
+| Pi Zero 2 W, Pi 2, Pi 3, CM3, Pi 3+, CM3+
 | Later revisions of Pi 2 use BCM2837
 
 | `kernel7l.img`

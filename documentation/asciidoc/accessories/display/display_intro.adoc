@@ -159,3 +159,7 @@ To specify these options, add them, separated by commas, to your `dtoverlay` lin
 ----
 dtoverlay=vc4-kms-dsi-7inch,sizex=400,invx,invy
 ----
+
+=== Installation on Compute Module based devices.
+
+All Raspberry Pi SBCs auto-detect the official Touch Displays as the circuitry connected to the DSI connector on the Raspberry Pi board is fixed; this autodetection ensures the correct Device Tree entries are passed to the kernel. However, Compute Modules are intended for industrial applications where the integrator can use any and all GPIOs and interfaces for whatever purposes they require. Autodetection is therefore not feasible, and hence is disabled on Compute Module devices. This means that the Device Tree fragments required to set up the display need to be loaded via some other mechanism, which can be either with a dtoverlay entry in config.txt as described above, via a custom base DT file, or if present, a HAT EEPROM.
