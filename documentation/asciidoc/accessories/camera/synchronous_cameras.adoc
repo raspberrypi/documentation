@@ -1,102 +1,108 @@
 == Synchronous Captures
 
-Both the HQ Camera and the Global Shutter Camera, have support for synchronous captures.
-Making use of the XVS pin (Vertical Sync) allows one camera to pulse when a frame capture is initiated.
-The other camera can then listen for this sync pulse, and capture a frame at the same time as the other camera.
+The High Quality (HQ) Camera supports synchronous captures.
+One camera (the "source") can be configured to generate a pulse on its XVS (Vertical Sync) pin when a frame capture is initiated.
+Other ("sink") cameras can listen for this pulse, and capture a frame at the same time as the source camera.
 
-=== Using the HQ Camera
+This method is largely superseded by xref:../computers/camera_software.adoc#software-camera-synchronisation[software camera synchronisation] which can operate over long distances without additional wires and has sub-millisecond accuracy. But when cameras are physically close, wired synchronisation may be used.
 
-For correct operation, both cameras require a 1.65V pull up voltage on the XVS line, which is created by a potential divider through the 3.3V and GND pins on the Raspberry Pi.
+NOTE: Global Shutter (GS) Cameras can also be operated in a synchronous mode. However, the source camera will record one extra frame. Instead, for GS Cameras we recommend using an xref:camera.adoc#external-trigger-on-the-gs-camera[external trigger source]. You cannot synchronise a GS Camera and an HQ Camera.
 
-image::images/synchronous_camera_wiring.jpg[alt="Image showing potential divider setup",width="50%"]
+=== Connecting the cameras
 
-Create a potential divider from two 10kΩ resistors to 3.3V and ground (to make 1.65V with an effective source impedance of 5kΩ). This can be connected to either Raspberry Pi.
+Solder a wire to the XVS test point of each camera, and connect them together.
 
-Solder the GND and XVS test points of each HQ Camera board to each other.
+Solder a wire to the GND test point of each camera, and connect them together.
 
-Connect the XVS wires to the 1.65V potential divider pull-up.
+*For GS Cameras only,* you will also need to connect the XHS (Horizontal Sync) test point of each camera together. On any GS Camera that you wish to act as a sink, bridge the two halves of the MAS pad with solder.
 
-==== Boot up both Raspberry Pis
+NOTE: An earlier version of this document recommended an external pull-up for XVS. This is no longer recommended. Instead, ensure you have the latest version of Raspberry Pi OS and set the `always-on` property for all connected cameras.
 
-The file `/sys/module/imx477/parameters/trigger_mode` determines which board outputs pulses, or waits to receive pulses (source and sink).
-This parameter can only be altered in superuser mode.
+=== Driver configuration
 
-Run the following commands to configure the sink:
+You will need to configure the camera drivers to keep their 1.8V power supplies on when not streaming, and optionally to select the source and sink roles.
+
+==== For the HQ Camera
+
+Edit `/boot/firmware/config.txt`. Change `camera_auto_detect=1` to `camera_auto_detect=0`.
+
+Append this line for a source camera:
+[source]
+----
+dtoverlay=imx477,always-on,sync-source
+----
+
+Or for a sink:
+[source]
+----
+dtoverlay=imx477,always-on,sync-sink
+----
+
+When using the CAM0 port on a Raspberry Pi 5, CM4 or CM5, append `,cam0` to that line without a space. If two cameras are on the same Raspberry Pi you will need two dtoverlay lines, only one of them ending with `,cam0`.
+
+Alternatively, if you wish to swap the cameras' roles at runtime (and they are not both connected to the same Raspberry Pi), omit `,sync-source` or `,sync-sink` above. Instead you can set a module parameter before starting each camera:
+
+For the Raspbery Pi with the source camera:
+[source,console]
+----
+$ echo 1 | sudo tee /sys/module/imx477/parameters/trigger_mode
+----
+
+For the Raspberry Pi with the sink camera:
+[source,console]
+----
+$ echo 2 | sudo tee /sys/module/imx477/parameters/trigger_mode
+----
+You will need to do this every time the system is booted.
+
+==== For the GS Camera
+
+Edit `/boot/firmware/config.txt`. Change `camera_auto_detect=1` to `camera_auto_detect=0`.
+
+For either a source or a sink, append this line:
+[source]
+----
+dtoverlay=imx296,always-on
+----
+When using the CAM0 port on a Raspberry Pi 5, CM4 or CM5, append `,cam0` to that line without a space. If two cameras are on the same Raspberry Pi you will need two dtoverlay lines, only one of them ending with `,cam0`.
+
+On the GS Camera, the sink role is enabled by the MAS pin and cannot be configured by software ("trigger_mode" and "sync-sink" relate to the xref:camera.adoc#external-trigger-on-the-gs-camera[external trigger method], and should _not_ be set for this method).
+
+=== Libcamera configuration
+
+If the cameras are not all started within 1 second, the `rpicam` applications can time out. To prevent this, you must edit a configuration file on any Raspberry Pi(s) with sink cameras.
+
+On Raspberry Pi 5 or CM5:
+[source,console]
+----
+$ cp /usr/share/libcamera/pipeline/rpi/pisp/example.yaml timeout.yaml
+----
+
+On other Raspberry Pi models:
+[source,console]
+----
+$ cp /usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml timeout.yaml
+----
+
+Now edit the copy. In both cases, delete the `#` (comment) from the `"camera_timeout_value_ms":` line, and change the number to `60000` (60 seconds).
+
+=== Starting the cameras
+
+Run the following commands to start the sink:
 
 [source,console]
 ----
-$ sudo su
-$ echo 2 > /sys/module/imx477/parameters/trigger_mode
-$ exit
-----
-
-Run the following commands to configure the source:
-
-[source,console]
-----
-$ sudo su
-$ echo 1 > /sys/module/imx477/parameters/trigger_mode
-$ exit
-----
-
-Run the following command to start the sink:
-
-[source,console]
-----
+$ export LIBCAMERA_RPI_CONFIG_FILE=timeout.yaml
 $ rpicam-vid --frames 300 --qt-preview -o sink.h264
 ----
 
-Run the following command to start the source:
+Wait a few seconds, then run the following command to start the source:
 
 [source,console]
 ----
 $ rpicam-vid --frames 300 --qt-preview -o source.h264
 ----
-
-Frames should be synchronous. Use `--frames` to ensure the same number of frames are captured, and that the recordings are exactly the same length.
+Frames should be synchronised. Use `--frames` to ensure the same number of frames are captured, and that the recordings are exactly the same length.
 Running the sink first ensures that no frames are missed.
 
-NOTE: The potential divider is needed to pull up the XVS pin to high whilst the source is in an idle state. This ensures that no frames are created or lost upon startup. The source whilst initialising goes from LOW to HIGH which can trigger a false frame.
-
-=== Use the GS Camera
-
-NOTE: The Global Shutter (GS) camera can also be operated in a synchronous mode. However, the source camera will record one extra frame. A much better alternative method to ensure that both cameras capture the same amount of frames is to use the xref:camera.adoc#external-trigger-on-the-gs-camera[external trigger method].
-
-To operate as source and sink together, the Global Shutter Cameras also require connection of the XHS (horizontal sync) pins together. However, these do not need connection to a pullup resistor.
-
-The wiring setup is identical to the xref:camera.adoc#using-the-hq-camera[HQ Camera method], except that you will also need to connect the XHS pins together.
-
-Create a potential divider from two 10kΩ resistors to 3.3V and ground (to make 1.65V with an effective source impedance of 5kΩ). This can be connected to either Raspberry Pi.
-
-Solder 2 wires to the XVS test points on each board and connect both of these wires together to the 1.65V potential divider.
-
-Solder the GND of each Camera board to each other. Also solder 2 wires to the XHS test points on each board and connect these. No pullup is needed for XHS pin.
-
-On the boards that you wish to act as sinks, solder the two halves of the MAS pad together. This tells the sensor to act as a sink, and will wait for a signal to capture a frame.
-
-==== Boot up source and sink
-
-Run the following command to start the sink:
-
-[source,console]
-----
-$ rpicam-vid --frames 300 -o sync.h264
-----
-
-Due to the limitations of the IMX296 sensor, the sink cannot record exactly the same number of frames as the source. **The source records one extra frame before the sink starts recording**. Because of this, you need to specify that the sink records one less frame with the `--frames` option.
-
-Wait at least two seconds before you start the source.
-
-After waiting two seconds, run the following command to start the source:
-
-[source,console]
-----
-$ rpicam-vid --frames 299 -o sync.h264
-----
-
-Because the sink and source record a different number of frames, use `ffmpeg` to resync the videos. By dropping the first frame from the source, we then get two recordings with the same starting point and frame length:
-
-[source,console]
-----
-$ ffmpeg -i source.h264 -vf select="gte(n\, 1)" source.h264
-----
+NOTE: When using the GS camera in synchronous mode, the sink will not record exactly the same number of frames as the source. **The source records one extra frame before the sink starts recording**. Because of this, you need to specify that the sink records one less frame with the `--frames` option.
