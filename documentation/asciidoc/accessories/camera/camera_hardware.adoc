@@ -269,3 +269,72 @@ Other available schematics;
 * Camera Module v3 https://datasheets.raspberrypi.com/camera/camera-module-3-schematics.pdf[PDF]
 * HQ Camera Module https://datasheets.raspberrypi.com/hq-camera/hq-camera-schematics.pdf[PDF]
 
+==== Camera Connector Pinout (15-Pin)
+
+This is the pinout of the 15-pin Camera Serial Interface (CSI) connector used on flagship Raspberry Pi models prior to the Raspberry Pi 5.
+The connector type is an Amphenol SFW15R-2STE1LF or a compatible equivalent.
+
+NOTE: Most official Camera Modules have a reversed pinout to accommodate 15-pin Type A / Type 1 FFC cables. This means Pin 1 on the Raspberry Pi connects to Pin 15 on the Camera Module, and vice versa.
+Direction is given from the perspective of the Raspberry Pi.
+The I^2^C lines (SCL and SDA) are pulled up to 3.3V on the Raspberry Pi board.
+
+The function and direction of the GPIO lines depend on the specific Camera Module in use. Typically, CAM_IO0 is used as an active-high power enable.
+
+|===
+| Pin No. | Name        | Description                   | Direction / Type
+
+| 1       | GND         | -                             | Ground
+| 2       | CAM_DN0     | D-PHY lane 0 (negative)       | Input, D-PHY
+| 3       | CAM_DP0     | D-PHY lane 0 (positive)       | Input, D-PHY
+| 4       | GND         | -                             | Ground
+| 5       | CAM_DN1     | D-PHY lane 1 (negative)       | Input, D-PHY
+| 6       | CAM_DP1     | D-PHY lane 1 (positive)       | Input, D-PHY
+| 7       | GND         | -                             | Ground
+| 8       | CAM_CN      | D-PHY Clock (negative)        | Input, D-PHY
+| 9       | CAM_CP      | D-PHY Clock (positive)        | Input, D-PHY
+|10       | GND         | -                             | Ground
+|11       | CAM_IO0     | GPIO (e.g. Power-Enable)      | Bidirectional, 3.3V
+|12       | CAM_IO1     | GPIO (e.g. Clock, LED)        | Bidirectional, 3.3V
+|13       | SCL         | I^2^C Clock                   | Output, 3.3V
+|14       | SDA         | I^2^C Data                    | Bidirectional, 3.3V
+|15       | 3V3         | 3.3V Supply                   | Output
+|===
+
+==== Camera Connector Pinout (22-Pin)
+
+This is the pinout of the 22-pin Camera Serial Interface (CSI) connector used on the Raspberry Pi Zero series, the Compute Module IO boards, and flagship models since the Raspberry Pi 5.
+The connector type is an Amphenol F32Q-1A7H1-11022 or a compatible equivalent.
+
+NOTE: Most official Camera Modules have a reversed pinout to accommodate https://www.raspberrypi.com/products/camera-cable/[22-pin Type A / Type 1 FFC cables]. This means Pin 1 on the Raspberry Pi connects to Pin 22 on the Camera Module, and vice versa.
+Direction is given from the perspective of the Raspberry Pi.
+The I^2^C lines (SCL and SDA) are pulled up to 3.3V on the Raspberry Pi board.
+
+The function and direction of the GPIO lines depend on the specific Camera Module in use. Typically, CAM_IO0 is used as an active-high power enable.
+
+
+|===
+| Pin No. | Name        | Description                   | Direction / Type
+
+| 1       | GND         | -                             | Ground
+| 2       | CAM_DN0     | D-PHY lane 0 (negative)       | Input, D-PHY
+| 3       | CAM_DP0     | D-PHY lane 0 (positive)       | Input, D-PHY
+| 4       | GND         | -                             | Ground
+| 5       | CAM_DN1     | D-PHY lane 1 (negative)       | Input, D-PHY
+| 6       | CAM_DP1     | D-PHY lane 1 (positive)       | Input, D-PHY
+| 7       | GND         | -                             | Ground
+| 8       | CAM_CN      | D-PHY Clock (negative)        | Input, D-PHY
+| 9       | CAM_CP      | D-PHY Clock (positive)        | Input, D-PHY
+|10       | GND         | -                             | Ground
+|11       | CAM_DN2     | D-PHY lane 2 (negative)       | Input, D-PHY
+|12       | CAM_DP2     | D-PHY lane 2 (positive)       | Input, D-PHY
+|13       | GND         | -                             | Ground
+|14       | CAM_DN3     | D-PHY lane 3 (negative)       | Input, D-PHY
+|15       | CAM_DP3     | D-PHY lane 3 (positive)       | Input, D-PHY
+|16       | GND         | -                             | Ground
+|17       | CAM_IO0     | GPIO (e.g. Power-Enable)      | Bidirectional, 3.3V
+|18       | CAM_IO1     | GPIO (e.g. Clock, LED)        | Bidirectional, 3.3V
+|19       | GND         | -                             | Ground
+|20       | SCL         | I^2^C Clock                   | Output, 3.3V
+|21       | SDA         | I^2^C Data                    | Bidirectional, 3.3V
+|22       | 3V3         | 3.3V Supply                   | Output
+|===
