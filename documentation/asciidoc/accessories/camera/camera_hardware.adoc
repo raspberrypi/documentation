@@ -274,8 +274,7 @@ Other available schematics;
 This is the pinout of the 15-pin Camera Serial Interface (CSI) connector used on flagship Raspberry Pi models prior to the Raspberry Pi 5.
 The connector type is an Amphenol SFW15R-2STE1LF or a compatible equivalent.
 
-NOTE: Most official Camera Modules have a reversed pinout to accommodate 15-pin Type A / Type 1 FFC cables. This means Pin 1 on the Raspberry Pi connects to Pin 15 on the Camera Module, and vice versa.
-Direction is given from the perspective of the Raspberry Pi.
+Signal direction is specified from the perspective of the Raspberry Pi.
 The I^2^C lines (SCL and SDA) are pulled up to 3.3V on the Raspberry Pi board.
 
 The function and direction of the GPIO lines depend on the specific Camera Module in use. Typically, CAM_IO0 is used as an active-high power enable.
@@ -305,7 +304,6 @@ The function and direction of the GPIO lines depend on the specific Camera Modul
 This is the pinout of the 22-pin Camera Serial Interface (CSI) connector used on the Raspberry Pi Zero series, the Compute Module IO boards, and flagship models since the Raspberry Pi 5.
 The connector type is an Amphenol F32Q-1A7H1-11022 or a compatible equivalent.
 
-NOTE: Most official Camera Modules have a reversed pinout to accommodate https://www.raspberrypi.com/products/camera-cable/[22-pin Type A / Type 1 FFC cables]. This means Pin 1 on the Raspberry Pi connects to Pin 22 on the Camera Module, and vice versa.
 Direction is given from the perspective of the Raspberry Pi.
 The I^2^C lines (SCL and SDA) are pulled up to 3.3V on the Raspberry Pi board.
 
