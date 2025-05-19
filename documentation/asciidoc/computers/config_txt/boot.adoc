@@ -267,7 +267,9 @@ Default: `0`
 [[program_rpiboot_gpio]]
 ==== `program_rpiboot_gpio`
 
-Compute Modules have a dedicated `nRPIBOOT` jumper to select `RPIBOOT` mode. Flagship and Keyboard Raspberry Pi devices with EEPROM lack a dedicated `nRPIBOOT` jumper. To select `RPIBOOT` mode on Flagship and Keyboard devices, pull one of the following GPIO pins low:
+Raspberry Pi 4B and Raspberry Pi 400 only.
+
+Compute Module 4 and 4S have a dedicated `nRPIBOOT` jumper to select `RPIBOOT` mode. Raspberry Pi 4B and Raspberry Pi 400 lack a dedicated `nRPIBOOT` jumper so one of the following GPIOs must be selected for use as `nRPIBOOT`.
 
 * `2`
 * `4`
@@ -276,11 +278,11 @@ Compute Modules have a dedicated `nRPIBOOT` jumper to select `RPIBOOT` mode. Fla
 * `7`
 * `8`
 
-This property does not depend on `secure-boot`. However, you should verify that this GPIO configuration does not conflict with any HATs which might pull the GPIO low during boot.
+The GPIO may be used as a general-purpose I/O pin after the OS has started. However, you should verify that this GPIO configuration does not conflict with any HATs which might pull the GPIO low during boot.
 
-For safety, this property can _only_ be programmed via `RPIBOOT`. As a result, you must first clear the bootloader EEPROM using `erase_eeprom`. This causes the ROM to failover to `RPIBOOT` mode, which then allows this option to be set.
+Although `secure-boot` requires this property to be set on Raspberry Pi 4B and Raspberry Pi 400, it does not depend on `secure-boot`. For example, `RPIBOOT` can be useful for automated testing.
 
-On BCM2712, you can alternatively force `RPIBOOT` mode by holding down the power button while simultaneously connecting a USB-C power supply.
+For safety, this OTP value can _only_ be programmed via `RPIBOOT`. As a result, you must first clear the bootloader EEPROM using `erase_eeprom`. The blank EEPROM causes the ROM to failover to `RPIBOOT` mode, which then allows this option to be set.
 
 Default: `{nbsp}`
 
