@@ -255,7 +255,12 @@ Default: `0`
 [[revoke_devkey]]
 ==== `revoke_devkey`
 
-If this property is set to `1` then `recovery.bin` will write a value to OTP that prevents the ROM from loading old versions of the second stage bootloader which do not support `secure-boot`. This prevents `secure-boot` from being turned off by reverting to an older release of the bootloader.
+Raspberry Pi 4 only.
+
+If this property is set to `1` then `recovery.bin` will write a value to OTP that prevents the ROM from loading old versions of the second stage bootloader which do not support `secure-boot`. This prevents `secure-boot` from being turned off by reverting to an older release of the bootloader. Therefore, this property must be set if `secure-boot` is enabled on production devices.
+
+This property is automatically is set by `recovery.bin` `2025/05/16` and newer if `program_pubkey=1`.
+
 
 Default: `0`
 
