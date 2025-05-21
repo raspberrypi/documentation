@@ -193,7 +193,7 @@ Default: `0`
 ==== `set_reboot_arg1`
 Raspberry Pi 5 only.
 
-Sets the value of `boot_arg1` to be passed via reset-safe register to the bootloader after a reboot.
+Sets the value of `boot_arg1` to be passed via a reset-safe register to the bootloader after a reboot.
 See xref:config_txt.adoc#boot_arg1[`boot_arg1`] for more details.
 Default: ``
 
@@ -202,7 +202,7 @@ Default: ``
 
 Raspberry Pi 5 only.
 
-Sets the value of xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER] to be passed via reset-safe register to the bootloader after a reboot. As with `tryboot`, this is a one-time setting and is automatically cleared after use.
+Sets the value of xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER] to be passed via a reset-safe register to the bootloader after a reboot. As with `tryboot`, this is a one-time setting and is automatically cleared after use.
 
 This property could be used to debug different xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER] settings. Alternatively, it could be used in a provisioning system which has control over power and the `nRPIBOOT` GPIO to override the boot mode without specifying xref:config_txt.adoc#conditional-filters[conditional filter] statements in the EEPROM config.
 
