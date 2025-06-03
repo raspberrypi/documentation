@@ -571,3 +571,24 @@ The number of buffers to allocate for still image capture or for video recording
 ==== `viewfinder-buffer-count`
 
 As the `buffer-count` option, but applies when running in preview mode (that is `rpicam-hello` or the preview, not capture, phase of `rpicam-still`).
+
+==== `metadata`
+
+Save captured image metadata to a file or `-` for stdout. The fields in the metadata output will depend on the camera model in use.
+
+See also `metadata-format`.
+
+==== `metadata-format`
+
+Format to save the metadata in. Accepts the following values:
+
+* `txt` for text format
+* `json` for JSON format
+
+In text format, each line will have the form
+
+    key=value
+
+In JSON format, the output is a JSON object.
+
+This option does nothing unless `--metadata` is also specified.

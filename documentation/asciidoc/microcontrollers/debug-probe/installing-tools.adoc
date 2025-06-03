@@ -1,66 +1,12 @@
 == Install tools
 
-To use the Debug Probe, install the following tools.
+To use the Debug Probe, OpenOCD and the GNU Project Debugger (GDB) are required. An Integrated Development Environment (IDE) may also be useful.
 
-=== Install OpenOCD
+On Raspberry Pi OS, most Linux variants, macOS, and Microsoft Windows, it is recommended to install our VS Code extension. This extension bundles OpenOCD, ARM toolchains, GDB, and register definitions for Pico-series microcontrollers.
 
-You need to install OpenOCD.
+See Chapter 3 of our https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting Started with Raspberry Pi Pico] guide.
 
-To install OpenOCD, run the following command in a terminal:
+Alternatively, tools can be manually installed by following Appendix C in the guide.
 
-[source,console]
-----
-$ sudo apt install openocd
-----
+NOTE: Manual installation of the tools on Windows is not recommended.
 
-To run OpenOCD, use the `openocd` command in your terminal.
-
-==== Install OpenOCD on macOS
-
-First, install the https://brew.sh/[Homebrew] package manager:
-
-[source,console]
-----
-$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-----
-
-To install OpenOCD on macOS, run the following commands:
-
-[source,console]
-----
-$ brew install openocd
-----
-
-To run OpenOCD, use the `openocd` command in your terminal.
-
-=== Install GDB
-
-We also need to install the GNU debugger (GDB).
-
-==== Linux
-
-Install `gdb-multiarch`:
-
-[source,console]
-----
-$ sudo apt install gdb-multiarch
-----
-
-==== macOS
-
-Run the following command to install `gdb`:
-
-[source,console]
-----
-$ brew install arm-none-eabi-gdb
-----
-
-You can safely ignore the request for "special privileges" messages on installation.
-
-==== MS Windows
-
-GDB is available as part of our https://github.com/raspberrypi/pico-setup-windows/releases/latest[Pico setup for Windows installer]. It is also included in the https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads[Arm GNU Toolchain Downloads].
-
-Alternatively information about manual installation can be found in Chapter 9 and Appendix A of our https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting Started with Raspberry Pi Pico] book. 
-
-NOTE: Manual installation of GDB on Windows is not recommended.

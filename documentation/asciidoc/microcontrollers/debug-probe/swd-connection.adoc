@@ -1,10 +1,12 @@
-== Serial Wire Debug (SWD)
+== Starting a Debug Session
 
-Serial Wire Debug (SWD) is a two-pin interface (https://developer.arm.com/documentation/101761/1-0/Debug-and-trace-interface/Serial-Wire-Debug-signals[SWDIO and SWCLK]) alternative to the JTAG four- or five-pin debugging interface standard.
+The Debug Probe will let you load binaries via the SWD port and OpenOCD: you will not need to unplug, and then push-and-hold, the BOOTSEL button every time you push a new binary to your Pico. Using the Debug Probe to upload new binaries is an entirely hands-off affair.
 
-=== Uploading new programs to your Pico
+GDB is then used to debug the binary running on the Pico.
 
-The Pico Debug Probe will let you load binaries via the SWD port and OpenOCD: you will not need to unplug, and then push-and-hold, the BOOTSEL button every time you push a new binary to your Pico. Using the Debug Probe uploading new binaries is an entirely hands off affair.
+We recommend the use of the Raspberry Pi Pico VSCode extension, which integrates the use of OpenOCD and GDB, to upload and debug programs. See Chapter 4 of https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico] for more information.
+
+=== Standalone program upload
 
 Once you have built a binary: 
 
@@ -15,9 +17,9 @@ $ sudo openocd -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c "adapter speed
 
 NOTE: When you use the Debug Probe to upload a binary the ELF version of the file is used, not the UF2 file that you would use when you drag-and-drop.
 
-=== Debugging with SWD
+=== Standalone debug session
 
-It'll also let you use `openocd` in server mode, and connect GDB, which gives you break points and "proper" debugging.
+This will use `openocd` in server mode, and connect GDB, which gives you breakpoints and single-step over a console interface.
 
 [IMPORTANT] 
 ======
@@ -35,9 +37,11 @@ $ make -j4
 ----
 
 In a debug build you will get more information when you run it under the debugger, as the compiler builds your program with the information to tell GDB what your program is doing.
-
-See Chapter 6 of https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico] for more information.
 ======
+
+NOTE: For computers that are _not_ Raspberry Pis, a variant of GDB that can debug ARM processors is required. Use one of the following alternatives depending on your operating system and device:
+* On Linux devices, use `gdb-multiarch`.
+* On macOS and Windows devices, use `arm-none-eabi-gdb` from the toolchain on https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads[Arm's website]
 
 To start an OpenOCD server, run the following command:
 
@@ -55,8 +59,3 @@ $ gdb blink.elf
 > monitor reset init
 > continue
 ----
-
-GDB doesn't work on all platforms. Use one of the following alternatives instead of `gdb`, depending on your operating system and device:
-
-* On Linux devices that are _not_ Raspberry Pis, use `gdb-multiarch`.
-* On macOS devices, use `arm-none-eabi-gdb`.
