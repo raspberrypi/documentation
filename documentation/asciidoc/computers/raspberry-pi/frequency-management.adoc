@@ -84,6 +84,8 @@ As the temperature of the Raspberry Pi 5 increases, the fan reacts in the follow
 
 Temperature decreases use the same mapping with a 5°C **hysteresis**; fan speed decreases when the temperature drops to 5°C below each of the above thresholds.
 
+NOTE: The temperature, hysteresis and speed figures given above can be adjusted by using the various `fan_tempN`, `fan_tempN_hyst` and `fan_tempN_speed` dtoverlay settings (where `N` is 0, 1, 2 or 3). See https://github.com/raspberrypi/linux/blob/rpi-6.12.y/arch/arm/boot/dts/overlays/README[the overlays README] for full details. For example, adding `dtparam=fan_temp0=55000` to `/boot/firmware/config.txt` will cause the fan to remain off until the Raspberry Pi 5's temperature reaches 55°C.
+
 At boot the fan is turned on, and the tachometer input is checked to see if the fan is spinning. If it is, then the `cooling_fan` device tree overlay is enabled. This overlay is in `bcm2712-rpi-5-b.dtb` by default, but with `status=disabled`.
 
 ==== Raspberry Pi 5 fan connector pinout
