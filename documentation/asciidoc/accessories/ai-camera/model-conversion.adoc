@@ -2,38 +2,27 @@
 
 To deploy a new neural network model to the Raspberry Pi AI Camera, complete the following steps:
 
-. Provide a neural network model.
-. Quantise and compress the model so that it can run using the resources available on the IMX500 camera module.
-. Convert the compressed model to IMX500 format.
+. Provide a floating-point neural network model (PyTorch or TensorFlow).
+. Run the model through Edge-MDT (Edge AI Model Development Toolkit).
+.. *Quantise* and compress the model so that it can run using the resources available on the IMX500 camera module.
+.. *Convert* the compressed model to IMX500 format.
 . Package the model into a firmware file that can be loaded at runtime onto the camera.
 
-The first three steps will normally be performed on a more powerful computer such as a desktop or server. You must run the final packaging step on a Raspberry Pi.
+The first two steps will normally be performed on a more powerful computer such as a desktop or server. You must run the final packaging step on a Raspberry Pi.
 
 === Model creation
 
-The creation of neural network models is beyond the scope of this guide. Existing models can be re-used, or new ones created using popular frameworks like TensorFlow or PyTorch.
+The creation of neural network models is beyond the scope of this guide. Existing models can be re-used, or new ones created using popular AI frameworks like TensorFlow or PyTorch.
 
 For more information, see the official https://developer.aitrios.sony-semicon.com/en/raspberrypi-ai-camera[AITRIOS developer website].
 
-=== Quantisation and compression
+=== Model compression and conversion
 
-Models are quantised and compressed using Sony's Model Compression Toolkit. To install the toolkit, run the following command:
+==== Edge-MDT installation
 
-[source,console]
-----
-$ pip install model_compression_toolkit
-----
+The Edge-MDT (Model Development Toolkit) software package installs all the tools required to quantise, compress, and convert models to run on your IMX500 device.
 
-For more information, see the https://github.com/sony/model_optimization[Sony model optimization GitHub repository].
-
-The Model Compression Toolkit generates a quantised model in the following formats:
-
-* Keras (TensorFlow)
-* ONNX (PyTorch)
-
-=== Conversion
-
-To convert a model, first install the converter tools:
+The Edge-MDT package takes a parameter to select between installing the PyTorch or TensorFlow version of the tools.
 
 [tabs]
 ======
@@ -41,7 +30,7 @@ TensorFlow::
 +
 [source,console]
 ----
-$ pip install imx500-converter[tf]
+$ pip install edge-mdt[tf]
 ----
 +
 TIP: Always use the same version of TensorFlow you used to compress your model.
@@ -50,13 +39,26 @@ PyTorch::
 +
 [source,console]
 ----
-$ pip install imx500-converter[pt]
+$ pip install edge-mdt[pt]
 ----
 ======
 
-If you need to install both packages, use two separate Python virtual environments. This prevents TensorFlow and PyTorch from causing conflicts with one another.
+If you need to install both packages, use two separate Python virtual environments. This prevents TensorFlow and PyTorch from causing conflicts with each other.
 
-Next, convert the model:
+==== Model Optimization
+
+Models are quantised and compressed using Sony's Model Compression Toolkit (MCT). This tool is automatically installed as part of the Edge-MDT installation step. For more information, see the https://github.com/sony/model_optimization[Sony model optimization GitHub repository].
+
+The Model Compression Toolkit generates a quantised model in the following formats:
+
+* Keras (TensorFlow)
+* ONNX (PyTorch)
+
+=== Conversion
+
+The converter is a command line application that compiles the quantised model (in .onnx or .keras formats) into a binary file that can be packaged and loaded onto the AI Camera. This tool is automatically installed as part of the Edge-MDT installation step.
+
+To convert a model model:
 
 [tabs]
 ======
@@ -75,9 +77,9 @@ $ imxconv-pt -i <compressed ONNX model> -o <output folder>
 ----
 ======
 
-Both commands create an output folder that contains a memory usage report and a `packerOut.zip` file.
+IMPORTANT: For optimal use of the memory available to the accelerator on the IMX500 sensor, add `--no-input-persistency` to the above commands. However, this will disable input tensor generation that may be used for debugging purposes.
 
-For optimal use of the memory available to the accelerator on the IMX500 sensor, add `--no-input-persistency` to the above commands. However, this will disable input tensor generation and return to the application for debugging purposes.
+Both commands create an output folder that contains a memory usage report and a `packerOut.zip` file.
 
 For more information on the model conversion process, see the official https://developer.aitrios.sony-semicon.com/en/raspberrypi-ai-camera/documentation/imx500-converter[Sony IMX500 Converter documentation].
 
