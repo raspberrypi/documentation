@@ -1,0 +1,166 @@
+At Raspberry Pi we're trying to open source as much of our code as possible to make it easy to use and adapt for your own uses. Raspberry Pi develops and supports software specifically for our products and focuses its energy on software which provides the most optimal user experience. For example, drivers which optimize multimedia acceleration such as the 3D, HEVC decode, the camera imaging pipeline, AI acceleration, dual HDMI and audio.
+
+== Finding software sources in Raspberry Pi OS
+
+When looking for software which is distributed with Raspberry Pi OS, there are often upstream software sources that we patch to create our downstream packages (those tagged with `pass:[+rpt]`). To view the source for those packages it is usually easier to fetch through apt. To do this, you first need to edit your apt lists to include the source packages. The following files should be edited to remove the leading `pass:[#]` from each line:
+
+* `+/etc/apt/sources.list+`
+* `+/etc/apt/sources.list.d/raspi.list+`
+
+Next you must update the package lists:
+
+[source,console]
+----
+$ sudo apt update
+----
+
+Now you can fetch the package source, for example:
+
+[source,console]
+----
+$ apt source labwc
+----
+
+Finally you can build the package using the standard Debian building process.
+
+[source,console]
+----
+$ sudo apt build-dep labwc
+$ debuild -uc -us
+----
+
+== Our GitHub organizations
+
+The other place you can find our software in a more standard form is in our GitHub repositories, we have three GitHub organisations we use to store our sources:
+
+* https://github.com/raspberrypi
+* https://github.com/raspberrypi-ui
+* https://github.com/RPi-Distro
+
+== List of categorized sources
+
+The following is a curated list of repositories which most people are interested in:
+
+=== Main sources
+
+https://github.com/raspberrypi/linux::
+This repository contains the source code for the downstream Linux kernel supported and working on all versions of Raspberry Pi from Pi 1 to Pi 5.
+
+=== Libraries and applications
+
+https://github.com/raspberrypi/utils::
+A collection of useful utilities such as pinctrl, piolib and raspinfo, also gpiolib a Raspberry Pi supported method of directly accessing GPIO pins.
+
+https://github.com/raspberrypi/libcamera::
+A libcamera library implementation for controlling the Raspberry Pi's ISP and cameras.
+
+https://github.com/raspberrypi/rpicam-apps::
+A C++ library and application suite for image/video processing and encoding with Raspberry Pi cameras using libcamera.
+
+https://github.com/raspberrypi/picamera2::
+A Python library for using and controlling the Raspberry Pi cameras.
+
+https://github.com/raspberrypi/drmu::
+A library for directly controlling and accessing multimedia interfaces.
+
+=== Desktop
+
+https://github.com/raspberrypi-ui/wf-panel-pi::
+The taskbar displayed at the top of the screen when running the Wayland-based desktop.
+
+https://github.com/raspberrypi-ui/lxpanel-pi::
+The taskbar displayed at the top of the screen when running the legacy X-based desktop.
+
+https://github.com/raspberrypi-ui/pplug-batt::
+https://github.com/raspberrypi-ui/pplug-bluetooth::
+https://github.com/raspberrypi-ui/pplug-clock::
+https://github.com/raspberrypi-ui/pplug-cpu::
+https://github.com/raspberrypi-ui/pplug-cputemp::
+https://github.com/raspberrypi-ui/pplug-ejecter::
+https://github.com/raspberrypi-ui/pplug-gpu::
+https://github.com/raspberrypi-ui/pplug-menu::
+https://github.com/raspberrypi-ui/pplug-netman::
+https://github.com/raspberrypi-ui/pplug-power::
+https://github.com/raspberrypi-ui/pplug-updater::
+https://github.com/raspberrypi-ui/pplug-volumepulse::
+The plugins displayed on the taskbars.
+
+https://github.com/raspberrypi-ui/pcmanfm::
+https://github.com/raspberrypi-ui/libfm::
+The file manager used by the desktop, which also displays the desktop background.
+
+https://github.com/raspberrypi-ui/appset::
+The Appearance settings panel.
+
+https://github.com/raspberrypi-ui/rc_gui::
+The Raspberry Pi Configuration settings panel.
+
+https://github.com/raspberrypi-ui/rasputin::
+The Mouse and Keyboard settings panel.
+
+https://github.com/raspberrypi-ui/raindrop::
+The Screen Configuration settings panel.
+
+https://github.com/raspberrypi-ui/rpinters::
+The Printers settings panel.
+
+=== Applications
+
+https://github.com/raspberrypi-ui/agnostics::
+The Diagnostics application used to check SD cards.
+
+https://github.com/raspberrypi-ui/bookshelf::
+The code for the Bookshelf application which allows you to download and read e-books and past issues of the Raspberry Pi Official Magazine.
+
+https://github.com/raspberrypi-ui/piclone::
+The SD Card Copier application which allows cards and drives to be cloned.
+
+https://github.com/raspberrypi-ui/rp-prefapps::
+The Recommended Software application which allows selected programs to be installed or removed.
+
+=== Debug
+
+https://github.com/raspberrypi/rpi-analyse-boot::
+A boot analysis service that gathers boot-time metrics from various different sources.
+
+=== Tools
+
+https://github.com/raspberrypi/rpi-imager::
+The code for the Raspberry Pi Imager application which flashes an operating system to an SD card.
+
+https://github.com/raspberrypi/rpi-image-gen::
+A build system for developing an operating system for an embedded Raspberry Pi system.
+
+https://github.com/raspberrypi/rpi-sb-provisioner::
+A tool to provision Raspberry Pi devices at manufacture, including secure boot and encrypted filesystems.
+
+https://github.com/raspberrypi/usbboot::
+A tool to boot a Raspberry Pi over USB for provisioning Compute Module and Raspberry Pi devices.
+
+=== Feedback
+
+http://github.com/raspberrypi/bookworm-feedback::
+A repo specifically reserved for bug-reporting for the current Raspberry Pi OS release.
+
+=== Raspberry Pi Pico
+
+https://marketplace.visualstudio.com/items?itemName=raspberry-pi.raspberry-pi-pico::
+This is where you can go to download and install the Microsoft Visual Studio Code extension for the Raspberry Pi Pico SDK.
+
+https://github.com/raspberrypi/pico-setup::
+Quick-start installation tool for the Raspberry Pi Pico SDK for command line use.
+
+https://github.com/raspberrypi/pico-sdk::
+The Raspberry Pi Pico SDK sources.
+
+https://github.com/raspberrypi/debugprobe::
+Sources for the Raspberry Pi Debug Probe, providing both SWD and UART easily.
+
+https://github.com/raspberrypi/openocd::
+The Raspberry Pi downstream OpenOCD sources.
+
+https://github.com/raspberrypi/pico-examples::
+Examples for Raspberry Pi Pico.
+
+https://github.com/raspberrypi/picotool::
+Tool for interacting with RP-series device(s) in BOOTSEL mode.

@@ -76,6 +76,12 @@
                     "description": "Technical information about the CPUs used by Raspberry Pi",
                     "image": "full-sized/Processors.png",
                     "subpath": "processors.adoc"
+                },
+                {
+                    "title": "Software sources",
+                    "description": "Open source software by Raspberry Pi",
+                    "image": "full-sized/software-sources.png",
+                    "subpath": "software-sources.adoc"
                 }
             ]
         },
