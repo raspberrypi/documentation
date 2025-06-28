@@ -21,6 +21,11 @@ To connect a single camera to a Compute Module, complete the following steps:
 +
 image::images/CMIO-Cam-Adapter.jpg[alt="Connecting the adapter board", width="60%"]
 
+. _(CM5 only)_: Fit two jumpers on J6 per the board's written instructions.
++
+image::images/cm5io-j6-cam1.png[alt="Jumpers on J6 for CAM1", width="60%"]
+
+
 . _(CM1, CM3, CM3+, and CM4S only)_: Connect the following GPIO pins with jumper cables:
   * `0` to `CD1_SDA`
   * `1` to `CD1_SCL`
@@ -107,7 +112,7 @@ image::images/CMIO-Cam-Adapter.jpg[alt="Connect the adapter board", width="60%"]
 +
 image:images/CMIO-Cam-GPIO2.jpg[alt="GPIO connection with additional camera", width="60%"]
 
-. _(CM4 and CM5)_: Connect the J6 GPIO pins with two vertical-orientation jumpers.
+. _(CM4)_: Connect the J6 GPIO pins with two vertical-orientation jumpers.
 +
 image:images/j6_vertical.jpg[alt="Connect the J6 GPIO pins in vertical orientation", width="60%"]
 
