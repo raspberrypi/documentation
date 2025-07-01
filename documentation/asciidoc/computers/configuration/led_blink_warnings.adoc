@@ -30,6 +30,10 @@ If a Raspberry Pi fails to boot for some reason, or has to shut down, in many ca
 | 10
 | In HALT state
 
+| 1
+| 2
+| SD card overcurrent detected
+
 | 2
 | 1
 | Partition not FAT
