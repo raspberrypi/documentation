@@ -26,6 +26,13 @@ The Edge-MDT package takes a parameter to select between installing the PyTorch 
 
 [tabs]
 ======
+PyTorch::
++
+[source,console]
+----
+$ pip install edge-mdt[pt]
+----
+
 TensorFlow::
 +
 [source,console]
@@ -34,13 +41,6 @@ $ pip install edge-mdt[tf]
 ----
 +
 TIP: Always use the same version of TensorFlow you used to compress your model.
-
-PyTorch::
-+
-[source,console]
-----
-$ pip install edge-mdt[pt]
-----
 ======
 
 If you need to install both packages, use two separate Python virtual environments. This prevents TensorFlow and PyTorch from causing conflicts with each other.
@@ -62,18 +62,18 @@ To convert a model model:
 
 [tabs]
 ======
-TensorFlow::
-+
-[source,console]
-----
-$ imxconv-tf -i <compressed Keras model> -o <output folder>
-----
-
 PyTorch::
 +
 [source,console]
 ----
 $ imxconv-pt -i <compressed ONNX model> -o <output folder>
+----
+
+TensorFlow::
++
+[source,console]
+----
+$ imxconv-tf -i <compressed Keras model> -o <output folder>
 ----
 ======
 
