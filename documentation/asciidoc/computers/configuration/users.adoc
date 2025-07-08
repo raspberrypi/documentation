@@ -36,7 +36,7 @@ To grant the new user necessary permissions, like `sudo`, run the following comm
 
 [source,console]
 ----
-$ sudo usermod -a -G adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi <username>
+$ sudo usermod -a -G adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,render,netdev,lpadmin,gpio,i2c,spi <username>
 ----
 
 To check that the permissions were successfully granted, run the following command, replacing the `<username>` placeholder with the username for the new user:
