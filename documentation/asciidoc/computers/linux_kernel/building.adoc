@@ -455,7 +455,7 @@ To install the 64-bit kernel:
 $ sudo cp mnt/boot/$KERNEL.img mnt/boot/$KERNEL-backup.img
 $ sudo cp arch/arm64/boot/Image mnt/boot/$KERNEL.img
 $ sudo cp arch/arm64/boot/dts/broadcom/*.dtb mnt/boot/
-$ sudo cp arch/arm64/boot/dts/overlays/*.dtb* mnt/boot/overlays/
+$ sudo cp arch/arm64/boot/dts/overlays/*.dtbo mnt/boot/overlays/
 $ sudo cp arch/arm64/boot/dts/overlays/README mnt/boot/overlays/
 $ sudo umount mnt/boot
 $ sudo umount mnt/root
