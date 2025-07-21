@@ -27,7 +27,7 @@ To build `rpicam-apps` without first rebuilding `libcamera` and `libepoxy`, inst
 
 [source,console]
 ----
-$ sudo apt install -y libcamera-dev libepoxy-dev libjpeg-dev libtiff5-dev libpng-dev
+$ sudo apt install -y libcamera-dev libepoxy-dev libjpeg-dev libtiff5-dev libpng-dev libopencv-dev
 ----
 
 TIP: If you do not need support for the GLES/EGL preview window, omit `libepoxy-dev`.
