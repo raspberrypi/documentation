@@ -146,6 +146,29 @@ The `BOOT_ORDER` property defines the sequence for the different boot modes. It 
 | Try NVMe first, followed by USB-MSD then repeat
 |===
 
+
+[[BOOT_WATCHDOG_TIMEOUT]]
+==== `BOOT_WATCHDOG_TIMEOUT`
+
+If set to a non-zero value (in seconds), enables a hardware watchdog timer in the bootloader. If the OS is not started within the specified time, the watchdog will reset the system.
+
+The bootloader watchdog is automatically cancelled as soon as the ARM CPU is started. It does **not** monitor the OS after the handover from the bootloader.
+
+This is useful for unattended or remote systems to ensure recovery from failed boots (e.g., if the OS never loads).
+
+Default: `0` (disabled)
+
+[[BOOT_WATCHDOG_PARTITION]]
+==== `BOOT_WATCHDOG_PARTITION`
+
+If the bootloader watchdog triggers, this property specifies the partition number to boot from after the reset. This allows for automatic failover to a recovery or alternate partition.
+
+If not set, the bootloader will retry the default partition (0).
+
+You can use this in conjunction with the xref:config_txt.adoc#the-expression-filter[expression filter] to apply different settings or select a different boot flow when the watchdog triggers a reboot to a specific partition.
+
+Default: `0`
+
 [[MAX_RESTARTS]]
 ==== `MAX_RESTARTS`
 
