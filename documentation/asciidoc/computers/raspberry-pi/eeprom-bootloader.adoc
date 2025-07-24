@@ -154,7 +154,7 @@ If set to a non-zero value (in seconds), enables a hardware watchdog timer in th
 
 The bootloader watchdog is automatically cancelled as soon as the ARM CPU is started. It does **not** monitor the OS after the handover from the bootloader.
 
-This is useful for unattended or remote systems to ensure recovery from failed boots (e.g., if the OS never loads).
+This is useful for unattended or remote systems to ensure recovery from failed boots (e.g. if the OS never loads).
 
 Default: `0` (disabled)
 
@@ -166,6 +166,8 @@ If the bootloader watchdog triggers, this property specifies the partition numbe
 If not set, the bootloader will retry the default partition (0).
 
 You can use this in conjunction with the xref:config_txt.adoc#the-expression-filter[expression filter] to apply different settings or select a different boot flow when the watchdog triggers a reboot to a specific partition.
+
+See also the xref:raspberry-pi.adoc#PARTITION[PARTITION] property for more information about how to use high partition numbers to detect a watchdog trigger.
 
 Default: `0`
 
