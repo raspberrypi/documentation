@@ -106,7 +106,7 @@ This connects the red cable (5 V power) to pin 2 and the black cable (ground) to
 .The GPIO connection to the Touch Display 2
 image::images/touch-display-2-gpio-connection.png[The GPIO connection to the Touch Display 2, width="40%"]
 
-WARNING:Incorrect connection of power might cause damage to the display.
+WARNING: Correcting the power cable incorrectly might cause damage to the display.
 
 === Step 4. Mount your Touch Display 2 (optional)
 
@@ -147,7 +147,7 @@ If you have the Raspberry Pi OS desktop running, you can rotate the display thro
 
 === Without a desktop
 
-To rotate the display without a desktop, edit the `/boot/firmware/cmdline.txt` file, which contains parameters that the Raspberry Pi OS reads when it boots. Add the following to the end of `cmdline.txt`, replacing `<rotation-value>` with the number of degrees to rotate by (`0`, `90`, `180`, or `270`):
+To rotate the display without a desktop, edit the `/boot/firmware/cmdline.txt` file, which contains parameters that Raspberry Pi OS reads when it boots. Add the following to the end of `cmdline.txt`, replacing `<rotation-value>` with the number of degrees to rotate by (`0`, `90`, `180`, or `270`):
 
 [source,ini]
 ----
@@ -156,16 +156,16 @@ video=DSI-1:720x1280@60,rotate=<rotation-value>
 
 NOTE: You can't rotate the DSI display separately from the HDMI display with `cmdline.txt`. When you use DSI and HDMI simultaneously, they share the same rotation value.
 
-== Customise settings
+== Customise touchscreen settings
 
 You can use the Device Tree overlay to tell the Raspberry Pi OS how to configure the Touch Display 2 at boot. 
 
 - For the 5-inch display, the overlay is called `vc4-kms-dsi-ili9881-5inch`.
 - For the 7-inch display, the overlay is called `vc4-kms-dsi-ili9881-7inch`.
 
-You can modify the device tree overlay in the boot configuration file (`/boot/firmware/config.txt`). This is a more flexible way to control rotation, resolution, and touch behaviour, compared to editing `cmdline.txt` alone.
+You can modify the Device Tree overlay in the boot configuration file (`/boot/firmware/config.txt`).
 
-Open `/boot/firmware/config.txt` and then add the required device tree parameters to the `dtoverlay` line, separated by commas. 
+Open `/boot/firmware/config.txt` and then add the required Device Tree parameters to the `dtoverlay` line, separated by commas. 
 
 - Booleans (`invx`, `invy`, `swapxy`, and `disable_touch`) default to true if present, but you can set them to false using the suffix `=0`.
 - Integers (`sizex` and `sizey`) require a number, for example, `sizey=240`.
@@ -198,7 +198,7 @@ See the table below for details.
 
 === Example
 
-In the following example, `invx` flips the X axis, and `invy` flips the Y axis:
+In the following example, `invx` flips the X axis, and `invy` flips the Y axis for the 7-inch Touch Display 2:
 
 [source,ini]
 ----
