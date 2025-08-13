@@ -11,30 +11,32 @@ The Touch Display 2 comes in two sizes, and supports five-point multitouch and a
 
 The Touch Display 2  comes in two sizes: 5-inch and 7-inch (measured diagonally). Aside from the physical size, these two displays have identical features and functionality. The following table summarises the dimensions of these two displays:
 
-[cols="1,1,1"]
+[cols="1,1,1,1,1"]
 |===
 |
-|*5-inch display*
-|*7-inch display*
-
 |*Depth*
-|15 mm
-|16 mm
-
+|*Outline dimensions*
 |*Viewing area*
-|111 x 63 mm
-|155 x 88 mm
-
 |*Active area*
-|110 x 62 mm
-|155 x 87 mm
+
+|*5-inch display*
+|16 mm
+|143.5 x 91.5 mm
+|111.5 x 63 mm
+|110.5 x 62 mm
+
+|*7-inch display*
+|15 mm
+|189.5 x 120 mm
+|155.5 x 88 mm
+|154.5 x 87 mm
 |===
 
 === Features
 The Touch Display 2 (both 5-inch and 7-inch) includes the following features:
 
-* **Resolution.** 720 x 1280 pixel resolution.
-* **Colour depth.** 24-bit RGB display, capable of showing over 16 million colours. 
+* **720 x 1280 pixel resolution.** High-definition output.
+* **24-bit RGB display.** Capable of showing over 16 million colours. 
 * **Multitouch.** Supports up to five simultaneous touch points and an on-screen keyboard.
 * **Mouse-equivalence.** Supports full desktop control without a physical mouse, for example, selecting, dragging, scrolling, and long-pressing for menus.
 * **On-screen keyboard.** Supports a visual keyboard in place of a physical keyboard.
