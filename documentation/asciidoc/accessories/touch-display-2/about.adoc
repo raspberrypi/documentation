@@ -37,7 +37,7 @@ Touch Display 2 (both 5-inch and 7-inch) includes the following features:
 
 * **720 x 1280 pixel resolution.** High-definition output.
 * **24-bit RGB display.** Capable of showing over 16 million colours. 
-* **Multitouch.** Supports up to five simultaneous touch points.
+* **Multitouch.** Supports up to five simultaneous touch points and an on-screen keyboard.
 * **Mouse-equivalence.** Supports full desktop control without a physical mouse, for example, selecting, dragging, scrolling, and long-pressing for menus.
 * **On-screen keyboard.** Supports a visual keyboard in place of a physical keyboard.
 * **Integrated power.** Powered directly by the host Raspberry Pi, requiring no separate power supply.
@@ -106,7 +106,7 @@ This connects the red cable (5 V power) to pin 2 and the black cable (ground) to
 .The GPIO connection to the Touch Display 2
 image::images/touch-display-2-gpio-connection.png[The GPIO connection to the Touch Display 2, width="40%"]
 
-WARNING: Correcting the power cable incorrectly might cause damage to the display.
+WARNING: Connecting the power cable incorrectly might cause damage to the display.
 
 === Step 4. Mount your Touch Display 2 (optional)
 
@@ -119,7 +119,7 @@ Take care not to pinch the FFC.
 
 == Use an on-screen keyboard
 
-A Raspberry Pi with OS **Bookworm** or later already includes the **Squeakboard on-screen keyboard**. With a Touch Display 2 attached, the keyboard automatically appears when you can enter text, and automatically disappears when you can't.
+Raspberry Pi OS **Bookworm** and later already includes the **Squeakboard on-screen keyboard**. With a Touch Display 2 attached, the keyboard automatically appears when you can enter text, and automatically disappears when you can't.
 
 For applications that don't support text entry detection, you can manually show or hide the keyboard using the keyboard icon at the right side of the taskbar. You can also permanently show or hide the on-screen keyboard using the Raspberry Pi graphical interface or the command line.
 
@@ -158,7 +158,7 @@ NOTE: You can't rotate the DSI display separately from the HDMI display with `cm
 
 == Customise touchscreen settings
 
-You can use the Device Tree overlay to tell Raspberry Pi OS how to configure the Touch Display 2 at boot. 
+You can use the Device Tree overlay to tell the Raspberry Pi OS how to configure the Touch Display 2 at boot. 
 
 - For the 5-inch display, the overlay is called `vc4-kms-dsi-ili9881-5inch`.
 - For the 7-inch display, the overlay is called `vc4-kms-dsi-ili9881-7inch`.
@@ -198,7 +198,7 @@ See the table below for details.
 
 === Example
 
-In the following example, `invx` flips the X axis, and `invy` flips the Y axis for the 7-inch Touch Display 2:
+In the following example, `invx` flips the X axis and `invy` flips the Y axis for a 7-inch Touch Display 2:
 
 [source,ini]
 ----
