@@ -108,7 +108,7 @@ image::images/touch-display-2-gpio-connection.png[The GPIO connection to the Tou
 
 WARNING: Connecting the power cable incorrectly might cause damage to the display.
 
-=== Step 4. Mount your Touch Display 2 (optional)
+=== Step 4. Mount your Raspberry Pi to the Touch Display 2 (optional)
 
 Optionally, use the included M2.5 screws to mount your Raspberry Pi to the back of your Touch Display 2.
 
