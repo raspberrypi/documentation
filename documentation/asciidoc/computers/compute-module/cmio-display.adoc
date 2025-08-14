@@ -21,7 +21,7 @@ To connect a display to `DISP1/DSI1`:
 
 === Connect a display to DISP0/DSI0
 
-To connect a display to `DISP0/DSI0`` on CM1, CM3, and CM4 IO boards:
+To connect a display to `DISP0/DSI0` on CM1, CM3, and CM4 IO boards:
 
 . Connect the display to the `DISP0/DSI0`` port on the Compute Module IO board through the 22W to 15W display adapter.
 . Complete the appropriate jumper connections:
