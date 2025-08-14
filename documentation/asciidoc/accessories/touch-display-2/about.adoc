@@ -94,7 +94,7 @@ IMPORTANT: Disconnect your Raspberry Pi from power before completing the followi
     - This port should be marked with some variation of the term **DISPLAY**, **CAM/DISP**, or **DISP**. 
     - If your Raspberry Pi has multiple DSI connectors, we recommend using the port labelled **1**.
 . Insert the other end of your FFC into the Raspberry Pi DSI connector, with the metal contacts facing the Ethernet and USB-A ports.
-. Hold the FFC firmly in place and simultaneously push the retaining clip back in on the FFC connector of the Raspberry Pi to secure the cable.
+. Hold the FFC firmly in place and simultaneously push the retaining clip back down on the FFC connector of the Raspberry Pi to secure the cable.
 
 === Step 3. Connect the GPIO power cable
 
