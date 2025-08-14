@@ -158,7 +158,7 @@ NOTE: You can't rotate the DSI display separately from the HDMI display with `cm
 
 == Customise touchscreen settings
 
-You can use the Device Tree overlay to tell the Raspberry Pi OS how to configure the Touch Display 2 at boot. 
+You can use the Device Tree overlay to tell Raspberry Pi OS how to configure the Touch Display 2 at boot. 
 
 - For the 5-inch display, the overlay is called `vc4-kms-dsi-ili9881-5inch`.
 - For the 7-inch display, the overlay is called `vc4-kms-dsi-ili9881-7inch`.
