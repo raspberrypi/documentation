@@ -82,7 +82,7 @@ IMPORTANT: Disconnect your Raspberry Pi from power before completing the followi
 
 === Step 1. Connect FFC to Touch Display 2
 
-. Slide the retaining clip outwards from both sides of the FFC connector on the Touch Display 2 to secure the cable.
+. Slide the retaining clip outwards from both sides of the FFC connector on the Touch Display 2.
 . Insert one 15-way end of your FFC into the Touch Display 2 FFC connector, with the metal contacts facing upwards, away from the Touch Display 2.
     - If you're connecting to a Raspberry Pi 5, and therefore using the **22-way to 15-way FFC**, the 22-way end is the smaller end of the cable. Insert the larger end of the cable into the Touch Display 2 FFC connector.
     - If you're using the **15-way to 15-way FFC**, insert either end of the cable into the Touch Display 2 FFC connector.
