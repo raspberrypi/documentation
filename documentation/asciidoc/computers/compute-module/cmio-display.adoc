@@ -16,9 +16,7 @@ To connect a display to DISP1/DSI1:
     * `1` to `CD1_SCL`
   - For *CM5*, on the Compute Module 5 IO board, add the appropriate jumpers to J6, as indicated on the silkscreen.
 . Reconnect the Compute Module to power.
-. Depending on whether you're using a 5-inch or 7-inch display, add one of the following lines to xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]:
-  - For the *5-inch* display: `dtoverlay=vc4-kms-dsi-5inch`
-  - For the *7-inch* display: `dtoverlay=vc4-kms-dsi-7inch`
+. Add `dtoverlay=vc4-kms-dsi-7inch` to xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]: 
 . Reboot your Compute Module with `sudo reboot`. Your device should detect and begin displaying output to your display.
 
 === Connect a display to DISP0/DSI0
@@ -32,9 +30,7 @@ To connect a display to DISP0/DSI0 on CM1, CM3 and CM4 IO boards:
     * `29` to `CD0_SCL`
   - For *CM4*, on the Compute Module 4 IO board, add the appropriate jumpers to J6, as indicated on the silkscreen.
 . Reconnect the Compute Module to power.
-. Depending on whether you're using a 5-inch or 7-inch display, add one of the following lines to `/boot/firmware/config.txt`:
-  - For the *5-inch* display: `dtoverlay=vc4-kms-dsi-5inch`
-  - For the *7-inch* display:  `dtoverlay=vc4-kms-dsi-7inch`
+. Add `dtoverlay=vc4-kms-dsi-7inch` to `/boot/firmware/config.txt`:
 . Reboot your Compute Module with `sudo reboot`. Your device should detect and begin displaying output to your display.
 
 === Disable touchscreen
