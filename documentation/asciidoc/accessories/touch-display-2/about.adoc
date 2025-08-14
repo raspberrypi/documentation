@@ -119,7 +119,7 @@ Take care not to pinch the FFC.
 
 == Use an on-screen keyboard
 
-Raspberry Pi OS **Bookworm** and later already includes the **Squeakboard on-screen keyboard**. With a Touch Display 2 attached, the keyboard automatically appears when you can enter text, and automatically disappears when you can't.
+Raspberry Pi OS **Bookworm** and later already includes the **Squeekboard on-screen keyboard**. With a Touch Display 2 attached, the keyboard automatically appears when you can enter text, and automatically disappears when you can't.
 
 For applications that don't support text entry detection, you can manually show or hide the keyboard using the keyboard icon at the right side of the taskbar. You can also permanently show or hide the on-screen keyboard using the Raspberry Pi graphical interface or the command line.
 
