@@ -37,7 +37,7 @@ Touch Display 2 (both 5-inch and 7-inch) includes the following features:
 
 * **720 x 1280 pixel resolution.** High-definition output.
 * **24-bit RGB display.** Capable of showing over 16 million colours. 
-* **Multitouch.** Supports up to five simultaneous touch points and an on-screen keyboard.
+* **Multitouch.** Supports up to five simultaneous touch points.
 * **Mouse-equivalence.** Supports full desktop control without a physical mouse, for example, selecting, dragging, scrolling, and long-pressing for menus.
 * **On-screen keyboard.** Supports a visual keyboard in place of a physical keyboard.
 * **Integrated power.** Powered directly by the host Raspberry Pi, requiring no separate power supply.
@@ -158,7 +158,7 @@ NOTE: You can't rotate the DSI display separately from the HDMI display with `cm
 
 == Customise touchscreen settings
 
-You can use the Device Tree overlay to tell the Raspberry Pi OS how to configure the Touch Display 2 at boot. 
+You can use the Device Tree overlay to tell Raspberry Pi OS how to configure the Touch Display 2 at boot. 
 
 - For the 5-inch display, the overlay is called `vc4-kms-dsi-ili9881-5inch`.
 - For the 7-inch display, the overlay is called `vc4-kms-dsi-ili9881-7inch`.
