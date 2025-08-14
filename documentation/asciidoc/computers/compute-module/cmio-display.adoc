@@ -64,7 +64,7 @@ To enable Touch Display 2 on `DISP1/DSI1`, edit the `/boot/firmware/config.txt` 
 - For the *5-inch* display: `dtoverlay=vc4-kms-dsi-ili9881-5inch`
 - For the *7-inch* display: `dtoverlay=vc4-kms-dsi-ili9881-7inch`
 
-To use `DISP0/DSI0`, append `,dsi0`` to the overlay name.
+To use `DISP0/DSI0`, append `,dsi0` to the overlay name.
 
 - For the *5-inch* display: `dtoverlay=vc4-kms-dsi-ili9881-5inch,dsi0`
 - For the *7-inch* display: `dtoverlay=vc4-kms-dsi-ili9881-7inch,dsi0`
