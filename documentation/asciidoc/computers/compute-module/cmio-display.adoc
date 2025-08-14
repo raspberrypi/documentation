@@ -18,7 +18,7 @@ To connect a display to DISP1/DSI1:
 . Reconnect the Compute Module to power.
 . Depending on whether you're using a 5-inch or 7-inch display, add the one of the following line to xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]:
   - For the *5-inch* display: `dtoverlay=vc4-kms-dsi-5inch`
-  - For the *5-inch* display: `dtoverlay=vc4-kms-dsi-7inch`
+  - For the *7-inch* display: `dtoverlay=vc4-kms-dsi-7inch`
 . Reboot your Compute Module with `sudo reboot`. Your device should detect and begin displaying output to your display.
 
 === Connect a display to DISP0/DSI0
