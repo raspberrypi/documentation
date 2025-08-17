@@ -20,4 +20,18 @@ If you use a 32-bit version of Raspberry Pi OS, run the following command to ins
 $ sudo apt install linux-headers-rpi-{v6,v7,v7l}
 ----
 
+If you choose to build your own kernel, add the `deb-pkg` target to the build command:
+
+[source,console]
+----
+$ make -j6 Image.gz modules dtbs deb-pkg
+----
+
+This will generate three `.deb` files in the parent directory of the kernel source. If the kernel is cross-compiled, copy the `linux-headers-{version}.deb` file to your board, then run the following command to install:
+
+[source,console]
+----
+$ sudo dpkg -i linux-headers-*.deb
+----
+
 NOTE: Installation can take several minutes. There is no progress indicator.
