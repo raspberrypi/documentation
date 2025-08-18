@@ -210,7 +210,7 @@ dtoverlay=vc4-kms-dsi-ili9881-7inch,invx,invy
 
 Unlike Raspberry Pi single board computers (SBC), which automatically detect the official Raspberry Pi Touch displays, Raspberry Pi Compute Modules don't automatically detect connected devices; you must tell it what display is attached. 
 
-This is because the the connections between the SoC and DSI connectors on a Raspberry Pi are fixed and the system knows what hardware is connected; auto-detection ensures that the correct Device Tree settings are passed to the Linux kernel, so the display works without additional configuration. 
+This is because the connections between the SoC and DSI connectors on a Raspberry Pi are fixed and the system knows what hardware is connected; auto-detection ensures that the correct Device Tree settings are passed to the Linux kernel, so the display works without additional configuration. 
 
 Compute Modules, intended for industrial and custom applications, expose all GPIOs and interfaces. This provides greater flexibility for connecting hardware, but means that a Compute Module can't automatically detect devices like the Touch Display 2. This means that, for Compute Modules, the Device Tree fragments, which tell the kernel how to interact with the display, must be manually specified. You can do this in three ways:
 
