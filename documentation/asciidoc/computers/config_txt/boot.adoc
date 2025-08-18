@@ -208,6 +208,37 @@ This property could be used to debug different xref:raspberry-pi.adoc#BOOT_ORDER
 
 Default: ``
 
+[[kernel_watchdog_timeout]]
+==== `kernel_watchdog_timeout`
+
+If set to a non-zero value (in seconds), this property enables a hardware watchdog timer that is handed over to the operating system (OS) at boot. If the OS does not regularly "kick" or reset the watchdog, the system will be reset after the specified timeout.
+
+This property sets the `systemd` `watchdog.open_timeout` parameter, which controls how long the OS has to initialize and start servicing the watchdog. The value is passed to the OS via the kernel command line. For ongoing operation, the OS must also regularly reset the watchdog, typically controlled by the `RuntimeWatchdogSec` parameter in `systemd`. For more information, see https://www.freedesktop.org/software/systemd/man/systemd-system.conf.html#RuntimeWatchdogSec=[systemd watchdog documentation].
+
+[NOTE]
+====
+On Raspberry Pi OS Bookworm and earlier, the `RuntimeWatchdogSec` parameter is **not enabled by default** and this setting must be configured first in `/etc/systemd/system.conf` before the firmware kernel watchdog can be used.
+
+If both `BOOT_WATCHDOG_TIMEOUT` (EEPROM/bootloader setting, only supported on Raspberry Pi 4 and 5) and `kernel_watchdog_timeout` are set, the bootloader will seamlessly hand over from the bootloader watchdog to the kernel watchdog at the point the OS is started. This provides continuous watchdog coverage from power-on through to OS runtime.
+
+It is preferred to use `kernel_watchdog_timeout` rather than `dtparam=watchdog` because `kernel_watchdog_timeout` explicitly sets the `open_timeout` parameter, ensuring the watchdog is active until systemd takes over.
+====
+
+This is useful for ensuring that the system can recover from OS hangs or crashes after the boot process has completed.
+
+Default: `0` (disabled)
+
+[[kernel_watchdog_partition]]
+==== `kernel_watchdog_partition`
+
+If the kernel watchdog triggers (i.e. the OS fails to reset the watchdog within the timeout), this property specifies the partition number to boot from after the reset. This allows for automatic failover to a recovery or alternate partition.
+
+You can use this in conjunction with the xref:config_txt.adoc#the-expression-filter[expression filter] to apply different settings or select a different boot flow when the watchdog triggers a reboot to a specific partition.
+
+See also the xref:raspberry-pi.adoc#PARTITION[PARTITION] property for more information about how to use high partition numbers to detect a watchdog trigger.
+
+Default: `0` (default partition)
+
 
 [[eeprom_write_protect]]
 ==== `eeprom_write_protect`

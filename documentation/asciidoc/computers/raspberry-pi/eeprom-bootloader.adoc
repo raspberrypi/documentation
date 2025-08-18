@@ -146,6 +146,31 @@ The `BOOT_ORDER` property defines the sequence for the different boot modes. It 
 | Try NVMe first, followed by USB-MSD then repeat
 |===
 
+
+[[BOOT_WATCHDOG_TIMEOUT]]
+==== `BOOT_WATCHDOG_TIMEOUT`
+
+If set to a non-zero value (in seconds), enables a hardware watchdog timer in the bootloader. If the OS is not started within the specified time, the watchdog will reset the system.
+
+The bootloader watchdog is automatically cancelled as soon as the ARM CPU is started. It does **not** monitor the OS after the handover from the bootloader.
+
+This is useful for unattended or remote systems to ensure recovery from failed boots (e.g. if the OS never loads).
+
+Default: `0` (disabled)
+
+[[BOOT_WATCHDOG_PARTITION]]
+==== `BOOT_WATCHDOG_PARTITION`
+
+If the bootloader watchdog triggers, this property specifies the partition number to boot from after the reset. This allows for automatic failover to a recovery or alternate partition.
+
+If not set, the bootloader will retry the default partition (0).
+
+You can use this in conjunction with the xref:config_txt.adoc#the-expression-filter[expression filter] to apply different settings or select a different boot flow when the watchdog triggers a reboot to a specific partition.
+
+See also the xref:raspberry-pi.adoc#PARTITION[PARTITION] property for more information about how to use high partition numbers to detect a watchdog trigger.
+
+Default: `0`
+
 [[MAX_RESTARTS]]
 ==== `MAX_RESTARTS`
 
@@ -649,6 +674,42 @@ XHCI_DEBUG=0x3
 ----
 
 Default: `0x0` (no USB debug messages enabled)
+
+[[SDRAM_BANKLOW]]
+==== `SDRAM_BANKLOW`
+
+SDRAM_BANKLOW controls how the SDRAM banks are arranged within the system address space. The number of bank bits may be selectively mapped to being located in the MSBs of the address, or being located between the row and column address bits.
+This setting can significantly affect SDRAM performance.
+
+When unset, the bootloader will choose the preferred option. This is currently 3 on Pi 4 family and 1 on Pi 5 family.
+
+[cols="1m,3"]
+|===
+| BANKLOW | Address Bit Mapping
+
+| 0
+| Address = {bank[3:0], row, column}
+
+| 1
+| Address = {bank[3:1], row, bank[0], column}
+
+| 2
+| Address = {bank[3:2], row, bank[1:0], column}
+
+| 3
+| Address = {bank[3], row, bank[2:0], column}
+
+| 4
+| Address = {row, bank[3:0], column}
+|===
+
+This setting also causes the bootloader to add a setting for the number of NUMA regions to be used by the kernel ("numa=fake=<n>").
+For best performance these settings should be left as default.
+
+Note: on a Pi 5 family device, if NUMA is not available in the kernel then performance will be adversely affected.
+Manually choosing SDRAM_BANKLOW=3 will mitigate this performance hit, although for highest performance, ensure NUMA is available.
+
+Default: unset (use bootloader recommended setting)
 
 [[config_txt]]
 ==== `[config.txt]` section
