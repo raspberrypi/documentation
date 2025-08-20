@@ -137,6 +137,9 @@ A tool to provision Raspberry Pi devices at manufacture, including secure boot a
 https://github.com/raspberrypi/usbboot::
 A tool to boot a Raspberry Pi over USB for provisioning Compute Module and Raspberry Pi devices.
 
+https://github.com/raspberrypi/cmprovision::
+A tool to mass provision Raspberry Pi Compute Modules (Compute Module 3, 3+ and 4 are supported).
+
 === Feedback
 
 http://github.com/raspberrypi/bookworm-feedback::
