@@ -227,7 +227,7 @@
                     "description": "Supports Arm Serial Wire Debug (SWD), and acts as a UART bridge",
                     "image": "full-sized/Debug-Probe.png",
                     "subpath": "debug-probe.adoc"
-                },			
+                },
                 {
                     "title": "MicroPython",
                     "description": "Getting started with MicroPython",
