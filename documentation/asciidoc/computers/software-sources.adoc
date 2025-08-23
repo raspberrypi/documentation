@@ -73,7 +73,6 @@ The taskbar displayed at the top of the screen when running the legacy X-based d
 
 https://github.com/raspberrypi-ui/pplug-batt::
 https://github.com/raspberrypi-ui/pplug-bluetooth::
-https://github.com/raspberrypi-ui/pplug-clock::
 https://github.com/raspberrypi-ui/pplug-cpu::
 https://github.com/raspberrypi-ui/pplug-cputemp::
 https://github.com/raspberrypi-ui/pplug-ejecter::
@@ -95,14 +94,8 @@ The Appearance settings panel.
 https://github.com/raspberrypi-ui/rc_gui::
 The Raspberry Pi Configuration settings panel.
 
-https://github.com/raspberrypi-ui/rasputin::
-The Mouse and Keyboard settings panel.
-
 https://github.com/raspberrypi-ui/raindrop::
 The Screen Configuration settings panel.
-
-https://github.com/raspberrypi-ui/rpinters::
-The Printers settings panel.
 
 === Applications
 
