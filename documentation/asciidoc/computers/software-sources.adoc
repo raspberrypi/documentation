@@ -21,7 +21,7 @@ Now you can fetch the package source, for example:
 $ apt source labwc
 ----
 
-Next you need to install a helper package:
+Next, you need to install a helper package:
 
 [source,console]
 ----
