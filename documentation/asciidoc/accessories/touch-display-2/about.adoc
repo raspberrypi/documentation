@@ -154,6 +154,8 @@ To rotate the display without a desktop, edit the `/boot/firmware/cmdline.txt` f
 video=DSI-1:720x1280@60,rotate=<rotation-value>
 ----
 
+This `rotate=` setting only rotates the text-mode console; any applications that write directly to DRM (such as `cvlc` or the libcamera apps) won't be rotated, and will instead need to use their own rotation options (if available).
+
 NOTE: You can't rotate the DSI display separately from the HDMI display with `cmdline.txt`. When you use DSI and HDMI simultaneously, they share the same rotation value.
 
 == Customise touchscreen settings
