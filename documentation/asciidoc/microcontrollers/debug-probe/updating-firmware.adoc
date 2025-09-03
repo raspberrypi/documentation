@@ -2,7 +2,17 @@
 
 Firmware for the Debug Probe is available as a UF2 file distributed by Raspberry Pi.
 
-The latest version of the Debug Probe firmware is version 2.2. If you're running an older version, or if you have accidentally overwritten the firmware on your Debug Probe, you can find the latest release of the firmware in https://github.com/raspberrypi/debugprobe/releases/latest[the debugprobe GitHub repository].
+The latest version of the Debug Probe firmware is version 2.2.3. If you're running an older version, or if you have accidentally overwritten the firmware on your Debug Probe, you can find the latest release of the firmware in https://github.com/raspberrypi/debugprobe/releases/latest[the debugprobe GitHub repository].
+
+[NOTE]
+--
+The `Info : CMSIS-DAP: FW Version = 2.0.0` line reported by `openocd` only refers to the CMSIS-DAP protocol level (which is different to the Debug Probe firmware version). To check the firmware version of your Debug Probe, run:
+
+[source, console]
+----
+$ lsusb -v -d 2e8a: | grep bcdDevice
+----
+--
 
 Download `debugprobe.uf2` from the latest release.
 
