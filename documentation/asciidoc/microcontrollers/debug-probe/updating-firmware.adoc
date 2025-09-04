@@ -12,6 +12,7 @@ The `Info : CMSIS-DAP: FW Version = 2.0.0` line reported by `openocd` only refer
 ----
 $ lsusb -v -d 2e8a: | grep bcdDevice
 ----
+which will report `bcdDevice 2.23` for Debug Probe firmware version 2.2.3.
 --
 
 Download `debugprobe.uf2` from the latest release.
