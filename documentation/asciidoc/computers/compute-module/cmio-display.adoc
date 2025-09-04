@@ -30,7 +30,7 @@ To connect a display to `DISP0/DSI0` on CM1, CM3, and CM4 IO boards:
     * `29` to `CD0_SCL`
   - For *CM4*, on the Compute Module 4 IO board, add the appropriate jumpers to J6, as indicated on the silkscreen.
 . Reconnect the Compute Module to power.
-. Add `dtoverlay=vc4-kms-dsi-7inch` to `/boot/firmware/config.txt`.
+. Add `dtoverlay=vc4-kms-dsi-7inch,dsi0` to `/boot/firmware/config.txt`.
 . Reboot your Compute Module with `sudo reboot`. Your device should detect and begin displaying output to your display.
 
 === Disable touchscreen
