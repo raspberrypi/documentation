@@ -1,0 +1,17 @@
+== Security
+
+All connections between Raspberry Pi devices and the user's browser use https://webrtc.org[WebRTC]: the same real-time communication technology used by Zoom, Microsoft Teams, and Google Meet.
+
+This means that all screen sharing and remote shell access traffic is encrypted using https://en.wikipedia.org/wiki/Datagram_Transport_Layer_Security[DTLS] on the Raspberry Pi device and the user's browser. We don't (and can't) decrypt the traffic, ensuring your data remains private.
+
+Furthermore, traffic is mostly peer-to-peer, meaning that the encrypted traffic doesn't pass through our infrastructure. Instead, the encrypted traffic is sent directly between your Raspberry Pi device and your browser. This makes it impossible for us to observe it.
+
+In situations where direct peer-to-peer connections aren't possible (for example, due to networking issues), only encrypted data is relayed through one of our https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT[TURN] servers. These servers are hosted in London and California, and your traffic is routed through the relay closest to you. We don't have the keys to decrypt this data, and it's neither logged nor stored.
+
+The Raspberry Pi Connect API temporarily stores the IP addresses and ports required to negotiate a peer-to-peer connection. All traffic to this API is encrypted using https://en.wikipedia.org/wiki/HTTPS[HTTP over TLS], supporting only TLS 1.2 and newer for security. This ensures that connection information is never sent in the clear. This metadata is stored securely for at most 1 minute, and deleted as soon as a connection is established.
+
+Raspberry Pi Connect, along with its API and software components, has undergone security assessments by penetration testing and security analysts at https://cure53.de[Cure53].
+
+For more details on WebRTC security, see https://webrtc-security.github.io/[A Study of WebRTC Security].
+
+For **Connect for Organisations** customers, we provide an audit log to review activity from the past 90 days. To preserve privacy, we store only the country code when geolocating events by IP address.
