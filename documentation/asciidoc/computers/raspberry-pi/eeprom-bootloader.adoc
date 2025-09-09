@@ -187,6 +187,20 @@ The number of times that SD boot will be retried after failure before moving to 
 
 Default: `0`
 
+[[SD_OVERCURRENT_CHECK]]
+==== `SD_OVERCURRENT_CHECK`
+
+Raspberry Pi 4, Raspberry Pi 5 and Raspberry Pi 500 only.
+
+Before booting, the bootloader checks the SD power switch overcurrent signal. The overcurrent signal occurs if the SD card is damaged and has a short circuit which will cause it to get hot.
+
+If an over-current condition is detected, the bootloader switches off power to the SD card and waits five seconds before probing the SD card again. This error is displayed on the diagnostic screen, the UART and the activity LED (1 long, 2 short flashes).
+
+The overcurrent check can be switched from an error to a non-blocking warning by setting `SD_OVERCURRENT_CHECK=0` in the bootloader config.
+
+Default: `1`
+
+
 [[SD_QUIRKS]]
 ==== `SD_QUIRKS`
 
