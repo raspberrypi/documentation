@@ -79,7 +79,7 @@ If you have repeated issues trying to run Connect's required services, run the f
 [source,console]
 ----
 $ systemctl --user status rpi-connect-wayvnc.service rpi-connect-wayvnc-watcher.path
-$ journalctl --user --follow --unit rpi-connect-wayvnc.service --unit rpi-connect-wayvnc-watcher.path
+$ journalctl --follow --user-unit rpi-connect-wayvnc.service --user-unit rpi-connect-wayvnc-watcher.path
 ----
 
 If the service fails to start or doesn't exist, ensure that your environment meets the following criteria:
@@ -223,5 +223,5 @@ To view logs for the Connect service and its dedicated WayVNC server, run the fo
 
 [source,console]
 ----
-$ journalctl --user --follow --unit rpi-connect --unit rpi-connect-wayvnc
+$ journalctl --follow --user-unit rpi-connect --user-unit rpi-connect-wayvnc
 ----
