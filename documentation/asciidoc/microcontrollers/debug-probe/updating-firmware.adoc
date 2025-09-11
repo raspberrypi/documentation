@@ -2,14 +2,21 @@
 
 Firmware for the Debug Probe is available as a UF2 file distributed by Raspberry Pi.
 
-The latest version of the Debug Probe firmware is version 2.2. If you're running an older version, or if you have accidentally overwritten the firmware on your Debug Probe, you can find the latest release of the firmware in https://github.com/raspberrypi/debugprobe/releases/latest[the debugprobe GitHub repository].
+The latest version of the Debug Probe firmware is version 2.2.3. If you're running an older version, or if you have accidentally overwritten the firmware on your Debug Probe, you can find the latest release of the firmware in https://github.com/raspberrypi/debugprobe/releases/latest[the debugprobe GitHub repository].
 
-Download `debugprobe.uf2` from the latest release.
+To check the firmware version of your Debug Probe, run:
+[source, console]
+----
+$ lsusb -v -d 2e8a:000c | grep bcdDevice
+----
+This will report `bcdDevice 2.23` for Debug Probe firmware version 2.2.3.
 
-Pinch to remove the top of the Debug Probe enclosure.
+NOTE: The `Info : CMSIS-DAP: FW Version = 2.0.0` line reported by `openocd` only refers to the CMSIS-DAP protocol level (which is different to the Debug Probe firmware version).
 
-Push and hold the BOOTSEL button as you plug the Debug Probe into your computer to mount a volume called "RPI-RP2".
+To update the firmware version of your Debug Probe:
 
-Copy `debugprobe.uf2` onto the "RPI-RP2" volume. The volume will dismount automatically after the file finishes copying onto the device.
-
-Your Debug Probe will reboot and now runs an updated version of the Debug Probe firmware. It is now ready for debugging.
+1. Download `debugprobe.uf2` from the latest release.
+1. Pinch to remove the top of the Debug Probe enclosure.
+1. Push and hold the BOOTSEL button as you plug the Debug Probe into your computer, to mount a volume called "RPI-RP2".
+1. Copy `debugprobe.uf2` onto the "RPI-RP2" volume. The volume will dismount automatically after the file finishes copying onto the device.
+1. Your Debug Probe will reboot and now runs an updated version of the Debug Probe firmware. It is now ready for debugging.
