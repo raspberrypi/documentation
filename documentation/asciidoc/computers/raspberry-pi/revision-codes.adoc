@@ -352,7 +352,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 |
 |
-| 0x19: 500
+| 0x19: 500/500+
 
 |
 |
@@ -694,6 +694,12 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 8GB
 | Sony UK
 
+| e04190
+| 500+
+| 1.0
+| 16GB
+| Sony UK
+
 | b041a0
 | CM5 Lite
 | 1.0
@@ -770,7 +776,7 @@ import subprocess
 cmd = "cat /proc/cpuinfo | awk '/Revision/ {print $3}'"
 revcode = subprocess.check_output(cmd, shell=True)
 
-code = int(revcode, 16)  
+code = int(revcode, 16)
 new = (code >> 23) & 0x1
 model = (code >> 4) & 0xff
 mem = (code >> 20) & 0x7
@@ -819,22 +825,22 @@ Raspberry Pi models have the following device tree values:
 |===
 | Device Name                   | Make            | Model                       | CPU Make   | CPU
 
-| Pi 500                        | `raspberrypi`   | `500`                       | `brcm`     | `bcm2712`
+| Raspberry Pi 500 /500+        | `raspberrypi`   | `500`                       | `brcm`     | `bcm2712`
 | Compute Module 5              | `raspberrypi`   | `5-compute-module`          | `brcm`     | `bcm2712`
 | Raspberry Pi 5                | `raspberrypi`   | `5-model-b`                 | `brcm`     | `bcm2712`
-| Pi 400                        | `raspberrypi`   | `400`                       | `brcm`     | `bcm2711`
+| Raspberry Pi 400              | `raspberrypi`   | `400`                       | `brcm`     | `bcm2711`
 | Compute Module 4S             | `raspberrypi`   | `4s-compute-module`         | `brcm`     | `bcm2711`
 | Compute Module 4              | `raspberrypi`   | `4-compute-module`          | `brcm`     | `bcm2711`
 | Raspberry Pi 4 Model B        | `raspberrypi`   | `4-model-b`                 | `brcm`     | `bcm2711`
-| Zero 2 W                      | `raspberrypi`   | `model-zero-2-w`            | `brcm`     | `bcm2837`
+| Raspberry Pi Zero 2 W         | `raspberrypi`   | `model-zero-2-w`            | `brcm`     | `bcm2837`
 | Compute Module 3+             | `raspberrypi`   | `3-plus-compute-module`     | `brcm`     | `bcm2837`
 | Compute Module 3              | `raspberrypi`   | `3-compute-module`          | `brcm`     | `bcm2837`
 | Raspberry Pi 3 Model A+       | `raspberrypi`   | `3-model-a-plus`            | `brcm`     | `bcm2837`
 | Raspberry Pi 3 Model B+       | `raspberrypi`   | `3-model-b-plus`            | `brcm`     | `bcm2837`
 | Raspberry Pi 3 Model B        | `raspberrypi`   | `3-model-b`                 | `brcm`     | `bcm2837`
 | Raspberry Pi 2 Model B        | `raspberrypi`   | `2-model-b`                 | `brcm`     | `bcm2836`
-| Zero W                        | `raspberrypi`   | `model-zero-w`              | `brcm`     | `bcm2835`
-| Zero                          | `raspberrypi`   | `model-zero`                | `brcm`     | `bcm2835`
+| Raspberry Pi Zero W           | `raspberrypi`   | `model-zero-w`              | `brcm`     | `bcm2835`
+| Raspberry Pi Zero             | `raspberrypi`   | `model-zero`                | `brcm`     | `bcm2835`
 | Compute Module 1              | `raspberrypi`   | `compute-module`            | `brcm`     | `bcm2835`
 | Raspberry Pi Model A+         | `raspberrypi`   | `model-a-plus`              | `brcm`     | `bcm2835`
 | Raspberry Pi Model B+         | `raspberrypi`   | `model-b-plus`              | `brcm`     | `bcm2835`

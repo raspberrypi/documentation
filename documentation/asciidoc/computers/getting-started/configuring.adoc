@@ -74,6 +74,8 @@ image::images/initial-setup/connect.png[alt="The Enable Raspberry Pi Connect pag
 
 Once your Raspberry Pi has internet access, this page helps you update your operating system and software to the latest versions. During the software update process, the wizard will remove the non-default browser if you opted to uninstall it in the browser selection step. Downloading updates may take several minutes.
 
+NOTE: If you are updating your Raspberry Pi 500+ for the first time, this can take up to half an hour. Grab a cup of coffee or go for a walk while you wait.
+
 image::images/initial-setup/update.png[alt="You can download the latest software updates during the wizard before you boot for the first time.",width="80%"]
 
 image::images/initial-setup/download.png[alt="You can download the latest software updates during the wizard before you boot for the first time.",width="80%"]
