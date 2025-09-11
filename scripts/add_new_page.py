@@ -72,7 +72,7 @@ if __name__ == "__main__":
         raise Exception(f"{new_subfile} already exists")
 
     print(f"Will create {new_file} and {new_subfile}")
-    sys.exit(0)
+    # sys.exit(0)
     # Create the template AsciiDoc documentation
     os.mkdir(new_dir)
     with open(new_file, 'w') as fh:
