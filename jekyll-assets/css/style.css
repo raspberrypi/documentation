@@ -28,6 +28,8 @@
   --rptl-header-burger-stroke-color: var(--subtle);
   --rptl-header-subnav-background-color: #f7f8fa;
   --rptl-header-logo-text-fill: var(--textcolor);
+  --rptl-header-logo-leaf-fill: #46af4b;
+  --rptl-header-logo-berry-fill: var(--brand-colour);
   --rptl-cookiebanner-background-color: var(--less-subtle);
   --rptl-cookiebanner-text-color: var(--bg);
   --rptl-footer-background-color: #f5f6f9;
@@ -67,6 +69,8 @@
     --rptl-header-burger-stroke-color: var(--textcolor);
     --rptl-header-subnav-background-color: var(--near-bg);
     --rptl-header-logo-text-fill: var(--textcolor);
+    --rptl-header-logo-leaf-fill: var(--bg);
+    --rptl-header-logo-berry-fill: var(--bg);
     --rptl-cookiebanner-background-color: var(--code-bg-colour);
     --rptl-cookiebanner-text-color: var(--textcolor);
     --rptl-footer-background-color: #13131B;
