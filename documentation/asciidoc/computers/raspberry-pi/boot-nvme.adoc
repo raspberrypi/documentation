@@ -1,6 +1,6 @@
 == NVMe SSD boot
 
-NVMe (Non-Volatile Memory express) is a standard for external storage access over a PCIe bus. You can connect NVMe drives via the PCIe slot on Compute Module 4 IO Board, the M.2 slot on Compute Module 5 IO Board, and Raspberry Pi 5 using an M.2 HAT+. With some additional configuration, you can boot from an NVMe drive.
+NVMe (Non-Volatile Memory express) is a standard for external storage access over a PCIe bus. You can connect NVMe drives via the PCIe slot on Compute Module 4 IO Board, the M.2 slot on Compute Module 5 IO Board, and Raspberry Pi 5 using an M.2 HAT+ or M.2 HAT+ Compact. With some additional configuration, you can boot from an NVMe drive.
 
 === Prerequisites
 
@@ -8,7 +8,7 @@ NVMe (Non-Volatile Memory express) is a standard for external storage access ove
 
 * NVMe M.2 SSD
 * an adapter to convert from PCIe to an M.2 standard.
-** For Raspberry Pi 5, we recommend the xref:../accessories/m2-hat-plus.adoc[M.2 HAT+], which converts from the Raspberry Pi's *PCIe FFC* slot to an M Key interface.
+** For Raspberry Pi 5, we recommend the xref:../accessories/m2-hat-plus.adoc[M.2 HAT+ or M.2 HAT+ Compact], which converts from the Raspberry Pi's *PCIe FFC* slot to an M Key interface.
 ** For the CM4, search for a "PCI-E 3.0 ×1 lane to M.2 NGFF M-Key SSD NVMe PCI Express adapter card"
 
 To check that your NVMe drive is connected correctly, boot your Raspberry Pi from another storage device (such as an SD card) and run `ls -l /dev/nvme*`. Example output is shown below.
