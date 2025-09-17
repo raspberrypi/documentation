@@ -19,7 +19,7 @@ We provide the M.2 HAT+ in a standard and a compact format to serve different us
 
 * The M.2 HAT+ includes threaded spacers that provide ample room to fit the Raspberry Pi Active Cooler beneath it. However, the M.2 HAT+ is _only_ compatible with the https://www.raspberrypi.com/products/raspberry-pi-5-case/[Raspberry Pi Case for Raspberry Pi 5] _if you remove the lid and the included fan_.
 
-* The M2 HAT+ Compact is designed to fit around the included fan in the https://www.raspberrypi.com/products/raspberry-pi-5-case/[Raspberry Pi Case for Raspberry Pi 5]. However, you cannot fit the Active Cooler beneath it.
+* The M.2 HAT+ Compact is designed to fit around the included fan in the https://www.raspberrypi.com/products/raspberry-pi-5-case/[Raspberry Pi Case for Raspberry Pi 5]. However, you cannot fit the Active Cooler beneath it.
 
 == Features
 
