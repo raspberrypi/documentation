@@ -207,7 +207,7 @@ WARNING: Always disconnect your Raspberry Pi from power before connecting or dis
 
 To boot from an NVMe drive attached to the M.2 HAT+ or M.2 HAT+ Compact, complete the following steps:
 
-. xref:../computers/getting-started.adoc#raspberry-pi-imager[Format your NVMe drive using Raspberry Pi Imager]. You can do this from your Raspberry Pi if you already have an SD card with a Raspberry Pi OS image.
+. xref:../computers/getting-started.adoc#raspberry-pi-imager[Install an operating system to your NVMe drive by using Raspberry Pi Imager]. You can do this from your Raspberry Pi if you already have an SD card with a Raspberry Pi OS image.
 . Boot your Raspberry Pi into Raspberry Pi OS using an SD card or USB drive to alter the boot order in the persistent on-board EEPROM configuration.
 . In a terminal on your Raspberry Pi, run `sudo raspi-config` to open the Raspberry Pi Configuration CLI.
 . Under `Advanced Options` > `Boot Order`, choose `NVMe/USB boot`. Then, exit `raspi-config` with `Finish` or the *Escape* key.
