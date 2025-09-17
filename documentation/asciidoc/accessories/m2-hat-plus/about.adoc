@@ -38,7 +38,7 @@ The M.2 HAT+ and M.2 HAT+ Compact both have the following features:
 
 The M.2 HAT+ and M.2 HAT+ Compact differ in the following ways:
 
-* M.2 HAT+ supports devices with the 2230 or 2242 form factor; M.2 HAT+ Compact only supports the 2030 form factor.
+* M.2 HAT+ supports devices with the 2230 or 2242 form factor; M.2 HAT+ Compact only supports the 2230 form factor.
 * M.2 HAT+ also includes a 16mm GPIO stacking header; M.2 HAT+ Compact does not include this component.
 
 [[m2-hat-plus-installation]]
