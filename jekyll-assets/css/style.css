@@ -102,7 +102,7 @@ h1 {
   background: transparent;
 }
 
-body, article, div, nav, h1, h2, h3, h4, p { 
+body, article, div, nav, h1, h2, h3, h4, p {
   display: block;
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -690,7 +690,7 @@ nav#mobile-contents li {
   padding-left: 1rem;
 }
 
-#content h5, 
+#content h5,
 #content h6 {
   position: relative;
   margin-left: -1rem;
@@ -701,11 +701,11 @@ nav#mobile-contents li {
   display: none;
 }
 
-h1 .anchor, 
-h2 .anchor, 
-h3 .anchor, 
-h4 .anchor, 
-h5 .anchor, 
+h1 .anchor,
+h2 .anchor,
+h3 .anchor,
+h4 .anchor,
+h5 .anchor,
 h6 .anchor {
   position: absolute;
   top: 0px;
@@ -718,7 +718,7 @@ h6 .anchor {
   padding-top: .05em;
 }
 
-h1 .anchor, 
+h1 .anchor,
 h2 .anchor {
   top: -5px;
 }
@@ -727,27 +727,27 @@ h3 .anchor {
   top: -3px;
 }
 
-h4 .anchor, 
-h5 .anchor, 
+h4 .anchor,
+h5 .anchor,
 h6 .anchor {
   top: -2px;
 }
 
-h1:hover .anchor, 
-h2:hover .anchor, 
-h3:hover .anchor, 
-h4:hover .anchor, 
-h5:hover .anchor, 
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
 h6:hover .anchor {
   color: var(--accent);
   visibility: visible;
 }
 
-h1 .anchor::before, 
-h2 .anchor::before, 
-h3 .anchor::before, 
-h4 .anchor::before, 
-h5 .anchor::before, 
+h1 .anchor::before,
+h2 .anchor::before,
+h3 .anchor::before,
+h4 .anchor::before,
+h5 .anchor::before,
 h6 .anchor::before {
   content: "\00a7";
 }
@@ -1210,7 +1210,7 @@ div.memitem {
   padding: 10px;
 }
 
-table.params, 
+table.params,
 p.returns {
   font-weight: 300;
 }
@@ -1547,7 +1547,7 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
   footer,
   div.toptitle,
   div.toptitle h1,
-  nav#contents, 
+  nav#contents,
   div#search-container,
   div#tab-menu,
   ul#tab-container li,
@@ -1609,7 +1609,7 @@ a.box span {
   text-align: center;
 }
 
-a.box span.title, 
+a.box span.title,
 a.box[href*='/pico-sdk/'] span.title {
   color: var(--textcolor);
   font-size: 1.1em;
@@ -1720,3 +1720,6 @@ ul#tab-container li.selected a {
     width: 100%;
   }
 }
+
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:"";display:table}
+.clearfix::after,.float-group::after{clear:both}

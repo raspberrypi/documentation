@@ -1,23 +1,19 @@
 [[m2-hat-plus]]
-[%notitle]
 == About
 
 [.clearfix]
 --
 [.left]
 .The Raspberry Pi M.2 HAT+
-image::images/m2-hat-plus.jpg[width="50%"]
+image::images/m2-hat-plus.jpg[width="100%"]
 [.left]
 .The Raspberry Pi M.2 HAT+ Compact TODO
-image::images/m2-hat-plus.jpg[width="50%"]
+image::images/m2-hat-plus.jpg[width="100%"]
 --
 
 The Raspberry Pi M.2 HAT+ M Key and M.2 HAT+ Compact M Key enable you to connect M.2 peripherals such as NVMe drives and other PCIe accessories to Raspberry Pi 5's PCIe interface.
 
-The M.2 HAT+ and M.2 HAT+ Compact adapter boards convert between the PCIe connector on Raspberry Pi 5 and a single M.2 M key edge connector.
-
-* The M.2 HAT+ supports any device that uses the 2230 or 2242 form factor.
-* The M.2 HAT+ Compact supports any device that uses the 2230 form factor.
+The M.2 HAT+ and M.2 HAT+ Compact adapter boards convert between the PCIe connector on Raspberry Pi 5 and a single M.2 M key edge connector. The M.2 HAT+ supports any device that uses the 2230 or 2242 form factor; the M.2 HAT+ Compact supports any device that uses the 2230 form factor.
 
 We provide the M.2 HAT+ in a standard and a compact format to serve different use cases:
 
@@ -27,34 +23,23 @@ We provide the M.2 HAT+ in a standard and a compact format to serve different us
 
 == Features
 
-The M.2 HAT+ has the following features:
+The M.2 HAT+ and M.2 HAT+ Compact both have the following features:
 
 * Single-lane PCIe 2.0 interface (500 MB/s peak transfer rate)
 * Supports devices that use the M.2 M key edge connector
 * Supplies up to 3A to connected M.2 devices
 * Power and activity LEDs
 * Conforms to the https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[Raspberry Pi HAT+ specification], which allows Raspberry Pi OS to automatically detect the HAT+ and any connected devices
-* Supports devices with the 2230 or 2242 form factor
 * Includes:
 ** ribbon cable
-** 16mm GPIO stacking header
-** 4 threaded spacers
-** 8 screws
+** Threaded spacers
+** Screws
 ** 1 knurled double-flanged drive attachment screw to secure and support the M.2 peripheral
 
-The M.2 HAT+ Compact has the following features:
+The M.2 HAT+ and M.2 HAT+ Compact differ in the following ways:
 
-* Single-lane PCIe 2.0 interface (500 MB/s peak transfer rate)
-* Supports devices that use the M.2 M key edge connector
-* Supplies up to 3A to connected M.2 devices
-* Power and activity LEDs
-* Conforms to the https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[Raspberry Pi HAT+ specification], which allows Raspberry Pi OS to automatically detect the HAT+ and any connected devices
-* Supports devices with the 2230 form factor
-* Includes:
-** ribbon cable
-** 3 threaded spacers
-** 6 screws
-** 1 knurled double-flanged drive attachment screw to secure and support the M.2 peripheral
+* M.2 HAT+ supports devices with the 2230 or 2242 form factor; M.2 HAT+ Compact only supports the 2030 form factor.
+* M.2 HAT+ also includes a 16mm GPIO stacking header; M.2 HAT+ Compact does not include this component.
 
 [[m2-hat-plus-installation]]
 == Install
@@ -104,7 +89,7 @@ Then, reboot with `sudo reboot`.
 [[standard-installation]]
 === Install the M.2 HAT+
 
-Follow these steps to install the M.2 HAT+. To install the M.2 HAT+ Compact go to xref:#compact-installation[Install the M.2 HAT+ Compact] instead.
+Follow these steps to install the M.2 HAT+. To install the M.2 HAT+ Compact go to <<compact-installation>> instead.
 
 ==== (Optional) Install the Active Cooler
 
@@ -165,7 +150,7 @@ image::images/m2-hat-plus-installation-07.png[width="80%"]
 [[compact-installation]]
 === Install the M.2 HAT+ Compact
 
-Follow these steps to install the M.2 HAT+ Compact. To install the M.2 HAT+ go to xref:#standard-installation[Install the M.2 HAT+] instead.
+Follow these steps to install the M.2 HAT+ Compact. To install the M.2 HAT+ go to <<standard-installation>> instead.
 
 ==== Install the mounting hardware
 
