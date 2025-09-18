@@ -28,10 +28,10 @@ Both the M.2 HAT+ and M.2 HAT+ Compact conform to the https://datasheets.raspber
 The M.2 HAT+ and M.2 HAT+ Compact both have the following features:
 
 * Single-lane PCIe 2.0 interface (500 MB/s peak transfer rate)
-* Supports devices that use the M.2 M key edge connector
-* Supplies up to 3 A to connected M.2 devices
+* Support for devices that use the M.2 M key edge connector
+* 3 A supply to connected M.2 devices
 * Power and activity LEDs
-* Includes:
+* Included components:
 ** Ribbon cable
 ** Threaded spacers
 ** Screws
