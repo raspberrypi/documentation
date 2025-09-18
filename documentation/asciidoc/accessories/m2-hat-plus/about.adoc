@@ -7,8 +7,8 @@
 .The Raspberry Pi M.2 HAT+
 image::images/m2-hat-plus.jpg[width="100%"]
 [.left]
-.The Raspberry Pi M.2 HAT+ Compact TODO
-image::images/m2-hat-plus.jpg[width="100%"]
+.The Raspberry Pi M.2 HAT+ Compact in the Raspberry Pi Case
+image::images/m2-hat-plus-compact-with-case.jpg[width="100%"]
 --
 
 The Raspberry Pi M.2 HAT+ M Key and M.2 HAT+ Compact M Key enable you to connect M.2 peripherals such as NVMe drives and other PCIe accessories to Raspberry Pi 5's PCIe interface.
@@ -27,11 +27,11 @@ The M.2 HAT+ and M.2 HAT+ Compact both have the following features:
 
 * Single-lane PCIe 2.0 interface (500 MB/s peak transfer rate)
 * Supports devices that use the M.2 M key edge connector
-* Supplies up to 3A to connected M.2 devices
+* Supplies up to 3 A to connected M.2 devices
 * Power and activity LEDs
 * Conforms to the https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[Raspberry Pi HAT+ specification], which allows Raspberry Pi OS to automatically detect the HAT+ and any connected devices
 * Includes:
-** ribbon cable
+** Ribbon cable
 ** Threaded spacers
 ** Screws
 ** 1 knurled double-flanged drive attachment screw to secure and support the M.2 peripheral
