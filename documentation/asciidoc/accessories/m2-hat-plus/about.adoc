@@ -103,7 +103,7 @@ image::images/m2-hat-plus-installation-01.png[width="60%"]
 
 . Install the spacers using the provided screws.
 
-. Firmly press the GPIO stacking header on top of the Raspberry Pi GPIO pins; orientation does not matter as long as all pins fit into place.
+. Firmly press the GPIO stacking header on top of the Raspberry Pi GPIO pins; orientation doesn't matter as long as all pins fit into place.
 
 . Disconnect the ribbon cable from the M.2 HAT+. Insert the other end into the PCIe port of your Raspberry Pi. Lift the ribbon cable holder from both sides, then insert the cable with the copper contact points facing inward, towards the USB ports. With the ribbon cable fully and evenly inserted into the PCIe port, push the cable holder down from both sides to secure the ribbon cable firmly in place.
 
