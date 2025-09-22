@@ -11,7 +11,7 @@ Raspberry Pi SSDs are available in the following sizes:
 * 256GB
 * 512GB
 
-To use an SSD with your Raspberry Pi, you need a Raspberry Pi 5-compatible M.2 adapter, such as the xref:../accessories/m2-hat-plus.adoc[Raspberry Pi M.2 HAT+].
+To use an SSD with your Raspberry Pi, you need a Raspberry Pi 5-compatible M.2 adapter, such as the xref:../accessories/m2-hat-plus.adoc[Raspberry Pi M.2 HAT+ or M.2 HAT+ Compact].
 
 == Specifications
 
