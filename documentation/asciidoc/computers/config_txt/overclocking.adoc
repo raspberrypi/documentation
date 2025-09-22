@@ -171,7 +171,7 @@ This table gives the default values for the options on various Raspberry Pi mode
 | 500
 | 500
 | 300
-| 910
+| 960
 
 | hevc_freq
 | N/A
