@@ -182,7 +182,7 @@ For example, setting `bootvar0` to 42 via `rpi-eeprom-config`:
 BOOTVAR0=42
 ----
 
-and then using it conditionally in `config.txt`:
+Using `bootvar0` conditionally in `config.txt`:
 [source,ini]
 ----
 [bootvar0=42]
