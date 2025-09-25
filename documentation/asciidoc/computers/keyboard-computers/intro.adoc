@@ -173,7 +173,7 @@ For more information, see <<advanced, Advanced software settings>>.
 [[replace-m2]]
 === Replace your M.2 SSD
 
-You can expand storage capacity by replacing the M.2 SSD in your Raspberry Pi 500+. The Raspberry Pi 500+ supports SSDs that use the M.2 M key edge connector in the form factors 2230, 2242, 2260, and 2280.
+You can expand storage capacity by replacing the M.2 SSD in your Raspberry Pi 500+. You can also use this slot to install a different PCIe peripheral. The Raspberry Pi 500+ supports devvices that use the M.2 M key edge connector in the form factors 2230, 2242, 2260, and 2280.
 
 To complete this procedure, you need a cross head screwdriver, a flat head screwdriver, and the provided plastic opening tool (spudger).
 
