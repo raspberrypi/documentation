@@ -174,7 +174,7 @@ The value of the `boot_arg1` variable when the OS was started can be read via xr
 ==== `bootvar0`
 Raspberry Pi 5 and newer devices only.
 
-The `bootvar0` variable is a 32-bit user defined value which is set through rpi-eeprom-config, and then can be used as a conditional variable in config.txt.
+The `bootvar0` variable is a 32-bit user-defined value that is set through `rpi-eeprom-config`, and then can be used as a conditional variable in `config.txt`.
 
 For example, setting `bootvar0` to 42 via `rpi-eeprom-config`:
 [source,ini]
