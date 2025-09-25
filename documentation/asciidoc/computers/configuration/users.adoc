@@ -48,7 +48,7 @@ $ sudo su - <username>
 
 If the above command runs successfully, permissions were successfully configured for the user.
 
-If you've changed your keyboard layout, you might find that the newly-added user is using the "wrong" keyboard layout. To fix this, sign in as the new user and run:
+If you've changed your keyboard layout, you might find that the newly added user is using the "wrong" keyboard layout. To fix this, sign in as the new user and run:
 
 [source,console]
 ----
