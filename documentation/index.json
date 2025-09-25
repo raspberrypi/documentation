@@ -60,10 +60,16 @@
                     "subpath": "ai.adoc"
                 },
                 {
-                    "title": "Raspberry Pi hardware",
-                    "description": "Technical information about Raspberry Pi hardware",
+                    "title": "Raspberry Pi computer hardware",
+                    "description": "Technical information about Raspberry Pi computer hardware",
                     "image": "full-sized/Raspberry-Pi-Hardware.png",
                     "subpath": "raspberry-pi.adoc"
+                },
+                {
+                    "title": "Keyboard computers",
+                    "description": "Technical information about Raspberry Pi keyboard computers",
+                    "image": "full-sized/keyboard-computers.png",
+                    "subpath": "keyboard-computers.adoc"
                 },
                 {
                     "title": "Compute Module hardware",

@@ -7,3 +7,4 @@ documentation/asciidoc/pico-sdk
 venv
 .venv
 .env
+.vscode
