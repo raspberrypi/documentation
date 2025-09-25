@@ -93,7 +93,7 @@ $ cd linux
 $ KERNEL=kernel_2712
 $ make bcm2712_defconfig
 ----
-| Pi 500
+| Pi 500/500+
 | Compute Module 5
 
 .14+^.^| 32-bit

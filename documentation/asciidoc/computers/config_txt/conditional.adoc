@@ -32,13 +32,16 @@ The conditional model filters apply according to the following table.
 | Model 4B, Pi 400, Compute Module 4, Compute Module 4S
 
 | `[pi5]`
-| Raspberry Pi 5, Compute Module 5, Pi 500
+| Raspberry Pi 5, Compute Module 5, Pi 500, Pi 500+
 
 | `[pi400]`
 | Pi 400 (also sees `[pi4]` contents)
 
 | `[pi500]`
 | Pi 500 (also sees `[pi5]` contents)
+
+| `[pi500+]`
+| Pi 500+ (also sees `[pi5]` contents)
 
 | `[cm1]`
 | Compute Module 1 (also sees `[pi1]` contents)
@@ -365,5 +368,5 @@ Filters of different types can be combined by listing them one after the other, 
 # settings here apply to all hardware
 
 ----
- 
+
 Use the `[all]` filter to reset all previous filters and avoid unintentionally combining different filter types.

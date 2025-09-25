@@ -190,7 +190,7 @@ Default: `0`
 [[SD_OVERCURRENT_CHECK]]
 ==== `SD_OVERCURRENT_CHECK`
 
-Raspberry Pi 4, Raspberry Pi 5 and Raspberry Pi 500 only.
+Raspberry Pi 4, Raspberry Pi 5, Raspberry Pi 500, and Raspberry Pi 500+ only.
 
 Before booting, the bootloader checks the SD power switch overcurrent signal. The overcurrent signal occurs if the SD card is damaged and has a short circuit which will cause it to get hot.
 
@@ -334,7 +334,7 @@ MAC_ADDRESS_OTP=0,1
 The first value (row 0 in the example) contains the OUI and the most significant 8 bits of the MAC address. The second value (row 1 in the example) stores the remaining 16-bits of the MAC address.
 This is the same format as used for the Raspberry Pi MAC address programmed at manufacture.
 
-Any two customer rows may be selected and combined in either order. 
+Any two customer rows may be selected and combined in either order.
 
 The `Customer OTP` rows are OTP registers 36 to 43 in the `vcgencmd otp_dump` output so if the first two rows are programmed as follows then `MAC_ADDRESS_OTP=0,1` would give a MAC address of `e4:5f:01:20:24:7e`.
 
@@ -564,7 +564,7 @@ Default: 0
 ==== `PARTITION_WALK`
 This property is designed to improve the reliability of `A/B` boot schemes using `autoboot.txt` by searching for bootable partitions if the specified partition does not appear to be bootable. If `PARTITION_WALK=1` and the requested partition is not bootable and does not have a valid `autoboot.txt` then the bootloader will check each partition in turn (up to 8 and wrapping to 0) to see if it is bootable (contains `start4.elf` on a Pi4, or `config.txt` and a suitable device-tree on Pi 5 or newer).
 
-During the "partition walk" `autoboot.txt` files are not processed to avoid cycling dependencies. It is assumed that the requested boot partition has failed and the system is attempting recovery. 
+During the "partition walk" `autoboot.txt` files are not processed to avoid cycling dependencies. It is assumed that the requested boot partition has failed and the system is attempting recovery.
 
 Default: `0`
 
