@@ -48,6 +48,13 @@ $ sudo su - <username>
 
 If the above command runs successfully, permissions were successfully configured for the user.
 
+If you've changed your keyboard layout, you might find that the newly added user is using the "wrong" keyboard layout. To fix this, sign in as the new user and run:
+
+[source,console]
+----
+$ sudo raspi-config nonint update_labwc_keyboard
+----
+
 === Delete a user
 
 To delete a user, run the following command, replacing the `<username>` placeholder with the username you would like to delete:

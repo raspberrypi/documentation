@@ -171,6 +171,26 @@ sudo vcmailbox 0x0003008c 8 8 1 0
 ----
 The value of the `boot_arg1` variable when the OS was started can be read via xref:configuration.adoc#part4[device-tree] at `/proc/device-tree/chosen/bootloader/arg1`
 
+==== `bootvar0`
+Raspberry Pi 5 and newer devices only.
+
+The `bootvar0` variable is a 32-bit user-defined value that is set through `rpi-eeprom-config`, and then can be used as a conditional variable in `config.txt`.
+
+For example, setting `bootvar0` to 42 via `rpi-eeprom-config`:
+[source,ini]
+----
+BOOTVAR0=42
+----
+
+Using `bootvar0` conditionally in `config.txt`:
+[source,ini]
+----
+[bootvar0=42]
+arm_freq=1000
+----
+
+This allows a common image (that is, with the same `config.txt` file) to support different configurations based on the persistent `rpi-eeprom-config` settings.
+
 ==== `boot_count`
 Raspberry Pi 5 and newer devices only.
 

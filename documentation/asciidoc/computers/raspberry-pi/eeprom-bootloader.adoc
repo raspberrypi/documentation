@@ -568,6 +568,13 @@ During the "partition walk" `autoboot.txt` files are not processed to avoid cycl
 
 Default: `0`
 
+[[BOOTVAR0]]
+==== `BOOTVAR0`
+
+Allows setting the conditional variable `bootvar0` used by `config.txt`. See xref:config_txt.adoc#bootvar0[bootvar0].
+
+Default: `0`
+
 [[PSU_MAX_CURRENT]]
 ==== `PSU_MAX_CURRENT`
 
