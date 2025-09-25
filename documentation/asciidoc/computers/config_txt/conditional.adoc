@@ -38,10 +38,7 @@ The conditional model filters apply according to the following table.
 | Pi 400 (also sees `[pi4]` contents)
 
 | `[pi500]`
-| Pi 500 (also sees `[pi5]` contents)
-
-| `[pi500+]`
-| Pi 500+ (also sees `[pi5]` contents)
+| Pi 500/500+ (also sees `[pi5]` contents)
 
 | `[cm1]`
 | Compute Module 1 (also sees `[pi1]` contents)

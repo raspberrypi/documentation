@@ -26,7 +26,11 @@ You can use any high-quality power supply that provides the correct power mode.
 |Recommended power supply (voltage/current)
 |Raspberry Pi power supply
 
-|Raspberry Pi 5, Raspberry Pi 500, and Raspberry Pi 500+
+|Raspberry Pi 500+
+|5V/5A
+|https://www.raspberrypi.com/products/27w-power-supply/[27W USB-C power supply]
+
+|Raspberry Pi 5 and Raspberry Pi 500
 |5V/5A, 5V/3A limits peripherals to 600mA
 |https://www.raspberrypi.com/products/27w-power-supply/[27W USB-C power supply]
 
