@@ -189,7 +189,7 @@ Using `bootvar0` conditionally in `config.txt`:
 arm_freq=1000
 ----
 
-This allows a common image (i.e. with the same config.txt file) to support different configurations based on the persistent rpi-eeprom-config settings.
+This allows a common image (that is, with the same `config.txt` file) to support different configurations based on the persistent `rpi-eeprom-config` settings.
 
 ==== `boot_count`
 Raspberry Pi 5 and newer devices only.
