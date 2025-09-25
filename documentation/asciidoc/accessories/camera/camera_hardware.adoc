@@ -272,7 +272,7 @@ Other available schematics;
 ==== Camera Connector Pinout (15-Pin)
 
 This is the pinout of the 15-pin Camera Serial Interface (CSI) connector used on flagship Raspberry Pi models prior to the Raspberry Pi 5.
-The connector type is an Amphenol SFW15R-2STE1LF or a compatible equivalent.
+The connector is compatible with Amphenol SFW15R-2STE1LF.
 
 Signal direction is specified from the perspective of the Raspberry Pi.
 The I^2^C lines (SCL and SDA) are pulled up to 3.3V on the Raspberry Pi board.
