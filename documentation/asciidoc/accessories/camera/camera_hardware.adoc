@@ -302,7 +302,7 @@ The function and direction of the GPIO lines depend on the specific Camera Modul
 ==== Camera Connector Pinout (22-Pin)
 
 This is the pinout of the 22-pin Camera Serial Interface (CSI) connector used on the Raspberry Pi Zero series, the Compute Module IO boards, and flagship models since the Raspberry Pi 5.
-The connector type is an Amphenol F32Q-1A7H1-11022 or a compatible equivalent.
+The connector is compatible with Amphenol F32Q-1A7H1-11022.
 
 Direction is given from the perspective of the Raspberry Pi.
 The I^2^C lines (SCL and SDA) are pulled up to 3.3V on the Raspberry Pi board.
