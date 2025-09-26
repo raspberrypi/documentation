@@ -93,7 +93,7 @@ All Raspberry Pi models with a PoE-capable Ethernet jack require a HAT to draw p
 | Pi 500+
 | 5.0A
 | 1.6A
-| 800mA
+| 800mA (with LEDs off and SSD inactive)
 
 | Zero
 | 1.2A
