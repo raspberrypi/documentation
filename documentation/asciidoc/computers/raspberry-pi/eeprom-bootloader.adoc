@@ -190,7 +190,7 @@ Default: `0`
 [[SD_OVERCURRENT_CHECK]]
 ==== `SD_OVERCURRENT_CHECK`
 
-Raspberry Pi 4, Raspberry Pi 5, Raspberry Pi 500, and Raspberry Pi 500+ only.
+Raspberry Pi 4 Model B, Raspberry Pi 5, Raspberry Pi 500, and Raspberry Pi 500+ only.
 
 Before booting, the bootloader checks the SD power switch overcurrent signal. The overcurrent signal occurs if the SD card is damaged and has a short circuit which will cause it to get hot.
 
