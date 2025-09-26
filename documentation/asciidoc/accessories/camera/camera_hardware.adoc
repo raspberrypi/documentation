@@ -275,7 +275,7 @@ This is the pinout of the 15-pin Camera Serial Interface (CSI) connector used on
 The connector is compatible with Amphenol SFW15R-2STE1LF.
 
 Signal direction is specified from the perspective of the Raspberry Pi.
-The I^2^C lines (SCL and SDA) are pulled up to 3.3V on the Raspberry Pi board.
+The I2C lines (SCL and SDA) are pulled up to 3.3 V on the Raspberry Pi board.
 
 The function and direction of the GPIO lines depend on the specific Camera Module in use. Typically, CAM_IO0 is used as an active-high power enable.
 
