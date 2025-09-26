@@ -311,7 +311,7 @@ The function and direction of the GPIO lines depend on the specific Camera Modul
 
 
 |===
-| Pin No. | Name        | Description                   | Direction / Type
+| Pin     | Name        | Description                   | Direction / Type
 
 | 1       | GND         | -                             | Ground
 | 2       | CAM_DN0     | D-PHY lane 0 (negative)       | Input, D-PHY
