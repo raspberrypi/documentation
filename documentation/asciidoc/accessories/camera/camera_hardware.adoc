@@ -280,7 +280,7 @@ The I2C lines (SCL and SDA) are pulled up to 3.3 V on the Raspberry Pi board.
 The function and direction of the GPIO lines depend on the specific Camera Module in use. Typically, CAM_IO0 is used as an active-high power enable.
 
 |===
-| Pin No. | Name        | Description                   | Direction / Type
+| Pin     | Name        | Description                   | Direction / Type
 
 | 1       | GND         | -                             | Ground
 | 2       | CAM_DN0     | D-PHY lane 0 (negative)       | Input, D-PHY
