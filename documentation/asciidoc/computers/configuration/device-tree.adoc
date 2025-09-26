@@ -9,7 +9,7 @@ User-provided parameters in `config.txt` are scanned, along with any overlays an
 [[part1]]
 === Device Trees
 
-A Device Tree (DT) is a description of the hardware in a system. It should include the name of the base CPU, its memory configuration, and any peripherals (internal and external). A DT should not be used to describe the software, although by listing the hardware modules it does usually cause driver modules to be loaded. 
+A Device Tree (DT) is a description of the hardware in a system. It should include the name of the base CPU, its memory configuration, and any peripherals (internal and external). A DT should not be used to describe the software, although by listing the hardware modules it does usually cause driver modules to be loaded.
 
 NOTE: It helps to remember that DTs are supposed to be OS-neutral, so anything which is Linux-specific shouldn't be there.
 
@@ -57,13 +57,13 @@ The following is a simple tree in the `.dts` format:
 This tree contains:
 
 * a required header: `/dts-v1/`
-* The inclusion of another DTS file, conventionally named `*.dtsi` and analogous to a `.h` header file in C 
+* The inclusion of another DTS file, conventionally named `*.dtsi` and analogous to a `.h` header file in C
 * a single root node: `/`
 * a couple of child nodes: `node1` and `node2`
 * some children for node1: `child-node1` and `child-node2`
 * a label (`cousin`) and a reference to that label (`&cousin`)
 * several properties scattered through the tree
-* a repeated node (`/node2`) 
+* a repeated node (`/node2`)
 
 Properties are simple key-value pairs where the value can either be empty or contain an arbitrary byte stream. While data types are not encoded in the data structure, there are a few fundamental data representations that can be expressed in a Device Tree source file.
 
@@ -528,7 +528,7 @@ Each node has the name of an overlay that requires special handling. The propert
 
 * `bcm2835` for all Raspberry Pis built around the BCM2835, BCM2836, BCM2837, and RP3A0 SoCs
 * `bcm2711` for Raspberry Pi 4B, CM4, CM4S, and Pi 400
-* `bcm2712` for Raspberry Pi 5, CM5, and Pi 500
+* `bcm2712` for Raspberry Pi 5, CM5, Pi 500, and Pi 500+
 
 A platform name with no value (an empty property) indicates that the current overlay is compatible with the platform; for example, `uart5` is compatible with the `bcm2711` platform. A non-empty value for a platform is the name of an alternative overlay to use in place of the requested one; asking for `disable-bt` on BCM2712 results in `disable-bt-pi5` being loaded instead. Any platform not included in an overlay's node is not compatible with that overlay. Any overlay not mentioned in the map is assumed to be compatible with all platforms.
 
@@ -833,7 +833,7 @@ For a list of supported overlays and parameters, see the https://github.com/rasp
 [[part4]]
 === Firmware parameters
 
-The firmware uses the special https://www.kernel.org/doc/html/latest/devicetree/usage-model.html#runtime-configuration[/chosen] node to pass parameters between the bootloader and/or firmware and the operating system. 
+The firmware uses the special https://www.kernel.org/doc/html/latest/devicetree/usage-model.html#runtime-configuration[/chosen] node to pass parameters between the bootloader and/or firmware and the operating system.
 
 * Each property is stored as a 32-bit unsigned integer unless indicated otherwise.
 * Numbers in device-tree are stored in binary and are big-endian.

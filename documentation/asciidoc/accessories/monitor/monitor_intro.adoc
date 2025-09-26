@@ -65,7 +65,7 @@ To switch from Power Saving mode to Full Power mode, press and hold the *increas
 
 [TIP]
 ====
-If the Monitor flashes on and off, your USB power supply is not capable of providing sufficient current to power the monitor. This can happen if you power the Monitor from a Raspberry Pi 5 or Pi 500 which is itself powered by a 5V/3A power supply. Try the following fixes to stop the Monitor from flashing on and off:
+If the Monitor flashes on and off, your USB power supply is not capable of providing sufficient current to power the monitor. This can happen if you power the Monitor from a Raspberry Pi 5, 500, or 500+ which is itself powered by a 5V/3A power supply. Try the following fixes to stop the Monitor from flashing on and off:
 
 * reduce the display brightness and volume (you may have to connect your monitor to another power supply to access the settings)
 * switch to a different power source or cable
