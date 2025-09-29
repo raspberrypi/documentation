@@ -10,7 +10,7 @@ The Raspberry Pi Debug Probe is a USB device that provides both a UART serial po
 * Works with https://openocd.org/[OpenOCD] and other tools supporting CMSIS-DAP
 * Open source, easily upgradeable firmware
 
-NOTE: For more information on the Raspberry Pi three-pin debug connector see the https://rptl.io/debug-spec[specification].
+NOTE: For more information on the Raspberry Pi three-pin debug connector see the https://rpltd.co/debug-spec[specification].
 
 This makes it easy to use a Raspberry Pi Pico on platforms such as Windows, macOS, and Linux that lack a GPIO header to connect directly to the Pico's serial UART or SWD port.
 
@@ -32,7 +32,7 @@ Orange:: TX/SC (Output from Probe)
 Black:: GND
 Yellow:: RX/SD (Input to Probe or I/O)
 
-While the cable with three-pin JST-SH connectors is intended to be used with the https://rptl.io/debug-spec[standard three-pin connector] which newer Raspberry Pi boards use for the SWD debug port and UART connectors.
+While the cable with three-pin JST-SH connectors is intended to be used with the https://rpltd.co/debug-spec[standard three-pin connector] which newer Raspberry Pi boards use for the SWD debug port and UART connectors.
 
 The Debug Probe has five LEDs, a red LED to indicate power, and four more activity indicator LEDs
 
