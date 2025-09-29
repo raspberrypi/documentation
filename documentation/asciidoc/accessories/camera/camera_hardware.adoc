@@ -277,7 +277,9 @@ The connector is compatible with Amphenol SFW15R-2STE1LF.
 Signal direction is specified from the perspective of the Raspberry Pi.
 The I2C lines (SCL and SDA) are pulled up to 3.3 V on the Raspberry Pi board.
 
-The function and direction of the GPIO lines depend on the specific Camera Module in use. Typically, CAM_IO0 is used as an active-high power enable.
+The function and direction of the GPIO lines depend on the specific Camera Module in use. Typically, CAM_IO0 is used as an active-high power enable. Some products do not include CAM_IO1.
+
+NOTE: Which end is pin 1 on an FPC connector depends on your source and destination hardware, and whether your cable has contacts on the top, the bottom, or both the top and bottom.
 
 |===
 | Pin     | Name        | Description                   | Direction / Type
@@ -292,11 +294,11 @@ The function and direction of the GPIO lines depend on the specific Camera Modul
 | 8       | CAM_CN      | D-PHY Clock (negative)        | Input, D-PHY
 | 9       | CAM_CP      | D-PHY Clock (positive)        | Input, D-PHY
 |10       | GND         | -                             | Ground
-|11       | CAM_IO0     | GPIO (e.g. Power-Enable)      | Bidirectional, 3.3V
-|12       | CAM_IO1     | GPIO (e.g. Clock, LED)        | Bidirectional, 3.3V
-|13       | SCL         | I^2^C Clock                   | Output, 3.3V
-|14       | SDA         | I^2^C Data                    | Bidirectional, 3.3V
-|15       | 3V3         | 3.3V Supply                   | Output
+|11       | CAM_IO0     | GPIO (for example, Power-Enable)  | Bidirectional, 3.3 V
+|12       | CAM_IO1     | GPIO (for example, Clock, LED) | Bidirectional, 3.3 V
+|13       | SCL         | I2C Clock                     | Bidirectional, 3.3 V
+|14       | SDA         | I2C Data                    | Bidirectional, 3.3 V
+|15       | 3V3         | 3.3 V Supply                   | Output
 |===
 
 ==== Camera Connector Pinout (22-Pin)
@@ -307,8 +309,9 @@ The connector is compatible with Amphenol F32Q-1A7H1-11022.
 Direction is given from the perspective of the Raspberry Pi.
 The I2C lines (SCL and SDA) are pulled up to 3.3 V on the Raspberry Pi board.
 
-The function and direction of the GPIO lines depend on the specific Camera Module in use. Typically, CAM_IO0 is used as an active-high power enable.
+The function and direction of the GPIO lines depend on the specific Camera Module in use. Typically, CAM_IO0 is used as an active-high power enable. Some products do not include CAM_IO1.
 
+NOTE: Which end is pin 1 on an FPC connector depends on your source and destination hardware, and whether your cable has contacts on the top, the bottom, or both the top and bottom.
 
 |===
 | Pin     | Name        | Description                   | Direction / Type
@@ -329,10 +332,10 @@ The function and direction of the GPIO lines depend on the specific Camera Modul
 |14       | CAM_DN3     | D-PHY lane 3 (negative)       | Input, D-PHY
 |15       | CAM_DP3     | D-PHY lane 3 (positive)       | Input, D-PHY
 |16       | GND         | -                             | Ground
-|17       | CAM_IO0     | GPIO (e.g. Power-Enable)      | Bidirectional, 3.3V
-|18       | CAM_IO1     | GPIO (e.g. Clock, LED)        | Bidirectional, 3.3V
+|17       | CAM_IO0     | GPIO (for example, Power-Enable) | Bidirectional, 3.3 V
+|18       | CAM_IO1     | GPIO (for example, Clock, LED)    | Bidirectional, 3.3 V
 |19       | GND         | -                             | Ground
-|20       | SCL         | I^2^C Clock                   | Output, 3.3V
-|21       | SDA         | I^2^C Data                    | Bidirectional, 3.3V
-|22       | 3V3         | 3.3V Supply                   | Output
+|20       | SCL         | I2C Clock                   | Bidirectional, 3.3 V
+|21       | SDA         | I2C Data                      | Bidirectional, 3.3 V
+|22       | 3V3         | 3.3 V Supply                   | Output
 |===
