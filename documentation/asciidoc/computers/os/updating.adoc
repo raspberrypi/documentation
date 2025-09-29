@@ -160,7 +160,7 @@ $ sudo rpi-update
 $ sudo reboot
 ----
 
-[.whitepaper, title="Updating Raspberry Pi firmware", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003476-WP/Updating-Pi-firmware.pdf]
+[.whitepaper, title="Updating Raspberry Pi firmware", subtitle="", link=https://pip.raspberrypi.com/documents/RP-003476-WP-Updating-Pi-firmware.pdf]
 ****
 This whitepaper documents how to update the VideoCore firmware in a Raspberry Pi OS image.
 ****

@@ -1,6 +1,6 @@
 == Display Parallel Interface (DPI)
 
-[.whitepaper, title="Using a DPI Display on the Raspberry Pi", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003471-WP/Using-a-DPI-display.pdf]
+[.whitepaper, title="Using a DPI Display on the Raspberry Pi", subtitle="", link=https://pip.raspberrypi.com/documents/RP-003471-WP-Using-a-DPI-display.pdf]
 ****
 Display Parallel Interface (DPI) displays can be connected to Raspberry Pi devices via the 40-pin general-purpose input/output (GPIO) connector as an alternative to using the dedicated Display Serial Interface (DSI) or High-Definition Multimedia Interface (HDMI) ports.
 ****
