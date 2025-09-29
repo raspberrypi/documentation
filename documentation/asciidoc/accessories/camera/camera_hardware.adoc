@@ -306,7 +306,7 @@ NOTE: Which end is pin 1 on an FPC connector depends on your source and destinat
 This is the pinout of the 22-pin Camera Serial Interface (CSI) connector used on the Raspberry Pi Zero series, the Compute Module IO boards, and flagship models since the Raspberry Pi 5.
 The connector is compatible with Amphenol F32Q-1A7H1-11022.
 
-Direction is given from the perspective of the Raspberry Pi.
+Signal direction is specified from the perspective of the Raspberry Pi.
 The I2C lines (SCL and SDA) are pulled up to 3.3 V on the Raspberry Pi board.
 
 The function and direction of the GPIO lines depend on the specific Camera Module in use. Typically, CAM_IO0 is used as an active-high power enable. Some products do not include CAM_IO1.
