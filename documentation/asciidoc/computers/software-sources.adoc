@@ -154,7 +154,7 @@ https://github.com/raspberrypi/usbboot::
 A tool to boot a Raspberry Pi over USB for provisioning Compute Module and Raspberry Pi devices.
 
 https://github.com/raspberrypi/rpi-sb-provisioner::
-A tool to mass provision Raspberry Pi Compute Modules (Compute Module 4 and later are supported).
+A tool to mass provision Raspberry Pi devices (Raspberry Pi 5, Compute Module 4, and Compute Module 5 are supported).
 
 === Feedback
 
