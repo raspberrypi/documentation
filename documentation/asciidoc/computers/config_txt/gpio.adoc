@@ -48,22 +48,22 @@ Setting `enable_jtag_gpio=1` selects Alt4 mode for GPIO pins 22-27, and sets up 
 | Pin # | Function
 
 | GPIO22
-| ARM_TRST
+| `ARM_TRST`
 
 | GPIO23
-| ARM_RTCK
+| `ARM_RTCK`
 
 | GPIO24
-| ARM_TDO
+| `ARM_TDO`
 
 | GPIO25
-| ARM_TCK
+| `ARM_TCK`
 
 | GPIO26
-| ARM_TDI
+| `ARM_TDI`
 
 | GPIO27
-| ARM_TMS
+| `ARM_TMS`
 |===
 
 
