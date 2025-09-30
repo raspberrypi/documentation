@@ -2,8 +2,6 @@ include::legacy_config_txt/legacy.adoc[]
 
 include::legacy_config_txt/boot.adoc[]
 
-include::legacy_config_txt/gpio.adoc[]
-
 include::legacy_config_txt/overclocking.adoc[]
 
 include::legacy_config_txt/conditional.adoc[]
