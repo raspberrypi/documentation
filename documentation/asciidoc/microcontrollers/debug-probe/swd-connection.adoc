@@ -8,7 +8,7 @@ We recommend the use of the Raspberry Pi Pico VSCode extension, which integrates
 
 === Standalone program upload
 
-Once you have built a binary: 
+Once you have built a binary:
 
 [source,console]
 ----
@@ -21,7 +21,7 @@ NOTE: When you use the Debug Probe to upload a binary the ELF version of the fil
 
 This will use `openocd` in server mode, and connect GDB, which gives you breakpoints and single-step over a console interface.
 
-[IMPORTANT] 
+[IMPORTANT]
 ======
 To allow debugging, you must build your binaries as `Debug` rather than `Release` build type, e.g.
 
@@ -39,7 +39,7 @@ $ make -j4
 In a debug build you will get more information when you run it under the debugger, as the compiler builds your program with the information to tell GDB what your program is doing.
 ======
 
-NOTE: For computers that are _not_ Raspberry Pis, a variant of GDB that can debug ARM processors is required. Use one of the following alternatives depending on your operating system and device:
+NOTE: For computers that are _not_ Raspberry Pis, a variant of GDB that can debug Arm processors is required. Use one of the following alternatives depending on your operating system and device:
 * On Linux devices, use `gdb-multiarch`.
 * On macOS and Windows devices, use `arm-none-eabi-gdb` from the toolchain on https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads[Arm's website]
 
