@@ -14,6 +14,8 @@ Changes to `config.txt` only take effect after a reboot. You can view the curren
 
 NOTE: Not all config settings can be retrieved using `vcgencmd`.
 
+Some legacy `config.txt` options are no longer officially supported. These are listed in xref:../computers/legacy_config_txt.adoc[Legacy config.txt options] and aren't included in this article.
+
 === File format
 
 The `config.txt` file is read by the early-stage boot firmware, so it uses a very simple file format: **a single `property=value` statement on each line, where `value` is either an integer or a string**. Comments may be added, or existing config values may be commented out and disabled, by starting a line with the `#` character.

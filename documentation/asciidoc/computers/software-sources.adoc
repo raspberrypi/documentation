@@ -158,7 +158,7 @@ A tool to mass provision Raspberry Pi devices (Raspberry Pi 5, Compute Module 4,
 
 === Feedback
 
-http://github.com/raspberrypi/bookworm-feedback::
+http://github.com/raspberrypi/trixie-feedback::
 A repo specifically reserved for bug-reporting for the current Raspberry Pi OS release.
 
 === Raspberry Pi Pico
