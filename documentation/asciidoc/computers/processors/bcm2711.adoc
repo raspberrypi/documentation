@@ -6,7 +6,7 @@ The Arm cores are capable of running at up to 1.5 GHz, making the Raspberry Pi 4
 
 The BCM2711 chip continues to use the heat spreading technology started with the BCM2837B0, which provides better thermal management.
 
-*Processor:*  Quad-core https://en.wikipedia.org/wiki/ARM_Cortex-A72[Cortex-A72] (Arm v8) 64-bit SoC @ 1.5 GHz.
+*Processor:*  Quad-core https://en.wikipedia.org/wiki/ARM_Cortex-A72[Cortex-A72] (Armv8-A) 64-bit SoC @ 1.5 GHz.
 
 *Memory:* Accesses up to 8GB LPDDR4-2400 SDRAM (depending on model)
 
