@@ -309,7 +309,7 @@ The connector is compatible with Amphenol F32Q-1A7H1-11022.
 Signal direction is specified from the perspective of the Raspberry Pi.
 The I2C lines (SCL and SDA) are pulled up to 3.3 V on the Raspberry Pi board.
 
-The function and direction of the GPIO lines depend on the specific Camera Module in use. Typically, CAM_IO0 is used as an active-high power enable. Some products do not include CAM_IO1.
+The function and direction of the GPIO lines depend on the specific Camera Module in use. Typically, `CAM_IO0` is used as an active-high power enable. Some products don't include `CAM_IO1`.
 
 NOTE: Which end is pin 1 on an FPC connector depends on your source and destination hardware, and whether your cable has contacts on the top, the bottom, or both the top and bottom.
 
