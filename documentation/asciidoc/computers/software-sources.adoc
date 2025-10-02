@@ -109,7 +109,7 @@ https://github.com/raspberrypi-ui/appset::
 The Appearance settings panel.
 
 https://github.com/raspberrypi-ui/rc_gui::
-The Raspberry Pi Configuration settings panel.
+The Control Centre settings panel.
 
 https://github.com/raspberrypi-ui/rasputin::
 The Mouse and Keyboard settings panel.
