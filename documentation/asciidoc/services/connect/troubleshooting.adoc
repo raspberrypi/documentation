@@ -6,7 +6,7 @@
 
 * Connect does not support on-screen keyboards. For full functionality, use a physical keyboard.
 
-* Connect requires a browser that implements https://caniuse.com/?search=es2020[ECMAScript 2020] (ES11) as it makes use of https://caniuse.com/?feats=mdn-javascript_operators_optional_chaining,mdn-javascript_operators_nullish_coalescing,mdn-javascript_builtins_globalthis,es6-module-dynamic-import,bigint,mdn-javascript_builtins_promise_allsettled,mdn-javascript_builtins_string_matchall,mdn-javascript_statements_export_namespace,mdn-javascript_operators_import_meta[features] unavailable in older browsers.
+* Connect requires a browser that implements https://caniuse.com/?search=es2022[ECMAScript 2022] (ES13) as it makes use of features unavailable in older browsers.
 
 * Browsers intercept certain keys and key combinations. As a result, you can't type these keys into your Connect window. Screen sharing includes a toolbar to simulate some of the most popular intercepted keys.
 
@@ -79,7 +79,7 @@ If you have repeated issues trying to run Connect's required services, run the f
 [source,console]
 ----
 $ systemctl --user status rpi-connect-wayvnc.service rpi-connect-wayvnc-watcher.path
-$ journalctl --user --follow --unit rpi-connect-wayvnc.service --unit rpi-connect-wayvnc-watcher.path
+$ journalctl --follow --user-unit rpi-connect-wayvnc.service --user-unit rpi-connect-wayvnc-watcher.path
 ----
 
 If the service fails to start or doesn't exist, ensure that your environment meets the following criteria:
@@ -223,5 +223,5 @@ To view logs for the Connect service and its dedicated WayVNC server, run the fo
 
 [source,console]
 ----
-$ journalctl --user --follow --unit rpi-connect --unit rpi-connect-wayvnc
+$ journalctl --follow --user-unit rpi-connect --user-unit rpi-connect-wayvnc
 ----

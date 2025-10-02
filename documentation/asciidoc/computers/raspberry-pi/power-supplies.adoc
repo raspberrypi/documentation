@@ -90,6 +90,11 @@ All Raspberry Pi models with a PoE-capable Ethernet jack require a HAT to draw p
 | 1.6A (600mA if using a 3A power supply)
 | 800mA
 
+| Pi 500+
+| 5.0A
+| 1.6A
+| 800mA (with LEDs off and SSD inactive)
+
 | Zero
 | 1.2A
 | Limited by PSU, board, and connector ratings only
@@ -122,22 +127,22 @@ $ vcgencmd get_config usb_max_current_enable
 The following table describes the amount of power (in amps) drawn by different Raspberry Pi models during various workloads:
 
 |===
-| | | Raspberry Pi 1B+ | Raspberry Pi 2B | Raspberry Pi 3B | Raspberry Pi Zero | Raspberry Pi 4B 
+| | | Raspberry Pi 1B+ | Raspberry Pi 2B | Raspberry Pi 3B | Raspberry Pi Zero | Raspberry Pi 4B
 | Boot | Max | 0.26 | 0.40 | 0.75 | 0.20 | 0.85
-| | Avg | 0.22 | 0.22 | 0.35 | 0.15 | 0.7 
+| | Avg | 0.22 | 0.22 | 0.35 | 0.15 | 0.7
 | Idle | Avg | 0.20 | 0.22 | 0.30 | 0.10 | 0.6
-| Video playback (H.264) | Max | 0.30 | 0.36 |0.55 |0.23 | 0.85 
-| | Avg | 0.22 | 0.28 | 0.33 | 0.16 | 0.78 
-| Stress | Max | 0.35 | 0.82 | 1.34 | 0.35 | 1.25 
-| | Avg | 0.32 | 0.75 | 0.85 | 0.23 | 1.2 
-| Halt current | | | | 0.10 | 0.055 | 0.023 
+| Video playback (H.264) | Max | 0.30 | 0.36 |0.55 |0.23 | 0.85
+| | Avg | 0.22 | 0.28 | 0.33 | 0.16 | 0.78
+| Stress | Max | 0.35 | 0.82 | 1.34 | 0.35 | 1.25
+| | Avg | 0.32 | 0.75 | 0.85 | 0.23 | 1.2
+| Halt current | | | | 0.10 | 0.055 | 0.023
 |===
 
 NOTE: These measurements used a standard Raspberry Pi OS image (current as of 26 Feb 2016, or June 2019 for the Raspberry Pi 4), at room temperature, with the Raspberry Pi connected to a HDMI monitor, USB keyboard, and USB mouse. The Raspberry Pi 3 Model B was connected to a wireless LAN access point, the Raspberry Pi 4 was connected to Ethernet. All these power measurements are approximate and do not take into account power consumption from additional USB devices; power consumption can easily exceed these measurements if multiple additional USB devices or a HAT are connected to the Raspberry Pi.
 
-[.whitepaper, title="Extra PMIC features on Raspberry Pi 4 and Compute Module 4", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-004340-WP/Extra-PMIC-features-on-Raspberry-Pi-4-and-Compute-Module-4.pdf]
+[.whitepaper, title="Extra PMIC features on Raspberry Pi 4, Raspbery Pi 5 and Compute Module 4", subtitle="", link=https://pip.raspberrypi.com/documents/RP-004340-WP-Extra-PMIC-features-on-Raspberry-Pi-4-and-Compute-Module-4.pdf]
 ****
-A number of different PMIC devices have been used on both Raspberry Pi 4 and CM4. All the PMICs provide extra functionality alongside that of voltage supply. This document describes how to access these features in software.
+A number of different PMIC devices have been used on Raspberry Pi 4, Raspberry Pi 5 and CM4. All the PMICs provide extra functionality alongside that of voltage supply. This document describes how to access these features in software.
 ****
 
 ==== Decrease Raspberry Pi 5 wattage when turned off
@@ -161,7 +166,7 @@ If you see warnings, switch to a higher quality power supply and cable. Low qual
 
 Voltages can drop for a variety of reasons. You may have plugged in too many high-demand USB devices. The power supply could be inadequate. Or the power supply cable could use wires that are too thin.
 
-[.whitepaper, title="Making a more resilient file system", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003610-WP/Making-a-more-resilient-file-system.pdf]
+[.whitepaper, title="Making a more resilient file system", subtitle="", link=https://pip.raspberrypi.com/documents/RP-003610-WP-Making-a-more-resilient-file-system.pdf]
 ****
 Raspberry Pi devices are frequently used as data storage and monitoring devices, often in places where sudden power-downs may occur. As with any computing device, power dropouts can cause storage corruption.
 

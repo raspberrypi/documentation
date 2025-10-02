@@ -42,13 +42,13 @@ After authenticating, assign a name to your device. Choose a name that uniquely 
 
 image::images/new-device.png[width="80%"]
 
-You can now remotely connect to your device. The Connect icon in your menu bar will turn blue to indicate that your device is now signed in to the Connect service. You should receive an email notification indicating that a new device is linked to your Connect account.
+You can now remotely connect to your device. The Connect icon in your menu bar turns blue to indicate that your device is signed in to the Connect service. You should receive an email notification indicating that a new device is linked to your Connect account.
 
 image::images/sign-in-email.png[width="70%"]
 
 WARNING: If you receive an email that says a device that you do not recognise has signed into Connect, change your Raspberry Pi ID password immediately. xref:connect.adoc#manage-devices[Remove the device from Connect] to permanently disassociate it from your account. Consider xref:id.adoc#enable-two-factor-authentication[enabling two-factor authentication] to keep your account secure.
 
-Click the Connect icon in your menu bar to open the Connect menu. This menu allows you to turn Connect on and off, sign in and out, and allow or disallow remote access methods.
+Open the Connect menu by selecting the Connect icon in your menu bar. This menu allows you to turn Connect on and off, sign in and out, and allow or disallow remote access methods.
 
 TIP: Connect signs communication with your device serial number. Moving your SD card between devices will sign you out of Connect.
 
@@ -82,7 +82,7 @@ Once connected, a green dot appears next to the **Screen sharing** badge in the 
 
 image::images/screen-sharing-in-progress.png[width="80%"]
 
-The Connect icon in the system tray turns purple and displays a closed circle when a screen sharing session is in progress. A desktop notification will appear whenever a screen sharing session starts.
+The Connect icon in the system tray rotates when a screen sharing session is in progress. A desktop notification appears whenever a screen sharing session starts.
 
 image::images/screen-sharing-notification.png[width="80%"]
 
@@ -94,7 +94,7 @@ image::images/screen-sharing-ended.png[width="80%"]
 
 ==== Disallow screen sharing
 
-To turn off screen sharing, click the Connect icon in the menu bar and unselect **Allow Screen Sharing**.  Your device remains signed into Connect, but you won't be able to create a screen sharing session from the Connect dashboard.
+To turn off screen sharing, select the Connect icon in the menu bar then deselect **Allow Screen Sharing**.  Your device remains signed in to Connect, but you can't create a screen sharing session from the Connect dashboard.
 
 image::images/disallow-screen-sharing.png[width="80%"]
 
@@ -111,8 +111,8 @@ image::images/screen-sharing-disabled.png[width="80%"]
 
 To re-enable screen sharing, do one of the following:
 
-* click the Connect icon in the menu bar and select **Allow Screen Sharing**
-* run the following command:
+* Select the Connect icon in the menu bar and then choose **Allow Screen Sharing**
+* Run the following command:
 +
 [source,console]
 ----
@@ -145,7 +145,7 @@ image::images/remote-shell-in-progress.png[width="80%"]
 
 TIP: Every remote shell connection creates a brand new connection, just like SSH. To persist background commands and configuration across multiple sessions, use `screen` or `tmux`.
 
-The Connect icon in the menu bar turns purple and displays a closed circle when a remote shell session is in progress. A desktop notification will appear whenever a remote shell session starts.
+The Connect icon in the menu bar rotates when a remote shell session is in progress. A desktop notification appears whenever a remote shell session starts.
 
 image::images/remote-shell-notification.png[width="80%"]
 
@@ -159,7 +159,7 @@ image::images/remote-shell-ended.png[width="80%"]
 
 ==== Disallow remote shell access
 
-To turn off remote shell access, click the Connect icon in the menu bar and unselect **Allow Remote Shell Access**. Your device remains signed into Connect, but you won't be able to create a remote shell session from the Connect dashboard.
+To turn off remote shell access, select the Connect icon in the menu bar and then deselect **Allow Remote Shell Access**. Your device remains signed in to Connect, but you can't create a remote shell session from the Connect dashboard.
 
 image::images/disallow-remote-shell.png[width="80%"]
 
@@ -176,8 +176,8 @@ image::images/remote-shell-disabled.png[width="80%"]
 
 To re-enable remote shell access, do one of the following:
 
-* click the Connect system tray icon and select **Allow Remote Shell Access**
-* run the following command:
+* Select the Connect system tray icon and choose **Allow Remote Shell Access**
+* Run the following command:
 +
 [source,console]
 ----
@@ -194,6 +194,20 @@ $ loginctl enable-linger
 ----
 
 TIP: We recommend enabling user-lingering on all headless Raspberry Pi OS Lite setups to prevent your device from becoming unreachable after a remote reboot.
+
+== Disabling the animated icon
+
+To disable the animated icon when a screen sharing or remote shell session are in progress, right-click the Connect icon in the menu bar and select **Configure Plugin...**.
+
+image::images/configure-plugin.png[width="80%"]
+
+Select the **Animate Icon** toggle to switch to an alternate icon.
+
+image::images/disable-animate-icon.png[width="80%"]
+
+When a screen sharing or remote shell session is in progress, the Connect icon turns blue.
+
+image::images/static-icon.png[width="80%"]
 
 == Manage devices
 
@@ -228,7 +242,7 @@ Run the following command on your device to sign out of your Raspberry Pi ID, wh
 $ rpi-connect signout
 ----
 
-Alternatively, click the Connect icon in the menu bar and click "Sign Out".
+Alternatively, select the Connect icon in the menu bar and choose "Sign Out".
 
 TIP: To fully remove a device from your Connect account, xref:connect.adoc#manage-devices[remove it from the Connect dashboard].
 

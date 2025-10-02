@@ -2,7 +2,7 @@
 
 To use the Debug Probe, OpenOCD and the GNU Project Debugger (GDB) are required. An Integrated Development Environment (IDE) may also be useful.
 
-On Raspberry Pi OS, most Linux variants, macOS, and Microsoft Windows, it is recommended to install our VS Code extension. This extension bundles OpenOCD, ARM toolchains, GDB, and register definitions for Pico-series microcontrollers.
+On Raspberry Pi OS, most Linux variants, macOS, and Microsoft Windows, it is recommended to install our VS Code extension. This extension bundles OpenOCD, Arm toolchains, GDB, and register definitions for Pico-series microcontrollers.
 
 See Chapter 3 of our https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting Started with Raspberry Pi Pico] guide.
 

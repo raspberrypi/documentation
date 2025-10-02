@@ -160,7 +160,7 @@ $ sudo rpi-update
 $ sudo reboot
 ----
 
-[.whitepaper, title="Updating Raspberry Pi firmware", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003476-WP/Updating-Pi-firmware.pdf]
+[.whitepaper, title="Updating Raspberry Pi firmware", subtitle="", link=https://pip.raspberrypi.com/documents/RP-003476-WP-Updating-Pi-firmware.pdf]
 ****
 This whitepaper documents how to update the VideoCore firmware in a Raspberry Pi OS image.
 ****
@@ -175,14 +175,62 @@ $ sudo apt update
 $ sudo apt install --reinstall raspi-firmware
 ----
 
-[NOTE]
-====
-If you still run Raspberry Pi OS Bullseye, you must instead reinstall `raspberrypi-kernel` using the following command:
+=== Convert Raspberry Pi OS Lite into Raspberry Pi OS Desktop
 
+You can add the packages that turn the Lite version into the Desktop version by using `apt`.
+
+. Install your preferred desktop windowing system.
+* To install Wayland (recommended), run:
++
 [source,console]
 ----
-$ sudo apt install --reinstall libraspberrypi0 libraspberrypi-{bin,dev,doc} raspberrypi-{kernel,bootloader}
+$ sudo apt install rpd-wayland-core
+----
+* To install X, run:
++
+[source,console]
+----
+$ sudo apt install rpd-x-core
+----
+. Install the Raspberry Pi theme and Control Centre.
++
+[source,console]
+----
+$ sudo apt install rpd-theme
+$ sudo apt install rpd-preferences
+----
+. Add the applications.
++
+[source,console]
+----
+$ sudo apt install rpd-applications
+$ sudo apt install rpd-utilities
+$ sudo apt install rpd-developer
+$ sudo apt install rpd-graphics
+----
+. Add the extra features for your chosen windowing system, such as screenshot and remote desktop capabilities.
+* For Wayland, run:
++
+[source,console]
+----
+$ sudo apt install rpd-wayland-extras
+----
+* For X, run:
++
+[source,console]
+----
+$ sudo apt install rpd-x-extras
+----
+. Restart your Raspberry Pi to enter the desktop environment.
++
+[source,console]
+----
+$ sudo reboot
 ----
 
-Reboot your Raspberry Pi with `sudo reboot` to put these changes into effect.
-====
+You now have all the packages that comprise Raspberry Pi OS Desktop. If you want to return to the Lite version of Raspberry Pi OS, you can remove these packages.
+
+You can also install the recommended applications included in Raspberry Pi OS Full by going to your Raspberry Pi main menu and selecting **Preferences > Recommended Software**.
+
+
+

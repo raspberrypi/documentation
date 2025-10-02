@@ -52,7 +52,7 @@ To disable, set `arm_boost=0`.
 
 ==== `power_force_3v3_pwm`
 
-NOTE: This option applies only to Raspberry Pi 5, Compute Module 5, and Pi 500.
+NOTE: This option applies only to Raspberry Pi 5, 500, 500+, and Compute Module 5.
 
 Forces PWM on 3.3V output from the GPIO header or CSI connector.
 

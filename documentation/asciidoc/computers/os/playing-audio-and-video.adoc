@@ -16,7 +16,7 @@ You can also launch VLC from the command line. For the examples below, we used a
 
 [source,console]
 ----
-$ wget --trust-server-names http://rptl.io/big-buck-bunny
+$ wget --trust-server-names http://rpltd.co/big-buck-bunny
 ----
 
 To play the clip in VLC from the command line, run the following command:
@@ -62,7 +62,7 @@ For the examples below, we used a short audio clip. To download this clip from R
 
 [source,console]
 ----
-$ wget --trust-server-names http://rptl.io/startup-music
+$ wget --trust-server-names http://rpltd.co/startup-music
 ----
 
 To play the clip in VLC from the command line, run the following command:

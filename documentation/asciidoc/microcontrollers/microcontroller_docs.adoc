@@ -46,5 +46,5 @@ https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi
 
 https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspberry Pi Pico Python SDK]:: A MicroPython environment for RP2040 microcontrollers
 
-The API level Doxygen documentation for the Raspberry Pi Pico C/{cpp} SDK is also available https://rptl.io/pico-doxygen[as a micro-site].
+The API level Doxygen documentation for the Raspberry Pi Pico C/{cpp} SDK is also available https://rpltd.co/pico-doxygen[as a micro-site].
 

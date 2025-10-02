@@ -1,0 +1,24 @@
+[[contribute]]
+== Become a contributor (Raspberry Pi OS Trixie and later)
+
+Contributor-only titles are available to users who are signed in to Bookshelf with a xref:../services/id.adoc[Raspberry Pi ID] that's associated with one of the following things:
+
+* An email address that has a https://raspberrypipress.imbmsubscriptions.com/[subscription to our print magazine]
+* A https://magazine.raspberrypi.com/bookshelf/link[monthly contribution]
+
+To set up a monthly contribution:
+
+. In Bookshelf, select **Contribute...** in the bottom left to open the contributor page on the Raspberry Pi website.
+. If you don't have a Raspberry Pi ID already, you can create one now. If you have an existing Raspberry Pi ID, sign in with your username and password.
+. Sign up for a monthly contribution.
+. Select **Sign in to Bookshelf** to open Bookshelf and store your ID that identifies you as a contributor.
+
+The **Contribute...** button is no longer shown and all titles can now be downloaded.
+
+You can sign in with your Raspberry Pi ID and access available titles from any number of devices. If you move to a new Raspberry Pi or flash your SD with a different version of Raspberry Pi OS, sign in and download your favourite titles again.
+
+== Download titles
+
+Double-click on any of the available titles to download them as a PDF and open them in the default PDF reader.
+
+If you stop your monthly contribution, you keep any titles that you've already downloaded. These PDF files are stored in the **Bookshelf** folder of your home directory and remain accessible through Bookshelf.

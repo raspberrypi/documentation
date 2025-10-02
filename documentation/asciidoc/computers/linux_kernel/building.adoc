@@ -64,10 +64,10 @@ To prepare the default configuration, run the appropriate commands from the tabl
 
 [cols="8,<.^20a,60a"]
 |===
-| Architecture | Model | Command
+| Architecture | Raspberry Pi Model | Command
 
 .12+^.^| 64-bit
-| Raspberry Pi 3
+| 3
 .9+.^|
 [source,console]
 ----
@@ -76,16 +76,16 @@ $ KERNEL=kernel8
 $ make bcm2711_defconfig
 ----
 | Compute Module 3
-| Raspberry Pi 3+
+| 3+
 | Compute Module 3+
-| Raspberry Pi Zero 2 W
-| Raspberry Pi 4
-| Pi 400
+| Zero 2 W
+| 4
+| 400
 | Compute Module 4
 | Compute Module 4S
 
 
-.^| Raspberry Pi 5
+.^| 5
 .3+.^|
 [source,console]
 ----
@@ -93,11 +93,11 @@ $ cd linux
 $ KERNEL=kernel_2712
 $ make bcm2712_defconfig
 ----
-| Pi 500
+| 500/500+
 | Compute Module 5
 
 .14+^.^| 32-bit
-| Raspberry Pi 1
+| 1
 .4+.^|
 [source,console]
 ----
@@ -110,7 +110,7 @@ $ make bcmrpi_defconfig
 | Zero W
 
 
-| Raspberry Pi 2
+| 2
 .6+.^|
 [source,console]
 ----
@@ -118,14 +118,14 @@ $ cd linux
 $ KERNEL=kernel7
 $ make bcm2709_defconfig
 ----
-| Raspberry Pi 3
+| 3
 | Compute Module 3
-| Raspberry Pi 3+
+| 3+
 | Compute Module 3+
 | Zero 2 W
 
 
-| Raspberry Pi 4
+| 4
 .4+.^|
 [source,console]
 ----
@@ -133,7 +133,7 @@ $ cd linux
 $ KERNEL=kernel7l
 $ make bcm2711_defconfig
 ----
-| Pi 400
+| 400
 | Compute Module 4
 | Compute Module 4S
 |===
@@ -296,49 +296,49 @@ Enter the following commands to build the sources and Device Tree files:
 
 [cols="8,<.^20a,60a"]
 |===
-| Target Architecture | Target Model | Command
+| Target Architecture | Target Raspberry Pi Model | Command
 
-.10+^.^| 64-bit
-| Raspberry Pi 3
+.12+^.^| 64-bit
+| 3
 .9+.^| [source,console]
 ----
 $ cd linux
 $ KERNEL=kernel8
 $ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
 ----
-| Raspberry Pi Compute Module 3
-| Raspberry Pi 3+
-| Raspberry Pi Compute Module 3+
-| Raspberry Pi Zero 2 W
-| Raspberry Pi 4
-| Raspberry Pi 400
-| Raspberry Pi Compute Module 4
-| Raspberry Pi Compute Module 4S
+| Compute Module 3
+| 3+
+| Compute Module 3+
+| Zero 2 W
+| 4
+| 400
+| Compute Module 4
+| Compute Module 4S
 
-.^| Raspberry Pi 5
-.1+.^|
+.^| 5
+.3+.^|
 [source,console]
 ----
 $ cd linux
 $ KERNEL=kernel_2712
 $ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2712_defconfig
 ----
-
+| 500/500+
+| Compute Module 5
 
 .14+^.^| 32-bit
-
-| Raspberry Pi 1
+| 1
 .4+.^| [source,console]
 ----
 $ cd linux
 $ KERNEL=kernel
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
 ----
-| Raspberry Pi Compute Module 1
-| Raspberry Pi Zero
-| Raspberry Pi Zero W
+| Compute Module 1
+| Zero
+| Zero W
 
-| Raspberry Pi 2
+| 2
 .6+.^|
 [source,console]
 ----
@@ -346,13 +346,13 @@ $ cd linux
 $ KERNEL=kernel7
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
 ----
-| Raspberry Pi 3
-| Raspberry Pi Compute Module 3
-| Raspberry Pi 3+
-| Raspberry Pi Compute Module 3+
-| Raspberry Pi Zero 2 W
+| 3
+| Compute Module 3
+| 3+
+| Compute Module 3+
+| Zero 2 W
 
-| Raspberry Pi 4
+| 4
 .4+.^|
 [source,console]
 ----
@@ -360,9 +360,9 @@ $ cd linux
 $ KERNEL=kernel7l
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
 ----
-| Raspberry Pi 400
-| Raspberry Pi Compute Module 4
-| Raspberry Pi Compute Module 4S
+| 400
+| Compute Module 4
+| Compute Module 4S
 |===
 
 [[cross-compiled-customisation]]

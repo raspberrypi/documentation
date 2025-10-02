@@ -4,6 +4,17 @@ Raspberry Pi OS is a free, Debian-based operating system optimised for the Raspb
 
 Because Raspberry Pi OS is derived from Debian, it follows a staggered version of the https://wiki.debian.org/DebianReleases[Debian release cycle]. Releases happen roughly every 2 years.
 
-The latest version of Raspberry Pi OS is based on https://www.raspberrypi.com/news/bookworm-the-new-version-of-raspberry-pi-os/[Debian Bookworm]. The previous version was based on https://www.raspberrypi.com/news/raspberry-pi-os-debian-bullseye/[Debian Bullseye].
+The latest version of Raspberry Pi OS is based on https://www.raspberrypi.com/news/trixie-the-new-version-of-raspberry-pi-os/[Debian Trixie]. The previous version was based on https://www.raspberrypi.com/news/bookworm-the-new-version-of-raspberry-pi-os/[Debian Bookworm].
 
-You can find images of Raspberry Pi OS at https://www.raspberrypi.com/software/operating-systems/[raspberrypi.com/software/operating-systems/]
+== Get Raspberry Pi OS
+
+Raspberry Pi OS is available through the xref:../computers/getting-started.adoc#raspberry-pi-imager[Raspberry Pi Imager].
+You can also find images of Raspberry Pi OS at https://www.raspberrypi.com/software/operating-systems/[raspberrypi.com/software/operating-systems/].
+
+We provide 64- and 32-bit versions of the OS in the following editions:
+
+* **Raspberry Pi OS with desktop.** This is the default version of Raspberry Pi OS shown in Raspberry Pi Imager. It includes applications such as the Chromium web browser, Firefox web browser, VLC media player, and the Thonny Python environment.
+* **Raspberry Pi OS with desktop and recommended software.** This is listed as "Raspberry Pi OS Full" in Raspberry Pi Imager. It also includes the LibreOffice suite, KiCad, a programming environment for Scratch, and many other applications.
+* **Raspberry Pi OS Lite.** This version doesn't include a graphical desktop experience. Use it for headless servers and similar use cases. We recommend this version for your Raspberry Pi 1, 2, and Zero computers.
+
+If you're already running a previous version of Raspberry Pi OS and want to instead use the latest major version, we recommend that you don't perform an in-place upgrade. Instead, start again with a new image. For more information, see <<upgrade-your-operating-system-to-a-new-major-version>>.

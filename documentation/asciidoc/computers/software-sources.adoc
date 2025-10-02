@@ -2,7 +2,7 @@ At Raspberry Pi we're trying to open source as much of our code as possible to m
 
 == Finding software sources in Raspberry Pi OS
 
-When looking for software which is distributed with Raspberry Pi OS, there are often upstream software sources that we patch to create our downstream packages (those tagged with `pass:[+rpt]`). To view the source for those packages it is usually easier to fetch through apt. To do this, you first need to edit your apt lists to include the source packages. The following files should be edited to remove the leading `pass:[#]` from each line:
+When looking for software which is distributed with Raspberry Pi OS, there are often upstream software sources that we patch to create our downstream packages (those tagged with `pass:[+rpt]`). To view the source for those packages it is usually easier to fetch through apt. To do this, you first need to edit your apt lists to include the source packages. The following files should be edited to remove the leading `pass:[#]` from each `deb-src` line:
 
 * `+/etc/apt/sources.list+`
 * `+/etc/apt/sources.list.d/raspi.list+`
@@ -21,11 +21,19 @@ Now you can fetch the package source, for example:
 $ apt source labwc
 ----
 
+Next, you need to install a helper package:
+
+[source,console]
+----
+$ sudo apt install devscripts
+----
+
 Finally you can build the package using the standard Debian building process.
 
 [source,console]
 ----
 $ sudo apt build-dep labwc
+$ cd labwc-0.8.4
 $ debuild -uc -us
 ----
 
@@ -45,6 +53,14 @@ The following is a curated list of repositories which most people are interested
 
 https://github.com/raspberrypi/linux::
 This repository contains the source code for the downstream Linux kernel supported and working on all versions of Raspberry Pi from Pi 1 to Pi 5.
+
+https://github.com/raspberrypi/firmware::
+This repository contains the closed source firmware, although the following two links are useful:
+* https://github.com/raspberrypi/firmware/commits/master/[Changelog for the firmware]
+* https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README[Device tree overlay README]
+
+https://github.com/raspberrypi/rpi-eeprom::
+Installation scripts and binaries for the Raspberry Pi 4 and Raspberry Pi 5 bootloader EEPROMs including the https://github.com/raspberrypi/rpi-eeprom/releases[releases] and https://github.com/raspberrypi/rpi-eeprom/blob/master/releases.md[release notes].
 
 === Libraries and applications
 
@@ -137,9 +153,12 @@ A tool to provision Raspberry Pi devices at manufacture, including secure boot a
 https://github.com/raspberrypi/usbboot::
 A tool to boot a Raspberry Pi over USB for provisioning Compute Module and Raspberry Pi devices.
 
+https://github.com/raspberrypi/rpi-sb-provisioner::
+A tool to mass provision Raspberry Pi devices (Raspberry Pi 5, Compute Module 4, and Compute Module 5 are supported).
+
 === Feedback
 
-http://github.com/raspberrypi/bookworm-feedback::
+http://github.com/raspberrypi/trixie-feedback::
 A repo specifically reserved for bug-reporting for the current Raspberry Pi OS release.
 
 === Raspberry Pi Pico

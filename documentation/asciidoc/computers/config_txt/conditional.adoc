@@ -14,31 +14,31 @@ The `[all]` filter is the most basic filter. It resets all previously set filter
 The conditional model filters apply according to the following table.
 
 |===
-| Filter | Applicable model(s)
+| Filter | Applicable models
 
 | `[pi1]`
-| Model 1A, Model 1B, Model 1A+, Model 1B+, Compute Module 1
+| 1A, 1B, 1A+, 1B+, Compute Module 1
 
 | `[pi2]`
-| Model 2B (BCM2836- or BCM2837-based)
+| 2B (BCM2836- or BCM2837-based)
 
 | `[pi3]`
-| Model 3B, Model 3B+, Model 3A+, Compute Module 3, Compute Module 3+
+| 3B, 3B+, 3A+, Compute Module 3, Compute Module 3+
 
 | `[pi3+]`
-| Model 3A+, Model 3B+ (also sees `[pi3]` contents)
+| 3A+, 3B+ (also sees `[pi3]` contents)
 
 | `[pi4]`
-| Model 4B, Pi 400, Compute Module 4, Compute Module 4S
+| 4B, 400, Compute Module 4, Compute Module 4S
 
 | `[pi5]`
-| Raspberry Pi 5, Compute Module 5, Pi 500
+| 5, 500, 500+, Compute Module 5
 
 | `[pi400]`
-| Pi 400 (also sees `[pi4]` contents)
+| 400 (also sees `[pi4]` contents)
 
 | `[pi500]`
-| Pi 500 (also sees `[pi5]` contents)
+| 500/500+ (also sees `[pi5]` contents)
 
 | `[cm1]`
 | Compute Module 1 (also sees `[pi1]` contents)
@@ -170,6 +170,26 @@ sudo vcmailbox 0x0003008c 8 8 1 0
 # 0x00000020 0x80000000 0x0003008c 0x00000008 0x80000008 0x00000001 0x0000002a 0x0000000
 ----
 The value of the `boot_arg1` variable when the OS was started can be read via xref:configuration.adoc#part4[device-tree] at `/proc/device-tree/chosen/bootloader/arg1`
+
+==== `bootvar0`
+Raspberry Pi 5 and newer devices only.
+
+The `bootvar0` variable is a 32-bit user-defined value that is set through `rpi-eeprom-config`, and then can be used as a conditional variable in `config.txt`.
+
+For example, setting `bootvar0` to 42 via `rpi-eeprom-config`:
+[source,ini]
+----
+BOOTVAR0=42
+----
+
+Using `bootvar0` conditionally in `config.txt`:
+[source,ini]
+----
+[bootvar0=42]
+arm_freq=1000
+----
+
+This allows a common image (that is, with the same `config.txt` file) to support different configurations based on the persistent `rpi-eeprom-config` settings.
 
 ==== `boot_count`
 Raspberry Pi 5 and newer devices only.
@@ -345,5 +365,5 @@ Filters of different types can be combined by listing them one after the other, 
 # settings here apply to all hardware
 
 ----
- 
+
 Use the `[all]` filter to reset all previous filters and avoid unintentionally combining different filter types.

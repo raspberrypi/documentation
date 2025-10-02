@@ -30,12 +30,6 @@
                     "subpath": "config_txt.adoc"
                 },
                 {
-                    "title": "Legacy `config.txt` options",
-                    "description": "Options which may be useful for OSes other than Raspberry Pi OS",
-                    "image": "full-sized/Legacy-config-txt.png",
-                    "subpath": "legacy_config_txt.adoc"
-                },
-                {
                     "title": "The Linux kernel",
                     "description": "How to configure and build a custom kernel for your Raspberry Pi",
                     "image": "full-sized/Linux-Kernel.png",
@@ -60,10 +54,16 @@
                     "subpath": "ai.adoc"
                 },
                 {
-                    "title": "Raspberry Pi hardware",
-                    "description": "Technical information about Raspberry Pi hardware",
+                    "title": "Raspberry Pi computer hardware",
+                    "description": "Technical information about Raspberry Pi computer hardware",
                     "image": "full-sized/Raspberry-Pi-Hardware.png",
                     "subpath": "raspberry-pi.adoc"
+                },
+                {
+                    "title": "Keyboard computers",
+                    "description": "Technical information about Raspberry Pi keyboard computers",
+                    "image": "full-sized/keyboard-computers.png",
+                    "subpath": "keyboard-computers.adoc"
                 },
                 {
                     "title": "Compute Module hardware",
@@ -82,6 +82,12 @@
                     "description": "Open source software by Raspberry Pi",
                     "image": "full-sized/software-sources.png",
                     "subpath": "software-sources.adoc"
+                },
+                {
+                    "title": "Legacy `config.txt` options",
+                    "description": "Options which might be useful for OSes other than Raspberry Pi OS",
+                    "image": "full-sized/Legacy-config-txt.png",
+                    "subpath": "legacy_config_txt.adoc"
                 }
             ]
         },
@@ -227,7 +233,7 @@
                     "description": "Supports Arm Serial Wire Debug (SWD), and acts as a UART bridge",
                     "image": "full-sized/Debug-Probe.png",
                     "subpath": "debug-probe.adoc"
-                },			
+                },
                 {
                     "title": "MicroPython",
                     "description": "Getting started with MicroPython",
@@ -257,6 +263,12 @@
                     "description": "Connect to your Raspberry Pi from your browser",
                     "image": "full-sized/Connect-BIG.png",
                     "subpath": "connect.adoc"
+                },
+                {
+                    "title": "Bookshelf",
+                    "description": "Read titles published by Raspberry Pi Press",
+                    "image": "full-sized/Bookshelf.png",
+                    "subpath": "bookshelf.adoc"
                 }
             ]
         },

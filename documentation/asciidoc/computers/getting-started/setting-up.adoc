@@ -26,11 +26,15 @@ You can use any high-quality power supply that provides the correct power mode.
 |Recommended power supply (voltage/current)
 |Raspberry Pi power supply
 
-|Raspberry Pi 5
+|Raspberry Pi 500+
+|5V/5A
+|https://www.raspberrypi.com/products/27w-power-supply/[27W USB-C power supply]
+
+|Raspberry Pi 5 and Raspberry Pi 500
 |5V/5A, 5V/3A limits peripherals to 600mA
 |https://www.raspberrypi.com/products/27w-power-supply/[27W USB-C power supply]
 
-|Raspberry Pi 4 Model B
+|Raspberry Pi 4 Model B and Raspberry Pi 400
 |5V/3A
 |https://www.raspberrypi.com/products/type-c-power-supply/[15W USB-C power supply]
 
@@ -38,7 +42,7 @@ You can use any high-quality power supply that provides the correct power mode.
 |5V/2.5A
 |https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5W Micro USB power supply]
 
-|Raspberry Pi 2 (all models)
+|Raspberry Pi 2 Model B
 |5V/2.5A
 |https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5W Micro USB power supply]
 
@@ -101,22 +105,19 @@ Raspberry Pi models have the following display connectivity:
 |Model
 |Display outputs
 
-|Raspberry Pi 5
+|Raspberry Pi 5, Raspberry Pi 400, Raspberry Pi 500, and Raspberry Pi 500+
 |2× micro HDMI
 
-|Raspberry Pi 4 (all models)
+|Raspberry Pi 4 Model B
 |2× micro HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 3 (all models)
 |HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
-|Raspberry Pi 2 (all models)
+|Raspberry Pi 2 Model B
 |HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
-|Raspberry Pi 1 Model B+
-|HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
-
-|Raspberry Pi 1 Model A+
+|Raspberry Pi 1 (all models)
 |HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi Zero (all models)
@@ -142,10 +143,11 @@ All variants of the Raspberry Pi 1, 2, 3, and 4 include a 3.5mm auxiliary http:/
 The following Raspberry Pi models come with Wi-Fi and Bluetooth connectivity:
 
 * Flagship models since Raspberry Pi 3 Model B
+* All Keyboard models
 * All Zero W models
 * All Pico W models
 * Compute Modules configured with wireless (available since CM4)
 
-The "Model B" suffix indicates variants with an Ethernet port; "Model A" indicates no Ethernet port. If your Raspberry Pi doesn't have an Ethernet port, you can still connect to a wired internet connection using a USB-to-Ethernet adapter.
+The "Model B" suffix indicates variants with an Ethernet port; "Model A" indicates no Ethernet port. The Keyboard models also include an Ethernet port. If your Raspberry Pi doesn't have an Ethernet port, you can still connect to a wired internet connection using a USB-to-Ethernet adapter.
 
 image::images/peripherals/cable-net.png[alt="Plugging an Ethernet cable into a Raspberry Pi.",width="80%"]
