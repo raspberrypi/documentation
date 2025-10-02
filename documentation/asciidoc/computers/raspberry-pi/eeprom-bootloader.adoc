@@ -152,7 +152,7 @@ The `BOOT_ORDER` property defines the sequence for the different boot modes. It 
 
 If set to a non-zero value (in seconds), enables a hardware watchdog timer in the bootloader. If the OS is not started within the specified time, the watchdog will reset the system.
 
-The bootloader watchdog is automatically cancelled as soon as the ARM CPU is started. It does **not** monitor the OS after the handover from the bootloader.
+The bootloader watchdog is automatically cancelled as soon as the Arm CPU is started. It does **not** monitor the OS after the handover from the bootloader.
 
 This is useful for unattended or remote systems to ensure recovery from failed boots (e.g. if the OS never loads).
 

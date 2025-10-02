@@ -725,7 +725,7 @@ dtoverlay=
 [[part3.3]]
 ==== Board-specific labels and parameters
 
-Raspberry Pi boards have two I2C interfaces. These are nominally split: one for the ARM, and one for VideoCore (the GPU). On almost all models, `i2c1` belongs to the ARM and `i2c0` to VC, where it is used to control the camera and read the HAT EEPROM. However, there are two early revisions of the Model B that have those roles reversed.
+Raspberry Pi boards have two I2C interfaces. These are nominally split: one for the Arm CPU, and one for the VideoCore GPU. On almost all models, `i2c1` belongs to the CPU and `i2c0` to the GPU, where it is used to control the camera and read the HAT EEPROM. However, there are two early revisions of the Model B that have those roles reversed.
 
 To make it possible to use one set of overlays and parameters with all Raspberry Pis, the firmware creates some board-specific DT parameters. These are:
 

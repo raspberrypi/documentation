@@ -7,7 +7,7 @@ Built around a quad-core Arm Cortex-A76 CPU cluster, clocked at up to 2.4GHz, wi
 Headline features include:
 
 * Quad-core Arm Cortex-A76 @ 2.4GHz
-** ARMv8-A ISA
+** Armv8-A ISA
 ** 64KByte I and D caches
 ** 512KB L2 per core, 2MB shared L3
 * New Raspberry Pi-developed ISP
