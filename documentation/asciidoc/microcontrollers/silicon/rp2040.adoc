@@ -54,7 +54,7 @@ Key features:
 ** USB 1.1 controller and PHY, with host and device support
 ** 8 PIO state machines
 
-[.whitepaper, title="Power switching RP2040 for low standby current applications", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-004339-WP/Power-switching-RP2040-for-low-standby-current-applications.pdf]
+[.whitepaper, title="Power switching RP2040 for low standby current applications", subtitle="", link=https://pip.raspberrypi.com/documents/RP-004339-WP-Power-switching-RP2040-for-low-standby-current-applications.pdf]
 ****
 Even in deep sleep RP2040 draws a typical current of ~180μA, and sleep current is very dependent on PVT: process (current varies from chip to chip), voltage (current varies linearly with voltage), and temperature (current varies nonlinearly with temperature).
 

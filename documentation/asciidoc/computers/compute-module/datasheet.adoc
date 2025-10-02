@@ -20,7 +20,7 @@ To learn more about Compute Module 4 (CM4) and its corresponding IO Board, see t
 
 * https://datasheets.raspberrypi.com/cm4/cm4-datasheet.pdf[CM4 datasheet]
 
-[.whitepaper, title="Configure the Compute Module 4", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003470-WP/Configuring-the-Compute-Module-4.pdf]
+[.whitepaper, title="Configure the Compute Module 4", subtitle="", link=https://pip.raspberrypi.com/documents/RP-003470-WP-Configuring-the-Compute-Module-4.pdf]
 ****
 The Compute Module 4 is available in a number of different hardware configurations. Some use cases disable certain features that aren't required.
 
@@ -57,7 +57,7 @@ Raspberry Pi Compute Module 1 (CM1) and Compute Module 3 (CM3) are supported pro
 * https://datasheets.raspberrypi.com/cm/cm1-schematics.pdf[Schematics for CM1]
 * https://datasheets.raspberrypi.com/cm/cm3-schematics.pdf[Schematics for CM3]
 
-[.whitepaper, title="Transition from Compute Module 1 or Compute Module 3 to Compute Module 4", subtitle="", link=https://pip.raspberrypi.com/categories/685-whitepapers-app-notes/documents/RP-003469-WP/Transitioning-from-CM3-to-CM4.pdf]
+[.whitepaper, title="Transition from Compute Module 1 or Compute Module 3 to Compute Module 4", subtitle="", link=https://pip.raspberrypi.com/documents/RP-003469-WP-Transitioning-from-CM3-to-CM4.pdf]
 ****
 This white paper helps developers migrate from Compute Module 1 or Compute Module 3 to Compute Module 4.
 ****
