@@ -89,3 +89,7 @@ image::images/vnc-tigervnc-cert-signer-warning.png[alt="TigerVNC warning about c
 image::images/vnc-tigervnc-username-password.png[alt="Entering a username and password to authenticate via TigerVNC",width="60%"]
 --
 . Click the "OK" button to authenticate with the VNC server. If your credentials are correct, TigerVNC should open a window containing the desktop corresponding to your account on the Raspberry Pi. You should be able to use your mouse and keyboard to interact with the desktop and input text.
++
+--
+image::images/vnc-tigervnc-desktop.png[alt="The desktop of a Raspberry Pi after successfully authenticating with TigerVNC",width="60%"]
+--
