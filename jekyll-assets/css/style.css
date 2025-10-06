@@ -15,6 +15,7 @@
   --accent: #cd2355;
   --docsearch-primary-color: var(--accent);
   --docsearch-logo-color: var(--red-tint);
+  --docsearch-muted-color: #333;
   --copy-button-bg: #f6f6f6;
   --copy-button-text: #444;
   --textcolor: black;
@@ -56,6 +57,7 @@
     --accent: #d75a64;
     --docsearch-primary-color: var(--accent);
     --docsearch-logo-color: var(--red-tint);
+    --docsearch-muted-color: #333;
     --copy-button-bg: #707070;
     --copy-button-text: #CCC;
     --textcolor: white;
@@ -754,7 +756,7 @@ h6 .anchor::before {
 
 #content p {
   font-size: 0.95em;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.5em;
   margin-bottom: 15px;
 }
@@ -926,7 +928,7 @@ span.mlabel {
 }
 
 #content td.content {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 #content p > code,
@@ -954,7 +956,7 @@ td div.listingblock div.content code {
 div.imageblock div.title {
   color: var(--subtle-text);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 0.8em;
   margin-top: -15px;
   margin-bottom: 30px;
@@ -1212,7 +1214,7 @@ div.memitem {
 
 table.params,
 p.returns {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 table.params td {
