@@ -108,7 +108,7 @@ The file manager used by the desktop, which also displays the desktop background
 https://github.com/raspberrypi-ui/appset::
 The Appearance settings panel.
 
-https://github.com/raspberrypi-ui/rc_gui::
+https://github.com/raspberrypi-ui/rpcc::
 The Control Centre settings panel.
 
 https://github.com/raspberrypi-ui/rasputin::
