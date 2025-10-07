@@ -11,19 +11,19 @@
         <div id="toc-container">
           <div id="toc-inner">
             <div id="docs-header">
-              <h1 id="docs-header-title">
+              <h2 id="docs-header-title">
                 <a href="/documentation">
                   Documentation
                 </a>
-              </h1>
+              </h2>
               <label class="mobile-menu-toggle" for="mobile-toggle">
                 <div class="mobile-menu-toggle-inner"></div>
               </label>
             </div>
-            <div id="docsearch">
+            <div id="docsearch" role="search">
             </div>
           </div>
-          <div class="toc">
+          <div class="toc" role="navigation">
           {% for subdir in site.data.nav %}
             <ul class="sectlevel1">
               <input class="toc-toggle-box" type="checkbox" id="{{ subdir.path }}" {% if page.url contains subdir.path %}checked{% endif %} />
@@ -154,14 +154,14 @@
       </div>
       <div id="docs-container">
         <div id="main-window">
-          <section id="content">
+          <section id="content" role="main">
             <h1>{{ page.sub_title | markdownify | remove: '<p>' | remove: '</p>'}}</h1>
             {{ content }}
           </section>
 
           <div id="on-this-page">
             <div id="on-this-page-inner">
-              <h5>On this page</h5>
+              <h4>On this page</h4>
               <div id="tocbot" class="js-toc"></div>
             </div>
           </div>

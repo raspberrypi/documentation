@@ -9,12 +9,12 @@
     <div class="toptitle">
       <h1><a href="/documentation/"><b>Raspberry Pi</b> Documentation</a></h1>
       <div id="search-container">
-        <div id="docsearch"></div>
+        <div id="docsearch" role="search"></div>
       </div>
       {% include tabs.html %}
     </div>
 
-    <div id="container">
+    <div id="container" role="main">
       <section id="box-content">
         {% for item in site.data.index.tabs %}
           {% if page.dir == item.path or page.dir == "/" and item.default_tab and item.default_tab == "yes" %}
