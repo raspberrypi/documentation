@@ -228,7 +228,9 @@ $ sudo apt install rpd-x-extras
 $ sudo reboot
 ----
 
-You now have all the packages that comprise Raspberry Pi OS Desktop. If you want to return to the Lite version of Raspberry Pi OS, you can remove these packages.
+You now have all the packages that comprise Raspberry Pi OS Desktop.
+
+If you want to return to the Lite version of Raspberry Pi OS, you can remove these packages. Alternatively, to have the Lite experience without removing the desktop packages you've installed, use xref:../computers/configuration.adoc#raspi-config[raspi-config] to set your Raspberry Pi to boot to the command line.
 
 You can also install the recommended applications included in Raspberry Pi OS Full by going to your Raspberry Pi main menu and selecting **Preferences > Recommended Software**.
 

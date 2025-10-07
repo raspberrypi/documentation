@@ -57,7 +57,7 @@ WARNING: Setting any overclocking parameters to values other than those used by 
 | SDRAM phy voltage adjustment. [-16,8] equates to [0.8V,1.4V] with 0.025V steps. Not supported on Raspberry Pi 4 or later devices.
 
 | force_turbo
-| Forces turbo mode frequencies even when the ARM cores are not busy. Enabling this may set the warranty bit if `over_voltage_*` is also set.
+| Forces turbo mode frequencies even when the Arm cores are not busy. Enabling this may set the warranty bit if `over_voltage_*` is also set.
 
 | initial_turbo
 | Enables https://forums.raspberrypi.com/viewtopic.php?f=29&t=6201&start=425#p180099[turbo mode from boot] for the given value in seconds, or until `cpufreq` sets a frequency. The maximum value is `60`. The November 2024 firmware update made the following changes:
@@ -339,9 +339,9 @@ NOTE: There is no need to use `hdmi_enable_4kp60` on Flagship models since Raspb
 
 ==== `force_turbo`
 
-By default (`force_turbo=0`) the on-demand CPU frequency driver will raise clocks to their maximum frequencies when the ARM cores are busy, and will lower them to the minimum frequencies when the ARM cores are idle.
+By default (`force_turbo=0`) the on-demand CPU frequency driver will raise clocks to their maximum frequencies when the Arm cores are busy, and will lower them to the minimum frequencies when the Arm cores are idle.
 
-`force_turbo=1` overrides this behaviour and forces maximum frequencies even when the ARM cores are not busy.
+`force_turbo=1` overrides this behaviour and forces maximum frequencies even when the Arm cores are not busy.
 
 === Clocks relationship
 
@@ -349,7 +349,7 @@ By default (`force_turbo=0`) the on-demand CPU frequency driver will raise clock
 
 The GPU core, CPU, SDRAM and GPU each have their own PLLs and can have unrelated frequencies. The h264, v3d and ISP blocks share a PLL.
 
-To view the Raspberry Pi's current frequency in KHz, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`. Divide the result by 1000 to find the value in MHz. Note that this frequency is the kernel _requested_ frequency, and it is possible that any throttling (for example at high temperatures) may mean the CPU is actually running more slowly than reported. An instantaneous measurement of the actual ARM CPU frequency can be retrieved using the vcgencmd `vcgencmd measure_clock arm`. This is displayed in Hertz.
+To view the Raspberry Pi's current frequency in KHz, type: `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`. Divide the result by 1000 to find the value in MHz. Note that this frequency is the kernel _requested_ frequency, and it is possible that any throttling (for example at high temperatures) may mean the CPU is actually running more slowly than reported. An instantaneous measurement of the actual Arm CPU frequency can be retrieved using the vcgencmd `vcgencmd measure_clock arm`. This is displayed in Hertz.
 
 === Monitoring core temperature
 [.whitepaper, title="Cooling a Raspberry Pi device", subtitle="", link=https://pip.raspberrypi.com/documents/RP-003608-WP-Cooling-a-Raspberry-Pi-device.pdf]
@@ -368,7 +368,7 @@ Divide the result by 1000 to find the value in degrees Celsius. Alternatively, y
 
 Hitting the temperature limit is not harmful to the SoC, but it will cause the CPU to throttle. A heat sink can help to control the core temperature, and therefore performance. This is especially useful if the Raspberry Pi is running inside a case. Airflow over the heat sink will make cooling more efficient.
 
-When the core temperature is between 80°C and 85°C, the ARM cores will be throttled back. If the temperature exceeds 85°C, the ARM cores and the GPU will be throttled back.
+When the core temperature is between 80°C and 85°C, the Arm cores will be throttled back. If the temperature exceeds 85°C, the Arm cores and the GPU will be throttled back.
 
 For the Raspberry Pi 3 Model B+, the PCB technology has been changed to provide better heat dissipation and increased thermal mass. In addition, a soft temperature limit has been introduced, with the goal of maximising the time for which a device can "sprint" before reaching the hard limit at 85°C. When the soft limit is reached, the clock speed is reduced from 1.4GHz to 1.2GHz, and the operating voltage is reduced slightly. This reduces the rate of temperature increase: we trade a short period at 1.4GHz for a longer period at 1.2GHz. By default, the soft limit is 60°C. This can be changed via the `temp_soft_limit` setting in `config.txt`.
 
@@ -378,7 +378,7 @@ It is essential to keep the supply voltage above 4.8V for reliable performance. 
 
 To monitor the Raspberry Pi's PSU voltage, you will need to use a multimeter to measure between the VCC and GND pins on the GPIO. More information is available in the xref:raspberry-pi.adoc#power-supply[power] section of the documentation.
 
-If the voltage drops below 4.63V (±5%), the ARM cores and the GPU will be throttled back, and a message indicating the low voltage state will be added to the kernel log.
+If the voltage drops below 4.63V (±5%), the Arm cores and the GPU will be throttled back, and a message indicating the low voltage state will be added to the kernel log.
 
 The Raspberry Pi 5 PMIC has built in ADCs that allow the supply voltage to be measured. To view the current supply voltage, run the following command:
 

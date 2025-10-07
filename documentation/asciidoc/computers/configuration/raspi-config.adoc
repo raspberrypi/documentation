@@ -5,7 +5,9 @@
 
 === Getting started
 
-To open the configuration tool from the desktop GUI, go to **Preferences** > **Raspberry Pi Configuration**.
+To open the configuration tool from the desktop GUI, go to **Preferences** > **Control Centre**.
+
+NOTE: In previous versions of Raspberry Pi OS, the Control Centre application was called Raspberry Pi Configuration.
 
 Alternatively, run the following command to access the configuration tool via the terminal:
 
@@ -14,7 +16,7 @@ Alternatively, run the following command to access the configuration tool via th
 $ sudo raspi-config
 ----
 
-TIP: Some advanced configuration is available in the `raspi-config` CLI, but not the Raspberry Pi Configuration GUI.
+TIP: Some advanced configuration is available in the `raspi-config` CLI, but not the Control Centre GUI.
 
 To navigate the configuration tool from the terminal:
 

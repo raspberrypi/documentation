@@ -84,7 +84,7 @@ This returns the current frequency of the specified clock. Accepts the following
 | clock | Description
 
 | `arm`
-| ARM core(s)
+| Arm core(s)
 
 | `core`
 | GPU core

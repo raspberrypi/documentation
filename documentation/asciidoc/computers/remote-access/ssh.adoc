@@ -11,7 +11,7 @@ By default, Raspberry Pi OS disables the SSH server. Enable SSH in one of the fo
 ======
 On the desktop::
 +
-. From the *Preferences* menu, launch *Raspberry Pi Configuration*.
+. From the *Preferences* menu, launch *Control Centre*.
 . Navigate to the *Interfaces* tab.
 . Select *Enabled* next to *SSH*.
 . Click *OK*.
@@ -76,7 +76,7 @@ NOTE: If you receive a `connection timed out` error, you may have entered the wr
 
 ==== Forward X11 over SSH
 
-NOTE: On Raspberry Pi 4 and 5, Raspberry Pi OS Bookworm uses the Wayland window server by default. You can only forward X11 if you use the X window server. To enable window forwarding over X11, switch your desktop to the X window server in Raspberry Pi Configuration.
+NOTE: Raspberry Pi OS uses the Wayland window server by default. You can only forward X11 if you use the X window server. To enable window forwarding over X11, switch your desktop to the X window server in Control Centre or the Raspberry Pi configuration CLI.
 
 NOTE: X11 is no longer installed by default on many desktop environments. Install a third-party X server such as https://www.xquartz.org/[XQuartz] to use X11 forwarding.
 
@@ -180,14 +180,14 @@ On the computer you use to remotely connect to the Raspberry Pi, use the followi
 $ ssh-copy-id <username>@<ip address>
 ----
 
-When prompted, enter the password for your user account on the Raspberry Pi. 
+When prompted, enter the password for your user account on the Raspberry Pi.
 You can now connect to your Raspberry Pi without entering a password.
 
 ==== Manually copy a public key to your Raspberry Pi
 
 If your operating system does not support `ssh-copy-id`, you can instead copy your public key with xref:remote-access.adoc#scp[`scp`].
 
-First, _on your Raspberry Pi_, create the directory where Linux expects to find keys: 
+First, _on your Raspberry Pi_, create the directory where Linux expects to find keys:
 
 [source,console]
 ----

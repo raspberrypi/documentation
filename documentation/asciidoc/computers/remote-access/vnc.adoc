@@ -21,19 +21,19 @@ TIP: Once enabled, you can access your WayVNC configuration at `/etc/wayvnc/`.
 ==== Enable VNC Server Graphically
 
 . Boot into the graphical desktop on your Raspberry Pi.
-. Click the Raspberry Pi icon in the system tray of your desktop.
-. Select *Preferences* > *Raspberry Pi Configuration* from the menu.
+. Select the Raspberry Pi icon in the system tray of your desktop.
+. Select *Preferences* > *Control Centre* from the menu.
 +
 --
-image::images/raspberry-pi-configuration.png[alt="Select Raspberry Pi Configuration from the Preferences menu in the system tray",width="80%"]
+image::images/raspberry-pi-configuration.png[alt="Select Control Centre from the Preferences menu in the system tray",width="80%"]
 --
 . Navigate to the *Interfaces* tab.
-. Click the radio button next to *VNC* into the active position.
+. Toggle the radio button next to *VNC* into the active position.
 +
 --
 image::images/vnc-enable.png[alt="In the Interfaces tab, click the VNC toggle into the active position to enable VNC.",width="80%"]
 --
-. Click the *OK* button to save your configuration changes.
+. Select the *OK* button to save your configuration changes.
 
 ==== Enable the VNC server on the command line
 
@@ -88,7 +88,7 @@ image::images/vnc-tigervnc-cert-signer-warning.png[alt="TigerVNC warning about c
 --
 image::images/vnc-tigervnc-username-password.png[alt="Entering a username and password to authenticate via TigerVNC",width="60%"]
 --
-. Click the "OK" button to authenticate with the VNC server. If your credentials are correct, TigerVNC should open a window containing the desktop corresponding to your account on the Raspberry Pi. You should be able to move your mouse and keyboard to input text and interact with the desktop.
+. Click the "OK" button to authenticate with the VNC server. If your credentials are correct, TigerVNC should open a window containing the desktop corresponding to your account on the Raspberry Pi. You should be able to use your mouse and keyboard to interact with the desktop and input text.
 +
 --
 image::images/vnc-tigervnc-desktop.png[alt="The desktop of a Raspberry Pi after successfully authenticating with TigerVNC",width="60%"]
