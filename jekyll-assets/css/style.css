@@ -104,6 +104,10 @@ h1 {
   background: transparent;
 }
 
+h2 {
+  font-size: initial;
+}
+
 body, article, div, nav, h1, h2, h3, h4, p {
   display: block;
   font-family: 'Roboto', sans-serif;
