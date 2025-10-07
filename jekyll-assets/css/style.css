@@ -104,10 +104,6 @@ h1 {
   background: transparent;
 }
 
-h2 {
-  font-size: initial;
-}
-
 body, article, div, nav, h1, h2, h3, h4, p {
   display: block;
   font-family: 'Roboto', sans-serif;
@@ -186,6 +182,10 @@ div.subtitle p {
   color: var(--accent);
   text-decoration: none;
   background-color: var(--toc-hover-colour);
+}
+
+#docs-header h2 {
+  font-size: initial;
 }
 
 #docs-header a {
