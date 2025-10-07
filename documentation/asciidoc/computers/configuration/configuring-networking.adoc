@@ -10,7 +10,7 @@ NOTE: Starting with Raspberry Pi OS _Bookworm_, Network Manager is the default n
 
 Access Network Manager via the network icon at the right-hand end of the menu bar. If you are using a Raspberry Pi with built-in wireless connectivity, or if a wireless dongle is plugged in, click this icon to bring up a list of available wireless networks. If you see the message 'No APs found - scanning...', wait a few seconds, and Network Manager should find your network.
 
-NOTE: Devices with dual-band wireless automatically disable networking until you assign a wireless LAN country. Flagship models since Raspberry Pi 3B+, Compute Modules since CM4, and Keyboard models support dual-band wireless. To set a wireless LAN country, open the Raspberry Pi Configuration application from the Preferences menu, select *Localisation* and select your country from the menu.
+NOTE: Devices with dual-band wireless automatically disable networking until you assign a wireless LAN country. Flagship models since Raspberry Pi 3B+, Compute Modules since CM4, and Keyboard models support dual-band wireless. To set a wireless LAN country, open the Control Centre application from the **Preferences** menu, select *Localisation* and select your country from the menu.
 
 image::images/wifi2.png[wifi2]
 

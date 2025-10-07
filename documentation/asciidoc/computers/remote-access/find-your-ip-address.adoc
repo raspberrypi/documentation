@@ -114,7 +114,7 @@ PING raspberrypi.local (192.168.1.131): 56 data bytes
 64 bytes from 192.168.1.131: icmp_seq=0 ttl=255 time=2.618 ms
 ----
 
-TIP: If you change the system hostname of your Raspberry Pi using Raspberry Pi Configuration, `raspi-config`, or `/etc/hostname`, Avahi updates the `.local` mDNS address. If you don't remember the hostname of your Raspberry Pi, you can install Avahi on another device, then use https://linux.die.net/man/1/avahi-browse[`avahi-browse`] to browse all the hosts and services on your local network.
+TIP: If you change the system hostname of your Raspberry Pi using Control Centre, `raspi-config`, or `/etc/hostname`, Avahi updates the `.local` mDNS address. If you don't remember the hostname of your Raspberry Pi, you can install Avahi on another device, then use https://linux.die.net/man/1/avahi-browse[`avahi-browse`] to browse all the hosts and services on your local network.
 
 === Check your router's list of devices
 

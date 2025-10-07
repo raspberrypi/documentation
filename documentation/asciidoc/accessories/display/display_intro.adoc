@@ -7,7 +7,7 @@ image::images/display.png[The Raspberry Pi 7-inch Touch Display, width="70%"]
 
 The Touch Display is compatible with all models of Raspberry Pi, except the Zero series and Keyboard series, which lack a DSI connector. The earliest Raspberry Pi models lack appropriate mounting holes, requiring additional mounting hardware to fit the stand-offs on the display PCB.
 
-The display has the following key features: 
+The display has the following key features:
 
 * 800×480px RGB LCD display
 * 24-bit colour
@@ -79,7 +79,7 @@ Raspberry Pi OS _Bookworm_ and later include the Squeekboard on-screen keyboard 
 
 For applications which do not support text entry detection, use the keyboard icon at the right end of the taskbar to manually show and hide the keyboard.
 
-You can also permanently show or hide the on-screen keyboard in the Display tab of Raspberry Pi Configuration or the `Display` section of `raspi-config`.
+You can also permanently show or hide the on-screen keyboard in the **Display** tab of Control Centre or the `Display` section of `raspi-config`.
 
 TIP: In Raspberry Pi OS releases prior to _Bookworm_, use `matchbox-keyboard` instead. If you use the wayfire desktop compositor, use `wvkbd` instead.
 

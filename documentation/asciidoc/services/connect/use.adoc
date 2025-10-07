@@ -7,15 +7,15 @@ Now that you've installed and started Connect on your Raspberry Pi device, you m
 ======
 Desktop::
 +
-If you're using the Connect plugin for the menu bar, click **Turn On Raspberry Pi Connect** for the first time to open your browser, prompting you to sign in with your Raspberry Pi ID:
+From the Connect icon in the menu bar, select **Turn On Raspberry Pi Connect** for the first time to open your browser, prompting you to sign in with your Raspberry Pi ID:
 +
 image::images/browser-sign-in.png[width="80%"]
 +
-Alternatively, choose **Sign In...** from the dropdown menu:
+If you have already turned on Connect, choose **Sign In...** from the dropdown menu:
 +
 image::images/sign-in.png[width="80%"]
 +
-If you don't already have a Raspberry Pi ID, click *create one for free* to xref:id.adoc#create-a-raspberry-pi-id[create one].
+If you don't already have a Raspberry Pi ID, select *create one for free* to xref:id.adoc#create-a-raspberry-pi-id[create one].
 
 CLI::
 +
@@ -26,7 +26,7 @@ Use the following command to generate a link that will connect your device with 
 $ rpi-connect signin
 ----
 +
-This command should output something like the following:
+This command outputs something like the following:
 +
 ----
 Complete sign in by visiting https://connect.raspberrypi.com/verify/XXXX-XXXX
@@ -38,7 +38,7 @@ Visit the verification URL on any device and sign in with your Raspberry Pi ID t
 
 === Finish linking your Raspberry Pi
 
-After authenticating, assign a name to your device. Choose a name that uniquely identifies the device. Click the **Create device and sign in** button to continue.
+After authenticating, assign a name to your device. Choose a name that uniquely identifies the device. Select the **Create device and sign in** button to continue.
 
 image::images/new-device.png[width="80%"]
 
@@ -68,7 +68,7 @@ Connect redirects you to the Raspberry Pi ID service to sign in. After signing i
 
 image::images/devices.png[width="80%"]
 
-Click the **Connect via** button to the right of the device you would like to access. Select the **Screen sharing** option from the menu. This opens a browser window that displays your device's desktop.
+Select the **Connect via** button to the right of the device you want to access. Select the **Screen sharing** option from the menu. This opens a browser window that displays your device's desktop.
 
 image::images/waiting-for-screen-sharing.png[width="80%"]
 
@@ -88,7 +88,7 @@ image::images/screen-sharing-notification.png[width="80%"]
 
 ==== Stop screen sharing
 
-To close a screen sharing session, click the **Disconnect** button above your desktop.
+To close a screen sharing session, select the **Disconnect** button above your desktop.
 
 image::images/screen-sharing-ended.png[width="80%"]
 
@@ -129,7 +129,7 @@ Connect redirects you to the Raspberry Pi ID service to sign in. After signing i
 
 image::images/devices.png[width="80%"]
 
-Click the **Connect via** button to the right of the device you would like to access. Select the **Remote shell** option from the menu. This opens a shell session on your device.
+Select the **Connect via** button to the right of the device you would like to access. Select the **Remote shell** option from the menu. This opens a shell session on your device.
 
 image::images/waiting-for-remote-shell.png[width="80%"]
 
@@ -215,7 +215,7 @@ The Connect dashboard lists all of the devices linked with your Connect account 
 
 image::images/devices.png[width="80%"]
 
-Click on a device name to open the device details page. This screen provides low-level information about your device. You can also edit the device name or remove the device from Connect.
+Select a device name to open the device details page. This screen provides low-level information about your device. You can also edit the device name or remove the device from Connect.
 
 image::images/device.png[width="80%"]
 

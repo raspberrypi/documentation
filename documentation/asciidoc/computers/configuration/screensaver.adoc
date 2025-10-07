@@ -4,17 +4,19 @@ You can configure your Raspberry Pi to blank the screen after a period of inacti
 
 === Desktop
 
-You can control screen blanking using the *Screen Blanking* option in the Raspberry Pi Configuration menu.
+You can control screen blanking using the *Screen Blanking* option in Control Centre.
 
-==== Raspberry Pi Configuration
+==== Control Centre
 
-Click the Raspberry Pi button in the menu bar. Navigate to *Preferences* > *Raspberry Pi Configuration*.
+Click the Raspberry Pi button in the menu bar. Navigate to *Preferences* > *Control Centre*.
 
-image::images/pi-configuration.png[opening the Raspberry Pi Configuration menu from the desktop]
+NOTE: In previous versions of Raspberry Pi OS, the Control Centre application was called Raspberry Pi Configuration.
+
+image::images/pi-configuration.png[opening the Control Centre menu from the desktop]
 
 Select the *Display* tab. Toggle the *Screen Blanking* radio button into the on position. Press *OK* to confirm your selection.
 
-image::images/blanking.png[toggle Screen Blanking on in the Raspberry Pi Configuration menu]
+image::images/blanking.png[toggle Screen Blanking on in the Control Centre menu]
 
 ==== CLI
 
@@ -29,7 +31,7 @@ Use the arrow keys to navigate and the *Enter* key to select. Select `Display Op
 
 === Console
 
-The `dpms_timeout` screen blanking configuration used by Raspberry Pi Configuration only affects desktop sessions. In *console mode*, when your Raspberry Pi is connected to a monitor and keyboard with only a terminal for input, use the `consoleblank` setting in the kernel command line.
+The `dpms_timeout` screen blanking configuration only affects desktop sessions. In *console mode*, when your Raspberry Pi is connected to a monitor and keyboard with only a terminal for input, use the `consoleblank` setting in the kernel command line.
 
 ==== Set console mode screen blanking
 

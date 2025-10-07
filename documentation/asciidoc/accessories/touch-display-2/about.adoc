@@ -1,4 +1,4 @@
-The https://www.raspberrypi.com/products/touch-display-2/[Raspberry Pi Touch Display 2] is a portrait orientation touchscreen LCD (with rotation options) designed for interactive projects like tablets, entertainment systems, and information dashboards. 
+The https://www.raspberrypi.com/products/touch-display-2/[Raspberry Pi Touch Display 2] is a portrait orientation touchscreen LCD (with rotation options) designed for interactive projects like tablets, entertainment systems, and information dashboards.
 
 .The Raspberry Pi Touch Display 2
 image::images/touch-display-2-hero.jpg[width="80%"]
@@ -36,7 +36,7 @@ The Touch Display 2 is available in two sizes: 5-inch and 7-inch (measured diago
 Touch Display 2 (both 5-inch and 7-inch) includes the following features:
 
 * **720 x 1280 pixel resolution.** High-definition output.
-* **24-bit RGB display.** Capable of showing over 16 million colours. 
+* **24-bit RGB display.** Capable of showing over 16 million colours.
 * **Multitouch.** Supports up to five simultaneous touch points.
 * **Mouse-equivalence.** Supports full desktop control without a physical mouse, for example, selecting, dragging, scrolling, and long-pressing for menus.
 * **On-screen keyboard.** Supports a visual keyboard in place of a physical keyboard.
@@ -62,7 +62,7 @@ image::images/touch-display-2-whats-in-the-booooox.jpg["Parts included in the To
 The Touch Display 2 connects to a Raspberry Pi using:
 
 - A **DSI connector** for video and touch data.
-- The **GPIO header** for power. 
+- The **GPIO header** for power.
 
 To make the DSI connection, use a **Flat Flexible Cable (FFC)** included with your display. The type of FFC you need depends on your Raspberry Pi model:
 
@@ -78,7 +78,7 @@ After determining the correct FFC for your Raspberry Pi model, you can connect y
 .A Raspberry Pi 5 connected and mounted to the Touch Display 2
 image::images/touch-display-2-installation-diagram.png["A Raspberry Pi 5 connected and mounted to the Touch Display 2", width="80%"]
 
-IMPORTANT: Disconnect your Raspberry Pi from power before completing the following steps. 
+IMPORTANT: Disconnect your Raspberry Pi from power before completing the following steps.
 
 === Step 1. Connect FFC to Touch Display 2
 
@@ -90,8 +90,8 @@ IMPORTANT: Disconnect your Raspberry Pi from power before completing the followi
 
 === Step 2. Connect FFC to Raspberry Pi
 
-. Slide the retaining clip upwards from both sides of the DSI connector of your Raspberry Pi. 
-    - This port should be marked with some variation of the term **DISPLAY**, **CAM/DISP**, or **DISP**. 
+. Slide the retaining clip upwards from both sides of the DSI connector of your Raspberry Pi.
+    - This port should be marked with some variation of the term **DISPLAY**, **CAM/DISP**, or **DISP**.
     - If your Raspberry Pi has multiple DSI connectors, we recommend using the port labelled **1**.
 . Insert the other end of your FFC into the Raspberry Pi DSI connector, with the metal contacts facing the Ethernet and USB-A ports.
 . Hold the FFC firmly in place and simultaneously push the retaining clip back down on the FFC connector of the Raspberry Pi to secure the cable.
@@ -99,7 +99,7 @@ IMPORTANT: Disconnect your Raspberry Pi from power before completing the followi
 === Step 3. Connect the GPIO power cable
 
 . Plug the smaller end of the GPIO power cable into the **J1** port on the Touch Display 2.
-. Connect the three-pin end of the GPIO power cable to your xref:../computers/raspberry-pi.adoc#gpio[Raspberry Pi's GPIO]. 
+. Connect the three-pin end of the GPIO power cable to your xref:../computers/raspberry-pi.adoc#gpio[Raspberry Pi's GPIO].
 
 This connects the red cable (5 V power) to pin 2 and the black cable (ground) to pin 6. Viewed from above, with the Ethernet and USB-A ports facing down, these pins are located in the top-right corner of the board, with pin 2 in the top right-most position.
 
@@ -123,7 +123,7 @@ Raspberry Pi OS **Bookworm** and later already includes the **Squeekboard on-scr
 
 For applications that don't support text entry detection, you can manually show or hide the keyboard using the keyboard icon at the right side of the taskbar. You can also permanently show or hide the on-screen keyboard using the Raspberry Pi graphical interface or the command line.
 
-- **Raspberry Pi desktop interface:** From the Raspberry Pi menu, go to **Preferences > Raspberry Pi Configuration > Display** and choose your on-screen keyboard setting.
+- **Raspberry Pi desktop interface:** From the Raspberry Pi menu, go to **Preferences > Control Centre > Display** and choose your on-screen keyboard setting.
 - **Command line:** Open a terminal and enter `sudo raspi-config`. Navigate to the **Display** section of `raspi-config` and then choose your keyboard setting.
 
 == Change screen orientation
@@ -135,7 +135,7 @@ You have four rotation options:
 - **0** maintains the default display position, which is a portrait orientation.
 - **90** rotates the display 90 degrees to the right (clockwise), making it a landscape orientation.
 - **180** rotates the display 180 degrees to the right (clockwise), which flips the display upside down.
-- **270** rotates the display 270 degrees to the right (clockwise), which is the same as rotating the display 90 degrees to the left (counterclockwise), making it a landscape orientation. 
+- **270** rotates the display 270 degrees to the right (clockwise), which is the same as rotating the display 90 degrees to the left (counterclockwise), making it a landscape orientation.
 
 === With a desktop
 If you have the Raspberry Pi OS desktop running, you can rotate the display through the **Screen Configuration** tool:
@@ -160,14 +160,14 @@ NOTE: You can't rotate the DSI display separately from the HDMI display with `cm
 
 == Customise touchscreen settings
 
-You can use the Device Tree overlay to tell Raspberry Pi OS how to configure the Touch Display 2 at boot. 
+You can use the Device Tree overlay to tell Raspberry Pi OS how to configure the Touch Display 2 at boot.
 
 - For the 5-inch display, the overlay is called `vc4-kms-dsi-ili9881-5inch`.
 - For the 7-inch display, the overlay is called `vc4-kms-dsi-ili9881-7inch`.
 
 You can modify the Device Tree overlay in the boot configuration file (`/boot/firmware/config.txt`).
 
-Open `/boot/firmware/config.txt` and then add the required Device Tree parameters to the `dtoverlay` line, separated by commas. 
+Open `/boot/firmware/config.txt` and then add the required Device Tree parameters to the `dtoverlay` line, separated by commas.
 
 - Booleans (`invx`, `invy`, `swapxy`, and `disable_touch`) default to true if present, but you can set them to false using the suffix `=0`.
 - Integers (`sizex` and `sizey`) require a number, for example, `sizey=240`.
@@ -210,14 +210,14 @@ dtoverlay=vc4-kms-dsi-ili9881-7inch,invx,invy
 
 == Connect to a Compute Module
 
-Unlike Raspberry Pi single board computers (SBC), which automatically detect the official Raspberry Pi Touch displays, Raspberry Pi Compute Modules don't automatically detect connected devices; you must tell it what display is attached. 
+Unlike Raspberry Pi single board computers (SBC), which automatically detect the official Raspberry Pi Touch displays, Raspberry Pi Compute Modules don't automatically detect connected devices; you must tell it what display is attached.
 
-This is because the connections between the SoC and DSI connectors on a Raspberry Pi are fixed and the system knows what hardware is connected; auto-detection ensures that the correct Device Tree settings are passed to the Linux kernel, so the display works without additional configuration. 
+This is because the connections between the SoC and DSI connectors on a Raspberry Pi are fixed and the system knows what hardware is connected; auto-detection ensures that the correct Device Tree settings are passed to the Linux kernel, so the display works without additional configuration.
 
 Compute Modules, intended for industrial and custom applications, expose all GPIOs and interfaces. This provides greater flexibility for connecting hardware, but means that a Compute Module can't automatically detect devices like the Touch Display 2. This means that, for Compute Modules, the Device Tree fragments, which tell the kernel how to interact with the display, must be manually specified. You can do this in three ways:
 
 - By adding an overlay entry in `config.txt`. This is the simplest option. For configuration instructions, see the xref:../computers/compute-module.adoc#attaching-the-touch-display-2-lcd-panel[Compute Module hardware documentation].
 - Using a custom base device tree file. This is an advanced method not covered in this online documentation.
-- Using a HAT EEPROM (if present). 
+- Using a HAT EEPROM (if present).
 
 

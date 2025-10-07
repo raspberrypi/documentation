@@ -2,7 +2,7 @@
 
 NOTE: Before starting to work with your Raspberry Pi Build HAT you should xref:../computers/getting-started.adoc#setting-up-your-raspberry-pi[set up] your Raspberry Pi, xref:../computers/getting-started.adoc#installing-the-operating-system[install] the latest version of the operating system using https://www.raspberrypi.com/downloads/[Raspberry Pi Imager].
 
-Attach 9mm spacers to the bottom of the board. Seat the Raspberry Pi Build HAT onto your Raspberry Pi. Make sure you put it on the right way up. Unlike other HATs, all the components are on the bottom, leaving room for a breadboard or LEGO® elements on top.  
+Attach 9mm spacers to the bottom of the board. Seat the Raspberry Pi Build HAT onto your Raspberry Pi. Make sure you put it on the right way up. Unlike other HATs, all the components are on the bottom, leaving room for a breadboard or LEGO® elements on top.
 
 video::images/fitting-build-hat.webm[width="80%"]
 
@@ -18,10 +18,10 @@ The following pins are used by the Build HAT itself and you should not connect a
 [cols="^1,^1,^1", width="75%", options="header"]
 |===
 | GPIO| Use | Status
-| GPIO0/1 | ID prom | 
-| GPIO4| Reset | 
-| GPIO14| Tx | 
-| GPIO15| Rx | 
+| GPIO0/1 | ID prom |
+| GPIO4| Reset |
+| GPIO14| Tx |
+| GPIO15| Rx |
 | GPIO16 | RTS | unused
 | GPIO17 | CTS | unused
 |===
@@ -29,11 +29,11 @@ The following pins are used by the Build HAT itself and you should not connect a
 
 === Set up your Raspberry Pi
 
-Once the Raspberry Pi has booted, open the Raspberry Pi Configuration tool by clicking on the Raspberry Menu button and then selecting "Preferences" and then "Raspberry Pi Configuration".
+Once the Raspberry Pi has booted, open the Control Centre tool by selecting the Raspberry Menu button and then selecting **Preferences > Control Centre**.
 
-Click on the "interfaces" tab and adjust the Serial settings as shown below:
+Select the **Interfaces** tab and adjust the serial settings as shown in the following image:
 
-image::images/setting-up.png[width="50%"]
+image::images/setting-up.png["The Interfaces tab. SSH, VNC, and Serial Port are enabled. The rest of the options are not enabled.", width="50%"]
 
 ==== Use your Raspberry Pi headless
 
