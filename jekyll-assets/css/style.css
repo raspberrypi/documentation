@@ -234,13 +234,25 @@ div.subtitle p {
   margin-right: 0px;
 }
 
-#container .section {
+#container .section,
+#related-container .section {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-#docs-content #container {
+#related-title{
+  width: 100%;
+  text-align: center;
+}
+
+#related-title h2{
+  padding-top: 20px;
+  font-size: 1.5em;
+}
+
+#docs-content #container,
+#docs-content #related-container {
   align-items: start;
 }
 
@@ -520,7 +532,8 @@ li > a {
   color: var(--subtle-text);
 }
 
-#container section#content {
+#container section#content,
+#related-container section#content {
   flex-grow: 1;
 }
 
@@ -1443,7 +1456,8 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
     max-width: 100vw;
   }
 
-  #container {
+  #container,
+  #related-container {
     justify-content: center;
     flex-wrap: wrap;
     margin-left: 3px;
@@ -1544,7 +1558,8 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
   #content {
     margin-left: 0px;
   }
-  #container {
+  #container,
+  #related-container {
   }
 }
 
@@ -1560,7 +1575,8 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
   ul#tab-container li a {
     display: none !important;
   }
-  div#container {
+  div#container,
+  div#related-container {
     margin-left: 0;
     margin-right: 0;
     justify-content: center !important;
@@ -1581,7 +1597,8 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
   box-sizing: border-box;
 }
 
-section#box-content {
+section#box-content,
+section#related-content {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -1639,7 +1656,8 @@ div.subtitle.error-message p a {
   color: var(--bg);
 }
 
-#container {
+#container,
+#related-container {
   display: flex;
   justify-content: center;
   margin-right: 10px;
