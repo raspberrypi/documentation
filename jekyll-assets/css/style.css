@@ -242,7 +242,6 @@ div.subtitle p {
 }
 
 #related-title {
-  width: 100%;
   text-align: center;
 }
 
@@ -1416,7 +1415,7 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
     content: "";
     display: block;
     height: 60px;
-    margin -60px 0 0;
+    margin: -60px 0 0;
   }
 
   /* when the mobile menu is visible, hide all page content so we don't end up with dueling scrollbars */
@@ -1557,9 +1556,6 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
 @media screen and (max-width: 700px) {
   #content {
     margin-left: 0px;
-  }
-  #container,
-  #related-container {
   }
 }
 
