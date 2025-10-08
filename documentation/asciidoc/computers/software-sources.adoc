@@ -2,10 +2,13 @@ At Raspberry Pi we're trying to open source as much of our code as possible to m
 
 == Finding software sources in Raspberry Pi OS
 
-When looking for software which is distributed with Raspberry Pi OS, there are often upstream software sources that we patch to create our downstream packages (those tagged with `pass:[+rpt]`). To view the source for those packages it is usually easier to fetch through apt. To do this, you first need to edit your apt lists to include the source packages. The following files should be edited to remove the leading `pass:[#]` from each `deb-src` line:
+When looking for software which is distributed with Raspberry Pi OS, there are often upstream software sources that we patch to create our downstream packages (those tagged with `pass:[+rpt]`). To view the source for those packages it is usually easier to fetch through apt. To do this, you first need to edit your apt lists to include the source packages. The following files should be edited to change each "Types: deb" line to "Types: deb deb-src":
 
-* `+/etc/apt/sources.list+`
-* `+/etc/apt/sources.list.d/raspi.list+`
+* `+/etc/apt/sources.list.d/debian.sources+` (on 64-bit images)
+or
+* `+/etc/apt/sources.list.d/raspbian.sources+` (on 32-bit images)
+and
+* `+/etc/apt/sources.list.d/raspi.sources+`
 
 Next you must update the package lists:
 
@@ -81,6 +84,9 @@ A library for directly controlling and accessing multimedia interfaces.
 
 === Desktop
 
+https://github.com/raspberrypi-ui/rpd-metas::
+The metapackages used to create the desktop.
+
 https://github.com/raspberrypi-ui/wf-panel-pi::
 The taskbar displayed at the top of the screen when running the Wayland-based desktop.
 
@@ -105,20 +111,23 @@ https://github.com/raspberrypi-ui/pcmanfm::
 https://github.com/raspberrypi-ui/libfm::
 The file manager used by the desktop, which also displays the desktop background.
 
-https://github.com/raspberrypi-ui/appset::
-The Appearance settings panel.
-
 https://github.com/raspberrypi-ui/rpcc::
-The Control Centre settings panel.
+The Control Centre application.
+
+https://github.com/raspberrypi-ui/rc_gui::
+The Raspberry Pi configuration plugin for Control Centre.
+
+https://github.com/raspberrypi-ui/appset::
+The appearance settings plugin for Control Centre.
 
 https://github.com/raspberrypi-ui/rasputin::
-The Mouse and Keyboard settings panel.
+The mouse and keyboard settings plugin for Control Centre.
 
 https://github.com/raspberrypi-ui/raindrop::
-The Screen Configuration settings panel.
+The screen configuration plugin for Control Centre.
 
 https://github.com/raspberrypi-ui/rpinters::
-The Printers settings panel.
+The printer settings plugin for Control Centre.
 
 === Applications
 
