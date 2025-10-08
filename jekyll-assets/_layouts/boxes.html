@@ -1,42 +1,70 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    {% include head.html %}
-  </head>
-  <body>
-    {% include header.html %}
 
-    <div class="toptitle">
-      <h1><a href="/documentation/"><b>Raspberry Pi</b> Documentation</a></h1>
-      <div id="search-container">
-        <div id="docsearch" role="search"></div>
-      </div>
-      {% include tabs.html %}
+<head>
+  {% include head.html %}
+</head>
+
+<body>
+  {% include header.html %}
+
+  <div class="toptitle">
+    <h1><a href="/documentation/"><b>Raspberry Pi</b> Documentation</a></h1>
+    <div id="search-container">
+      <div id="docsearch" role="search"></div>
     </div>
+    {% include tabs.html %}
+  </div>
 
-    <div id="container" role="main">
-      <section id="box-content">
-        {% for item in site.data.index.tabs %}
-          {% if page.dir == item.path or page.dir == "/" and item.default_tab and item.default_tab == "yes" %}
-            {% for entry in item.subitems %}
-            {% if entry.path %}
-            <a class="box" href="{{ site.baseurl }}{{ entry.path }}">
-            {% else %}
-            <a class="box" href="{{ entry.url }}">
-            {% endif %}
-              <span><img src="{{ site.baseurl }}{{ entry.imagepath }}" width="121" height="121" alt=""></span>
-              <span class="title">{{ entry.title | markdownify }}</span>
-              <span>{{ entry.description }}</span>
-            </a>
-            {% endfor %}
+  <div id="container" role="main">
+    <section id="box-content">
+      {% for item in site.data.index.tabs %}
+      {% if page.dir == item.path or page.dir == "/" and item.default_tab and item.default_tab == "yes" %}
+      {% for entry in item.subitems %}
+      {% if entry.path %}
+      <a class="box" href="{{ site.baseurl }}{{ entry.path }}">
+        {% else %}
+        <a class="box" href="{{ entry.url }}">
           {% endif %}
+          <span><img src="{{ site.baseurl }}{{ entry.imagepath }}" width="121" height="121" alt=""></span>
+          <span class="title">{{ entry.title | markdownify }}</span>
+          <span>{{ entry.description }}</span>
+        </a>
         {% endfor %}
+        {% endif %}
+        {% endfor %}
+    </section>
+  </div>
+
+  <div id="related" role="complementary">
+    <div id="related-title">
+      <h2>Related resources</h2>
+    </div>
+    <div id="related-container" role="complementary">
+      <section id="related-content">
+        <a class="box" href="https://pip.raspberrypi.com/">
+          <span><img src="/documentation/images/full-sized/PIP.png" width="121" height="121" alt=""></span>
+          <span class="title">Product Information Portal</span>
+          <span>Documents, reports, and notices for all Raspberry Pi products</span>
+        </a>
+        <a class="box" href="https://www.raspberrypi.com/tutorials/">
+          <span><img src="/documentation/images/full-sized/Tutorials.png" width="121" height="121" alt=""></span>
+          <span class="title">Tutorials</span>
+          <span>Hands-on hardware and software tutorials</span>
+        </a>
+        <a class="box" href="https://forums.raspberrypi.com/">
+          <span><img src="/documentation/images/full-sized/Forums.png" width="121" height="121" alt=""></span>
+          <span class="title">Forums</span>
+          <span>User and product support forums</span>
+        </a>
       </section>
     </div>
+  </div>
 
-    {% include legal.html %}
-    {% include footer.html %}
-    {% include search.html %}
+  {% include legal.html %}
+  {% include footer.html %}
+  {% include search.html %}
 
-  </body>
+</body>
+
 </html>
