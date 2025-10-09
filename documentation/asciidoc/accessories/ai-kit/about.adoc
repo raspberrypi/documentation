@@ -12,6 +12,8 @@ The Raspberry Pi AI Kit bundles the xref:m2-hat-plus.adoc#m2-hat-plus[Raspberry 
 * mounting hardware kit
 * 16mm stacking GPIO header
 
+WARNING: The Raspberry Pi AI Kit is not yet supported by Raspberry Pi OS Trixie. To use the AI Kit, install or stay on Raspberry Pi OS Bookworm for now.
+
 == AI module features
 
 * 13 tera-operations per second (TOPS) neural network inference accelerator built around the Hailo-8L chip.
