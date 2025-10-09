@@ -45,7 +45,7 @@ During the `tvheadend` installation, you will be asked to choose an administrato
 
 On another computer on your network, open up a web browser and type the following into the address bar: `http://raspberrypi.local:9981/extjs.html`
 
-This should connect to `tvheadend` running on the Raspberry Pi. Once you have connected to `tvheadend` via the browser, you will be prompted to sign in using the account name and password you chose when you installed `tvheadend` on the Raspberry Pi. 
+This should connect to `tvheadend` running on the Raspberry Pi. Once you have connected to `tvheadend` via the browser, you will be prompted to sign in using the account name and password you chose when you installed `tvheadend` on the Raspberry Pi.
 
 A setup wizard should appear.
 
@@ -63,7 +63,7 @@ Found muxes: 8
 Found services: 172
 ----
 
-In the next window, titled *Service mapping*, tick all three boxes: *Map all services*, *Create provider tags*, and *Create network tags*. You should see a list of TV channels you can watch, along with the programmes they're currently showing. 
+In the next window, titled *Service mapping*, tick all three boxes: *Map all services*, *Create provider tags*, and *Create network tags*. You should see a list of TV channels you can watch, along with the programmes they're currently showing.
 
 To watch a TV channel in the browser, click the little TV icon to the left of the channel listing, just to the right of the *i* icon. This brings up an in-browser media player. Depending on the decoding facilities  built into your browser and the type of stream being played, you may find that playback can be jerky. In these cases, we recommend using a local media player as the playback application.
 
