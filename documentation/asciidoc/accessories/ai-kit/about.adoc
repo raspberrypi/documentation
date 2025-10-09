@@ -12,7 +12,7 @@ The Raspberry Pi AI Kit bundles the xref:m2-hat-plus.adoc#m2-hat-plus[Raspberry 
 * mounting hardware kit
 * 16mm stacking GPIO header
 
-WARNING: The Raspberry Pi AI Kit is not yet supported with Raspberry Pi OS Trixie. To use the AI Kit, install or stay on Raspberry Pi OS Bookworm for now.
+WARNING: The Raspberry Pi AI Kit is not yet supported by Raspberry Pi OS Trixie. To use the AI Kit, install or stay on Raspberry Pi OS Bookworm for now.
 
 == AI module features
 
