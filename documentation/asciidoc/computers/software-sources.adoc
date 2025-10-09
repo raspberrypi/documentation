@@ -50,7 +50,7 @@ The other place you can find our software in a more standard form is in our GitH
 
 == List of categorized sources
 
-The following is a curated list of repositories which most people are interested in:
+The following is a curated list of repositories that most people are interested in:
 
 === Main sources
 
@@ -156,14 +156,11 @@ The code for the Raspberry Pi Imager application which flashes an operating syst
 https://github.com/raspberrypi/rpi-image-gen::
 A build system for developing an operating system for an embedded Raspberry Pi system.
 
-https://github.com/raspberrypi/rpi-sb-provisioner::
-A tool to provision Raspberry Pi devices at manufacture, including secure boot and encrypted filesystems.
-
 https://github.com/raspberrypi/usbboot::
 A tool to boot a Raspberry Pi over USB for provisioning Compute Module and Raspberry Pi devices.
 
 https://github.com/raspberrypi/rpi-sb-provisioner::
-A tool to mass provision Raspberry Pi devices (Raspberry Pi 5, Compute Module 4, and Compute Module 5 are supported).
+A tool to mass provision Raspberry Pi devices, including secure boot and encrypted file systems. (Raspberry Pi 5, Compute Module 4, and Compute Module 5 are supported.)
 
 === Feedback
 
@@ -191,4 +188,4 @@ https://github.com/raspberrypi/pico-examples::
 Examples for Raspberry Pi Pico.
 
 https://github.com/raspberrypi/picotool::
-Tool for interacting with RP-series device(s) in BOOTSEL mode.
+Tool for interacting with RP-series devices in BOOTSEL mode.
