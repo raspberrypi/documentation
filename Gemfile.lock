@@ -3,7 +3,7 @@ GEM
   specs:
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
-    asciidoctor (2.0.23)
+    asciidoctor (2.0.25)
     asciidoctor-tabs (1.0.0.beta.6)
       asciidoctor (>= 2.0.0, < 3.0.0)
     base64 (0.2.0)
