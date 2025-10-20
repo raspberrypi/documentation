@@ -33,8 +33,6 @@ Unlike CM1, CM3, and CM3+, CM4 does not use the DDR2 SO-DIMM form factor. Instea
 * PCIe
 * Ethernet
 
-The previous form factor could not have supported these interfaces.
-
 === Compute Module 4S
 
 .Compute Module 4S
@@ -96,7 +94,7 @@ Compute Module 5 IO Board provides the following interfaces:
 * M.2 M key PCIe socket compatible with the 2230, 2242, 2260, and 2280 form factors
 * microSD card slot (only for use with Lite variants with no eMMC; other variants ignore the slot)
 * 2× MIPI DSI/CSI-2 combined display/camera FPC connectors (22-pin 0.5 mm pitch cable)
-* Real-time clock with battery socket
+* Battery socket for Real Time Clock
 * four-pin JST-SH PWM fan connector
 * USB-C power using the same standard as Raspberry Pi 5 (5V, 5A (25W) or 5V, 3A (15W) with a 600mA peripheral limit)
 * Jumpers to disable features such as eMMC boot, EEPROM write, and the USB OTG connection
@@ -127,7 +125,7 @@ image::images/cmio.jpg[alt="Compute Module IO Board", width="60%"]
 
 Compute Module IO Board provides the following interfaces:
 
-* 120 GPIO pins
+* 46 GPIO pins
 * HDMI port
 * USB-A port
 * 2× MIPI DSI display FPC connectors (22-pin 0.5 mm pitch cable)
