@@ -177,6 +177,7 @@ A Raspberry Pi Compute Module IO Board is the companion carrier board that provi
 
 Raspberry Pi IO Boards are general-purpose boards designed for development, testing, and prototyping Compute Modules. For production use, you might design a smaller, custom carrier board that includes only the connectors you need for your use case.
 
+[[io-board-compatibility]]
 === IO Boards and compatibility
 
 Not all IO Boards work with all Compute Module models. The following table summarises Raspberry Pi Compute Module IO Boards in reverse chronological order, listing their compatible Compute Modules (which include Lite versions), power input, and size. For more information about each of these boards, including available interfaces, see the following dedicated sections on this page.
