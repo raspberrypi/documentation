@@ -81,7 +81,7 @@ Compute Module 5 (*CM5*) combines the core components of Raspberry Pi 5 with opt
 * *Storage options.* 0 GB (*CM5Lite*), 16 GB, 32 GB, or 64 GB of eMMC memory.
 * *Form factor.* Two 100-pin high-density connectors for connecting to the companion carrier board.
 
-CM5 uses the same form factor as *CM4* and provides I/O interfaces beyond those available on standard Raspberry Pi boards, offering expanded options for more complex systems and designs.
+CM5 uses the same form factor as *CM4* and provides input/output (I/O) interfaces beyond those available on standard Raspberry Pi boards, offering expanded options for more complex systems and designs.
 
 .Compute Module 5
 image::images/cm5.png[alt="Compute Module 5", width="60%"]
@@ -304,7 +304,7 @@ image::images/cm5io-case.png[alt="Compute Module 5 IO Board Case", width="60%"]
 
 The Compute Module 5 IO Board Case provides physical protection for CM5IO and its attached CM5. It includes:
 
-* Cut-outs for externally-facing connectors and LEDs.
+* Cut-outs for externally facing connectors and LEDs.
 * A pre-installed, controllable fan that you can remove.
 * An attachment point for a *Raspberry Pi Antenna Kit*.
 * Space for a *Raspberry Pi Cooler*.
@@ -322,7 +322,7 @@ To mount a CM5IO inside your case:
 
 . *Attach your CM5 to your CM5IO.* Align the dual 100-pin connectors on your CM5 with those on your CM5IO and press gently but firmly to attach them.
 . *Open the case.* Unscrew and remove the four screws (two on the left side of the case and two on the right side of the case) using a cross-head screwdriver. Then, separate the top of the case from the base. Keep the screws in a safe place.
-. *Install your CM5IO assembly into the case.* Place your CM5IO (with CM5 attached) into the base of the case, aligning it with the four mounting holes near the corners of the board. Ensure all externally-facing connectors align with the corresponding cut-outs at the front of the case. Then, secure your CM5IO assembly to the base by screwing four M2.5 screws into the four mounting holes.
+. *Install your CM5IO assembly into the case.* Place your CM5IO (with CM5 attached) into the base of the case, aligning it with the four mounting holes near the corners of the board. Ensure all externally facing connectors align with the corresponding cut-outs at the front of the case. Then, secure your CM5IO assembly to the base by screwing four M2.5 screws into the four mounting holes.
 . *Connect or remove the fan.* 
 ** If using the pre-installed fan, plug the fan into the four-pin fan connector labelled *FAN (J14)* on your CM5IO. Ensure that the fan is properly seated and connected to the power header on your CM5IO.
 ** If you want to remove the fan, unscrew the four corner screws of the fan from the underside of the top of the case.
@@ -330,8 +330,8 @@ To mount a CM5IO inside your case:
 . *Optionally, attach the cooler.* If you want to install a cooler, follow the instructions in <<cooler, CM5 Cooler>>. If you're also attaching an antenna, attach the antenna's U.FL connector first for easier access.
 . *Optionally, attach a camera or display.* If you're using a camera or a display, pass the flat cable through one of the slots at the back of the case and connect it to one of the *CAM/DISP* ports on your CM5IO.
 . *Optionally, mount additional accessories.*
-** To install an M.2 SSD, insert it into the M.2 slot in the bottom-right corner of the CM5IO and secure it on the opposite end with mounting screw.
-** To install a PoE+ HAT, align it with the 40-pin GPIO header and the mounting posts such that the hat covers the battery slot, then press it firmly into place and secure it with screws.
+** To install an M.2 SSD, insert it into the M.2 slot in the bottom-right corner of the CM5IO and secure it on the opposite end with a mounting screw.
+** To install a PoE+ HAT, align it with the 40-pin GPIO header and the mounting posts such that the HAT covers the battery slot, then press it firmly into place and secure it with screws.
 . *Close the case.* Fold the top of the case back onto the base of the case, aligning the screw holes on the left and right sides of the case, and the power button on the back of the case. Screw the four screws back into place using a cross-head screwdriver, taking care not to overtighten them.
 
 NOTE: The SD card slot is a push-push slot. To insert an SD card, push it into the SD card slot with the contacts facing downwards. To remove it, push it inwards towards the slot to release it and then pull it out.
@@ -370,7 +370,7 @@ The CM5 Cooler is a passive heat sink that helps dissipate heat from your CM5, i
 .CM5 cooler
 image::images/cm5-cooler.jpg[alt="CM5 Cooler", width="60%"]
 
-The CM5 Cooler dimensions are 41 mm × 56 mm × 12.7 mm. The cooler has an aluminum profile with an underside that's made of thermally conductive silicone. Newer versions of the <<case, CM5IO Case>> fit both the cooler and pre-installed fan inside. If you have an older version of the CM5IO Case, you must remove the fan from the case to allow space for the cooler.
+The CM5 Cooler dimensions are 41 mm × 56 mm × 12.7 mm. The cooler has an aluminium profile with an underside that's made of thermally conductive silicone. Newer versions of the <<case, CM5IO Case>> fit both the cooler and pre-installed fan inside. If you have an older version of the CM5IO Case, you must remove the fan from the case to allow space for the cooler.
 
 .CM5 cooler physical specification
 image::images/cm5-cooler-physical.png[alt="CM5 Cooler physical specification", width="80%"]
