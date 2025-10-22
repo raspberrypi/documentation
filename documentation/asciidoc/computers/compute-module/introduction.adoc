@@ -268,7 +268,7 @@ The Compute Module 4 IO Board (CM4IO) provides the following:
 .Compute Module IO Board
 image::images/cmio.jpg[alt="Compute Module IO Board", width="60%"]
 
-There are two vairants of the Compute Module IO Board:
+There are two variants of the Compute Module IO Board:
 
 * Version 1 (CMIO), compatible only with <<cm1, CM1>>.
 * Version 3 (CMIO3), compatible with <<cm1, CM1>>, <<cm3, CM3>>, <<cm3plus, CM3+>>, and <<cm4s, CM4S>>. This version adds a microSD card slot that doesn't exist on CMIO (version 1).
