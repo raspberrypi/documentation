@@ -19,7 +19,7 @@ Raspberry Pi Compute Modules are available in several variants, differing in mem
 
 === Compute Module models
 
-The following table summarises Raspberry Pi Compute Modules in reverse chronological order, listing their SoC, GPU, CPU, and carrier board connectors for quick reference. For more information about each of these models, including memory and storage options, see the following dedicated sections on this page.
+The following table summarises Raspberry Pi Compute Modules in reverse chronological order, listing their SoC, GPU, CPU, and form factor for quick reference. For more information about each of these models, including memory and storage options, see the following dedicated sections on this page.
 
 [cols="1,1,1,1,1,1", options="header"]
 |===
