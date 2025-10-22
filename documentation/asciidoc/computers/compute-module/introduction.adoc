@@ -1,230 +1,377 @@
+A Raspberry Pi *Compute Module (CM)* is a compact version of a standard Raspberry Pi single-board computer (SBC) designed primarily for embedded and industrial applications. A Compute Module contains the core components of a Raspberry Pi but without the standard connectors like HDMI, USB, or Ethernet.
+
+A Raspberry Pi *Compute Module IO Board (CMIO)* provides the physical connectors, peripheral interfaces, and expansion options necessary for accessing and expanding a Compute Module's functionality. A Computer Module IO Board can be used as a standalone product, allowing for rapid prototyping and embedded systems development, or as a reference design for your own carrier (IO) board. In either case, you can selectively make use of only the connectors that your application requires. 
+
+This page:
+
+* Summarises the available Raspberry Pi Compute Module and IO Board models, including information about their compatibility and key features.
+* Describes the accessories available for Compute Module 5 (CM5) and its IO Board (CM5IO).
+* Explains how to flash and boot Raspberry Pi Compute Modules.
+* Explains how to configure the EEPROM bootloader of a Compute Module.
+* Explains how to wire and enable peripherals like cameras and displays using Device Tree and overlays.
+* Provides links to datasheets, schematics, and design resources.
+
 == Compute Modules
 
-Raspberry Pi Compute Modules are **system-on-module** variants of the flagship Raspberry Pi models. Compute Modules are especially popular for industrial and commercial applications, including digital signage, thin clients, and process automation. Some of these applications use the flagship Raspberry Pi design, but many users want a more compact design or on-board eMMC storage.
+Raspberry Pi Compute Modules are **system-on-module (SoM)** variants of the flagship Raspberry Pi single-board computers (SBC). They're designed for industrial and commercial applications, such as digital signage, thin clients, and process automation. Many developers and system designers choose Compute Modules over flagship Raspberry Pi models for their compact design, flexibility, and support for on-board eMMC storage.
 
-Compute Modules come in multiple variants, varying both in memory and soldered-on Multi-Media Card (eMMC) flash storage capacity. Like SD cards, eMMC provides persistent storage with minimal energy impact. Unlike SD cards, eMMC is specifically designed to be used as a disk and includes extra features to improve reliability. **Lite** models have no on-board storage, and are sometimes referred to with the shorthand suffix **L**, e.g. "CM3L".
+Raspberry Pi Compute Modules are available in several variants, differing in memory and embedded Multi-Media Card (eMMC) flash storage capacity (soldered onto the board). Like SD cards, eMMC provides persistent storage with low power consumption. Unlike SD cards, eMMC behaves like an internal disk and includes built-in features that improve reliability. **Lite** models have no on-board storage, and are sometimes referred to with the suffix **Lite**, for example, "CM5Lite".
 
-Compute Modules use the following Raspberry Pi SoCs:
+=== Compute Module models
 
-* BCM2835 for CM1
-* BCM2837 for CM3, CM3+
-* BCM2711 for CM4, CM4S
-* BCM2712 for CM5
+The following table summarises Raspberry Pi Compute Modules in reverse chronological order, listing their SoC, GPU, CPU, and carrier board connectors for quick reference. For more information about each of these models, including memory and storage options, see the following dedicated sections on this page.
 
+[cols="1,1,1,1,1,1", options="header"]
+|===
+|Model|Based on|SoC|CPU|GPU|Form factor
+
+| <<cm5, *CM5*>> (2024)
+| Raspberry Pi 5
+| Broadcom BCM2712
+|VideoCore VII
+| 4 × Cortex-A76 at 2.4 GHz
+|Dual 100-pin connectors
+
+| <<cm4s, *CM4S*>> (2022)
+| Raspberry Pi 4 Model B (in CM3 form factor)
+| Broadcom BCM2711
+|VideoCore VI
+| 4 × Cortex-A72 at 1.5 GHz
+|DDR2 SODIMM
+
+| <<cm4, *CM4*>> (2020)
+| Raspberry Pi 4 Model B
+| Broadcom BCM2711
+|VideoCore VI
+| 4 × Cortex-A72 at 1.5 GHz
+|Dual 100-pin connectors
+
+| <<cm3plus, *CM3+*>> (2019)
+| Raspberry Pi 3 Model B+
+| Broadcom BCM2837B0
+|VideoCore IV
+| 4 × Cortex-A53 at 1.2 GHz
+|DDR2 SODIMM
+
+| <<cm3, *CM3*>> (2017; discontinued June 2026)
+| Raspberry Pi 3 Model B
+| Broadcom BCM2837
+|VideoCore IV
+| 4 × Cortex-A53 at 1.2 GHz
+|DDR2 SODIMM
+
+| <<cm1, *CM1*>>(2014)
+| Raspberry Pi Model B
+| Broadcom BCM2835
+|VideoCore IV
+| 1 × ARM1176JZF-S at 700 MHz
+|DDR2 SODIMM
+
+|===
+
+NOTE: Compute Module 2 (CM2) isn't included in this documentation because it was never released publicly. Compute Module 1 (CM1) was officially followed by Compute Module 3 (CM3).
+
+[[cm5]]
 === Compute Module 5
+
+Compute Module 5 (*CM5*) combines the core components of Raspberry Pi 5 with optional flash storage. Key features include:
+
+* *Processor.* Broadcom BCM2712.
+* *Memory options.* 2 GB, 4 GB, 8 GB, or 16 GB of RAM.
+* *Storage options.* 0 GB (*CM5Lite*), 16 GB, 32 GB, or 64 GB of eMMC memory.
+* *Form factor.* Two 100-pin high-density connectors for connecting to the companion carrier board.
+
+CM5 uses the same form factor as *CM4* and provides I/O interfaces beyond those available on standard Raspberry Pi boards, offering expanded options for more complex systems and designs.
 
 .Compute Module 5
 image::images/cm5.png[alt="Compute Module 5", width="60%"]
 
-The Compute Module 5 (CM5) combines the internals of a Raspberry Pi 5 (the BCM2712 processor and 2GB, 4GB, 8GB, or 16GB of RAM) with optional 0GB (Lite), 16GB, 32GB or 64GB of eMMC flash storage.
-
-CM5 uses the same form factor as CM4, featuring two 100-pin high density connectors.
-
-=== Compute Module 4
-
-.Compute Module 4
-image::images/cm4.jpg[alt="Compute Module 4", width="60%"]
-
-The Compute Module 4 (CM4) combines the internals of a Raspberry Pi 4 (the BCM2711 processor and 1GB, 2GB, 4GB, or 8GB of RAM) with an optional 0GB (Lite), 8GB, 16GB or 32GB of eMMC flash storage.
-
-Unlike CM1, CM3, and CM3+, CM4 does not use the DDR2 SO-DIMM form factor. Instead, CM4 uses two 100-pin high density connectors in a smaller physical footprint. This change helped add the following interfaces:
-
-* an additional second HDMI port
-* PCIe
-* Ethernet
-
+[[cm4s]]
 === Compute Module 4S
+
+Compute Module 4S (*CM4S*) combines the core components of Raspberry Pi 4 with optional flash storage. Key features include:
+
+* *Processor.* Broadcom BCM2711.
+* *Memory options.* 1 GB, 2 GB, 4 GB, or 8 GB of RAM.
+* *Storage options.* 0 GB (*CM4SLite*), 8 GB, 16 GB, or 32 GB of eMMC memory.
+* *Form factor.* Standard DDR2 SODIMM module.
+
+Unlike **CM4**, CM4S retains the DDR2 SODIMM form factor used in *CM1*, *CM3*, and *CM3+*.
 
 .Compute Module 4S
 image::images/cm4s.jpg[alt="Compute Module 4S", width="60%"]
 
-The Compute Module 4S (CM4S) combines the internals of a Raspberry Pi 4 (the BCM2711 processor and 1GB, 2GB, 4GB, or 8GB of RAM) with an optional 0GB (Lite), 8GB, 16GB or 32GB of eMMC flash storage. Unlike CM4, CM4S comes in the same DDR2 SO-DIMM form factor as CM1, CM3, and CM3+.
+[[cm4]]
+=== Compute Module 4
 
-[[compute-module-3-plus]]
+Compute Module 4 (*CM4*) combines the core components of Raspberry Pi 4 with optional flash storage. Key features include:
+
+* *Processor.* Broadcom BCM2711.
+* *Memory options.* 1 GB, 2 GB, 4 GB, or 8 GB of RAM.
+* *Storage options.* 0 GB (*CM4Lite*), 8 GB, 16 GB, or 32 GB of eMMC memory.
+* *Form factor.* Two 100-pin high-density connectors for connecting to the companion carrier board.
+
+Unlike earlier modules (*CM1*, *CM3*, *CM3+*), CM4 moved away from the DDR2 SODIMM form factor to
+a dual 100-pin high-density connector layout, which results in a smaller physical footprint. This redesign supports the following additional features:
+
+* Dual HDMI connectors
+* PCIe support
+* Ethernet connector
+
+.Compute Module 4
+image::images/cm4.jpg[alt="Compute Module 4", width="60%"]
+
+[[cm3plus]]
 === Compute Module 3+
+
+Compute Module 3+ (*CM3+*) combines the core components of Raspberry Pi 3 Model B+ with optional flash storage. Key features include:
+
+* *Processor.* Broadcom BCM2837B0.
+* *Memory options*. 1 GB, 2 GB, or 4 GB of RAM.
+* *Storage options.* 0 GB (*CM3+Lite*) or 8 GB, 16 GB, or 32 GB of eMMC flash memory.
+* *Form factor.* Standard DDR2 SODIMM module.
 
 .Compute Module 3+
 image::images/cm3-plus.jpg[alt="Compute Module 3+", width="60%"]
 
-The Compute Module 3+ (CM3+) combines the internals of a Raspberry Pi 3 Model B+ (the BCM2837 processor and 1GB of RAM) with an optional 0GB (Lite), 8GB, 16GB or 32GB of eMMC flash storage. CM3+ comes in the DDR2 SO-DIMM form factor.
-
+[[cm3]]
 === Compute Module 3
+
+IMPORTANT: Raspberry Pi Compute Module 3 (CM3) and Compute Module 3 Lite (CM3Lite) has reached End-of-Life (EoL) due to the discontinuation of the core SoC used in these products. The official EoL date is 30 June, 2026. The closest equivalent to CM3 is Raspberry Pi Compute Module 3+ (CM3+), which offers the same mechanical footprint, improved thermal design, and a BCM2837B0 processor. For new designs requiring the SODIMM form factor, we recommend <<cm3plus, Compute Module 3+>> or <<cm4s, Compute Module 4S>>; for other designs, we recommend <<cm4, Compute Module 4>> or <<cm5, Compute Module 5>>. For more information, see the official https://pip-assets.raspberrypi.com/categories/1284-eol-notices/documents/RP-009286-PC-1-OBS2_%20Raspberry%20Pi%20Compute%20Module%203%20and%20Raspberry%20Pi%20Compute%20Module%203%20Lite.pdf?disposition=inline[Obsolescence Notice].
+
+Compute Module 3 (*CM3*) combines the core components of Raspberry Pi 3 with an optional 4 GB of flash storage. Key features include:
+
+* *Processor.* Broadcom BCM2837.
+* *Memory options.* 1 GB, 2 GB, or 4 GB of RAM.
+* *Storage options.* 0 GB (*CM3Lite*) or 4 GB of eMMC flash memory.
+* *Form factor.* Standard DDR2 SODIMM module.
 
 .Compute Module 3
 image::images/cm3.jpg[alt="Compute Module 3", width="60%"]
 
-The Compute Module 3 (CM3) combines the internals of a Raspberry Pi 3 (the BCM2837 processor and 1GB of RAM) with an optional 4GB of eMMC flash storage. CM3 comes in the DDR2 SO-DIMM form factor.
-
+[[cm1]]
 === Compute Module 1
+
+Compute Module 1 (*CM1*) combines the core components of Raspberry Pi Model B with an optional 4 GB of flash storage. Key features include:
+
+* *Processor.* Broadcom BCM2835.
+* *Memory.* 512 MB of RAM.
+* *Storage options.* 0 GB (*CM1Lite*) or 4 GB of eMMC flash memory.
+* *Form factor.* Standard DDR2 SODIMM module.
 
 .Compute Module 1
 image::images/cm1.jpg[alt="Compute Module 1", width="60%"]
 
-The Compute Module 1 (CM1) contains the internals of a Raspberry Pi (the BCM2835 processor and 512MB of RAM) as well as an optional 4GB of eMMC flash storage. CM1 comes in the DDR2 SO-DIMM form factor.
-
 == IO Boards
 
-Raspberry Pi IO Boards provide a way to connect a single Compute Module to a variety of I/O (input/output) interfaces. Compute Modules are small, lacking ports and connectors. IO Boards provide a way to connect Compute Modules to a variety of peripherals.
+A Raspberry Pi Compute Module IO Board is the companion carrier board that provides the necessary connectors to interface with various input/output (I/O) peripherals on your Compute Module. Raspberry Pi Compute Module IO Boards provide the following functionality:
 
-Raspberry Pi IO Boards provide the following functionality:
+* Supply power to the Compute Module.
+* Connect general-purpose input/output (GPIO) pins to standard pin headers so that you can attach sensors or electronics.
+* Expose camera and display interfaces through flat flexible cable (FFC) connectors.
+* Route HDMI signals to HDMI connectors for display output.
+* Connect USB interfaces to standard USB connectors for peripheral devices.
+* Provide LEDs that indicate power and activity status.
+* Enable eMMC programming over USB for flashing the module's onboard storage.
+* Expose PCIe lanes through connectors so that you can attach storage or peripheral devices like SSDs or network adapters.
 
-* power the module
-* connects the GPIO to pin headers
-* connects the camera and display interfaces to FFC connectors
-* connects HDMI to HDMI ports
-* connects USB to USB ports
-* connects activity monitoring to LEDs
-* eMMC programming over USB
-* connects PCIe to connectors used to physically connect storage or peripherals
+Raspberry Pi IO Boards are general-purpose boards designed for development, testing, and prototyping Compute Modules. For production use, you might design a smaller, custom carrier board that includes only the connectors you need for your use case.
 
-IO Boards are breakout boards intended for development or personal use; in production, you should use a smaller, potentially custom board that provides only the ports and peripherals required for your use-case.
+=== IO Boards and compatibility
 
+Not all IO Boards work with all Compute Module models. The following table summarises Raspberry Pi Compute Module IO Boards in reverse chronological order, listing their compatible Compute Modules (which include Lite versions), power input, and size. For more information about each of these boards, including available interfaces, see the following dedicated sections on this page.
+
+[cols="1,1,1,1", options="header"]
+|===
+|IO Board|Compatible CM|Power input|Size
+
+| <<cm5io, *Compute Module 5 IO Board (CM5IO)*>> (2024)
+| <<cm5, CM5>>; CM4 with reduced functionality
+| 5 V USB Type-C external supply
+|160 mm × 90 mm
+
+| <<cm4io, *Compute Module 4 IO Board (CM4IO)*>> (2020)
+| <<cm4, CM4>>; CM5 with reduced functionality
+| 12 V or 5 V through the DC barrel jack
+|160 mm × 90 mm
+
+| <<cmio, *Compute Module IO Board version 3 (CMIO3)*>> (2017)
+| <<cm1, CM1>>, <<cm3, CM3>>, <<cm3plus, CM3+>>, and <<cm4S, CM4S>>
+| 12 V or 5 V through the barrel jack
+| 160 mm × 100 mm
+
+| <<cmio, *Compute Module IO Board version 1 (CMIO; CMIO1)*>> (2014)
+| <<cm1, CM1>>
+| 5 V through the barrel jack
+| 160 mm × 100 mm
+
+|===
+
+[[cm5io]]
 === Compute Module 5 IO Board
 
 .Compute Module 5 IO Board
 image::images/cm5io.png[alt="Compute Module 5 IO Board", width="60%"]
 
-Compute Module 5 IO Board provides the following interfaces:
+The Compute Module 5 IO Board (CM5IO) provides the following:
 
-* HAT footprint with 40-pin GPIO connector
-* PoE header
-* 2× HDMI ports
-* 2× USB 3.0 ports
-* Gigabit Ethernet RJ45 with PoE support
-* M.2 M key PCIe socket compatible with the 2230, 2242, 2260, and 2280 form factors
-* microSD card slot (only for use with Lite variants with no eMMC; other variants ignore the slot)
-* 2× MIPI DSI/CSI-2 combined display/camera FPC connectors (22-pin 0.5 mm pitch cable)
-* Battery socket for Real Time Clock
-* four-pin JST-SH PWM fan connector
-* USB-C power using the same standard as Raspberry Pi 5 (5V, 5A (25W) or 5V, 3A (15W) with a 600mA peripheral limit)
-* Jumpers to disable features such as eMMC boot, EEPROM write, and the USB OTG connection
+* *Power and control connectors.*
+** USB-C power using the same standard as Raspberry Pi 5: 5 V at 5 A (25 W) or 5 V at 3 A (15 W) with a 600 mA peripheral limit.
+** A power button for CM5.
+** Real-time clock (RTC) battery socket.
+* *Video and display connectors.*
+** Two HDMI connectors.
+** Two MIPI DSI/CSI-2 combined display/camera FPC connectors (22-pin, 0.5 mm pitch cable).
+* *Networking and connectivity connectors.*
+** Two USB 3.0 (Type-A) connectors for keyboards, storage, or peripherals.
+** A USB 2.0 (Type-C) connector for flashing CM5 or additional peripherals.
+** A Gigabit Ethernet RJ45 with PoE support.
+* *Expansion and storage options.*
+** A M.2 M key PCIe socket compatible with the 2230, 2242, 2260, and 2280 form factors.
+** A microSD card slot (only for use with *CM5Lite*, which has no eMMC; other variants ignore the slot).
+** HAT footprint with 40-pin GPIO connector.
+* *Configuration options.*
+** Jumpers to disable features such as eMMC boot, EEPROM write, and wireless connectivity.
+** Selectable R4/R5 Vref voltage to support different voltage requirements.
+* *Fan connector.* A four-pin JST-SH PWM fan connector.
 
+[[cm4io]]
 === Compute Module 4 IO Board
 
 .Compute Module 4 IO Board
 image::images/cm4io.jpg[alt="Compute Module 4 IO Board", width="60%"]
 
-Compute Module 4 IO Board provides the following interfaces:
+The Compute Module 4 IO Board (CM4IO) provides the following:
 
-* HAT footprint with 40-pin GPIO connector and PoE header
-* 2× HDMI ports
-* 2× USB 2.0 ports
-* Gigabit Ethernet RJ45 with PoE support
-* microSD card slot (only for use with Lite variants with no eMMC; other variants ignore the slot)
-* PCIe Gen 2 socket
-* micro USB upstream port
-* 2× MIPI DSI display FPC connectors (22-pin 0.5 mm pitch cable)
-* 2× MIPI CSI-2 camera FPC connectors (22-pin 0.5 mm pitch cable)
-* Real-time clock with battery socket
-* 12V input via barrel jack (supports up to 26V if PCIe unused)
+* *Power and control connectors.*
+** 12 V input through barrel jack; supports up to 26 V if PCI is unused.
+** Real-time clock (RTC) battery socket.
+* *Video and display connectors.*
+** Two HDMI connectors.
+** Two MIPI DSI display FPC connectors (22-pin, 0.5 mm pitch cable).
+** Two MIPI CSI-2 camera FPC connectors (22-pin, 0.5 mm pitch cable).
+* *Networking and connectivity connectors.* Two USB 2.0 connectors.
+** A micro USB upstream port.
+** A Gigabit Ethernet RJ45 with PoE support.
+* *Expansion and storage options.*
+** PCIe Gen 2 socket.
+** A microSD card slot (only for use with *CM4Lite*, which has no eMMC; other variants ignore the slot).
+** HAT footprint with 40-pin GPIO connector and PoE header
+* *Configuration options.*
+** Jumpers to disable features such as eMMC boot, EEPROM write, and wireless connectivity.
+** Selectable R4/R5 Vref voltage to support different voltage requirements.
+* *Fan connector.* Fan connector supporting standard 12 V fans with PWM drive.
 
-=== Compute Module IO Board
+[[cmio]]
+=== Compute Module IO Board (versions 1 and 3)
 
 .Compute Module IO Board
 image::images/cmio.jpg[alt="Compute Module IO Board", width="60%"]
 
-Compute Module IO Board provides the following interfaces:
+There are two vairants of the Compute Module IO Board:
 
-* 46 GPIO pins
-* HDMI port
-* USB-A port
-* 2× MIPI DSI display FPC connectors (22-pin 0.5 mm pitch cable)
-* 2× MIPI CSI-2 camera FPC connectors (22-pin 0.5 mm pitch cable)
+* Version 1 (CMIO), compatible only with <<cm1, CM1>>.
+* Version 3 (CMIO3), compatible with <<cm1, CM1>>, <<cm3, CM3>>, <<cm3plus, CM3+>>, and <<cm4s, CM4S>>. This version adds a microSD card slot that doesn't exist on CMIO (version 1).
 
-The Compute Module IO Board comes in two variants: Version 1 and Version 3. Version 1 is only compatible with CM1. Version 3 is compatible with CM1, CM3, CM3+, and CM4S. Compute Module IO Board Version 3 is sometimes written as the shorthand CMIO3.
+The Compute Module IO Board (CMIO and CMIO3) provides the following:
 
-Compute Module IO Board Version 3 added a microSD card slot that did not exist in Compute Module IO Board Version 1.
+* *Power and control connectors.* 5 V input through GPIO or external PSU.
+* *Video and display connectors.*
+** One HDMI 1.3a connector.
+** Two MIPI DSI display FPC connectors (22-pin, 0.5 mm pitch cable).
+** Two MIPI CSI-2 camera FPC connectors (22-pin, 0.5 mm pitch cable).
+** One 24-bit DPI (parallel RGB) interface.
+* *Networking and connectivity connectors.* One USB 2.0 Type-A connector.
+* *Expansion and storage options.*
+** 200-pin DDR2 SODIMM connector.
+** 46 GPIO pins exposed through SODIMM.
+** (CMIO3 only) A microSD card slot (only for use with *CM3Lite*, which has no eMMC).
 
-=== IO Board compatibility
+== CM5 and CM5IO accessories
 
-Not all Compute Module IO Boards work with all Compute Module models. The following table shows which Compute Modules work with each IO Board:
+Raspberry Pi offers the following accessories for CM5 and CM5IO:
 
-[cols="1,1"]
-|===
-| IO Board | Compatible Compute Modules
+* <<case, CM5IO Case>>, a two-piece metal enclosure for a CM5I0 (and attached CM5). The case also optionally fits an antenna and cooler.
+* <<antenna, Antenna (CM4 and CM5)>>, a 2.4 GHz and 5 GHz antenna to for wireless connectivity through CM5. The Raspberry Pi Antenna is also compatible with CM4.
+* <<cooler, CM5 Cooler>>, a passive heat sink to dissipate heat from CM5.
 
-| Compute Module IO Board Version 1 (CMIO)/(CMIO1)
-a|
-* CM1
-| Compute Module IO Board Version 3 (CMIO)/(CMIO3)
-a|
-* CM1
-* CM3
-* CM3+
-* CM4S
-| Compute Module 4 IO Board (CM4IO)
-a|
-* CM4
-* CM5 (with reduced functionality)
-| Compute Module 5 IO Board (CM5IO)
-a|
-* CM5
-* CM4 (with reduced functionality)
-|===
-
-== CM5 Accessories
-
-=== IO Case
-
-The world can be a dangerous place. The Compute Module 5 IO Board Case provides physical protection for a CM5IO Board.
+[[case]]
+=== CM5IO Case
 
 .Compute Module 5 IO Board Case
 image::images/cm5io-case.png[alt="Compute Module 5 IO Board Case", width="60%"]
 
-The Case provides cut-outs for all externally-facing ports and LEDs on the CM5IO Board, and an attachment point for a Raspberry Pi Antenna Kit.
+The Compute Module 5 IO Board Case provides physical protection for CM5IO and its attached CM5. It includes:
+
+* Cut-outs for externally-facing connectors and LEDs.
+* A pre-installed, controllable fan that you can remove.
+* An attachment point for a *Raspberry Pi Antenna Kit*.
+* Space for a *Raspberry Pi Cooler*.
+* Space for accessories connected to the IO board, such as an M.2 SSD or PoE+ HAT+.
 
 .Compute Module 5 IO Board Case ports
 image::images/cm5io-case-front.png[alt="the port selection on the Compute Module 5 IO Board Case", width="60%"]
 
-To mount a CM5IO Board within your Case, position your Board in the bottom section of the case, aligning the four mounting points inset slightly from each corner of the Board. Fasten four screws into the mounting points. Take care not to over-tighten the screws.
+The CM5IO Case is a two-piece enclosure that, when assembled, measures 170 mm × 94 mm × 28 mm. It's made of sheet metal and weighs approximately 350 g. For thermal management, the case includes a pre-installed fan that directs airflow over your CM5 and CM5IO components. You can remove or replace the fan depending on your cooling requirements. You can also optionally add a <<cooler, CM5 Cooler>> for improved thermal performance.
 
-To use the Case fan, connect the fan cable to the FAN (J14) port on the Board.
-
-To close the case, put the top section of the case on top of the bottom section of the case. Facing the front of the case, which has port pass-throughs, carefully align the screw holes on the left and right side of the case and the power button on the back of the case. Tighten four screws into the screw holes. Take care not to over-tighten the screws.
-
-TIP: The Case comes with a fan pre-installed. To close the case with the passive Cooler attached to your Compute Module, remove the fan. To remove the fan, remove the four screws positioned in the corners of the fan from the bottom of the top case.
-
-.CM5 Case physical specification
+.CM5 case physical specification
 image::images/cm5-case-physical.png[alt="CM5 Case physical specification", width="80%"]
 
-=== Antenna
+To mount a CM5IO inside your case:
+
+. *Attach your CM5 to your CM5IO.* Align the dual 100-pin connectors on your CM5 with those on your CM5IO and press gently but firmly to attach them.
+. *Open the case.* Unscrew and remove the four screws (two on the left side of the case and two on the right side of the case) using a cross-head screwdriver. Then, separate the top of the case from the base. Keep the screws in a safe place.
+. *Install your CM5IO assembly into the case.* Place your CM5IO (with CM5 attached) into the base of the case, aligning it with the four mounting holes near the corners of the board. Ensure all externally-facing connectors align with the corresponding cut-outs at the front of the case. Then, secure your CM5IO assembly to the base by screwing four M2.5 screws into the four mounting holes.
+. *Connect or remove the fan.* 
+** If using the pre-installed fan, plug the fan into the four-pin fan connector labelled *FAN (J14)* on your CM5IO. Ensure that the fan is properly seated and connected to the power header on your CM5IO.
+** If you want to remove the fan, unscrew the four corner screws of the fan from the underside of the top of the case.
+. *Optionally, attach an external antenna.* If you want to install an antenna, follow the instructions in <<antenna, Antenna (CM4 and CM5)>> on this page.
+. *Optionally, attach the cooler.* If you want to install a cooler, follow the instructions in <<cooler, CM5 Cooler>>. If you're also attaching an antenna, attach the antenna's U.FL connector first for easier access.
+. *Optionally, attach a camera or display.* If you're using a camera or a display, pass the flat cable through one of the slots at the back of the case and connect it to one of the *CAM/DISP* ports on your CM5IO.
+. *Optionally, mount additional accessories.*
+** To install an M.2 SSD, insert it into the M.2 slot in the bottom-right corner of the CM5IO and secure it on the opposite end with mounting screw.
+** To install a PoE+ HAT, align it with the 40-pin GPIO header and the mounting posts such that the hat covers the battery slot, then press it firmly into place and secure it with screws.
+. *Close the case.* Fold the top of the case back onto the base of the case, aligning the screw holes on the left and right sides of the case, and the power button on the back of the case. Screw the four screws back into place using a cross-head screwdriver, taking care not to overtighten them.
+
+NOTE: The SD card slot is a push-push slot. To insert an SD card, push it into the SD card slot with the contacts facing downwards. To remove it, push it inwards towards the slot to release it and then pull it out.
+
+[[antenna]]
+=== Antenna (CM4 and CM5)
 
 The Raspberry Pi Antenna Kit provides a certified external antenna to boost wireless reception on a CM4 or CM5.
 
-.CM4 and CM5 Antenna
+.CM4 and CM5 antenna
 image::images/cm4-cm5-antenna.jpg[alt="The Antenna, connected to CM4", width="60%"]
 
-To attach the Antenna to your Compute Module and Case, complete the following steps:
+The antenna supports dual-band Wi-Fi and attaches to the https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector] on your CM4 or CM5. The antenna is 108 mm at full height; the SMA to U.FL cable is 205 mm.
 
-. Connect the https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector] on the cable to the U.FL-compatible connector on your Compute Module.
-. Secure the toothed washer onto the male SMA connector at the end of the cable, then insert the SMA connector, with the antenna facing outward, through the hole in the Case.
-. Fasten the SMA connector into place with the retaining hexagonal nut and washer.
-. Tighten the female SMA connector on the Antenna onto the male SMA connector.
-. Adjust the Antenna to its final position by turning it up to 90°.
-
-.CM4 and CM5 Antenna assembly diagram
-image::images/cm4-cm5-antenna-assembly.svg[alt="CM4 and CM5 antenna assembly diagram", width="60%"]
-
-To **use** the Antenna with your Compute Module, add a `dtoverlay` instruction in xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`]. Add the following line to the end of `config.txt`:
-
-[source,ini]
-----
-dtparam=ant2
-----
-
-.CM4 and CM5 Antenna physical specification
+.CM4 and CM5 antenna physical specification
 image::images/cm4-cm5-antenna-physical.png[alt="CM4 and CM5 antenna physical specification", width="80%"]
 
-=== Cooler
+You can use the antenna with the <<case, CM5IO Case>>. To attach the antenna to your Compute Module through the CM5IO Case, complete the following steps:
 
-The CM5 Cooler helps dissipate heat from your CM5, improving CPU performance, longevity, and bumpiness.
+. *Connect the U.FL connector.* Connect the U.FL connector on the antenna cable to the U.FL-compatible connector on your Compute Module, next to the top-left mounting hole of your CM5. Do this before attaching a cooler (if using one) because the cooler can make it harder to attach the U.FL connector.
+. *Insert the SMA connector.* Remove the rubber plug from the antenna port on the inside of the CM5IO Case. Then, from the inside of the case, push the SMA connector with the (flat side up) into the antenna port so that it extends through and is accessible from the outside.
+. *Fasten the SMA connector into place.* Twist the retaining hexagonal nut and washer onto the SMA connector in a clockwise direction until it sits securely in place. Avoid excessive twisting when tightening to prevent damage.
+. *Attach the SMA connector to the antenna.* Insert the SMA connector into the antenna port with the antenna facing outward and twist the antenna clockwise to secure it. 
+. *Adjust the antenna.* Move the antenna into its final position by turning it up to a 90 degree angle.
 
-.CM5 Cooler
+.CM4 and CM5 antenna assembly diagram
+image::images/cm4-cm5-antenna-assembly.svg[alt="CM4 and CM5 antenna assembly diagram", width="60%"]
+
+To use the Antenna with your Compute Module, add a `dtoverlay` instruction in xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`]. Add the following line to the end of the `config.txt` file: `dtparam=ant2`
+
+[[cooler]]
+=== CM5 Cooler
+
+The CM5 Cooler is a passive heat sink that helps dissipate heat from your CM5, improving CPU performance and longevity. 
+
+.CM5 cooler
 image::images/cm5-cooler.jpg[alt="CM5 Cooler", width="60%"]
 
-To mount the Cooler to your CM5, attach the thermally conductive silicone at the bottom of the Cooler to the top of your CM5. Align the cut-out in the heatsink with the antenna https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector]. Optionally, fasten screws in the mounting points found in each corner to secure the Cooler. If you omit the screws, the bond between your Cooler and your Compute Module will improve through time, use, and trust.
+The CM5 Cooler dimensions are 41 mm × 56 mm × 12.7 mm. The cooler has an aluminum profile with an underside that's made of thermally conductive silicone. Newer versions of the <<case, CM5IO Case>> fit both the cooler and pre-installed fan inside. If you have an older version of the CM5IO Case, you must remove the fan from the case to allow space for the cooler.
 
-.CM5 Cooler physical specification
+.CM5 cooler physical specification
 image::images/cm5-cooler-physical.png[alt="CM5 Cooler physical specification", width="80%"]
 
-NOTE: The CM5 Cooler is only compatible with the CM5IO Case if you remove the fan from the case.
+To mount the cooler to your CM5, attach the thermally conductive silicone at the bottom of the cooler to the top of your CM5. Align the cut-out in the heatsink with the antenna https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector]. Optionally, fasten screws in the mounting points found in each corner to secure the cooler. If you omit the screws, the bond between your cooler and your CM5 improves through time and use.
