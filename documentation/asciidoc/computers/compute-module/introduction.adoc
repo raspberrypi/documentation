@@ -260,7 +260,7 @@ The Compute Module 4 IO Board (CM4IO) provides the following:
 ** HAT footprint with 40-pin GPIO connector and PoE header
 * *Configuration options.*
 ** Jumpers to disable features such as eMMC boot, EEPROM write, and wireless connectivity.
-** Selectable R4/R5 Vref voltage to support different voltage requirements.
+** Selectable 1.8 V or 3.3 V GPIO voltage.
 * *Fan connector.* Fan connector supporting standard 12 V fans with PWM drive.
 
 [[cmio]]
@@ -276,7 +276,7 @@ There are two variants of the Compute Module IO Board:
 
 The Compute Module IO Board (CMIO and CMIO3) provides the following:
 
-* *Power and control connectors.* 5 V input through GPIO or external PSU.
+* *Power and control connectors.* 5 V input through GPIO or a micro USB connector.
 * *Video and display connectors.*
 ** One Full size Type A HDMI supporting HDMI 1.3a.
 ** Two MIPI DSI display FPC connectors (22-pin, 0.5 mm pitch cable).
