@@ -13,9 +13,9 @@ This page:
 
 == Compute Modules
 
-Raspberry Pi Compute Modules are **system-on-module (SoM)** variants of the flagship Raspberry Pi single-board computers (SBC). They're designed for industrial and commercial applications, such as digital signage, thin clients, and process automation. Many developers and system designers choose Compute Modules over flagship Raspberry Pi models for their compact design, flexibility, and support for on-board eMMC storage.
+Raspberry Pi Compute Modules are *system-on-module (SoM)* variants of the flagship Raspberry Pi single-board computers (SBC). They're designed for industrial and commercial applications, such as digital signage, thin clients, and process automation. Many developers and system designers choose Compute Modules over flagship Raspberry Pi models for their compact design, flexibility, and support for on-board eMMC storage.
 
-Raspberry Pi Compute Modules are available in several variants, differing in memory and embedded Multi-Media Card (eMMC) flash storage capacity (soldered onto the board). Like SD cards, eMMC provides persistent storage with low power consumption. Unlike SD cards, eMMC behaves like an internal disk and includes built-in features that improve reliability. **Lite** models have no on-board storage, and are sometimes referred to with the suffix **Lite**, for example, "CM5Lite".
+Raspberry Pi Compute Modules are available in several variants, differing in memory and embedded Multi-Media Card (eMMC) flash storage capacity (soldered onto the board). Like SD cards, eMMC provides persistent storage with low power consumption. Unlike SD cards, eMMC behaves like an internal disk and includes built-in features that improve reliability. *Lite* models have no on-board storage, and are sometimes referred to with the suffix *Lite*, for example, "CM5Lite".
 
 === Compute Module models
 
@@ -96,7 +96,7 @@ Compute Module 4S (*CM4S*) combines the core components of Raspberry Pi 4 with o
 * *Storage options.* 0 GB (*CM4SLite*), 8 GB, 16 GB, or 32 GB of eMMC memory.
 * *Form factor.* Standard DDR2 SODIMM module.
 
-Unlike **CM4**, CM4S retains the DDR2 SODIMM form factor used in *CM1*, *CM3*, and *CM3+*.
+Unlike *CM4*, CM4S retains the DDR2 SODIMM form factor used in *CM1*, *CM3*, and *CM3+*.
 
 .Compute Module 4S
 image::images/cm4s.jpg[alt="Compute Module 4S", width="60%"]
@@ -329,9 +329,8 @@ To mount a CM5IO inside your case:
 . *Optionally, attach an external antenna.* If you want to install an antenna, follow the instructions in <<antenna, Antenna (CM4 and CM5)>> on this page.
 . *Optionally, attach the cooler.* If you want to install a cooler, follow the instructions in <<cooler, CM5 Cooler>>. If you're also attaching an antenna, attach the antenna's U.FL connector first for easier access.
 . *Optionally, attach a camera or display.* If you're using a camera or a display, pass the flat cable through one of the slots at the back of the case and connect it to one of the *CAM/DISP* ports on your CM5IO.
-. *Optionally, mount additional accessories.*
-** To install an M.2 SSD, insert it into the M.2 slot in the bottom-right corner of the CM5IO and secure it on the opposite end with a mounting screw.
-** To install a PoE+ HAT, align it with the 40-pin GPIO header and the mounting posts such that the HAT covers the battery slot, then press it firmly into place and secure it with screws.
+. *Optionally, install an M.2 SSD.* If you want to install an M.2 SSD, insert it into the M.2 slot in the bottom-right corner of the CM5IO and secure it on the opposite end with a mounting screw.
+. *Optionally, install a PoE+ HAT.* If you want to install a PoE+ HAT, align it with the 40-pin GPIO header and the mounting posts such that the HAT covers the battery slot, then press it firmly into place and secure it with screws.
 . *Close the case.* Fold the top of the case back onto the base of the case, aligning the screw holes on the left and right sides of the case, and the power button on the back of the case. Screw the four screws back into place using a cross-head screwdriver, taking care not to overtighten them.
 
 NOTE: The SD card slot is a push-push slot. To insert an SD card, push it into the SD card slot with the contacts facing downwards. To remove it, push it inwards towards the slot to release it and then pull it out.
@@ -349,13 +348,15 @@ The antenna supports dual-band Wi-Fi and attaches to the https://en.wikipedia.or
 .CM4 and CM5 antenna physical specification
 image::images/cm4-cm5-antenna-physical.png[alt="CM4 and CM5 antenna physical specification", width="80%"]
 
-You can use the antenna with the <<case, CM5IO Case>>. To attach the antenna to your Compute Module through the CM5IO Case, complete the following steps:
+You can use the antenna with the <<case, CM5IO Case>>. To attach the antenna to your Compute Module through the CM5IO Case, complete the first four steps outlined in <<case, CM5IO Case>>, and then complete following steps:
 
 . *Connect the U.FL connector.* Connect the U.FL connector on the antenna cable to the U.FL-compatible connector on your Compute Module, next to the top-left mounting hole of your CM5. Do this before attaching a cooler (if using one) because the cooler can make it harder to attach the U.FL connector.
 . *Insert the SMA connector.* Remove the rubber plug from the antenna port on the inside of the CM5IO Case. Then, from the inside of the case, push the SMA connector with the (flat side up) into the antenna port so that it extends through and is accessible from the outside.
 . *Fasten the SMA connector into place.* Twist the retaining hexagonal nut and washer onto the SMA connector in a clockwise direction until it sits securely in place. Avoid excessive twisting when tightening to prevent damage.
 . *Attach the SMA connector to the antenna.* Insert the SMA connector into the antenna port with the antenna facing outward and twist the antenna clockwise to secure it. 
 . *Adjust the antenna.* Move the antenna into its final position by turning it up to a 90 degree angle.
+
+You can now complete the remaining steps outlined in <<case, CM5IO Case>> for mounting a CM5IO inside your case.
 
 .CM4 and CM5 antenna assembly diagram
 image::images/cm4-cm5-antenna-assembly.svg[alt="CM4 and CM5 antenna assembly diagram", width="60%"]
