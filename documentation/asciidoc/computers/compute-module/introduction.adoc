@@ -233,7 +233,7 @@ The Compute Module 5 IO Board (CM5IO) provides the following:
 ** HAT footprint with 40-pin GPIO connector.
 * *Configuration options.*
 ** Jumpers to disable features such as eMMC boot, EEPROM write, and wireless connectivity.
-** Selectable R4/R5 Vref voltage to support different voltage requirements.
+** Selectable 1.8 V or 3.3 V GPIO voltage.
 * *Fan connector.* A four-pin JST-SH PWM fan connector.
 
 [[cm4io]]
@@ -245,7 +245,7 @@ image::images/cm4io.jpg[alt="Compute Module 4 IO Board", width="60%"]
 The Compute Module 4 IO Board (CM4IO) provides the following:
 
 * *Power and control connectors.*
-** 12 V input through barrel jack; supports up to 26 V if PCI is unused.
+** 12 V input through barrel jack; supports up to 26 V if PCIe is unused.
 ** Real-time clock (RTC) battery socket.
 * *Video and display connectors.*
 ** Two HDMI connectors.
@@ -278,14 +278,14 @@ The Compute Module IO Board (CMIO and CMIO3) provides the following:
 
 * *Power and control connectors.* 5 V input through GPIO or external PSU.
 * *Video and display connectors.*
-** One HDMI 1.3a connector.
+** One Full size Type A HDMI supporting HDMI 1.3a.
 ** Two MIPI DSI display FPC connectors (22-pin, 0.5 mm pitch cable).
 ** Two MIPI CSI-2 camera FPC connectors (22-pin, 0.5 mm pitch cable).
 ** One 24-bit DPI (parallel RGB) interface.
 * *Networking and connectivity connectors.* One USB 2.0 Type-A connector.
 * *Expansion and storage options.*
 ** 200-pin DDR2 SODIMM connector.
-** 46 GPIO pins exposed through SODIMM.
+** 46 GPIO pins.
 ** (CMIO3 only) A microSD card slot (only for use with *CM3Lite*, which has no eMMC).
 
 == CM5 and CM5IO accessories
@@ -324,14 +324,14 @@ To mount a CM5IO inside your case:
 . *Open the case.* Unscrew and remove the four screws (two on the left side of the case and two on the right side of the case) using a cross-head screwdriver. Then, separate the top of the case from the base. Keep the screws in a safe place.
 . *Install your CM5IO assembly into the case.* Place your CM5IO (with CM5 attached) into the base of the case, aligning it with the four mounting holes near the corners of the board. Ensure all externally facing connectors align with the corresponding cut-outs at the front of the case. Then, secure your CM5IO assembly to the base by screwing four M2.5 screws into the four mounting holes.
 . *Connect or remove the fan.* 
-** If using the pre-installed fan, plug the fan into the four-pin fan connector labelled *FAN (J14)* on your CM5IO. Ensure that the fan is properly seated and connected to the power header on your CM5IO.
+** If using the pre-installed fan, plug the fan connector into the four-pin fan socket labelled *FAN (J14)* on your CM5IO.
 ** If you want to remove the fan, unscrew the four corner screws of the fan from the underside of the top of the case.
 . *Optionally, attach an external antenna.* If you want to install an antenna, follow the instructions in <<antenna, Antenna (CM4 and CM5)>> on this page.
 . *Optionally, attach the cooler.* If you want to install a cooler, follow the instructions in <<cooler, CM5 Cooler>>. If you're also attaching an antenna, attach the antenna's U.FL connector first for easier access.
 . *Optionally, attach a camera or display.* If you're using a camera or a display, pass the flat cable through one of the slots at the back of the case and connect it to one of the *CAM/DISP* ports on your CM5IO.
 . *Optionally, install an M.2 SSD.* If you want to install an M.2 SSD, insert it into the M.2 slot in the bottom-right corner of the CM5IO and secure it on the opposite end with a mounting screw.
-. *Optionally, install a PoE+ HAT.* If you want to install a PoE+ HAT, align it with the 40-pin GPIO header and the mounting posts such that the HAT covers the battery slot, then press it firmly into place and secure it with screws.
-. *Close the case.* Fold the top of the case back onto the base of the case, aligning the screw holes on the left and right sides of the case, and the power button on the back of the case. Screw the four screws back into place using a cross-head screwdriver, taking care not to overtighten them.
+. *Optionally, install a HAT.* If you want to install a HAT, align it with the 40-pin GPIO header and the mounting posts such that the HAT covers the battery slot, then press it firmly into place and secure it with screws.
+. *Close the case.* Fold the top of the case back onto the base of the case, aligning the screw holes on the left and right sides of the case, and the power button on the back of the case. Screw the four screws back into place using a Phillips screwdriver, taking care not to overtighten them.
 
 NOTE: The SD card slot is a push-push slot. To insert an SD card, push it into the SD card slot with the contacts facing downwards. To remove it, push it inwards towards the slot to release it and then pull it out.
 
@@ -371,9 +371,13 @@ The CM5 Cooler is a passive heat sink that helps dissipate heat from your CM5, i
 .CM5 cooler
 image::images/cm5-cooler.jpg[alt="CM5 Cooler", width="60%"]
 
-The CM5 Cooler dimensions are 41 mm × 56 mm × 12.7 mm. The cooler has an aluminium profile with an underside that's made of thermally conductive silicone. Newer versions of the <<case, CM5IO Case>> fit both the cooler and pre-installed fan inside. If you have an older version of the CM5IO Case, you must remove the fan from the case to allow space for the cooler.
+The CM5 Cooler dimensions are 41 mm × 56 mm × 12.7 mm. The cooler s an aluminum heatsink with a conductive silicone pad on the bottom. Newer versions of the <<case, CM5IO Case>> allow both the cooler and pre-installed fan to be used inside the case at the same time. If you have an older version of the CM5IO Case, you must remove the fan from the case to allow space for the cooler.
 
 .CM5 cooler physical specification
 image::images/cm5-cooler-physical.png[alt="CM5 Cooler physical specification", width="80%"]
 
-To mount the cooler to your CM5, attach the thermally conductive silicone at the bottom of the cooler to the top of your CM5. Align the cut-out in the heatsink with the antenna https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector]. Optionally, fasten screws in the mounting points found in each corner to secure the cooler. If you omit the screws, the bond between your cooler and your CM5 improves through time and use.
+To mount the cooler to your CM5:
+
+. Remove the protective paper from the silicone pad on the bottom of cooler.
+. Attach the silicone at the bottom of the cooler to the top of your CM5. Align the cut-out in the heat sink with the antenna https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector].
+. Optionally, fasten screws in the mounting points found in each corner to secure the cooler. If you omit the screws, the bond between your cooler and your CM5 improves through time and use.
