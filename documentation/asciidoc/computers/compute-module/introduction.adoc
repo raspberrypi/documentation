@@ -127,7 +127,7 @@ image::images/cm4.jpg[alt="Compute Module 4", width="60%"]
 Compute Module 3+ (*CM3+*) combines the core components of Raspberry Pi 3 Model B+ with optional flash storage. Key features include:
 
 * *Processor.* Broadcom BCM2837B0.
-* *Memory options*. 1 GB, 2 GB, or 4 GB of RAM.
+* *Memory*. 1 GB of RAM.
 * *Storage options.* 0 GB (*CM3+Lite*) or 8 GB, 16 GB, or 32 GB of eMMC flash memory.
 * *Form factor.* Standard DDR2 SODIMM module.
 
