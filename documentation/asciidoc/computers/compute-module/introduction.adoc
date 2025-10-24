@@ -292,7 +292,7 @@ The Compute Module IO Board (CMIO and CMIO3) provides the following:
 
 Raspberry Pi offers the following accessories for CM5 and CM5IO:
 
-* <<case, CM5IO Case>>, a two-piece metal enclosure for a CM5I0 (and attached CM5). The case also optionally fits an antenna and cooler.
+* <<case, CM5IO Case>>, a two-piece metal enclosure for a CM5IO (and attached CM5). The case also optionally fits an antenna and cooler.
 * <<antenna, Antenna (CM4 and CM5)>>, a 2.4 GHz and 5 GHz antenna to for wireless connectivity through CM5. The Raspberry Pi Antenna is also compatible with CM4.
 * <<cooler, CM5 Cooler>>, a passive heat sink to dissipate heat from CM5.
 
