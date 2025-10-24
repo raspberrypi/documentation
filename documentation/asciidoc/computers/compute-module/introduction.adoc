@@ -278,7 +278,7 @@ The Compute Module IO Board (CMIO and CMIO3) provides the following:
 
 * *Power and control connectors.* 5 V input through GPIO or a micro USB connector.
 * *Video and display connectors.*
-** One Full size Type A HDMI supporting HDMI 1.3a.
+** One Full size Type A HDMI.
 ** Two MIPI DSI display FPC connectors (22-pin, 0.5 mm pitch cable).
 ** Two MIPI CSI-2 camera FPC connectors (22-pin, 0.5 mm pitch cable).
 ** One 24-bit DPI (parallel RGB) interface.
