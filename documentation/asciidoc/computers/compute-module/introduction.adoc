@@ -204,7 +204,7 @@ Not all IO Boards work with all Compute Module models. The following table summa
 | <<cmio, *Compute Module IO Board version 1 (CMIO; CMIO1)*>> (2014)
 | <<cm1, CM1>>
 | 5 V through micro USB
-| 160 mm × 100 mm
+| 85 mm × 105 mm
 
 |===
 
