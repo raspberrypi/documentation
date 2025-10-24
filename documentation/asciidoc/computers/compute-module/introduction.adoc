@@ -379,5 +379,5 @@ image::images/cm5-cooler-physical.png[alt="CM5 Cooler physical specification", w
 To mount the cooler to your CM5:
 
 . Remove the protective paper from the silicone pad on the bottom of cooler.
-. Attach the silicone at the bottom of the cooler to the top of your CM5. Align the cut-out in the heat sink with the antenna https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector] and the on board antenna. Ensure that both the U.FL connector on the Compute Module, and the trapezoid shape area next to the U.FL connector (the on-board antenna), are visible through the cutout.
+. Attach the silicone at the bottom of the cooler to the top of your CM5. Align the cut-out in the heat sink with the antenna https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector] and the on-board antenna. Ensure that both the U.FL connector on the Compute Module, and the trapezoid shape area next to the U.FL connector (the on-board antenna), are visible through the cutout.
 . Optionally, fasten screws in the mounting points found in each corner to secure the cooler. If you omit the screws, the bond between your cooler and your CM5 improves through time and use.
