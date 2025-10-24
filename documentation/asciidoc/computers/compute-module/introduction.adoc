@@ -142,7 +142,7 @@ IMPORTANT: Raspberry Pi Compute Module 3 (CM3) and Compute Module 3 Lite (CM3Lit
 Compute Module 3 (*CM3*) combines the core components of Raspberry Pi 3 with an optional 4 GB of flash storage. Key features include:
 
 * *Processor.* Broadcom BCM2837.
-* *Memory options.* 1 GB, 2 GB, or 4 GB of RAM.
+* *Memory options.* 1 GB of RAM.
 * *Storage options.* 0 GB (*CM3Lite*) or 4 GB of eMMC flash memory.
 * *Form factor.* Standard DDR2 SODIMM module.
 
@@ -251,7 +251,8 @@ The Compute Module 4 IO Board (CM4IO) provides the following:
 ** Two HDMI connectors.
 ** Two MIPI DSI display FPC connectors (22-pin, 0.5 mm pitch cable).
 ** Two MIPI CSI-2 camera FPC connectors (22-pin, 0.5 mm pitch cable).
-* *Networking and connectivity connectors.* Two USB 2.0 connectors.
+* *Networking and connectivity connectors.* 
+** Two USB 2.0 connectors.
 ** A micro USB upstream port.
 ** A Gigabit Ethernet RJ45 with PoE support.
 * *Expansion and storage options.*
