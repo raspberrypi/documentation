@@ -321,7 +321,7 @@ image::images/cm5-case-physical.png[alt="CM5 Case physical specification", width
 To mount a CM5IO inside your case:
 
 . *Attach your CM5 to your CM5IO.* Align the dual 100-pin connectors on your CM5 with those on your CM5IO and press gently but firmly to attach them.
-. *Open the case.* Unscrew and remove the four screws (two on the left side of the case and two on the right side of the case) using a cross-head screwdriver. Then, separate the top of the case from the base. Keep the screws in a safe place.
+. *Open the case.* Unscrew and remove the four screws (two on the left side of the case and two on the right side of the case) using a Phillips screwdriver. Then, separate the top of the case from the base. Keep the screws in a safe place.
 . *Install your CM5IO assembly into the case.* Place your CM5IO (with CM5 attached) into the base of the case, aligning it with the four mounting holes near the corners of the board. Ensure all externally facing connectors align with the corresponding cut-outs at the front of the case. Then, secure your CM5IO assembly to the base by screwing four M2.5 screws into the four mounting holes.
 . *Connect or remove the fan.* 
 ** If using the pre-installed fan, plug the fan connector into the four-pin fan socket labelled *FAN (J14)* on your CM5IO.
