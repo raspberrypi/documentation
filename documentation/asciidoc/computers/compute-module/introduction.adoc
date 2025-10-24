@@ -173,7 +173,7 @@ A Raspberry Pi Compute Module IO Board is the companion carrier board that provi
 * Connect USB interfaces to standard USB connectors for peripheral devices.
 * Provide LEDs that indicate power and activity status.
 * Enable eMMC programming over USB for flashing the module's onboard storage.
-* Expose PCIe lanes through connectors so that you can attach storage or peripheral devices like SSDs or network adapters.
+* On CM4IO and CM5IO, expose PCIe through connectors so that you can attach storage or peripheral devices like SSDs or network adapters.
 
 Raspberry Pi IO Boards are general-purpose boards designed for development, testing, and prototyping Compute Modules. For production use, you might design a smaller, custom carrier board that includes only the connectors you need for your use case.
 
