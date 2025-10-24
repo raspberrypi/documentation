@@ -53,7 +53,7 @@ The following table summarises Raspberry Pi Compute Modules in reverse chronolog
 | 4 × Cortex-A53 at 1.2 GHz
 |DDR2 SODIMM
 
-| <<cm3, *CM3*>> (2017; discontinued June 2026)
+| <<cm3, *CM3*>> (2017; discontinued October 2025)
 | Raspberry Pi 3 Model B
 | Broadcom BCM2837
 |VideoCore IV
