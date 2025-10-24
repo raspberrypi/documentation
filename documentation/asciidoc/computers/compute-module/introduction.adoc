@@ -198,7 +198,7 @@ Not all IO Boards work with all Compute Module models. The following table summa
 
 | <<cmio, *Compute Module IO Board version 3 (CMIO3)*>> (2017)
 | <<cm1, CM1>>, <<cm3, CM3>>, <<cm3plus, CM3+>>, and <<cm4s, CM4S>>
-| 12 V or 5 V through the barrel jack
+| 5 V through micro USB
 | 160 mm × 100 mm
 
 | <<cmio, *Compute Module IO Board version 1 (CMIO; CMIO1)*>> (2014)
