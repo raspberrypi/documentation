@@ -344,7 +344,7 @@ The Raspberry Pi Antenna Kit provides a certified external antenna to boost wire
 .CM4 and CM5 antenna
 image::images/cm4-cm5-antenna.jpg[alt="The Antenna, connected to CM4", width="60%"]
 
-The antenna supports dual-band Wi-Fi and attaches to the https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector] on your CM4 or CM5. The antenna is 108 mm at full height; the SMA to U.FL cable is 205 mm.
+The antenna supports dual-band Wi-Fi and attaches to the https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector] on your CM4 or CM5. The antenna is 108 mm at full height; the SMA to U.FL cable is 205 mm long.
 
 .CM4 and CM5 antenna physical specification
 image::images/cm4-cm5-antenna-physical.png[alt="CM4 and CM5 antenna physical specification", width="80%"]
