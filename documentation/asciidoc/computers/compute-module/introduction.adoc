@@ -156,7 +156,7 @@ Compute Module 1 (*CM1*) combines the core components of Raspberry Pi Model B wi
 
 * *Processor.* Broadcom BCM2835.
 * *Memory.* 512 MB of RAM.
-* *Storage options.* 0 GB (*CM1Lite*) or 4 GB of eMMC flash memory.
+* *Storage.* 4 GB of eMMC flash memory.
 * *Form factor.* Standard DDR2 SODIMM module.
 
 .Compute Module 1
@@ -193,7 +193,7 @@ Not all IO Boards work with all Compute Module models. The following table summa
 
 | <<cm4io, *Compute Module 4 IO Board (CM4IO)*>> (2020)
 | <<cm4, CM4>>; CM5 with reduced functionality
-| 12 V or 5 V through the DC barrel jack
+| 5 V through the GPIO header or 12 V through the DC barrel jack
 |160 mm × 90 mm
 
 | <<cmio, *Compute Module IO Board version 3 (CMIO3)*>> (2017)
@@ -282,7 +282,6 @@ The Compute Module IO Board (CMIO and CMIO3) provides the following:
 ** One Full size Type A HDMI.
 ** Two MIPI DSI display FPC connectors (22-pin, 0.5 mm pitch cable).
 ** Two MIPI CSI-2 camera FPC connectors (22-pin, 0.5 mm pitch cable).
-** One 24-bit DPI (parallel RGB) interface.
 * *Networking and connectivity connectors.* One USB 2.0 Type-A connector.
 * *Expansion and storage options.*
 ** 200-pin DDR2 SODIMM connector.
@@ -354,7 +353,7 @@ You can use the antenna with the <<case, CM5IO Case>>. To attach the antenna to 
 . *Connect the U.FL connector.* Connect the U.FL connector on the antenna cable to the U.FL-compatible connector on your Compute Module, next to the top-left mounting hole of your CM5. Do this before attaching a cooler (if using one) because the cooler can make it harder to attach the U.FL connector.
 . *Insert the SMA connector.* Remove the rubber plug from the antenna port on the inside of the CM5IO Case. Then, from the inside of the case, push the SMA connector with the (flat side up) into the antenna port so that it extends through and is accessible from the outside.
 . *Fasten the SMA connector into place.* Twist the retaining hexagonal nut and washer onto the SMA connector in a clockwise direction until it sits securely in place. Avoid excessive twisting when tightening to prevent damage.
-. *Attach the SMA connector to the antenna.* Insert the SMA connector into the antenna port with the antenna facing outward and twist the antenna clockwise to secure it. 
+. *Attach the antenna to the SMA connector.* Insert the SMA connector into the antenna port with the antenna facing outward and twist the antenna clockwise to secure it. 
 . *Adjust the antenna.* Move the antenna into its final position by turning it up to a 90 degree angle.
 
 You can now complete the remaining steps outlined in <<case, CM5IO Case>> for mounting a CM5IO inside your case.
