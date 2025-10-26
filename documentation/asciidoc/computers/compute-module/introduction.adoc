@@ -1,6 +1,6 @@
 A Raspberry Pi *Compute Module (CM)* is a compact version of a standard Raspberry Pi single-board computer (SBC) designed primarily for embedded and industrial applications. A Compute Module contains the core components of a Raspberry Pi but without the standard connectors like HDMI, USB, or Ethernet.
 
-A Raspberry Pi *Compute Module IO Board (CMIO)* provides the physical connectors, peripheral interfaces, and expansion options necessary for accessing and expanding a Compute Module's functionality. A Computer Module IO Board can be used as a standalone product, allowing for rapid prototyping and embedded systems development, or as a reference design for your own carrier (IO) board. In either case, you can selectively make use of only the connectors that your application requires. 
+A Raspberry Pi *Compute Module IO Board (CMIO)* provides the physical connectors, peripheral interfaces, and expansion options necessary for accessing and expanding a Compute Module's functionality. A Compute Module IO Board can be used as a standalone product, allowing for rapid prototyping and embedded systems development, or as a reference design for your own carrier (IO) board. In either case, you can selectively make use of only the connectors that your application requires. 
 
 This page:
 
