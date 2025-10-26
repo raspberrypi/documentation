@@ -362,7 +362,7 @@ You can now complete the remaining steps outlined in <<case, CM5IO Case>> for mo
 .CM4 and CM5 antenna assembly diagram
 image::images/cm4-cm5-antenna-assembly.svg[alt="CM4 and CM5 antenna assembly diagram", width="60%"]
 
-To use the Antenna with your Compute Module, add a `dtoverlay` instruction in xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`]. Add the following line to the end of the `config.txt` file: `dtparam=ant2`
+To use the Antenna with your Compute Module, add a `dtparam` instruction in xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`]. Add the following line to the end of the `config.txt` file: `dtparam=ant2`
 
 [[cooler]]
 === CM5 Cooler
