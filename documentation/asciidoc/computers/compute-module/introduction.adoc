@@ -20,12 +20,12 @@ Raspberry Pi Compute Modules are *system-on-module (SoM)* variants of the flagsh
 Raspberry Pi Compute Modules are available in several variants, differing in memory, embedded Multi-Media Card (eMMC) flash storage capacity (soldered onto the board), and wireless connectivity (Wi-Fi and Bluetooth).
 
 * *Memory.* Compute Modules 4, 4S, and 5 offer different amounts of RAM; for details about the available options, see the dedicated sections for each Compute Module model on this page. Compute Modules 1 and 3 offer a fixed amount of RAM: 512 MB and 1 GB, respectively.
-* *Storage.* Compute Modules 3, 3+, 4, 4S, and 5 offer different storage options, with later models offering more options and larger sizes than earlier models. *Lite* models have no on-board storage, and are sometimes referred to with the suffix *Lite* or *L*, for example, "CM5Lite" or "CM3L". Storage is provided through eMMC. eMMC provides persistent storage with low power consumption and built-in features that improve reliability.
+* *Storage.* Compute Modules 3, 3+, 4, 4S, and 5 offer different storage options, with later models offering more options and larger sizes than earlier models. *Lite* models have no on-board storage, and are sometimes referred to with the suffix *Lite* or *L*, for example, "CM5Lite" or "CM3L". Storage is provided through eMMC, which provides persistent storage with low power consumption and built-in features that improve reliability.
 * *Wireless.* Compute Modules 4 and 5 come with optional Wi-Fi and Bluetooth.
 
 === Models
 
-The following table summarises Raspberry Pi Compute Modules in reverse chronological order, listing their SoC, GPU, CPU, and form factor for quick reference. For more information about each of these models, including memory and storage options, see the following dedicated sections on this page.
+The following table summarises Raspberry Pi Compute Modules in reverse chronological order, listing their SoC, CPU, GPU, and form factor for quick reference. For more information about each of these models, including memory and storage options, see the following dedicated sections on this page.
 
 [cols="1,1,1,1,1,1", options="header"]
 |===
@@ -235,7 +235,7 @@ The Compute Module 5 IO Board (CM5IO) provides the following:
 ** A M.2 M key PCIe socket compatible with the 2230, 2242, 2260, and 2280 form factors.
 ** A microSD card slot (only for use with *CM5Lite*, which has no eMMC; other variants ignore the slot).
 ** HAT footprint with 40-pin GPIO connector.
-** PoE header compatible with Raspberry Pi 5.
+** PoE header.
 * *Configuration options.*
 ** Jumpers to disable features such as eMMC boot, EEPROM write, and wireless connectivity.
 ** Selectable 1.8 V or 3.3 V GPIO voltage.
@@ -264,7 +264,7 @@ The Compute Module 4 IO Board (CM4IO) provides the following:
 ** PCIe Gen 2 socket.
 ** A microSD card slot (only for use with *CM4Lite*, which has no eMMC; other variants ignore the slot).
 ** HAT footprint with 40-pin GPIO connector.
-** PoE header compatible with Raspberry Pi 4B.
+** PoE header.
 * *Configuration options.*
 ** Jumpers to disable features such as eMMC boot, EEPROM write, and wireless connectivity.
 ** Selectable 1.8 V or 3.3 V GPIO voltage.
