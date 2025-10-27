@@ -15,9 +15,15 @@ This page:
 
 Raspberry Pi Compute Modules are *system-on-module (SoM)* variants of the flagship Raspberry Pi single-board computers (SBC). They're designed for industrial and commercial applications, such as digital signage, thin clients, and process automation. Many developers and system designers choose Compute Modules over flagship Raspberry Pi models for their compact design, flexibility, and support for on-board eMMC storage.
 
-Raspberry Pi Compute Modules are available in several variants, differing in memory and embedded Multi-Media Card (eMMC) flash storage capacity (soldered onto the board). Like SD cards, eMMC provides persistent storage with low power consumption. Unlike SD cards, eMMC behaves like an internal disk and includes built-in features that improve reliability. *Lite* models have no on-board storage, and are sometimes referred to with the suffix *Lite*, for example, "CM5Lite".
+=== Memory, storage, and wireless variants
 
-=== Compute Module models
+Raspberry Pi Compute Modules are available in several variants, differing in memory, embedded Multi-Media Card (eMMC) flash storage capacity (soldered onto the board), and wireless connectivity (Wi-Fi and Bluetooth).
+
+* *Memory.* Compute Modules 4, 4S, and 5 offer different amounts of RAM; for details about the available options, see the dedicated sections for each Compute Module model on this page. Compute Modules 1 and 3 offer a fixed amount of RAM: 512 MB and 1 GB, respectively.
+* *Storage.* Compute Modules 3, 3+, 4, 4S, and 5 offer different storage options, with later models offering more options and larger sizes than earlier models. *Lite* models have no on-board storage, and are sometimes referred to with the suffix *Lite* or *L*, for example, "CM5Lite" or "CM3L". Storage is provided through eMMC. eMMC provides persistent storage with low power consumption and built-in features that improve reliability.
+* *Wireless.* Compute Modules 4 and 5 come with optional Wi-Fi and Bluetooth.
+
+=== Models
 
 The following table summarises Raspberry Pi Compute Modules in reverse chronological order, listing their SoC, GPU, CPU, and form factor for quick reference. For more information about each of these models, including memory and storage options, see the following dedicated sections on this page.
 
@@ -69,8 +75,6 @@ The following table summarises Raspberry Pi Compute Modules in reverse chronolog
 
 |===
 
-NOTE: Compute Module 2 (CM2) was never released publicly. Compute Module 1 (CM1) was officially followed by Compute Module 3 (CM3).
-
 [[cm5]]
 === Compute Module 5
 
@@ -110,9 +114,9 @@ Compute Module 4 (*CM4*) combines the core components of Raspberry Pi 4 with opt
 * *Memory options.* 1 GB, 2 GB, 4 GB, or 8 GB of RAM.
 * *Storage options.* 0 GB (*CM4Lite*), 8 GB, 16 GB, or 32 GB of eMMC memory.
 * *Form factor.* Two 100-pin high-density connectors for connecting to the companion carrier board.
+* *Temperature range options.* Operating temperature of -20°C to +85°C for standard variants or -40°C to +85°C for wider applications.
 
-Unlike earlier modules (*CM1*, *CM3*, *CM3+*), CM4 moved away from the DDR2 SODIMM form factor to
-a dual 100-pin high-density connector layout, which results in a smaller physical footprint. This redesign supports the following additional features:
+Unlike earlier modules (*CM1*, *CM3*, *CM3+*), CM4 moved away from the DDR2 SODIMM form factor to a dual 100-pin high-density connector layout, which results in a smaller physical footprint. This redesign supports the following additional features:
 
 * Dual HDMI connectors
 * PCIe support
@@ -137,7 +141,7 @@ image::images/cm3-plus.jpg[alt="Compute Module 3+", width="60%"]
 [[cm3]]
 === Compute Module 3
 
-IMPORTANT: Raspberry Pi Compute Module 3 (CM3) and Compute Module 3 Lite (CM3Lite) have reached End-of-Life (EoL) due to the discontinuation of the core SoC used in these products. The official EoL date was 16 October, 2025. The closest equivalent to CM3 is Raspberry Pi <<cm3plus, Compute Module 3+>>, which offers the same mechanical footprint, improved thermal design, and a BCM2837B0 processor, and so is recommended for existing designs. For new designs requiring the SODIMM form factor, we recommend <<cm4s, Compute Module 4S>>. For all other new designs, we recommend <<cm4, Compute Module 4>> or <<cm5, Compute Module 5>>. For more information, see the official https://pip-assets.raspberrypi.com/categories/1284-eol-notices/documents/RP-009286-PC-1-OBS2_%20Raspberry%20Pi%20Compute%20Module%203%20and%20Raspberry%20Pi%20Compute%20Module%203%20Lite.pdf?disposition=inline[Obsolescence Notice].
+IMPORTANT: Raspberry Pi Compute Module 3 (CM3) and Compute Module 3 Lite (CM3Lite) have reached End-of-Life (EoL) due to the discontinuation of the core SoC used in these products. The official EoL date was 16 October 2025. The closest equivalent to CM3 is Raspberry Pi <<cm3plus, Compute Module 3+>>, which offers the same mechanical footprint, improved thermal design, and a BCM2837B0 processor, and so is recommended for existing designs. For new designs requiring the SODIMM form factor, we recommend <<cm4s, Compute Module 4S>>. For all other new designs, we recommend <<cm4, Compute Module 4>> or <<cm5, Compute Module 5>>. For more information, see the official https://pip-assets.raspberrypi.com/categories/1284-eol-notices/documents/RP-009286-PC-1-OBS2_%20Raspberry%20Pi%20Compute%20Module%203%20and%20Raspberry%20Pi%20Compute%20Module%203%20Lite.pdf?disposition=inline[Obsolescence Notice].
 
 Compute Module 3 (*CM3*) combines the core components of Raspberry Pi 3 with an optional 4 GB of flash storage. Key features include:
 
@@ -152,7 +156,7 @@ image::images/cm3.jpg[alt="Compute Module 3", width="60%"]
 [[cm1]]
 === Compute Module 1
 
-Compute Module 1 (*CM1*) combines the core components of Raspberry Pi Model B with an optional 4 GB of flash storage. Key features include:
+Compute Module 1 (*CM1*) combines the core components of Raspberry Pi Model B with 4 GB of flash storage. Key features include:
 
 * *Processor.* Broadcom BCM2835.
 * *Memory.* 512 MB of RAM.
@@ -168,11 +172,11 @@ A Raspberry Pi Compute Module IO Board is the companion carrier board that provi
 
 * Supply power to the Compute Module.
 * Connect general-purpose input/output (GPIO) pins to standard pin headers so that you can attach sensors or electronics.
-* Expose camera and display interfaces through flat flexible cable (FFC) connectors.
-* Route HDMI signals to HDMI connectors for display output.
-* Connect USB interfaces to standard USB connectors for peripheral devices.
+* Make camera and display interfaces available through flat flexible cable (FFC) connectors.
+* Make HDMI signals available through HDMI connectors.
+* Make USB interfaces available through standard USB connectors for peripheral devices.
 * Provide LEDs that indicate power and activity status.
-* Enable eMMC programming over USB for flashing the module's onboard storage.
+* Enable eMMC programming over USB for flashing the module's on-board storage.
 * On CM4IO and CM5IO, expose PCIe through connectors so that you can attach storage or peripheral devices like SSDs or network adapters.
 
 Raspberry Pi IO Boards are general-purpose boards designed for development, testing, and prototyping Compute Modules. For production use, you might design a smaller, custom carrier board that includes only the connectors you need for your use case.
@@ -188,7 +192,7 @@ Not all IO Boards work with all Compute Module models. The following table summa
 
 | <<cm5io, *Compute Module 5 IO Board (CM5IO)*>> (2024)
 | <<cm5, CM5>>; CM4 with reduced functionality
-| 5 V USB Type-C external supply
+| 5 V through USB Type-C
 |160 mm × 90 mm
 
 | <<cm4io, *Compute Module 4 IO Board (CM4IO)*>> (2020)
@@ -198,12 +202,12 @@ Not all IO Boards work with all Compute Module models. The following table summa
 
 | <<cmio, *Compute Module IO Board version 3 (CMIO3)*>> (2017)
 | <<cm1, CM1>>, <<cm3, CM3>>, <<cm3plus, CM3+>>, and <<cm4s, CM4S>>
-| 5 V through micro USB
+| 5 V through GPIO or a micro USB connector
 | 85 mm × 105 mm
 
 | <<cmio, *Compute Module IO Board version 1 (CMIO; CMIO1)*>> (2014)
 | <<cm1, CM1>>
-| 5 V through micro USB
+| 5 V through GPIO or a micro USB connector.
 | 85 mm × 105 mm
 
 |===
@@ -231,6 +235,7 @@ The Compute Module 5 IO Board (CM5IO) provides the following:
 ** A M.2 M key PCIe socket compatible with the 2230, 2242, 2260, and 2280 form factors.
 ** A microSD card slot (only for use with *CM5Lite*, which has no eMMC; other variants ignore the slot).
 ** HAT footprint with 40-pin GPIO connector.
+** PoE header compatible with Raspberry Pi 5.
 * *Configuration options.*
 ** Jumpers to disable features such as eMMC boot, EEPROM write, and wireless connectivity.
 ** Selectable 1.8 V or 3.3 V GPIO voltage.
@@ -245,7 +250,7 @@ image::images/cm4io.jpg[alt="Compute Module 4 IO Board", width="60%"]
 The Compute Module 4 IO Board (CM4IO) provides the following:
 
 * *Power and control connectors.*
-** 12 V input through barrel jack; supports up to 26 V if PCIe is unused.
+** 5 V through the GPIO header or 12 V input through barrel jack; supports up to 26 V if PCIe is unused.
 ** Real-time clock (RTC) battery socket.
 * *Video and display connectors.*
 ** Two HDMI connectors.
@@ -258,7 +263,8 @@ The Compute Module 4 IO Board (CM4IO) provides the following:
 * *Expansion and storage options.*
 ** PCIe Gen 2 socket.
 ** A microSD card slot (only for use with *CM4Lite*, which has no eMMC; other variants ignore the slot).
-** HAT footprint with 40-pin GPIO connector and PoE header
+** HAT footprint with 40-pin GPIO connector.
+** PoE header compatible with Raspberry Pi 4B.
 * *Configuration options.*
 ** Jumpers to disable features such as eMMC boot, EEPROM write, and wireless connectivity.
 ** Selectable 1.8 V or 3.3 V GPIO voltage.
@@ -320,7 +326,7 @@ image::images/cm5-case-physical.png[alt="CM5 Case physical specification", width
 
 To mount a CM5IO inside your case:
 
-. *Attach your CM5 to your CM5IO.* Align the dual 100-pin connectors on your CM5 with those on your CM5IO and press gently but firmly to attach them.
+. *Attach your CM5 to your CM5IO.* Rotate your CM5 90 degrees to the right to align the dual 100-pin connectors on your CM5 with those on your CM5IO and press gently but firmly to attach them. The mounting holes should also align.
 . *Open the case.* Unscrew and remove the four screws (two on the left side of the case and two on the right side of the case) using a Phillips screwdriver. Then, separate the top of the case from the base. Keep the screws in a safe place.
 . *Install your CM5IO assembly into the case.* Place your CM5IO (with CM5 attached) into the base of the case, aligning it with the four mounting holes near the corners of the board. Ensure all externally facing connectors align with the corresponding cut-outs at the front of the case. Then, secure your CM5IO assembly to the base by screwing four M2.5 screws into the four mounting holes.
 . *Connect or remove the fan.* 
