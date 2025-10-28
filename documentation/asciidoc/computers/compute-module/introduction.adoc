@@ -313,7 +313,7 @@ The Compute Module 5 IO Board Case provides physical protection for CM5IO and it
 * Cut-outs for externally facing connectors and LEDs.
 * A pre-installed, controllable fan that you can remove.
 * An attachment point for a *Raspberry Pi Antenna Kit*.
-* Space for a *Raspberry Pi Cooler*.
+* Space for a *CM5 Cooler*.
 * Space for accessories connected to the IO board, such as an M.2 SSD or PoE+ HAT+.
 
 .Compute Module 5 IO Board Case ports
