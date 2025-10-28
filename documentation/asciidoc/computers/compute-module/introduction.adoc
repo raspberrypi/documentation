@@ -376,7 +376,7 @@ The CM5 Cooler is a passive heat sink that helps dissipate heat from your CM5, i
 .CM5 cooler
 image::images/cm5-cooler.jpg[alt="CM5 Cooler", width="60%"]
 
-The CM5 Cooler dimensions are 41 mm × 56 mm × 12.7 mm. The cooler is an aluminum heat sink with a conductive silicone pad on the bottom. Newer versions of the <<case, CM5IO Case>> allow both the cooler and pre-installed fan to be used inside the case at the same time. If you have an older version of the CM5IO Case, you must remove the fan from the case to allow space for the cooler.
+The CM5 Cooler dimensions are 41 mm × 56 mm × 12.7 mm. The cooler is an aluminium heat sink with a conductive silicone pad on the bottom. Newer versions of the <<case, CM5IO Case>> allow both the cooler and pre-installed fan to be used inside the case at the same time. If you have an older version of the CM5IO Case, you must remove the fan from the case to allow space for the cooler.
 
 .CM5 cooler physical specification
 image::images/cm5-cooler-physical.png[alt="CM5 Cooler physical specification", width="80%"]
