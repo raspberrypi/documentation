@@ -290,7 +290,6 @@ The Compute Module IO Board (CMIO and CMIO3) provides the following:
 ** Two MIPI CSI-2 camera FPC connectors (22-pin, 0.5 mm pitch cable).
 * *Networking and connectivity connectors.* One USB 2.0 Type-A connector.
 * *Expansion and storage options.*
-** 200-pin DDR2 SODIMM connector.
 ** 46 GPIO pins.
 ** (CMIO3 only) A microSD card slot (only for use with *CM3Lite*, *CM3+Lite* and *CM4SLite*, which have no eMMC).
 
