@@ -273,8 +273,8 @@ The Compute Module 4 IO Board (CM4IO) provides the following:
 [[cmio]]
 === Compute Module IO Board (versions 1 and 3)
 
-.Compute Module IO Board
-image::images/cmio.jpg[alt="Compute Module IO Board", width="60%"]
+.Compute Module IO Board (version 3)
+image::images/cmio.jpg[alt="Compute Module IO Board (version 3)", width="60%"]
 
 There are two variants of the Compute Module IO Board:
 
