@@ -21,7 +21,7 @@ Raspberry Pi Compute Modules are available in several variants, differing in mem
 
 * *Memory.* Compute Modules 4, 4S, and 5 offer different amounts of RAM; for details about the available options, see the dedicated sections for each Compute Module model on this page. Compute Modules 1, 3, and 3+ offer a fixed amount of RAM: Compute Module 1 offers 512 MB of RAM; Compute Modules 3 and 3+ offer 1 GB of RAM.
 * *Storage.* Compute Modules 3, 3+, 4, 4S, and 5 offer different storage options, with later models offering more options and larger sizes than earlier models. Compute Module 1 offers a fixed 4 GB of storage. Storage is provided by eMMC flash memory, which provides persistent storage with low power consumption and built-in features that improve reliability. Variants with no on-board storage are sometimes referred to with the suffix *Lite* or *L*, for example, "CM5Lite" or "CM3L".
-* *Wireless.* Compute Modules 4 and 5 come with optional Wi-Fi and Bluetooth.
+* *Wireless.* Compute Modules 4 and 5 offer optional Wi-Fi and Bluetooth.
 
 === Models
 
