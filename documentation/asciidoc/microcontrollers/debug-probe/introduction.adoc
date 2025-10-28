@@ -34,6 +34,8 @@ Yellow:: RX/SD (Input to Probe or I/O)
 
 While the cable with three-pin JST-SH connectors is intended to be used with the https://rpltd.co/debug-spec[standard three-pin connector] which newer Raspberry Pi boards use for the SWD debug port and UART connectors.
 
+WARNING: When the target is supplied from a separate power source or computer, ensure a common reference before connecting signal lines. Either remove power from the target or connect GND between the target and the Raspberry Pi Debug Probe first; only after GND is connected may you attach RX, TX, SC, and SD. Potential differences between the two systems can cause destructive currents and damage the probe.
+
 The Debug Probe has five LEDs, a red LED to indicate power, and four more activity indicator LEDs
 
 image::images/debug-leds.png[width="70%"]
