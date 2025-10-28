@@ -78,6 +78,9 @@ The following table summarises Raspberry Pi Compute Modules in reverse chronolog
 [[cm5]]
 === Compute Module 5
 
+.Compute Module 5
+image::images/cm5.png[alt="Compute Module 5", width="60%"]
+
 Compute Module 5 (*CM5*) combines the core components of Raspberry Pi 5 with optional flash storage. Key features include:
 
 * *Processor.* Broadcom BCM2712.
@@ -87,11 +90,11 @@ Compute Module 5 (*CM5*) combines the core components of Raspberry Pi 5 with opt
 
 CM5 uses the same form factor as *CM4* and provides input/output (I/O) interfaces beyond those available on standard Raspberry Pi boards, offering expanded options for more complex systems and designs.
 
-.Compute Module 5
-image::images/cm5.png[alt="Compute Module 5", width="60%"]
-
 [[cm4s]]
 === Compute Module 4S
+
+.Compute Module 4S
+image::images/cm4s.jpg[alt="Compute Module 4S", width="60%"]
 
 Compute Module 4S (*CM4S*) combines the core components of Raspberry Pi 4 with optional flash storage. Key features include:
 
@@ -102,11 +105,11 @@ Compute Module 4S (*CM4S*) combines the core components of Raspberry Pi 4 with o
 
 Unlike *CM4*, CM4S retains the DDR2 SODIMM form factor used in *CM1*, *CM3*, and *CM3+*.
 
-.Compute Module 4S
-image::images/cm4s.jpg[alt="Compute Module 4S", width="60%"]
-
 [[cm4]]
 === Compute Module 4
+
+.Compute Module 4
+image::images/cm4.jpg[alt="Compute Module 4", width="60%"]
 
 Compute Module 4 (*CM4*) combines the core components of Raspberry Pi 4 with optional flash storage. Key features include:
 
@@ -122,11 +125,11 @@ Unlike earlier modules (*CM1*, *CM3*, *CM3+*), CM4 moved away from the DDR2 SODI
 * PCIe support
 * Ethernet connector
 
-.Compute Module 4
-image::images/cm4.jpg[alt="Compute Module 4", width="60%"]
-
 [[cm3plus]]
 === Compute Module 3+
+
+.Compute Module 3+
+image::images/cm3-plus.jpg[alt="Compute Module 3+", width="60%"]
 
 Compute Module 3+ (*CM3+*) combines the core components of Raspberry Pi 3 Model B+ with optional flash storage. Key features include:
 
@@ -135,11 +138,11 @@ Compute Module 3+ (*CM3+*) combines the core components of Raspberry Pi 3 Model 
 * *Storage options.* 0 GB (*CM3+Lite*) or 8 GB, 16 GB, or 32 GB of eMMC flash memory.
 * *Form factor.* Standard DDR2 SODIMM module.
 
-.Compute Module 3+
-image::images/cm3-plus.jpg[alt="Compute Module 3+", width="60%"]
-
 [[cm3]]
 === Compute Module 3
+
+.Compute Module 3
+image::images/cm3.jpg[alt="Compute Module 3", width="60%"]
 
 IMPORTANT: Raspberry Pi Compute Module 3 (CM3) and Compute Module 3 Lite (CM3Lite) have reached End-of-Life (EoL) due to the discontinuation of the core SoC used in these products. The official EoL date was 16 October 2025. The closest equivalent to CM3 is Raspberry Pi <<cm3plus, Compute Module 3+>>, which offers the same mechanical footprint, improved thermal design, and a BCM2837B0 processor, and so is recommended for existing designs. For new designs requiring the SODIMM form factor, we recommend <<cm4s, Compute Module 4S>>. For all other new designs, we recommend <<cm4, Compute Module 4>> or <<cm5, Compute Module 5>>. For more information, see the official https://pip.raspberrypi.com/documents/RP-009286-PC?disposition=inline[Obsolescence Notice].
 
@@ -150,11 +153,11 @@ Compute Module 3 (*CM3*) combines the core components of Raspberry Pi 3 with an 
 * *Storage options.* 0 GB (*CM3Lite*) or 4 GB of eMMC flash memory.
 * *Form factor.* Standard DDR2 SODIMM module.
 
-.Compute Module 3
-image::images/cm3.jpg[alt="Compute Module 3", width="60%"]
-
 [[cm1]]
 === Compute Module 1
+
+.Compute Module 1
+image::images/cm1.jpg[alt="Compute Module 1", width="60%"]
 
 Compute Module 1 (*CM1*) combines the core components of Raspberry Pi Model B with 4 GB of flash storage. Key features include:
 
@@ -162,9 +165,6 @@ Compute Module 1 (*CM1*) combines the core components of Raspberry Pi Model B wi
 * *Memory.* 512 MB of RAM.
 * *Storage.* 4 GB of eMMC flash memory.
 * *Form factor.* Standard DDR2 SODIMM module.
-
-.Compute Module 1
-image::images/cm1.jpg[alt="Compute Module 1", width="60%"]
 
 == IO Boards
 
