@@ -97,7 +97,7 @@ $ convert image.png -colors 224 -depth 8 -type TrueColor -alpha off -compress no
 There are two ways to enable a fullscreen splash image on your Raspberry Pi. Depending on your technical expertise, you can either:
 
 * <<apt-package, *Use the apt package>>.* This method is more straightforward, allowing you to enable the splash screen with minimal configuration. You install a pre-made package (`rpi-splash-screen-support`) that automates most of the setup. It copies your image, sets kernel parameters, and configures the system for you.
-* <<cli, *Edit the `cmdline.txt` system file>>.* This method is more technical, but gives you control over every step. You manually configure the splash image on the command line and then update your `initramfs` to contain the splash image.
+* <<cli-splash, *Edit the `cmdline.txt` system file>>.* This method is more technical, but gives you control over every step. You manually configure the splash image on the command line and then update your `initramfs` to contain the splash image.
 
 [[apt-package]]
 ==== Use the apt package
@@ -125,7 +125,7 @@ $ sudo reboot
 
 If the image appears upside down when booting, edit the `convert` command in <<file-reqs, File requirements>> to add the `-flip` flag before the `splash-image.tga`. Then run `configure-splash` to update the image with the correct orientation.
 
-[[cli]]
+[[cli-splash]]
 ==== Edit the `cmdline.txt` system file
 
 The following method requires editing system files and manually updating the `initramfs`.
