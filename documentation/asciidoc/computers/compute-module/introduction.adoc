@@ -29,7 +29,7 @@ The following table summarises Raspberry Pi Compute Modules in reverse chronolog
 
 [cols="1,1,1,1,1,1", options="header"]
 |===
-|Model|Based on|SoC|GPU|CPU|Form factor
+|Model|Based on|SoC|CPU|GPU|Form factor
 
 | <<cm5, *CM5*>> (2024)
 | Raspberry Pi 5
