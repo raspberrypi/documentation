@@ -2,7 +2,12 @@
 
 ==== Prerequisites
 
-These stages require TensorFlow Lite (TFLite) libraries that export the {cpp} API. TFLite doesn't distribute libraries in this form, but you can download and install a version that exports the API from https://lindevs.com/install-precompiled-tensorflow-lite-on-raspberry-pi/[lindevs.com].
+These stages require TensorFlow Lite (TFLite) libraries that export the {cpp} API. From Trixie onwards, Raspberry Pi builds and distributes a TFLite package, which can be installed with the following command:
+
+[source,console]
+----
+$ sudo apt install libtensorflow-lite-dev
+----
 
 After installing, you must xref:camera_software.adoc#build-libcamera-and-rpicam-apps[recompile `rpicam-apps` with TensorFlow Lite support].
 
