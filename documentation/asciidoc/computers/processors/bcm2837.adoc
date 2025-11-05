@@ -1,6 +1,6 @@
 == BCM2837
 
-This is the Broadcom chip used in some models of Raspberry Pi 3 Model B, some models of Raspberry Pi 2 Model B, and some models of Raspberry Pi Compute Module 3. The underlying architecture of the BCM2837 is identical to the BCM2836. The only significant difference is the replacement of the Armv7 quad core cluster with a quad-core Arm Cortex A53 (Armv8) cluster.
+This is the Broadcom chip used in some models of Raspberry Pi 3 Model B, some models of Raspberry Pi 2 Model B, and Raspberry Pi Compute Module 3. The underlying architecture of the BCM2837 is identical to the BCM2836. The only significant difference is the replacement of the Armv7 quad core cluster with a quad-core Arm Cortex A53 (Armv8) cluster.
 
 The Arm cores run at 1.2GHz, making the device about 50% faster than the Raspberry Pi 2. The VideoCore IV runs at 400MHz.
 
