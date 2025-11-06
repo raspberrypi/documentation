@@ -100,7 +100,10 @@ a|
 ^.^a|
 .Raspberry Pi 3 Model B
 image::images/3-model-b.jpg[alt="Raspberry Pi 3 Model B"]
-| xref:processors.adoc#bcm2837[BCM2837] | 1 GB | 40-pin GPIO header
+a|
+* revision 1.1: xref:processors.adoc#bcm2837[BCM2837]
+* revision 1.2: xref:processors.adoc#bcm2837b0[BCM2837B0]
+ ^.^a| 1 GB | 40-pin GPIO header
 a|
 * HDMI
 * 4 × USB 2.0
