@@ -36,7 +36,7 @@ if __name__ == "__main__":
     with open(github_edit) as edit_fh:
         edit_template = edit_fh.read()
         template_vars = {
-            'github_edit_link': os.path.join(site_config['githuburl'], 'blob', site_config['githubbranch_edit'], src_adoc)
+            'github_edit_link': os.path.join(site_config['githuburl'], 'blob', site_config['githubbranch'], src_adoc)
         }
         edit_text = re.sub(r'{{\s*(\w+)\s*}}', lambda m: template_vars[m.group(1)], edit_template)
 

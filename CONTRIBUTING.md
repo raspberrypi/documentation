@@ -15,7 +15,7 @@ To contribute or update documentation:
 
 1. Create a fork of this repository on your GitHub account.
 
-1. Make changes in your fork. Start from the default `develop` branch.
+1. Make changes in your fork. Start from the default `master` branch.
 
 1. Read our [style guide](https://github.com/raspberrypi/style-guide/blob/master/style-guide.md) to ensure that your changes are consistent with the rest of our documentation. Since Raspberry Pi is a British company, be sure to include all of your extra `u`s and transfigure those `z`s (pronounced 'zeds') into `s`s!
 
@@ -23,9 +23,7 @@ To contribute or update documentation:
 
 1. The maintainers will assess and copy-edit the PR. This can take anywhere from a few minutes to a few days, depending on the size of your PR, the time of year, and the availability of the maintainers.
 
-1. After making any requested improvements to your PR, the maintainers will accept the PR and merge your changes into `develop`.
-
-1. When the maintainers next release the documentation by merging `develop` into `master`, your changes will go public on the production documentation site.
+1. After making any requested improvements to your PR, the maintainers will accept the PR and merge your changes into `master`, making them public on the production documentation site.
 
 Alternatively, [open an issue](https://github.com/raspberrypi/documentation/issues) to discuss proposed changes.
 
