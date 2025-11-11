@@ -18,15 +18,17 @@ NOTE: Early editions of Raspberry Pi 4 may require a xref:raspberry-pi.adoc#rasp
 
 NOTE: Early editions of Compute Module 4 may require a xref:compute-module.adoc#update-the-compute-module-bootloader[bootloader update] to boot from USB.
 
-=== Raspberry Pi 3B+
+=== Raspberry Pi 3B+, Zero 2 W
 
-The Raspberry Pi 3B+ supports USB mass storage boot out of the box.
+The Raspberry Pi 3B+ and Zero 2 W support USB mass storage boot out of the box.
 
-=== Raspberry Pi 2B, 3A+, 3B, CM3, CM3+, Zero 2 W
+NOTE: Raspberry Pi Zero 2 W doesn't support network boot.
 
-On Raspberry Pi 2B v1.2, 3A+, 3B, Zero 2 W, and Compute Module 3 and 3+, you must first enable xref:raspberry-pi.adoc#usb-host-boot-mode[USB host boot mode]. This allows USB mass storage boot and xref:raspberry-pi.adoc#network-booting[network boot].
+=== Raspberry Pi 2B, 3A+, 3B, CM3, CM3+
 
-NOTE: Raspberry Pi 3A+ and Zero 2 W do not support network boot.
+On Raspberry Pi 2B v1.2 and v1.3, 3A+, 3B and Compute Module 3 and 3+, you must first enable xref:raspberry-pi.adoc#usb-host-boot-mode[USB host boot mode]. This allows USB mass storage boot and xref:raspberry-pi.adoc#network-booting[network boot].
+
+NOTE: Raspberry Pi 3A+ doesn't support network boot.
 
 To enable USB host boot mode on these devices, set the USB host bit in OTP (one-time programmable) memory. To set the bit, boot from an SD card where xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] contains the line `program_usb_boot_mode=1`. Once you set the bit, you can boot from USB without the SD card.
 
