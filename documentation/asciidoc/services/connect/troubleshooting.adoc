@@ -78,8 +78,8 @@ If you have repeated issues trying to run Connect's required services, run the f
 
 [source,console]
 ----
-$ systemctl --user status rpi-connect-wayvnc.service rpi-connect-wayvnc-watcher.path
-$ journalctl --follow --user-unit rpi-connect-wayvnc.service --user-unit rpi-connect-wayvnc-watcher.path
+$ systemctl --user status rpi-connect-wayvnc.service
+$ journalctl --follow --user-unit rpi-connect-wayvnc.service
 ----
 
 If the service fails to start or doesn't exist, ensure that your environment meets the following criteria:
