@@ -27,103 +27,103 @@ The first set of Raspberry Pi models were given sequential hex revision codes fr
 | 0002
 | B
 | 1.0
-| 256MB
+| 256 MB
 | Egoman
 
 | 0003
 | B
 | 1.0
-| 256MB
+| 256 MB
 | Egoman
 
 | 0004
 | B
 | 2.0
-| 256MB
+| 256 MB
 | Sony UK
 
 | 0005
 | B
 | 2.0
-| 256MB
+| 256 MB
 | Qisda
 
 | 0006
 | B
 | 2.0
-| 256MB
+| 256 MB
 | Egoman
 
 | 0007
 | A
 | 2.0
-| 256MB
+| 256 MB
 | Egoman
 
 | 0008
 | A
 | 2.0
-| 256MB
+| 256 MB
 | Sony UK
 
 | 0009
 | A
 | 2.0
-| 256MB
+| 256 MB
 | Qisda
 
 | 000d
 | B
 | 2.0
-| 512MB
+| 512 MB
 | Egoman
 
 | 000e
 | B
 | 2.0
-| 512MB
+| 512 MB
 | Sony UK
 
 | 000f
 | B
 | 2.0
-| 512MB
+| 512 MB
 | Egoman
 
 | 0010
 | B+
 | 1.2
-| 512MB
+| 512 MB
 | Sony UK
 
 | 0011
 | CM1
 | 1.0
-| 512MB
+| 512 MB
 | Sony UK
 
 | 0012
 | A+
 | 1.1
-| 256MB
+| 256 MB
 | Sony UK
 
 | 0013
 | B+
 | 1.2
-| 512MB
+| 512 MB
 | Embest
 
 | 0014
 | CM1
 | 1.0
-| 512MB
+| 512 MB
 | Embest
 
 | 0015
 | A+
 | 1.1
-| 256MB/512MB
+| 256 MB / 512 MB
 | Embest
 |===
 
@@ -188,31 +188,31 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 | MMM (bits 20-22)
 | Memory size
-| 0: 256MB
+| 0: 256 MB
 
 |
 |
-| 1: 512MB
+| 1: 512 MB
 
 |
 |
-| 2: 1GB
+| 2: 1 GB
 
 |
 |
-| 3: 2GB
+| 3: 2 GB
 
 |
 |
-| 4: 4GB
+| 4: 4 GB
 
 |
 |
-| 5: 8GB
+| 5: 8 GB
 
 |
 |
-| 6: 16GB
+| 6: 16 GB
 
 | CCCC (bits 16-19)
 | Manufacturer
@@ -379,355 +379,355 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 900021
 | A+
 | 1.1
-| 512MB
+| 512 MB
 | Sony UK
 
 | 900032
 | B+
 | 1.2
-| 512MB
+| 512 MB
 | Sony UK
 
 | a01040
 | 2B
 | 1.0
-| 1GB
+| 1 GB
 | Sony UK
 
 | a01041
 | 2B
 | 1.1
-| 1GB
+| 1 GB
 | Sony UK
 
 | a21041
 | 2B
 | 1.1
-| 1GB
+| 1 GB
 | Embest
 
 | a02042
 | 2B (with BCM2837)
 | 1.2
-| 1GB
+| 1 GB
 | Sony UK
 
 | a22042
 | 2B (with BCM2837)
 | 1.2
-| 1GB
+| 1 GB
 | Embest
 
 | 900061
 | CM1
 | 1.1
-| 512MB
+| 512 MB
 | Sony UK
 
 | a02082
 | 3B
 | 1.2
-| 1GB
+| 1 GB
 | Sony UK
 
 | a22082
 | 3B
 | 1.2
-| 1GB
+| 1 GB
 | Embest
 
 | a32082
 | 3B
 | 1.2
-| 1GB
+| 1 GB
 | Sony Japan
 
 | a52082
 | 3B
 | 1.2
-| 1GB
+| 1 GB
 | Stadium
 
 | a22083
 | 3B
 | 1.3
-| 1GB
+| 1 GB
 | Embest
 
 | 900092
 | Zero
 | 1.2
-| 512MB
+| 512 MB
 | Sony UK
 
 | 920092
 | Zero
 | 1.2
-| 512MB
+| 512 MB
 | Embest
 
 | 900093
 | Zero
 | 1.3
-| 512MB
+| 512 MB
 | Sony UK
 
 | 920093
 | Zero
 | 1.3
-| 512MB
+| 512 MB
 | Embest
 
 | a020a0
 | CM3
 | 1.0
-| 1GB
+| 1 GB
 | Sony UK
 
 | a220a0
 | CM3
 | 1.0
-| 1GB
+| 1 GB
 | Embest
 
 | 9000c1
 | Zero W
 | 1.1
-| 512MB
+| 512 MB
 | Sony UK
 
 | a020d3
 | 3B+
 | 1.3
-| 1GB
+| 1 GB
 | Sony UK
 
 | a020d4
 | 3B+
 | 1.4
-| 1GB
+| 1 GB
 | Sony UK
 
 | 9020e0
 | 3A+
 | 1.0
-| 512MB
+| 512 MB
 | Sony UK
 
 | 9020e1
 | 3A+
 | 1.1
-| 512MB
+| 512 MB
 | Sony UK
 
 | a02100
 | CM3+
 | 1.0
-| 1GB
+| 1 GB
 | Sony UK
 
 | a03111
 | 4B
 | 1.1
-| 1GB
+| 1 GB
 | Sony UK
 
 | b03111
 | 4B
 | 1.1
-| 2GB
+| 2 GB
 | Sony UK
 
 | c03111
 | 4B
 | 1.1
-| 4GB
+| 4 GB
 | Sony UK
 
 | b03112
 | 4B
 | 1.2
-| 2GB
+| 2 GB
 | Sony UK
 
 | c03112
 | 4B
 | 1.2
-| 4GB
+| 4 GB
 | Sony UK
 
 | b03114
 | 4B
 | 1.4
-| 2GB
+| 2 GB
 | Sony UK
 
 | c03114
 | 4B
 | 1.4
-| 4GB
+| 4 GB
 | Sony UK
 
 | d03114
 | 4B
 | 1.4
-| 8GB
+| 8 GB
 | Sony UK
 
 | b03115
 | 4B
 | 1.5
-| 2GB
+| 2 GB
 | Sony UK
 
 | c03115
 | 4B
 | 1.5
-| 4GB
+| 4 GB
 | Sony UK
 
 | d03115
 | 4B
 | 1.5
-| 8GB
+| 8 GB
 | Sony UK
 
 | 902120
 | Zero 2 W
 | 1.0
-| 512MB
+| 512 MB
 | Sony UK
 
 | c03130
 | 400
 | 1.0
-| 4GB
+| 4 GB
 | Sony UK
 
 | a03140
 | CM4
 | 1.0
-| 1GB
+| 1 GB
 | Sony UK
 
 | b03140
 | CM4
 | 1.0
-| 2GB
+| 2 GB
 | Sony UK
 
 | c03140
 | CM4
 | 1.0
-| 4GB
+| 4 GB
 | Sony UK
 
 | d03140
 | CM4
 | 1.0
-| 8GB
+| 8 GB
 | Sony UK
 
 | b04170
 | 5
 | 1.0
-| 2GB
+| 2 GB
 | Sony UK
 
 | c04170
 | 5
 | 1.0
-| 4GB
+| 4 GB
 | Sony UK
 
 | d04170
 | 5
 | 1.0
-| 8GB
+| 8 GB
 | Sony UK
 
 | b04171
 | 5
 | 1.1
-| 2GB
+| 2 GB
 | Sony UK
 
 | c04171
 | 5
 | 1.1
-| 4GB
+| 4 GB
 | Sony UK
 
 | d04171
 | 5
 | 1.1
-| 8GB
+| 8 GB
 | Sony UK
 
 | e04171
 | 5
 | 1.1
-| 16GB
+| 16 GB
 | Sony UK
 
 | b04180
 | CM5
 | 1.0
-| 2GB
+| 2 GB
 | Sony UK
 
 | c04180
 | CM5
 | 1.0
-| 4GB
+| 4 GB
 | Sony UK
 
 | d04180
 | CM5
 | 1.0
-| 8GB
+| 8 GB
 | Sony UK
 
 | e04180
 | CM5
 | 1.0
-| 16GB
+| 16 GB
 | Sony UK
 
 | d04190
 | 500
 | 1.0
-| 8GB
+| 8 GB
 | Sony UK
 
 | e04190
 | 500+
 | 1.0
-| 16GB
+| 16 GB
 | Sony UK
 
 | b041a0
 | CM5 Lite
 | 1.0
-| 2GB
+| 2 GB
 | Sony UK
 
 | c041a0
 | CM5 Lite
 | 1.0
-| 4GB
+| 4 GB
 | Sony UK
 
 | d041a0
 | CM5 Lite
 | 1.0
-| 8GB
+| 8 GB
 | Sony UK
 
 | e041a0
 | CM5 Lite
 | 1.0
-| 16GB
+| 16 GB
 | Sony UK
 
 |===
@@ -744,7 +744,7 @@ Revision      : c03111
 
 In this example above, we have a hexadecimal revision code of `c03111`. Converting this to binary, we get `0 0 0 000 0 0 1 100 0000 0011 00010001 0001`. Spaces have been inserted to show the borders between each section of the revision code, according to the above table.
 
-Starting from the lowest order bits, the bottom four (0-3) are the board revision number, so this board has a revision of 1. The next eight bits (4-11) are the board type, in this case binary `00010001`, hex `11`, so this is a Raspberry Pi 4B. Using the same process, we can determine that the processor is a BCM2711, the board was manufactured by Sony UK, and it has 4GB of RAM.
+Starting from the lowest order bits, the bottom four (0-3) are the board revision number, so this board has a revision of 1. The next eight bits (4-11) are the board type, in this case binary `00010001`, hex `11`, so this is a Raspberry Pi 4B. Using the same process, we can determine that the processor is a BCM2711, the board was manufactured by Sony UK, and it has 4 GB of RAM.
 
 ==== Getting the revision code in your program
 
@@ -772,8 +772,8 @@ int main( int argc, char *argv[] )
   int model = (code >> 4) & 0xff;
   int mem = (code >> 20) & 0x7;
 
-  if (new && model == 0x11 && mem >= 3)  // Note, 3 in the mem field is 2GB
-     printf("We are a 4B with at least 2GB of RAM!\n" );
+  if (new && model == 0x11 && mem >= 3)  // Note, 3 in the mem field is 2 GB
+     printf("We are a 4B with at least 2 GB of RAM!\n" );
 
   return 0;
 }
@@ -793,8 +793,8 @@ new = (code >> 23) & 0x1
 model = (code >> 4) & 0xff
 mem = (code >> 20) & 0x7
 
-if new and model == 0x11 and mem >= 3 : # Note, 3 in the mem field is 2GB
-    print("We are a 4B with at least 2GB RAM!")
+if new and model == 0x11 and mem >= 3 : # Note, 3 in the mem field is 2 GB
+    print("We are a 4B with at least 2 GB RAM!")
 ----
 
 === Best practices for revision code usage
@@ -809,7 +809,7 @@ Instead, use one of the following approaches:
 * Filter by the board-type field (3A, 4B, etc.), which indicates the model, but not the revision.
 * Filter by the amount-of-memory field, since RAM vaguely corresponds to the computing power of a board.
 
-For instance, you could limit support to Raspberry Pi 4B models with 2GB of RAM or more.
+For instance, you could limit support to Raspberry Pi 4B models with 2 GB of RAM or more.
 The examples in the previous section use this recommended approach.
 
 NOTE: Always check bit 23, the 'New' flag, to ensure that the revision code is the new version before checking any other fields.
