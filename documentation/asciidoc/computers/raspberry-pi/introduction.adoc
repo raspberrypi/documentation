@@ -164,6 +164,8 @@ a|
 image::images/5.jpg[alt="Raspberry Pi 5"]
 | xref:processors.adoc#bcm2712[BCM2712]
 a|
+1 GB
+
 2 GB
 
 4 GB
