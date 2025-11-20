@@ -688,6 +688,12 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 8GB
 | Sony UK
 
+| e04180
+| CM5
+| 1.0
+| 16GB
+| Sony UK
+
 | d04190
 | 500
 | 1.0
@@ -716,6 +722,12 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | CM5 Lite
 | 1.0
 | 8GB
+| Sony UK
+
+| e041a0
+| CM5 Lite
+| 1.0
+| 16GB
 | Sony UK
 
 |===
