@@ -58,9 +58,9 @@ The RTC is equipped with a constant-current (3mA) constant-voltage charger.
 Charging of the battery is disabled by default. There are `sysfs` files that show the charging voltage and limits:
 
 ----
-/sys/devices/platform/soc/soc:rpi_rtc/rtc/rtc0/charging_voltage:0
-/sys/devices/platform/soc/soc:rpi_rtc/rtc/rtc0/charging_voltage_max:4400000
-/sys/devices/platform/soc/soc:rpi_rtc/rtc/rtc0/charging_voltage_min:1300000
+/sys/devices/platform/soc@107c000000/soc@107c000000:rpi_rtc/rtc/rtc0/charging_voltage:0
+/sys/devices/platform/soc@107c000000/soc@107c000000:rpi_rtc/rtc/rtc0/charging_voltage_max:4400000
+/sys/devices/platform/soc@107c000000/soc@107c000000:rpi_rtc/rtc/rtc0/charging_voltage_min:1300000
 ----
 
 To charge the battery at a set voltage, add https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README#L279[`rtc_bbat_vchg`] to `/boot/firmware/config.txt`:
