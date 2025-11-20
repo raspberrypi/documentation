@@ -12,7 +12,7 @@ Download the correct MicroPython UF2 file for your board:
 
 * https://micropython.org/download/RPI_PICO2/RPI_PICO2-latest.uf2[Pico 2]
 
-* https://downloads.raspberrypi.com/micropython/mp_firmware_unofficial_latest.uf2[Pico 2 W]
+* https://micropython.org/download/RPI_PICO2_W/RPI_PICO2_W-latest.uf2[Pico 2 W]
 
 For more information about using Wi-Fi and Bluetooth on Raspberry Pi Pico W-series devices with C/{cpp} or MicroPython, see https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W-series].
 
