@@ -27,6 +27,7 @@ For this guide, you will need the following:
 +
 [source,console]
 ----
+$ sudo apt install dkms
 $ sudo apt install hailo-all
 ----
 +
