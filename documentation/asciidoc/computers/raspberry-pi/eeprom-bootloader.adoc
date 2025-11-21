@@ -446,12 +446,18 @@ Default: `net_install`
 [[IMAGER_REPO_URL]]
 ==== `IMAGER_REPO_URL`
 
-The embedded Raspberry Pi Imager application is configured with a JSON file downloaded at startup.
+The Raspberry Pi Imager application is configured with a JSON file downloaded at startup. By default, Raspberry Pi Imager uses the JSON at https://downloads.raspberrypi.com/os_list_imagingutility_v4.json.
 
-You can change the URL of the JSON file used by the embedded Raspberry Pi Imager application to get it to offer your own images.
-You can test this with the standard https://www.raspberrypi.com/software/[Raspberry Pi Imager] application by passing the URL via the `--repo` argument.
 
-Default: `\http://downloads.raspberrypi.org/os_list_imagingutility_v3.json`
+You can change the URL of the JSON file used by the Raspberry Pi Imager application to get it to offer your own images by one of the following methods:
+
+* Pass the `--repo` argument when starting Imager, for example: `rpi-imager --repo https://downloads.raspberrypi.com/os_list_imagingutility_v4.json`
+* In the Raspberry Pi Imager UI.
+.. Go to the **App Options** dialog box.
+.. For **Content Repository**, select **Edit**.
+** To use a JSON file on your computer, choose **Use custom file** and browse to the file location.
+** To use a JSON file hosted at a URL, choose **Use custom URL** and enter the URL.
+.. Click **Apply & Restart**. Imager resets your device and OS selections, and returns to the **Device** tab.
 
 [[NET_INSTALL_ENABLED]]
 ==== `NET_INSTALL_ENABLED`

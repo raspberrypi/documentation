@@ -16,7 +16,7 @@ Finally, connect the power supply to your Raspberry Pi. You should see the statu
 
 == Configuration on first boot
 
-If you used OS customisation in Imager to preconfigure your Raspberry Pi, **congratulations!** Your device is ready to use. Proceed to xref:getting-started.adoc#next-steps[next steps] to learn how you can put your Raspberry Pi to good use.
+If you customised your Raspberry Pi's operating system as part of the installation process in Imager, congratulations, your device is ready to use. Proceed to xref:getting-started.adoc#next-steps[next steps] to learn how you can put your Raspberry Pi to good use.
 
 If your Raspberry Pi does not boot within 5 minutes, check the status LED. If it's flashing, see the xref:configuration.adoc#led-warning-flash-codes[LED warning flash codes for more information]. If your Pi refuses to boot, try the following mitigation steps:
 
@@ -24,7 +24,7 @@ If your Raspberry Pi does not boot within 5 minutes, check the status LED. If it
 * xref:getting-started.adoc#installing-the-operating-system[re-image your SD card]; be sure to complete the entire verify step in Imager
 * xref:raspberry-pi.adoc#bootloader_update_stable[update the bootloader] on your Raspberry Pi, then xref:getting-started.adoc#installing-the-operating-system[re-image your SD card]
 
-If you chose to skip OS customisation in Imager, your Raspberry Pi will run a configuration wizard on first boot. You need a monitor and keyboard to navigate through the wizard; a mouse is optional.
+If you chose to skip the customisation options in Imager, your Raspberry Pi runs a configuration wizard on first boot. You need a monitor and keyboard to navigate through the wizard; a mouse is optional.
 
 image::images/initial-setup/start.png[alt="Click Next to get started with configuration.",width="80%"]
 

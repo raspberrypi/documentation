@@ -30,24 +30,28 @@ NOTE: Compute Module 4 and Compute Module 4S do not support automatic bootloader
 
 Raspberry Pi Imager provides a GUI for updating the bootloader and selecting the boot mode.
 
-. Download https://www.raspberrypi.com/software/[Raspberry Pi Imager]
-. Select a spare SD card (bootloader images overwrite the entire card)
-. Launch Raspberry Pi Imager
-. Select `Choose OS`
-. Select `Misc utility images`
-+ 
+. Download https://www.raspberrypi.com/software/[Raspberry Pi Imager].
+. Select an unused SD card. All data on this SD card is overwritten by Imager.
+. Connect the SD card to the computer where Imager runs.
+. Launch Raspberry Pi Imager.
+. In the **Device** tab, select your Raspberry Pi model from the list. Select **Next**.
+. In the **OS** tab, choose **Misc utility images**
++
 image::images/misc-utility-images.png[alt="Select Misc utility images",width="60%"]
-. Select `Bootloader` for your version of Raspberry Pi (Pi 400 is part of the 4 family)
-+ 
+. Select **Bootloader** for your version of Raspberry Pi.
++
 image::images/bootloader-family-select.png[alt="Choose a family for your bootloader",width="60%"]
-. Select a boot mode: `SD` (recommended), `USB` or `Network`
-+ 
+. Select a boot mode. We recommend **SD Card Boot**. Select **Next**.
++
 image::images/bootloader-storage-select.png[alt="Choose the storage from which you'd like to boot",width="60%"]
-. Select `SD card` and then `Write`
-. Click `Yes` to continue
-. Boot the Raspberry Pi with the new image and wait for at least ten seconds
-. When the green activity LED blinks with a steady pattern and the HDMI display shows a green screen, you have successfully written the bootloader
-. Power off the Raspberry Pi and remove the SD card
+. In the **Storage** tab, select your SD card. Select **Next**.`
+. In the **Writing** tab, review your choices and select **Write** to proceed.
+. You're prompted to confirm overwriting the data on the SD card. To continue, select **I understand, erase and write**.
+. Wait until Imager has finished writing and verifying the SD card
+. Connect the SD card to the Raspberry Pi device where you want to update the bootloader.
+. Boot the Raspberry Pi with the new image and wait for at least ten seconds.
+. When the green activity LED blinks with a steady pattern and the HDMI display shows a green screen, you've successfully written the bootloader.
+. Power off the Raspberry Pi and remove the SD card.
 
 [[raspi-config]]
 ==== Use `raspi-config` to update the bootloader

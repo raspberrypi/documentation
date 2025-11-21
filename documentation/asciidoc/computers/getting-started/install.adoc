@@ -1,124 +1,210 @@
 [[installing-the-operating-system]]
 == Install an operating system
 
-To use your Raspberry Pi, you'll need an operating system. By default, Raspberry Pis check for an operating system on any SD card inserted in the SD card slot.
+To use your Raspberry Pi, you'll need an operating system. By default, Raspberry Pi devices check for an operating system on any SD card inserted in the SD card slot.
 
-Depending on your Raspberry Pi model, you can also boot an operating system from other storage devices, including USB drives, storage connected via a HAT, and network storage.
+Depending on your Raspberry Pi model, you can also boot an operating system from other storage devices, including USB drives, storage connected through a HAT, and network storage.
 
 To install an operating system on a storage device for your Raspberry Pi, you'll need:
 
-* a computer you can use to image the storage device into a boot device
-* a way to plug your storage device into that computer
+* A computer you can use to image the storage device into a boot device
+* A way to plug your storage device into that computer
 
 Most Raspberry Pi users choose microSD cards as their boot device.
 
 We recommend installing an operating system using xref:getting-started.adoc#raspberry-pi-imager[Raspberry Pi Imager].
-
-Raspberry Pi Imager is a tool that helps you download and write images on macOS, Windows, and Linux. Imager includes many popular operating system images for Raspberry Pi. Imager also supports loading images downloaded directly from https://www.raspberrypi.com/software/operating-systems/[Raspberry Pi] or third-party vendors such as https://ubuntu.com/download/raspberry-pi[Ubuntu]. You can use Imager to preconfigure credentials and remote access settings for your Raspberry Pi.
-
-Imager supports images packaged in the `.img` format as well as container formats like `.zip`.
 
 If you have no other computer to write an image to a boot device, you may be able to install an operating system xref:getting-started.adoc#install-over-the-network[directly on your Raspberry Pi from the internet].
 
 [[raspberry-pi-imager]]
 === Install using Imager
 
+Raspberry Pi Imager is a tool, available on macOS, Windows, and Linux, that helps you download images and write them to a storage device. Imager includes many popular operating system images for Raspberry Pi. Imager also supports loading images downloaded directly from https://www.raspberrypi.com/software/operating-systems/[Raspberry Pi] or third-party vendors such as https://ubuntu.com/download/raspberry-pi[Ubuntu]. You can use Imager to preconfigure credentials and remote access settings for your Raspberry Pi.
+
+Imager supports images packaged in the `.img` format as well as container formats like `.zip` or `.xz`.
+
 ////
 TODO: Update this video for the new Imager look & flow (video::ntaXWS8Lk34[youtube,width=80%,height=400px])
 ////
 
-You can install Imager in the following ways:
+==== Step 1. Install and launch Imager
 
-* Download the latest version from https://www.raspberrypi.com/software/[raspberrypi.com/software] and run the installer.
-* Install it from a terminal using your package manager, e.g. `sudo apt install rpi-imager`.
+Download Raspberry Pi Imager to your computer (Windows, Mac, or Linux):
 
-Once you've installed Imager, launch the application by clicking the Raspberry Pi Imager icon or running `rpi-imager`.
+. Install Imager in one of the following ways:
+* On Windows and Mac, download the latest version from https://www.raspberrypi.com/software/[the Raspberry Pi website]. Run the installer.
+* On Raspberry Pi OS, run `sudo apt install rpi-imager`.
+* On other Linux OSes, download the latest version as an AppImage from https://www.raspberrypi.com/software/[the Raspberry Pi website]. Make the AppImage executable.
 
-image::images/imager/welcome.png[alt="Raspberry Pi Imager main window.",width="80%"]
+. Launch the Raspberry Pi Imager application in one of the following ways:
+* Find it in your application menu.
+* Select the Raspberry Pi Imager icon on your desktop.
+* Run the AppImage file as root. For example, with the command: `sudo ./Raspberry_Pi_Imager-2.0.0-desktop-x86_64.AppImage`
 
-Click **Choose device** and select your Raspberry Pi model from the list.
+==== Step 2. Configure the fundamentals
 
-image::images/imager/choose-model.png[alt="Raspberry Pi model selections in Imager.",width="80%"]
+Tell Raspberry Pi Imager what combination of hardware and operating system you want to use:
 
-Next, click **Choose OS** and select an operating system to install. Imager always shows the recommended version of Raspberry Pi OS for your model at the top of the list.
+. In the *Device* tab, select your Raspberry Pi model from the list. Select *Next*.
++
+image::images/imager/choose-device.png[alt="Raspberry Pi Imager Device tab.",width="80%"]
 
+. In the *OS* tab, choose from the available operating systems. Select *Next*.
++
+Imager shows the recommended version of Raspberry Pi OS for your device at the top of the list.
+To install an operating system from an image on your computer, select the *Use Custom* option.
++
 image::images/imager/choose-os.png[alt="Operating system selections in Imager.",width="80%"]
 
-Connect your preferred storage device to your computer. For example, plug a microSD card in using an external or built-in SD card reader. Then, click **Choose storage** and select your storage device.
+. Connect your preferred storage device to your computer. For example, plug a microSD card in using an external or built-in SD card reader.
 
-WARNING: If you have more than one storage device connected to your computer, _be sure to choose the correct device!_ You can often identify storage devices by size. If you're unsure, disconnect other devices until you've identified the device you want to image.
-
+. In the *Storage* tab, select the storage device to write the image to. Select *Next*.
++
 image::images/imager/choose-storage.png[alt="Storage selection options in Imager.",width="80%"]
-
-Next, click **Next**.
-
-image::images/imager/os-customisation-prompt.png[alt="Imager prompt to open OS customisation menu.",width="80%"]
-
-In a popup, Imager will ask you to apply OS customisation. We strongly recommend configuring your Raspberry Pi via the OS customisation settings. Click the **Edit Settings** button to open xref:getting-started.adoc#advanced-options[OS customisation].
-
-If you don't configure your Raspberry Pi via OS customisation settings, Raspberry Pi OS will ask you for the same information at first boot during the xref:getting-started.adoc#configuration-on-first-boot[configuration wizard]. You can click the **No** button to skip OS customisation.
++
+WARNING: If you have more than one storage device connected to your computer, _be sure to choose the correct device!_ You can often identify storage devices by size. If you're unsure, disconnect other devices until you've identified the device you want to image. Imager warns you if you attempt to overwrite a system drive on your computer.
 
 [[advanced-options]]
-==== OS customisation
+==== Step 3. Customise your operating system
 
-The OS customisation menu lets you set up your Raspberry Pi before first boot. You can preconfigure:
+Raspberry Pi OS and some third-party operating systems support customisation. If you're installing one of these operating systems, you can use the next set of steps in Imager to customise it. These steps are optional and can be skipped by choosing *Skip customisation*. However, we strongly recommend that you set up your Raspberry Pi before first boot by using the customisation settings in Imager.
 
-* a username and password
+You can preconfigure:
+
+* The device hostname
+* The time zone
+* Your keyboard layout
+* A username and password
 * Wi-Fi credentials
-* the device hostname
-* the time zone
-* your keyboard layout
-* remote connectivity
+* Remote connectivity
+* Raspberry Pi Connect
+* Hardware interfaces for peripherals
+* Raspberry Pi USB Gadget mode
 
-When you first open the OS customisation menu, you might see a prompt asking for permission to load Wi-Fi credentials from your host computer. If you respond "yes", Imager will prefill Wi-Fi credentials from the network you're currently connected to. If you respond "no", you can enter Wi-Fi credentials manually.
+If you've already completed the customisation steps previously with Imager, the values you chose are pre-filled in the following steps.
 
-The **hostname** option defines the hostname your Raspberry Pi broadcasts to the network using https://en.wikipedia.org/wiki/Multicast_DNS[mDNS]. When you connect your Raspberry Pi to your network, other devices on the network can communicate with your computer using `<hostname>.local` or `<hostname>.lan`.
+If you don't configure your Raspberry Pi with these OS customisation settings, your operating system asks you for the same information after first boot. For Raspberry Pi OS, this first-boot configuration happens in the xref:getting-started.adoc#configuration-on-first-boot[configuration wizard].
 
-The **username and password** option defines the username and password of the admin user account on your Raspberry Pi.
+. In the *Customisation > Hostname* tab, enter a host name for your Raspberry Pi that includes only letters, numbers, and hyphens. Select *Next*.
++
+Your Raspberry Pi broadcasts this host name to the network using https://en.wikipedia.org/wiki/Multicast_DNS[mDNS]. When you connect your Raspberry Pi to your network, other devices on the network can communicate with your computer using `<hostname>.local` or `<hostname>.lan`.
++
+image::images/imager/os-customisation-hostname.png[alt="Imager OS Customisation Hostname tab.",width="80%"]
 
-The **wireless LAN** option allows you to enter an SSID (name) and password for your wireless network. If your network does not broadcast an SSID publicly, you should enable the "Hidden SSID" setting. By default, Imager uses the country you're currently in as the "Wireless LAN country". This setting controls the Wi-Fi broadcast frequencies used by your Raspberry Pi. Enter credentials for the wireless LAN option if you plan to run a headless Raspberry Pi.
+. In the *Customisation > Localisation* tab, choose your capital city. Imager autocompletes the time zone and keyboard layout for that city; you can change these settings. Select *Next*.
++
+image::images/imager/os-customisation-locale.png[alt="Imager OS Customisation Localisation tab.",width="80%"]
 
-The **locale settings** option allows you to define the time zone and default keyboard layout for your Pi. 
+. In the *Customisation > User* tab, enter a username and password for the admin user of your Raspberry Pi. Select *Next*.
++
+image::images/imager/os-customisation-user.png[alt="Imager OS Customisation User tab.",width="80%"]
 
-image::images/imager/os-customisation-general.png[alt="General settings in the OS customisation menu.",width="80%"]
+. In the *Customisation > Wi-Fi* tab, on first use, Imager pre-fills the SSID (name) and password of the Wi-Fi network you're currently connected to.
++
+.. Select whether to connect to a *Secure network* or an *Open network*.
+.. If there's no pre-filled information or if you want to change it, enter the SSID (name) of your wireless network. For secure networks, enter and confirm the password for the network.
+.. If your network doesn't broadcast an SSID publicly, enable the *Hidden SSID* setting.
+.. Select *Next*.
++
+[.clearfix]
+--
+[.left]
+image::images/imager/os-customisation-wifi-secure.png[alt="Imager OS Customisation Wi-Fi tab, secure network.",width="100%"]
+[.left]
+image::images/imager/os-customisation-wifi-open.png[alt="Imager OS Customisation Wi-Fi tab, open network.",width="100%"]
+--
 
-The **Services** tab includes settings to help you connect to your Raspberry Pi remotely.
+. In the *Customisation > Remote Access* tab, configure your SSH settings.
+.. To use your Raspberry Pi remotely over your network, toggle the *Enable SSH* switch to the active position.
++
+If you plan to run a headless Raspberry Pi, either enable this option or configure Raspberry Pi Connect for your device.
+.. If you enable SSH, choose the authentication method to use:
+* Choose *Use password authentication* to SSH into your Raspberry Pi over the network using the username and password you provided in the *Customisation > User* tab.
+* Choose *Use public key authentication* to configure your Raspberry Pi to use SSH key-based authentication. Imager shows a field to provide a public key.
+If you already have a public RSA key in your SSH configuration, Imager uses that public key. If you don't, you can copy a public key in to Imager or browse to locate a public key file on your computer.
++
+image::images/imager/os-customisation-ssh.png[alt="Imager OS Customisation Remote Access tab.",width="80%"]
 
-If you plan to use your Raspberry Pi remotely over your network, check the box next to **Enable SSH**. You should enable this option if you plan to run a headless Raspberry Pi.
+. Some operating systems now show the *Customisation > Raspberry Pi Connect* tab. To link your device to your xref:../services/connect.adoc[Raspberry Pi Connect account], complete the following steps:
+.. Toggle the *Enable Raspberry Pi Connect* switch to the active position.
++
+image::images/imager/os-customisation-connect.png[alt="Imager OS Customisation Raspberry Pi Connect tab.",width="60%"]
+.. Select *Open Raspberry Pi Connect*. The Raspberry Pi Connect website opens in your default browser.
++
+image::images/imager/os-customisation-site.png[alt="Raspberry Pi Connect page.",width="60%"]
+.. Sign in to your Raspberry Pi ID account or, if you don't yet have an account, sign up.
++
+image::images/imager/connect-auth-key.png[alt="Raspberry Pi Connect new auth key page.",width="60%"]
+.. On the *New auth key* page, create your auth key.
++
+The auth key is a single-use, temporary token. The Raspberry Pi Connect website displays how long after its creation the token expires. To use the token, ensure that you boot your Raspberry Pi and connect it to the internet before the expiry time.
++
+*** If your Raspberry Pi ID account isn't a member of any organisations, select *Create auth key and launch Raspberry Pi Imager*.
+*** If you are a member of one or more organisations, select the organisation or account to associate the key with. Then select *Create auth key and launch Raspberry Pi Imager*.
+.. Your browser might ask you whether you want to allow the site to open Raspberry Pi Imager. Confirm that you want to open Raspberry Pi Imager.
++
+Raspberry Pi Imager opens at the *Raspberry Pi Connect* tab. This tab shows a message to confirm that Imager received the authentication token from the browser and a field containing the token.
++
+If the token isn't copied across, you can copy it into Imager manually. Open the *Having trouble?* section of the Raspberry Pi Connect web page, copy the token, and paste it into the token field in Imager.
++
+image::images/imager/os-customisation-connect-token.png[alt="Raspberry Pi Connect token received message.",width="60%"]
+.. Select *Next*.
 
-* Choose the **password authentication** option to SSH into your Raspberry Pi over the network using the username and password you provided in the general tab of OS customisation.
+////
+. Some device and operating system combinations now show the *Customisation > Interfaces & Features* tab. On this tab, you can enable the following features:
+* Hardware interfaces needed to use your Raspberry Pi with certain peripherals, such as sensors, displays, network controllers, or embedded systems.
+* USB Gadget Mode feature. For more information, see https://github.com/raspberrypi/rpi-usb-gadget?tab=readme-ov-file[Raspberry Pi USB Gadget].
++
+image::images/imager/os-customisation-interfaces.png[alt="Imager OS Customisation Interfaces & Features tab.",width="80%"]
++
+After choosing your options, select *Next*.
+////
 
-* Choose **Allow public-key authentication only** to preconfigure your Raspberry Pi for passwordless public-key SSH authentication using a private key from the computer you're currently using. If already have an RSA key in your SSH configuration, Imager uses that public key. If you don't, you can click **Run SSH-keygen** to generate a public/private key pair. Imager will use the newly-generated public key.
+==== Step 4. Set the Imager options
 
-image::images/imager/os-customisation-services.png[alt="Services settings in the OS customisation menu.",width="80%"]
+You can choose to configure the behaviour of Imager during a write. Do this at any point before you write the image by selecting *App Options*.
 
-OS customisation also includes an **Options** menu that allows you to configure the behaviour of Imager during a write. These options allow you to play a noise when Imager finishes verifying an image, to automatically unmount storage media after verification, and to disable telemetry.
+In the *App Options* dialog box you can configure the following options:
 
-image::images/imager/os-customisation-options.png[alt="Options in the OS customisation menu.",width="80%"]
+* Whether Imager plays an alert sound when the write finishes.
+* Whether Imager ejects the storage media when the write finishes.
+* Whether Imager sends anonymous telemetry to us about your device and operating system. For more information, see https://github.com/raspberrypi/rpi-imager?tab=readme-ov-file#anonymous-metrics-telemetry[Anonymous metrics (telemetry)].
+* Whether Imager shows warnings during the write process.
 
-==== Write
+(Advanced users) The *App Options* dialog box also lets you set a custom repository to retrieve the operating system and devices list from. For more information, see xref:../computers/raspberry-pi.adoc#IMAGER_REPO_URL[Imager repo URL].
 
-When you've finished entering OS customisation settings, click **Save** to save your customisation.
+image::images/imager/app-options.png[alt="App Options dialog.",width="80%"]
 
-Then, click **Yes** to apply OS customisation settings when you write the image to the storage device.
+==== Step 5. Write the image to the storage device
 
-Finally, respond **Yes** to the "Are you sure you want to continue?" popup to begin writing data to the storage device.
+After you've gone through the tabs in Imager, it shows a summary page where you can review your choices.
 
+. If you're happy with your choices and want to proceed, select *Write*.
++
+image::images/imager/summary.png[alt="Reviewing your choices in Imager before writing.",width="80%"]
+
+. Imager shows a prompt warning you that you're about to overwrite all data on your storage media. To continue, select *I understand, erase and write*.
++
+If you see an admin prompt asking for permissions to read and write to your storage medium, grant Imager the permissions to proceed.
++
 image::images/imager/are-you-sure.png[alt="Confirming a reimage of a storage device in Imager.",width="80%"]
 
-If you see an admin prompt asking for permissions to read and write to your storage medium, grant Imager the permissions to proceed.
+Imager begins writing your image to the storage media. This can take a few minutes; grab a cup of coffee while you wait.
 
-.Grab a cup of coffee or go for a walk. This could take a few minutes.
+.Imager writes to the storage device.
 image::images/imager/writing.png[alt="Writing an image to a device in Imager.",width="80%"]
 
-.If you want to live especially dangerously, you can click **cancel verify** to skip the verification process.
-image::images/imager/stop-ask-verify.png[alt="Verifying an image on a device in Imager.",width="80%"]
+After writing the image, Imager verifies that the image is correctly written. We recommend that you complete the verification step. However, if you want to cancel verification, select *Skip verification*.
 
-When you see the "Write Successful" popup, your image has been completely written and verified. You're now ready to boot a Raspberry Pi from the storage device!
+.After writing the image, Imager verifies it.
+image::images/imager/verify.png[alt="Verifying an image on a device in Imager.",width="80%"]
 
+After the image is written and verified, Imager shows the *Done* tab. Select *Finish* to exit Imager.
+
+.The imaging process is complete.
 image::images/imager/finished.png[alt="The screen Imager shows when it finishes writing an image to a storage device.",width="80%"]
 
-Next, proceed to the xref:getting-started.adoc#configuration-on-first-boot[first boot configuration instructions] to get your Raspberry Pi up and running.
+Next, proceed to the xref:getting-started.adoc#set-up-your-raspberry-pi[Set up your Raspberry Pi] section to get your Raspberry Pi up and running.
 
 === Install over the network
 
@@ -137,7 +223,7 @@ Network Install requires the following:
 * a keyboard
 * a wired internet connection
 
-To launch Network Install, power on your Raspberry Pi _while pressing and holding the **SHIFT** key_ in the following configuration:
+To launch Network Install, power on your Raspberry Pi _while pressing and holding the *SHIFT* key_ in the following configuration:
 
 * no bootable storage device
 * attached keyboard
