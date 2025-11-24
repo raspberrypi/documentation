@@ -11,8 +11,6 @@ The AI HAT+ is available in 13 and 26 tera-operations per second (TOPS) variants
 
 The AI HAT+ communicates using Raspberry Pi 5's PCIe interface. The host Raspberry Pi 5 automatically detects the on-board Hailo accelerator and uses the NPU for supported AI computing tasks. Raspberry Pi OS's built-in `rpicam-apps` camera applications automatically use the NPU to run compatible post-processing tasks.
 
-WARNING: The Raspberry Pi AI HAT+ is not yet supported by Raspberry Pi OS Trixie. To use AI HAT+, install or stay on Raspberry Pi OS Bookworm for now.
-
 [[ai-hat-plus-installation]]
 == Install
 
