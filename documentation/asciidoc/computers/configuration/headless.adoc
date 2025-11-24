@@ -17,7 +17,7 @@ To connect to a wired network at first boot, plug your headless Raspberry Pi in 
 
 === Connect to a wireless network
 
-To configure wireless network access at first boot in a headless Raspberry Pi, use the advanced settings menu in Raspberry Pi Imager. Enter the SSID and password of your preferred wireless network. Your Raspberry Pi will use these credentials to connect to the network on first boot. Some wireless adapters and some Raspberry Pi boards do not support 5GHz networks; check the documentation for your wireless module to ensure compatibility with your preferred network.
+To configure wireless network access at first boot for a headless Raspberry Pi, enter the network information in the **Customisation > Wi-Fi** tab in Raspberry Pi Imager. Enter the SSID and password of your preferred wireless network. Your Raspberry Pi uses these credentials to connect to the network on first boot. Some wireless adapters and some Raspberry Pi boards don't support 5 GHz networks; check the documentation for your wireless module to ensure compatibility with your preferred network.
 
 NOTE: Previous versions of Raspberry Pi OS made use of a `wpa_supplicant.conf` file which could be placed into the boot folder to configure wireless network settings. This functionality is not available from Raspberry Pi OS Bookworm onwards.
 
@@ -25,8 +25,8 @@ NOTE: Previous versions of Raspberry Pi OS made use of a `wpa_supplicant.conf` f
 
 With no keyboard or monitor, you need a way to xref:remote-access.adoc[remotely control] your headless Raspberry Pi. On first boot, the only option is SSH. To enable SSH on a fresh installation of Raspberry Pi OS, choose one of the following methods:
 
-* enable SSH in the OS customisation menu in Raspberry Pi Imager, then enter a username and password
-* create a file named `ssh` at the root of the first partition of the SD card (labeled `bootfs`), then configure a user manually with `userconf.txt` following the instructions in the section below
+* Enable SSH in the **Customisation > Remote Access** tab in Raspberry Pi Imager, choose the authentication mechanism, and provide a username and password or public key.
+* Create a file named `ssh` at the root of the first partition of the SD card (labelled `bootfs`), then configure a user manually with `userconf.txt` using the instructions in the following section.
 
 For more information, see xref:remote-access.adoc#ssh[set up an SSH server]. Once you've connected over SSH, you can use `raspi-config` to xref:remote-access.adoc#vnc[enable VNC] if you'd prefer a graphical desktop environment.
 
@@ -37,7 +37,7 @@ At the root of the first partition of your SD card (the filesystem labeled `boot
 
 This file should contain a single line of text, consisting of `<username>:<password>`: your desired username, followed immediately by a colon, followed immediately by an *encrypted* representation of the password you want to use.
 
-NOTE: `<username>` must only contain lower-case letters, digits and hyphens, and must start with a letter. It may not be longer than 31 characters. 
+NOTE: `<username>` must only contain lowercase letters, digits, and hyphens, and must start with a letter. It may not be longer than 31 characters.
 
 To generate the encrypted password, use https://www.openssl.org[OpenSSL] on another computer. Open a terminal and enter the following:
 

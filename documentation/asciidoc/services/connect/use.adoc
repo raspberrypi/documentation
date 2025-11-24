@@ -3,6 +3,8 @@
 
 Now that you've installed and started Connect on your Raspberry Pi device, you must associate your device with your Connect account.
 
+NOTE: If you used Raspberry Pi Imager to install Raspberry Pi OS on your device, you might have already linked your device with your Connect account. For more information, see xref:../computers/getting-started.adoc#raspberry-pi-imager[Install using Imager].
+
 [tabs]
 ======
 Desktop::
