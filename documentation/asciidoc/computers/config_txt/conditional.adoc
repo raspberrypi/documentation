@@ -147,7 +147,7 @@ Syntax:
 ==== `boot_arg1`
 Raspberry Pi 5 and newer devices only.
 
-The `boot_arg1` variable is a 32-bit user defined value which is stored in a reset-safe register allowing parameters to be passed accross a reboot.
+The `boot_arg1` variable is a 32-bit user defined value which is stored in a reset-safe register allowing parameters to be passed across a reboot.
 
 Setting `boot_arg1` to 42 via `config.txt`:
 [source,ini]
@@ -215,7 +215,7 @@ The value of `boot_count` when the OS was started can be read via xref:configura
 ==== `boot_partition`
 The `boot_partition` variable can be used to select alternate OS files (e.g. `cmdline.txt`) to be loaded, depending on which partition `config.txt` was loaded from after processing xref:config_txt.adoc#autoboot-txt[autoboot.txt]. This is intended for use with an `A/B` boot-system with `autoboot.txt` where it is desirable to be able to have identical files installed to the boot partition for both the `A` and `B` images.
 
-The value of the `boot_partition` can be different to the requested `partition` variable if it was overriden by setting `boot_partition` in xref:config_txt.adoc#autoboot-txt[autoboot.txt] or if the specified partion was not bootable and xref:raspberry-pi.adoc#PARTITION_WALK[PARTITION_WALK] was enabled in the EEPROM config.
+The value of the `boot_partition` can be different to the requested `partition` variable if it was overridden by setting `boot_partition` in xref:config_txt.adoc#autoboot-txt[autoboot.txt] or if the specified partition was not bootable and xref:raspberry-pi.adoc#PARTITION_WALK[PARTITION_WALK] was enabled in the EEPROM config.
 
 Example `config.txt` - select the matching root filesystem for the `A/B` boot file-system:
 [source,ini]
