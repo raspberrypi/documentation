@@ -15,5 +15,9 @@ jobs:
           ref: master
           token: ${{ secrets.DOCUMENTATION_REPO_TOKEN }}
           fetch-depth: 0
-      - run: git remote add documentation https://github.com/raspberrypi/documentation.git
+      - run: |
+          if ! git config remote.documentation.url > /dev/null
+          then
+            git remote add documentation https://github.com/raspberrypi/documentation.git
+          fi
       - run: git push --force documentation master
