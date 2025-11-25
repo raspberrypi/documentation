@@ -99,7 +99,7 @@ To remotely access your Raspberry Pi without providing a password each time you 
 
 ==== Preconfigure an OS image with Raspberry Pi Imager
 
-When configuring a boot image with Raspberry Pi Imager, you can preconfigure SSH keys to use an existing key on the computer where you run Imager.
+When configuring an operating system image with Raspberry Pi Imager, you can preconfigure SSH keys to use an existing key on the computer where you run Imager.
 
 . Follow the xref:getting-started.adoc#raspberry-pi-imager[install using Imager] guide to configure your boot image.
 . On the **Remote Access** tab, toggle the *Enable SSH* switch to the active position.
