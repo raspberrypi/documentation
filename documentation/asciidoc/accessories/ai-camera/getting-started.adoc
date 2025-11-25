@@ -87,7 +87,7 @@ You can configure the `imx500_object_detection` stage in many ways.
 
 For example, `max_detections` defines the maximum number of objects that the pipeline will detect at any given time. `threshold` defines the minimum confidence value required for the pipeline to consider any input as an object.
 
-The raw inference output data of this network can be quite noisy, so this stage also preforms some temporal filtering and applies hysteresis. To disable this filtering, remove the `temporal_filter` config block.
+The raw inference output data of this network can be quite noisy, so this stage also performs some temporal filtering and applies hysteresis. To disable this filtering, remove the `temporal_filter` config block.
 
 ==== Pose estimation
 

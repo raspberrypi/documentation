@@ -371,7 +371,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 NOTE: This list is not exhaustive - there may be codes in use that are not in this table. Please see the next section for best practices on using revision codes to identify boards.
 
-// This table is now sorted by Type (from table above), then Revision, then RAM, and finally Code. This is the most likley order-of-manufacture, which means we'll normally just add new revision-codes to the very bottom of the table, without having to worry about re-ordering entries.
+// This table is now sorted by Type (from table above), then Revision, then RAM, and finally Code. This is the most likely order-of-manufacture, which means we'll normally just add new revision-codes to the very bottom of the table, without having to worry about re-ordering entries.
 
 |===
 | Code | Model | Revision | RAM | Manufacturer
