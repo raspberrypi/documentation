@@ -1,0 +1,60 @@
+name: Build and deploy
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+      url:
+        type: string
+      deploy:
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    runs-on: [self-hosted, web]
+    environment:
+      name: ${{ inputs.environment }}
+      url: ${{ inputs.url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: 3.9
+      - name: Install Python dependencies
+        uses: py-actions/py-dependency-install@v4
+      - name: Install Python libs
+        run: pip3 install -r ./requirements.txt
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+          bundler-cache: true
+      - uses: seanmiddleditch/gha-setup-ninja@v6
+        with:
+          version: 1.10.2
+      - name: Install arm-none-eabi-gcc GNU Arm Embedded Toolchain
+        if: ${{ inputs.deploy }}
+        uses: carlosperate/arm-none-eabi-gcc-action@v1.11.0
+      - name: Install Doxygen
+        if: ${{ inputs.deploy }}
+        run: |
+          wget https://www.doxygen.nl/files/doxygen-1.10.0.linux.bin.tar.gz
+          tar xf doxygen-1.10.0.linux.bin.tar.gz -C "$HOME"
+          echo "$HOME/doxygen-1.10.0/bin" >> $GITHUB_PATH
+      - name: Build Doxygen documentation
+        if: ${{ inputs.deploy }}
+        run: make build_doxygen_adoc
+      - name: Build documentation
+        run: make -j 2
+      - name: Deploy to Mythic Beasts
+        if: ${{ inputs.deploy }}
+        uses: ./.github/actions/deploy-action
+        with:
+          private_ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
+          public_bastion_host_keys: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          bastion_host: ${{ secrets.DEPLOY_BASTION_HOST }}
+          primary_host: ${{ secrets.DEPLOY_PRIMARY_HOST }}
+          secondary_host: ${{ secrets.DEPLOY_SECONDARY_HOST }}
+          source: documentation/html/
+          destination: documentation

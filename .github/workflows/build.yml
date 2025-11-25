@@ -10,90 +10,25 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted, web]
-    steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
-        with:
-          python-version: 3.9
-      - name: Install Python dependencies
-        uses: py-actions/py-dependency-install@v4
-      - name: Install Python libs
-        run: pip3 install -r ./requirements.txt
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.2
-          bundler-cache: true
-      - uses: seanmiddleditch/gha-setup-ninja@v6
-        with:
-          version: 1.10.2
-      - name: Install arm-none-eabi-gcc GNU Arm Embedded Toolchain
-        if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop' }}
-        uses: carlosperate/arm-none-eabi-gcc-action@v1.11.0
-      - name: Install Doxygen
-        if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop' }}
-        run: |
-          wget https://www.doxygen.nl/files/doxygen-1.10.0.linux.bin.tar.gz
-          tar xf doxygen-1.10.0.linux.bin.tar.gz -C "$HOME"
-          echo "$HOME/doxygen-1.10.0/bin" >> $GITHUB_PATH
-      - name: Build Doxygen documentation
-        if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop' }}
-        run: make build_doxygen_adoc
-      - name: Build documentation
-        run: make -j 2
-      - uses: actions/upload-artifact@v4
-        if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop' }}
-        with:
-          name: documentation
-          path: documentation/html/
-          if-no-files-found: error
-          retention-days: 1
-          include-hidden-files: true
+    uses: ./.github/workflows/build-and-deploy.yml
+    if: ${{ github.ref != 'refs/heads/develop' && github.ref != 'refs/heads/master' }}
+    with:
+      deploy: false
 
-  deploy-staging:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: staging
-      url: ${{ vars.STAGING_URL }}
+  staging-build:
+    uses: ./.github/workflows/build-and-deploy.yml
     if: ${{ github.ref == 'refs/heads/develop' }}
-    steps:
-      - uses: actions/checkout@v6
-      - uses: actions/download-artifact@v5
-        with:
-          name: documentation
-          path: documentation/html
-      - name: Deploy to Mythic Beasts
-        uses: ./.github/actions/deploy-action
-        with:
-          private_ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
-          public_bastion_host_keys: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
-          bastion_host: ${{ secrets.DEPLOY_BASTION_HOST }}
-          primary_host: ${{ secrets.DEPLOY_PRIMARY_HOST }}
-          secondary_host: ${{ secrets.DEPLOY_SECONDARY_HOST }}
-          source: documentation/html/
-          destination: documentation
+    with:
+      deploy: true
+      environment: staging
+      url: ${{ vars.STAGING_URL }}
+    secrets: inherit
 
-  deploy-production:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: production
-      url: ${{ vars.PRODUCTION_URL }}
+  production-build:
+    uses: ./.github/workflows/build-and-deploy.yml
     if: ${{ github.ref == 'refs/heads/master' }}
-    steps:
-      - uses: actions/checkout@v6
-      - uses: actions/download-artifact@v5
-        with:
-          name: documentation
-          path: documentation/html
-      - name: Deploy to Mythic Beasts
-        uses: ./.github/actions/deploy-action
-        with:
-          private_ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
-          public_bastion_host_keys: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
-          bastion_host: ${{ secrets.DEPLOY_BASTION_HOST }}
-          primary_host: ${{ secrets.DEPLOY_PRIMARY_HOST }}
-          secondary_host: ${{ secrets.DEPLOY_SECONDARY_HOST }}
-          source: documentation/html/
-          destination: documentation
+    with:
+      deploy: true
+      environment: production
+      url: ${{ vars.PRODUCTION_URL }}
+    secrets: inherit
