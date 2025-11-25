@@ -42,7 +42,7 @@ When using the CAM0 port on a Raspberry Pi 5, CM4 or CM5, append `,cam0` to that
 
 Alternatively, if you wish to swap the cameras' roles at runtime (and they are not both connected to the same Raspberry Pi), omit `,sync-source` or `,sync-sink` above. Instead you can set a module parameter before starting each camera:
 
-For the Raspbery Pi with the source camera:
+For the Raspberry Pi with the source camera:
 [source,console]
 ----
 $ echo 1 | sudo tee /sys/module/imx477/parameters/trigger_mode

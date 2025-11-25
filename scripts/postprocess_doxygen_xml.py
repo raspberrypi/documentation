@@ -166,6 +166,6 @@ def postprocess_doxygen_xml(xml_path):
 if __name__ == '__main__':
     xml_path = sys.argv[1]
     file_path = os.path.realpath(__file__)
-    # splitting thse subs into two parts to make testing easier
+    # splitting these subs into two parts to make testing easier
     # xml_path = re.sub(r'/documentation-toolchain/.*?$', "/"+xml_path, re.sub(r'/lib/', "/", file_path))
     postprocess_doxygen_xml(xml_path)
