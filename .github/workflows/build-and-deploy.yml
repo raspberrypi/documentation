@@ -18,30 +18,35 @@ jobs:
       name: ${{ inputs.environment }}
       url: ${{ inputs.url }}
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548
         with:
           python-version: 3.9
       - name: Install Python dependencies
-        uses: py-actions/py-dependency-install@v4
+        uses: py-actions/py-dependency-install@30aa0023464ed4b5b116bd9fbdab87acf01a484e
       - name: Install Python libs
         run: pip3 install -r ./requirements.txt
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@8aeb6ff8030dd539317f8e1769a044873b56ea71
         with:
           ruby-version: 3.2
           bundler-cache: true
-      - uses: seanmiddleditch/gha-setup-ninja@v6
+      - uses: seanmiddleditch/gha-setup-ninja@3b1f8f94a2f8254bd26914c4ab9474d4f0015f67
         with:
           version: 1.10.2
       - name: Install arm-none-eabi-gcc GNU Arm Embedded Toolchain
         if: ${{ inputs.deploy }}
-        uses: carlosperate/arm-none-eabi-gcc-action@v1.11.0
+        uses: carlosperate/arm-none-eabi-gcc-action@8fef7ef8d847a80ae13af8dc08690d1dda844874
       - name: Install Doxygen
         if: ${{ inputs.deploy }}
         run: |
           wget https://www.doxygen.nl/files/doxygen-1.10.0.linux.bin.tar.gz
-          tar xf doxygen-1.10.0.linux.bin.tar.gz -C "$HOME"
-          echo "$HOME/doxygen-1.10.0/bin" >> $GITHUB_PATH
+          if echo 'dcfc9aa4cc05aef1f0407817612ad9e9201d9bf2ce67cecf95a024bba7d39747  doxygen-1.10.0.linux.bin.tar.gz' | sha256sum --check --status
+          then
+            tar xf doxygen-1.10.0.linux.bin.tar.gz -C "$HOME"
+            echo "$HOME/doxygen-1.10.0/bin" >> $GITHUB_PATH
+          fi
       - name: Build Doxygen documentation
         if: ${{ inputs.deploy }}
         run: make build_doxygen_adoc
@@ -52,7 +57,6 @@ jobs:
         uses: ./.github/actions/deploy-action
         with:
           private_ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
-          public_bastion_host_keys: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
           bastion_host: ${{ secrets.DEPLOY_BASTION_HOST }}
           primary_host: ${{ secrets.DEPLOY_PRIMARY_HOST }}
           secondary_host: ${{ secrets.DEPLOY_SECONDARY_HOST }}
