@@ -21,7 +21,6 @@ url: "https://www.raspberrypi.com/documentation" # the base hostname & protocol 
 githuburl: "https://github.com/raspberrypi/documentation/"
 mainsite: https://raspberrypi.com/
 githubbranch: master
-githubbranch_edit: develop
 
 # Build settings
 theme: minima

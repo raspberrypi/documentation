@@ -1,21 +1,17 @@
 name: Build
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
+      - develop
   pull_request:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, web]
     steps:
-      - name: Only allow pull requests based on master from the develop branch of the current repository
-        if: ${{ github.base_ref == 'master' && !(github.head_ref == 'develop' && github.event.pull_request.head.repo.full_name == github.repository) }}
-        run: |
-          echo "Pull requests based on master can only come from the develop branch of this repository"
-          echo "Please check your base branch as it should be develop by default"
-          exit 1
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
         with:
@@ -42,8 +38,28 @@ jobs:
         run: make build_doxygen_adoc
       - name: Build documentation
         run: make -j 2
+      - uses: actions/upload-artifact@v4
+        with:
+          name: documentation
+          path: documentation/html/
+          if-no-files-found: error
+          retention-days: 1
+          include-hidden-files: true
+
+  deploy-staging:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: ${{ vars.STAGING_URL }}
+    if: ${{ github.ref == 'refs/heads/develop' }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v5
+        with:
+          name: documentation
+          path: documentation/html
       - name: Deploy to Mythic Beasts
-        if: ${{ github.ref == 'refs/heads/master' }}
         uses: ./.github/actions/deploy-action
         with:
           private_ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
@@ -51,6 +67,29 @@ jobs:
           bastion_host: ${{ secrets.DEPLOY_BASTION_HOST }}
           primary_host: ${{ secrets.DEPLOY_PRIMARY_HOST }}
           secondary_host: ${{ secrets.DEPLOY_SECONDARY_HOST }}
-          # this needs to match destination: in _config.yml
+          source: documentation/html/
+          destination: documentation
+
+  deploy-production:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: ${{ vars.PRODUCTION_URL }}
+    if: ${{ github.ref == 'refs/heads/master' }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v5
+        with:
+          name: documentation
+          path: documentation/html
+      - name: Deploy to Mythic Beasts
+        uses: ./.github/actions/deploy-action
+        with:
+          private_ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
+          public_bastion_host_keys: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+          bastion_host: ${{ secrets.DEPLOY_BASTION_HOST }}
+          primary_host: ${{ secrets.DEPLOY_PRIMARY_HOST }}
+          secondary_host: ${{ secrets.DEPLOY_SECONDARY_HOST }}
           source: documentation/html/
           destination: documentation
