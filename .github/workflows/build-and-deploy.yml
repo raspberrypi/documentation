@@ -57,7 +57,6 @@ jobs:
         uses: ./.github/actions/deploy-action
         with:
           private_ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
-          public_bastion_host_keys: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
           bastion_host: ${{ secrets.DEPLOY_BASTION_HOST }}
           primary_host: ${{ secrets.DEPLOY_PRIMARY_HOST }}
           secondary_host: ${{ secrets.DEPLOY_SECONDARY_HOST }}
