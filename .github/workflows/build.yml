@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: [self-hosted, web]
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: actions/setup-python@v6
         with:
           python-version: 3.9
@@ -54,7 +54,7 @@ jobs:
       url: ${{ vars.STAGING_URL }}
     if: ${{ github.ref == 'refs/heads/develop' }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: actions/download-artifact@v5
         with:
           name: documentation
@@ -78,7 +78,7 @@ jobs:
       url: ${{ vars.PRODUCTION_URL }}
     if: ${{ github.ref == 'refs/heads/master' }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: actions/download-artifact@v5
         with:
           name: documentation

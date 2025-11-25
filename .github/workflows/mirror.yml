@@ -10,7 +10,7 @@ jobs:
   mirror:
     runs-on: [self-hosted, web]
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           ref: master
           token: ${{ secrets.DOCUMENTATION_REPO_TOKEN }}
