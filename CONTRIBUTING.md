@@ -1,5 +1,36 @@
 # Contributing to the Raspberry Pi Documentation
 
+Welcome to the [public repository](https://github.com/raspberrypi/documentation/) for the Raspberry Pi documentation. This repository contains the Asciidoc source and the Jekyll-based build tools for the HTML documentation hosted at the [Raspberry Pi documentation site](https://www.raspberrypi.com/documentation/).
+
+The public repository is a mirror of an internal repository from which the site is built. The master branch of this repository is automatically kept up to date with the latest published content on the [website](https://www.raspberrypi.com/documentation/).
+
+We encourage and value all types of contributions from our community. Please make sure to read the following section before making your contribution. It makes it a lot easier for the Raspberry Pi Technical Documentation team (the maintainers) and smooths out the experience for all involved. We look forward to your contributions.
+
+## Contribute
+
+To suggest changes to this documentation:
+
+1. Create a fork of the `raspberrypi/documentation` repository on your GitHub account.
+
+1. Make changes in your fork. Start by branching from the default `master` branch.
+
+1. Read our [style guide](https://github.com/raspberrypi/style-guide/blob/master/style-guide.md) to ensure that your changes are consistent with the rest of our documentation. Since Raspberry Pi is a British company, be sure to include all of your extra `u`s and transfigure those `z`s (pronounced 'zeds') into `s`s!
+
+1. [Open a pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) against this repository.
+
+1. The maintainers assess the PR. We hope to get back to you within a fortnight, but this might vary depending on the size of your PR, the time of year, and the availability of the maintainers.
+
+1. What happens next depends on the content of the PR and whether it inspires any wider changes:
+
+   * If we have questions about the PR, we work with you to understand what you are going for and how best the docs can achieve it.
+   * If your PR can be included as-is, we use the patch mechanism to bring it across to the internal repository and commit it there. When the change is published on the Raspberry Pi Documentation website, it is mirrored to the public repository and your PR closes automatically.
+   * If your PR needs significant editing or prompts a wider change to the documentation, we take on that work in our internal repository. We'll let you know if that's the case and how long we expect it to take.
+   If we don't bring your initial changes over as a patch, we use the [co-author mechanism](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors) to ensure you get credit for your contribution.
+
+Alternatively, [open an issue](https://github.com/raspberrypi/documentation/issues) to discuss proposed changes.
+
+## Build
+
 The Raspberry Pi Documentation website is built from Asciidoc source using:
 
 * [Asciidoctor](https://asciidoctor.org/)
@@ -7,29 +38,7 @@ The Raspberry Pi Documentation website is built from Asciidoc source using:
 * [jekyll-asciidoc](https://github.com/asciidoctor/jekyll-asciidoc)
 * Python
 
-The website automatically deploys to [www.raspberrypi.com/documentation](https://www.raspberrypi.com/documentation) using GitHub Actions when new commits appear in the `master` branch.
-
-## Contribute
-
-To contribute or update documentation:
-
-1. Create a fork of this repository on your GitHub account.
-
-1. Make changes in your fork. Start from the default `develop` branch.
-
-1. Read our [style guide](https://github.com/raspberrypi/style-guide/blob/master/style-guide.md) to ensure that your changes are consistent with the rest of our documentation. Since Raspberry Pi is a British company, be sure to include all of your extra `u`s and transfigure those `z`s (pronounced 'zeds') into `s`s!
-
-1. [Open a pull request](https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) against this repository.
-
-1. The maintainers will assess and copy-edit the PR. This can take anywhere from a few minutes to a few days, depending on the size of your PR, the time of year, and the availability of the maintainers.
-
-1. After making any requested improvements to your PR, the maintainers will accept the PR and merge your changes into `develop`.
-
-1. When the maintainers next release the documentation by merging `develop` into `master`, your changes will go public on the production documentation site.
-
-Alternatively, [open an issue](https://github.com/raspberrypi/documentation/issues) to discuss proposed changes.
-
-## Build
+The website deploys to [www.raspberrypi.com/documentation](https://www.raspberrypi.com/documentation) from an internal repository that is mirrored to the [public repository](https://github.com/raspberrypi/documentation/).
 
 ### Install dependencies
 
@@ -54,7 +63,7 @@ Close and re-launch your terminal window to use the new dependencies and configu
 
 #### macOS
 
-If you don't already have it, we recommend installing the [Homebrew](https://brew.sh/) package manager: 
+If you don't already have it, we recommend installing the [Homebrew](https://brew.sh/) package manager:
 
 ```console
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
