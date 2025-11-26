@@ -16,7 +16,7 @@ but you need to remember to dispose of the `brick` at the end of your code.
 brick.Dispose();
 ----
 
-WARNING: If you do not call `brick.Dispose()` your program will not terminate.
+WARNING: If you don't call `brick.Dispose()` your program will not terminate.
 
 If you want to avoid calling `brick.Dispose` at the end, then create your brick with the `using` statement:
 
