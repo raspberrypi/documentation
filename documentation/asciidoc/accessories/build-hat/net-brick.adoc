@@ -102,13 +102,13 @@ void MotorPropertyEvent(object? sender, PropertyChangedEventArgs e)
 }
 ----
 
-==== Wait for initialization
+==== Wait for initialisation
 
-The brick can take a long time before it initializes. A wait for a sensor to be connected has been implemented.
+The brick can take a long time before it initialises. A wait for a sensor to be connected has been implemented.
 
 [source,csharp]
 ----
 brick.WaitForSensorToConnect(SensorPort.PortB);
 ----
 
-It does as well take a `CancellationToken` if you want to implement advance features like warning the user after some time and retrying.
+It does also take a `CancellationToken` if you want to implement advance features like warning the user after some time and retrying.
