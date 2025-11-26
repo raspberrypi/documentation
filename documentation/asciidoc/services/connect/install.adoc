@@ -1,24 +1,3 @@
-[[install-connect-lite]]
-== Install Connect Lite
-
-For Raspberry Pi OS Lite, we distribute an alternate *Lite* variant of Connect that only supports remote shell access, with no ability to screen share.
-
-Run the following command on your Raspberry Pi to install Connect Lite:
-
-[source,console]
-----
-$ sudo apt install rpi-connect-lite
-----
-
-After installation, use the `rpi-connect` command line interface to start Connect for your current user:
-
-[source,console]
-----
-$ rpi-connect on
-----
-
-xref:connect.adoc#enable-remote-shell-at-all-times[Enable user-lingering] to make your device accessible even when your user account isn't logged in.
-
 == Manually start and stop Connect
 
 To start Connect or Connect Lite from the command line, run the following command:
