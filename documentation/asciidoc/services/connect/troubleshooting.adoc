@@ -223,5 +223,5 @@ To view logs for the Connect service and its dedicated WayVNC server, run the fo
 
 [source,console]
 ----
-$ journalctl --follow --user-unit rpi-connect --user-unit rpi-connect-wayvnc
+$ journalctl --follow --user-unit rpi-connect.service --user-unit rpi-connect-wayvnc.service
 ----
