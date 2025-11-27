@@ -219,7 +219,8 @@ $ loginctl enable-linger
 
 TIP: We recommend enabling user-lingering on all headless Raspberry Pi OS Lite setups to prevent your device from becoming unreachable after a remote reboot.
 
-== Disabling the animated icon
+[[disabling-the-animated-icon]]
+== Disable the animated icon
 
 To disable the animated icon when a screen sharing or remote shell session are in progress, right-click the Connect icon in the menu bar and select **Configure Plugin...**.
 
