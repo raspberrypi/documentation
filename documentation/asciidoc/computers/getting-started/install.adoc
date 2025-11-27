@@ -119,7 +119,7 @@ image::images/imager/os-customisation-wifi-open.png[alt="Imager OS Customisation
 +
 If you plan to run a headless Raspberry Pi, either enable this option or configure Raspberry Pi Connect for your device.
 .. If you enable SSH, choose the authentication method to use:
-* Choose *Use password authentication* to SSH into your Raspberry Pi over the network using the username and password you provided in the *Customisation > User* tab.
+* Choose *Use password authentication* to log in to your Raspberry Pi over the network using the username and password you provided in the *Customisation > User* tab.
 * Choose *Use public key authentication* to configure your Raspberry Pi to use SSH key-based authentication. Imager shows a field to provide a public key.
 If you already have a public RSA key in your SSH configuration, Imager uses that public key. If you don't, you can copy a public key in to Imager or browse to locate a public key file on your computer.
 +
