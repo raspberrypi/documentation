@@ -4,6 +4,8 @@ include::connect/install.adoc[]
 
 include::connect/use.adoc[]
 
+include::connect/organisations.adoc[]
+
 include::connect/troubleshooting.adoc[]
 
 include::connect/security.adoc[]

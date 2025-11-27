@@ -1,27 +1,27 @@
 [[link-connect]]
 == Link a Raspberry Pi device with a Connect account
 
-Now that you've installed and started Connect on your Raspberry Pi device, you must associate your device with your Connect account.
+After starting Connect on your Raspberry Pi device, you must associate your device with your Connect account.
 
-NOTE: If you used Raspberry Pi Imager to install Raspberry Pi OS on your device, you might have already linked your device with your Connect account. For more information, see xref:../computers/getting-started.adoc#raspberry-pi-imager[Install using Imager].
+If you used Raspberry Pi Imager to install Raspberry Pi OS on your device, you might have already linked your device with your Connect account. For more information, see xref:../computers/getting-started.adoc#raspberry-pi-imager[Install using Imager].
 
 [tabs]
 ======
 Desktop::
 +
-From the Connect icon in the menu bar, select **Turn On Raspberry Pi Connect** for the first time to open your browser, prompting you to sign in with your Raspberry Pi ID:
+From the Connect icon in the menu bar, select **Turn On Raspberry Pi Connect**. This opens your browser, where you're prompted to sign in with your Raspberry Pi ID:
 +
 image::images/browser-sign-in.png[width="80%"]
 +
-If you have already turned on Connect, choose **Sign In...** from the dropdown menu:
+If you've already turned on Connect, choose **Sign In...** from the dropdown menu:
 +
 image::images/sign-in.png[width="80%"]
 +
-If you don't already have a Raspberry Pi ID, select *create one for free* to xref:id.adoc#create-a-raspberry-pi-id[create one].
+If you don't already have a Raspberry Pi ID, select the *create one for free* link to xref:id.adoc#create-a-raspberry-pi-id[create one].
 
 CLI::
 +
-Use the following command to generate a link that will connect your device with your Connect account:
+Use the following command to generate a link that connects your device with your Connect account:
 +
 [source,console]
 ----
@@ -34,25 +34,47 @@ This command outputs something like the following:
 Complete sign in by visiting https://connect.raspberrypi.com/verify/XXXX-XXXX
 ----
 +
-Visit the verification URL on any device and sign in with your Raspberry Pi ID to link your device with your Connect account.
+To link your device with your Connect account, visit the verification URL on any device and sign in with your Raspberry Pi ID.
++
+Alternatively, you can create an auth key by selecting **Settings** from a personal or organisation's Connect account, and provide this to the command to sign in automatically:
++
+[source,console]
+----
+$ rpi-connect signin --auth-key=rpuak_123456
+----
++
+If you have saved your auth key to a file, you can pass its full path to the command by prefixing it with `+@+`:
++
+[source,console]
+----
+$ rpi-connect signin --auth-key=@/home/alice/auth.key
+----
++
+Connect automatically detects an auth key saved to `+.config/com.raspberrypi.connect/auth.key+` in your home directory and attempts to sign in with it.
 
 ======
 
 === Finish linking your Raspberry Pi
 
-After authenticating, assign a name to your device. Choose a name that uniquely identifies the device. Select the **Create device and sign in** button to continue.
+After authenticating, assign a name to your device. Choose a name that uniquely identifies the device.
 
 image::images/new-device.png[width="80%"]
+
+If you're an administrator of an xref:connect.adoc#connect-organisations[organisation], select whether to add this device to your personal account or to a specific organisation.
+
+image::images/new-organisation-device.png[width="80%"]
+
+Select the **Create device and sign in** button to continue.
 
 You can now remotely connect to your device. The Connect icon in your menu bar turns blue to indicate that your device is signed in to the Connect service. You should receive an email notification indicating that a new device is linked to your Connect account.
 
 image::images/sign-in-email.png[width="70%"]
 
-WARNING: If you receive an email that says a device that you do not recognise has signed into Connect, change your Raspberry Pi ID password immediately. xref:connect.adoc#manage-devices[Remove the device from Connect] to permanently disassociate it from your account. Consider xref:id.adoc#enable-two-factor-authentication[enabling two-factor authentication] to keep your account secure.
+WARNING: If you receive an email that says a device that you don't recognise has signed into Connect, change your Raspberry Pi ID password immediately. Follow the instructions in xref:connect.adoc#manage-devices[Remove the device from Connect] to permanently disassociate it from your account. Consider xref:id.adoc#enable-two-factor-authentication[enabling two-factor authentication] to keep your account secure.
 
 Open the Connect menu by selecting the Connect icon in your menu bar. This menu allows you to turn Connect on and off, sign in and out, and allow or disallow remote access methods.
 
-TIP: Connect signs communication with your device serial number. Moving your SD card between devices will sign you out of Connect.
+NOTE: Connect signs communication with your device's serial number. Moving your SD card between devices signs you out of Connect.
 
 == Access your Raspberry Pi device
 
