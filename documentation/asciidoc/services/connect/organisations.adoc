@@ -30,7 +30,31 @@ image::images/invite-user.png[width="70%"]
 
 . Enter the email address where you want to send the invitation.
 
-The person you invite doesn't need to use that email address to sign in. They can join using any valid Raspberry Pi ID.
+. Select **Send invitation**.
+
+The person you invite doesn't need to sign in with that email address. They can join using any valid Raspberry Pi ID.
+
+=== Transfer a device
+
+You must be an administrator to transfer a device between accounts. To transfer a device:
+
+. Select the account switcher icon in the top left of the navigation menu.
++
+image::images/account-switcher-with-organisation.png[width="70%"]
+
+. Switch to the account that currently owns the device (your personal account or an organisation).
+
+. Select the device you want to transfer.
+
+. Open the **Settings** dropdown menu from the top right of the device page.
+
+. Select **Transfer...**
++
+image::images/transfer.png[width="70%"]
+
+. Select the account you want to transfer the device to.
+
+. Select **Transfer**.
 
 === Set up your subscription
 
