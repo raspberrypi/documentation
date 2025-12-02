@@ -34,6 +34,15 @@ image::images/invite-user.png[width="70%"]
 
 The person you invite doesn't need to sign in with that email address. They can join using any valid Raspberry Pi ID.
 
+=== Link a Raspberry Pi device with an organisation
+
+You must be an administrator to link a device to an organisation. To link a device to an organisation:
+
+* If the device isn't linked to a Connect account, see xref:connect.adoc#link-connect[Link a Raspberry Pi device with a Connect account].
+
+* If the device is already linked to a Connect account, see xref:connect.adoc#transfer-device[Transfer a device].
+
+[[transfer-device]]
 === Transfer a device
 
 You must be an administrator to transfer a device between accounts. To transfer a device:
