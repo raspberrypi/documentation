@@ -117,11 +117,14 @@ Raspberry Pi models have the following display connectivity:
 |Raspberry Pi 2 Model B
 |HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
-|Raspberry Pi 1 (all models)
+|Raspberry Pi 1 Model A+ and Model B+
 |HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
+|Raspberry Pi 1 Model A and Model B
+|HDMI, audio out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack, composite out via https://en.wikipedia.org/wiki/RCA_connector[phono] jack
+
 |Raspberry Pi Zero (all models)
-|mini HDMI
+|mini HDMI, composite out via solder-pads
 |===
 
 NOTE: No Raspberry Pi models support video over USB-C (DisplayPort alt mode).
