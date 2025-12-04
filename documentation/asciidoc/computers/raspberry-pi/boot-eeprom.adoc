@@ -284,7 +284,7 @@ For more information, see xref:raspberry-pi.adoc#eeprom-boot-flow[EEPROM bootflo
 | Bootloader EEPROM image - same as `pieeprom.upd` but changes `recovery.bin` behaviour to not rename itself to `RECOVERY.000`.
 
 | `pieeprom.sig`
-| The sha256 checksum of bootloader image (pieeprom.upd/pieeprom.bin)
+| The sha256 checksum (and optional timestamp) of bootloader image (`pieeprom.upd`/`pieeprom.bin`)
 
 | `vl805.bin`
 | The VLI805 USB firmware EEPROM image - Raspberry Pi 4B revision 1.3 and earlier only.
@@ -295,7 +295,7 @@ For more information, see xref:raspberry-pi.adoc#eeprom-boot-flow[EEPROM bootflo
 
 * If the bootloader update image is called `pieeprom.upd` then `recovery.bin` is renamed to `recovery.000` once the update has completed, then the system is rebooted. Since `recovery.bin` is no longer present the ROM loads the newly updated bootloader from SPI flash and the OS is booted as normal.
 * If the bootloader update image is called `pieeprom.bin` then `recovery.bin` will stop after the update has completed. On success the HDMI output will be green and the green activity LED is flashed rapidly. If the update fails, the HDMI output will be red and an xref:configuration.adoc#led-warning-flash-codes[error code] will be displayed via the activity LED.
-* The `.sig` files contain the hexadecimal sha256 checksum of the corresponding image file; additional fields may be added in the future.
+* The `.sig` files contain the hexadecimal sha256 checksum of the corresponding image file on the first line, optionally followed by the timestamp of the image (`ts: unixtime`) on the next line; additional fields may be added in the future.
 * The ROM found on BCM2711 and BCM2712 does not support loading `recovery.bin` from USB mass storage or TFTP. Instead, newer versions of the bootloader support a self-update mechanism where the bootloader is able to reflash the SPI flash itself. See `ENABLE_SELF_UPDATE` on the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] page.
 * The temporary EEPROM update files are automatically deleted by the `rpi-eeprom-update` service at startup.
 
