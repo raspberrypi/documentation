@@ -280,7 +280,7 @@ For more information, see xref:raspberry-pi.adoc#eeprom-boot-flow[EEPROM bootflo
 | Bootloader EEPROM image - same as `pieeprom.upd` but changes `recovery.bin` behaviour to not rename itself to `RECOVERY.000`.
 
 | `pieeprom.sig`
-| The sha256 checksum and timestamp of bootloader image (pieeprom.upd/pieeprom.bin)
+| The sha256 checksum (and optional timestamp) of bootloader image (`pieeprom.upd`/`pieeprom.bin`)
 
 | `vl805.bin`
 | The VLI805 USB firmware EEPROM image - Raspberry Pi 4B revision 1.3 and earlier only.
