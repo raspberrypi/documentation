@@ -789,8 +789,7 @@ $ sudo raspi-config nonint do_wayland <W1/W2>
 ----
 
 * `W1`: use the Openbox window manager with X11 backend
-* `W2`: use the wayfire window manager with Wayland backend
-* `W3`: use the labwc window manager with Wayland backend
+* `W2`: use the labwc window manager with Wayland backend
 
 ==== Audio config
 
