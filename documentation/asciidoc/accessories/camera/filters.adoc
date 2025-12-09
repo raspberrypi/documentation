@@ -1,35 +1,4 @@
-== Camera Filters
-
-Some transmission characteristics are available for the Camera Module 3 and the HQ and GS cameras.
-
-NOTE: These graphs are available as https://datasheets.raspberrypi.com/camera/camera-extended-spectral-sensitivity.pdf[a PDF].
-
-=== Camera Module 3
-
-The Camera Module 3 is built around the IMX708, which has the following spectral sensitivity characteristics.
-
-image::images/cm3-filter.png[Camera Module 3 Transmission Graph, width="65%"]
-
-=== HQ Camera
-
-Raspberry Pi HQ Camera without IR-Cut filter.
-
-image::images/hq.png[HQ Camera Transmission Graph without IR-Cut filter,width="65%"]
-
-
-=== GS Camera
-
-Raspberry Pi GS Camera without IR-Cut filter.
-
-image::images/gs.png[GS Camera Transmission Graph without IR-Cut filter,width="65%"]
-
-
-=== HQ and GS Cameras
-
-The HQ and GS Cameras use a Hoya CM500 infrared filter. Its transmission characteristics are as represented in the following graph.
-
-image::images/hoyacm500.png[CM500 Transmission Graph,width="65%"]
-
+[[ir-filter]]
 == IR Filter
 
 Both the High Quality Camera and Global Shutter Camera contain an IR filter to reduce the camera's sensitivity to infrared light and help outdoor photos look more natural. However, you may remove the filter to:
@@ -45,13 +14,13 @@ You can remove the filter from both the HQ and GS cameras. The HQ camera is show
 
 image:images/FILTER_ON_small.jpg[width="65%"]
 
-NOTE: Make sure to work in a clean and dust-free environment, as the sensor will be exposed to the air. 
+IMPORTANT: To protect the sensor when exposed to the air, ensure that you're working in a clean and dust-free environment.
 
 . Unscrew the two 1.5 mm hex lock keys on the underside of the main circuit board. Be careful not to let the washers roll away.
 +
 image:images/SCREW_REMOVED_small.jpg[width="65%"]
-. There is a gasket of slightly sticky material between the housing and PCB which will require some force to separate. You may try some ways to weaken the adhesive, such as a little isopropyl alcohol and/or heat (~20-30 C). 
-. Once the adhesive is loose, lift up the board and place it down on a very clean surface. Make sure the sensor does not touch the surface.
+. There's a gasket of slightly sticky material between the housing and PCB that requires some force to separate. You may try some ways to weaken the adhesive, such as a little isopropyl alcohol or heat (~20-30 C).
+. When the adhesive is loose, lift up the board and place it down on a very clean surface. Make sure the sensor doesn't touch the surface.
 +
 image:images/FLATLAY_small.jpg[width="65%"]
 . Face the lens upwards and place the mount on a flat surface.
@@ -62,7 +31,7 @@ image:images/SOLVENT_small.jpg[width="65%"]
 image:images/REMOVE_FILTER_small.jpg[width="65%"]
 . Given that changing lenses will expose the sensor, at this point you could affix a clear filter (for example, OHP plastic) to minimize the chance of dust entering the sensor cavity.
 . Replace the main housing over the circuit board. Be sure to realign the housing with the gasket, which remains on the circuit board.
-. Apply the nylon washer first to prevent damage to the circuit board. 
+. Apply the nylon washer first to prevent damage to the circuit board.
 . Next, fit the steel washer, which prevents damage to the nylon washer. Screw down the two hex lock keys. As long as the washers have been fitted in the correct order, they do not need to be screwed very tightly.
 +
 image:images/FILTER_OFF_small.jpg[width="65%"]

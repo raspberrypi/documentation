@@ -1,0 +1,35 @@
+[[gs-camera]]
+== Global Shutter Camera
+
+The 1.6-megapixel https://www.raspberrypi.com/products/raspberry-pi-global-shutter-camera/[Global Shutter Camera] captures fast-moving subjects and minimises distortion. It's built around the Sony IMX296 sensor with a resolution of 1456 × 1088 pixels.
+
+The camera comes with a C/CS-mount for compatibility with a broad variety of lenses. For more information, see xref:../accessories/camera.adoc#lenses[Lenses].
+
+You can trigger the Global Shutter (GS) camera by pulsing the external trigger connection on the board. This feature enables you to synchronise multiple Global Shutter Cameras. For more information, see xref:../accessories/camera.adoc#external-trigger[External Trigger on the Global Shutter Camera].
+
+.Global Shutter Camera
+image::images/gs-camera.jpg[GS Camera]
+
+For detailed information about the hardware characteristics and capabilities of this camera, see the xref:../accessories/camera.adoc#hardware-specification[hardware specifications].
+
+=== Rolling or Global shutter?
+
+Most digital cameras, including our other Camera Modules, use a **rolling shutter**: they scan the image they're capturing line-by-line, then output the results. This can cause distortion effects in some settings. For example, a photo of rotating propeller blades can make the image look as though it's shimmering rather than like an object that's rotating. This is because the propeller blades have had enough time to change position in the tiny moment that the camera has taken to scan across and observe the scene.
+
+A **global shutter**, like the one on our Global Shutter Camera Module, doesn't do this. It captures the light from every pixel in the scene at once, so a photograph of something like propeller blades doesn't result in the same distortion.
+
+This is useful because it makes fast-moving objects, like propeller blades, easy to capture; we can also synchronise several cameras to take a photo at precisely the same moment in time. Benefits include minimising distortion when capturing stereo images; the human brain is confused if any movement that appears in the left eye hasn't yet appeared in the right eye. The Raspberry Pi Global Shutter Camera can also operate with shorter exposure times – down to 30 µs, given enough light – than a rolling shutter camera, which makes it useful for high-speed photography.
+
+NOTE: The Global Shutter Camera's image sensor has a 6.3 mm diagonal active sensing area, which is similar in size to Raspberry Pi's HQ Camera. However, the pixels are larger and can collect more light. Large pixel size and low pixel count are valuable in machine-vision applications; the more pixels a sensor produces, the harder it is to process the image in real time. To get around this, many applications downsize and crop images. This is unnecessary with the Global Shutter Camera and the appropriate lens magnification, where the lower resolution and large pixel size mean an image can be captured natively.
+
+=== Transmission characteristics
+
+The Global Shutter Camera uses a Hoya CM500 infrared filter. Its transmission characteristics are as represented in the following graph.
+
+image::images/hoyacm500.png[CM500 Transmission Graph,width="65%"]
+
+If you want to enhance the Global Shutter Camera's sensitivity to infrared light, you can remove the infrared filter. This action is permanent and voids the warranty. For more information, see xref:../accessories/camera.adoc#ir-filter[IR filter].
+
+Without its filter, Raspberry Pi Global Shutter Camera has the following transmission characteristics:
+
+image::images/gs.png[GS Camera Transmission Graph without IR-Cut filter,width="65%"]

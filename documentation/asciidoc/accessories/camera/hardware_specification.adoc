@@ -1,0 +1,170 @@
+[[hardware-specification]]
+== Hardware specifications
+
+The following table compares the features and capabilities of the Raspberry Pi camera hardware.
+
+|===
+|  | Camera Module 1 | Camera Module 2 | Camera Module 3 | Camera Module 3 Wide | HQ Camera | AI Camera | GS Camera
+
+| Size
+| Around 25 × 24 × 9 mm
+| Around 25 × 24 × 9 mm
+| Around 25 × 24 × 11.5 mm
+| Around 25 × 24 × 12.4 mm
+| 38 × 38 × 18.4 mm (excluding lens)
+| 25 × 24 × 11.9 mm
+| 38 × 38 × 19.8 mm (29.5 mm with adaptor and dust cap)
+
+| Weight
+| 3 g
+| 3 g
+| 4 g
+| 4 g
+| 30.4 g
+| 6 g
+| 34 g (41 g with adaptor and dust cap)
+
+| Still resolution
+| 5 megapixels
+| 8 megapixels
+| 11.9 megapixels
+| 11.9 megapixels
+| 12.3 megapixels
+| 12.3 megapixels
+| 1.58 megapixels
+
+| Video modes
+| 1080p30, 720p60 and 640 × 480p60/90
+| 1080p47, 1640 × 1232p41 and 640 × 480p206
+| 2304 × 1296p56, 2304 × 1296p30 HDR, 1536 × 864p120
+| 2304 × 1296p56, 2304 × 1296p30 HDR, 1536 × 864p120
+| 2028 × 1080p50, 2028 × 1520p40 and 1332 × 990p120
+| 2028 × 1520p30, 4056 × 3040p10
+| 1456 × 1088p60
+
+| Sensor
+| OmniVision OV5647
+| Sony IMX219
+| Sony IMX708
+| Sony IMX708
+| Sony IMX477
+| Sony IMX500
+| Sony IMX296
+
+| Sensor resolution
+| 2592 × 1944 pixels
+| 3280 × 2464 pixels
+| 4608 × 2592 pixels
+| 4608 × 2592 pixels
+| 4056 × 3040 pixels
+| 4056 × 3040 pixels
+| 1456 × 1088 pixels
+
+| Sensor image area
+| 3.76 × 2.74 mm
+| 3.68 × 2.76 mm (4.6 mm diagonal)
+| 6.45 × 3.63 mm (7.4 mm diagonal)
+| 6.45 × 3.63 mm (7.4 mm diagonal)
+| 6.287 × 4.712 mm (7.9 mm diagonal)
+| 6.287 × 4.712 mm (7.9 mm diagonal)
+| 6.3 mm diagonal
+
+| Pixel size
+| 1.4 µm × 1.4 µm
+| 1.12 µm × 1.12 µm
+| 1.4 µm × 1.4 µm
+| 1.4 µm × 1.4 µm
+| 1.55 µm × 1.55 µm
+| 1.55 µm × 1.55 µm
+| 3.45 µm × 3.45 µm
+
+| Optical size
+| 1/4"
+| 1/4"
+| 1/2.43"
+| 1/2.43"
+| 1/2.3"
+| 1/2.3"
+| 1/2.9"
+
+| Focus
+| Fixed
+| Adjustable
+| Motorised
+| Motorised
+| Adjustable
+| Adjustable
+| Adjustable
+
+| Depth of field
+| Approx 1 m to ∞
+| Approx 10 cm to ∞
+| Approx 10 cm to ∞
+| Approx 5 cm to ∞
+| N/A
+| Approx 20 cm to ∞
+| N/A
+
+| Focal length
+| 3.60 mm ± 0.01
+| 3.04 mm
+| 4.74 mm
+| 2.75 mm
+| Depends on lens
+| 4.74 mm
+| Depends on lens
+
+| Horizontal Field of View (FoV)
+| 53.50 ± 0.13 degrees
+| 62.2 degrees
+| 66 degrees
+| 102 degrees
+| Depends on lens
+| 66 ± 3 degrees
+| Depends on lens
+
+| Vertical Field of View (FoV)
+| 41.41 ± 0.11 degrees
+| 48.8 degrees
+| 41 degrees
+| 67 degrees
+| Depends on lens
+| 52.3 ± 3 degrees
+| Depends on lens
+
+| Focal ratio (F-Stop)
+| F2.9
+| F2.0
+| F1.8
+| F2.2
+| Depends on lens
+| F1.79
+| Depends on lens
+
+| Maximum exposure time (seconds)
+| 3.28
+| 11.76
+| 112
+| 112
+| 670.74
+| 112
+| 15.5
+
+| Lens Mount
+| N/A
+| N/A
+| N/A
+| N/A
+| C/CS- or M12-mount
+| N/A
+| C/CS
+
+| NoIR version available?
+| Yes
+| Yes
+| Yes
+| Yes
+| No
+| No
+| No
+|===
