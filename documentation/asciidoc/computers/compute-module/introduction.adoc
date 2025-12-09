@@ -1,6 +1,6 @@
 A Raspberry Pi *Compute Module (CM)* is a compact version of a standard Raspberry Pi single-board computer (SBC) designed primarily for embedded and industrial applications. A Compute Module contains the core components of a Raspberry Pi but without the standard connectors like HDMI, USB, or Ethernet.
 
-A Raspberry Pi *Compute Module IO Board (CMIO)* provides the physical connectors, peripheral interfaces, and expansion options necessary for accessing and expanding a Compute Module's functionality. A Compute Module IO Board can be used as a standalone product, allowing for rapid prototyping and embedded systems development, or as a reference design for your own carrier (IO) board. In either case, you can selectively make use of only the connectors that your application requires. 
+A Raspberry Pi *Compute Module IO Board (CMIO)* provides the physical connectors, peripheral interfaces, and expansion options necessary for accessing and expanding a Compute Module's functionality. A Compute Module IO Board can be used as a standalone product, allowing for rapid prototyping and embedded systems development, or as a reference design for your own carrier (IO) board. In either case, you can selectively make use of only the connectors that your application requires.
 
 This page:
 
@@ -19,7 +19,7 @@ Raspberry Pi Compute Modules are *system-on-module (SoM)* variants of the flagsh
 
 Raspberry Pi Compute Modules are available in several variants, differing in memory, embedded Multi-Media Card (eMMC) flash storage capacity (soldered onto the board), and wireless connectivity (Wi-Fi and Bluetooth).
 
-* *Memory.* Compute Modules 1, 3, and 3+ offer a fixed amount of RAM. Compute Modules 4, 4S, and 5 offer different amounts of RAM; for details about the available options, see the dedicated sections for each Compute Module model on this page. 
+* *Memory.* Compute Modules 1, 3, and 3+ offer a fixed amount of RAM. Compute Modules 4, 4S, and 5 offer different amounts of RAM; for details about the available options, see the dedicated sections for each Compute Module model on this page.
 * *Storage.* Compute Modules 3, 3+, 4, 4S, and 5 offer different storage options, with later models offering more options and larger sizes than earlier models. Compute Module 1 offers a fixed 4 GB of storage. Storage is provided by eMMC flash memory, which provides persistent storage with low power consumption and built-in features that improve reliability. Variants with no on-board storage are referred to with the suffix *Lite* or *L*, for example, "CM5Lite" or "CM3L".
 * *Wireless.* Compute Modules 4 and 5 offer optional Wi-Fi and Bluetooth.
 
@@ -256,7 +256,7 @@ The Compute Module 4 IO Board (CM4IO) provides the following:
 ** Two HDMI connectors.
 ** Two MIPI DSI display FPC connectors (22-pin, 0.5 mm pitch cable).
 ** Two MIPI CSI-2 camera FPC connectors (22-pin, 0.5 mm pitch cable).
-* *Networking and connectivity connectors.* 
+* *Networking and connectivity connectors.*
 ** Two USB 2.0 connectors.
 ** A micro USB upstream port.
 ** A Gigabit Ethernet RJ45 with PoE support.
@@ -297,42 +297,71 @@ The Compute Module IO Board (CMIO and CMIO3) provides the following:
 
 Raspberry Pi offers the following accessories for CM5 and CM5IO:
 
-* <<case, CM5IO Case>>, a two-piece metal enclosure for a CM5IO (and attached CM5). The case also optionally fits an antenna and cooler.
+* <<case, CM5IO Case>>, an enclosure for a CM5IO (and attached CM5). The case also optionally fits an antenna and cooler.
 * <<antenna, Antenna (CM4 and CM5)>>, a 2.4 GHz and 5 GHz antenna for wireless connectivity through CM4 or CM5.
 * <<cooler, CM5 Cooler>>, a passive heat sink to dissipate heat from CM5.
 
 [[case]]
 === CM5IO Case
 
-.Compute Module 5 IO Board Case
-image::images/cm5io-case.png[alt="Compute Module 5 IO Board Case", width="60%"]
+.Compute Module 5 IO Board Case (version 2)
+image::images/cm5io-case-v2.jpg[alt="Compute Module 5 IO Board Case", width="60%"]
 
-The Compute Module 5 IO Board Case provides physical protection for CM5IO and its attached CM5. It includes:
+The Compute Module 5 IO Board (CM5IO) Case is a two-piece metal enclosure that, when assembled, provides physical protection for CM5IO with an attached CM5.
+
+The following features apply to the most recent iteration of the CM5IO Case (version 2):
 
 * Cut-outs for externally facing connectors and LEDs.
 * A pre-installed, controllable fan that you can remove.
 * An attachment point for a *Raspberry Pi Antenna Kit*.
-* Space for a *CM5 Cooler*.
+* Space for a *CM5 Cooler* alongside the pre-installed fan.
 * Space for accessories connected to the IO board, such as an M.2 SSD or PoE+ HAT+.
+
+The original version of the case doesn't provide the internal space for all the listed items simultaneously. For more information about the different versions, see <<versions>>.
+
+==== Case specifications
 
 .Compute Module 5 IO Board Case ports
 image::images/cm5io-case-front.png[alt="the port selection on the Compute Module 5 IO Board Case", width="60%"]
 
-The CM5IO Case is a two-piece enclosure that, when assembled, measures 170 mm × 94 mm × 28 mm. It's made of sheet metal and weighs approximately 350 g. For thermal management, the case includes a pre-installed fan that directs airflow over your CM5 and CM5IO components. You can remove or replace the fan depending on your cooling requirements. You can also optionally add a <<cooler, CM5 Cooler>> for improved thermal performance.
+When assembled, the CM5IO Case measures approximately 170 mm × 94 mm × 28 mm. It's made of sheet metal and weighs approximately 350 g.
 
-.CM5 case physical specification
-image::images/cm5-case-physical.png[alt="CM5 Case physical specification", width="80%"]
+For thermal management, the case includes a pre-installed fan that directs airflow over your CM5 and CM5IO components. You can remove or replace the fan depending on your cooling requirements. Depending on the case version, you can also optionally add a <<cooler, CM5 Cooler>> for improved thermal performance; the original case requires removing the fan first, while the updated version provides space for both the fan and cooler together.
+
+The following image depicts the physical dimensions of the CM5IO case in millimetres (mm). The size of the case is the same for both versions; the only difference is the placement of the fan. For information about the different versions, see <<versions>>.
+
+.CM5IO Case (version 2) physical specifications
+image::images/case-physical.png[alt="CM5IO Case physical specifications", width="80%"]
+
+[[versions]]
+==== Case versions
+
+The are two iterations of the CM5IO case, differing in the placement of the pre-installed fan: version 1 and version 2.
+
+.Left: version 1 of the CM5IO Case; right: version 2 of the CM5IO Case
+image::images/case-versions.jpg[alt="case versions 1 and 2="80%"]
+
+The first version features a fan that's closer to the long edge of the enclosure. The internal layout and available clearance in this version doesn't allow for both the fan and the CM5 Cooler to be installed inside the case at the same time. If you want to install the CM5 Cooler into the case, you must remove the fan.
+
+The second version updates the internal layout such that the fan sits closer to the short edge of the enclosure. This revised layout provides sufficient space for both the fan and the CM5 Cooler without modification.
+
+For instructions on mounting a CM5 Cooler onto CM5, which you can then attach to an IO board and install into the CM5IO Case, see <<mounting>>.
+
+[[case-assembly]]
+==== Case assembly
+
+The following steps provide instructions for assembling the most recent version of the CM5IO Case (version 2). Version 1 doesn't allow space for both the fan and a CM5 Cooler at the same time without modification. If you have version 1 of the CM5IO Case, you can either remove the fan (described in step 4) or skip step 6 in the following instructions. For information about the different versions, see <<versions>>.
 
 To mount a CM5IO inside your case:
 
 . *Attach your CM5 to your CM5IO.* Rotate your CM5 90 degrees to the right to align the dual 100-pin connectors on your CM5 with those on your CM5IO and press gently but firmly to attach them. The mounting holes should also align.
 . *Open the case.* Unscrew and remove the four screws (two on the left side of the case and two on the right side of the case) using a Phillips screwdriver. Then, separate the top of the case from the base. Keep the screws in a safe place.
 . *Install your CM5IO assembly into the case.* Place your CM5IO (with CM5 attached) into the base of the case, aligning it with the four mounting holes near the corners of the board. Ensure all externally facing connectors align with the corresponding cut-outs at the front of the case. Then, secure your CM5IO assembly to the base by screwing four M2.5 screws into the four mounting holes.
-. *Connect or remove the fan.* 
+. *Connect or remove the fan.*
 ** If using the pre-installed fan, plug the fan connector into the four-pin fan socket labelled *FAN (J14)* on your CM5IO.
 ** If you want to remove the fan, unscrew the four corner screws of the fan from the underside of the top of the case.
-. *Optionally, attach an external antenna.* If you want to install an antenna, follow the instructions in <<antenna, Antenna (CM4 and CM5)>> on this page.
-. *Optionally, attach the cooler.* If you want to install a cooler, follow the instructions in <<cooler, CM5 Cooler>>. If you're also attaching an antenna, attach the antenna's U.FL connector first for easier access.
+. *Optionally, attach an external antenna.* If you want to install an antenna, follow the instructions in <<install-antenna>>.
+. *Optionally, attach a cooler.* If you want to install a cooler, follow the instructions in <<mounting>>. If you're also attaching an antenna, attach the antenna's U.FL connector first for easier access.
 . *Optionally, attach a camera or display.* If you're using a camera or a display, pass the flat cable through one of the slots at the back of the case and connect it to one of the *CAM/DISP* ports on your CM5IO.
 . *Optionally, install an M.2 SSD.* If you want to install an M.2 SSD, insert it into the M.2 slot in the bottom-right corner of the CM5IO and secure it on the opposite end with a mounting screw.
 . *Optionally, install a HAT.* If you want to install a HAT, align it with the 40-pin GPIO header and the mounting posts such that the HAT covers the battery slot, then press it firmly into place and secure it with screws.
@@ -345,23 +374,28 @@ NOTE: The SD card slot is a push-push slot. To insert an SD card, push it into t
 
 The Raspberry Pi Antenna Kit provides a certified external antenna to boost wireless reception on a CM4 or CM5.
 
-.CM4 and CM5 antenna
-image::images/cm4-cm5-antenna.jpg[alt="The Antenna, connected to CM4", width="60%"]
+.Antenna attached to a CM4
+image::images/cm4-cm5-antenna.jpg[alt="The antenna connected to CM4", width="60%"]
 
-The antenna supports dual-band Wi-Fi and attaches to the https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector] on your CM4 or CM5. The antenna is 108 mm at full height; the SMA to U.FL cable is 205 mm long.
+==== Antenna specifications
 
-.CM4 and CM5 antenna physical specification
+The antenna supports dual-band Wi-Fi and attaches to the https://en.wikipedia.org/wiki/Hirose_U.FL[U.FL connector] on your CM4 or CM5. The antenna is approximately 108.5 mm at full height and approximately 87.5 mm long when at a 90 degree angle; the SMA to U.FL cable is approximately 205 mm long.
+
+.CM4 and CM5 antenna physical specifications
 image::images/cm4-cm5-antenna-physical.png[alt="CM4 and CM5 antenna physical specification", width="80%"]
 
-You can use the antenna with the <<case, CM5IO Case>>. To attach the antenna to your Compute Module through the CM5IO Case, complete the first four steps outlined in <<case, CM5IO Case>>, and then complete following steps:
+[[install-antenna]]
+==== Connect an antenna through the CM5IO Case
+
+You can use the antenna with the <<case, CM5IO Case>>. To attach the antenna to your Compute Module through the CM5IO Case, complete the first four steps outlined in <<case-assembly>>, and then complete following steps:
 
 . *Connect the U.FL connector.* Connect the U.FL connector on the antenna cable to the U.FL-compatible connector on your Compute Module, next to the top-left mounting hole of your CM5. Do this before attaching a cooler (if using one) because the cooler can make it harder to attach the U.FL connector.
 . *Insert the SMA connector.* Remove the rubber plug from the antenna port on the inside of the CM5IO Case. Then, from the inside of the case, push the SMA connector with the (flat side up) into the antenna port so that it extends through and is accessible from the outside.
 . *Fasten the SMA connector into place.* Twist the retaining hexagonal nut and washer onto the SMA connector in a clockwise direction until it sits securely in place. Avoid excessive twisting when tightening to prevent damage.
-. *Attach the antenna to the SMA connector.* Insert the SMA connector into the antenna port with the antenna facing outward and twist the antenna clockwise to secure it. 
+. *Attach the antenna to the SMA connector.* Insert the SMA connector into the antenna port with the antenna facing outward and twist the antenna clockwise to secure it.
 . *Adjust the antenna.* Move the antenna into its final position by turning it up to a 90 degree angle.
 
-You can now complete the remaining steps outlined in <<case, CM5IO Case>> for mounting a CM5IO inside your case.
+You can now complete the remaining steps outlined in <<case-assembly>> for mounting a CM5IO inside your case.
 
 .CM4 and CM5 antenna assembly diagram
 image::images/cm4-cm5-antenna-assembly.svg[alt="CM4 and CM5 antenna assembly diagram", width="60%"]
@@ -371,15 +405,20 @@ To use the Antenna with your Compute Module, add a `dtparam` instruction in xref
 [[cooler]]
 === CM5 Cooler
 
-The CM5 Cooler is a passive heat sink that helps dissipate heat from your CM5, improving CPU performance and longevity. 
+The CM5 Cooler is a passive heat sink that helps dissipate heat from your CM5, improving CPU performance and longevity.
 
 .CM5 cooler
 image::images/cm5-cooler.jpg[alt="CM5 Cooler", width="60%"]
 
-The CM5 Cooler dimensions are 41 mm × 56 mm × 12.7 mm. The cooler is an aluminium heat sink with a conductive silicone pad on the bottom. Newer versions of the <<case, CM5IO Case>> allow both the cooler and pre-installed fan to be used inside the case at the same time. If you have an older version of the CM5IO Case, you must remove the fan from the case to allow space for the cooler.
+==== Cooler specifications
 
-.CM5 cooler physical specification
+The CM5 Cooler dimensions are approximately 41 mm × 56 mm × 12.7 mm. The cooler is an aluminium heat sink with a conductive silicone pad on the bottom. Newer versions of the <<case, CM5IO Case>> allow both the cooler and pre-installed fan to be used inside the case at the same time. If you have an older version of the CM5IO Case, you must remove the fan from the case to allow space for the cooler.
+
+.CM5 cooler physical specifications
 image::images/cm5-cooler-physical.png[alt="CM5 Cooler physical specification", width="80%"]
+
+[[mounting]]
+==== Mount a CM5 Cooler
 
 To mount the cooler to your CM5:
 
