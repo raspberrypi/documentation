@@ -1,3 +1,4 @@
+[[lenses]]
 == Recommended Lenses
 
 The following lenses are recommended for use with our HQ and GS cameras.
@@ -6,22 +7,22 @@ NOTE: While the HQ Camera is available in both C/CS- and M12-mount versions, the
 
 === C/CS Lenses
 
-We recommend two lenses, a 6mm wide angle lens and a 16mm telephoto lens. These lenses should be available from your nearest https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[Authorised Reseller].
+We recommend two lenses, a 6 mm wide angle lens and a 16 mm telephoto lens manufactured by CGL Electronics Co. Ltd. These lenses should be available from your nearest https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/[Authorised Reseller].
 
 [cols="1,1,1,1"]
 |===
-2+| | 16mm telephoto | 6mm wide angle
+2+| | 16 mm telephoto | 6 mm wide angle
 
-2+| Resolution | 10MP | 3MP
+2+| Resolution | 10 MP | 3 MP
 2+| Image format | 1" | 1/2"
 2+| Aperture | F1.4 to F16 | F1.2
 2+| Mount | C | CS
 .2+| Field of View H°×V° (D°)
 | HQ | 22.2°×16.7° (27.8°)| 55°×45° (71°)
 | GS| 17.8°×13.4° (22.3) | 45°×34° (56°)
-2+| Back focal length | 17.53mm | 7.53mm
+2+| Back focal length | 17.53 mm | 7.53 mm
 2+| M.O.D. | 0.2m | 0.2m
-2+| Dimensions | φ39.00×50.00mm |	φ30×34mm
+2+| Dimensions | φ39×50 mm |	φ30×34 mm
 |===
 
 === M12 Lenses
@@ -32,9 +33,9 @@ We recommend three lenses manufactured by https://www.gaojiaoptotech.com/[Gaojia
 
 [cols="1,1,1,1,1"]
 |===
-2+| | 8mm | 25mm | Fish Eye
+2+| | 8 mm | 25 mm | Fish Eye
 
-2+| Resolution | 12MP | 5MP | 15MP
+2+| Resolution | 12 MP | 5 MP | 15 MP
 2+| Image format | 1/1.7" | 1/2" | 1/2.3"
 2+| Aperture | F1.8 | F2.4 | F2.5
 2+| Mount 3+| M12

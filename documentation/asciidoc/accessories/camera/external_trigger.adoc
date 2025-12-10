@@ -1,6 +1,7 @@
-== External Trigger on the GS Camera
+[[external-trigger]]
+== External Trigger on the Global Shutter Camera
 
-The Global Shutter (GS) camera can be triggered externally by pulsing the external trigger (denoted on the board as XTR) connection on the board. Multiple cameras can be connected to the same pulse, allowing for an alternative way to synchronise two cameras.
+The Global Shutter (GS) camera can be triggered externally by pulsing the external trigger connection on the board (denoted on the board as XTR). Multiple cameras can be connected to the same pulse, allowing for an alternative way to synchronise two cameras.
 
 The exposure time is equal to the low pulse-width time plus an additional 14.26us. i.e. a low pulse of 10000us leads to an exposure time of 10014.26us. Framerate is directly controlled by how often you pulse the pin. A PWM frequency of 30Hz will lead to a framerate of 30 frames per second.
 
