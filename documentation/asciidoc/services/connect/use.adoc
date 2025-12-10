@@ -35,8 +35,20 @@ Complete sign in by visiting https://connect.raspberrypi.com/verify/XXXX-XXXX
 ----
 +
 To link your device with your Connect account, visit the verification URL on any device and sign in with your Raspberry Pi ID.
+
+Using an Auth Key::
 +
-Alternatively, you can create an auth key by selecting **Settings** from a personal or organisation's Connect account, and provide this to the command to sign in automatically:
+An auth key is a single-use, temporary token that lets you link a device to a Connect account automatically (without using the web interface).
++
+The easiest way of creating and using an auth key is by using the xref:../computers/getting-started.adoc#raspberry-pi-imager[customisation options in Imager]. You can also manually create an auth key from the **Settings** page of a personal or organisation's Connect account, and organisation administrators can create auth keys using the xref:connect.adoc#organisations-management-api[management API].
++
+NOTE: Personal accounts can only have one auth key active at a time; organisations can have multiple auth keys active at once. You need a unique auth key for each device.
++
+TIP: The Raspberry Pi Connect website displays how long after its creation the auth key expires. To use the auth key, ensure that you boot your Raspberry Pi and connect it to the internet before the expiry time.
++
+After creating an auth key, you can provide this to your device using the `rpi-connect signin` command, or by writing the auth key to a file in your home directory.
++
+To provide your auth key as a string, run the following command:
 +
 [source,console]
 ----
@@ -50,7 +62,7 @@ If you have saved your auth key to a file, you can pass its full path to the com
 $ rpi-connect signin --auth-key=@/home/alice/auth.key
 ----
 +
-Connect automatically detects an auth key saved to `+.config/com.raspberrypi.connect/auth.key+` in your home directory and attempts to sign in with it.
+If you save your auth key to `+.config/com.raspberrypi.connect/auth.key+` in your home directory, Connect detects it automatically.
 
 ======
 
