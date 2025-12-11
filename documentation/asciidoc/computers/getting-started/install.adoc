@@ -78,8 +78,6 @@ You can preconfigure:
 * Wi-Fi credentials
 * Remote connectivity
 * Raspberry Pi Connect
-* Hardware interfaces for peripherals
-* Raspberry Pi USB Gadget mode
 
 If you've already completed the customisation steps previously with Imager, the values you chose are pre-filled in the following steps.
 
