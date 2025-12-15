@@ -26,8 +26,8 @@ The display has the following key features:
  ** Left - 70
  ** Right - 70
 * Power requirements: 200mA at 5V typical, at maximum brightness.
-* Outer dimensions: 192.96 × 110.76mm
-* Viewable area: 154.08 × 85.92mm
+* Outer dimensions: 192.96 × 110.76 mm
+* Viewable area: 154.08 × 85.92 mm
 
 
 === Mount the Touch Display
@@ -67,7 +67,7 @@ NOTE: To identify an original Raspberry Pi, check the GPIO header connector. Onl
 
 ==== Power from a micro USB supply
 
-If you don't want to use a Raspberry Pi to provide power to the Touch Display, you can use a micro USB power supply instead. We recommend using the https://www.raspberrypi.com/products/micro-usb-power-supply/[Raspberry Pi 12.5W power supply] to make sure the display runs as intended.
+If you don't want to use a Raspberry Pi to provide power to the Touch Display, you can use a micro USB power supply instead. We recommend using the https://www.raspberrypi.com/products/micro-usb-power-supply/[Raspberry Pi 12.5 W power supply] to make sure the display runs as intended.
 
 Do not connect the GPIO pins on your Raspberry Pi to the display if you choose to use micro USB for power. The only connection between the two boards should be the Flat Flexible Cable.
 

@@ -2,7 +2,7 @@
 
 === Create a toy chatter box
 
-As an example of what Raspberry Pi Audio Boards can do, let's walk through the creation of a toy chatter box. Its on-board microphone, programmable button and speaker driver make the Codec Zero an ideal choice for this application. 
+As an example of what Raspberry Pi Audio Boards can do, let's walk through the creation of a toy chatter box. Its on-board microphone, programmable button and speaker driver make the Codec Zero an ideal choice for this application.
 
 image::images/Chatter_Box.jpg[width="80%"]
 
@@ -10,11 +10,11 @@ A random pre-recorded five-second audio clip will be played when the button is p
 
 === Hardware and wiring
 
-For this project, any small passive speaker should be sufficient. We're using one available https://shop.pimoroni.com/products/3-speaker-4-3w?variant=380549926[here], which handles 5W of power at 4Ω. We have also used an illuminated momentary push button, and a laser-cut box to house all the components; but both are entirely optional. This example will work just using the Codec Zero's on-board button, which is pre-wired to GPIO 27. (Alternatively, you can use any momentary push button, such as those available https://shop.pimoroni.com/products/mini-arcade-buttons?variant=40377171274[here].)
+For this project, any small passive speaker should be sufficient. We're using one available https://shop.pimoroni.com/products/3-speaker-4-3w?variant=380549926[here], which handles 5 W of power at 4 Ω. We have also used an illuminated momentary push button, and a laser-cut box to house all the components; but both are entirely optional. This example will work just using the Codec Zero's on-board button, which is pre-wired to GPIO 27. (Alternatively, you can use any momentary push button, such as those available https://shop.pimoroni.com/products/mini-arcade-buttons?variant=40377171274[here].)
 
 image::images/Chatterbox_Labels.png[width="80%"]
 
-Use a small flat-head screwdriver to attach your speaker to the screw terminals. For the additional push button, solder the button wires directly to the Codec Zero pads as indicated, using GPIO pin 27 and Ground for the switch, and +3.3V and Ground for the LED, if necessary. 
+Use a small flat-head screwdriver to attach your speaker to the screw terminals. For the additional push button, solder the button wires directly to the Codec Zero pads as indicated, using GPIO pin 27 and Ground for the switch, and +3.3V and Ground for the LED, if necessary.
 
 === Set up your Raspberry Pi
 
@@ -48,18 +48,18 @@ from datetime import datetime
 date = datetime.now().strftime("%d_%m_%Y-%H:%M:%S")
 print(f"{date}")
 
-# Make sure that the 'sounds' folder exists, and if it does not, create it 
+# Make sure that the 'sounds' folder exists, and if it does not, create it
 
 path = '/home/<username>/sounds'
 
 isExist = os.path.exists(path)
 
-if not isExist: 
+if not isExist:
   os.makedirs(path)
   print("The new directory is created!")
   os.system('chmod 777 -R /home/<username>/sounds')
 
-# Download a 'burp' sound if it does not already exist 
+# Download a 'burp' sound if it does not already exist
 
 burp = '/home/<username>/burp.wav'
 
@@ -90,7 +90,7 @@ def released():
         os.system('aplay ' + burp)
         print("Erasing all recorded sounds")
         os.system('rm /home/<username>/sounds/*');
-		
+
 def held():
     print("This is a long press")
     os.system('aplay ' + burp)
@@ -134,6 +134,6 @@ video::BjXERzu8nS0[youtube,width=80%,height=400px]
 
 === Next steps
 
-Upgrades! It is always fun to upgrade a project, so why not add some additional features, such as an LED that will illuminate when recording? This project has all the parts required to make your own version of a https://aiyprojects.withgoogle.com/[Google intelligent speaker system], or you may want to consider building a second device that can be used to create a pair of walkie-talkies that are capable of transferring audio files over a network via SSH. 
+Upgrades! It is always fun to upgrade a project, so why not add some additional features, such as an LED that will illuminate when recording? This project has all the parts required to make your own version of a https://aiyprojects.withgoogle.com/[Google intelligent speaker system], or you may want to consider building a second device that can be used to create a pair of walkie-talkies that are capable of transferring audio files over a network via SSH.
 
 

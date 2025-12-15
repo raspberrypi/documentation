@@ -10,11 +10,11 @@ During the programming process you will need to connect the two pads shown in th
 
 image::images/write_protect_tabs.jpg[width="80%"]
 
-NOTE: In some cases the two pads may already have a 0Ω resistor fitted to bridge the write-protect link, as illustrated in the picture of the Codec Zero board above.
+NOTE: In some cases the two pads may already have a 0 Ω resistor fitted to bridge the write-protect link, as illustrated in the picture of the Codec Zero board above.
 
 === Program the EEPROM
 
-Once the write-protect line has been pulled down, the EEPROM can be programmed. 
+Once the write-protect line has been pulled down, the EEPROM can be programmed.
 
 You should first install the utilities and then run the programmer. Open up a terminal window and type the following:
 

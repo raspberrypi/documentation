@@ -25,7 +25,7 @@ As with all computers, the USB ports on the Raspberry Pi supply a limited amount
 
 The Raspberry Pi 5 requires a good quality USB-C power supply capable of delivering 3A at +5V (15W) in order to boot. However, using such a supply will restrict current draw to peripherals. If you are using a power supply that cannot provide 5A at +5V on first boot you will be warned by the operating system that the current draw to peripherals will be restricted to 600mA.
 
-For users who wish to drive high-power peripherals like hard drives and SSDs, while retaining margin for peak workloads, a USB-PD enabled power supply capable of supplying a 5A at +5V (25W) should be used. If the Raspberry Pi 5 firmware detects such a supply, it increases the USB current limit for peripherals to 1.6A, providing 5W of extra power for downstream USB devices, and 5W of extra onboard power budget.
+For users who wish to drive high-power peripherals like hard drives and SSDs, while retaining margin for peak workloads, a USB-PD enabled power supply capable of supplying a 5A at +5V (25W) should be used. If the Raspberry Pi 5 firmware detects such a supply, it increases the USB current limit for peripherals to 1.6A, providing 5 W of extra power for downstream USB devices, and 5 W of extra onboard power budget.
 
 NOTE: The power budget is shared between the USB ports and the fan header.
 
@@ -63,7 +63,7 @@ Old webcams may be full-speed devices. Because these devices transfer a lot of d
 
 ==== Esoteric USB sound cards
 
-Expensive audiophile sound cards typically use large amounts of USB bandwidth. Reliable operation with 96kHz/192kHz DACs is not guaranteed. As a workaround, forcing the output stream to be CD quality (44.1kHz/48kHz 16-bit) will reduce the stream bandwidth to reliable levels.
+Expensive audiophile sound cards typically use large amounts of USB bandwidth. Reliable operation with 96 kHz/192 kHz DACs is not guaranteed. As a workaround, forcing the output stream to be CD quality (44.1 kHz/48 kHz 16-bit) will reduce the stream bandwidth to reliable levels.
 
 ==== Single TT USB hubs
 

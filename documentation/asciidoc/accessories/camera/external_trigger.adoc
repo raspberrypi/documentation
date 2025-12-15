@@ -18,7 +18,7 @@ image::images/resistor.jpg[alt="Image showing resistor to be removed",width="80%
 
 Next, solder a wire to the touchpoints of XTR and GND on the GS Camera board. Note that XTR is a 1.8V input, so you may need a level shifter or potential divider.
 
-We can use a Raspberry Pi Pico to provide the trigger. Connect any Pico GPIO pin (GP28 is used in this example) to XTR via a 1.5kΩ resistor. Also connect a 1.8kΩ resistor between XTR and GND to reduce the high logic level to 1.8V. A wiring diagram is shown below.
+We can use a Raspberry Pi Pico to provide the trigger. Connect any Pico GPIO pin (GP28 is used in this example) to XTR via a 1.5 kΩ resistor. Also connect a 1.8 kΩ resistor between XTR and GND to reduce the high logic level to 1.8V. A wiring diagram is shown below.
 
 image::images/pico_wiring.jpg[alt="Image showing Raspberry Pi Pico wiring",width="50%"]
 

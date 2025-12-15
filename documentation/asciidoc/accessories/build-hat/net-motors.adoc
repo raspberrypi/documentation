@@ -27,7 +27,7 @@ Functions to control `Start`, `Stop` and `SetSpeed` are also available. Here is 
 
 [source,csharp]
 ----
-Console.WriteLine("This will run the motor for 20 secondes incrementing the PWM");
+Console.WriteLine("This will run the motor for 20 seconds incrementing the PWM");
 train.SetPowerLimit(1.0);
 train.Start();
 for (int i = 0; i < 100; i++)

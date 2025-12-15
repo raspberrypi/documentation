@@ -8,7 +8,7 @@ Both the High Quality Camera and Global Shutter Camera contain an IR filter to r
 
 === Filter Removal
 
-WARNING: *This procedure cannot be reversed:* the adhesive that attaches the filter will not survive being lifted and replaced, and while the IR filter is about 1.1mm thick, it may crack when it is removed. *Removing it will void the warranty on the product*.
+WARNING: *This procedure cannot be reversed:* the adhesive that attaches the filter will not survive being lifted and replaced, and while the IR filter is about 1.1 mm thick, it may crack when it is removed. *Removing it will void the warranty on the product*.
 
 You can remove the filter from both the HQ and GS cameras. The HQ camera is shown in the demonstration below.
 

@@ -51,7 +51,7 @@ Text-based housekeeping information containing the date and git commit ID of the
 
 Contents of the initial ramdisk. This loads a temporary root file system into memory before the real root file system can be mounted.
 
-Since Bookworm, Raspberry Pi OS includes an `initramfs` file by default. To enable the initial ramdisk, configure it in xref:config_txt.adoc[`config.txt`] with the xref:config_txt.adoc#auto_initramfs[`auto_initramfs`] keyword.
+Since _Bookworm_, Raspberry Pi OS includes an `initramfs` file by default. To enable the initial ramdisk, configure it in xref:config_txt.adoc[`config.txt`] with the xref:config_txt.adoc#auto_initramfs[`auto_initramfs`] keyword.
 
 === `ssh` or `ssh.txt`
 

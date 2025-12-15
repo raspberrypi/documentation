@@ -10,7 +10,7 @@ To remotely control your Raspberry Pi from another device on your local network,
 * xref:remote-access.adoc#vnc[VNC]
 * xref:remote-access.adoc#raspberry-pi-connect[Raspberry Pi Connect]
 
-SSH (**S**ecure **SH**ell) provides secure access to a terminal session on your Raspberry Pi. VNC (**V**irtual **N**etwork **C**omputing) provides secure access to a desktop screen share on your Raspberry Pi. All you need is another computer, a local network, and the local https://en.wikipedia.org/wiki/IP_address[IP address] of your Raspberry Pi. Raspberry Pi Connect shares your Raspberry Pi's screen securely with no need to determine your local IP address.
+SSH (Secure Shell) provides secure access to a terminal session on your Raspberry Pi. VNC (Virtual Network Computing) provides secure access to a desktop screen share on your Raspberry Pi. All you need is another computer, a local network, and the local https://en.wikipedia.org/wiki/IP_address[IP address] of your Raspberry Pi. Raspberry Pi Connect shares your Raspberry Pi's screen securely with no need to determine your local IP address.
 
 === Share files between devices over the local network
 

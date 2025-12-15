@@ -159,7 +159,7 @@ $ vcgencmd get_config total_mem
 
 ==== `get_mem type`
 
-Reports on the amount of memory addressable by the Arm and the GPU. To show the amount of Arm-addressable memory, use `vcgencmd get_mem arm`; to show the amount of GPU-addressable memory, use `vcgencmd get_mem gpu`. On devices with more than 1GB of memory, the `arm` parameter will always return 1GB minus the `gpu` memory value, since the GPU firmware is only aware of the first 1GB of memory. To get an accurate report of the total memory on the device, see the `total_mem` configuration item and the <<getconfig,`get_config`>> section above.
+Reports on the amount of memory addressable by the Arm and the GPU. To show the amount of Arm-addressable memory, use `vcgencmd get_mem arm`; to show the amount of GPU-addressable memory, use `vcgencmd get_mem gpu`. On devices with more than 1 GB of memory, the `arm` parameter will always return 1 GB minus the `gpu` memory value, since the GPU firmware is only aware of the first 1 GB of memory. To get an accurate report of the total memory on the device, see the `total_mem` configuration item and the <<getconfig,`get_config`>> section above.
 
 ===== `codec_enabled [type]`
 

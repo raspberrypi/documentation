@@ -901,7 +901,7 @@ Raspberry Pi 5 only.
 | Watchdog
 |===
 
-`rpi_power_supply`:: _(two 32-bit integers)_ The USB VID and Product VDO of the official Raspberry Pi 27W power supply (if connected).
+`rpi_power_supply`:: _(two 32-bit integers)_ The USB VID and Product VDO of the official Raspberry Pi 27 W power supply (if connected).
 
 `usb_max_current_enable`:: Zero if the USB port current limiter was set to the low-limit during boot; or non-zero if the high limit was enabled. The high level is automatically enabled if the power supply claims 5A max-current OR `usb_max_current_enable=1` is forced in `config.txt`
 

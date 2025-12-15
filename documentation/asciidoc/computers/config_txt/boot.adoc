@@ -97,7 +97,7 @@ If `disable_splash` is set to `1`, the rainbow splash screen will not be shown o
 
 === `force_eeprom_read`
 
-Set this option to `0` to prevent the firmware from trying to read an I2C HAT EEPROM (connected to pins ID_SD & ID_SC) at powerup. See also xref:config_txt.adoc#disable_poe_fan[`disable_poe_fan`].
+Set this option to `0` to prevent the firmware from trying to read an I2C HAT EEPROM (connected to pins ID_SD & ID_SC) at power up. See also xref:config_txt.adoc#disable_poe_fan[`disable_poe_fan`].
 
 [[os_prefix]]
 === `os_prefix`
@@ -141,7 +141,7 @@ If this property is set to `1` then the bootloader will attempt load a ramdisk f
 
 The primary purpose of `boot_ramdisk` is to support `secure-boot`, however, unsigned `boot.img` files can also be useful to Network Boot or `RPIBOOT` configurations.
 
-* The maximum size for a ramdisk file is 96MB.
+* The maximum size for a ramdisk file is 96 MB.
 * `boot.img` files are raw disk `.img` files. The recommended format is a plain FAT32 partition with no MBR.
 * The memory for the ramdisk filesystem is released before the operating system is started.
 * If xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] is selected then the bootloader will search for `tryboot.img` instead of `boot.img`.
@@ -230,7 +230,7 @@ This property sets the `systemd` `watchdog.open_timeout` parameter, which contro
 
 [NOTE]
 ====
-On Raspberry Pi OS Bookworm and earlier, the `RuntimeWatchdogSec` parameter is **not enabled by default** and this setting must be configured first in `/etc/systemd/system.conf` before the firmware kernel watchdog can be used.
+On Raspberry Pi OS _Bookworm_ and earlier, the `RuntimeWatchdogSec` parameter is **not enabled by default** and this setting must be configured first in `/etc/systemd/system.conf` before the firmware kernel watchdog can be used.
 
 If both `BOOT_WATCHDOG_TIMEOUT` (EEPROM/bootloader setting, only supported on Raspberry Pi 4 and 5) and `kernel_watchdog_timeout` are set, the bootloader will seamlessly hand over from the bootloader watchdog to the kernel watchdog at the point the OS is started. This provides continuous watchdog coverage from power-on through to OS runtime.
 

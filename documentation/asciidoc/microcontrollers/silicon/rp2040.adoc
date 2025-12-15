@@ -37,9 +37,9 @@ power
 
 Key features:
 
-* Dual Arm Cortex-M0+ @ 133MHz
-* 264kB on-chip SRAM in six independent banks
-* Support for up to 16MB of off-chip Flash memory via dedicated QSPI bus
+* Dual Arm Cortex-M0+ @ 133 MHz
+* 264 kB on-chip SRAM in six independent banks
+* Support for up to 16 MB of off-chip Flash memory via dedicated QSPI bus
 * DMA controller
 * Fully-connected AHB crossbar
 * Interpolator and integer divider peripherals

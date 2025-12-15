@@ -9,7 +9,7 @@ NOTE: The Raspberry Pi Zero camera cable can't be used as an alternative to the 
 To connect a display to `DISP1/DSI1`:
 
 . Disconnect the Compute Module from power.
-. Connect the display to the `DISP1/DSI1` port on the Compute Module IO board through the 22W to 15W display adapter.
+. Connect the display to the `DISP1/DSI1` port on the Compute Module IO board through the 22 W to 15 W display adapter.
 . Complete the appropriate jumper connections:
   - For *CM1*, *CM3*, *CM3+*, and *CM4S*, connect the following GPIO pins with jumper cables:
     * `0` to `CD1_SDA`
@@ -23,7 +23,7 @@ To connect a display to `DISP1/DSI1`:
 
 To connect a display to `DISP0/DSI0` on CM1, CM3, and CM4 IO boards:
 
-. Connect the display to the `DISP0/DSI0` port on the Compute Module IO board through the 22W to 15W display adapter.
+. Connect the display to the `DISP0/DSI0` port on the Compute Module IO board through the 22 W to 15 W display adapter.
 . Complete the appropriate jumper connections:
   - For *CM1*, *CM3*, *CM3+*, and *CM4S*, connect the following GPIO pins with jumper cables:
     * `28` to `CD0_SDA`

@@ -4,7 +4,7 @@ Raspberry Pi OS is a free, Debian-based operating system optimised for the Raspb
 
 Because Raspberry Pi OS is derived from Debian, it follows a staggered version of the https://wiki.debian.org/DebianReleases[Debian release cycle]. Releases happen roughly every 2 years.
 
-The latest version of Raspberry Pi OS is based on https://www.raspberrypi.com/news/trixie-the-new-version-of-raspberry-pi-os/[Debian Trixie]. The previous version was based on https://www.raspberrypi.com/news/bookworm-the-new-version-of-raspberry-pi-os/[Debian Bookworm].
+The latest version of Raspberry Pi OS is based on https://www.raspberrypi.com/news/trixie-the-new-version-of-raspberry-pi-os/[Debian _Trixie_]. The previous version was based on https://www.raspberrypi.com/news/bookworm-the-new-version-of-raspberry-pi-os/[Debian _Bookworm_].
 
 == Get Raspberry Pi OS
 

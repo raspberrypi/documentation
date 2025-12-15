@@ -12,7 +12,7 @@ For this guide, you will need the following:
 *** an M.2 HAT+
 *** a pre-installed Hailo-8L AI module
 ** a xref:../accessories/ai-hat-plus.adoc[Raspberry Pi AI HAT+]
-* a 64-bit Raspberry Pi OS Bookworm install
+* a 64-bit Raspberry Pi OS _Bookworm_ install
 * any official Raspberry Pi camera (e.g. Camera Module 3 or High Quality Camera)
 
 === Hardware setup

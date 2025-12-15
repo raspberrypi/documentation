@@ -28,7 +28,7 @@ Setting `hdmi_ignore_edid` to `0xa5000080` enables the ignoring of EDID/display 
 
 ==== `hdmi_edid_file`
 
-Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor. 
+Setting `hdmi_edid_file` to `1` will cause the GPU to read EDID data from the `edid.dat` file, located in the boot partition, instead of reading it from the monitor.
 
 ==== `hdmi_edid_filename`
 
@@ -1646,9 +1646,9 @@ Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is no
 
 ==== `disable_overscan`
 
-The default value for `disable_overscan` is `0` which gives default values of overscan for the left, right, top, and bottom edges of `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes. 
+The default value for `disable_overscan` is `0` which gives default values of overscan for the left, right, top, and bottom edges of `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes.
 
-Set `disable_overscan` to `1` to disable the default values of xref:configuration.adoc#underscan[overscan] that are set by the firmware. 
+Set `disable_overscan` to `1` to disable the default values of xref:configuration.adoc#underscan[overscan] that are set by the firmware.
 
 ==== `overscan_left`
 
@@ -1783,7 +1783,7 @@ Use `display_hdmi_rotate` to rotate or flip the HDMI display orientation. The de
 | vertical flip
 |===
 
-Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16MB GPU split.
+Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16 MB GPU split.
 
 You can combine the rotation settings with the flips by adding them together. You can also have both horizontal and vertical flips in the same way. E.g. A 180 degree rotation with a vertical and horizontal flip will be 0x20000 + 0x10000 + 2 = 0x30002.
 

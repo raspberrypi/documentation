@@ -11,13 +11,13 @@ You can even buy Raspberry Pi SD cards pre-programmed with the latest version of
 
 Raspberry Pi SD cards are available in the following sizes:
 
-* 32GB
-* 64GB
-* 128GB
+* 32 GB
+* 64 GB
+* 128 GB
 
 == Specifications
 
-.A 128GB Raspberry Pi SD Card
+.A 128 GB Raspberry Pi SD Card
 image::images/sd-cards.png[width="80%"]
 
 Raspberry Pi SD cards use the SD6.1 SD specification.
@@ -26,7 +26,7 @@ Raspberry Pi SD cards use the microSDHC/microSDXC form factor.
 
 Raspberry Pi SD cards have the following Speed Class ratings: C10, U3, V30, A2.
 
-The following table describes the read and write speeds of Raspberry Pi SD cards using 4KB of random data:
+The following table describes the read and write speeds of Raspberry Pi SD cards using 4 kB of random data:
 
 |===
 | Raspberry Pi Model | Interface | Read Speed | Write Speed

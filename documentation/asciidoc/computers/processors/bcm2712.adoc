@@ -2,20 +2,20 @@
 
 Broadcom BCM2712 is the 16nm application processor used in Raspberry Pi 5, 500, 500+, and Compute Module 5. It is the successor to the BCM2711 device used in Raspberry Pi 4, and shares many common architectural features with other devices in the BCM27xx family, used on earlier Raspberry Pi products.
 
-Built around a quad-core Arm Cortex-A76 CPU cluster, clocked at up to 2.4GHz, with 512KB per-core L2 caches and a 2MB shared L3 cache, it integrates an improved 12-core VideoCore VII GPU; a hardware video scaler and HDMI controller capable of driving dual 4Kp60 displays; and a Raspberry Pi-developed HEVC decoder and Image Signal Processor. A 32-bit LPDDR4X memory interface provides up to 17GB/s of memory bandwidth, while ×1 and ×4 PCI Express interfaces support high-bandwidth external peripherals; on Raspberry Pi 5 the latter is used to connect to the Raspberry Pi RP1 south bridge, which provides the bulk of the external-facing I/O functionality on the platform.
+Built around a quad-core Arm Cortex-A76 CPU cluster, clocked at up to 2.4 GHz, with 512 kB per-core L2 caches and a 2 MB shared L3 cache, it integrates an improved 12-core VideoCore VII GPU; a hardware video scaler and HDMI controller capable of driving dual 4Kp60 displays; and a Raspberry Pi-developed HEVC decoder and Image Signal Processor. A 32-bit LPDDR4X memory interface provides up to 17 GB/s of memory bandwidth, while ×1 and ×4 PCI Express interfaces support high-bandwidth external peripherals; on Raspberry Pi 5 the latter is used to connect to the Raspberry Pi RP1 south bridge, which provides the bulk of the external-facing I/O functionality on the platform.
 
 Headline features include:
 
-* Quad-core Arm Cortex-A76 @ 2.4GHz
+* Quad-core Arm Cortex-A76 @ 2.4 GHz
 ** Armv8-A ISA
-** 64KByte I and D caches
-** 512KB L2 per core, 2MB shared L3
+** 64 kByte I and D caches
+** 512 kB L2 per core, 2 MB shared L3
 * New Raspberry Pi-developed ISP
 ** 1 gigapixel/sec
 * Improved HVS and display pipeline
 ** Dual 4Kp60 support
 * VideoCore V3D VII
-** ~2-2.5× faster (more hardware, 960MHz versus 500MHz on Pi 4)
+** ~2-2.5× faster (more hardware, 960 MHz versus 500 MHz on Pi 4)
 ** OpenGL ES 3.1, Vulkan 1.3
 * 4Kp60 HEVC hardware decode
 ** Other CODECs run in software

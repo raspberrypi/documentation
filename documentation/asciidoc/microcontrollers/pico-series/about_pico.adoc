@@ -22,13 +22,13 @@ image::images/pico-2.png[width="75%"]
 Raspberry Pi Pico 2 is a low-cost, high-performance microcontroller board with flexible digital interfaces. Key features include:
 
 * xref:silicon.adoc#rp2350[RP2350] microcontroller chip designed by Raspberry Pi in the United Kingdom
-* Dual Cortex-M33 or Hazard3 processors at up to 150MHz
-* 520KB of SRAM, and 4MB of on-board flash memory
+* Dual Cortex-M33 or Hazard3 processors at up to 150 MHz
+* 520 kB of SRAM, and 4 MB of on-board flash memory
 * USB 1.1 with device and host support
 * Low-power sleep and dormant modes
 * Drag-and-drop programming using mass storage over USB
 * 26× multi-function GPIO pins including 3 that can be used for ADC
-* 2× SPI, 2× I2C, 2× UART, 3× 12-bit 500ksps Analogue to Digital Converter (ADC), 24× controllable PWM channels
+* 2× SPI, 2× I2C, 2× UART, 3× 12-bit 500 ksps Analogue to Digital Converter (ADC), 24× controllable PWM channels
 * 2× Timer with 4 alarms, 1× AON Timer
 * Temperature sensor
 * 3 × Programmable IO (PIO) blocks, 12 state machines total for custom peripheral support
@@ -52,7 +52,7 @@ NOTE: More information on Fritzing is available on the https://fritzing.org/[fri
 [[pico2w-technical-specification]]
 === Raspberry Pi Pico 2 W
 
-Raspberry Pi Pico 2 W adds on-board single-band 2.4GHz wireless interfaces (802.11n) using the Infineon CYW43439 to the Pico 2 hardware. The on-board 2.4GHz wireless interface has the following features:
+Raspberry Pi Pico 2 W adds on-board single-band 2.4 GHz wireless interfaces (802.11n) using the Infineon CYW43439 to the Pico 2 hardware. The on-board 2.4 GHz wireless interface has the following features:
 
 * Wireless (802.11n), single-band (2.4 GHz)
 * WPA3
@@ -66,7 +66,7 @@ SPI to the xref:silicon.adoc#rp2350[RP2350] microcontroller.
 
 Due to pin limitations, some of the wireless interface pins are shared. The CLK is shared with VSYS monitor, so only
 when there isn't an SPI transaction in progress can VSYS be read via the ADC. The Infineon CYW43439 DIN/DOUT and
-IRQ all share one pin on the RP2350. Only when an SPI transaction isn't in progress is it suitable to check for IRQs. The interface typically runs at 33MHz.
+IRQ all share one pin on the RP2350. Only when an SPI transaction isn't in progress is it suitable to check for IRQs. The interface typically runs at 33 MHz.
 
 For best wireless performance, position the antenna in free space. For instance, metal underneath or nearby the
 antenna can reduce performance both in terms of gain and bandwidth. Adding grounded metal to the sides of the
@@ -99,7 +99,7 @@ Raspberry Pi Pico is a low-cost, high-performance microcontroller board with fle
 
 * xref:silicon.adoc#rp2040[RP2040] microcontroller chip designed by Raspberry Pi in the United Kingdom
 * Dual-core Arm Cortex M0+ processor, flexible clock running up to 133 MHz
-* 264KB of SRAM, and 2MB of on-board flash memory
+* 264 kB of SRAM, and 2 MB of on-board flash memory
 * USB 1.1 with device and host support
 * Low-power sleep and dormant modes
 * Drag-and-drop programming using mass storage over USB
@@ -129,7 +129,7 @@ NOTE: More information on Fritzing is available on the https://fritzing.org/[fri
 [[picow-technical-specification]]
 === Raspberry Pi Pico W and Pico WH
 
-Raspberry Pi Pico W adds on-board single-band 2.4GHz wireless interfaces (802.11n) using the Infineon CYW43439 while retaining the Pico form factor. The on-board 2.4GHz wireless interface has the following features:
+Raspberry Pi Pico W adds on-board single-band 2.4 GHz wireless interfaces (802.11n) using the Infineon CYW43439 while retaining the Pico form factor. The on-board 2.4 GHz wireless interface has the following features:
 
 * Wireless (802.11n), single-band (2.4 GHz)
 * WPA3
@@ -144,7 +144,7 @@ SPI to the xref:silicon.adoc#rp2040[RP2040] microcontroller.
 Due to pin limitations, some of the wireless interface pins are shared. The CLK is shared with VSYS monitor, so only
 when there isn't an SPI transaction in progress can VSYS be read via the ADC. The Infineon CYW43439 DIN/DOUT and
 IRQ all share one pin on the RP2040. Only when an SPI transaction isn't in progress is it suitable to check for IRQs. The
-interface typically runs at 33MHz.
+interface typically runs at 33 MHz.
 
 For best wireless performance, the antenna should be in free space. For instance, putting metal under or close by the
 antenna can reduce its performance both in terms of gain and bandwidth. Adding grounded metal to the sides of the

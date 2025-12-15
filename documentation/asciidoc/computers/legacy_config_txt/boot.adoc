@@ -49,7 +49,7 @@ Set `kernel_old` to `1` to load the kernel to the memory address `0x0`.
 
 === `init_uart_clock`
 
-`init_uart_clock` is the initial UART clock frequency. The default value is `48000000` (48MHz). Note that this clock only applies to UART0 (ttyAMA0 in Linux), and that the maximum baudrate for the UART is limited to 1/16th of the clock. The default UART on the Raspberry Pi 3 and Raspberry Pi Zero is UART1 (ttyS0 in Linux), and its clock is the core VPU clock - at least 250MHz.
+`init_uart_clock` is the initial UART clock frequency. The default value is `48000000` (48 MHz). Note that this clock only applies to UART0 (ttyAMA0 in Linux), and that the maximum baudrate for the UART is limited to 1/16th of the clock. The default UART on the Raspberry Pi 3 and Raspberry Pi Zero is UART1 (ttyS0 in Linux), and its clock is the core VPU clock - at least 250 MHz.
 
 === `bootcode_delay`
 

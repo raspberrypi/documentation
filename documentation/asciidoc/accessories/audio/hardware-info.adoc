@@ -1,23 +1,23 @@
 == Hardware information
 
-Hardware information: 
+Hardware information:
 
 * PCB screws are all M2.5.
-* PCB standoffs (for case) are 5mm male/female.
-* PCB standoffs (for Raspberry Pi to audio boards) are 9mm female/female.
-* PCB standoffs (for XLR to DAC PRO) are 8mm female/male.
-* PCB standoffs (for the official Raspberry Pi 7-inch display) are 5mm male/female.
+* PCB standoffs (for case) are 5 mm male/female.
+* PCB standoffs (for Raspberry Pi to audio boards) are 9 mm female/female.
+* PCB standoffs (for XLR to DAC PRO) are 8 mm female/male.
+* PCB standoffs (for the official Raspberry Pi 7-inch display) are 5 mm male/female.
 * The rotary encoders we have used and tested are the Alpha three-pin rotary encoder
 RE160F-40E3-20A-24P, the ALPS EC12E2430804 (RS: 729-5848), and the Bourns ECW0JB24-AC0006L (RS: 263-2839).
-* The barrel connector used for powering the DigiAMP{plus} is 2.5mmID, 5.5mmOD, 11mm.
+* The barrel connector used for powering the DigiAMP{plus} is 2.5 mm ID, 5.5 mm OD, 11 mm.
 * The DigiAMP{plus} is designed to operate with a 12V to 24V, 3A supply such as the XPPower
 VEC65US19 or similar.
-* The DigiAMP{plus} uses CamdenBoss two-part connectors. Those fitted to the PCB are 
+* The DigiAMP{plus} uses CamdenBoss two-part connectors. Those fitted to the PCB are
 CTBP9350/2AO.
 * The speaker terminal used on the Codec Zero will accept wires of between 14~26 AWG
-(wire of max 1.6mm in diameter).
+(wire of max 1.6 mm in diameter).
 
-=== GPIO usage 
+=== GPIO usage
 
 Raspberry Pi audio boards take advantage of a number of pins on the GPIO header in
 order to operate successfully. Some of these pins are solely for the use of the board, and

@@ -1,5 +1,5 @@
 [[contribute]]
-== Become a contributor (Raspberry Pi OS Trixie and later)
+== Become a contributor (Raspberry Pi OS _Trixie_ and later)
 
 Contributor-only titles are available to users who are signed in to Bookshelf with a xref:../services/id.adoc[Raspberry Pi ID] that's associated with one of the following things:
 

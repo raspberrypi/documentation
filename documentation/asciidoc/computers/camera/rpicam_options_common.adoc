@@ -330,7 +330,7 @@ For many use cases, prefer xref:camera_software.adoc#ev[`ev`].
 
 Specifies the image colour saturation. Accepts a numeric value along the following spectrum:
 
-* `0.0` applies minimum saturation (grayscale)
+* `0.0` applies minimum saturation (gray scale)
 * values greater than `0.0`, but less than `1.0` apply less than the default amount of saturation
 * `1.0` applies the default amount of saturation
 * values greater than `1.0` apply extra saturation

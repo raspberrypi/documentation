@@ -1,6 +1,6 @@
 == Unicam
 
-Raspberry Pi SoCs all have two camera interfaces that support either CSI-2 D-PHY 1.1 or Compact Camera Port 2 (CCP2) sources. This interface is known by the codename Unicam. The first instance of Unicam supports two CSI-2 data lanes, while the second supports four. Each lane can run at up to 1Gbit/s (DDR, so the max link frequency is 500MHz).
+Raspberry Pi SoCs all have two camera interfaces that support either CSI-2 D-PHY 1.1 or Compact Camera Port 2 (CCP2) sources. This interface is known by the codename Unicam. The first instance of Unicam supports two CSI-2 data lanes, while the second supports four. Each lane can run at up to 1Gbit/s (DDR, so the max link frequency is 500 MHz).
 
 Compute Modules and Raspberry Pi 5 route out all lanes from both peripherals. Other models prior to Raspberry Pi 5 only expose the second instance, routing out only two of the data lanes to the camera connector.
 
@@ -39,23 +39,23 @@ Mainline Linux contains a range of existing drivers. The Raspberry Pi kernel tre
 | Device | Type | Notes
 
 | Omnivision OV5647
-| 5MP Camera
+| 5 MP Camera
 | Original Raspberry Pi Camera
 
 | Sony IMX219
-| 8MP Camera
+| 8 MP Camera
 | Revision 2 Raspberry Pi camera
 
 | Sony IMX477
-| 12MP Camera
+| 12 MP Camera
 | Raspberry Pi HQ camera
 
 | Sony IMX708
-| 12MP Camera
+| 12 MP Camera
 | Raspberry Pi Camera Module 3
 
 | Sony IMX296
-| 1.6MP Camera
+| 1.6 MP Camera
 | Raspberry Pi Global Shutter Camera Module
 
 | Toshiba TC358743
@@ -104,7 +104,7 @@ Further guidance can be found in the `libcamera` https://git.linuxtv.org/libcame
 
 ===== Device Tree
 
-Device Tree is used to select the sensor driver and configure parameters such as number of CSI-2 lanes, continuous clock lane operation, and link frequency (often only one is supported). 
+Device Tree is used to select the sensor driver and configure parameters such as number of CSI-2 lanes, continuous clock lane operation, and link frequency (often only one is supported).
 
 The IMX219 https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/imx219-overlay.dts[Device Tree overlay] for the 6.1 kernel is available on GitHub.
 
@@ -146,7 +146,7 @@ Receiving interlaced video is not supported, therefore the ADV7281(A)-M version 
 
 There are no known commercially available boards using these chips, but this driver has been tested via the Analog Devices https://www.analog.com/en/design-center/evaluation-hardware-and-software/evaluation-boards-kits/EVAL-ADV7282A-M.html[EVAL-ADV7282-M evaluation board].
 
-This driver can be loaded using the `config.txt` dtoverlay `adv7282m` if you are using the `ADV7282-M` chip variant; or `adv728x-m` with a parameter of either `adv7280m=1`, `adv7281m=1`, or `adv7281ma=1` if you are using a different variant. 
+This driver can be loaded using the `config.txt` dtoverlay `adv7282m` if you are using the `ADV7282-M` chip variant; or `adv728x-m` with a parameter of either `adv7280m=1`, `adv7281m=1`, or `adv7281ma=1` if you are using a different variant.
 
 ----
 dtoverlay=adv728x-m,adv7280m=1

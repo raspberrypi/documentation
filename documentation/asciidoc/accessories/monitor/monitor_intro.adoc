@@ -48,7 +48,7 @@ Use the following approaches to position the Monitor:
 * Mount the Monitor on an arm or stand using the four VESA mount holes on the back of the red rear plastic housing.
 +
 IMPORTANT: Use spacers to ensure adequate space for display and power cable egress.
-* Flip the integrated stand fully upwards, towards the top of the monitor. Use the drill hole template to create two mounting points spaced 55mm apart. Hang the Monitor using the slots on the back of the integrated stand.
+* Flip the integrated stand fully upwards, towards the top of the monitor. Use the drill hole template to create two mounting points spaced 55 mm apart. Hang the Monitor using the slots on the back of the integrated stand.
 +
 .Drill hole template
 image::images/drill-hole-template.png[Drill hole template, width="40%"]
@@ -88,9 +88,9 @@ Brightness: 250cd/m^2^
 
 Screen coating: Anti-glare 3H hardness
 
-Display area: 344 × 193mm
+Display area: 344 × 193 mm
 
-Dimensions: 237 × 360 × 20mm
+Dimensions: 237 × 360 × 20 mm
 
 Weight: 850g
 
@@ -106,11 +106,11 @@ Input: HDMI 1.4; supports DDC-CI
 
 Power input: USB-C; requires 1.5A over USB-PD at 5V for full brightness and volume range
 
-Power consumption: 4.5-6.5W during use; < 0.1W at idle
+Power consumption: 4.5-6.5 W during use; < 0.1 W at idle
 
-Speakers: 2 × 1.2W (stereo)
+Speakers: 2 × 1.2 W (stereo)
 
-Ports: 3.5mm audio jack
+Ports: 3.5 mm audio jack
 
 
 === Mechanical drawing
