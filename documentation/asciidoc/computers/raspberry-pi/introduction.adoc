@@ -77,7 +77,7 @@ a|
 * USB 2.0
 * standard 15-pin, 1.0 mm pitch, 16 mm width, CSI (camera) port
 * standard 15-pin, 1.0 mm pitch, 16 mm width, DSI (display) port
-* 3.5mm AV jack
+* 3.5 mm AV jack
 * microSD card slot
 * micro-USB power
 ^.^a|

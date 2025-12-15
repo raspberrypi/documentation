@@ -14,8 +14,8 @@ image::images/rp2350_explanation.svg[width=640]
 
 . Number of processor cores (2)
 . Loosely which type of processor (M33)
-. floor(log2(RAM / 16KB))
-. floor(log2(nonvolatile / 128KB)) or 0 if no onboard nonvolatile storage
+. floor(log2(RAM / 16 kB))
+. floor(log2(nonvolatile / 128 kB)) or 0 if no onboard nonvolatile storage
 
 === Technical Specification
 
@@ -29,9 +29,9 @@ RP2350 is manufactured on a modern 40nm process node, delivering high performanc
 
 Key features include:
 
-* Dual Cortex-M33 or Hazard3 processors at up to 150MHz
-* 520KB multi-bank high performance SRAM
-* Support for up to 16MB of off-chip Flash memory via dedicated QSPI bus
+* Dual Cortex-M33 or Hazard3 processors at up to 150 MHz
+* 520 kB multi-bank high performance SRAM
+* Support for up to 16 MB of off-chip Flash memory via dedicated QSPI bus
 * DMA controller
 * Fully-connected AHB crossbar
 * On-chip programmable LDO to generate core voltage
@@ -50,7 +50,7 @@ Key features include:
 RP2350 has a comprehensive security architecture, built around Arm TrustZone for Cortex-M, including the following features:
 
 * Signed boot support
-* 8KB of on-chip antifuse one-time-programmable (OTP) memory
+* 8 kB of on-chip antifuse one-time-programmable (OTP) memory
 * SHA-256 acceleration
 * A hardware true random number generator (TRNG)
 

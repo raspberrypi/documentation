@@ -16,7 +16,7 @@ By default, `rpicam-raw` outputs raw frames in a single, potentially very large,
 $ rpicam-raw -t 2000 --segment 1 -o test%05d.raw
 ----
 
-With a fast storage device, `rpicam-raw` can write 18MB 12-megapixel HQ camera frames to disk at 10fps. `rpicam-raw` has no capability to format output frames as DNG files; for that functionality, use xref:camera_software.adoc#rpicam-still[`rpicam-still`]. Use the xref:camera_software.adoc#framerate[`framerate`] option at a level beneath 10 to avoid dropping frames:
+With a fast storage device, `rpicam-raw` can write 18 MB 12-megapixel HQ camera frames to disk at 10fps. `rpicam-raw` has no capability to format output frames as DNG files; for that functionality, use xref:camera_software.adoc#rpicam-still[`rpicam-still`]. Use the xref:camera_software.adoc#framerate[`framerate`] option at a level beneath 10 to avoid dropping frames:
 
 [source,console]
 ----

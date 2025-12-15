@@ -227,7 +227,7 @@ NOTE: To use Wayland on Raspberry Pi models prior to Raspberry Pi 4 running a ve
 
 ==== Audio config
 
-Switch between the PulseAudio and PipeWire audio backends. Prior to Raspberry Pi OS Bookworm, Raspberry Pi OS used PulseAudio.
+Switch between the PulseAudio and PipeWire audio backends. Prior to Raspberry Pi OS _Bookworm_, Raspberry Pi OS used PulseAudio.
 
 [[update]]
 === Update
@@ -793,7 +793,7 @@ $ sudo raspi-config nonint do_wayland <W1/W2>
 
 ==== Audio config
 
-Use this option to switch between the PulseAudio and PipeWire audio backends. Prior to Raspberry Pi OS Bookworm, Raspberry Pi OS used PulseAudio.
+Use this option to switch between the PulseAudio and PipeWire audio backends. Prior to Raspberry Pi OS _Bookworm_, Raspberry Pi OS used PulseAudio.
 
 [source,console]
 ----

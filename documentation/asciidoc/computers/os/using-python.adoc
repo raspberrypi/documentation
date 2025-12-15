@@ -26,7 +26,7 @@ To find Python packages distributed with `apt`, xref:os.adoc#search-for-software
 
 [[python-on-raspberry-pi]]
 
-==== Bookworm changes to `pip` installation
+==== _Bookworm_ changes to `pip` installation
 
 In older versions of Raspberry Pi OS, you could install libraries directly into the system version of Python using `pip`. Since Raspberry Pi OS _Bookworm_, users cannot install libraries directly into the system version of Python.
 

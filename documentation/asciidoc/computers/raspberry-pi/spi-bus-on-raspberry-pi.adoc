@@ -198,7 +198,7 @@ a| SPI function | Header pin a| Broadcom pin name a| Broadcom pin function
 | GPIO07
 | SPI4_SCLK
 
-| CE0 
+| CE0
 | 07
 | GPIO04
 | SPI4_CE0_N
@@ -291,7 +291,7 @@ In Standard SPI mode the peripheral implements the standard three-wire serial pr
 
 In bidirectional SPI mode the same SPI standard is implemented, except that a single wire is used for data (MOMI) instead of the two used in standard mode (MISO and MOSI). In this mode, the MOSI pin serves as MOMI pin.
 
-===== Low speed serial interface (LoSSI) mode 
+===== Low speed serial interface (LoSSI) mode
 
 The LoSSI standard allows issuing of commands to peripherals (LCD) and to transfer data to and from them. LoSSI commands and parameters are 8 bits long, but an extra bit is used to indicate whether the byte is a command or parameter/data. This extra bit is set high for data and low for a command. The resulting 9-bit value is serialised to the output. LoSSI is commonly used with http://mipi.org/specifications/display-interface[MIPI DBI] type C compatible LCD controllers.
 
@@ -347,7 +347,7 @@ The driver does not make use of the hardware chip select lines because of some l
 
 ===== Speed
 
-The driver supports all speeds which are even integer divisors of the core clock, although as said above not all of these speeds will support data transfer due to limits in the GPIOs and in the devices attached. As a rule of thumb, anything over 50MHz is unlikely to work, but your mileage may vary.
+The driver supports all speeds which are even integer divisors of the core clock, although as said above not all of these speeds will support data transfer due to limits in the GPIOs and in the devices attached. As a rule of thumb, anything over 50 MHz is unlikely to work, but your mileage may vary.
 
 ===== Supported mode bits
 

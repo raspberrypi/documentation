@@ -1,6 +1,6 @@
 === Raspberry Pi DAC{plus}
 
-Raspberry Pi DAC{plus} is a high-resolution audio output HAT that provides 24-bit 192kHz digital audio output.
+Raspberry Pi DAC{plus} is a high-resolution audio output HAT that provides 24-bit 192 kHz digital audio output.
 
 image::images/DAC+_Board_Diagram.jpg[width="80%"]
 

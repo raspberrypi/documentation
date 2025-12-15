@@ -135,7 +135,7 @@ You have four rotation options:
 - **0** maintains the default display position, which is a portrait orientation.
 - **90** rotates the display 90 degrees to the right (clockwise), making it a landscape orientation.
 - **180** rotates the display 180 degrees to the right (clockwise), which flips the display upside down.
-- **270** rotates the display 270 degrees to the right (clockwise), which is the same as rotating the display 90 degrees to the left (counterclockwise), making it a landscape orientation.
+- **270** rotates the display 270 degrees to the right (clockwise), which is the same as rotating the display 90 degrees to the left (counter-clockwise), making it a landscape orientation.
 
 === With a desktop
 If you have the Raspberry Pi OS desktop running, you can rotate the display through the **Screen Configuration** tool:

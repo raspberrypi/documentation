@@ -1,7 +1,7 @@
 [[gpio]]
 == GPIO and the 40-pin header
 
-You can find a 40-pin GPIO (general-purpose input/output) header on all current Raspberry Pi boards. The GPIO headers on all boards have a 0.1in (2.54mm) pin pitch.
+You can find a 40-pin GPIO (general-purpose input/output) header on all current Raspberry Pi boards. The GPIO headers on all boards have a 0.1in (2.54 mm) pin pitch.
 
 NOTE: The header is unpopulated (has no headers) on Zero and Pico devices that lack the "H" suffix.
 

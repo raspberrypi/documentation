@@ -56,7 +56,7 @@ The Model Compression Toolkit generates a quantised model in the following forma
 
 === Conversion
 
-The converter is a command line application that compiles the quantised model (in .onnx or .keras formats) into a binary file that can be packaged and loaded onto the AI Camera. This tool is automatically installed as part of the Edge-MDT installation step.
+The converter is a command line application that compiles the quantised model (in `.onnx` or `.keras` formats) into a binary file that can be packaged and loaded onto the AI Camera. This tool is automatically installed as part of the Edge-MDT installation step.
 
 To convert a model model:
 

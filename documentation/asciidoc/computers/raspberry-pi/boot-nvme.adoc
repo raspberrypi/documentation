@@ -57,7 +57,7 @@ Below is an example of UART output when the bootloader detects the NVMe drive:
 Boot mode: SD (01) order f64
 Boot mode: USB-MSD (04) order f6
 Boot mode: NVME (06) order f
-VID 0x144d MN Samsung SSD 970 EVO Plus 250GB
+VID 0x144d MN Samsung SSD 970 EVO Plus 250 GB
 NVME on
 ----
 

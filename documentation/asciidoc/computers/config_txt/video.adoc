@@ -33,14 +33,14 @@ Composite video output can be found on each model of Raspberry Pi computer:
 | Raspberry Pi Zero
 | Unpopulated `TV` header
 
-| Raspberry Pi Zero 2 W 
+| Raspberry Pi Zero 2 W
 | Test pads on underside of board
 
 | Raspberry Pi 5
 | J7 pad next to HDMI socket
 
 | All other models
-| 3.5mm AV jack
+| 3.5 mm AV jack
 |===
 
 NOTE: Composite video output is not available on Keyboard models.

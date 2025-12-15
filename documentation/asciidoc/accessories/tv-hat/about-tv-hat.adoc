@@ -12,8 +12,8 @@ Key features:
 * Supported TV standards: DVB-T2, DVB-T
 * Reception frequency: VHF III, UHF IV, UHF V
 * Channel bandwidth:
-** DVB-T2: 1.7MHz, 5MHz, 6MHz, 7MHz, 8MHz
-** DVB-T: 5MHz, 6MHz, 7MHz, 8MHz
+** DVB-T2: 1.7 MHz, 5 MHz, 6 MHz, 7 MHz, 8 MHz
+** DVB-T: 5 MHz, 6 MHz, 7 MHz, 8 MHz
 
 == About DVB-T
 

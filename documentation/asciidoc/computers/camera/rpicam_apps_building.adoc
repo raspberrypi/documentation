@@ -120,7 +120,7 @@ Finally, run the following command to install your freshly-built `libcamera` bin
 $ sudo ninja -C build install
 ----
 
-TIP: On devices with 1GB of memory or less, the build may exceed available memory. Append the `-j 1` flag to `ninja` commands to limit the build to a single process. This should prevent the build from exceeding available memory on devices like the Raspberry Pi Zero and the Raspberry Pi 3.
+TIP: On devices with 1 GB of memory or less, the build may exceed available memory. Append the `-j 1` flag to `ninja` commands to limit the build to a single process. This should prevent the build from exceeding available memory on devices like the Raspberry Pi Zero and the Raspberry Pi 3.
 
 `libcamera` does not yet have a stable binary interface. Always build `rpicam-apps` after you build `libcamera`.
 
@@ -179,7 +179,7 @@ You can now build `rpicam-apps` with the following command:
 $ meson compile -C build
 ----
 
-TIP: On devices with 1GB of memory or less, the build may exceed available memory. Append the `-j 1` flag to `meson` commands to limit the build to a single process. This should prevent the build from exceeding available memory on devices like the Raspberry Pi Zero and the Raspberry Pi 3.
+TIP: On devices with 1 GB of memory or less, the build may exceed available memory. Append the `-j 1` flag to `meson` commands to limit the build to a single process. This should prevent the build from exceeding available memory on devices like the Raspberry Pi Zero and the Raspberry Pi 3.
 
 Finally, run the following command to install your freshly-built `rpicam-apps` binary:
 

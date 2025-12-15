@@ -156,7 +156,7 @@ Linux devices on Raspberry Pi OS:
 
 On the Raspberry Pi 5, `/dev/serial0` is a symbolic link that points to `/dev/ttyAMA10`.
 
-Due to changes in Bookworm, `/dev/serial1` does not exist by default. You can re-enable `serial1` by setting the following values in `config.txt`:
+Due to changes in _Bookworm_, `/dev/serial1` does not exist by default. You can re-enable `serial1` by setting the following values in `config.txt`:
 
 [source,ini]
 ----
@@ -180,7 +180,7 @@ In order to use the mini UART, you need to configure the Raspberry Pi to use a f
 
 | primary UART
 | fixed by setting `enable_uart=1`
-| mini UART enabled, core clock fixed to 250MHz, or if `force_turbo=1` is set, the VPU turbo frequency
+| mini UART enabled, core clock fixed to 250 MHz, or if `force_turbo=1` is set, the VPU turbo frequency
 
 | secondary UART
 | variable
@@ -272,7 +272,7 @@ dtoverlay=disable-bt
 
 === PL011 and mini-UART
 
-There are some differences between PL011 UARTs and mini-UART. 
+There are some differences between PL011 UARTs and mini-UART.
 
 The mini-UART has smaller FIFOs. Combined with the lack of flow control, this makes it more prone to losing characters at higher baudrates. It is also generally less capable than a PL011, mainly due to its baud rate link to the VPU clock speed.
 

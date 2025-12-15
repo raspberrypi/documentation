@@ -19,7 +19,7 @@ To connect to a wired network at first boot, plug your headless Raspberry Pi in 
 
 To configure wireless network access at first boot for a headless Raspberry Pi, enter the network information in the **Customisation > Wi-Fi** tab in Raspberry Pi Imager. Enter the SSID and password of your preferred wireless network. Your Raspberry Pi uses these credentials to connect to the network on first boot. Some wireless adapters and some Raspberry Pi boards don't support 5 GHz networks; check the documentation for your wireless module to ensure compatibility with your preferred network.
 
-NOTE: Previous versions of Raspberry Pi OS made use of a `wpa_supplicant.conf` file which could be placed into the boot folder to configure wireless network settings. This functionality is not available from Raspberry Pi OS Bookworm onwards.
+NOTE: Previous versions of Raspberry Pi OS made use of a `wpa_supplicant.conf` file, which could be placed into the boot folder to configure wireless network settings. This functionality isn't available from Raspberry Pi OS _Bookworm_ onwards.
 
 === Remote access
 
@@ -33,7 +33,7 @@ For more information, see xref:remote-access.adoc#ssh[set up an SSH server]. Onc
 [[configuring-a-user]]
 ==== Configure a user manually
 
-At the root of the first partition of your SD card (the filesystem labeled `bootfs`), create a file named `userconf.txt`.
+At the root of the first partition of your SD card (the filesystem labelled `bootfs`), create a file named `userconf.txt`.
 
 This file should contain a single line of text, consisting of `<username>:<password>`: your desired username, followed immediately by a colon, followed immediately by an *encrypted* representation of the password you want to use.
 

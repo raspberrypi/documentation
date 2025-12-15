@@ -10,7 +10,7 @@ The Raspberry Pi AI Kit bundles the xref:m2-hat-plus.adoc#m2-hat-plus[Raspberry 
 * Raspberry Pi M.2 HAT+, to connect the AI module to your Raspberry Pi 5
 * thermal pad pre-fitted between the module and the M.2 HAT+
 * mounting hardware kit
-* 16mm stacking GPIO header
+* 16 mm stacking GPIO header
 
 == AI module features
 

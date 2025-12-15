@@ -28,31 +28,31 @@ You can use any high-quality power supply that provides the correct power mode.
 
 |Raspberry Pi 500+
 |5V/5A
-|https://www.raspberrypi.com/products/27w-power-supply/[27W USB-C power supply]
+|https://www.raspberrypi.com/products/27w-power-supply/[27 W USB-C power supply]
 
 |Raspberry Pi 5 and Raspberry Pi 500
 |5V/5A, 5V/3A limits peripherals to 600mA
-|https://www.raspberrypi.com/products/27w-power-supply/[27W USB-C power supply]
+|https://www.raspberrypi.com/products/27w-power-supply/[27 W USB-C power supply]
 
 |Raspberry Pi 4 Model B and Raspberry Pi 400
 |5V/3A
-|https://www.raspberrypi.com/products/type-c-power-supply/[15W USB-C power supply]
+|https://www.raspberrypi.com/products/type-c-power-supply/[15 W USB-C power supply]
 
 |Raspberry Pi 3 (all models)
 |5V/2.5A
-|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5W Micro USB power supply]
+|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5 W Micro USB power supply]
 
 |Raspberry Pi 2 Model B
 |5V/2.5A
-|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5W Micro USB power supply]
+|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5 W Micro USB power supply]
 
 |Raspberry Pi 1 (all models)
 |5V/2.5A
-|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5W Micro USB power supply]
+|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5 W Micro USB power supply]
 
 |Raspberry Pi Zero (all models)
 |5V/2.5A
-|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5W Micro USB power supply]
+|https://www.raspberrypi.com/products/micro-usb-power-supply/[12.5 W Micro USB power supply]
 |===
 
 image::images/peripherals/cable-power.png[alt="Plugging a power supply into a Raspberry Pi.",width="80%"]
@@ -72,11 +72,11 @@ image::images/peripherals/sd-card.png[alt="Inserting a microSD card into a Raspb
 
 [[recommended-capacity]]
 
-We recommend using an SD card with at least 32GB of storage for Raspberry Pi OS installations. For Raspberry Pi OS Lite, we recommend at least 16GB. You can use any SD card with a capacity of less than 2TB. Capacities above 2TB are currently not supported due to limitations in the https://en.wikipedia.org/wiki/Master_boot_record[MBR]. As with any other boot media, you'll see improved performance on SD cards with faster read and write speeds.
+We recommend using an SD card with at least 32 GB of storage for Raspberry Pi OS installations. For Raspberry Pi OS Lite, we recommend at least 16 GB. You can use any SD card with a capacity of less than 2 TB. Capacities above 2 TB are currently not supported due to limitations in the https://en.wikipedia.org/wiki/Master_boot_record[MBR]. As with any other boot media, you'll see improved performance on SD cards with faster read and write speeds.
 
 If you're unsure which SD card to buy, consider xref:../accessories/sd-cards.adoc[Raspberry Pi's official SD cards].
 
-Because of a hardware limitation, the following devices will only boot from a boot partition of 256GB or less:
+Because of a hardware limitation, the following devices will only boot from a boot partition of 256 GB or less:
 
 * Raspberry Pi Zero
 * Raspberry Pi 1
@@ -109,19 +109,19 @@ Raspberry Pi models have the following display connectivity:
 |2× micro HDMI
 
 |Raspberry Pi 4 Model B
-|2× micro HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
+|2× micro HDMI, audio and composite out via 3.5 mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 3 (all models)
-|HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
+|HDMI, audio and composite out via 3.5 mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 2 Model B
-|HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
+|HDMI, audio and composite out via 3.5 mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 1 Model A+ and Model B+
-|HDMI, audio and composite out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
+|HDMI, audio and composite out via 3.5 mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 1 Model A and Model B
-|HDMI, audio out via 3.5mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack, composite out via https://en.wikipedia.org/wiki/RCA_connector[phono] jack
+|HDMI, audio out via 3.5 mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack, composite out via https://en.wikipedia.org/wiki/RCA_connector[phono] jack
 
 |Raspberry Pi Zero (all models)
 |mini HDMI, composite out via solder-pads
@@ -139,7 +139,7 @@ image::images/peripherals/cable-hdmi.png[alt="Plugging a micro HDMI cable into a
 
 All Raspberry Pi models with HDMI, micro HDMI, or mini HDMI support audio output over HDMI.
 All Raspberry Pi models support audio over USB. All Raspberry Pi models equipped with Bluetooth support Bluetooth audio.
-All variants of the Raspberry Pi 1, 2, 3, and 4 include a 3.5mm auxiliary http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack, which may require amplification for sufficient output volume.
+All variants of the Raspberry Pi 1, 2, 3, and 4 include a 3.5 mm auxiliary http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack, which may require amplification for sufficient output volume.
 
 === Networking
 

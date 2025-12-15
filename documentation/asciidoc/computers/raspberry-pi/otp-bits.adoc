@@ -25,7 +25,7 @@ This list contains the publicly available information on the registers. If a reg
 
 `17`:: bootmode register
 +
-* Bit 1: sets the oscillator frequency to 19.2MHz
+* Bit 1: sets the oscillator frequency to 19.2 MHz
 * Bit 3: enables pull ups on the SDIO pins
 * Bit 15: disables ROM RSA key 0 - (secure boot enabled if set) (BCM2711)
 * Bit 19: enables GPIO bootmode
@@ -70,8 +70,8 @@ This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext`
 * Bit 15: enables LAN_RUN output
 * Bit 24: extends USB HUB timeout parameter
 * Bit 25: ETH_CLK frequency:
- ** 0 - 25MHz
- ** 1 - 24MHz
+ ** 0 - 25 MHz
+ ** 1 - 24 MHz
 
 ^1^Also contains bits to disable overvoltage, OTP programming, and OTP reading.
 

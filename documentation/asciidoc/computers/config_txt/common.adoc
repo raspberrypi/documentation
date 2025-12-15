@@ -46,7 +46,7 @@ NOTE: This option applies only to later Raspberry Pi 4B revisions which include 
 
 By default, Raspberry Pi OS includes a line in `/boot/firmware/config.txt` that enables this setting on supported devices.
 
-Some Raspberry Pi devices have a second switch-mode power supply for the SoC voltage rail. When enabled, increases the default turbo-mode clock from 1.5GHz to 1.8GHz.
+Some Raspberry Pi devices have a second switch-mode power supply for the SoC voltage rail. When enabled, increases the default turbo-mode clock from 1.5 GHz to 1.8 GHz.
 
 To disable, set `arm_boost=0`.
 

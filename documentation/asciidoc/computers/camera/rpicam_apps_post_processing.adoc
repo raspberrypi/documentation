@@ -109,7 +109,7 @@ You can configure this stage with the following parameters:
 
 To control processing strength, changing the `global_tonemap_strength` and `local_tonemap_strength` parameters.
 
-Processing a single image takes between two and three seconds for a 12MP image on a Raspberry Pi 4. When accumulating multiple frames, this stage sends only the processed image to the application.
+Processing a single image takes between two and three seconds for a 12 MP image on a Raspberry Pi 4. When accumulating multiple frames, this stage sends only the processed image to the application.
 
 Default `drc.json` file for DRC:
 

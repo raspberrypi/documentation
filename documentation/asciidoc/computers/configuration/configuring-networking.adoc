@@ -41,7 +41,7 @@ NOTE: This guide should work for WEP, WPA, WPA2, or WPA3 networks, but may not w
 
 ===== Enable wireless networking
 
-On a fresh install, you must specify the country where you use your device. This allows your device to choose the correct frequency bands for 5GHz networking. Once you have specified a wireless LAN country, you can use your Raspberry Pi's built-in wireless networking module.
+On a fresh install, you must specify the country where you use your device. This allows your device to choose the correct frequency bands for 5 GHz networking. Once you have specified a wireless LAN country, you can use your Raspberry Pi's built-in wireless networking module.
 
 To do this, set your wireless LAN country with the command line `raspi-config` tool. Run the following command:
 

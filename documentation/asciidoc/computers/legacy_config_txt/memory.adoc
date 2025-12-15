@@ -5,7 +5,7 @@ NOTE: Raspberry Pi 5 does not allocate GPU memory on behalf of the OS, so the fo
 
 === `gpu_mem`
 
-Specifies how much memory, in megabytes, to reserve for the exclusive use of the GPU: the remaining memory is allocated to the Arm CPU for use by the OS. For Raspberry Pis with less than 1GB of memory, the default is `64`; for Raspberry Pis with 1GB or more of memory the default is `76`.
+Specifies how much memory, in megabytes, to reserve for the exclusive use of the GPU: the remaining memory is allocated to the Arm CPU for use by the OS. For Raspberry Pis with less than 1 GB of memory, the default is `64`; for Raspberry Pis with 1 GB or more of memory the default is `76`.
 
 IMPORTANT: Unlike GPUs found on x86 machines, where increasing memory can improve 3D performance, the architecture of the VideoCore means *there is no performance advantage from specifying values larger than is necessary*, and doing this can in fact harm performance.
 
@@ -20,13 +20,13 @@ The recommended maximum values are as follows:
 |===
 | total RAM | `gpu_mem` recommended maximum
 
-| 256MB
+| 256 MB
 | `128`
 
-| 512MB
+| 512 MB
 | `384`
 
-| 1GB or greater
+| 1 GB or greater
 | `512`, `76` on the Raspberry Pi 4
 |===
 
@@ -38,15 +38,15 @@ You can also use `gpu_mem_256`, `gpu_mem_512`, and `gpu_mem_1024` to allow swapp
 
 === `gpu_mem_256`
 
-The `gpu_mem_256` command sets the GPU memory in megabytes for Raspberry Pis with 256MB of memory. It is ignored if memory size is not 256MB. This overrides `gpu_mem`.
+The `gpu_mem_256` command sets the GPU memory in megabytes for Raspberry Pis with 256 MB of memory. It is ignored if memory size is not 256 MB. This overrides `gpu_mem`.
 
 === `gpu_mem_512`
 
-The `gpu_mem_512` command sets the GPU memory in megabytes for Raspberry Pis with 512MB of memory. It is ignored if memory size is not 512MB. This overrides `gpu_mem`.
+The `gpu_mem_512` command sets the GPU memory in megabytes for Raspberry Pis with 512 MB of memory. It is ignored if memory size is not 512 MB. This overrides `gpu_mem`.
 
 === `gpu_mem_1024`
 
-The `gpu_mem_1024` command sets the GPU memory in megabytes for Raspberry Pis with 1GB or more of memory. It is ignored if memory size is smaller than 1GB. This overrides `gpu_mem`.
+The `gpu_mem_1024` command sets the GPU memory in megabytes for Raspberry Pis with 1 GB or more of memory. It is ignored if memory size is smaller than 1 GB. This overrides `gpu_mem`.
 
 === `disable_l2cache`
 

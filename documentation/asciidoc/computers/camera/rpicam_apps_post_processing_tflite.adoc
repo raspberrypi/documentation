@@ -2,7 +2,7 @@
 
 ==== Prerequisites
 
-These stages require TensorFlow Lite (TFLite) libraries that export the {cpp} API. From Trixie onwards, Raspberry Pi builds and distributes a TFLite package, which can be installed with the following command:
+These stages require TensorFlow Lite (TFLite) libraries that export the {cpp} API. From Raspberry Pi OS _Trixie_ onwards, Raspberry Pi builds and distributes a TFLite package, which can be installed with the following command:
 
 [source,console]
 ----
