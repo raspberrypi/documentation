@@ -19,7 +19,7 @@ IMPORTANT: To protect the sensor when exposed to the air, ensure that you're wor
 . Unscrew the two 1.5 mm hex lock keys on the underside of the main circuit board. Be careful not to let the washers roll away.
 +
 image:images/SCREW_REMOVED_small.jpg[width="65%"]
-. There's a gasket of slightly sticky material between the housing and PCB that requires some force to separate. You may try some ways to weaken the adhesive, such as a little isopropyl alcohol or heat (~20-30 C).
+. There's a gasket of slightly sticky material between the housing and PCB that requires some force to separate. You may try some ways to weaken the adhesive, such as a little isopropyl alcohol or heat (~20-30°C).
 . When the adhesive is loose, lift up the board and place it down on a very clean surface. Make sure the sensor doesn't touch the surface.
 +
 image:images/FLATLAY_small.jpg[width="65%"]
