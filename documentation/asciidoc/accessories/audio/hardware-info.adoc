@@ -45,8 +45,7 @@ The DAC PRO, DAC{plus} and DigiAMP{plus} re-expose the Raspberry Pi signals, all
 to be added easily. Please note that some signals are for exclusive use (I2S and EEPROM) by some
 of our boards; others such as I2C can be shared across multiple boards.
 
-image::images/pin_out_new.jpg[width="80%"]
-
+image::images/pin_out_new.png[width="80%"]
 
 === Saving AlsaMixer settings
 

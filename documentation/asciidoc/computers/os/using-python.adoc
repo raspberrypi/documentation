@@ -187,4 +187,4 @@ We recommend https://thonny.org/[Thonny] for editing Python code on the Raspberr
 
 By default, Thonny uses the system Python. However, you can switch to using a Python virtual environment by clicking on the **interpreter menu** in the bottom right of the Thonny window. Select a configured environment or configure a new virtual environment with `Configure interpreter...`.
 
-image::images/thonny-venv.png[width="100%"]
+image::images/thonny-venv.jpg[width="100%"]

@@ -10,7 +10,7 @@ video::images/fitting-build-hat.webm[width="80%"]
 
 If you want to access the GPIO pins of the Raspberry Pi, you can add an optional tall header and use 15 mm spacers.
 
-image::images/tall-headers.png[width="80%"]
+image::images/tall-headers.jpg[width="80%"]
 
 The following pins are used by the Build HAT itself and you should not connect anything to them.
 
