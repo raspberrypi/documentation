@@ -21,12 +21,12 @@ The *Control Centre* application allows you to turn screen blanking on or off wi
 1. Select the Raspberry Pi icon in the top-left corner of the menu bar.
 2. Go to *Preferences > Control Centre*.
 +
-image::images/pi-configuration.png[opening the Control Centre application from the desktop]
+image::images/pi-configuration.jpg[Opening the Control Centre application from the desktop]
 3. Open the *Display* tab in the *Control Centre* window.
 4. Use the toggle to turn on *Screen Blanking*.
 5. Select *Close* to confirm your selection.
 +
-image::images/blanking.png[toggle Screen Blanking on in the Control Centre application]
+image::images/blanking.jpg[toggle Screen Blanking on in the Control Centre application]
 
 NOTE: In previous versions of Raspberry Pi OS, the Control Centre application was called Raspberry Pi Configuration.
 

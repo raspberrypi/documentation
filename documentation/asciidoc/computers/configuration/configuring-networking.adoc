@@ -12,11 +12,11 @@ Access Network Manager via the network icon at the right-hand end of the menu ba
 
 NOTE: Devices with dual-band wireless automatically disable networking until you assign a wireless LAN country. Flagship models since Raspberry Pi 3B+, Compute Modules since CM4, and Keyboard models support dual-band wireless. To set a wireless LAN country, open the Control Centre application from the **Preferences** menu, select *Localisation* and select your country from the menu.
 
-image::images/wifi2.png[wifi2]
+image::images/wifi2.jpg[wifi2]
 
 The icons on the right show whether a network is secured or not, and give an indication of signal strength. Click the network that you want to connect to. If the network is secured, a dialogue box will prompt you to enter the network key:
 
-image::images/key.png[key]
+image::images/key.jpg[key]
 
 Enter the key and click *OK*, then wait a couple of seconds. The network icon will flash briefly to show that a connection is being made. When connected, the icon will stop flashing and show the signal strength.
 
@@ -24,11 +24,11 @@ Enter the key and click *OK*, then wait a couple of seconds. The network icon wi
 
 To use a hidden network, navigate to *Advanced options* > *Connect to a hidden Wi-Fi network* in the network menu:
 
-image::images/network-hidden.png[the connect to a hidden wi-fi network option in advanced options]
+image::images/network-hidden.jpg[the connect to a hidden wi-fi network option in advanced options]
 
 Then, enter the SSID for the hidden network. Ask your network administrator which type of security your network uses; while most home networks currently use WPA and WPA2 personal security, public networks sometimes use WPA and WPA2 enterprise security. Select the security type for your network, and enter your credentials:
 
-image::images/network-hidden-authentication.png[hidden wi-fi network authentication]
+image::images/network-hidden-authentication.jpg[hidden wi-fi network authentication]
 
 Click the *Connect* button to initiate the network connection.
 

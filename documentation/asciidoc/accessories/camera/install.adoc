@@ -31,6 +31,8 @@ Some cameras might come with a small piece of translucent blue plastic film cove
 
 === Step 2. Connect the cable to your Raspberry Pi
 
+NOTE: If you intend to use the Active Cooler with Raspberry Pi 5, consider connecting the cable to the camera connector on your Raspberry Pi device before installing the Active Cooler. With the Active Cooler in place, accessing the camera connectors can be awkward.
+
 . Shut down your Raspberry Pi and disconnect it from power.
 . Locate the camera connector on your Raspberry Pi board.
 +
