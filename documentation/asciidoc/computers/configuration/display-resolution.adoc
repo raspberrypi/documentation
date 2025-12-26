@@ -78,7 +78,7 @@ For current systems, always use the Control Centre for display configuration.
 
 [TIP]
 ====
-If you have already installed of `raindrop`, you can uninstall it with the following command:
+If you have already installed `raindrop`, you can uninstall it with the following command:
 
 [source,console]
 ----
