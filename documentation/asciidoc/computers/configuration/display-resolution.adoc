@@ -18,25 +18,74 @@ Flagship models since Raspberry Pi 4B, Compute Modules since CM4 (except for CM4
 
 === Set resolution and rotation
 
-On the Raspberry Pi Desktop, open the *Preferences* menu and select the **Screen Configuration** utility. You should see a graphical representation of the displays connected to the Raspberry Pi. Right click on the display you wish to modify, and select an option. Click **Apply** to and close **Screen Configuration** to save your changes.
+In Raspberry Pi OS Trixie, display resolution and screen rotation are managed using the 'Control Centre' application.  
+This replaces older tools such as 'Screen Configuration', 'raindrop', and 'arandr', which were used in previous Raspberry Pi OS releases.
 
-Alternatively, use the following command to open the **Screen Configuration** utility:
+If you are following older guides or tutorials, note that those tools are no longer present or required.
+
+=== Change resolution and rotation using the graphical interface (recommended)
+
+This is the easiest and recommended method for most users.
+
+STEPS
+
+1. Start your Raspberry Pi and log in to the desktop.
+2. Look at the **top-right corner of the screen** to find the system tray.
+3. Click on the 'Control Centre' icon.
+4. Open the 'Display' (or 'Displays') section.
+5. Select the display you want to configure.
+6. Choose:
+   - the desired **screen resolution**
+   - the desired **screen orientation** (normal, left, right, inverted)
+7. Apply the changes to update your display settings.
+
+The screen should update immediately after applying the changes.
+
+=== Identify connected display devices using the terminal (advanced)
+
+In some cases, you may want to check which display connectors are detected by the system.  
+This is mainly useful for troubleshooting or advanced configuration.
+
+To list connected display devices, open a terminal and run:
 
 [source,console]
 ----
-$ raindrop
+$ kmsprint | grep Connector
 ----
+
+What this command does
+
+- kmsprint shows display information
+- grep Connector filters the output to show only display connectors
+
+This helps identify connected monitors for troubleshooting purposes.
+
+=== Notes about older screen configuration tools
+
+Earlier versions of Raspberry Pi OS used different utilities for display configuration, such as:
+
+- Screen Configuration
+
+- raindrop
+
+- arandr
+
+These tools are no longer used in Raspberry Pi OS Trixie.
+You do not need to install or remove them, and any documentation that refers to these tools should be considered outdated.
+
+For current systems, always use the Control Centre for display configuration.
+
 
 [TIP]
 ====
-If your installation of Raspberry Pi OS doesn't already include `raindrop`, you can install it with the following command:
+If you have already installed of `raindrop`, you can uninstall it with the following command:
 
 [source,console]
 ----
-$ sudo apt install raindrop
+$ sudo apt remove --purge raindrop -y
 ----
 
-Older versions of Raspberry Pi OS used a different screen configuration utility named `arandr`. To uninstall `arandr`, run the following command:
+To uninstall `arandr`, run the following command:
 
 [source,console]
 ----
@@ -44,43 +93,12 @@ $ sudo apt purge arandr
 ----
 ====
 
-=== Manually set resolution and rotation
+=== Summary
 
-==== Determine display device name
+- Use Control Centre to change resolution and rotation
 
-To manually configure resolution and rotation, you'll need to know the names of your display devices. To determine the device names, run the following command to display information about attached devices:
+- Use the terminal only for checking display information
 
-[source,console]
-----
-$ kmsprint | grep Connector
-----
+- Ignore old tutorials that mention raindrop or arandr
 
-==== Set a custom resolution
-
-To set a custom resolution, use our Screen Configuration tool, `raindrop`. If your Raspberry Pi OS installation doesn't already include `raindrop` (for instance, if you're still using the previous Screen Configuration tool, `arandr`), you can download `raindrop` from `apt` or the Recommended Software GUI.
-
-==== Set a custom rotation
-
-To set a custom resolution, use our Screen Configuration tool, `raindrop`. If your Raspberry Pi OS installation doesn't already include `raindrop` (for instance, if you're still using the previous Screen Configuration tool, `arandr`), you can download `raindrop` from `apt` or the Recommended Software GUI.
-
-If you run the Wayland desktop compositor, you can set a custom display rotation with `wlr-randr`. The following commands rotate the display by 0°, 90°, 180°, and 270°:
-
-[source,console]
-----
-$ wlr-randr --output HDMI-A-1 --transform normal
-$ wlr-randr --output HDMI-A-1 --transform 90
-$ wlr-randr --output HDMI-A-1 --transform 180
-$ wlr-randr --output HDMI-A-1 --transform 270
-----
-
-The `--output` option specifies the device to be rotated.
-
-NOTE: To run this command over SSH, add the following prefix: `WAYLAND_DISPLAY=wayland-1`, e.g. `WAYLAND_DISPLAY=wayland-1 wlr-randr --output HDMI-A-1 --transform 90`.
-
-You can also use one of the following `--transform` options to mirror the display at the same time as rotating it: `flipped`, `flipped-90`, `flipped-180`, `flipped-270`.
-
-=== Console resolution and rotation
-
-To change the resolution and rotation of your Raspberry Pi in console mode, use the KMS settings. For more information, see <<kernel-command-line-cmdline-txt,configuring the kernel command line>>.
-
-NOTE: When using console mode with multiple displays, all connected displays share the same rotation settings.
+- Raspberry Pi OS Trixie uses a new display configuration system
