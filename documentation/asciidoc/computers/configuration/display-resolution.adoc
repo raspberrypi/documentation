@@ -19,7 +19,6 @@ Flagship models since Raspberry Pi 4B, Compute Modules since CM4 (except for CM4
 === Set resolution and rotation
 
 The updated Raspberry Pi OS allows users to adjust their display resolution and screen orientation directly through the desktop environment using the Screen Configuration utility. This modern approach replaces older tools like ARandR and Raindrop, providing an intuitive interface where users can select the optimal resolution for their monitor, adjust the orientation, and immediately see the effects.
-It ensures better compatibility with modern displays and the Wayland-based desktop, making display management simpler, faster, and more reliable.
 
 == Using the desktop (Raspberry Pi OS with desktop)
 
