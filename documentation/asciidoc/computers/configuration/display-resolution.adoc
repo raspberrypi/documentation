@@ -18,25 +18,23 @@ Flagship models since Raspberry Pi 4B, Compute Modules since CM4 (except for CM4
 
 === Set resolution and rotation
 
-This page explains how to change screen resolution and rotation on Raspberry Pi OS.
-The correct method depends on whether you are using the desktop environment or a console-only system.
+The updated Raspberry Pi OS allows users to adjust their display resolution and screen orientation directly through the desktop environment using the Screen Configuration utility. This modern approach replaces older tools like ARandR and Raindrop, providing an intuitive interface where users can select the optimal resolution for their monitor, adjust the orientation, and immediately see the effects.
+It ensures better compatibility with modern displays and the Wayland-based desktop, making display management simpler, faster, and more reliable.
 
 == Using the desktop (Raspberry Pi OS with desktop)
 
-On Raspberry Pi OS Trixie, display settings are managed using the *Control Centre* application.
+the desktop version of Raspberry Pi OS (formerly called Raspbian), the settings are now handled via the Screen Configuration utility in the Control Centre (or similar menu).
 
-Follow these steps:
+1.	Open the Menu: Click the Raspberry Pi icon (main application menu).
+2.	Navigate to Preferences: Go to Preferences.
+3.	Open Screen Configuration: Select Screen Configuration (or a similarly named item like Display or Screens).
+4.	Configure Display:
+ - Resolution: Select your desired display (e.g., HDMI-A-1 ) and choose the new Resolution from the dropdown menu.
+ - Rotation/Orientation: You can often right-click the display icon within this utility to select the desired Orientation (e.g., Normal, 90 degrees, 180 degrees).
+5.	Apply Changes: Click Apply and then OK to save and activate the new settings.
 
-. Open the main menu (top-left corner of the screen).
-. Go to *Preferences*.
-. Click on *Control Centre*.
-. Select *Screens*.
-. Choose the required resolution and rotation.
-. Click *Apply* to save the changes.
 
-These settings apply immediately.
-
-IMPORTANT:
+**IMPORTANT:**
 Do *not* use older screen configuration tools such as `raindrop` or `arandr`.
 They are no longer used directly and should not be installed, removed, or run manually.
 
@@ -61,14 +59,15 @@ Each command rotates the display as follows:
 * `180` – rotate upside down
 * `270` – rotate 90 degrees counter-clockwise
 
+```text
 NOTES:
-* Run only **one** command at a time.
-* Do **not** type the `$` symbol — it represents the terminal prompt.
-* Replace `HDMI-A-1` with your actual display name if needed.
+- Run only **one** command at a time.
+- Replace `HDMI-A-1` with your actual display name if needed.
+```
 
-IMPORTANT:
-Do *not* install, remove, or run `raindrop` or `arandr`.
-On Raspberry Pi OS Trixie, required components are handled automatically by the system.
+**IMPORTANT:**
+- Do *not* install, remove, or run `raindrop` or `arandr`.
+- On Raspberry Pi OS Trixie, required components are handled automatically by the system.
 
 == Console resolution and rotation (Raspberry Pi OS Lite)
 
@@ -79,9 +78,12 @@ Use the terminal only to check display information or when running in console mo
 To change resolution and rotation in console mode, configure Kernel Mode Setting (KMS).
 For details, see <<kernel-command-line-cmdline-txt,configuring the kernel command line>>.
 
-IMPORTANT:
+
+**IMPORTANT:**
 Ignore any tutorials or guides that mention `raindrop` or `arandr`.
 These tools are not used for console-only setups and can cause confusion.
 
+```text
 NOTE:
 When using console mode with multiple displays, all connected displays share the same rotation settings.
+```
