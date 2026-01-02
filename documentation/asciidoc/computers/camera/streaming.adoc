@@ -203,4 +203,46 @@ net.core.rmem_default=1000000
 net.core.rmem_max=1000000
 ----
 to your `/etc/sysctl.conf` file (and reboot or run `sudo sysctl -p`).
+
+=== Streaming with MistServer
+
+Besides MediaMTX, MistServer is another popular free media server that we can use in conjunction with the Raspberry Pi camera system. Unlike MediaMTX, there is no built-in camera support, however, it's easy enough to get MistServer to ingest a stream from `rpicam-vid` and serve it to clients in a variety of formats.
+
+==== Installation and Configuration
+
+You can install MistServer very simply on a Pi by following https://docs.mistserver.org/mistserver/installation/linux#armv8-64-bits-linux[these instructions]. You will need to run this as root, and it will even set up a system MistServer service that runs automatically.
+
+To configure MistServer, go to the Managment Interface (MI) webpage on your Pi at `http://localhost:4242/` (or you can visit the page from another computer if you substitute your Pi's IP address). The first time you use it, it will ask you to create an admin account. After that, just accept any defaults and you're done.
+
+Note that, as with MediaMTX, MistServer could in principle run on a different machine from the Pi with the camera.
+
+==== Adding a Camera Stream
+
+Return to the MI webpage and click on `Streams` in the left-hand pane. Now click `Create Stream` in the right-hand pane. You'll need to fill in a couple of details here, including:
+
+* A stream name, such as `cam`. This is what clients will use to identify this stream.
+
+* A source. We're going to get MistServer to start `rpicam-vid` automatically for us, so enter the following: `ts-exec: rpicam-vid -n -t 0 --width 1920 --height 1080 --codec libav --libav-format mpegts -o -`
+
+Here, `ts-exec` means "run this command and it will output an MPEG-TS stream to `stdout`". After that, it's just a regular `rpicam-vid` command with no preview (`-n`), to run indefinitely (`-t 0`), your chosen dimensions (`--width` and `--height`) and to write all this as an MPEG-TS stream to `stdout`.
+
+There are certainly other choices here. For example, we could run `rpicam-vid` externally ourselves, outputting maybe to a UDP socket. In this case, we'd use `tsudp` in place of `ts-exec`, and follow it with the incoming stream's IP address. Clearly the initial formulation (using `ts-exec`) _does_ require MistServer to be running on the Pi, though the second does not.
+
+==== Viewing with a Client
+
+To view the stream using a Media Player application using the RTSP protol, and assuming a stream name of "cam", use the address
+
+[source,console]
+----
+rtsp://<ip-address-of-MistServer-machine>:8554/cam
+----
+
+To view the stream in a web page, it's easiest to use MistServer's built-in Media Player pages, so in this case we'd enter
+
+[source,console]
+----
+http://<ip-address-of-MistServer-machine>:8080/cam.html
+----
+
+MistServer supports a wide range of use cases and options, so users should consult the https://docs.mistserver.org/[documentation] for more information.
 ====
