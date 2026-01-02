@@ -455,25 +455,25 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | Embest
 
 | 900092
-| Zero
+| Zero (Type 9)
 | 1.2
 | 512 MB
 | Sony UK
 
 | 920092
-| Zero
+| Zero (Type 9)
 | 1.2
 | 512 MB
 | Embest
 
 | 900093
-| Zero
+| Zero (Type 9)
 | 1.3
 | 512 MB
 | Sony UK
 
 | 920093
-| Zero
+| Zero (Type 9)
 | 1.3
 | 512 MB
 | Embest
@@ -491,7 +491,7 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | Embest
 
 | 9000c1
-| Zero W
+| Zero W (Type 9)
 | 1.1
 | 512 MB
 | Sony UK
