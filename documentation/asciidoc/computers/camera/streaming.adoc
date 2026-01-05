@@ -245,4 +245,57 @@ http://<ip-address-of-MistServer-machine>:8080/cam.html
 ----
 
 MistServer supports a wide range of use cases and options, so users should consult the https://docs.mistserver.org/[documentation] for more information.
+
+=== Streaming with Go2rtc
+
+Finally, go2rtc is another very capable media server platform that, while not offering direct integration like MediaMTX, again allows for easy inter-operation in the same way as MistServer.
+
+==== Installation and Configuration
+
+You can install go2rtc simply by going to the https://github.com/AlexxIT/go2rtc/releases/[releases page]. Most users should download the `go2rtc_linux_arm64` binary for 64-bit OSes, though a 32-bit version is also available. You can run this directly (after changing the permissions to make the file executable).
+
+No particular configuration is needed, but once it is running you can find a management page at `http://localhost:1984/`.
+
+Note that, as with MediaMTX, go2rtc could in principle run on a different machine from the Pi with the camera.
+
+==== Adding a Camera Stream
+
+You can add a camera stream by creating a file `go2rtc.yaml` in the folder from where you ran the executable (when go2rtc starts, it will output a message to the console indicating where it is looking for its "config" file). The file should contain (substituting your own desired width and height) :
+
+[source,console]
+----
+streams:
+  cam:
+    - exec:rpicam-vid -n -t 0 --width 1280 --height 720 --codec libav --libav-format mpegts --low-latency -o -
+----
+
+This will start `rpicam-vid` as shown when any client requests the "cam" stream. Note again the use of `--low-latency` which has the effect of suppressing B-frames on Pi 5 or later models. In this case, go2rtc clearly _does_ need to be running on the Raspberry Pi with the camera.
+
+Alternatively, we could run `rpicam-vid` externally, arranging for it to output an MPEG-TS stream to the address (for example) `udp://127.0.0.1:1234`, in which case the `gortc.yaml` file should contain:
+
+[source,console]
+----
+  cam:
+    - ffmpeg:udp://127.0.0.1:1234
+----
+
+Here, IP addresses will need adjusting if go2rtc is running on a different machine from the camera.
+
+==== Viewing with a Client
+
+To view the stream using a Media Player application using the RTSP protol, and assuming a stream name of "cam", use the address
+
+[source,console]
+----
+rtsp://<ip-address-of-go2rtc-machine>:8554/cam
+----
+
+To view the stream in a web page, it's easiest to use go2rtc's built-in pages, so in this case we'd enter
+
+[source,console]
+----
+http://<ip-address-of-go2rtc-machine>:1984/stream.html?src=cam
+----
+
+go2rtc supports a wide range of use cases and options, so users should consult the https://github.com/AlexxIT/go2rtc/blob/master/README.md[documentation] for more information.
 ====
