@@ -142,13 +142,31 @@ On a Pi 5 you would have to replace `v4l2h264enc extra-controls="controls,repeat
 
 On the client we could use the same playback pipeline as we did just above, or other streaming media players.
 
-=== WebRTC
+=== Third-Party Streaming Servers
 
-Streaming over WebRTC (for example, to web browsers) is best accomplished using third party software. https://github.com/bluenviron/mediamtx[MediaMTX], for example, includes native Raspberry Pi camera support which makes it easy to use.
+There are a number of very capable third-party streaming servers available and, while Raspberry Pi does not specifically recommend any particular one, we give some introductory guidance on using a number of popular ones.
 
-To install it, download the latest version from the https://github.com/bluenviron/mediamtx/releases[releases] page. Raspberry Pi OS 64-bit users will want the "linux_arm64v8" compressed tar file (ending `.tar.gz`). Unpack it and you will get a `mediamtx` executable and a configuration file called `mediamtx.yml`.
+* https://github.com/bluenviron/mediamtx[MediaMTX]
 
-It's worth backing up the `mediamtx.yml` file because it documents many Raspberry Pi camera options that you may want to investigate later.
+* https://mistserver.org/[MistServer]
+
+* https://github.com/AlexxIT/go2rtc[Go2rtc]
+
+All of the above are capable of ingesting Raspberry Pi camera streams created by `rpicam-vid`, and re-streaming to RTSP clients, or to web browsers using WebRTC, or using many other formats. MediaMTX can sometimes be a good choice because it supports Raspberry Pi cameras as a native option through libcamera, by-passing the need for external executables (like `rpicam-vid`).
+
+The list above is not exhaustive, however, we have confirmed that these applications work correctly together with the Raspberry Pi camera system.
+
+=== Streaming with MediaMTX
+
+As stated above, MediaMTX will accept an input stream from the Pi's camera system (for example, created by`rpicam-vid`), and re-stream it to other clients. Additionally, however, it supports Raspberry Pi cameras as a built-in native "source".
+
+==== Installation and Configuration
+
+To install it, download the latest version from the https://github.com/bluenviron/mediamtx/releases[releases] page. Raspberry Pi OS 64-bit users will want the "linux_arm64" compressed tar file (ending `.tar.gz`). There is also an "armv7" version for 32-bit OS users. Unpack it and you will get a `mediamtx` executable and a configuration file called `mediamtx.yml`.
+
+There is no need for any specific configuration at this point, but it's worth backing up the `mediamtx.yml` file because it documents many Raspberry Pi camera options that you may want to investigate later.
+
+==== Adding a Camera Stream
 
 To stream the camera, replace the contents of `mediamtx.yml` by:
 ----
@@ -156,7 +174,7 @@ paths:
   cam:
     source: rpiCamera
 ----
-and start the `mediamtx` executable. On a browser, enter `http://<ip-addr>:8889/cam` into the address bar.
+and start the `mediamtx` executable. The use of `rpiCamera` here is how we tell MediaMTX to start and control the camera system for itself.
 
 If you want MediaMTX to acquire the camera only when the stream is requested, add the following line to the previous `mediamtx.yml`:
 ----
@@ -164,45 +182,42 @@ If you want MediaMTX to acquire the camera only when the stream is requested, ad
 ----
 Consult the original `mediamtx.yml` for additional configuration parameters that let you select the image size, the camera mode, the bitrate and so on - just search for `rpi`.
 
-==== Customised image streams with WebRTC
-
-MediaMTX is great if you want to stream just the camera images. But what if we want to add some extra information or overlay, or do some extra processing on the images?
-
-Before starting, ensure that you've built a version of `rpicam-apps` that includes OpenCV support. Check it by running
-
-[source,console]
-----
-$ rpicam-hello --post-process-file rpicam-apps/assets/annotate_cv.json
-----
-and looking for the overlaid text information at the top of the image.
-
-Next, paste the following into your `mediamtx.yml` file:
+As an alternative, we could run `rpicam-vid` externally to MediaMTX, setting up `mediamtx.yml` as follows:
 ----
 paths:
   cam:
     source: udp://127.0.0.1:1234
 ----
+We could actually run any external program to output an MPEG-TS stream to this address. In the case of `rpicam-vid` it might look like:
+[source,console]
+----
+$ rpicam-vid -t 0 -n --codec libav --low-latency --libav-format mpegts -o udp://127.0.0.1:1234?pkt_size=1316
+----
+Note how this gives us the opportunity to alter the images in some way, perhaps using the rpicam-apps post-processing features, or the Picamera2 Python module. we've also used the `--low-latency` option which suppresses B-frames (on a Pi 5 or later; earlier Pis won't generate any), which is often advisable because some streaming formats that clients request do not support them.
 
-Now, start `mediamtx` and then, if you're using a Pi 5, in a new terminal window, enter:
+==== Viewing with a Client
+
+To view the stream using a Media Player application with the RTSP protol, and assuming a stream name of "cam", use the address
 
 [source,console]
 ----
-$ rpicam-vid -t 0 -n --codec libav --libav-video-codec-opts "profile=baseline" --libav-format mpegts -o udp://127.0.0.1:1234?pkt_size=1316 --post-process-file rpicam-apps/assets/annotate_cv.json
+rtsp://<ip-address-of-MediaMTX-machine>:8554/cam
 ----
-(On a Pi 4 or earlier device, leave out the `--libav-video-codec-opts "profile=baseline"` part of the command.)
 
-On another computer, you can now visit the same address as before, namely `http://<ip-addr-of-pi>:8889/cam`.
-
-The reason for specifying "baseline" profile on a Pi 5 is that MediaMTX doesn't support B frames, so we need to stop the encoder from producing them. On earlier devices, with hardware encoders, B frames are never generated so there is no issue. On a Pi 5 you could alternatively remove this option and replace it with `--low-latency` which will also prevent B frames, and produce a (slightly less well compressed) stream with reduced latency.
+To view the stream in a web browser, use the address `http://<ip-addr-of-MediaMTX-machine>:8889/cam` (assuming a stream name of "cam").
 
 [NOTE]
 ====
-If you notice occasional pauses in the video stream, this may be because the UDP receive buffers on the Pi (passing data from `rpicam-vid` to MediaMTX) are too small. To increase them permantently, add
+If you notice occasional pauses in the video stream, this may be because the UDP receive buffers on the Pi (passing data from `rpicam-vid` to MediaMTX) are too small. To increase them permantently, create a file called `/etc/sysctl.d/99-network-tuning.conf` containing
 ----
 net.core.rmem_default=1000000
 net.core.rmem_max=1000000
 ----
-to your `/etc/sysctl.conf` file (and reboot or run `sudo sysctl -p`).
+and reboot (or run `sudo sysctl -p /etc/sysctl.d/99-network-tuning.conf`).
+
+On earlier OSes, you would have to add these lines to `/etc/sysctl.conf` instead (and reboot or run`sudo sysctl -p`).
+
+The capabilities of MediaMTX far exceed the short guide here, and users are referred to the https://mediamtx.org/docs/kickoff/introduction[documentation] for more details.
 
 === Streaming with MistServer
 
