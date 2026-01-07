@@ -162,7 +162,7 @@ As stated above, MediaMTX will accept an input stream from the Pi's camera syste
 
 ==== Installation and Configuration
 
-To install it, download the latest version from the https://github.com/bluenviron/mediamtx/releases[releases] page. Raspberry Pi OS 64-bit users will want the "linux_arm64" compressed tar file (ending `.tar.gz`). There is also an "armv7" version for 32-bit OS users. Unpack it and you will get a `mediamtx` executable and a configuration file called `mediamtx.yml`.
+To install it, download the latest version from the https://github.com/bluenviron/mediamtx/releases[releases] page. Raspberry Pi OS 64-bit users will want the "linux_arm64" compressed tar file (ending `.tar.gz`). There is also an "armv7" version for 32-bit OS users. Unpack it (using `tar -xvzf <filename.tar.gz>`) and you will get a `mediamtx` executable and a configuration file called `mediamtx.yml`. Ensure the executable file has the correct permissions (use `chmod a+x mediamtx` to make it executable).
 
 There is no need for any specific configuration at this point, but it's worth backing up the `mediamtx.yml` file because it documents many Raspberry Pi camera options that you may want to investigate later.
 
@@ -174,13 +174,13 @@ paths:
   cam:
     source: rpiCamera
 ----
-and start the `mediamtx` executable. The use of `rpiCamera` here is how we tell MediaMTX to start and control the camera system for itself.
+and start the `mediamtx` executable (type its name at a command promt, qualifying the full path if necessary). The use of `rpiCamera` here is how we tell MediaMTX to start and control the camera system for itself.
 
 If you want MediaMTX to acquire the camera only when the stream is requested, add the following line to the previous `mediamtx.yml`:
 ----
     sourceOnDemand: yes
 ----
-Consult the original `mediamtx.yml` for additional configuration parameters that let you select the image size, the camera mode, the bitrate and so on - just search for `rpi`.
+To be sure changes have taken effect, it may be necessary to stop (if it's running in a terminal just use Ctrl-C) and restart `mediamtx`. Consult the original `mediamtx.yml` for additional configuration parameters that let you select the image size, the camera mode, the bitrate and so on - just search for `rpi`.
 
 As an alternative, we could run `rpicam-vid` externally to MediaMTX, setting up `mediamtx.yml` as follows:
 ----
@@ -193,7 +193,7 @@ We could actually run any external program to output an MPEG-TS stream to this a
 ----
 $ rpicam-vid -t 0 -n --codec libav --low-latency --libav-format mpegts -o udp://127.0.0.1:1234?pkt_size=1316
 ----
-Note how this gives us the opportunity to alter the images in some way, perhaps using the rpicam-apps post-processing features, or the Picamera2 Python module. we've also used the `--low-latency` option which suppresses B-frames (on a Pi 5 or later; earlier Pis won't generate any), which is often advisable because some streaming formats that clients request do not support them.
+Note how this gives us the opportunity to alter the images in some way, perhaps using the rpicam-apps post-processing features, or the Picamera2 Python module. We've also used the `--low-latency` option which suppresses B-frames (on a Pi 5 or later; earlier Pis won't generate any), which is often advisable because some streaming formats that clients request do not support them.
 
 ==== Viewing with a Client
 
@@ -208,7 +208,7 @@ To view the stream in a web browser, use the address `http://<ip-addr-of-MediaMT
 
 [NOTE]
 ====
-If you notice occasional pauses in the video stream, this may be because the UDP receive buffers on the Pi (passing data from `rpicam-vid` to MediaMTX) are too small. To increase them permantently, create a file called `/etc/sysctl.d/99-network-tuning.conf` containing
+If you notice occasional pauses in the video stream, this may be because the UDP receive buffers on the Pi (passing data from `rpicam-vid` to MediaMTX) are too small. To increase them permanently, create a file called `/etc/sysctl.d/99-network-tuning.conf` containing
 ----
 net.core.rmem_default=1000000
 net.core.rmem_max=1000000
@@ -216,8 +216,9 @@ net.core.rmem_max=1000000
 and reboot (or run `sudo sysctl -p /etc/sysctl.d/99-network-tuning.conf`).
 
 On earlier OSes, you would have to add these lines to `/etc/sysctl.conf` instead (and reboot or run`sudo sysctl -p`).
+====
 
-The capabilities of MediaMTX far exceed the short guide here, and users are referred to the https://mediamtx.org/docs/kickoff/introduction[documentation] for more details.
+The capabilities of MediaMTX far exceed the short guide here, and users are referred to the https://mediamtx.org/docs/kickoff/introduction[documentation] for more details. You will also find instructions there for setting up MediaMTX as a system service that starts at boot.
 
 === Streaming with MistServer
 
@@ -225,7 +226,7 @@ Besides MediaMTX, MistServer is another popular free media server that we can us
 
 ==== Installation and Configuration
 
-You can install MistServer very simply on a Pi by following https://docs.mistserver.org/mistserver/installation/linux#armv8-64-bits-linux[these instructions]. You will need to run this as root, and it will even set up a system MistServer service that runs automatically.
+You can install MistServer very simply on a Pi by following https://docs.mistserver.org/mistserver/installation/linux#armv8-64-bits-linux[these instructions] for 64-bit OSes. 32-bit OS users should use https://docs.mistserver.org/mistserver/installation/linux/#armv7-linux[this link]. You will need to run this as root, and it will even set up a system MistServer service that runs automatically.
 
 To configure MistServer, go to the Managment Interface (MI) webpage on your Pi at `http://localhost:4242/` (or you can visit the page from another computer if you substitute your Pi's IP address). The first time you use it, it will ask you to create an admin account. After that, just accept any defaults and you're done.
 
@@ -267,7 +268,7 @@ Finally, go2rtc is another very capable media server platform that, while not of
 
 ==== Installation and Configuration
 
-You can install go2rtc simply by going to the https://github.com/AlexxIT/go2rtc/releases/[releases page]. Most users should download the `go2rtc_linux_arm64` binary for 64-bit OSes, though a 32-bit version is also available. You can run this directly (after changing the permissions to make the file executable).
+You can install go2rtc simply by going to the https://github.com/AlexxIT/go2rtc/releases/[releases page]. 64-bit OS users should download the `go2rtc_linux_arm64` binary, and a 32-bit version is also available. You can run this directly (after changing the permissions to make the file executable - use `chmod a+x <filename>`).
 
 No particular configuration is needed, but once it is running you can find a management page at `http://localhost:1984/`.
 
@@ -313,4 +314,3 @@ http://<ip-address-of-go2rtc-machine>:1984/stream.html?src=cam
 ----
 
 go2rtc supports a wide range of use cases and options, so users should consult the https://github.com/AlexxIT/go2rtc/blob/master/README.md[documentation] for more information.
-====
