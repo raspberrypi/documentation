@@ -37,7 +37,7 @@ jobs:
           version: 1.10.2
       - name: Install arm-none-eabi-gcc GNU Arm Embedded Toolchain
         if: ${{ inputs.deploy }}
-        uses: carlosperate/arm-none-eabi-gcc-action@4c88c61a77a39a33a7722d24a4e8b2c573f766c9
+        uses: carlosperate/arm-none-eabi-gcc-action@2ca034649a66909ef5382c90ffb5d26711d2f266
       - name: Install Doxygen
         if: ${{ inputs.deploy }}
         run: |
