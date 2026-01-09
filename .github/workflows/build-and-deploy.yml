@@ -28,7 +28,7 @@ jobs:
         uses: py-actions/py-dependency-install@30aa0023464ed4b5b116bd9fbdab87acf01a484e
       - name: Install Python libs
         run: pip3 install -r ./requirements.txt
-      - uses: ruby/setup-ruby@ac793fdd38cc468a4dd57246fa9d0e868aba9085
+      - uses: ruby/setup-ruby@b90be12699fdfcbee4440c2bba85f6f460446bb0
         with:
           ruby-version: 3.2
           bundler-cache: true
@@ -37,7 +37,7 @@ jobs:
           version: 1.10.2
       - name: Install arm-none-eabi-gcc GNU Arm Embedded Toolchain
         if: ${{ inputs.deploy }}
-        uses: carlosperate/arm-none-eabi-gcc-action@4c88c61a77a39a33a7722d24a4e8b2c573f766c9
+        uses: carlosperate/arm-none-eabi-gcc-action@2ca034649a66909ef5382c90ffb5d26711d2f266
       - name: Install Doxygen
         if: ${{ inputs.deploy }}
         run: |
