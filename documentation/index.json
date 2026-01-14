@@ -48,8 +48,8 @@
                     "subpath": "camera_software.adoc"
                 },
                 {
-                    "title": "AI Kit and AI HAT+ software",
-                    "description": "Software and libraries for artificial intelligence on a Raspberry Pi hardware",
+                    "title": "AI software",
+                    "description": "Software and libraries for artificial intelligence on Raspberry Pi AI Kit and AI HATs",
                     "image": "full-sized/ai.png",
                     "subpath": "ai.adoc"
                 },
@@ -175,8 +175,8 @@
                     "subpath": "ai-kit.adoc"
                 },
                 {
-                    "title": "AI HAT+",
-                    "description": "An NPU HAT+ for your Raspberry Pi",
+                    "title": "AI HATs",
+                    "description": "NPU AI HATs for your Raspberry Pi",
                     "image": "full-sized/ai-hat-plus.png",
                     "subpath": "ai-hat-plus.adoc"
                 },

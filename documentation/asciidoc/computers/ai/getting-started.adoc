@@ -1,54 +1,144 @@
-== Getting Started
+[[ai]]
 
-This guide will help you set up a Hailo NPU with your Raspberry Pi 5. This will enable you to run `rpicam-apps` camera demos using an AI neural network accelerator.
+This page provides instructions for running AI models powered by Hailo NPUs on Raspberry Pi 5. The Hailo NPU is an AI accelerator chip designed to run neural networks; instead of Raspberry Pi's CPU doing the AI work, the NPU handles it more efficiently.
 
-=== Prerequisites
+You can connect a Hailo NPU to your Raspberry Pi 5 using either:
 
-For this guide, you will need the following:
+- xref:../accessories/ai-kit.adoc[Raspberry Pi AI Kit], which consists of an M.2 HAT+ with a pre-installed Hailo-8L NPU.
+- xref:../accessories/ai-hat-plus.adoc[Raspberry Pi AI HAT+] with either an on-board Hailo-8L NPU or an on-board Hailo-8 NPU.
+- xref:../accessories/ai-hat-plus.adoc[Raspberry Pi AI HAT+ 2] with an on-board Hailo-10H NPU.
 
-* a Raspberry Pi 5
-* one of the following NPUs:
-** a xref:../accessories/ai-kit.adoc[Raspberry Pi AI Kit], which includes:
-*** an M.2 HAT+
-*** a pre-installed Hailo-8L AI module
-** a xref:../accessories/ai-hat-plus.adoc[Raspberry Pi AI HAT+]
-* a 64-bit Raspberry Pi OS _Bookworm_ install
-* any official Raspberry Pi camera (e.g. Camera Module 3 or High Quality Camera)
+All three of these options allow you to run vision AI models on a Raspberry Pi 5. However, the AI Kit is no longer in production and so, for new designs, we recommend using an AI HAT+ or AI HAT+ 2.
 
-=== Hardware setup
+AI HAT+ 2 additionally allows you to run Generative AI (GenAI) models. With AI HAT+ 2, you can:
 
-. Attach the camera to your Raspberry Pi 5 board following the instructions at xref:../accessories/camera.adoc#install-a-raspberry-pi-camera[Install a Raspberry Pi Camera]. You can skip reconnecting your Raspberry Pi to power, because you'll need to disconnect your Raspberry Pi from power for the next step.
+- Run Large Language Models (LLMs). If you have an AI HAT+ 2 and want to run both vision AI models and LLMs, follow both sets of instructions: <<vision-ai>> and <<LLMs>>.
+- Run Vision-Language Models (VLMs) and other GenAI tasks. For instructions, see Hailo's GitHub repository: https://github.com/hailo-ai/hailo-apps[hailo-apps].
 
-. Depending on your NPU, follow the installation instructions for the xref:../accessories/ai-kit.adoc#ai-kit-installation[AI Kit] or xref:../accessories/ai-hat-plus.adoc#ai-hat-plus-installation[AI HAT+], to get your hardware connected to your Raspberry Pi 5.
+[[hardware]]
+== Hardware prerequisites
 
-. Follow the instructions to xref:raspberry-pi.adoc#pcie-gen-3-0[enable PCIe Gen 3.0]. This step is optional, but _highly recommended_ to achieve the best performance with your NPU.
+Running AI models requires a https://www.raspberrypi.com/products/raspberry-pi-5/[Raspberry Pi 5] with a https://www.raspberrypi.com/software/operating-systems/[64-bit Raspberry Pi OS] installation (Trixie) and one of the following Hailo AI accelerator (NPU) options:
 
-. Install the dependencies required to use the NPU. Run the following command from a terminal window:
+- A Raspberry Pi AI HAT+ or AI HAT+ 2 (recommended), both of which have an on-board Hailo module. For more information about these accessories, see xref:../accessories/ai-hat-plus.adoc[AI HATs].
+- A Raspberry Pi AI Kit, which includes an M.2 HAT+ with a Hailo-8L AI accelerator pre-installed. For more information about the AI Kit, see xref:../accessories/ai-kit.adoc[AI Kit].
+
+NOTE: The AI Kit is no longer in production; for new designs, we recommend using an AI HAT+ or AI HAT+ 2.
+
+If you want to run vision AI models, you additionally need a supported camera, such as Raspberry Pi Camera Module 3. We recommend attaching your camera before attaching your AI hardware. For instructions, see xref:../accessories/camera.adoc#install-a-raspberry-pi-camera[Install a Raspberry Pi Camera]. Skip reconnecting your Raspberry Pi to power because you must disconnect your Raspberry Pi from power for the next step.
+
+Then, depending on your AI hardware, follow the instructions for attaching either an xref:../accessories/ai-hat-plus.adoc[AI HAT] (HAT+ or HAT+ 2) or xref:../accessories/ai-kit.adoc[AI Kit] to your Raspberry Pi 5.
+
+Next, follow the instructions in <<software>> to enable PCIe Gen 3.0 (AI Kit only), install the required dependencies, and verify that everything has been set up correctly.
+
+[[software]]
+== Software prerequisites
+
+Before running vision AI models or GenAI models on your Raspberry Pi 5:
+
+- <<PCIe-Gen-3>>. Manually configure the PCIe interface to allow the Hailo NPU to communicate at full speed. This is only necessary for the AI Kit.
+- <<dependencies>>. Install the necessary software dependencies that allow the operating system (OS) and applications to detect, communicate with, and run AI models on the Hailo NPU.
+- <<verify>>. Verify that your AI hardware is correctly detected and ready to use.
+
+[[PCIe-Gen-3]]
+=== Enable PCIe Gen 3.0 (AI Kit only)
+
+If you're using an AI Kit, we recommend that you enable PCIe Gen 3.0. You can skip this for AI HAT+ and AI HAT+ 2 because the setting is automatically applied.
+
+By default, Raspberry Pi 5 uses Gen 2.0 (5 GT/s) speeds on its PCIe interface. To achieve the best performance for your NPU, use one of the following approaches to force Gen 3.0 (8 GT/s) speeds:
+
+- Enable Gen 3.0 on your Raspberry Pi 5 from the configuration command line (CLI) tool (*`raspi-config`*).
+- Update the configuration file (*`config.txt`*) to force the PCIe interface on your Raspberry Pi 5 to operate at PCIe Gen 3.0 speeds.
+
+NOTE: This step is optional but highly recommended. For more information about this setting, see xref:raspberry-pi.adoc#pcie-gen-3-0[PCIe Gen 3.0].
+
+[tabs]
+======
+raspi-config::
+First, open the Raspberry Pi configuration CLI; in the Raspberry Pi Terminal, run the following command:
++
+[source,console]
+----
+$ sudo raspi-config
+----
++
+Then, from the configuration CLI, complete the following steps:
++
+. Select *`Advanced Options > PCIe Speed`*.
+. Select *`Yes`* to enable PCI Gen 3.0 mode.
+. Select *`Finish`* to exit the configuration CLI.
+. Reboot your Raspberry Pi for your changes to take effect. You can do this from the Terminal with *`sudo reboot`*.
+
+config.txt::
+First, open your configuration file (`/boot/firmware/config.txt`) as the root user. Then:
++
+. Add the following line to the `config.txt` file:
++
+[source,console]
+----
+$ dtparam=pciex1_gen=3
+----
+.  Reboot your Raspberry Pi to force the settings to take effect:
++
+[source,console]
+----
+$ sudo reboot
+----
+======
+
+[[dependencies]]
+=== Install required dependencies
+
+The following dependencies are required to use the NPU:
+
+- The Hailo kernel device driver and firmware.
+- Hailo RT middleware software.
+- Hailo Tappas core post-processing libraries.
+
+How you install these dependencies depends on the AI hardware you're using. Choose the appropriate installation option for your AI hardware:
+
+NOTE: The AI Kit and AI HAT+ require a different package (*`hailo-all`*) to AI HAT+ 2 (*`hailo-h10-all`*). These packages can't co-exist.
+
+[tabs]
+======
+AI Kit and AI HAT+::
+To install the required dependencies for the AI Kit or AI HAT+, open the Raspberry Pi Terminal and run the following commands:
 +
 [source,console]
 ----
 $ sudo apt install dkms
 $ sudo apt install hailo-all
 ----
-+
-This installs the following dependencies:
-+
-* Hailo kernel device driver and firmware
-* HailoRT middleware software
-* Hailo Tappas core post-processing libraries
-* The `rpicam-apps` Hailo post-processing software demo stages
 
-. Finally, reboot your Raspberry Pi with `sudo reboot` for these settings to take effect.
-
-. To ensure everything is running correctly, run the following command:
+AI HAT+ 2::
+To install the required dependencies for AI HAT+ 2, open the Raspberry Pi Terminal and run the following commands:
 +
+[source,console]
+----
+$ sudo apt install dkms
+$ sudo apt install hailo-h10-all
+----
+======
+
+[[verify]]
+=== Reboot and verify
+
+After installing the required dependencies, you must reboot your Raspberry Pi 5. You can do this from the Raspberry Pi Terminal using the following command:
+
+[source,console]
+----
+$ sudo reboot
+----
+
+When your Raspberry Pi 5 has finished booting back up again, run the following command to check that everything is running correctly:
+
 [source,console]
 ----
 $ hailortcli fw-control identify
 ----
-+
+
 If you see output similar to the following, you've successfully installed the NPU and its software dependencies:
-+
+
 ----
 Executing on device: 0000:01:00.0
 Identifying board
@@ -61,11 +151,11 @@ Serial Number: HLDDLBB234500054
 Part Number: HM21LB1C2LAE
 Product Name: HAILO-8L AI ACC M.2 B+M KEY MODULE EXT TMP
 ----
-+
-NOTE: AI HAT+ devices may show `<N/A>` for `Serial Number`, `Part Number` and `Product Name`. This is expected, and does not impact functionality.
-+
-Additionally, you can run `dmesg | grep -i hailo` to check the kernel logs, which should yield output similar to the following:
-+
+
+AI HAT+ and AI HAT+ 2 might show `<N/A>` for `Serial Number`, `Part Number` and `Product Name`. This is expected and doesn't affect functionality.
+
+Additionally, you can run `dmesg | grep -i hailo` to check the kernel logs, which is expected to output something like the following:
+
 ----
 [    3.049657] hailo: Init module. driver version 4.17.0
 [    3.051983] hailo 0000:01:00.0: Probing on: 1e60:2864...
@@ -84,99 +174,105 @@ Additionally, you can run `dmesg | grep -i hailo` to check the kernel logs, whic
 [    3.231845] hailo 0000:01:00.0: Probing: Added board 1e60-2864, /dev/hailo0
 ----
 
-. To ensure the camera is operating correctly, run the following command:
-+
-[source,console]
-----
-$ rpicam-hello -t 10s
-----
-+
-This starts the camera and shows a preview window for ten seconds. Once you have verified everything is installed correctly, it's time to run some demos.
+[[vision-ai]]
+== Run vision AI models on Raspberry Pi 5
 
-=== Demos
+This section provides guidance for setting up a Hailo NPU with your Raspberry Pi 5 so that camera applications can run real-time AI tasks like object detection on camera input. The following instructions are relevant for the AI Kit, AI HAT+, and AI HAT+ 2.
 
-The `rpicam-apps` suite of camera applications implements a xref:camera_software.adoc#post-processing-with-rpicam-apps[post-processing framework]. This section contains a few demo post-processing stages that highlight some of the capabilities of the NPU.
+=== Step 1. Install camera dependencies
 
-The following demos use xref:camera_software.adoc#rpicam-hello[`rpicam-hello`], which by default displays a preview window. However, you can use other `rpicam-apps` instead, including xref:camera_software.adoc#rpicam-vid[`rpicam-vid`] and xref:camera_software.adoc#rpicam-still[`rpicam-still`]. You may need to add or modify some command line options to make the demo commands compatible with alternative applications.
+First, you must install the Raspberry Pi camera software stack. The `rpicam-apps` package provides the camera utilities used by Raspberry Pi OS and includes the Hailo post-processing software demo stages required for vision AI pipelines.
 
-To begin, run the following command to install the latest `rpicam-apps` software package:
+Use the following command to install the latest rpicam-apps software package:
 
 [source,console]
 ----
 $ sudo apt update && sudo apt install rpicam-apps
 ----
 
-==== Object Detection
-
-This demo displays bounding boxes around objects detected by a neural network. To disable the viewfinder, use the xref:camera_software.adoc#nopreview[`-n`] flag. To return purely textual output describing the objects detected, add the `-v 2` option. Run the following command to try the demo on your Raspberry Pi:
+Then, run the following command to ensure that the camera is operating correctly:
 
 [source,console]
 ----
-$ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov6_inference.json
+$ rpicam-hello
 ----
 
-Alternatively, you can try another model with different trade-offs in performance and efficiency.
+This starts the camera and shows a preview window for five seconds. If the preview window appears, the camera is set up correctly.
 
-To run the demo with the Yolov8 model, run the following command:
+=== Step 2. Run real-time visual AI demos
 
-[source,console]
-----
-$ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov8_inference.json
-----
+After you've verified that everything is correctly installed, you can run camera AI demos using the `rpicam-apps` camera software. This software implements AI demos using a xref:camera_software.adoc#post-processing-with-rpicam-apps[post-processing framework]; this software uses pre-trained neural networks to run AI inference on camera frames using the NPU.
 
-To run the demo with the YoloX model, run the following command:
+To highlight some of the capabilities of the NPU, this section outlines some demos that showcase different models and post-processing stages, such as drawing bounding boxes around objects or pose lines around people. Results are displayed either visually on the live preview window (default) or as text in the Raspberry Pi Terminal.
 
-[source,console]
-----
-$ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolox_inference.json
-----
+The following demos use xref:camera_software.adoc#rpicam-hello[`rpicam-hello`], but you can also use other rpicam-apps, such as xref:camera_software.adoc#rpicam-vid[`rpicam-vid`] for video recordings and xref:camera_software.adoc#rpicam-still[`rpicam-still`] for still images. These applications might require you to add or modify some command line options to make them compatible.
 
-To run the demo with the Yolov5 Person and Face model, run the following command:
+==== Object detection
 
-[source,console]
-----
-$ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov5_personface.json
-----
+The following `rpicam-apps` demos perform object detection using `rpicam-hello` with different YOLO models. Each demo draws bounding boxes around detected objects and supports optional flags to modify the output, such as `-n` to turn off the viewfinder and `-v 2` to display textural output only.
 
-==== Image Segmentation
+Different demos have different tradeoffs in speed and accuracy. Run the following commands to try each of the demos on your Raspberry Pi 5:
 
-This demo performs object detection and segments the object by drawing a colour mask on the viewfinder image. Run the following command to try the demo on your Raspberry Pi:
+[cols="1,3,3", options="header"]
+|===
+| Model | Command | Post-processing stage
+
+| YOLOv6
+| `rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov6_inference.json`
+| Object detection.
+
+| YOLOv8
+| `rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov8_inference.json`
+| Object detection.
+
+| YOLOX
+| `rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolox_inference.json`
+| Lightweight and fast object detection.
+
+| YOLOv5
+| `rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov5_inference.json`
+| People and face detection.
+|===
+
+==== Image segmentation
+
+The following `rpicam-apps` demo uses `rpicam-hello` to perform object detection and then segments the object by drawing a colour mask on the viewfinder image. Run the following command to try the demo on your Raspberry Pi 5:
 
 [source,console]
 ----
 $ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov5_segmentation.json --framerate 20
 ----
 
-==== Pose Estimation
+==== Pose estimation
 
-This demo performs 17-point human pose estimation, drawing lines connecting the detected points. Run the following command to try the demo on your Raspberry Pi:
+The following `rpicam-apps` demo uses `rpicam-hello` to perform 17-point human pose estimation, drawing lines connecting the detected points. Run the following command to try the demo on your Raspberry Pi 5:
 
 [source,console]
 ----
 $ rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov8_pose.json
 ----
 
-=== Alternative Package Versions
+=== Package versions for AI Kit and AI HAT+
 
-The AI Kit and AI HAT+ do not function if there is a version mismatch between the Hailo software packages and device drivers. In addition, Hailo's neural network tooling may require a particular version for generated model files. If you require a specific version, complete the following steps to install the proper versions of all of the dependencies:
+If you want to run models using the AI Kit or AI HAT+ generated with a specific version of the Hailo toolchain, you must ensure that you're using compatible versions of the Hailo software packages and device drivers. These components don't function correctly if their versions don't match.
 
-. If you have previously used `apt-mark` to hold any of the relevant packages, you may need to unhold them:
-+
+First, if you've previously used `apt-mark` to hold any of the relevant packages, you might need to unhold them with the following command:
+
 [source,console]
 ----
 $ sudo apt-mark unhold hailo-tappas-core hailort hailo-dkms
 ----
 
-. Install the required version of the software packages:
+You can then install the required version of the software packages:
 
 [tabs]
 ======
-v4.19::
+4.19::
 To install version 4.19 of Hailo's neural network tooling, run the following commands:
 +
 [source,console]
 ----
-sudo apt install hailo-tappas-core=3.30.0-1 hailort=4.19.0-3 hailo-dkms=4.19.0-1 python3-hailort=4.19.0-2
+$ sudo apt install hailo-tappas-core=3.30.0-1 hailort=4.19.0-3 hailo-dkms=4.19.0-1 python3-hailort=4.19.0-2
 ----
 +
 [source,console]
@@ -213,8 +309,216 @@ $ sudo apt-mark hold hailo-tappas-core hailort hailo-dkms
 
 === Further Resources
 
-Hailo has also created a set of demos that you can run on a Raspberry Pi 5, available in the https://github.com/hailo-ai/hailo-rpi5-examples[hailo-ai/hailo-rpi5-examples GitHub repository].
+- For Hailo's own set of demos that you can run on a Raspberry Pi 5, see the https://github.com/hailo-ai/hailo-rpi5-example[hailo-rpi5-examples] GitHub repository.
+- For Hailo's model zoo, which contains a large number of neural networks, see the https://hailo.ai/products/hailo-software/model-explorer-vision/[Hailo Model Explorer].
+- For discussion on Hailo's hardware and tooling, see the https://community.hailo.ai/[Hailo Community] forum and https://hailo.ai/developer-zone[Developer Zone].
 
-You can find Hailo's extensive model zoo, which contains a large number of neural networks, in the https://github.com/hailo-ai/hailo_model_zoo/tree/master/docs/public_models/HAILO8L[hailo-ai/hailo_model_zoo GitHub repository].
+[[LLMs]]
+== Run LLMs on Raspberry Pi 5 (AI HAT+ 2 only)
 
-Check out the https://community.hailo.ai/[Hailo community forums and developer zone] for further discussions on the Hailo hardware and tooling.
+This section page provides instructions for setting up the Hailo 10 NPU on your AI HAT+ 2 with a Raspberry Pi 5 so that you can locally run Large Language Models (LLM). With the following setup, you can access LLMs through:
+
+- *POST requests (API calls)*, where you directly send queries to the hailo-ollama server.
+- The *Web UI frontend*, where you use a browser-based chat-like interface.
+
+=== Components for running local LLMs
+
+Running local LLMs on a Raspberry Pi 5 involves several system layers that work together to enable hardware-accelerated inference.
+
+==== Hardware layer
+
+The physical compute required to run local LLMs comes from:
+
+- A *Raspberry Pi 5*, which provides the main CPU, memory, and general-purpose I/O required to run the OS, manage the software, and co-ordinate communication with the AI accelerator.
+- A *Hailo AI accelerator chip* (Hailo-10H NPU provided through the AI HAT+ 2), which provides the neural processing for AI inference, allowing you to run local LLMs.
+
+For more information about these prerequisites, see <<hardware>>.
+
+==== Software layer
+
+To use the Hailo NPU for local LLMs on your Raspberry Pi 5, you must install a set of software dependencies, drivers, and runtime components.
+
+Software dependencies are needed for running LLMs (as well as vision AI) on Raspberry Pi 5. For information about required dependencies and instructions for installing them, see <<dependencies, Software prerequisites > Install required dependencies>>.
+
+==== AI model layer
+
+The *Hailo Gen-AI Model Zoo* contains the pre-trained LLMs suitable for running on Hailo-10H. These models are installed as part of <<step2-llm>>. These models are then loaded by the runtime and run by the AI accelerator.
+
+==== Backend layer
+
+LLMs are loaded and run by the *Hailo Ollama server*. This backend layer:
+
+- Loads LLMs from the Hailo Gen-AI Model Zoo.
+- Manages inference on the Hailo-10H NPU.
+- Exposes a REST API for sending requests (submitting prompts) to the NPU and returning AI inference results (receiving responses).
+
+The backend is installed as part of <<step3-llm>>.
+
+==== Frontend layer (optional)
+
+The frontend layer is an optional, browser-based chat interface provided by *Open WebUI*. While Open WebUI isn't required to run LLMs, it provides a more user-friendly way to submit prompts and view responses instead of terminal-based POST requests. The frontend communicates with the backend through its REST API and displays model outputs in a conversational UI.
+
+The frontend is installed as a combination of <<step1-llm>> and <<step4-llm>>.
+
+[[step1-llm]]
+=== Step 1. Install Docker (for Open WebUI)
+
+You can skip this step if you don't plan to use the Open WebUI interface.
+
+You must use Docker if you want to use the Open WebUI front end. This is because the Web UI is incompatible with Python 3.13 on Trixie. Docker provides a containerised environment for stable operation. For more comprehensive installation instructions, see Docker's page: https://docs.docker.com/engine/install/debian/[Install Docker Engine on Debian].
+
+To install Docker:
+
+. Remove any existing Docker packages:
++
+[source, console]
+----
+$ sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc podman-docker containerd runc | cut -f1)
+----
+. Install the Docker apt repository:
++
+[source, console]
+----
+# Add Docker's official GPG key:
+$ sudo apt update
+$ sudo apt install ca-certificates curl
+$ sudo install -m 0755 -d /etc/apt/keyrings
+$ sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+$ sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+$ sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/debian
+Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+$ sudo apt update
+----
+. Check that the `docker.sources` file has been created correctly:
++
+[source, console]
+----
+$ cat /etc/apt/sources.list.d/docker.sources
+----
+The output is expected to list the following, where `Suites` is the `VERSION_CODENAME` of your operating system (`trixie`):
++
+[source]
+----
+Types: deb
+URIs: https://download.docker.com/linux/debian
+Suites: trixie
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+----
+. Install and run the Docker service:
++
+[source, console]
+----
+$ sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+$ sudo systemctl start docker
+----
+. Create a `docker` group:
++
+[source, console]
+----
+$ sudo groupadd docker
+----
+. Add your user to the `docker` group
++
+[source, console]
+----
+$ sudo usermod -aG docker $USER
+----
+. Sign out and back in again so that your group membership is re-evaluated or run the following command to activate changes to the group:
++
+[source, console]
+----
+$ newgrp docker
+----
+. Test Docker:
++
+[source, console]
+----
+$ docker run hello-world
+----
+
+[[step2-llm]]
+=== Step 2. Install Hailo Ollama server
+
+The Hailo Ollama server provides:
+
+- The pre-trained LLMs optimised for the Hailo-10H NPU.
+- The Ollama back end that exposes a REST API for querying models.
+
+To install the Hailo Ollama server, follow the instructions in https://github.com/hailo-ai/hailo_model_zoo_genai[Hailo's Model Zoo GitHub repository]. Ensure that you download *version 5.1.1* of the Hailo Model Zoo GenAI package.
+
+
+[[step3-llm]]
+=== Step 3. Start the Hailo Ollama server and run LLMs
+
+After everything is installed, start the local `hailo-ollama` server to expose a REST API for LLM requests, and then download and run some LLMs.
+
+. In a Raspberry Pi Terminal, run the following command to start the local `hailo-ollama` server:
++
+[source, console]
+----
+$ hailo-ollama
+----
+. In a new Terminal window, run the following command to get a list of LLMs:
++
+[source, console]
+----
+$ curl --silent http://localhost:8000/hailo/v1/list
+----
+. Run the following command to download a model from the provided list, replacing `"examplemodel:tag"` with any listed model (for example, `"qwen2:1.5b"`):
++
+[source, console]
+----
+$ curl --silent http://localhost:8000/api/pull \
+     -H 'Content-Type: application/json' \
+     -d '{ "model": "examplemodel:tag", "stream" : true }'
+----
+. Run the following command to send a query to the LLM with a post request,replacing `"examplemodel:tag"` with whichever model you've downloaded and want to run:
++
+[source, console]
+----
+$ curl --silent http://localhost:8000/api/chat \
+     -H 'Content-Type: application/json' \
+     -d '{"model": "examplemodel:tag", "messages": [{"role": "user", "content": "Translate to French: The cat is on the table."}]}'
+----
+
+[[step4-llm]]
+=== Step 4. Install and use Open WebUI (optional)
+
+You can set up *Open WebUI*, an optional browser-based, chat interface that connects to the Hailo Ollama server, allowing you to send queries to, and view responses from, LLMs using a conversational UI. Alternatively, you can keep using the terminal-based POST requests described in <<step3-llm>> to interact with LLMs.
+
+Open WebUI needs to run in a Docker container. You install Docker in <<step1-llm>>. You must now deploy and run an Open WebUI container with Docker.
+
+The following method is one way to deploy and use containers, but it's not the only approach. For example, you could instead use `docker-compose` for container management.
+
+. To use Open WebUI, you first need to install it. Download the Open WebUI image required to run the frontend:
++
+[source, console]
+----
+$ docker pull ghcr.io/open-webui/open-webui:main
+----
+. Ensure that `hailo-ollama` is already running. Then, start the Open WebUI container and connect it to the `hailo-ollama` backend:
++
+[source, console]
+----
+$ docker run -d -e OLLAMA_BASE_URL=http://127.0.0.1:8000 -v open-webui:/app/backend/data --name open-webui --network=host --restart always ghcr.io/open-webui/open-webui:main
+----
+. Monitor container startup. The container can take up to a minute to initialise. To view progress and logs, run the following command and then wait until the logs indicate that the server is running and ready to accept connections.
++
+[source, console]
+----
+$ docker logs open-webui -f
+----
+. Access Open WebUI in a web browser and enter the following URL: http://127.0.0.1:8080. This opens a chat interface where you can select a model and begin interacting with the LLM.
+
+For more detailed instructions, see the https://docs.openwebui.com/getting-started/quick-start/[Quick Start] guide in the Open WebUI documentation.
+
