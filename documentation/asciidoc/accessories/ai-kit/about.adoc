@@ -53,9 +53,8 @@ image::images/ai-kit-installation-01.png[width="60%"]
 First, ensure that your Raspberry Pi 5 is disconnected from power. Then:
 
 . *Prepare the cooler.* Remove the protective paper from the thermal pads at the bottom of the cooler. This exposes a sticky surface on each of the thermal pads.
-. *Install the push pins* Insert the two white push pins into the two holes in diagonally opposite corners of the cooler.
-. *Position the heatsink.* Align the two white push pins with the two dedicated heatsink holes on your Raspberry Pi 5. In this position, the thermal pads align with the wireless radio, the system-on-chip (SoC), and the power management integrated circuit (PMIC).
-. *Secure the heatsink.* Press the cooler gently onto your Raspberry Pi 5. Then, evenly press the two white push pins down into the two dedicated heatsink holes on your Raspberry Pi 5 until they click.
+. *Position the cooler.* Align the two white push pins with the two dedicated heatsink holes on your Raspberry Pi 5. In this position, the thermal pads align with the wireless radio, the system-on-chip (SoC), and the power management integrated circuit (PMIC).
+. *Secure the cooler.* Press the cooler gently onto your Raspberry Pi 5. Then, evenly press the two white push pins down into the two dedicated heatsink holes on your Raspberry Pi 5 until they click.
 . *Connect the fan.* Plug the fan's JST connector into the fan socket on your Raspberry Pi 5.
 
 == Step 3. Mount the M.2 HAT+
