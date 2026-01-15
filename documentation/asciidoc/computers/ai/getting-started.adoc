@@ -316,7 +316,7 @@ $ sudo apt-mark hold hailo-tappas-core hailort hailo-dkms
 [[LLMs]]
 == Run LLMs on Raspberry Pi 5 (AI HAT+ 2 only)
 
-This section page provides instructions for setting up the Hailo 10 NPU on your AI HAT+ 2 with a Raspberry Pi 5 so that you can locally run Large Language Models (LLM). With the following setup, you can access LLMs through:
+This section provides instructions for setting up the Hailo 10 NPU on your AI HAT+ 2 with a Raspberry Pi 5 so that you can locally run Large Language Models (LLM). With the following setup, you can access LLMs through:
 
 - *POST requests (API calls)*, where you directly send queries to the hailo-ollama server.
 - The *Web UI frontend*, where you use a browser-based chat-like interface.
@@ -342,7 +342,7 @@ Software dependencies are needed for running LLMs (as well as vision AI) on Rasp
 
 ==== AI model layer
 
-The *Hailo Gen-AI Model Zoo* contains the pre-trained LLMs suitable for running on Hailo-10H. These models are installed as part of <<step2-llm>>. These models are then loaded by the runtime and run by the AI accelerator.
+The *Hailo Gen-AI Model Zoo* contains the pre-trained LLMs suitable for running on Hailo-10H. These models are installed as part of <<step1-llm>>. These models are then loaded by the runtime and run by the AI accelerator.
 
 ==== Backend layer
 
@@ -352,20 +352,73 @@ LLMs are loaded and run by the *Hailo Ollama server*. This backend layer:
 - Manages inference on the Hailo-10H NPU.
 - Exposes a REST API for sending requests (submitting prompts) to the NPU and returning AI inference results (receiving responses).
 
-The backend is installed as part of <<step3-llm>>.
+The Hailo Ollama server is installed as part of <<step2-llm>>.
 
 ==== Frontend layer (optional)
 
-The frontend layer is an optional, browser-based chat interface provided by *Open WebUI*. While Open WebUI isn't required to run LLMs, it provides a more user-friendly way to submit prompts and view responses instead of terminal-based POST requests. The frontend communicates with the backend through its REST API and displays model outputs in a conversational UI.
+The frontend layer provided by *Open WebUI* is an optional, browser-based chat interface for interacting with LLMs. Alternatively, you can keep using the terminal-based POST requests described in <<step2-llm>> to interact with LLMs.
 
-The frontend is installed as a combination of <<step1-llm>> and <<step4-llm>>.
+While Open WebUI isn't required to run LLMs, it provides a more user-friendly way to submit prompts and view responses instead of terminal-based POST requests. Open WebUI communicates with the Hailo Ollama server through its REST API and displays model outputs in a conversational UI.
+
+Open WebUI needs to run in a Docker container. This is because Open WebUI is incompatible with Python 3.13 (as used on Raspberry Pi OS Trixie). Docker provides a containerised environment for stable operation.
+
+Open WebUI is set up as a combination of <<step3-llm>> and <<step4-llm>>.
 
 [[step1-llm]]
-=== Step 1. Install Docker (for Open WebUI)
+=== Step 1. Install the Hailo Ollama server
+
+The Hailo Ollama server provides:
+
+- Pre-trained LLMs optimised for the Hailo-10H NPU.
+- The Hailo Ollama server that exposes a REST API for model inference.
+
+To install the Hailo Ollama server, download *version 5.1.1* of the Hailo Model Zoo GenAI https://dev-public.hailo.ai/2025_12/Hailo10/hailo_gen_ai_model_zoo_5.1.1_arm64.deb[Debian package] for Raspberry Pi 5, and then install it using the following command in a Raspberry Pi Terminal:
+
+[source, console]
+----
+sudo dpkg -i hailo_gen_ai_model_zoo_5.1.1_arm64.deb
+----
+
+[[step2-llm]]
+=== Step 2. Start the Hailo Ollama server and run LLMs
+
+After everything is installed, start the local `hailo-ollama` server to expose a REST API for LLM requests, and then download and run some LLMs.
+
+. In a Raspberry Pi Terminal, run the following command to start the local `hailo-ollama` server:
++
+[source, console]
+----
+$ hailo-ollama
+----
+. In a new Terminal window, run the following command to get a list of LLMs:
++
+[source, console]
+----
+$ curl --silent http://localhost:8000/hailo/v1/list
+----
+. Run the following command to download a model from the provided list, replacing `"examplemodel:tag"` with any listed model (for example, `"qwen2:1.5b"`):
++
+[source, console]
+----
+$ curl --silent http://localhost:8000/api/pull \
+     -H 'Content-Type: application/json' \
+     -d '{ "model": "examplemodel:tag", "stream" : true }'
+----
+. Run the following command to send a query to the LLM with a POST request, replacing `"examplemodel:tag"` with whichever model you've downloaded and want to run:
++
+[source, console]
+----
+$ curl --silent http://localhost:8000/api/chat \
+     -H 'Content-Type: application/json' \
+     -d '{"model": "examplemodel:tag", "messages": [{"role": "user", "content": "Translate to French: The cat is on the table."}]}'
+----
+
+[[step3-llm]]
+=== Step 3. Install Docker (for Open WebUI)
 
 You can skip this step if you don't plan to use the Open WebUI interface.
 
-You must use Docker if you want to use the Open WebUI front end. This is because the Web UI is incompatible with Python 3.13 on Trixie. Docker provides a containerised environment for stable operation. For more comprehensive installation instructions, see Docker's page: https://docs.docker.com/engine/install/debian/[Install Docker Engine on Debian].
+The following instructions install Docker on your Raspberry Pi 5, which is a prerequisite for deploying and running Open WebUI, described in <<step4-llm>>. For more comprehensive installation instructions, see Docker's page: https://docs.docker.com/engine/install/debian/[Install Docker Engine on Debian].
 
 To install Docker:
 
@@ -446,67 +499,20 @@ $ newgrp docker
 $ docker run hello-world
 ----
 
-[[step2-llm]]
-=== Step 2. Install Hailo Ollama server
-
-The Hailo Ollama server provides:
-
-- The pre-trained LLMs optimised for the Hailo-10H NPU.
-- The Ollama back end that exposes a REST API for querying models.
-
-To install the Hailo Ollama server, follow the instructions in https://github.com/hailo-ai/hailo_model_zoo_genai[Hailo's Model Zoo GitHub repository]. Ensure that you download *version 5.1.1* of the Hailo Model Zoo GenAI package.
-
-
-[[step3-llm]]
-=== Step 3. Start the Hailo Ollama server and run LLMs
-
-After everything is installed, start the local `hailo-ollama` server to expose a REST API for LLM requests, and then download and run some LLMs.
-
-. In a Raspberry Pi Terminal, run the following command to start the local `hailo-ollama` server:
-+
-[source, console]
-----
-$ hailo-ollama
-----
-. In a new Terminal window, run the following command to get a list of LLMs:
-+
-[source, console]
-----
-$ curl --silent http://localhost:8000/hailo/v1/list
-----
-. Run the following command to download a model from the provided list, replacing `"examplemodel:tag"` with any listed model (for example, `"qwen2:1.5b"`):
-+
-[source, console]
-----
-$ curl --silent http://localhost:8000/api/pull \
-     -H 'Content-Type: application/json' \
-     -d '{ "model": "examplemodel:tag", "stream" : true }'
-----
-. Run the following command to send a query to the LLM with a post request,replacing `"examplemodel:tag"` with whichever model you've downloaded and want to run:
-+
-[source, console]
-----
-$ curl --silent http://localhost:8000/api/chat \
-     -H 'Content-Type: application/json' \
-     -d '{"model": "examplemodel:tag", "messages": [{"role": "user", "content": "Translate to French: The cat is on the table."}]}'
-----
-
 [[step4-llm]]
 === Step 4. Install and use Open WebUI (optional)
 
-You can set up *Open WebUI*, an optional browser-based, chat interface that connects to the Hailo Ollama server, allowing you to send queries to, and view responses from, LLMs using a conversational UI. Alternatively, you can keep using the terminal-based POST requests described in <<step3-llm>> to interact with LLMs.
+After installing Docker in the previous step, you can deploy and run an Open WebUI container with Docker.
 
-Open WebUI needs to run in a Docker container. You install Docker in <<step1-llm>>. You must now deploy and run an Open WebUI container with Docker.
+NOTE: The following method is one way to deploy and use containers, but it's not the only approach. For example, you could instead use `docker-compose` for container management.
 
-The following method is one way to deploy and use containers, but it's not the only approach. For example, you could instead use `docker-compose` for container management.
-
-. To use Open WebUI, you first need to install it. Download the Open WebUI image required to run the frontend:
+. To use Open WebUI, you first need to install it. Download the Open WebUI image required to run the frontend layer:
 +
 [source, console]
 ----
 $ docker pull ghcr.io/open-webui/open-webui:main
 ----
-. Ensure that `hailo-ollama` is already running. Then, start the Open WebUI container and connect it to the `hailo-ollama` backend:
+. Ensure that `hailo-ollama` is already running. Then, start the Open WebUI container and connect it to the `hailo-ollama` backend server:
 +
 [source, console]
 ----

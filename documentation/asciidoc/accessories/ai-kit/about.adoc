@@ -87,6 +87,6 @@ WARNING: Always disconnect your Raspberry Pi from power before connecting or dis
 
 == Next steps: Run AI models
 
-AI HATs support example models provided by Hailo and custom models trained for your specific applications, such as speech-to-text, translation, or visual scene analysis. For a list of available example models, see Hailo's https://hailo.ai/products/hailo-software/model-explorer/generative-ai/[Model Explorer].
+For a list of available example models, see Hailo's https://hailo.ai/products/hailo-software/model-explorer-vision/[Model Explorer].
 
 To start running AI models on your Raspberry Pi 5, see xref:../computers/ai.adoc[AI software], which provides information and guidance on running AI-accelerated visual models.
