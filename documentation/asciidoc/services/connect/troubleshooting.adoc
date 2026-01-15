@@ -165,7 +165,14 @@ You can enable debug logging for both `rpi-connect` and its dedicated WayVNC ser
 
 ==== Enable enhanced logging in `rpi-connect`
 
-Override the `rpi-connect` service definition with the following command:
+Add the environment variable `RPI_CONNECT_VERBOSE=1` to `/etc/default/rpi-connect`, and restart Connect with the following command:
+
+[source,console]
+----
+$ rpi-connect restart
+----
+
+Alternatively, for versions prior to 2.7 override the `rpi-connect` service definition with the following command:
 
 [source,console]
 ----

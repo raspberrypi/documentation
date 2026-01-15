@@ -358,6 +358,11 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 0x1a: CM5 Lite
 
+|
+|
+| 0x1b: CM0
+
+
 | RRRR (bits 0-3)
 | Revision
 | 0, 1, 2, etc.
@@ -644,6 +649,12 @@ NOTE: This list is not exhaustive - there may be codes in use that are not in th
 | 5
 | 1.0
 | 8 GB
+| Sony UK
+
+| a04171
+| 5
+| 1.1
+| 1 GB
 | Sony UK
 
 | b04171

@@ -40,6 +40,9 @@ The conditional model filters apply according to the following table.
 | `[pi500]`
 | 500/500+ (also sees `[pi5]` contents)
 
+| `[cm0]`
+| Compute Module 0 (also sees `[pi02]` contents)
+
 | `[cm1]`
 | Compute Module 1 (also sees `[pi1]` contents)
 

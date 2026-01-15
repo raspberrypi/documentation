@@ -16,7 +16,7 @@ image::images/ai-hat-plus-2-hero.jpg[width="50%"]
 
 An AI HAT integrates with Raspberry Pi 5 to provide hardware-accelerated AI inference using the on-board Hailo NPU (accelerator chip).
 
-When connected to a Raspberry Pi 5, Raspberry Pi OS automatically detects the accelerator on the AI HAT+ or AI HAT+ 2, and offloads supported AI workloads to it. This includes using our existing camera and vision frameworks to run vision-based neural network models on the NPU. For instructions on connecting an AI HAT+ or AI HAT+ 2 to a Raspberry Pi 5, see <<ai-hat-plus-installation>>.
+When an AI HAT+ or AI HAT+ 2 is connected to a Raspberry Pi 5, Raspberry Pi OS automatically detects the on-board accelerator and offloads supported AI workloads to it. This includes using our existing camera and vision frameworks to run vision-based neural network models on the NPU. For instructions on connecting an AI HAT+ or AI HAT+ 2 to a Raspberry Pi 5, see <<ai-hat-plus-installation>>.
 
 The camera application frameworks, `rpicam-apps` and `Picamera2`, which come with Raspberry Pi OS, can automatically use the Hailo NPU for supported AI computing tasks, such as image recognition and object detection. For more information, see xref:../computers/ai.adoc[AI software].
 
@@ -72,19 +72,19 @@ The following images depict the physical dimensions of AI HAT+, AI HAT+ 2, and t
 
 The following image depicts the approximate physical dimensions of an AI HAT+ in millimetres (mm). AI HAT+ is approximately 66 mm × 56.5 mm. The Hailo NPU has a metal casing around it, making it approximately 17 mm × 17 mm.
 
-.Mechanical diagram of AI HAT+; all measurements are approximate and in mm
+.Mechanical diagram of AI HAT+; all measurements are approximate and in millimetres
 image::images/aihat-plus-mechanical.png[width="60%"]
 
 === AI HAT+ 2 and heatsink specifications
 
-The following image depicts the approximate physical dimensions of an AI HAT+ 2 in millimetres (mm). AI HAT+ is approximately 66 mm × 56.5 mm. The Hailo NPU is approximately 15 mm × 15 mm and the SDRAM is approximately 14.5mm × 10 mm.
+The following image depicts the approximate physical dimensions of an AI HAT+ 2 in millimetres (mm). AI HAT+ is approximately 66 mm × 56.5 mm. The Hailo NPU is approximately 15 mm × 15 mm and the SDRAM is approximately 14.5 mm × 10 mm.
 
-.Mechanical diagram of AI HAT+ 2; all measurements are approximate and in mm
+.Mechanical diagram of AI HAT+ 2; all measurements are approximate and in millimetres
 image::images/aihat-plus-2-mechanical.png[width="60%"]
 
 The following image depicts the approximate physical dimensions of the heatsink for an AI HAT+ 2 in millimetres (mm). Taking into account both corners with the push-pin holes for attaching the heatsink to an AI HAT+ 2, the heatsink is approximately 42.5 mm × 64 mm. With the push pins, an AI HAT+ 2 is approximately 14 mm high; without the push pins, an AI HAT+ 2 is approximately 3.2 mm high.
 
-.Mechanical diagram of the heatsink for an AI HAT+ 2; all measurements are approximate and in mm
+.Mechanical diagram of the heatsink for an AI HAT+ 2; all measurements are approximate and in millimetres
 image::images/aihat-plus-2-heatsink-mechanical.png[width="60%"]
 
 [[ai-hat-plus-installation]]
@@ -142,8 +142,8 @@ image::images/ai-hat-plus-installation-01.png[width="60%"]
 First, ensure that your Raspberry Pi 5 is disconnected from power. Then:
 
 . *Prepare the cooler.* Remove the protective paper from the thermal pads at the bottom of the cooler. This exposes a sticky surface on each of the thermal pads.
-. *Position the heatsink.* Align the two white push pins with the two dedicated heatsink holes on your Raspberry Pi 5. In this position, the thermal pads align with the wireless radio, the system-on-chip (SoC), and the power management integrated circuit (PMIC).
-. *Secure the heatsink.* Press the cooler gently onto your Raspberry Pi 5. Then, evenly press the two white push pins down into the two dedicated heatsink holes on your Raspberry Pi 5 until they click.
+. *Position the cooler.* Align the two white push pins with the two dedicated heatsink holes on your Raspberry Pi 5. In this position, the thermal pads align with the wireless radio, the system-on-chip (SoC), and the power management integrated circuit (PMIC).
+. *Secure the cooler.* Press the cooler gently onto your Raspberry Pi 5. Then, evenly press the two white push pins down into the two dedicated heatsink holes on your Raspberry Pi 5 until they click.
 . *Connect the fan.* Plug the fan's JST connector into the fan socket on your Raspberry Pi 5.
 
 [[step3]]
