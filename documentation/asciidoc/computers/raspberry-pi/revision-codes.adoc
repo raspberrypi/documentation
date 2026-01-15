@@ -358,6 +358,11 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 |
 | 0x1a: CM5 Lite
 
+|
+|
+| 0x1b: CM0
+
+
 | RRRR (bits 0-3)
 | Revision
 | 0, 1, 2, etc.
