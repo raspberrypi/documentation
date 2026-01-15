@@ -16,7 +16,7 @@ The features of your Raspberry Pi keyboard computer depend on the model.
 * *Memory (RAM).* Raspberry Pi 400 includes 4 GB of RAM; Raspberry Pi 500 includes 8 GB of RAM; Raspberry Pi 500+ includes 16 GB of RAM, providing smoother multitasking and support for more demanding applications.
 * *GPU.* Raspberry Pi 400 includes VideoCore VI at 500 MHz; both Raspberry Pi 500 and 500+ include VideoCore VII at 910 MHz, providing faster graphics and improved video decoding.
 * *HDR video.* All Raspberry Pi keyboard computers include two micro-HDMI ports, providing 4K displays, but Raspberry Pi 500 and 500+ also support HDR on HDMI outputs.
-* *Power button.* Raspberry Pi 400 doesn't have a power button and is instead turned on and off with a combination of key presses; both Raspberry Pi 500 and 500+ do have a power button.
+* *Power button.* Raspberry Pi 400 doesn't have a power button and is instead turned on and off with a combination of key presses (*Fn* + *F10*); both Raspberry Pi 500 and 500+ have a dedicated power key.
 * *SoC.* Raspberry Pi 400 includes the Broadcom chip, BCM2711; both Raspberry Pi 500 and 500+ use the Broadcom chip, BCM2712, in combination with the RP1 I/O controller.
 
 Raspberry Pi 500+ offers additional features, including:
