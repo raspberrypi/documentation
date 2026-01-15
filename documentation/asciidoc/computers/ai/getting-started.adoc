@@ -45,10 +45,10 @@ Before running vision AI models or GenAI models on your Raspberry Pi 5:
 
 If you're using an AI Kit, we highly recommend that you enable PCIe Gen 3.0. You can skip this for AI HAT+ and AI HAT+ 2 because the setting is automatically applied.
 
-By default, Raspberry Pi 5 uses Gen 2.0 (5 GT/s) speeds on its PCIe interface. To achieve the best performance for your NPU, use one of the following approaches to force Gen 3.0 (8 GT/s) speeds:
+By default, Raspberry Pi 5 uses Gen 2.0 (5 GT/s) speeds on its PCIe interface. To achieve the best performance for your NPU, use one of the following approaches to enable Gen 3.0 (8 GT/s) speeds:
 
 - Enable Gen 3.0 on your Raspberry Pi 5 from the configuration command line (CLI) tool (*`raspi-config`*).
-- Update the configuration file (*`config.txt`*) to force the PCIe interface on your Raspberry Pi 5 to operate at PCIe Gen 3.0 speeds.
+- Update the configuration file (*`config.txt`*) to enable the PCIe interface on your Raspberry Pi 5 to operate at PCIe Gen 3.0 speeds.
 
 For more information about this setting, see xref:raspberry-pi.adoc#pcie-gen-3-0[PCIe Gen 3.0].
 
@@ -74,11 +74,11 @@ First, open your configuration file (`/boot/firmware/config.txt`) as the root us
 +
 . Add the following line to the `config.txt` file:
 +
-[source,console]
+[source,ini]
 ----
-$ dtparam=pciex1_gen=3
+dtparam=pciex1_gen=3
 ----
-.  Reboot your Raspberry Pi to force the settings to take effect:
+.  Reboot your Raspberry Pi for these settings to take effect:
 +
 [source,console]
 ----
