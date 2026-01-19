@@ -142,65 +142,194 @@ On a Pi 5 you would have to replace `v4l2h264enc extra-controls="controls,repeat
 
 On the client we could use the same playback pipeline as we did just above, or other streaming media players.
 
-=== WebRTC
+=== Third-party streaming servers
 
-Streaming over WebRTC (for example, to web browsers) is best accomplished using third party software. https://github.com/bluenviron/mediamtx[MediaMTX], for example, includes native Raspberry Pi camera support which makes it easy to use.
+There are a number of third-party streaming servers available and, while Raspberry Pi doesn't specifically recommend any particular one, we give some introductory guidance on using a number of popular ones.
 
-To install it, download the latest version from the https://github.com/bluenviron/mediamtx/releases[releases] page. Raspberry Pi OS 64-bit users will want the "linux_arm64v8" compressed tar file (ending `.tar.gz`). Unpack it and you will get a `mediamtx` executable and a configuration file called `mediamtx.yml`.
+* xref:camera_software.adoc#streaming-with-mediamtx[MediaMTX]
 
-It's worth backing up the `mediamtx.yml` file because it documents many Raspberry Pi camera options that you may want to investigate later.
+* xref:camera_software.adoc#streaming-with-mistserver[MistServer]
 
-To stream the camera, replace the contents of `mediamtx.yml` by:
+* xref:camera_software.adoc#streaming-with-go2rtc[go2rtc]
+
+All of these streaming servers can ingest Raspberry Pi camera streams created by `rpicam-vid`, and re-stream them to RTSP clients, or to web browsers using WebRTC, or using many other formats. MediaMTX supports Raspberry Pi cameras as a native option through libcamera, by-passing the need for external executables (like `rpicam-vid`).
+
+The list above is not exhaustive; however, we have confirmed that these applications work correctly together with the Raspberry Pi camera system.
+
+==== Streaming with MediaMTX
+
+https://github.com/bluenviron/mediamtx[MediaMTX] accepts an input stream from the Raspberry Pi's camera system (for example, created by `rpicam-vid`), and re-streams it to other clients. Additionally, it supports Raspberry Pi cameras as a built-in source.
+
+===== Installation and configuration
+
+To install MediaMTX:
+
+. Download the latest version from the https://github.com/bluenviron/mediamtx/releases[releases] page.
+** If you're using Raspberry Pi OS 64-bit, choose the `linux_arm64` compressed tar file (ending `.tar.gz`).
+** If you're using Raspberry Pi OS 32-bit, choose the `armv7` compressed tar file.
+
+. Unpack the compressed tar file by running the command `tar -xvzf <filename.tar.gz>`. The file contains a `mediamtx` executable and a configuration file called `mediamtx.yml`.
+
+. Back up the original `mediamtx.yml` file (recommended). For example, you can run `cp mediamtx.yml mediamtx.yml.original`. We recommend this because the original file documents many Raspberry Pi camera options that you might want to explore later, so keeping a copy can be useful for reference.
+
+===== Adding a camera stream
+
+To stream the camera, replace the contents of `mediamtx.yml` with the following:
+
 ----
 paths:
   cam:
     source: rpiCamera
 ----
-and start the `mediamtx` executable. On a browser, enter `http://<ip-addr>:8889/cam` into the address bar.
 
-If you want MediaMTX to acquire the camera only when the stream is requested, add the following line to the previous `mediamtx.yml`:
+The parameter `source: rpiCamera` tells MediaMTX to start and control the Raspberry Pi camera system for itself.
+
+Start the `mediamtx` executable by typing its name at a command prompt, qualifying the full path if necessary.
+
+If you want MediaMTX to acquire the camera only when the stream is requested, add the following line to the updated `mediamtx.yml`:
 ----
     sourceOnDemand: yes
 ----
-Consult the original `mediamtx.yml` for additional configuration parameters that let you select the image size, the camera mode, the bitrate and so on - just search for `rpi`.
 
-==== Customised image streams with WebRTC
+Consult the original `mediamtx.yml` for additional configuration parameters that let you select the image size, the camera mode, the bitrate, and so on. Find the relevant settings, by searching the file for `rpi`.
 
-MediaMTX is great if you want to stream just the camera images. But what if we want to add some extra information or overlay, or do some extra processing on the images?
-
-Before starting, ensure that you've built a version of `rpicam-apps` that includes OpenCV support. Check it by running
-
-[source,console]
-----
-$ rpicam-hello --post-process-file rpicam-apps/assets/annotate_cv.json
-----
-and looking for the overlaid text information at the top of the image.
-
-Next, paste the following into your `mediamtx.yml` file:
+Alternatively, you can run `rpicam-vid` externally to MediaMTX by setting up `mediamtx.yml` as follows:
 ----
 paths:
   cam:
     source: udp://127.0.0.1:1234
 ----
 
-Now, start `mediamtx` and then, if you're using a Pi 5, in a new terminal window, enter:
-
+You can run any external program to output an MPEG-TS stream to this address. In the case of `rpicam-vid`, it might look like:
 [source,console]
 ----
-$ rpicam-vid -t 0 -n --codec libav --libav-video-codec-opts "profile=baseline" --libav-format mpegts -o udp://127.0.0.1:1234?pkt_size=1316 --post-process-file rpicam-apps/assets/annotate_cv.json
+$ rpicam-vid -t 0 -n --codec libav --low-latency --libav-format mpegts -o udp://127.0.0.1:1234?pkt_size=1316
 ----
-(On a Pi 4 or earlier device, leave out the `--libav-video-codec-opts "profile=baseline"` part of the command.)
 
-On another computer, you can now visit the same address as before, namely `http://<ip-addr-of-pi>:8889/cam`.
+NOTE: This provides the opportunity to alter the images in some way, perhaps using the `rpicam-apps` post-processing features, or the `Picamera2` Python module. The `--low-latency` option suppresses B-frames (on a Raspberry Pi 5 or later; earlier Raspberry Pi devices don't generate any B-frames), which is often advisable because some streaming formats that clients request don't support them.
 
-The reason for specifying "baseline" profile on a Pi 5 is that MediaMTX doesn't support B frames, so we need to stop the encoder from producing them. On earlier devices, with hardware encoders, B frames are never generated so there is no issue. On a Pi 5 you could alternatively remove this option and replace it with `--low-latency` which will also prevent B frames, and produce a (slightly less well compressed) stream with reduced latency.
+===== Viewing with a client
 
-[NOTE]
-====
-If you notice occasional pauses in the video stream, this may be because the UDP receive buffers on the Pi (passing data from `rpicam-vid` to MediaMTX) are too small. To increase them permantently, add
+You can view the stream in a media player or web browser. The following examples assume the stream name is 'cam':
+
+* To view the stream using a media player application with the RTSP protocol, use the address `rtsp://<ip-address-of-MediaMTX-server>:8554/cam`.
+
+* To view the stream in a web browser, use the address `http://<ip-addr-of-MediaMTX-server>:8889/cam`.
+
+===== Troubleshooting
+
+Occasional pauses in the video stream might be caused by insufficient space in the UDP receive buffers on your Raspberry Pi. If the buffers are too small, data can be dropped, causing visible pauses. To increase these buffers permanently, create a file called `/etc/sysctl.d/99-network-tuning.conf`` containing the following lines:
 ----
 net.core.rmem_default=1000000
 net.core.rmem_max=1000000
 ----
-to your `/etc/sysctl.conf` file (and reboot or run `sudo sysctl -p`).
-====
+
+Reboot or run `sudo sysctl -p /etc/sysctl.d/99-network-tuning.conf`.
+
+On Raspberry Pi OS Bookworm or earlier, you must instead add these lines to `/etc/sysctl.conf` (and then either reboot or run `sudo sysctl -p`).
+
+For more information about MediaMTX and its capabilities, see the https://mediamtx.org/docs/kickoff/introduction[MediaMTX documentation].
+
+==== Streaming with MistServer
+
+https://mistserver.org/[MistServer] is a popular free media server that you can use in conjunction with the Raspberry Pi camera system. Unlike MediaMTX, there's no built-in camera support; however, you can configure MistServer to ingest a stream from `rpicam-vid` and serve it to clients in a variety of formats.
+
+===== Installation and configuration
+
+You can install MistServer on your Raspberry Pi by following the instructions in the MistServer documentation:
+
+* For 64-bit OSes, follow the instructions in https://docs.mistserver.org/mistserver/installation/linux#armv8-64-bits-linux[Armv8 64-bits Linux].
+* For 32-bit OSes, follow the instructions in https://docs.mistserver.org/mistserver/installation/linux/#armv7-linux[Armv7 Linux].
+
+Ensure that you run the commands as root. This process sets up a system MistServer service that runs automatically.
+
+To configure MistServer, go to the Management Interface (MI) webpage on your Raspberry Pi at `http://localhost:4242/`; you can also visit the page from another computer if you substitute your Raspberry Pi's IP address. The first time you use the Management Interface, it asks you to create an admin account. In the steps that follow, you can accept the defaults.
+
+NOTE: You can instead run MistServer on a different computer from the Raspberry Pi with the camera.
+
+===== Adding a camera stream
+
+To add a camera stream, go to the *Management Interface* webpage and complete the following steps:
+
+. In the left pane, select *Streams*.
+. In the right pane, select *Create Stream*.
+. Fill in the required information:
+** A stream name, such as 'cam'. This is how clients identify this stream.
+** A source. To configure MistServer to start `rpicam-vid` automatically, enter the following command:
++
+[source, console]
+----
+$ ts-exec: rpicam-vid -n -t 0 --width 1920 --height 1080 --codec libav --libav-format mpegts -o -
+----
++
+The parameters in this command configure the following things:
++
+*** `ts-exec` configures the command to output an MPEG-TS stream to `stdout`. This prefix requires MistServer to be running on the Raspberry Pi with the camera.
+*** `rpicam-vid` is the video command.
+*** `-n` configures no preview.
+*** `-t` configures the command to run indefinitely.
+*** `--width` and `--height` specify your chosen dimensions.
+
+Alternatively, if you run `rpicam-vid` externally, outputting to a UDP socket, use `tsudp` in place of `ts-exec` and follow it with the incoming stream's IP address.
+
+===== Viewing with a client
+
+You can view the stream in a media player or web browser. The following examples assume the stream name is 'cam':
+
+* To view the stream using a media player application using the RTSP protocol, use the address: `rtsp://<ip-address-of-MistServer-server>:8554/cam`.
+
+* To view the stream in a web page, use MistServer's built-in media player pages. In your web browser, enter: `http://<ip-address-of-MistServer-server>:8080/cam.html`.
+
+For more information about MistServer use cases and options, see the https://docs.mistserver.org/[MistServer documentation].
+
+==== Streaming with go2rtc
+
+https://github.com/AlexxIT/go2rtc[go2rtc] is a media server platform that, while not offering direct integration like MediaMTX, allows for inter-operation in the same way as MistServer.
+
+===== Installation and configuration
+
+To install go2rtc:
+
+. Download the binary from the https://github.com/AlexxIT/go2rtc/releases/[releases page]:
+** If you're running a 64-bit OS, choose the `go2rtc_linux_arm64` binary.
+** If you're running a 32-bit OS, choose the `go2rtc_linux_arm` binary.
+** If your device is a Raspberry Pi 1 or Zero, choose the `go2rtc_linux_armv6` binary.
+. Change the file permissions to make the downloaded binary executable.
+. Run the binary.
+
+You can run this application with the default configuration. When go2rtc is running, the management page is located at `http://localhost:1984/`.
+
+NOTE: As with MediaMTX, you can run go2rtc on a different system to the Raspberry Pi with the camera.
+
+===== Adding a camera stream
+
+You can add a camera stream by creating a file `go2rtc.yaml` in the same folder where you run the executable. When go2rtc starts, it outputs a message to the console indicating where it expects to find its configuration file.
+
+Add the following text to the file, substituting your required width and height:
+
+[source,console]
+----
+streams:
+  cam:
+    - exec:rpicam-vid -n -t 0 --width 1280 --height 720 --codec libav --libav-format mpegts --low-latency -o -
+----
+
+This configuration starts `rpicam-vid` when any client requests the 'cam' stream. The parameter `--low-latency` suppresses B-frames on Raspberry Pi 5 or later models. In this case, go2rtc must be running on the Raspberry Pi with the camera.
+
+Alternatively, you can run `rpicam-vid` externally and have it output an MPEG-TS stream to the address, for example, `udp://127.0.0.1:1234`. To configure this, ensure that the `go2rtc.yaml` file contains the following text:
+
+[source,console]
+----
+  cam:
+    - ffmpeg:udp://127.0.0.1:1234
+----
+
+If go2rtc is running on a different computer from the camera, adjust the IP address.
+
+===== Viewing with a client
+
+To view the stream using a media player application using the RTSP protocol, and assuming a stream name of 'cam', use the address: `rtsp://<ip-address-of-go2rtc-server>:8554/cam`.
+
+To view the stream in a web page, use go2rtc's built-in pages. Enter `http://<ip-address-of-go2rtc-server>:1984/stream.html?src=cam`.
+
+For more information about go2rtc use cases and options, see the https://github.com/AlexxIT/go2rtc/blob/master/README.md[go2rtc README documentation].
