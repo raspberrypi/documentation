@@ -8,7 +8,7 @@ You can connect a Hailo NPU to your Raspberry Pi 5 using either:
 - xref:../accessories/ai-hat-plus.adoc[Raspberry Pi AI HAT+] with either an on-board Hailo-8L NPU or an on-board Hailo-8 NPU.
 - xref:../accessories/ai-hat-plus.adoc[Raspberry Pi AI HAT+ 2] with an on-board Hailo-10H NPU.
 
-All three of these options allow you to run vision AI models on a Raspberry Pi 5. However, the AI Kit is no longer in production and so, for new designs, we recommend using an AI HAT+ or AI HAT+ 2.
+NOTE: All three of these options allow you to run vision AI models on a Raspberry Pi 5. However, the AI Kit is no longer in production and so, for new designs, we recommend using an AI HAT+ or AI HAT+ 2.
 
 AI HAT+ 2 additionally allows you to run Generative AI (GenAI) models. With AI HAT+ 2, you can:
 

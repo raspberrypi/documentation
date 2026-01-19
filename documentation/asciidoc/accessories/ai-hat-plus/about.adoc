@@ -146,6 +146,10 @@ First, ensure that your Raspberry Pi 5 is disconnected from power. Then:
 . *Secure the cooler.* Press the cooler gently onto your Raspberry Pi 5. Then, evenly press the two white push pins down into the two dedicated heatsink holes on your Raspberry Pi 5 until they click.
 . *Connect the fan.* Plug the fan's JST connector into the fan socket on your Raspberry Pi 5.
 
+NOTE: Ensure that the push pins are undamaged and securely clipped to the Raspberry Pi 5 before use.
+
+We recommend that you don't remove the cooler after it's fitted to the Raspberry Pi 5. This is because removing the cooler can cause the push pins and thermal pads to degrade, which can lead to product damage.
+
 [[step3]]
 === Step 3. Mount the AI HAT+ 2 heatsink (recommended)
 
@@ -159,7 +163,7 @@ To attach the AI HAT+ 2 heatsink to your AI HAT+ 2 (before mounting it to your R
 . *Position the heatsink.* Align the two black push pins on the heatsink to the two dedicated heatsink holes in diagonally opposite corners on your AI HAT+ 2. In this position, the thermal pads align with the power regulator, the Hailo NPU, and the SDRAM chip.
 . *Secure the heatsink.* Evenly press the two black push pins down into the heatsink holes on the AI HAT+ 2 until they click.
 
-NOTE: Ensure that the push pins are undamaged and securely clipped onto the AI HAT+ 2 before use.
+NOTE: Ensure that the push pins are undamaged and securely clipped to the AI HAT+ 2 before use.
 
 We recommend that you don't remove the heatsink after it's fitted to the Raspberry Pi AI HAT+ 2. This is because removing the heatsink can cause the push pins and thermal pads to degrade, which can lead to product damage.
 
