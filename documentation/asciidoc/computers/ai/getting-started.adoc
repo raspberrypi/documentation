@@ -34,11 +34,12 @@ Next, follow the instructions in <<software>> to enable PCIe Gen 3.0 (AI Kit onl
 [[software]]
 == Software prerequisites
 
-Before running vision AI models or GenAI models on your Raspberry Pi 5:
+Before running vision AI models or GenAI models on your Raspberry Pi 5, you must configure the required software. Broadly, this consists of the following tasks, performed in order:
 
-- <<PCIe-Gen-3>>. Manually configure the PCIe interface to allow the Hailo NPU to communicate at full speed. This is only necessary for the AI Kit.
-- <<dependencies>>. Install the necessary software dependencies that allow the operating system (OS) and applications to detect, communicate with, and run AI models on the Hailo NPU.
-- <<verify>>. Verify that your AI hardware is correctly detected and ready to use.
+. <<PCIe-Gen-3>>. Manually configure the PCIe interface to allow the Hailo NPU to communicate at full speed. This is only necessary for the AI Kit.
+. <<update>>. Ensure that your Raspberry Pi OS packages are fully up to date.
+. <<dependencies>>. Install the necessary software dependencies that allow the operating system (OS) and applications to detect, communicate with, and run AI models on the Hailo NPU.
+. <<verify>>. Verify that your AI hardware is correctly detected and ready to use.
 
 [[PCIe-Gen-3]]
 === Enable PCIe Gen 3.0 (AI Kit only)
@@ -86,10 +87,25 @@ $ sudo reboot
 ----
 ======
 
+[[update]]
+=== Update Raspberry Pi OS
+
+Ensure that the Raspberry Pi 5 is running Raspberry Pi OS Trixie with the latest software installed, and that it has the latest Raspberry Pi firmware:
+
+[source, console]
+----
+$ sudo apt update
+$ sudo apt full-upgrade -y
+$ sudo rpi-eeprom-update -a
+$ sudo reboot
+----
+
+For more information, see xref:../computers/os.adoc#update-software[Update software] and xref:../computers/raspberry-pi.adoc#update-the-bootloader-configuration[Update the bootloader configuration].
+
 [[dependencies]]
 === Install required dependencies
 
-The following dependencies are required to use the NPU:
+After updating your Raspberry Pi with the latest Raspberry Pi software and firmware, the following dependencies are required to use the NPU:
 
 - The Hailo kernel device driver and firmware.
 - Hailo RT middleware software.
