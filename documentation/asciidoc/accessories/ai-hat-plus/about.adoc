@@ -116,22 +116,8 @@ AI HAT+ 2 comes with an additional heatsink that you install on top of the HAT. 
 
 When you have all of the required hardware, complete the following steps.
 
-=== Step 1. Prepare your Raspberry Pi 5
-
-Before mounting an AI HAT+ or AI HAT+ 2, ensure that the Raspberry Pi 5 you're mounting it to is running Raspberry Pi OS Trixie with the latest software installed, and that it has the latest Raspberry Pi firmware:
-
-[source, console]
-----
-$ sudo apt update
-$ sudo apt full-upgrade -y
-$ sudo rpi-eeprom-update -a
-$ sudo reboot
-----
-
-For more information, see xref:../computers/raspberry-pi.adoc#update-the-bootloader-configuration[Update the bootloader configuration].
-
-[[step2]]
-=== Step 2. Mount an Active Cooler (recommended)
+[[step1]]
+=== Step 1. Mount an Active Cooler (recommended)
 
 We recommend that you mount an Active Cooler to your Raspberry Pi 5. If you want to skip this step, or if your Raspberry Pi 5 already has an Active Cooler mounted to it, move on to the next step.
 
@@ -150,8 +136,8 @@ NOTE: Ensure that the push pins are undamaged and securely clipped to the Raspbe
 
 We recommend that you don't remove the cooler after it's fitted to the Raspberry Pi 5. This is because removing the cooler can cause the push pins and thermal pads to degrade, which can lead to product damage.
 
-[[step3]]
-=== Step 3. Mount the AI HAT+ 2 heatsink (recommended)
+[[step2]]
+=== Step 2. Mount the AI HAT+ 2 heatsink (recommended)
 
 The AI HAT+ 2 comes with an additional heatsink. If you're mounting an AI HAT+ and not an AI HAT+ 2, you can skip this step.
 
@@ -167,8 +153,8 @@ NOTE: Ensure that the push pins are undamaged and securely clipped to the AI HAT
 
 We recommend that you don't remove the heatsink after it's fitted to the Raspberry Pi AI HAT+ 2. This is because removing the heatsink can cause the push pins and thermal pads to degrade, which can lead to product damage.
 
-[[step4]]
-=== Step 4. Mount the AI HAT
+[[step3]]
+=== Step 3. Mount the AI HAT
 
 The AI HAT+ and AI HAT+ 2 both connect to a Raspberry Pi 5 using its PCIe port, which is a high-speed interface for connecting hardware components.
 
