@@ -29,5 +29,6 @@ RedirectMatch 302 "^/documentation/microcontrollers/rp1.html" "/documentation/mi
 RedirectMatch 302 "^/documentation/microcontrollers/rp2040.html" "/documentation/microcontrollers/silicon.html"
 RedirectMatch 302 "^/documentation/microcontrollers/raspberry-pi-pico.html" "/documentation/microcontrollers/pico-series.html"
 RedirectMatch 302 "^/documentation/microcontrollers/pico.html" "/documentation/microcontrollers/pico-series.html"
+RedirectMatch 302 "^/documentation/accessories/usb-3-hub.html" "/documentation/accessories/usb.html"
 </IfModule>
 

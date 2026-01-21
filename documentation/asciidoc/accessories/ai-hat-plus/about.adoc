@@ -2,8 +2,7 @@
 
 AI HATs are add-on boards for Raspberry Pi 5 that come with a built-in AI accelerator chip: the Hailo neural processing unit (NPU). The Hailo NPU allows Raspberry Pi 5 to run hardware-accelerated AI models locally, removing the need to send data to a remote cloud server for processing. This edge AI approach improves performance, reduces latency, and helps to keep data private. For information about how AI HATs integrate with Raspberry Pi 5 to provide hardware-accelerated AI inference, see <<explanation>>.
 
-AI HATs use the newer Raspberry Pi HAT specification, indicated with a plus sign (*\+*). There are two AI HAT models: *AI HAT+* and *AI HAT+ 2*. For more information, see <<AIHAT-models>>.
-These AI HATs are available in different performance variants, measured in tera-operations per second (TOPS) of inference performance. AI HAT+ is available in a *13 TOPS* or a *26 TOPS* variant; AI HAT+ 2 is available in a single *40 TOPS* variant. For more information, see <<AIHAT-TOPS>>.
+AI HATs use the newer Raspberry Pi HAT specification, indicated with a plus sign (*\+*). There are two AI HAT models: *AI HAT+* and *AI HAT+ 2*. For more information, see <<AIHAT-models>>. These AI HATs are available in different performance variants, measured in tera-operations per second (TOPS) of inference performance. AI HAT+ is available in a *13 TOPS* or a *26 TOPS* variant; AI HAT+ 2 is available in a single *40 TOPS* variant. For more information, see <<AIHAT-TOPS>>.
 
 .The 26 tera-operations per second (TOPS) Raspberry Pi AI HAT+
 image::images/ai-hat-plus-hero.jpg[width="50%"]

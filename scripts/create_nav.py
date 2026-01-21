@@ -46,7 +46,7 @@ def collect_xref_internal_inks(line, filepath, output_dir, adoc_dir):
 
 def collect_simple_internal_links(line, filepath, mainfile, output_dir, adoc_dir):
     # looking for links like this: <<overlay_prefix,overlay_prefix>>
-    for m in re.finditer(r'<<(.+?),(.+?)>>', line):
+    for m in re.finditer(r'<<(.+?)(,(.+?))?>>', line):
         anchor = m.group(1)
         link_path = re.sub(adoc_dir, "", mainfile)
         link_path = re.sub("^/", "", link_path)
@@ -118,7 +118,7 @@ if __name__ == "__main__":
                         last_line_was_discrete = False
                         header_id = None
                         for line in adoc_content.split('\n'):
-                            m = re.match(r'^\[\[(.*)\]\]\s*$', line)
+                            m = re.match(r'^\[\[(.+?)(,(.+?))?\]\]\s*$', line)
                             if m:
                                 header_id = m.group(1)
                             else:
@@ -151,6 +151,13 @@ if __name__ == "__main__":
                                                     nav[-1]['sections'].append(entry)
                                                 elif level == 3:
                                                     nav[-1]['sections'][-1]['subsections'].append(entry)
+                                        else:
+                                            if header_id is not None:
+                                                anchor = heading_to_anchor(top_level_file, None, header_id)
+                                                if anchor in available_anchors[fullpath]:
+                                                    raise Exception("Anchor {} appears twice in {}".format(anchor, fullpath))
+                                                available_anchors[fullpath].add(anchor)
+
                                         last_line_was_discrete = False
                                         header_id = None
             elif 'from_json' in tab:
