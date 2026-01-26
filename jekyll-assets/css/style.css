@@ -969,15 +969,6 @@ td div.listingblock div.content code {
   height: auto;
 }
 
-div.imageblock div.title {
-  color: var(--subtle-text);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 0.8em;
-  margin-top: -15px;
-  margin-bottom: 30px;
-}
-
 .w10 { width: 10%; }
 .w20 { width: 20%; }
 .w30 { width: 30%; }
@@ -1743,3 +1734,55 @@ ul#tab-container li.selected a {
 
 .clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:"";display:table}
 .clearfix::after,.float-group::after{clear:both}
+
+/* === Table and figure captions === */
+
+/* Global counters */
+body {
+   counter-reset: figure-counter table-counter;
+}
+
+/* Captions */
+
+/* Tables: bold number, italic description */
+table caption {
+   color: var(--subtle-text);
+   caption-side: top;
+   text-align: left;
+   font-size: 0.875rem;
+   font-weight: 400;
+   line-height: 1.4;
+   margin-bottom: 0.5rem;
+   font-style: italic;
+   counter-increment: table-counter;
+}
+
+/* Add a bolded number before */
+table caption::before {
+    content: "Table " counter(table-counter) ".";
+    display: block;
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* === Figures: bold number, italic description */
+
+div.imageblock div.title {
+  color: var(--subtle-text);
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-bottom: 30px;
+  line-height: 1.4;
+  margin-top: 0.5em;
+  font-style: italic;             /* caption text italic */
+  counter-increment: figure-counter;
+}
+
+/* Add a bolded number before */
+.imageblock .title::before {
+    content: "Figure " counter(figure-counter) ".";
+    display: block;
+    font-weight: bold;
+    font-style: normal;
+}

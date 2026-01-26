@@ -1,0 +1,9 @@
+:parentdir: {{ output_subdir }}
+:page-layout: docs
+:includedir: {{ includes_dir }}
+:doctitle: {{ page_title }} - {{ site_title }}
+:page-sub_title: {{ page_title }}
+:sectanchors:
+:figure-caption!:
+:table-caption!:
+:source-highlighter: rouge
