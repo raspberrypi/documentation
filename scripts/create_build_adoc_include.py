@@ -10,13 +10,13 @@ import hashlib
 def check_no_markdown(filename):
     with open(filename) as fh:
         asciidoc = fh.read()
-        if re.search('```\n.*?\n```', asciidoc):
+        if re.search(r'```\n.*?\n```', asciidoc):
             raise Exception("{} uses triple-backticks for markup - please use four-hyphens instead".format(filename))
         # strip out code blocks
         asciidoc = re.sub(r'----\n.*?\n----', '', asciidoc, flags=re.DOTALL)
         # strip out pass-through blocks
         asciidoc = re.sub(r'\+\+\+\+\n.*?\n\+\+\+\+', '', asciidoc, flags=re.DOTALL)
-        if re.search('(?:^|\n)#+', asciidoc):
+        if re.search(r'(?:^|\n)#+', asciidoc):
             raise Exception("{} contains a Markdown-style header (i.e. '#' rather than '=')".format(filename))
         if re.search(r'(\[.+?\]\(.+?\))', asciidoc):
             raise Exception("{} contains a Markdown-style link (i.e. '[title](url)' rather than 'url[title]')".format(filename))
@@ -40,11 +40,11 @@ if __name__ == "__main__":
         }
         edit_text = re.sub(r'{{\s*(\w+)\s*}}', lambda m: template_vars[m.group(1)], edit_template)
 
+    new_contents = ''
     with open(src_adoc) as in_fh:
-        new_contents = ''
         seen_header = False
         for line in in_fh.readlines():
-            if re.match(r'^=+ ', line) is not None:
+            if re.match('^=+ ', line) is not None:
                 if not seen_header:
                     seen_header = True
                     if github_edit is not None:
@@ -58,5 +58,5 @@ if __name__ == "__main__":
                     line = m.group(1) + m.group(2) + '?hash=' + image_hash + m.group(3) + "\n"
             new_contents += line
 
-        with open(build_adoc, 'w') as out_fh:
-            out_fh.write(new_contents)
+    with open(build_adoc, 'w') as out_fh:
+        out_fh.write(new_contents)
