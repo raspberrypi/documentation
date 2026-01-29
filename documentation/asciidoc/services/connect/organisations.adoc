@@ -132,13 +132,13 @@ IMPORTANT: Your access token is only shown once. Copy it now, because you won't 
 [[organisations-management-api]]
 === Management API
 
-The Management API lets you manage your organisation automatically, without using the Connect web interface. Requests to the Management API must be authenticated using a valid management API access token.
+The Management API lets you manage your organisation automatically, without using the Connect web interface. Requests to the Management API must be authenticated using a valid management API access token. The base URL is https://api.connect.raspberrypi.com.
 
 ==== Create an auth key
 
-To create an auth key to xref:connect.adoc#link-connect[link a device with Connect] automatically (without using the web interface), use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To create an auth key to xref:connect.adoc#link-connect[link a device with Connect], use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
 
-Replace these values in the code blow:
+Replace these values in the code below:
 
 * `+rporg_accesstokenhere+`: your management API access token
 * `+my-auth-key+`: a description for your auth key
@@ -167,7 +167,7 @@ $ curl --header 'Authorization: Bearer rporg_accesstokenhere' --data-urlencode '
 
 ======
 
-If successful, you get a **201 Created**  response with your auth key in JSON format. For example:
+If successful, you get a **201 Created** response with your auth key in JSON format. For example:
 
 [source,http]
 ----
@@ -199,3 +199,132 @@ Content-Type: application/json; charset=utf-8
 ----
 
 NOTE: You can also manually xref:connect.adoc#organisation-auth-keys[create an auth key on your organisation's **Settings** page].
+
+==== List devices
+
+To list all devices in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/devices HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/devices
+----
+
+======
+
+If successful, you get a **200 OK** response with up to 100 of the organisation's devices sorted alphabetically by name in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "devices": [
+        {
+            "id": "69739b44-ebb2-468e-9e24-08126dec4925",
+            "name": "raspberrypi5",
+            "serial_number": "ea636879c4d47a37"
+        }
+    ],
+    "meta": {
+        "page": 1,
+        "per_page": 100,
+        "total_count": 1,
+        "total_pages": 1
+    }
+}
+----
+
+The response contains the following fields:
+
+devices:: List of devices in the organisation (up to 100 per page).
+meta:: Pagination details.
+
+Each item in the `+devices+` list contains the following fields:
+
+id:: A unique identifier for the device.
+name:: The name of the device.
+serial_number:: The serial number of the device.
+
+The `+meta+` object contains the following fields:
+
+page:: The current page number of the response.
+per_page:: The maximum number of devices in a page.
+total_count:: The total number of devices in the organisation.
+total_pages:: The total number of pages of devices for the organisation.
+
+If your management API access token is invalid, you get a **401 Unauthorized** response.
+
+To fetch subsequent pages of devices, use the `+page+` parameter in the query string:
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/devices?page=2 HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' 'https://api.connect.raspberrypi.com/organisation/devices?page=2'
+----
+
+======
+
+==== Delete a device
+
+To delete a device in your organisation and sign it out of Raspberry Pi Connect, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token
+* `+device-id+`: the unique identifier for your device
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+DELETE /organisation/devices/device-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --request DELETE --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/devices/device-id
+----
+
+======
+
+If successful, you get a **204 No Content** response with an empty response body.
+
+If your management API access token is invalid, you get a **401 Unauthorized** response.
+
+If the given device ID is not found in the organisation, you get a **404 Not Found** response.
