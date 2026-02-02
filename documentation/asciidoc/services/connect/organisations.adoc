@@ -254,7 +254,7 @@ Content-Type: application/json; charset=utf-8
 
 The response contains the following fields:
 
-devices:: List of devices in the organisation (up to 100 per page).
+devices:: List of devices in the organisation (up to 100 for each page).
 meta:: Pagination details.
 
 Each item in the `+devices+` list contains the following fields:
@@ -266,7 +266,7 @@ serial_number:: The serial number of the device.
 The `+meta+` object contains the following fields:
 
 page:: The current page number of the response.
-per_page:: The maximum number of devices in a page.
+per_page:: The number of devices for each page (maximum 100).
 total_count:: The total number of devices in the organisation.
 total_pages:: The total number of pages of devices for the organisation.
 
@@ -290,6 +290,28 @@ curl::
 [source,console]
 ----
 $ curl --header 'Authorization: Bearer rporg_accesstokenhere' 'https://api.connect.raspberrypi.com/organisation/devices?page=2'
+----
+
+======
+
+To change the number of devices returned for each page, use the `+per_page+` parameter in the query string (with a maximum of 100):
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/devices?per_page=10 HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' 'https://api.connect.raspberrypi.com/organisation/devices?per_page=10'
 ----
 
 ======
