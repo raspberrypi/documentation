@@ -6,7 +6,7 @@ video::images/MicroPython.webm[width="80%"]
 
 Download the correct MicroPython UF2 file for your board:
 
-* https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2[Pico] 
+* https://micropython.org/download/rp2-pico/rp2-pico-latest.uf2[Pico]
 
 * https://micropython.org/download/rp2-pico-w/rp2-pico-w-latest.uf2[Pico W]
 
@@ -14,7 +14,7 @@ Download the correct MicroPython UF2 file for your board:
 
 * https://micropython.org/download/RPI_PICO2_W/RPI_PICO2_W-latest.uf2[Pico 2 W]
 
-For more information about using Wi-Fi and Bluetooth on Raspberry Pi Pico W-series devices with C/{cpp} or MicroPython, see https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W-series].
+For more information about using Wi-Fi and Bluetooth on Raspberry Pi Pico W-series devices with C/{cpp} or MicroPython, see https://pip.raspberrypi.com/documents/RP-008257-DS[Connecting to the Internet with Raspberry Pi Pico W-series].
 
 For more information about https://github.com/bluekitchen/btstack#supported-protocols-and-profiles[supported Bluetooth protocols and profiles], see the Blue Kitchen https://github.com/bluekitchen/btstack[BTStack] Github repository.
 
@@ -28,4 +28,4 @@ To program your device, follow these steps:
 
 . Access the REPL via USB Serial.
 
-The https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspberry Pi Pico-series Python SDK] book contains step-by-step instructions for connecting to your Pico and programming it in MicroPython using both the command line and the https://thonny.org/[Thonny] IDE.
+The https://pip.raspberrypi.com/documents/RP-008355-DS[Raspberry Pi Pico-series Python SDK] book contains step-by-step instructions for connecting to your Pico and programming it in MicroPython using both the command line and the https://thonny.org/[Thonny] IDE.

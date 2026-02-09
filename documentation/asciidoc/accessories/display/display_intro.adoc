@@ -41,7 +41,7 @@ Connect one end of the Flat Flexible Cable (FFC) to the `RPI-DISPLAY` port on th
 
 If the FFC is not fully inserted or positioned correctly, you will experience issues with the display. You should always double check this connection when troubleshooting, especially if you don't see anything on your display, or the display shows only a single colour.
 
-NOTE: A https://datasheets.raspberrypi.com/display/7-inch-display-mechanical-drawing.pdf[mechanical drawing] of the Touch Display is available for download.
+NOTE: A https://pip.raspberrypi.com/documents/RP-008246-DS[mechanical drawing] of the Touch Display is available for download.
 
 === Power the Touch Display
 

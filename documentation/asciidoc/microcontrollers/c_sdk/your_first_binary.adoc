@@ -8,7 +8,7 @@ video::images/Blink-an-LED.webm[width="80%"]
 
 You can blink this on and off by,
 
-. Download the Blink UF2 https://datasheets.raspberrypi.com/soft/blink.uf2[for Raspberry Pi Pico], or https://datasheets.raspberrypi.com/soft/blink_picow.uf2[for Pico W].
+. Download the Blink UF2 https://pip.raspberrypi.com/documents/RP-008251-DS[for Raspberry Pi Pico], or https://pip.raspberrypi.com/documents/RP-008252-DS[for Pico W].
 . Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer.
 . It will mount as a Mass Storage Device called RPI-RP2.
 . Drag and drop the Blink UF2 binary onto the RPI-RP2 volume. Pico will reboot.
@@ -23,7 +23,7 @@ The next program anyone writes is to say 'Hello World' over a USB serial connect
 
 video::images/Hello-World.webm[width="80%"]
 
-. Download the https://datasheets.raspberrypi.com/soft/hello_world.uf2['Hello World' UF2].
+. Download the https://pip.raspberrypi.com/documents/RP-008289-DS['Hello World' UF2].
 . Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer.
 . It will mount as a Mass Storage Device called RPI-RP2.
 . Drag and drop the 'Hello World' UF2 binary onto the RPI-RP2 volume. Pico will reboot.

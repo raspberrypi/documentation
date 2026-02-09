@@ -24,4 +24,4 @@ It provides:
 * Low-speed peripherals (SPI, UART, I2C, PWM, GPIO, I2S)
 * Delta-sigma PWM audio out
 
-More information on RP1 can be found in the https://datasheets.raspberrypi.com/rp1/rp1-peripherals.pdf[RP1 Peripherals] document.
+More information on RP1 can be found in the https://pip.raspberrypi.com/documents/RP-008370-DS[RP1 Peripherals] document.

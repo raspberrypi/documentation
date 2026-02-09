@@ -6,7 +6,7 @@ The Arm cores run at 1.2 GHz, making the device about 50% faster than the Raspbe
 
 Please refer to the following BCM2836 document for details on the Arm peripherals specification, which also applies to the BCM2837.
 
-* https://datasheets.raspberrypi.com/bcm2836/bcm2836-peripherals.pdf[BCM2836 Arm-local peripherals]
+* https://pip.raspberrypi.com/documents/RP-008250-DS[BCM2836 Arm-local peripherals]
 * https://developer.arm.com/documentation/ddi0500/latest/[Cortex-A53 MPCore Processor Technical Reference Manual]
 
-IMPORTANT: This SoC is discontinued. Raspberry Pi devices that include this chip are either End-of-Life or use a different SoC. For more information, see https://pip.raspberrypi.com/documents/RP-001029-PC-1?disposition=inline[Raspberry Pi 3 Model B Product Change Notification], https://pip.raspberrypi.com/documents/RP-009284-PC-2?disposition=inline[Raspberry Pi 2 Model B revisions 1.1 and 1.2 Obsolescence Notice 1], and https://pip.raspberrypi.com/documents/RP-009286-PC?disposition=inline[Raspberry Pi Compute Module 3 and Compute Module 3 Lite Obsolescence Notice 2].
+IMPORTANT: This SoC is discontinued. Raspberry Pi devices that include this chip are either End-of-Life or use a different SoC. For more information, see https://pip.raspberrypi.com/documents/RP-001029-PC[Raspberry Pi 3 Model B Product Change Notification], https://pip.raspberrypi.com/documents/RP-009284-PC[Raspberry Pi 2 Model B revisions 1.1 and 1.2 Obsolescence Notice 1], and https://pip.raspberrypi.com/documents/RP-009286-PC[Raspberry Pi Compute Module 3 and Compute Module 3 Lite Obsolescence Notice 2].

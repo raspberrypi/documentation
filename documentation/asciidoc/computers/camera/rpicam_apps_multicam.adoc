@@ -60,7 +60,7 @@ $ rpicam-vid -n -t 20s --camera 0 --codec libav -o server.mp4 --sync server
 
 This too will run for 20 seconds counting from when the synchronisation point is reached and the recording starts. With the default synchronisation settings (100 frames at 30fps) this means there will be just over 3 seconds for clients to get synchronised.
 
-The server's broadcast address and port, the frequency of the timing messages and the number of frames to wait for clients to synchronise, can all be changed in the camera tuning file. Clients only pay attention to the broadcast address here which should match the server's; the other information will be ignored. Please refer to the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Raspberry Pi Camera tuning guide] for more information.
+The server's broadcast address and port, the frequency of the timing messages and the number of frames to wait for clients to synchronise, can all be changed in the camera tuning file. Clients only pay attention to the broadcast address here which should match the server's; the other information will be ignored. Please refer to the https://pip.raspberrypi.com/documents/RP-009070-TC[Raspberry Pi Camera tuning guide] for more information.
 
 In practical operation there are a few final points to be aware of:
 

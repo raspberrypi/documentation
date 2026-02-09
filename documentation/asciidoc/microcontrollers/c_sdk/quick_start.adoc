@@ -1,6 +1,6 @@
 == Quick-start your own project
 
-NOTE: The following instructions are terse, and Linux-based only. For detailed steps, instructions for other platforms, and just in general, we recommend you see the https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico] and https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi Pico C/{cpp} SDK] books.
+NOTE: The following instructions are terse, and Linux-based only. For detailed steps, instructions for other platforms, and just in general, we recommend you see the https://pip.raspberrypi.com/documents/RP-008276-DS[Getting started with Raspberry Pi Pico] and https://pip.raspberrypi.com/documents/RP-009085-KB[Raspberry Pi Pico C/{cpp} SDK] books.
 
 Install CMake (at least version 3.13), and GCC cross compiler
 
@@ -37,7 +37,7 @@ pico_sdk_init()
 # rest of your project
 ----
 
-Go ahead and write your code, see https://github.com/raspberrypi/pico-examples[pico-examples] or the https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi Pico C/{cpp} SDK] book for more information on how to go about that.
+Go ahead and write your code, see https://github.com/raspberrypi/pico-examples[pico-examples] or the https://pip.raspberrypi.com/documents/RP-009085-KB[Raspberry Pi Pico C/{cpp} SDK] book for more information on how to go about that.
 
 About the simplest you can do is a single source file (e.g. `hello_world.c`)
 

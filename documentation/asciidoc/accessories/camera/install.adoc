@@ -81,6 +81,6 @@ You can remove a cable from the connector by reversing these steps.
 . Reconnect your Raspberry Pi device to power and turn it on.
 . Ensure that your kernel and applications are all up to date by following the instructions on xref:../computers/os.adoc#update-software[keeping your operating system up to date].
 . Follow the setup instructions for xref:../computers/camera_software.adoc#rpicam-apps[`rpicam-apps`].
-. (Optional) If you want to use the Picamera2 Python library, follow the setup instructions for https://datasheets.raspberrypi.com/camera/picamera2-manual.pdf[Picamera2 Python library].
+. (Optional) If you want to use the Picamera2 Python library, follow the setup instructions for https://pip.raspberrypi.com/documents/RP-008156-DS[Picamera2 Python library].
 
 // TODO should the picamera2 manual info be in the HTML docs instead/as well? Also. Camera software stuff could follow in here rather than being in computers section?

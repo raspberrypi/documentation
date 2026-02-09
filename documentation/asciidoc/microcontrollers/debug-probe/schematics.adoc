@@ -2,8 +2,8 @@
 
 Schematics and mechanical drawing of the Debug Probe are available:
 
-* https://datasheets.raspberrypi.com/debug/raspberry-pi-debug-probe-schematics.pdf[Schematics] (PDF)
-* https://datasheets.raspberrypi.com/debug/raspberry-pi-debug-probe-mechanical-drawing.pdf[Mechanical Diagram] (PDF)
+* https://pip.raspberrypi.com/documents/RP-008194-DS[Schematics] (PDF)
+* https://pip.raspberrypi.com/documents/RP-008192-DS[Mechanical Diagram] (PDF)
 
 The test point (TP) shown on the schematics are located as shown in the diagram below.
 
