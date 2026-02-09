@@ -947,6 +947,12 @@ span.mlabel {
   font-weight: 400;
 }
 
+/* Remove unsightly gap at the top of a table cell containing a list*/
+#content td ul,
+#content td ol{
+  margin-block-start: 0;
+}
+
 #content p > code,
 td code {
   font-size: 1.1em;
@@ -1767,7 +1773,7 @@ table caption::before {
 
 /* === Figures: bold number, italic description */
 
-div.imageblock div.title {
+div.imageblock div.title{
   color: var(--subtle-text);
   text-align: left;
   font-size: 0.875rem;
@@ -1780,7 +1786,7 @@ div.imageblock div.title {
 }
 
 /* Add a bolded number before */
-.imageblock .title::before {
+.imageblock .title::before{
     content: "Figure " counter(figure-counter) ".";
     display: block;
     font-weight: bold;
