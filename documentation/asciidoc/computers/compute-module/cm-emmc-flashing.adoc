@@ -95,12 +95,11 @@ Windows::
 +
 To set up software on a Windows 11 host device:
 +
-. Download the https://github.com/raspberrypi/usbboot/raw/master/win32/rpiboot_setup.exe[Windows installer] or https://github.com/raspberrypi/usbboot[build `rpiboot` from source].
+. Download the latest Windows installer from the https://github.com/raspberrypi/usbboot/releases[releases] page or https://github.com/raspberrypi/usbboot[build `rpiboot` from source].
 . Double-click on the installer to run it. This installs the drivers and boot tool. Do not close any driver installation windows which appear during the installation process.
 . Reboot
 . Connect the IO Board to power. Windows should discover the hardware and configure the required drivers.
-. On CM4 and later devices, select **Raspberry Pi - Mass Storage Gadget - 64-bit** from the start menu. After a few seconds, the Compute Module eMMC or NVMe will appear as USB mass storage devices. This also provides a debug console as a serial port gadget.
-. On CM3 and older devices, select **rpiboot**. Double-click on `RPiBoot.exe` to run it. After a few seconds, the Compute Module eMMC should appear as a USB mass storage device.
+. Select **rpiboot - Mass Storage Gadget** from the start menu. After a few seconds, the Compute Module eMMC, NVMe or SD card appears as a USB mass storage device. This also provides a debug console as a serial port gadget.
 
 ======
 

@@ -373,7 +373,7 @@ Sets the metering mode of the Automatic Exposure/Gain Control (AEC/AGC) algorith
 * `average` - average or whole frame metering
 * `custom` - custom metering mode defined in the camera tuning file
 
-For more information on defining a custom metering mode, and adjusting region weights in existing metering modes, see the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
+For more information on defining a custom metering mode, and adjusting region weights in existing metering modes, see the https://pip.raspberrypi.com/documents/RP-009070-TC[Tuning guide for the Raspberry Pi cameras and libcamera].
 
 ==== `exposure`
 
@@ -383,7 +383,7 @@ Sets the exposure profile. Changing the exposure profile should not affect the i
 * `normal`: normal exposure, normal gains
 * `long`: long exposure, smaller gains
 
-You can edit exposure profiles using tuning files. For more information, see the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
+You can edit exposure profiles using tuning files. For more information, see the https://pip.raspberrypi.com/documents/RP-009070-TC[Tuning guide for the Raspberry Pi cameras and libcamera].
 
 ==== `awb`
 
@@ -421,7 +421,7 @@ These values are only approximate: values could vary according to the camera tun
 
 No mode fully disables AWB. Instead, you can fix colour gains with xref:camera_software.adoc#awbgains[`awbgains`].
 
-For more information on AWB modes, including how to define a custom one, see the https://datasheets.raspberrypi.com/camera/raspberry-pi-camera-guide.pdf[Tuning guide for the Raspberry Pi cameras and libcamera].
+For more information on AWB modes, including how to define a custom one, see the https://pip.raspberrypi.com/documents/RP-009070-TC[Tuning guide for the Raspberry Pi cameras and libcamera].
 
 ==== `awbgains`
 

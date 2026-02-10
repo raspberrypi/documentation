@@ -5,9 +5,9 @@ image::images/pcie.jpg[alt="Raspberry Pi connector for PCIe",width="70%"]
 
 Raspberry Pi 5 has an FPC connector on the left side of the board. This connector breaks out a PCIe Gen 2.0 ×1 interface for fast peripherals.
 
-To connect a PCIe https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[HAT+ device], connect it to your Raspberry Pi. Your Raspberry Pi should automatically detect the device. To connect a non-HAT+ device, connect it to your Raspberry Pi, then <<enable-pcie, manually enable PCIe>>.
+To connect a PCIe https://pip.raspberrypi.com/documents/RP-008281-DS[HAT+ device], connect it to your Raspberry Pi. Your Raspberry Pi should automatically detect the device. To connect a non-HAT+ device, connect it to your Raspberry Pi, then <<enable-pcie, manually enable PCIe>>.
 
-For more information about the PCIe FPC connector pinout and other details needed to create third-party devices, accessories, and HATs, see the https://datasheets.raspberrypi.com/pcie/pcie-connector-standard.pdf[Raspberry Pi Connector for PCIe] standards document. It should be read alongside the https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[Raspberry Pi HAT+ Specification].
+For more information about the PCIe FPC connector pinout and other details needed to create third-party devices, accessories, and HATs, see the https://pip.raspberrypi.com/documents/RP-008298-DS[Raspberry Pi Connector for PCIe] standards document. It should be read alongside the https://pip.raspberrypi.com/documents/RP-008281-DS[Raspberry Pi HAT+ Specification].
 
 NOTE: Only certain devices https://github.com/raspberrypi/firmware/issues/1833[support] enumeration of PCIe devices behind a switch.
 

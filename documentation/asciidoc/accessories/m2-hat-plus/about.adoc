@@ -21,7 +21,7 @@ We provide the M.2 HAT+ in a standard and a compact format to serve different us
 
 * The M.2 HAT+ Compact is designed to fit around the included fan in the https://www.raspberrypi.com/products/raspberry-pi-5-case/[Raspberry Pi Case for Raspberry Pi 5]. However, you can't fit the Active Cooler beneath it.
 
-Both the M.2 HAT+ and M.2 HAT+ Compact conform to the https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf[Raspberry Pi HAT+ specification], which allows Raspberry Pi OS to automatically detect the HAT+ and any connected devices.
+Both the M.2 HAT+ and M.2 HAT+ Compact conform to the https://pip.raspberrypi.com/documents/RP-008281-DS[Raspberry Pi HAT+ specification], which allows Raspberry Pi OS to automatically detect the HAT+ and any connected devices.
 
 == Features
 
@@ -229,8 +229,8 @@ To enable PCIe Gen 3 speeds, follow the instructions at xref:../computers/raspbe
 
 == Schematics
 
-The schematics for the M.2 HAT+ are available as a https://datasheets.raspberrypi.com/m2-hat-plus/raspberry-pi-m2-hat-plus-schematics.pdf[PDF]
+The schematics for the M.2 HAT+ are available as a https://pip.raspberrypi.com/documents/RP-008218-DS[PDF]
 
 == Product brief
 
-For more information about the M.2 HAT+ and M.2 HAT+ Compact, including mechanical specifications and operating environment limitations, see the https://datasheets.raspberrypi.com/m2-hat-plus/raspberry-pi-m2-hat-plus-product-brief.pdf[product brief].
+For more information about the M.2 HAT+ and M.2 HAT+ Compact, including mechanical specifications and operating environment limitations, see the https://pip.raspberrypi.com/documents/RP-009234-MM[product brief].

@@ -1,6 +1,6 @@
 == Serial connections
 
-Ensure that the Debug Probe is connected to the UART pins of your Raspberry Pi Pico. 
+Ensure that the Debug Probe is connected to the UART pins of your Raspberry Pi Pico.
 
 image:images/wiring.png[width="80%"]
 
@@ -33,9 +33,9 @@ $ minicom -b 115200 -o -D /dev/ttyACM0
 
 TIP: To exit `minicom`, use CTRL-A followed by X.
 
-To test serial communication you can build and upload the "Hello World" example application. 
+To test serial communication you can build and upload the "Hello World" example application.
 
-Change directory into the `hello_world` directory inside the `pico-examples` tree, and run `make`. Afterwards, you can upload it to your Raspberry Pi Pico using `openocd`. For a full walkthrough of building the `hello_serial` example program, see Chapter 4 of https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico].
+Change directory into the `hello_world` directory inside the `pico-examples` tree, and run `make`. Afterwards, you can upload it to your Raspberry Pi Pico using `openocd`. For a full walkthrough of building the `hello_serial` example program, see Chapter 4 of https://pip.raspberrypi.com/documents/RP-008276-DS[Getting started with Raspberry Pi Pico].
 
 [source,console]
 ----
@@ -52,8 +52,8 @@ $ minicom -b 115200 -o -D /dev/ttyACM0
 
 On opening `minicom` you should see "Hello, world!" printed to the console.
 
-For terminal programs that support it, a description of the USB serial UART is advertised in the USB device description. 
+For terminal programs that support it, a description of the USB serial UART is advertised in the USB device description.
 
 image::images/description.jpg[width="60%"]
 
-The unique serial number in this description means that on Windows your COM port numbering is "sticky" per device, and will allow you to write `udev` rules to associate a named device node with a particular Debug Probe. 
+The unique serial number in this description means that on Windows your COM port numbering is "sticky" per device, and will allow you to write `udev` rules to associate a named device node with a particular Debug Probe.

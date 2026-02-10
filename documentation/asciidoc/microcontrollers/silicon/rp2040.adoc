@@ -54,7 +54,7 @@ Key features:
 ** USB 1.1 controller and PHY, with host and device support
 ** 8 PIO state machines
 
-[.whitepaper, title="Power switching RP2040 for low standby current applications", subtitle="", link=https://pip.raspberrypi.com/documents/RP-004339-WP-Power-switching-RP2040-for-low-standby-current-applications.pdf]
+[.whitepaper, title="Power switching RP2040 for low standby current applications", subtitle="", link=https://pip.raspberrypi.com/documents/RP-004339-WP]
 ****
 Even in deep sleep RP2040 draws a typical current of ~180μA, and sleep current is very dependent on PVT: process (current varies from chip to chip), voltage (current varies linearly with voltage), and temperature (current varies nonlinearly with temperature).
 
@@ -63,8 +63,8 @@ For many use cases where minimal current draw is required, the best option is to
 
 ==== Design Files
 
-* Download https://datasheets.raspberrypi.com/rp2040/Minimal-KiCAD.zip[Minimal Viable Board] Design Files (KiCad)
-* Download https://datasheets.raspberrypi.com/rp2040/VGA-KiCAD.zip[VGA Carrier Board] Design Files (KiCad)
+* Download https://pip.raspberrypi.com/documents/RP-008296-DS[Minimal Viable Board] Design Files (KiCad)
+* Download https://pip.raspberrypi.com/documents/RP-008395-DS[VGA Carrier Board] Design Files (KiCad)
 
 === RP2040-based Boards
 
@@ -72,8 +72,8 @@ Designed by Raspberry Pi as both a development board, and as a reference design,
 
 The design files for Raspberry Pi Pico and Pico W are available openly, with no limitations.
 
-* Download https://datasheets.raspberrypi.com/pico/RPi-Pico-R3-PUBLIC-20200119.zip[Design Files] for Raspberry Pi Pico (Cadence Allegro)
-* Download https://datasheets.raspberrypi.com/picow/RPi-PicoW-PUBLIC-20220607.zip[Design Files] for Raspberry Pi Pico W (Cadence Allegro)
+* Download https://pip.raspberrypi.com/documents/RP-008379-DS[Design Files] for Raspberry Pi Pico (Cadence Allegro)
+* Download https://pip.raspberrypi.com/documents/RP-008380-DS[Design Files] for Raspberry Pi Pico W (Cadence Allegro)
 
 Permission to use, copy, modify, and/or distribute this design for any purpose with or without fee is hereby granted.
 
@@ -103,4 +103,4 @@ A crucial part of accurately determining the temperature measured is knowing the
 
 NOTE: The RP2040 sensor voltage falls as temperature rises.
 
-See Chapter 4, section 4.9.5 of the https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf[RP2040 Datasheet] for further details of the internal temperature sensor.
+See Chapter 4, section 4.9.5 of the https://pip.raspberrypi.com/documents/RP-008371-DS[RP2040 Datasheet] for further details of the internal temperature sensor.

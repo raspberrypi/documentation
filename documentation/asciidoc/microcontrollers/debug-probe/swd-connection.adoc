@@ -4,7 +4,7 @@ The Debug Probe will let you load binaries via the SWD port and OpenOCD: you wil
 
 GDB is then used to debug the binary running on the Pico.
 
-We recommend the use of the Raspberry Pi Pico VSCode extension, which integrates the use of OpenOCD and GDB, to upload and debug programs. See Chapter 4 of https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico] for more information.
+We recommend the use of the Raspberry Pi Pico VSCode extension, which integrates the use of OpenOCD and GDB, to upload and debug programs. See Chapter 4 of https://pip.raspberrypi.com/documents/RP-008276-DS[Getting started with Raspberry Pi Pico] for more information.
 
 === Standalone program upload
 

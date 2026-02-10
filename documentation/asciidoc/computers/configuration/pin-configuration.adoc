@@ -6,7 +6,7 @@ NOTE: Custom default pin configurations via user-provided Device Tree blobs has 
 
 During the bootup sequence, the GPIO pins go through various actions.
 
-* Power-on - pins default to inputs with default pulls, which are described in the https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf[datasheet]
+* Power-on - pins default to inputs with default pulls, which are described in the https://pip.raspberrypi.com/documents/RP-008249-DS[datasheet]
 * Setting by the bootrom
 * Setting by `bootcode.bin`
 * Setting by `dt-blob.bin` (this page)

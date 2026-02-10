@@ -190,7 +190,7 @@
                     "title": "Designing a HAT",
                     "description": "Information on the HAT specification",
                     "image": "full-sized/Designing-a-HAT.png",
-                    "url": "https://datasheets.raspberrypi.com/hat/hat-plus-specification.pdf"
+                    "url": "https://pip.raspberrypi.com/documents/RP-008281-DS"
                 },
                 {
                     "title": "Touch Display",

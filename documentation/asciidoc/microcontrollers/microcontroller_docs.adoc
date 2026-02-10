@@ -6,45 +6,45 @@ Documentation for Pico-series and other Raspberry Pi microcontroller-based board
 
 === RP2350
 
-https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf[RP2350 Datasheet]:: A microcontroller by Raspberry Pi
+https://pip.raspberrypi.com/documents/RP-008373-DS[RP2350 Datasheet]:: A microcontroller by Raspberry Pi
 
-https://datasheets.raspberrypi.com/rp2350/hardware-design-with-rp2350.pdf[Hardware design with RP2350]:: Using RP2350 microcontrollers to build boards and products
+https://pip.raspberrypi.com/documents/RP-008280-DS[Hardware design with RP2350]:: Using RP2350 microcontrollers to build boards and products
 
 === RP2040
 
-https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf[RP2040 Datasheet]:: A microcontroller by Raspberry Pi
+https://pip.raspberrypi.com/documents/RP-008371-DS[RP2040 Datasheet]:: A microcontroller by Raspberry Pi
 
-https://datasheets.raspberrypi.com/rp2040/hardware-design-with-rp2040.pdf[Hardware design with RP2040]:: Using RP2040 microcontrollers to build boards and products
+https://pip.raspberrypi.com/documents/RP-008279-DS[Hardware design with RP2040]:: Using RP2040 microcontrollers to build boards and products
 
 === Raspberry Pi Pico 2
 
-https://datasheets.raspberrypi.com/pico/pico-2-datasheet.pdf[Raspberry Pi Pico 2 Datasheet]:: An RP2350-based microcontroller board
+https://pip.raspberrypi.com/documents/RP-008299-DS[Raspberry Pi Pico 2 Datasheet]:: An RP2350-based microcontroller board
 
-https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico-series Microcontrollers]:: C/{cpp} development with Raspberry Pi Pico-series devices and other Raspberry Pi microcontroller-based boards
+https://pip.raspberrypi.com/documents/RP-008373-DS[Getting started with Raspberry Pi Pico-series Microcontrollers]:: C/{cpp} development with Raspberry Pi Pico-series devices and other Raspberry Pi microcontroller-based boards
 
 === Raspberry Pi Pico
 
-https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf[Raspberry Pi Pico Datasheet]:: An RP2040-based microcontroller board
+https://pip.raspberrypi.com/documents/RP-008307-DS[Raspberry Pi Pico Datasheet]:: An RP2040-based microcontroller board
 
-https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico-series Microcontrollers]:: C/{cpp} development with Raspberry Pi Pico-series devices and other Raspberry Pi microcontroller-based boards
+https://pip.raspberrypi.com/documents/RP-008373-DS[Getting started with Raspberry Pi Pico-series Microcontrollers]:: C/{cpp} development with Raspberry Pi Pico-series devices and other Raspberry Pi microcontroller-based boards
 
 === Raspberry Pi Pico 2 W
 
-https://datasheets.raspberrypi.com/picow/pico-2-w-datasheet.pdf[Raspberry Pi Pico 2 W Datasheet]:: An RP2350-based microcontroller board with wireless
+https://pip.raspberrypi.com/documents/RP-008304-DS[Raspberry Pi Pico 2 W Datasheet]:: An RP2350-based microcontroller board with wireless
 
-https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W-series]:: Getting Raspberry Pi Pico W-series devices online with C/{cpp} or MicroPython
+https://pip.raspberrypi.com/documents/RP-008257-DS[Connecting to the Internet with Raspberry Pi Pico W-series]:: Getting Raspberry Pi Pico W-series devices online with C/{cpp} or MicroPython
 
 === Raspberry Pi Pico W
 
-https://datasheets.raspberrypi.com/picow/pico-w-datasheet.pdf[Raspberry Pi Pico W Datasheet]:: An RP2040-based microcontroller board with wireless
+https://pip.raspberrypi.com/documents/RP-008312-DS[Raspberry Pi Pico W Datasheet]:: An RP2040-based microcontroller board with wireless
 
-https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W-series]:: Getting Raspberry Pi Pico W-series devices online with C/{cpp} or MicroPython
+https://pip.raspberrypi.com/documents/RP-008257-DS[Connecting to the Internet with Raspberry Pi Pico W-series]:: Getting Raspberry Pi Pico W-series devices online with C/{cpp} or MicroPython
 
 === Software Development
 
-https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-c-sdk.pdf[Raspberry Pi Pico C/{cpp} SDK]:: Libraries and tools for C/{cpp} development on RP2040 microcontrollers
+https://pip.raspberrypi.com/documents/RP-009085-KB[Raspberry Pi Pico C/{cpp} SDK]:: Libraries and tools for C/{cpp} development on Raspberry Pi microcontrollers
 
-https://datasheets.raspberrypi.com/pico/raspberry-pi-pico-python-sdk.pdf[Raspberry Pi Pico Python SDK]:: A MicroPython environment for RP2040 microcontrollers
+https://pip.raspberrypi.com/documents/RP-008355-DS[Raspberry Pi Pico Python SDK]:: A MicroPython environment for Raspberry Pi microcontrollers
 
 The API level Doxygen documentation for the Raspberry Pi Pico C/{cpp} SDK is also available https://rpltd.co/pico-doxygen[as a micro-site].
 
