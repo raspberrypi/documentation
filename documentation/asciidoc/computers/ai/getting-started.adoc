@@ -325,7 +325,7 @@ $ sudo apt-mark hold hailo-tappas-core hailort hailo-dkms
 
 === Further Resources
 
-- For Hailo's own set of demos that you can run on a Raspberry Pi 5, see the https://github.com/hailo-ai/hailo-rpi5-example[hailo-rpi5-examples] GitHub repository.
+- For Hailo's own set of demos that you can run on a Raspberry Pi 5, see the https://github.com/hailo-ai/hailo-rpi5-examples[hailo-rpi5-examples] GitHub repository.
 - For Hailo's model zoo, which contains a large number of neural networks, see the https://hailo.ai/products/hailo-software/model-explorer-vision/[Hailo Model Explorer].
 - For discussion on Hailo's hardware and tooling, see the https://community.hailo.ai/[Hailo Community] forum and https://hailo.ai/developer-zone[Developer Zone].
 
