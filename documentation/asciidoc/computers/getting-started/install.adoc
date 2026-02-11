@@ -97,7 +97,7 @@ image::images/imager/os-customisation-locale.png[alt="Imager OS Customisation Lo
 +
 image::images/imager/os-customisation-user.png[alt="Imager OS Customisation User tab.",width="80%"]
 
-. In the *Customisation > Wi-Fi* tab, on first use, Imager pre-fills the SSID (name) and password of the Wi-Fi network you're currently connected to.
+. In the *Customisation > Wi-Fi* tab, on first use, Imager pre-fills the SSID (name) and password of the Wi-Fi network you're currently connected to. If you don't want your Raspberry Pi to connect to a wifi network clear the SSID to continue.
 +
 .. Select whether to connect to a *Secure network* or an *Open network*.
 .. If there's no pre-filled information or if you want to change it, enter the SSID (name) of your wireless network. For secure networks, enter and confirm the password for the network.
