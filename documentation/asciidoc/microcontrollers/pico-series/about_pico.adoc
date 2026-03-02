@@ -412,7 +412,7 @@ The majority of the microcontroller pins are brought to the user I/O pins on the
 * 26 GPIO pins with overlapping functions (SPI, I2C, UART, and so on) that can be configured for different project needs.
 * Power pins located in the top-right of the board, including:
     ** `3V3(OUT)` at pin 36 (3.3 V regulated output).
-    ** `VSYS` at pin 29 (2 V to 5 V system input).
+    ** `VSYS` at pin 39 (2 V to 5 V system input).
     ** `VBUS` at pin 40 (5 V input from USB).
 * Special-purpose pins:
     ** `3V3_EN` at pin 37. Pulling this pin to ground turns off the Raspberry Pi Pico.
