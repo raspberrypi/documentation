@@ -227,7 +227,7 @@ Raspberry Pi *Pico 2* and *Pico 2 with headers* offer the following key features
 * *RP2350 microcontroller chip*, including:
   ** A choice of CPU architecture that can run tasks in parallel. For more information, see xref:../microcontrollers/microcontroller-chips.adoc#architecture_switching[Architecture switching]:
     *** Dual-core Arm Cortex-M33.
-    *** Dual-core open source RISC-V Hazard.
+    *** Dual-core Hazard3 RISC-V processor.
   ** Flexible clock running up to 150 MHz.
   ** 520 kB of SRAM.
   ** USB 1.1 controller and PHY with device and host support.
@@ -283,7 +283,7 @@ Raspberry Pi *Pico 2 W* and *Pico 2 W with headers* offer the same key features 
 * *RP2350 microcontroller chip*, including:
   ** A choice of CPU architectures that can run tasks in parallel. For more information, see xref:../microcontrollers/microcontroller-chips.adoc#architecture_switching[Architecture switching]:
     *** Dual-core Arm Cortex-M33.
-    *** Dual-core open source RISC-V Hazard.
+    *** Dual-core Hazard3 RISC-V processor.
   ** Flexible clock running up to 150 MHz.
   ** 520 kB of SRAM.
   ** USB 1.1 controller and PHY with device and host support.
