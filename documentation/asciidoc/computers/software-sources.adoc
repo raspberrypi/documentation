@@ -164,7 +164,7 @@ A tool to mass provision Raspberry Pi devices, including secure boot and encrypt
 
 === Feedback
 
-http://github.com/raspberrypi/trixie-feedback::
+https://github.com/raspberrypi/trixie-feedback::
 A repo specifically reserved for bug-reporting for the current Raspberry Pi OS release.
 
 === Raspberry Pi Pico

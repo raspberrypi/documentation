@@ -18,4 +18,4 @@ The LED matrix is an RGB565 https://www.kernel.org/doc/Documentation/fb/framebuf
 
 === Joystick
 
-The joystick comes up as an input event device named `Raspberry Pi Sense HAT Joystick`, mapped to the arrow keys and **Enter**. It should be supported by any library which is capable of handling inputs, or directly through the https://www.kernel.org/doc/Documentation/input/input.txt[evdev interface]. Suitable libraries include SDL, http://www.pygame.org/docs/[pygame] and https://python-evdev.readthedocs.org/en/latest/[python-evdev]. The included `snake` example shows how to access the joystick directly.
+The joystick comes up as an input event device named `Raspberry Pi Sense HAT Joystick`, mapped to the arrow keys and **Enter**. It should be supported by any library which is capable of handling inputs, or directly through the https://www.kernel.org/doc/Documentation/input/input.txt[evdev interface]. Suitable libraries include https://www.libsdl.org/[SDL], https://www.pygame.org/docs/[pygame], and https://python-evdev.readthedocs.org/en/latest/[python-evdev]. The included `snake` example shows how to access the joystick directly.

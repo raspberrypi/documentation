@@ -172,7 +172,7 @@ if __name__ == "__main__":
                 if source not in all_doc_sources:
                     all_doc_sources.append(source)
                     dest = os.path.join('$inc_dir', include)
-                    extra_sources = ['$scripts_dir/create_build_adoc_include.py', '$site_config', '$GITHUB_EDIT_TEMPLATE']
+                    extra_sources = ['$scripts_dir/create_build_adoc_include.py', '$scripts_dir/create_build_adoc.py', '$site_config', '$GITHUB_EDIT_TEMPLATE']
                     ninja.build(dest, 'create_build_adoc_include', source, extra_sources)
                     targets.append(dest)
 
@@ -202,7 +202,7 @@ if __name__ == "__main__":
 
             dest = os.path.join('$out_dir', page)
             source = os.path.join('$src_dir', page)
-            extra_sources = ['$scripts_dir/create_build_adoc_doxygen.py', '$documentation_index', '$site_config', '$PAGE_PREAMBLE_TEMPLATE', '$DOXYGEN_PICOSDK_INDEX_JSON']
+            extra_sources = ['$scripts_dir/create_build_adoc_doxygen.py', '$scripts_dir/create_build_adoc.py', '$documentation_index', '$site_config', '$PAGE_PREAMBLE_TEMPLATE', '$DOXYGEN_PICOSDK_INDEX_JSON']
             if source not in all_doc_sources:
                 all_doc_sources.append(source)
                 ninja.build(dest, 'create_build_adoc_doxygen', source, extra_sources)

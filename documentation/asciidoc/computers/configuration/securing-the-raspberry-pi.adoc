@@ -71,7 +71,7 @@ $ sudo systemctl restart ssh
 
 === Use a firewall
 
-There are many firewall solutions available for Linux. Most use the underlying http://www.netfilter.org/projects/iptables/index.html[iptables] project to provide packet filtering. This project sits over the Linux netfiltering system. By default, `iptables` is installed on Raspberry Pi OS, but is not set up. Setting it up can be a complicated task, and one project that offers a simpler interface than `iptables` is https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw[Uncomplicated Firewall (UFW)]. This is the default firewall tool in Ubuntu, and can be installed on your Raspberry Pi:
+There are many firewall solutions available for Linux. Most use the underlying https://www.netfilter.org/projects/iptables/index.html[iptables] project to provide packet filtering. This project sits over the Linux netfiltering system. By default, `iptables` is installed on Raspberry Pi OS, but is not set up. Setting it up can be a complicated task, and one project that offers a simpler interface than `iptables` is https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw[Uncomplicated Firewall (UFW)]. This is the default firewall tool in Ubuntu, and can be installed on your Raspberry Pi:
 
 [source,console]
 ----
