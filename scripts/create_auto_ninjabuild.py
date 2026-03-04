@@ -75,7 +75,7 @@ if __name__ == "__main__":
     images_dir = sys.argv[10]
     output_ninjabuild = sys.argv[11]
 
-    global_images = ['full-sized/Datasheets.png', 'full-sized/PIP.png', 'full-sized/Tutorials.png', 'full-sized/Forums.png']
+    global_images = ['full-sized/PIP.png', 'full-sized/Tutorials.png', 'full-sized/Forums.png']
 
     # Read _config.yml
     with open(config_yaml) as config_fh:
