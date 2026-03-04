@@ -95,15 +95,15 @@ Raspberry Pi offers additional technical documentation relevant to Raspberry Pi 
 * https://pip.raspberrypi.com/documents/RP-008371-DS[RP2040 Datasheet: A microcontroller by Raspberry Pi]
 * https://pip.raspberrypi.com/documents/RP-008307-DS[Raspberry Pi Pico Datasheet: An RP2040-based microcontroller board]
 * https://pip.raspberrypi.com/documents/RP-008279-DS[Hardware design with RP2040: Using RP2040 microcontrollers to build boards and products]
-* https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico-series microcontrollers: C/{cpp} development with Raspberry Pi Pico-series and other Raspberry Pi microcontroller-based boards]
+* https://pip.raspberrypi.com/documents/RP-008276-DS[Getting started with Raspberry Pi Pico-series microcontrollers: C/{cpp} development with Raspberry Pi Pico-series and other Raspberry Pi microcontroller-based boards]
 
 Additionally, Raspberry Pi provides the following supporting hardware design resources:
 
-* https://datasheets.raspberrypi.com/pico/RPi-Pico-R3-PUBLIC-20200119.zip[Design files] (Cadence Allegro): PCB design files for studying or reproducing the board layout.
-* https://datasheets.raspberrypi.com/pico/Pico-R3-step.zip[STEP file]: a 3-dimensional CAD model of the board for enclosure and mechanical design.
-* http://fritzing.org[Fritzing] parts: components for use in Fritzing, an electronics design tool for layouts and schematics:
-    ** https://datasheets.raspberrypi.com/pico/Pico-R3-Fritzing.fzpz[Fritzing part for Raspberry Pi Pico]
-    ** https://datasheets.raspberrypi.com/pico/PicoH-Fritzing.fzpz[Fritzing part for Raspberry Pi Pico H]
+* https://pip.raspberrypi.com/documents/RP-008379-DS[Design files] (Cadence Allegro): PCB design files for studying or reproducing the board layout.
+* https://pip.raspberrypi.com/documents/RP-008311-DS[STEP file]: a 3-dimensional CAD model of the board for enclosure and mechanical design.
+* https://fritzing.org[Fritzing] parts: components for use in Fritzing, an electronics design tool for layouts and schematics:
+    ** https://pip.raspberrypi.com/documents/RP-008310-DS[Fritzing part for Raspberry Pi Pico]
+    ** https://pip.raspberrypi.com/documents/RP-008314-DS[Fritzing part for Raspberry Pi Pico H]
 
 IMPORTANT: Design files for Raspberry Pi Pico and Pico H are openly available with no limitations. Raspberry Pi grants permission to use, copy, modify, and distribute the following designs for any purpose, with or without fee. Designs are provided 'as-is' and the author disclaims all warranties with regard to the design, including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data, or profits, whether in an action of contract, negligence, or other tortious action, arising out of or in connection with the use or performance of the design.
 
@@ -162,13 +162,13 @@ Raspberry Pi offers additional technical documentation relevant to Raspberry Pi 
 * https://pip.raspberrypi.com/documents/RP-008373-DS[RP2040 Datasheet: A microcontroller by Raspberry Pi]
 * https://pip.raspberrypi.com/documents/RP-008312-DS[Raspberry Pi Pico W Datasheet: An RP2040-based microcontroller board]
 * https://pip.raspberrypi.com/documents/RP-008279-DS[Hardware design with RP2040: Using RP2040 microcontrollers to build boards and products]
-* https://datasheets.raspberrypi.com/picow/connecting-to-the-internet-with-pico-w.pdf[Connecting to the Internet with Raspberry Pi Pico W-series: Getting online with C/{cpp} or MicroPython on W-series devices]
+* https://pip.raspberrypi.com/documents/RP-008257-DS[Connecting to the Internet with Raspberry Pi Pico W-series: Getting online with C/{cpp} or MicroPython on W-series devices]
 
 Additionally, Raspberry Pi provides the following supporting hardware design resources:
 
-* https://datasheets.raspberrypi.com/picow/RPi-PicoW-PUBLIC-20220607.zip[Design files] (Cadence Allegro): PCB design files for studying or reproducing the board layout.
-* https://datasheets.raspberrypi.com/picow/PicoW-step.zip[STEP file]: a 3-dimensional CAD model of the board for enclosure and mechanical design.
-* http://fritzing.org[Fritzing] part: component for use in Fritzing, an electronics design tool for layouts and schematics: https://datasheets.raspberrypi.com/picow/PicoW-Fritzing.fzpz[Fritzing part for Raspberry Pi Pico W].
+* https://pip.raspberrypi.com/documents/RP-008380-DS[Design files] (Cadence Allegro): PCB design files for studying or reproducing the board layout.
+* https://pip.raspberrypi.com/documents/RP-008318-DS[STEP file]: a 3-dimensional CAD model of the board for enclosure and mechanical design.
+* https://fritzing.org[Fritzing] part: component for use in Fritzing, an electronics design tool for layouts and schematics: https://pip.raspberrypi.com/documents/RP-008316-DS[Fritzing part for Raspberry Pi Pico W].
 
 IMPORTANT: Design files for Raspberry Pi Pico and Pico H are openly available with no limitations. Raspberry Pi grants permission to use, copy, modify, and distribute the following designs for any purpose, with or without fee. Designs are provided 'as-is' and the author disclaims all warranties with regard to the design, including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data, or profits, whether in an action of contract, negligence, or other tortious action, arising out of or in connection with the use or performance of the design.
 
@@ -265,7 +265,7 @@ Raspberry Pi offers additional technical documentation relevant to Raspberry Pi 
 Additionally, Raspberry Pi provides the following supporting hardware design resources:
 
 * https://pip.raspberrypi.com/documents/RP-008303-DS[STEP file]: a 3-dimensional CAD model of the board for enclosure and mechanical design.
-* http://fritzing.org[Fritzing] part: component for use in Fritzing, an electronics design tool for layouts and schematics: https://pip.raspberrypi.com/documents/RP-008300-DS[Fritzing part for Raspberry Pi Pico 2].
+* https://fritzing.org[Fritzing] part: component for use in Fritzing, an electronics design tool for layouts and schematics: https://pip.raspberrypi.com/documents/RP-008300-DS[Fritzing part for Raspberry Pi Pico 2].
 
 IMPORTANT: Design files for Raspberry Pi Pico and Pico H are openly available with no limitations. Raspberry Pi grants permission to use, copy, modify, and distribute the following designs for any purpose, with or without fee. Designs are provided 'as-is' and the author disclaims all warranties with regard to the design, including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data, or profits, whether in an action of contract, negligence, or other tortious action, arising out of or in connection with the use or performance of the design.
 
@@ -329,7 +329,7 @@ Raspberry Pi offers additional technical documentation relevant to Raspberry Pi 
 * https://pip.raspberrypi.com/documents/RP-008280-DS[Hardware design with RP2350: Using RP2350 microcontrollers to build boards and products]
 * https://pip.raspberrypi.com/documents/RP-008257-DS[Connecting to the Internet with Raspberry Pi Pico W-series: Getting online with C/{cpp} or MicroPython on W-series devices]
 
-Additionally, Raspberry Pi provides a https://datasheets.raspberrypi.com/picow/pico-2-w-schematic.pdf[schematic diagram] to support hardware design.
+Additionally, Raspberry Pi provides a https://pip.raspberrypi.com/documents/RP-008306-DS[schematic diagram] to support hardware design.
 
 IMPORTANT: Design files for Raspberry Pi Pico 2 and Pico 2 W with headers are openly available with no limitations. Raspberry Pi grants permission to use, copy, modify, and distribute the following designs for any purpose, with or without fee. Designs are provided 'as-is' and the author disclaims all warranties with regard to the design, including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data, or profits, whether in an action of contract, negligence, or other tortious action, arising out of or in connection with the use or performance of the design.
 
@@ -465,7 +465,7 @@ The location of the debug connector depends on whether the board is a non-wirele
 The connector type depends on whether the board has presoldered headers:
 
 * Boards without presoldered headers (Raspberry Pi *Pico*, *Pico W*, *Pico 2* and *Pico 2 W*) use three castellated through-hole pads.
-* Boards with presoldered headers (Raspberry Pi *Pico H*, *Pico WH*, *Pico 2 with headers*, and *Pico 2 W with headers*) use a small, keyed three-pin connector (JST-style). For information about this connector, see https://datasheets.raspberrypi.com/debug/debug-connector-specification.pdf[Raspberry Pi 3-pin Debug Connector Specification].
+* Boards with presoldered headers (Raspberry Pi *Pico H*, *Pico WH*, *Pico 2 with headers*, and *Pico 2 W with headers*) use a small, keyed three-pin connector (JST-style). For information about this connector, see https://pip.raspberrypi.com/documents/RP-008189-DS[Raspberry Pi 3-pin Debug Connector Specification].
 
 The debug connectors on Raspberry Pi Pico boards with headers fit the Raspberry Pi Debug Probe with no modification. For more information, see xref:../microcontrollers/debug-probe.adoc[Debug Probe].
 
@@ -477,7 +477,7 @@ This section describes software tools and utilities available for Raspberry Pi P
 
 If you're unsure about what's currently programmed on your Raspberry Pi Pico, and the program was built using the Pico C or {cpp} SDK, the binary typically contains metadata such as the application name and version information.
 
-Use the `picotool` command-line to extract and display this information. For more information, see our https://github.com/raspberrypi/picotool[picotool GitHub repository]. For full usage instructions, see https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico-series: C/{cpp} development with Raspberry Pi Pico-series and other Raspberry Pi microcontroller-based boards].
+Use the `picotool` command-line to extract and display this information. For more information, see our https://github.com/raspberrypi/picotool[picotool GitHub repository]. For full usage instructions, see https://pip.raspberrypi.com/documents/RP-008276-DS[Getting started with Raspberry Pi Pico-series: C/{cpp} development with Raspberry Pi Pico-series and other Raspberry Pi microcontroller-based boards].
 
 === Debug using a Pico-series device
 
@@ -490,13 +490,13 @@ One Raspberry Pi Pico-series device can be used to debug another by running `deb
 . Copy the appropriate UF2 file to the mounted volume. The volume automatically ejects after the transfer completes.
 . Wait for the device to reboot. Your device now runs the `debugprobe` firmware and you can start using it as a debugger.
 
-For more detailed instructions, see https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf[Getting started with Raspberry Pi Pico-series: C/{cpp} development with Raspberry Pi Pico-series and other Raspberry Pi microcontroller-based boards].
+For more detailed instructions, see https://pip.raspberrypi.com/documents/RP-008276-DS[Getting started with Raspberry Pi Pico-series: C/{cpp} development with Raspberry Pi Pico-series and other Raspberry Pi microcontroller-based boards].
 
 === Reset flash memory
 
 `BOOTSEL` mode resides in read-only memory, inside the microcontroller chip on the Raspberry Pi Pico board; it can't be re-written. As a result, holding the *BOOTSEL* button while connecting the board always presents the device as a USB mass storage device, ensuring that the board can't be permanently bricked through software.
 
-If you want to erase the external flash memory, you can copy a special https://datasheets.raspberrypi.com/soft/flash_nuke.uf2[UF2 file] to the Raspberry Pi Pico device while it's in `BOOTSEL` mode. For the code to erase the external flash memory, see our https://github.com/raspberrypi/pico-examples/blob/master/flash/nuke/nuke.c[pico-examples GitHub repository].
+If you want to erase the external flash memory, you can copy a special https://pip.raspberrypi.com/documents/RP-008273-DS[UF2 file] to the Raspberry Pi Pico device while it's in `BOOTSEL` mode. For the code to erase the external flash memory, see our https://github.com/raspberrypi/pico-examples/blob/master/flash/nuke/nuke.c[pico-examples GitHub repository].
 
 === Resources for software development
 Raspberry Pi offers additional technical documentation development with Raspberry Pi Pico:
@@ -504,4 +504,4 @@ Raspberry Pi offers additional technical documentation development with Raspberr
 * https://pip.raspberrypi.com/documents/RP-009085-KB[Raspberry Pi Pico C/{cpp} SDK: Libraries and tools for C/{cpp} development on Raspberry Pi microcontrollers]
 * https://pip.raspberrypi.com/documents/RP-008355-DS[Raspberry Pi Pico-series Python SDK: A MicroPython environment for Raspberry Pi microcontrollers]
 
-For API-level Doxygen documentation for the Raspberry Pi Pico C/{cpp} SDK, see https://www.raspberrypi.com/documentation/pico-sdk/[Pico C SDK].
+For API-level Doxygen documentation for the Raspberry Pi Pico C/{cpp} SDK, see xref:../pico-sdk/index.adoc[Pico C SDK].

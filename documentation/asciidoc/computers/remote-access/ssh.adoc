@@ -123,7 +123,7 @@ If you see files named `id_ed25519.pub`, `id_rsa.pub`, or `id_dsa.pub`, you alre
 
 ==== Generate new SSH keypair
 
-TIP: This guide provides instructions to generate a new RSA key. For additional security, you can instead generate a http://ed25519.cr.yp.to/[Ed25519] key. Pass `-t ed25519` to `ssh-keygen` and replace `rsa` with `ed25519` when referencing your public and private key file names to use an Ed25519 key.
+TIP: This guide provides instructions to generate a new RSA key. For additional security, you can instead generate a https://ed25519.cr.yp.to/[Ed25519] key. Pass `-t ed25519` to `ssh-keygen` and replace `rsa` with `ed25519` when referencing your public and private key file names to use an Ed25519 key.
 
 To generate a new SSH keypair, enter the following command:
 

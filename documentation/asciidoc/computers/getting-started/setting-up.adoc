@@ -109,19 +109,19 @@ Raspberry Pi models have the following display connectivity:
 |2× micro HDMI
 
 |Raspberry Pi 4 Model B
-|2× micro HDMI, audio and composite out via 3.5 mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
+|2× micro HDMI, audio and composite out via 3.5 mm https://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 3 (all models)
-|HDMI, audio and composite out via 3.5 mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
+|HDMI, audio and composite out via 3.5 mm https://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 2 Model B
-|HDMI, audio and composite out via 3.5 mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
+|HDMI, audio and composite out via 3.5 mm https://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 1 Model A+ and Model B+
-|HDMI, audio and composite out via 3.5 mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
+|HDMI, audio and composite out via 3.5 mm https://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack
 
 |Raspberry Pi 1 Model A and Model B
-|HDMI, audio out via 3.5 mm http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack, composite out via https://en.wikipedia.org/wiki/RCA_connector[phono] jack
+|HDMI, audio out via 3.5 mm https://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack, composite out via https://en.wikipedia.org/wiki/RCA_connector[phono] jack
 
 |Raspberry Pi Zero (all models)
 |mini HDMI, composite out via solder-pads
@@ -139,7 +139,7 @@ image::images/peripherals/cable-hdmi.png[alt="Plugging a micro HDMI cable into a
 
 All Raspberry Pi models with HDMI, micro HDMI, or mini HDMI support audio output over HDMI.
 All Raspberry Pi models support audio over USB. All Raspberry Pi models equipped with Bluetooth support Bluetooth audio.
-All variants of the Raspberry Pi 1, 2, 3, and 4 include a 3.5 mm auxiliary http://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack, which may require amplification for sufficient output volume.
+All variants of the Raspberry Pi 1, 2, 3, and 4 include a 3.5 mm auxiliary https://en.wikipedia.org/wiki/Phone_connector_(audio)#TRRS_standards[TRRS] jack, which may require amplification for sufficient output volume.
 
 === Networking
 

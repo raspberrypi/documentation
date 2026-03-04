@@ -6,20 +6,7 @@ import json
 import re
 import yaml
 
-
-def check_no_markdown(filename):
-    with open(filename) as fh:
-        asciidoc = fh.read()
-        if re.search(r'```\n.*?\n```', asciidoc):
-            raise Exception("{} uses triple-backticks for markup - please use four-hyphens instead".format(filename))
-        # strip out code blocks
-        asciidoc = re.sub(r'----\n.*?\n----', '', asciidoc, flags=re.DOTALL)
-        # strip out pass-through blocks
-        asciidoc = re.sub(r'\+\+\+\+\n.*?\n\+\+\+\+', '', asciidoc, flags=re.DOTALL)
-        if re.search(r'(?:^|\n)#+', asciidoc):
-            raise Exception("{} contains a Markdown-style header (i.e. '#' rather than '=')".format(filename))
-        if re.search(r'(\[.+?\]\(.+?\))', asciidoc):
-            raise Exception("{} contains a Markdown-style link (i.e. '[title](url)' rather than 'url[title]')".format(filename))
+from create_build_adoc import check_no_markdown
 
 
 if __name__ == "__main__":
@@ -34,7 +21,10 @@ if __name__ == "__main__":
     output_subdir = os.path.basename(os.path.dirname(build_adoc))
     adoc_filename = os.path.basename(build_adoc)
 
-    check_no_markdown(src_adoc)
+    with open(src_adoc) as fh:
+        asciidoc_text = fh.read()
+
+    check_no_markdown(src_adoc, asciidoc_text)
 
     with open(picosdk_json) as json_fh:
         picosdk_data = json.load(json_fh)
@@ -68,17 +58,17 @@ if __name__ == "__main__":
         preamble_text = re.sub(r'{{\s*(\w+)\s*}}', lambda m: template_vars[m.group(1)], preamble_template)
 
     new_contents = preamble_text + "\n"
-    with open(src_adoc) as in_fh:
-        seen_header = False
-        for line in in_fh.readlines():
-            if re.match('^=+ ', line) is not None:
-                if not seen_header:
-                    seen_header = True
-            else:
-                m = re.match(r'^(include::)(.+)(\[\]\n?)$', line)
-                if m:
-                    line = m.group(1) + os.path.join('{includedir}/{parentdir}', m.group(2)) + m.group(3)
-            new_contents += line
+    seen_header = False
+    for line in asciidoc_text.split('\n'):
+        line += '\n'
+        if re.match('^=+ ', line) is not None:
+            if not seen_header:
+                seen_header = True
+        else:
+            m = re.match(r'^(include::)(.+)(\[\]\n?)$', line)
+            if m:
+                line = m.group(1) + os.path.join('{includedir}/{parentdir}', m.group(2)) + m.group(3)
+        new_contents += line
 
     with open(build_adoc, 'w') as out_fh:
         out_fh.write(new_contents)
