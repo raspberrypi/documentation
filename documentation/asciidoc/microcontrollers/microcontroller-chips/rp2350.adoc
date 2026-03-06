@@ -2,9 +2,9 @@
 
 RP2350 is a high-performance, dual-core microcontroller available in four variants that differ in package size and the presence of on-board flash memory, described in <<RP2350_variants>>.
 
-Compared to xref:../microcontrollers/microcontroller-chips.adoc#rp2040[RP2040], RP2350 delivers higher core clock speeds, double the SRAM, more powerful Arm cores, new security features, and expanded interfacing capabilities, described in <<RP2350_features>>.
+Compared to xref:../microcontrollers/microcontroller-chips.adoc#rp2040[RP2040], RP2350 delivers higher core clock speeds, double the SRAM, more powerful Arm cores, new security features, and expanded interfacing capabilities, described in <<RP2350_features>>. For more detailed information about RP2050, see the https://pip.raspberrypi.com/documents/RP-008373-DS[RP2350 datasheet].
 
-RP2350 is designed for use with the xref:pico-series.adoc[Raspberry Pi Pico 2] series and other RP2350-based boards. For more information, see <<RP2350_boards>>.
+RP2350 powers Raspberry Pi *Pico 2*, *Pico 2 W*, *Pico 2 with headers*, *Pico 2 W with headers*, and other RP2350-based boards. For more information, see xref:pico-series.adoc[Raspberry Pi Pico 2] and <<RP2350_boards>>.
 
 image::images/rp2350.jpg[]
 
