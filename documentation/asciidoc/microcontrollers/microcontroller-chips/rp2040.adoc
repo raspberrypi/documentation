@@ -1,8 +1,8 @@
 == RP2040
 
-RP2040 is the original Raspberry Pi dual-core microcontroller. It's packaged in a 7 x 7 mm QFN-56 form factor and engineered for low cost, low power consumption embedded control applications. It delivers deterministic real-time performance, flexible I/O, and moderate computational capability for tasks such as motor control, signal processing, human-machine interfaces, and embedded data acquisition.
+RP2040 is the original Raspberry Pi dual-core microcontroller. It's packaged in a 7 x 7 mm QFN-56 form factor and engineered for low cost, low power consumption embedded control applications. It delivers deterministic real-time performance, flexible I/O, and moderate computational capability for tasks such as motor control, signal processing, human-machine interfaces, and embedded data acquisition. For more detailed information about RP2040, see the https://pip.raspberrypi.com/documents/RP-008371-DS[RP2040 datasheet].
 
-RP2040 powers *Raspberry Pi Pico*, *Pico W*, *Pico H*, *Pico WH*, and other third-party RP2040-based microcontroller boards. For more information, see <<RP2040_boards>>.
+RP2040 powers *Raspberry Pi Pico*, *Pico W*, *Pico H*, *Pico WH*, and other third-party RP2040-based microcontroller boards. For more information, see xref:pico-series.adoc[Raspberry Pi Pico] and <<RP2040_boards>>.
 
 .RP2040 microcontroller chip
 image::images/rp2040.jpg[width="75%"]
