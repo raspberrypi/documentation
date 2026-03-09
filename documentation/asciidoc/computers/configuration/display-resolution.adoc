@@ -12,75 +12,44 @@ Flagship models since Raspberry Pi 4B and Keyboard models have two micro HDMI po
 
 Flagship models since Raspberry Pi 4B, Compute Modules since CM4 (except for CM4S), and Keyboard models can drive up to two displays.
 
-4-series devices support resolutions up to 1080p at a 60Hz refresh rate, or two 4K displays at a 30Hz refresh rate. You can also drive a single display at 4K with a 60Hz refresh rate if you connect the display to the `HDMI0` port and set the `hdmi_enable_4kp60=1` flag in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`].
+Raspberry Pi 4, 400, and Compute Module 4 devices support resolutions up to 1080p at a 60 Hz refresh rate, or two 4K displays at a 30 Hz refresh rate. You can also use a single display at 4K with a 60 Hz refresh rate if you connect the display to the `HDMI0` port and set the `hdmi_enable_4kp60=1` flag in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`].
 
-5-series devices support up to two displays at 4K resolution at a 60hz refresh rate with no additional configuration.
+Raspberry Pi 5, 500, 500+, and Compute Module 5 devices support up to two displays at 4K resolution at a 60 Hz refresh rate with no additional configuration.
 
 === Set resolution and rotation
 
-On the Raspberry Pi Desktop, open the *Preferences* menu and select the **Screen Configuration** utility. You should see a graphical representation of the displays connected to the Raspberry Pi. Right click on the display you wish to modify, and select an option. Click **Apply** to and close **Screen Configuration** to save your changes.
+Raspberry Pi OS editions that include the desktop enable you to adjust your display resolution and screen orientation directly through the desktop environment using the *Control Centre*.
 
-Alternatively, use the following command to open the **Screen Configuration** utility:
+IMPORTANT: Raspberry Pi OS Bookworm and earlier used `raindrop` or `arandr` to configure display behaviours. The latest version of Raspberry Pi OS doesn't support these tools.
 
-[source,console]
-----
-$ raindrop
-----
+==== Using the desktop
 
-[TIP]
-====
-If your installation of Raspberry Pi OS doesn't already include `raindrop`, you can install it with the following command:
+In the Raspberry Pi OS desktop, use the *Control Centre* to set your display preferences. These settings persist across a reboot.
 
-[source,console]
-----
-$ sudo apt install raindrop
-----
-
-Older versions of Raspberry Pi OS used a different screen configuration utility named `arandr`. To uninstall `arandr`, run the following command:
-
-[source,console]
-----
-$ sudo apt purge arandr
-----
-====
-
-=== Manually set resolution and rotation
-
-==== Determine display device name
-
-To manually configure resolution and rotation, you'll need to know the names of your display devices. To determine the device names, run the following command to display information about attached devices:
-
-[source,console]
-----
-$ kmsprint | grep Connector
-----
-
-==== Set a custom resolution
-
-To set a custom resolution, use our Screen Configuration tool, `raindrop`. If your Raspberry Pi OS installation doesn't already include `raindrop` (for instance, if you're still using the previous Screen Configuration tool, `arandr`), you can download `raindrop` from `apt` or the Recommended Software GUI.
-
-==== Set a custom rotation
-
-To set a custom resolution, use our Screen Configuration tool, `raindrop`. If your Raspberry Pi OS installation doesn't already include `raindrop` (for instance, if you're still using the previous Screen Configuration tool, `arandr`), you can download `raindrop` from `apt` or the Recommended Software GUI.
-
-If you run the Wayland desktop compositor, you can set a custom display rotation with `wlr-randr`. The following commands rotate the display by 0°, 90°, 180°, and 270°:
-
-[source,console]
-----
-$ wlr-randr --output HDMI-A-1 --transform normal
-$ wlr-randr --output HDMI-A-1 --transform 90
-$ wlr-randr --output HDMI-A-1 --transform 180
-$ wlr-randr --output HDMI-A-1 --transform 270
-----
-
-The `--output` option specifies the device to be rotated.
-
-NOTE: To run this command over SSH, add the following prefix: `WAYLAND_DISPLAY=wayland-1`, e.g. `WAYLAND_DISPLAY=wayland-1 wlr-randr --output HDMI-A-1 --transform 90`.
-
-You can also use one of the following `--transform` options to mirror the display at the same time as rotating it: `flipped`, `flipped-90`, `flipped-180`, `flipped-270`.
+. Open the main application menu by selecting the Raspberry Pi icon.
+. Go to *Preferences > Control Centre*.
+. In *Control Centre*, go to the *Screens* tab.
+. Select the screen you want to configure by one of these methods:
+** In the panel in the tab, right-click the outline of the screen you want to configure.
+** From the *Screens* list, select the screen you want to configure, for example, *HDMI-A-1*.
+. From the submenu, you can configure the following properties:
+** Resolution
+** Frequency
+** Orientation
+** Scaling
++
+The panel in the tab shows a preview of the changes you're about to apply.
+. To apply the changes to your desktop, select *Apply*.
++
+Raspberry Pi OS displays your changes for 10 seconds and shows a dialog that asks you to confirm the changes are correct.
+. To confirm your changes, select *OK*. If you don't confirm your changes, the display reverts to the previous settings.
 
 === Console resolution and rotation
 
-To change the resolution and rotation of your Raspberry Pi in console mode, use the KMS settings. For more information, see <<kernel-command-line-cmdline-txt,configuring the kernel command line>>.
+This section applies to Raspberry Pi OS Lite or systems without a desktop environment.
+
+Use the terminal only to check display information or when running in console mode.
+
+To change resolution and rotation in console mode, configure Kernel Mode Setting (KMS). For details, see <<kernel-command-line-cmdline-txt,configuring the kernel command line>>.
 
 NOTE: When using console mode with multiple displays, all connected displays share the same rotation settings.
