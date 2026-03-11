@@ -88,7 +88,7 @@ Raspberry Pi *Pico* and *Pico H* offer the following key features:
   ** Three 12-bit ADC
   ** 16 PWM channels
 
-==== Resources
+==== Resources for non-wireless Raspberry Pi Pico boards
 
 Raspberry Pi offers additional technical documentation relevant to Raspberry Pi Pico and Pico H:
 
@@ -155,7 +155,7 @@ Raspberry Pi *Pico W* and *Pico WH* offer the same key features as Raspberry Pi 
 
 For more information about the wireless hardware and functionality of Raspberry Pi Pico W and Pico WH, see <<wireless_models>>.
 
-==== Resources
+==== Resources for wireless Raspberry Pi Pico boards
 
 Raspberry Pi offers additional technical documentation relevant to Raspberry Pi Pico W and Pico WH:
 
@@ -170,7 +170,7 @@ Additionally, Raspberry Pi provides the following supporting hardware design res
 * https://pip.raspberrypi.com/documents/RP-008318-DS[STEP file]: a 3-dimensional CAD model of the board for enclosure and mechanical design.
 * https://fritzing.org[Fritzing] part: component for use in Fritzing, an electronics design tool for layouts and schematics: https://pip.raspberrypi.com/documents/RP-008316-DS[Fritzing part for Raspberry Pi Pico W].
 
-IMPORTANT: Design files for Raspberry Pi Pico and Pico H are openly available with no limitations. Raspberry Pi grants permission to use, copy, modify, and distribute the following designs for any purpose, with or without fee. Designs are provided 'as-is' and the author disclaims all warranties with regard to the design, including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data, or profits, whether in an action of contract, negligence, or other tortious action, arising out of or in connection with the use or performance of the design.
+IMPORTANT: Design files for Raspberry Pi Pico W and Pico WH are openly available with no limitations. Raspberry Pi grants permission to use, copy, modify, and distribute the following designs for any purpose, with or without fee. Designs are provided 'as-is' and the author disclaims all warranties with regard to the design, including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data, or profits, whether in an action of contract, negligence, or other tortious action, arising out of or in connection with the use or performance of the design.
 
 [[pico2]]
 == Raspberry Pi Pico 2
@@ -251,11 +251,11 @@ Raspberry Pi *Pico 2* and *Pico 2 with headers* offer the following key features
   ** Two I2C
   ** Two UART
   ** Three 12-bit ADC
-  ** 24 PWM channels
+  ** 16 PWM channels
 
 ==== Resources
 
-Raspberry Pi offers additional technical documentation relevant to Raspberry Pi Pico 2 and Pico 2 H:
+Raspberry Pi offers additional technical documentation relevant to Raspberry Pi Pico 2 and Pico 2 with headers:
 
 * https://pip.raspberrypi.com/documents/RP-008373-DS[RP2350 Datasheet: A microcontroller by Raspberry Pi]
 * https://pip.raspberrypi.com/documents/RP-008299-DS[Raspberry Pi Pico 2 Datasheet: An RP2350-based microcontroller board]
@@ -267,7 +267,7 @@ Additionally, Raspberry Pi provides the following supporting hardware design res
 * https://pip.raspberrypi.com/documents/RP-008303-DS[STEP file]: a 3-dimensional CAD model of the board for enclosure and mechanical design.
 * https://fritzing.org[Fritzing] part: component for use in Fritzing, an electronics design tool for layouts and schematics: https://pip.raspberrypi.com/documents/RP-008300-DS[Fritzing part for Raspberry Pi Pico 2].
 
-IMPORTANT: Design files for Raspberry Pi Pico and Pico H are openly available with no limitations. Raspberry Pi grants permission to use, copy, modify, and distribute the following designs for any purpose, with or without fee. Designs are provided 'as-is' and the author disclaims all warranties with regard to the design, including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data, or profits, whether in an action of contract, negligence, or other tortious action, arising out of or in connection with the use or performance of the design.
+IMPORTANT: Design files for Raspberry Pi Pico 2 and Pico 2 with headers are openly available with no limitations. Raspberry Pi grants permission to use, copy, modify, and distribute the following designs for any purpose, with or without fee. Designs are provided 'as-is' and the author disclaims all warranties with regard to the design, including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data, or profits, whether in an action of contract, negligence, or other tortious action, arising out of or in connection with the use or performance of the design.
 
 [[wireless_pico2]]
 === Wireless Raspberry Pi Pico 2 boards
@@ -307,7 +307,7 @@ Raspberry Pi *Pico 2 W* and *Pico 2 W with headers* offer the same key features 
   ** Two I2C
   ** Two UART
   ** Three 12-bit ADC
-  ** 24 PWM channels
+  ** 16 PWM channels
 
 * *Wireless connectivity*:
     ** Wi-Fi (802.11n):
@@ -331,7 +331,7 @@ Raspberry Pi offers additional technical documentation relevant to Raspberry Pi 
 
 Additionally, Raspberry Pi provides a https://pip.raspberrypi.com/documents/RP-008306-DS[schematic diagram] to support hardware design.
 
-IMPORTANT: Design files for Raspberry Pi Pico 2 and Pico 2 W with headers are openly available with no limitations. Raspberry Pi grants permission to use, copy, modify, and distribute the following designs for any purpose, with or without fee. Designs are provided 'as-is' and the author disclaims all warranties with regard to the design, including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data, or profits, whether in an action of contract, negligence, or other tortious action, arising out of or in connection with the use or performance of the design.
+IMPORTANT: Design files for Raspberry Pi Pico 2 W and Pico 2 W with headers are openly available with no limitations. Raspberry Pi grants permission to use, copy, modify, and distribute the following designs for any purpose, with or without fee. Designs are provided 'as-is' and the author disclaims all warranties with regard to the design, including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data, or profits, whether in an action of contract, negligence, or other tortious action, arising out of or in connection with the use or performance of the design.
 
 [[wireless_models]]
 == Wireless models

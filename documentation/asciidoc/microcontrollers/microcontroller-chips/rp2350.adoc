@@ -15,12 +15,12 @@ RP2350 comes in four variants, differing by package size and whether stacked fla
 
 [options="header"]
 |===
-|Variant |Package |Package size (mm) |Internal flash memory |GPIO pins |Analogue inputs
+|Variant |Package |Package size (mm) |Internal flash memory |GPIO pins |Analogue inputs|PWM channels
 
-|*RP2350A* |QFN-60 |7 x 7 |None |30 |4
-|*RP2350B* |QFN-80 |10 x 10 |None |48 |8
-|*RP2354A* |QFN-60 |7 x 7 |Stacked 2 MB flash |30 |4
-|*RP2354B* |QFN-80 |10 x 10 |Stacked 2 MB flash |48 |8
+|*RP2350A* |QFN-60 |7 x 7 |None |30 |4 |16
+|*RP2350B* |QFN-80 |10 x 10 |None |48 |8| 24
+|*RP2354A* |QFN-60 |7 x 7 |Stacked 2 MB flash |30 |4| 16
+|*RP2354B* |QFN-80 |10 x 10 |Stacked 2 MB flash |48 |8| 24
 |===
 
 [[RP2350_naming]]
@@ -48,7 +48,7 @@ RP2350 is a standalone microcontroller designed for embedded systems, real-time 
 
 * *Symmetric dual-core processor options.* A choice of the following low-power, efficient CPU architectures that can run tasks in parallel at up to 150 MHz. For more information, see <<architecture_switching>>:
     ** Dual-core Arm Cortex-M33
-    ** Dual-core open source RISC-V Hazard3
+    ** Dual-core Hazard3 RISC-V processor.
 * *Expanded on-chip memory.* The 520 kB of on-chip SRAM in ten independent banks provides fast internal memory for running code and storage data, and allows simultaneous access by CPUs and peripherals.
 * *Expanded support for external flash memory.*
     ** Ability to run code directly from external flash memory over a fast QSPI interface with caching (similar to RP2040).
@@ -59,7 +59,7 @@ RP2350 is a standalone microcontroller designed for embedded systems, real-time 
     ** Two UARTs for serial communication.
     ** Two SPI controllers for data transfer.
     ** Two I2C controllers for communication with low-speed peripherals.
-    ** 16 PWM channels.
+    ** Depending on variant, 16 or 24 PWM channels.
     ** A USB 1.1 controller and PHY, with host and device support.
     ** An HSTX peripheral for high-speed digital output, such as video.
 * *Option for internal flash memory.* Depending on variant, RP2350 can either run code from external flash memory or can include on-chip flash for program storage and faster access:
