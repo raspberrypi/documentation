@@ -11,6 +11,11 @@ image::images/account-switcher.png[width="70%"]
 
 Select **New organisation** and provide a name, then select **Start your free trial**. Your Connect account is automatically added to the organisation as an administrator.
 
+If you already have devices associated with your personal account, you can transfer them all to the organisation that you just created. To do so:
+
+. Select the *Transfer them all to this organisation?* link in the prompt.
+. Confirm that you want to add the billable devices to your organisation's account by selecting *Transfer x devices* where "x" is the number of devices.
+
 === Invite users
 
 You must be an administrator to invite other users to your organisation. To invite a user:
