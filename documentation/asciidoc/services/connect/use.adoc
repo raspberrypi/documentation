@@ -92,15 +92,37 @@ NOTE: Connect signs communication with your device's serial number. Moving your 
 
 Now that your device appears on your Connect dashboard, you can access your device from anywhere using only a browser. Connect provides multiple ways to interact with your device remotely.
 
+=== Viewing your devices
+
+Connect lists all your linked devices on the *Devices* tab. For organisations, you can search this list by device name or filter it by device characteristics.
+
+Sign in to https://connect.raspberrypi.com[connect.raspberrypi.com] and go to the **Devices** tab. Connect displays a list of linked devices.
+
+image::images/devices.png[width="80%"]
+
+(Connect for Organisations only) To search for a device by its name, enter text in the *Search* field. Connect matches results as you type.
+
+(Connect for Organisations only) To filter your device list, select *Filter* and choose from the available filter options. You can filter your devices by the device model, the amount of memory it has, or the installed operating system.
+
+image::images/filters.png[width="80%"]
+
+This feature is available only for devices running the client version 2.9.0 or later. To update Connect on your devices, see <<update>>.
+
+The connection methods available for each device are displayed as a grey badge below the name of the device. You can connect to your devices through the following methods:
+
+* <<screen-sharing>>
+* <<remote-shell>>
+
+[[screen-sharing]]
 === Screen sharing
 
 Connect includes the ability to share your device's screen in a browser. Use the following instructions to share your device's screen.
 
 NOTE: Screen sharing requires the **Wayland** window server. Raspberry Pi OS _Bookworm_ and later use Wayland by default. Screen sharing is **not** compatible with Raspberry Pi OS Lite or systems that use the X window server.
 
-Visit https://connect.raspberrypi.com[connect.raspberrypi.com] on any computer.
+Sign in to https://connect.raspberrypi.com[connect.raspberrypi.com] and go to the **Devices** tab.
 
-Connect redirects you to the Raspberry Pi ID service to sign in. After signing in, Connect displays a list of linked devices. Devices available for screen sharing show a grey **Screen sharing** badge below the name of the device.
+Devices available for screen sharing show a grey **Screen sharing** badge below the name of the device.
 
 image::images/devices.png[width="80%"]
 
@@ -155,13 +177,14 @@ To re-enable screen sharing, do one of the following:
 $ rpi-connect vnc on
 ----
 
+[[remote-shell]]
 === Remote shell
 
 Connect includes the ability to start a shell running on your device from a browser. Use the following instructions to access the remote shell.
 
-Visit https://connect.raspberrypi.com[connect.raspberrypi.com] on any computer.
+Sign in to https://connect.raspberrypi.com[connect.raspberrypi.com] and go to the **Devices** tab.
 
-Connect redirects you to the Raspberry Pi ID service to sign in. After signing in, Connect displays a list of linked devices. Devices available for remote shell access show a grey **Remote shell** badge below the name of the device.
+Devices available for remote shell access show a grey **Remote shell** badge below the name of the device.
 
 image::images/devices.png[width="80%"]
 
@@ -258,6 +281,7 @@ image::images/device.png[width="80%"]
 
 Deleting a device from Connect automatically signs you out of Connect on the device. The Connect icon in the menu bar turns grey and the menu only provides a **Sign In...** option.
 
+[[update]]
 == Update
 
 To update to the latest version of Connect, run the following command:
