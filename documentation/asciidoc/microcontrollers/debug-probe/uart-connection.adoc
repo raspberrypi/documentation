@@ -121,7 +121,8 @@ If you are using a standalone debug session as described in xref:../microcontrol
 (gdb) monitor rtt start
 (gdb) monitor rtt server start 60000 0
 (gdb) continue
-----+
+----
++
 NOTE: The `gdb` commands prefixed with `monitor` are passed through to `openocd`. For more information about the commands used here, see https://openocd.org/doc/html/General-Commands.html[section 15.6] of the OpenOCD Manual.
 +
 OpenOCD searches for an RTT control block on the target and then creates a local TCP socket on port 60000.
