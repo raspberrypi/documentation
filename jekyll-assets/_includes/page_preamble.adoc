@@ -7,3 +7,31 @@
 :figure-caption!:
 :table-caption!:
 :source-highlighter: rouge
+
+// Define variables
+// Asciidoc PDF style character entities
+:char-degree: &#176;
+:char-delta: &#916;
+:char-divide: &#247;
+:char-mu: &#956;
+:char-multiplication: &#215;
+:char-ohm: &#937;
+:char-plusminus: &#177;
+:char-psi: &#936;
+:char-theta: &#920;
+:char-approx: &#126;
+:approx: {char-approx}
+:hair_space: &#x2009;
+
+// Typst-style character entities
+:sym-degree: {char-degree}
+:sym-delta: {char-delta}
+:sym-divide: {char-divide}
+:sym-mu: {char-mu}
+:sym-times: {char-multiplication}
+:sym-omega: {char-ohm}
+:sym-plusminus: {char-plusminus}
+:sym-psi: {char-psi}
+:sym-theta: {char-theta}
+:sym-approx: {char-approx}
+:sym-hairspace: {hair_space}
