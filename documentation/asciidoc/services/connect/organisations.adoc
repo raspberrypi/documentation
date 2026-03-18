@@ -356,3 +356,36 @@ If successful, you get a **204 No Content** response with an empty response body
 If your management API access token is invalid, you get a **401 Unauthorized** response.
 
 If the given device ID is not found in the organisation, you get a **404 Not Found** response.
+
+[[bulk-provisioning]]
+=== Bulk provisioning
+
+You can script auth key creation using the xref:connect.adoc#organisations-management-api[Management API] to provision multiple devices without manual interaction. This approach combines the Management API with the methods described in xref:connect.adoc#link-connect[link a device with Connect].
+
+The following example creates an auth key for each device and saves the secret to a file. Replace `+rporg_accesstokenhere+` with your xref:connect.adoc#management-api-access-tokens[management API access token].
+
+[source,bash]
+----
+for DEVICE in pi5-001 pi5-002 pi5-003; do
+  SECRET=$(curl --silent --fail \
+    --header 'Authorization: Bearer rporg_accesstokenhere' \
+    --data-urlencode "description=${DEVICE}" \
+    --data-urlencode "device_name=${DEVICE}" \
+    https://api.connect.raspberrypi.com/organisation/auth-keys \
+    | jq -r '.secret')
+  if [ -z "${SECRET}" ]; then
+    echo "Failed to create auth key for ${DEVICE}" >&2
+    continue
+  fi
+  echo "${SECRET}" > "${DEVICE}.key"
+  echo "Created auth key for ${DEVICE}: ${DEVICE}.key"
+done
+----
+
+Each `.key` file contains an auth key secret (prefixed with `+rpoak_+`). Organisation auth keys expire after one day by default, so generate keys shortly before devices are first powered on. To provision a device:
+
+. On the device, run `+loginctl enable-linger+` and `+rpi-connect on+` as your desired user to enable Connect.
+. Copy the contents of the corresponding `.key` file to `+~/.config/com.raspberrypi.connect/auth.key+`.
+. Delete the `.key` file from your provisioning machine. These files contain sensitive secrets.
+
+When the file is detected, Connect automatically signs the device in and then deletes the file. For more information, see xref:connect.adoc#link-connect[Link a Raspberry Pi device with a Connect account].
