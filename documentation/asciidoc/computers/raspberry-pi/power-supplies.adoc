@@ -147,13 +147,11 @@ A number of different PMIC devices have been used on Raspberry Pi 4, Raspberry P
 
 ==== Decrease Raspberry Pi 5 wattage when turned off
 
-By default, the Raspberry Pi 5 consumes around 1 W to 1.4 W of power when turned off. This can be decreased by manually editing the EEPROM configuration with `sudo rpi-eeprom-config -e`. Change the settings to the following:
+By default, the Raspberry Pi 5 consumes around 1 W to 1.4 W of power when turned off. This can be decreased by manually editing the EEPROM configuration with `sudo rpi-eeprom-config -e`. Modify the settings to add:
 
 [source,ini]
 ----
-BOOT_UART=1
 POWER_OFF_ON_HALT=1
-BOOT_ORDER=0xf416
 ----
 
 This should drop the power consumption when powered down to around 0.01W.
