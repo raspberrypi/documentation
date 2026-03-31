@@ -161,3 +161,15 @@ $ sudo cp -r <files>/* <mountpoint>
 ----
 
 * The CM1 bootloader returns a slightly incorrect USB packet to the host. Most USB hosts ignore it, but some USB ports don't work due to this bug. CM3 fixed this bug.
+
+* The rpiboot version distributed with Ubuntu 24.04 and earlier has been known to fail to communicate with the device. Recompile from scratch to use the latest version.
++
+[source,console]
+----
+$ sudo apt install git libusb-1.0-0-dev pkg-config build-essential
+$ git clone --recurse-submodules --shallow-submodules --depth=1 https://github.com/raspberrypi/usbboot
+$ cd usbboot
+$ make
+$ sudo ./rpiboot
+----
+(reference: https://www.makerforge.tech/posts/raspberry-pi-cm5-flash/)
