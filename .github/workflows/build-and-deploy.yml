@@ -28,7 +28,7 @@ jobs:
         uses: py-actions/py-dependency-install@30aa0023464ed4b5b116bd9fbdab87acf01a484e
       - name: Install Python libs
         run: pip3 install -r ./requirements.txt
-      - uses: ruby/setup-ruby@319994f95fa847cf3fb3cd3dbe89f6dcde9f178f
+      - uses: ruby/setup-ruby@3ff19f5e2baf30647122352b96108b1fbe250c64
         with:
           ruby-version: 3.2
           bundler-cache: true
