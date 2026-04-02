@@ -4,8 +4,6 @@
 
 * Screen sharing only supports sharing a single, primary display of your Raspberry Pi. When a Raspberry Pi is connected to multiple HDMI screens, Connect sometimes shares the contents of the secondary screen. You can work around this by right-clicking the desktop and changing the location of the taskbar in **Desktop Preferences...**.
 
-* Connect does not support on-screen keyboards. For full functionality, use a physical keyboard.
-
 * Connect requires a browser that implements https://caniuse.com/?search=es2022[ECMAScript 2022] (ES13) as it makes use of features unavailable in older browsers.
 
 * Browsers intercept certain keys and key combinations. As a result, you can't type these keys into your Connect window. Screen sharing includes a toolbar to simulate some of the most popular intercepted keys.
