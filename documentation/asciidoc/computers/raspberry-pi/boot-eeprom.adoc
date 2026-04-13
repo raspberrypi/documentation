@@ -10,60 +10,46 @@ All other models of Raspberry Pi computer use the `bootcode.bin` file located in
 
 NOTE: You can find the scripts and pre-compiled binaries used to create `rpi-eeprom`  in the https://github.com/raspberrypi/rpi-eeprom/[rpi-eeprom GitHub repository].
 
-=== Diagnostics
+[[bootloader_reset]]
+=== Reset the Raspberry Pi bootloader
+This section provides instructions for reflashing the bootloader to reset it. You typically do this to recover a system that fails to boot, or to reset the bootloader configuration.
 
-If an error occurs during boot, then an xref:configuration.adoc#led-warning-flash-codes[error code] will be displayed via the green LED. Newer versions of the bootloader will display a xref:raspberry-pi.adoc#boot-diagnostics[diagnostic message] on all HDMI displays.
+If, instead of resetting the bootloader, you want to upgrade the bootloader version or choose a different boot order, see xref:../computers/configuration.adoc#update-bootloader-version[Update the bootloader] in the *Configuration* page.
 
-[[bootloader_update_stable]]
-=== Update the bootloader
+The following instructions are relevant only to newer Raspberry Pi models that store the bootloader in an on-board SPI flash EEPROM:
 
-There are multiple ways to update the bootloader of your Raspberry Pi.
+* Flagship single-board computers (SBCs) since Raspberry Pi 4B.
+* Compute Modules since CM4 (including CM4S).
+* All keyboard computers (Raspberry Pi 400, 500, and 500+).
 
-==== Flagship models since Raspberry Pi 4B; Compute Modules since CM5; Keyboard models since Pi 400
+On other Raspberry Pi models the boot ROM always loads the `bootcode.bin` file located in the boot partition of your boot media.
 
-Raspberry Pi OS automatically updates the bootloader for important bug fixes. To manually update the bootloader or change the boot order, use xref:configuration.adoc#raspi-config[raspi-config].
+[[bootloader_diagnostics]]
+==== Diagnose bootloader issues
 
-NOTE: Compute Module 4 and Compute Module 4S do not support automatic bootloader updates because the bootrom cannot load the `recovery.bin` file from eMMC. The recommended update mechanism is `rpiboot` or via `flashrom` - see `rpi-eeprom-update -h` for more information.
+If your Raspberry Pi device fails to boot, the bootloader provides feedback in the following ways:
 
-[[imager]]
-==== Use Raspberry Pi Imager to update the bootloader
+* *LED activity.* The green LED on your Raspberry Pi can flash in specific patterns to indicate specific errors. Check the xref:configuration.adoc#led-warning-flash-codes[LED warning flash codes] to identify errors based on the flash pattern. For example, seven short flashes of the green LED means that the kernel image wasn't found.
+* *HDMI diagnostic screen.* On newer devices, the bootloader can display a diagnostic screen over HDMI during startup. If you have a monitor connected to your Raspberry Pi, this screen provides information like the bootloader version and build date, the detected boot order, and specific error codes if the OS fails to load. For more information, see xref:raspberry-pi.adoc#boot-diagnostics[Boot diagnostics].
 
-Raspberry Pi Imager provides a GUI for updating the bootloader and selecting the boot mode.
+[[bootloader_reflash]]
+==== Reflash the bootloader
+Reflash the bootloader if your system fails to boot or if you want to reset the bootloader configuration. Reflashing the bootloader clears any local bootloader configuration that might be preventing your Raspberry Pi from booting.
 
-. Download https://www.raspberrypi.com/software/[Raspberry Pi Imager].
-. Select an unused SD card. All data on this SD card is overwritten by Imager.
-. Connect the SD card to the computer where Imager runs.
-. Launch Raspberry Pi Imager.
-. In the **Device** tab, select your Raspberry Pi model from the list. Select **Next**.
-. In the **OS** tab, choose **Misc utility images**
-+
-image::images/misc-utility-images.png[alt="Select Misc utility images",width="60%"]
-. Select **Bootloader** for your version of Raspberry Pi.
-+
-image::images/bootloader-family-select.png[alt="Choose a family for your bootloader",width="60%"]
-. Select a boot mode. We recommend **SD Card Boot**. Select **Next**.
-+
-image::images/bootloader-storage-select.png[alt="Choose the storage from which you'd like to boot",width="60%"]
-. In the **Storage** tab, select your SD card. Select **Next**.`
-. In the **Writing** tab, review your choices and select **Write** to proceed.
-. You're prompted to confirm overwriting the data on the SD card. To continue, select **I understand, erase and write**.
-. Wait until Imager has finished writing and verifying the SD card
-. Connect the SD card to the Raspberry Pi device where you want to update the bootloader.
-. Boot the Raspberry Pi with the new image and wait for at least ten seconds.
-. When the green activity LED blinks with a steady pattern and the HDMI display shows a green screen, you've successfully written the bootloader.
-. Power off the Raspberry Pi and remove the SD card.
+NOTE: You can also reflash the bootloader using USB `rpiboot`. This method is typically used to mass provision Compute Modules. Reflashing the bootloader over USB is also the only option available for CM4 and CM4S. For more information, see xref:../computers/compute-module.adoc#attaching-the-touch-display-2-lcd-panel[Compute Module hardware].
 
-[[raspi-config]]
-==== Use `raspi-config` to update the bootloader
+To reflash the bootloader on your Raspberry Pi device:
 
-To change the boot-mode or bootloader version from within Raspberry Pi OS, run xref:configuration.adoc#raspi-config[raspi-config].
-
-. xref:os.adoc#update-software[Update] Raspberry Pi OS to get the latest version of the `rpi-eeprom` package.
-. Run `sudo raspi-config`.
-. Select `Advanced Options`.
-. Select `Bootloader Version`.
-. Select `Default` for factory default settings or `Latest` for the latest bootloader release.
-. Reboot with `sudo reboot`.
+. Connect a spare or empty microSD storage device to your host computer.
+. Find and open Imager on your host computer.
+. In the *Device* tab, select your Raspberry Pi model from the list, and then select *Next*.
+. In the *OS* tab, scroll down to the bottom of the list and select *Misc utility images > Bootloader > SD Card Boot*, then select *Next*.
+. In the *Storage* tab, select your storage device and then select *Next*.
+. In the *Writing* tab, select *Write*.
+. Select *I understand, erase and write*; wait for the write to complete and then select *Finish*.
+. Eject the storage device from your host computer and then plug it into your Raspberry Pi.
+. Boot your Raspberry Pi by plugging it into power.
+. When the green activity LED flashes with a steady pattern and after your HDMI display shows a green screen, turn off your Raspberry Pi by disconnecting it from power and eject the boot media.
 
 === Update the bootloader configuration
 

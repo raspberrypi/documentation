@@ -144,9 +144,9 @@ Raspberry Pi keyboard computers are available as standalone keyboards or as part
 
 == Getting started
 
-To get up and running with your Raspberry Pi keyboard computer, you can follow the instructions at xref:../computers/getting-started.adoc#setting-up-your-raspberry-pi[Getting started with your Raspberry Pi].
+To get up and running with your Raspberry Pi keyboard computer, you can follow the instructions at xref:../computers/getting-started.adoc#desktop-setup[Getting started with your Raspberry Pi].
 
-If you have a Raspberry Pi 500+ or got your 400 or 500 as part of a kit that includes a microSD card pre-programmed with Raspberry Pi OS, you can skip ahead in the instructions to xref:../computers/getting-started.adoc#set-up-your-raspberry-pi[Set up your Raspberry Pi].
+If you have a Raspberry Pi 500+ or got your 400 or 500 as part of a kit that includes a microSD card pre-programmed with Raspberry Pi OS, you can skip ahead in the instructions to xref:../computers/getting-started.adoc#desktop-setup[Set up your Raspberry Pi].
 
 [[mechanical-keys]]
 == Raspberry Pi 500+ mechanical keys

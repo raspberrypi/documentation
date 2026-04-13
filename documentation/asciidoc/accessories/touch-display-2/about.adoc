@@ -216,7 +216,7 @@ This is because the connections between the SoC and DSI connectors on a Raspberr
 
 Compute Modules, intended for industrial and custom applications, expose all GPIOs and interfaces. This provides greater flexibility for connecting hardware, but means that a Compute Module can't automatically detect devices like the Touch Display 2. This means that, for Compute Modules, the Device Tree fragments, which tell the kernel how to interact with the display, must be manually specified. You can do this in three ways:
 
-- By adding an overlay entry in `config.txt`. This is the simplest option. For configuration instructions, see the xref:../computers/compute-module.adoc#attaching-the-touch-display-2-lcd-panel[Compute Module hardware documentation].
+- By adding an overlay entry in `config.txt`. This is the simplest option. For configuration instructions, see the xref:../computers/compute-module.adoc#attaching-the-touch-display-2-lcd-panel[Compute Module hardware] documentation.
 - Using a custom base device tree file. This is an advanced method not covered in this online documentation.
 - Using a HAT EEPROM (if present).
 

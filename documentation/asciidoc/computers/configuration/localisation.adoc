@@ -1,5 +1,213 @@
-== Localise your Raspberry Pi
+== System and localisation
+This section covers how to:
 
-You can configure the UI language, keyboard layout, and time zone of Raspberry Pi OS with the xref:configuration.adoc#raspi-config[`raspi-config`] tool.
+* <<browser>>. Choose between Chromium or Firefox; the default browser if you don't choose one during installation is Chromium.
+* Configure localisation settings, including how to:
+** <<locale>>, which are the system-wide language and regional settings (country and character set).
+** <<timezone>>, which is determined by the geographic area and city used to set the local time.
+** <<keyboard>> by specifying the physical model, language arrangement, and key variants of your keyboard.
+* Configure advanced system settings, including how to:
+** <<expand-filesystem>>, which might be useful if you've cloned your OS to a larger storage device and you're using an OS that doesn't auto-expand the filesystem to make use of the space.
+** <<logging>>, which is used to set a storage location for logs.
+** <<beta>>, which you can turn on if you're an opt-in tester user of Raspberry Pi OS.
+** <<wayland>>. We don't recommend switching to X11 because we are no longer developing for it.
 
+The default browser and localisation settings can all be configured from the desktop and using the interactive `raspi-config` TUI. The advanced settings can only be configured using the interactive `raspi-config` TUI.
 
+If you're looking for instructions for how to set the WLAN country on your Raspberry Pi, see xref:../computers/configuration.adoc#wlan-country[Enable wireless networking instead]. The instructions for setting WLAN country is in the *Wireless connection* section because it's a prerequisite for connecting to a wireless network.
+
+[[browser]]
+=== Change default browser
+You can change the default browser on your Raspberry Pi through the desktop and using the interactive `raspi-config` TUI. You can choose between *Chromium* and  *Firefox*.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *System* tab in the left-side menu.
+. Choose between *Chromium* and *Firefox*.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `1 System Options > S9 Browser`.
+. Choose between `Chromium` and `Firefox`.
+. Select `<OK>` and then `<OK>` again.
+. Select `<Finish>` when you're done.
+======
+
+[[locale]]
+=== Configure locale settings
+Locales are a framework to switch between multiple languages and regions. They allow your Raspberry Pi to display your preferred language, date formats, currency symbols, and character sets. *UTF-8* locales are selected by default for new installations. *C*, *C.UTF-8*, and *POSIX* locales are also available, and you can also generate others to suit your needs.
+
+When you configure your locale settings, you're configuring a system-wide default locale, which changes the language for all users of your Raspberry Pi.
+
+Configuring locale from the desktop involves setting the following separately:
+
+* Language, for example, *en* for English.
+* Region (country), for example, *GB* for Great Britain.
+* Character set (the character encoding standard for modern web and OS), for example, *UTF-8* for Unicode support.
+
+Configuring locale using the `raspi-config` TUI involves setting the language, region, and character set with one string. For example, *en_GB.UTF-8* sets the locale to British English with UTF-8 character encoding.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Localisation* tab in the left-side menu.
+. Select *Set Locale* next to *Locale*.
+. Choose your language from the *Language* dropdown menu, for example, *en (English)*.
+. Choose your country from the *Country* dropdown menu, for example, *GB (United Kingdom)*.
+. Choose one of the available character sets from the *Character Set* dropdown menu, for example, *UTF-8*.
+. Select *OK* in the bottom-right corner of the *Locale* window.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+. Reboot your Raspberry Pi for the changes to take effect.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `5 Localisation > L1 Locale`.
+. Select `<OK>` to continue.
+. Select the locales that you want to install onto your Raspberry Pi (you can select more than one).
+.. Navigate down the list to highlight the appropriate combination of language, country, and character set to install. For example, `en_GB.UTF-8 UTF-8` means the English language as used in Great Britain using the UTF-8 character set.
+.. Use the *Space* key on your keyboard to select the highlighted combination of language, country, and character set to install.
+.. Your selections are indicated by an asterisk inside square brackets to the left of the locale name in the list.
+. Use the *Tab* key on your keyboard to exit the list and select `<OK>`.
+. Select the default locale for the system environment, for example, `None`, `C.UTF-8`, or `en_GB.UTF-8`.
+. Select `<OK>` and then `<Finish>` when you're done.
+. Reboot your Raspberry Pi for the changes to take effect.
+======
+
+[[timezone]]
+=== Configure time zone
+Configuring your time zone involves first selecting a geographic region (for example, *Europe*) and then selecting the city that corresponds with your time zone based on where that city is located (for example, *London*). Selecting the correct time zone handles daylight saving time transitions automatically.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Localisation* tab in the left-side menu.
+. Select *Set Timezone* next to *Timezone*.
+. Choose the appropriate geographic area from the *Area* dropdown menu. For example, if you live in the UK, select *Europe*.
+. Choose the appropriate city that corresponds to your time zone. For example, if you live in the UK, select *London*.
+. Select *OK* in the bottom-right corner of the *Timezone* window.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `5 Localisation > L2 Timezone`.
+. Select `<OK>` to continue.
+. Navigate down the list to highlight the appropriate geographic area. For example, if you live in the UK, highlight `Europe`.
+. Use the *Tab* key on your keyboard to exit the list and select `<OK>`.
+. Navigate down the list to highlight the appropriate city that corresponds to your time zone. For example, if you live in the UK, highlight `London`.
+. Use the *Tab* key on your keyboard to exit the list and select `<OK>`.
+. Select `<Finish>` when you're done.
+======
+
+[[keyboard]]
+=== Configure your keyboard
+Configuring your keyboard involves specifying its:
+
+* *Model.* The physical hardware design and number of keys on your device, for example, *Generic 105-key PC* for a standard full-sized keyboard with numeric keypad.
+* *Layout.* The primary language and symbol arrangement assigned to the keys on your keyboard, for example, *English (UK)* for a layout where the “ and @ symbols are swapped compared to a US keyboard.
+* *Variant.* A specific modification of a layout for specialised hardware or regional preferences, for example, *English (UK, Macintosh)* for Apple keyboards where the *Alt* and *Cmd* keys are remapped. If you don't have a specific modification, the variant is the same as the layout.
+
+If you configure your keyboard from the desktop, you can also add an alternate keyboard and select a key combination to switch layouts. Configuring the keyboard with `raspi-config` doesn't match configuring the keyboard from the desktop because it relies on a standard Debian keyboard configuration package, which also modifies the system-wide console settings.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Localisation* tab in the left-side menu.
+. Select *Set Keyboard* next to *Keyboard*.
+. From the *Model* dropdown menu, choose the appropriate keyboard model.
+. From the *Layout* dropdown menu, choose the appropriate keyboard layout.
+. From the *Variant* dropdown menu, choose the appropriate keyboard variant.
+. Optionally, select *Add alternate keyboard*. This reveals four more dropdown menus.
+.. From the *Alternate Layout* dropdown menu, choose the layout of your alternate keyboard.
+.. From the *Alternate Variant* dropdown menu, choose the variant of your alternate keyboard.
+.. From the *Toggle Key* menu, choose which key or combination of keys allows you to switch between keyboard configurations, for example, *Left Alt + Caps*.
+.. If you have a keyboard with indicator lights, from the *Indicator* dropdown menu, choose which LED on your keyboard lights up when the alternate keyboard is active: *None*, *Caps*, *Num*, or *Scroll*.
++
+NOTE: Don't set *Num* as the indicator LED on the Raspberry Pi standalone USB keyboard or the Raspberry Pi 400. Doing so results in the keyboard generating letters instead of numbers on the right-side of the keyboard.
++
+. Select *OK* in the bottom-right corner of the *Keyboard* window.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+. Reboot your Raspberry Pi for the changes to take effect.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `5 Localisation > L3 Keyboard`.
+. Navigate down the list to highlight the appropriate *Keyboard model*.
+. Use the *Tab* key on your keyboard to exit the list and select `<OK>`.
+. Navigate down the list to highlight the appropriate *Keyboard layout*.
+. Use the *Tab* key on your keyboard to exit the list and select `<OK>`.
+. Choose a key to function as the *Alt Gr* key on your keyboard. *Alt Gr* is a modifier key used to input some characters that are unusual for the language of the keyboard layout, such as foreign currency symbols and accented letters.
+. Select `<OK>` to continue.
+. Choose a compose key, prompting your Raspberry Pi to interpret the next collection of keystrokes as a combination in order to produce a character set not found on the keyboard. The compose key doesn't work in Unicode mode. If you're not in Unicode mode, regardless of what you choose at this point, you can always use *Control+Period* as the compose key.
+. Select `<OK>` to continue.
+. Presuming you're using Wayland, select the default option, `<No>` to continue. If you're using X, select `<Yes>` if you want to ensure that *Control+Alt+Backspace* ends the X server.
+. Reboot your Raspberry Pi for the changes to take effect.
+======
+
+[[expand-filesystem]]
+=== Expand the file system
+Expanding your file system is an advanced option, typically only needed if you're moving to a larger boot media and you're not using Raspberry Pi OS. Expanding the OS partition allows your Raspberry Pi to use the full capacity of the new boot media.
+
+In most cases, Raspberry Pi OS performs the expansion automatically on first boot. 
+
+WARNING: There is no confirmation step. When you choose to expand your file system, partition expansion starts immediately.
+
+To expand the file system using the interactive `raspi-config` TUI:
+
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `6 Advanced Options > A1 Expand Filesystem`.
+. `raspi-config` automatically resizes the root partition and then displays a confirmation that the file system will be expanded on the next reboot.
+. Select `<OK>` and then `<Finish>` when you're done.
+. Reboot your Raspberry Pi for the change to take effect.
+
+[[logging]]
+=== Configure logging
+Logging is an advanced option, typically only needed if you need to change how system log data is stored or managed, for example, to reduce disk writes, retain logs across reboots, or disable logging for performance reasons.
+
+To configure logging using the interactive `raspi-config` TUI:
+
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `6 Advanced Options > A12 Logging`.
+. Choose between one of the following options:
+** `1 Default`, which uses the system's default logging configuration.
+** `2 Volatile`, which stores logs in RAM only, typically under `/run/log/journal`. Logs are temporary and cleared on reboot.
+** `3 Persistent`, which stores logs on disk, typically under `/var/log/journal`, meaning logs survive reboots if you want to use them for troubleshooting over time. This mode also supports separate journal files for each user (log splitting).
+** `4 Auto`, which automatically determines the appropriate logging behaviour based on system configuration and available storage. Persistent logging is used if `/var/log/journal` exists; volatile logging is used if `/var/log/journal` doesn't exist.
+** `5 None`, which turns off system logging.
+. Select `<OK>` and then `<OK>` again.
+. Select `<Finish>` when you're done.
+
+[[beta]]
+=== Enable or disable beta access
+Beta access allows you to use newer, pre-release software packages and bootloader updates that are still being tested. This option is intended for advanced users who want to try the latest features and help identify issues.
+
+NOTE: This is different from using `rpi-update`, which provides untested firmware updates and should only be used when specifically advised. Beta access is a safer, opt-in way to test newer software from a dedicated repository.
+
+To enable or disable beta access using the interactive raspi-config TUI:
+
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `6 Advanced Options > A6 Beta Access`.
+. Choose between one of the following options:
+** `B1 Beta Software`, which enables the beta repository and allows installation of newer, pre-release packages and the latest bootloader updates.
+** `B2 Release Software`, which uses the standard, stable software repository recommended for most users.
+. Select `<OK>` and then `<OK>` again.
+. In a new Terminal, use `sudo apt update` to update your package list to apply the change.
+
+[[wayland]]
+=== Switch between Wayland and X11
+Since Raspberry Pi OS Bookworm, all Raspberry Pi models run Wayland using `labwc` by default.
+
+This setting allows you to switch between the Wayland and X11 backends. To use Wayland on Raspberry Pi models prior to Raspberry Pi 4 running a version of Raspberry Pi OS earlier than Bookworm, add `wayland=on` to `/boot/firmware/cmdline.txt`.
+
+WARNING: We don't recommend switching from Wayland to X because we aren't actively developing X11.
+
+To switch between Wayland and X11 using the interactive `raspi-config` TUI:
+
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `6 Advanced Options > A7 Wayland`.
+. Choose between one of the following options:
+** `W1 X11` (not recommended).
+** `W2 Labwc` (Wayland, which is recommended).
+. Select `<OK>` and then `<OK>` again.
+. Select `<Finish>` when you're done.

@@ -1,6 +1,6 @@
 == HTTP boot
 
-The network install feature uses HTTP over Ethernet to boot the Raspberry Pi into embedded xref:getting-started.adoc#raspberry-pi-imager[Raspberry Pi Imager].
+The network install feature uses HTTP over Ethernet to boot the Raspberry Pi into embedded xref:getting-started.adoc#imager-install[Raspberry Pi Imager].
 
 In addition to network install, you can explicitly boot your device with files downloaded via HTTP with xref:raspberry-pi.adoc#BOOT_ORDER[boot-mode] `7`. You can still use this even if xref:raspberry-pi.adoc#NET_INSTALL_ENABLED[network install on boot is disabled].
 
@@ -22,9 +22,9 @@ HTTP in the `BOOT_ORDER` will be ignored if secure boot is enabled and xref:rasp
 
 === Requirements
 
-To use HTTP boot, xref:raspberry-pi.adoc#bootloader_update_stable[update] to a bootloader released 10th March 2022 or later. HTTP boot requires a wired Ethernet connection.
+To use HTTP boot, xref:../computers/configuration.adoc#update-bootloader-version[update] to a bootloader released 10th March 2022 or later. HTTP boot requires a wired Ethernet connection.
 
-To use custom CA certificates, xref:raspberry-pi.adoc#bootloader_update_stable[update] to a bootloader released 5th April 2024 or later. Only devices running the BCM2712 CPU support custom CA certificates.
+To use custom CA certificates, xref:../computers/configuration.adoc#update-bootloader-version[update] to a bootloader released 5th April 2024 or later. Only devices running the BCM2712 CPU support custom CA certificates.
 
 === Keys
 
@@ -32,7 +32,7 @@ All HTTP downloads must be signed. The bootloader includes a public key for the 
 
 WARNING: Using your own network install image will require you to sign the image and add your public key to the EEPROM. If you then apply a public EEPROM update, your key will be lost and will need to be re-added.
 
-https://github.com/raspberrypi/usbboot/blob/master/Readme.md[`USBBOOT`] has all the tools needed to program public keys. 
+https://github.com/raspberrypi/usbboot/blob/master/Readme.md[`USBBOOT`] has all the tools needed to program public keys.
 
 Use the following command to add your public key to the EEPROM. `boot.conf` contains your modifications:
 

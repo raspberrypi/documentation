@@ -14,7 +14,7 @@ NOTE: Models prior to Raspberry Pi 4B have known issues which prevent booting wi
 
 Raspberry Pi 4 and newer flagship series devices and Compute module devices since Compute Module 4 and 4S support USB boot by default, as long as you specify USB boot in the xref:raspberry-pi.adoc#BOOT_ORDER[`BOOT_ORDER`] configuration.
 
-NOTE: Early editions of Raspberry Pi 4 may require a xref:raspberry-pi.adoc#raspi-config[bootloader update] to boot from USB.
+NOTE: Early editions of Raspberry Pi 4 might require a xref:../computers/configuration.adoc#update-bootloader-version[bootloader update] to boot from USB.
 
 NOTE: Early editions of Compute Module 4 may require a xref:compute-module.adoc#update-the-compute-module-bootloader[bootloader update] to boot from USB.
 
@@ -64,7 +64,7 @@ You can now boot from a USB mass storage device in the same way as booting from 
 
 === Boot from USB mass storage
 
-The xref:getting-started.adoc#installing-the-operating-system[procedure] is the same as for SD cards - flash the USB storage device with the operating system image.
+The xref:getting-started.adoc#install[procedure] is the same as for SD cards - flash the USB storage device with the operating system image.
 
 After preparing the storage device, connect the drive and power up the Raspberry Pi, being aware of the extra USB power requirements of the external drive.
 
@@ -72,7 +72,7 @@ After five to ten seconds, the Raspberry Pi should begin booting and show the ra
 
 See the xref:raspberry-pi.adoc#raspberry-pi-boot-modes[boot modes documentation] for the boot sequence and alternative boot modes (network, USB device, GPIO or SD boot).
 
-=== Known issues 
+=== Known issues
 
 * The default timeout for checking bootable USB devices is two seconds. Some flash drives and hard disks power up too slowly. It is possible to extend this timeout to five seconds (add a new file `timeout` to the SD card), but note that some devices take even longer to respond.
 * Some flash drives have a very specific protocol requirement that is not handled by the bootcode and may thus be incompatible.

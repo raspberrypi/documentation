@@ -1,89 +1,162 @@
-== Set up your Raspberry Pi
+== Configuration
+Most essential configuration for your Raspberry Pi is typically completed during the OS installation process in Imager.
 
-After installing an operating system image, connect your storage device to your Raspberry Pi.
+[[first-configuration]]
+=== Configuration on first boot
 
-First, unplug your Raspberry Pi's power supply to ensure that the Raspberry Pi is powered down while you connect peripherals.
-If you installed the operating system on a microSD card, you can plug it into your Raspberry Pi's card slot now.
-If you installed the operating system on any other storage device, you can connect it to your Raspberry Pi now.
+This section covers post-installation configuration, whether you:
 
-image::images/peripherals/sd-card.png[alt="Inserting a microSD card into a Raspberry Pi.",width="80%"]
+* Skipped the customisation steps in Imager.
+* Didn't use Imager to install your OS.
+* Are using a Raspberry Pi with a pre-installed OS, or
+* Want to change settings after installation to tailor your Raspberry Pi to your needs.
 
-Then, plug in any other peripherals, such as your mouse, keyboard, and monitor.
+If you followed the steps to preconfigure your Raspberry Pi during OS customisation in Imager, as described in *Step 3* of xref:../computers/getting-started.adoc#install[Install an OS onto boot media], you don't need to configure your Raspberry Pi again unless you want to change any settings.
 
-image::images/peripherals/cable-all.png[alt="Attaching the power supply to a Raspberry Pi.",width="80%"]
+If you have a *desktop setup* and skipped OS customisation in Imager, or if you're using a Raspberry Pi with a pre-installed OS, you're presented with a configuration wizard on first boot.
 
-Finally, connect the power supply to your Raspberry Pi. You should see the status LED light up when your Pi powers on. If your Pi is connected to a display, you should see the boot screen within minutes.
+A *headless setup* bypasses the configuration wizard; because you preconfigured the settings in Imager, your headless Raspberry Pi boots straight to the network. If you chose SSH for remote access, you can connect remotely to your headless Raspberry Pi by typing `ssh username@hostname.local` into the command line on your computer. For more information, see xref:../computers/getting-started.adoc#headless-setup[Headless (remote) setup].
 
-== Configuration on first boot
+You need a monitor and a keyboard to navigate through the configuration wizard; a mouse is optional. If you plan on pairing a USB Bluetooth mouse or keyboard as part of this configuration process, plug the USB adapter in before booting your Raspberry Pi.
 
-If you customised your Raspberry Pi's operating system as part of the installation process in Imager, congratulations, your device is ready to use. Proceed to xref:getting-started.adoc#next-steps[next steps] to learn how you can put your Raspberry Pi to good use.
+The configuration wizard walks you through the following setup options. Select *Next* in the bottom-right corner to proceed through each of the options.
 
-If your Raspberry Pi does not boot within 5 minutes, check the status LED. If it's flashing, see the xref:configuration.adoc#led-warning-flash-codes[LED warning flash codes for more information]. If your Pi refuses to boot, try the following mitigation steps:
+==== Welcome and Bluetooth
+The following image shows the configuration wizard's welcome window, which is also when your Raspberry Pi tries to connect to any Bluetooth peripherals it finds.
 
-* if you used a boot device other than an SD card, try booting from an SD card
-* xref:getting-started.adoc#installing-the-operating-system[re-image your SD card]; be sure to complete the entire verify step in Imager
-* xref:raspberry-pi.adoc#bootloader_update_stable[update the bootloader] on your Raspberry Pi, then xref:getting-started.adoc#installing-the-operating-system[re-image your SD card]
+NOTE: The IP address on this welcome window is only visible if your Raspberry Pi is connected to a network over Ethernet.
 
-If you chose to skip the customisation options in Imager, your Raspberry Pi runs a configuration wizard on first boot. You need a monitor and keyboard to navigate through the wizard; a mouse is optional.
+.Configuration wizard welcome window
+image::images/initial-setup/welcome_bt.png[alt="Welcome window of the configuration window.",width="80%"]
 
-image::images/initial-setup/start.png[alt="Click Next to get started with configuration.",width="80%"]
+If you're using a Bluetooth keyboard or mouse, your Raspberry Pi searches for pairable devices and connects to the first device it finds for each peripheral. This process works with built-in or external USB Bluetooth adapters. If you're using a USB adapter, plug it in before booting your Raspberry Pi.
 
-=== Bluetooth
+[.clearfix]
+--
+.Attempting to pair with a Bluetooth device
+[.left]
+image::images/initial-setup/pairing.png[alt="Configuration window attempting to pair with a Bluetooth device.",width="100%"]
+.Success message for Bluetooth pairing
+[.left]
+image::images/initial-setup/pairing_success.png[alt="Success message for Bluetooth pairing.",width="100%"]
+--
 
-If you're using a Bluetooth keyboard or mouse, this step will walk you through device pairing. Your Raspberry Pi will scan for pairable devices and connect to the first device it finds for each item.
+==== Country
+Use the dropdown menus to set your country, language, and time zone. Optionally, you can also:
 
-This process works with built-in or external USB Bluetooth adapters. If you use a USB adapter, plug it in before booting your Raspberry Pi.
+* Select *Use English language* to ensure that the desktop interface is displayed in English, overriding local language default.
+* Select *Use US keyboard* to ensure that the OS interprets input from a US-layout keyboard correctly.
 
-=== Locale
-
-This page helps you configure your country, language, and time zone, and keyboard layout.
-
+.Setting your country window in the configuration wizard
 image::images/initial-setup/locale.png[alt="Adjust country, language, time zone, and keyboard layout.",width="80%"]
 
-=== User
+==== User
 
-This page helps you configure the username and password for the default user account.
+Configure your username and password for the default user account. Your username must start with a letter and can only contain lowercase letters, numbers, underscores, and hyphens.
 
-By default, older versions of Raspberry Pi OS set the username to "pi". If you use the username "pi", avoid the old default password of "raspberry" to keep your Raspberry Pi secure.
-
+.Create User window in the configuration wizard
 image::images/initial-setup/user.png[alt="Create your username and password.",width="80%"]
 
-=== Wi-Fi
+==== Wireless network
 
-This page helps you connect to a Wi-Fi network. Choose your preferred network from the list.
+Choose your preferred Wi-Fi network from the list. If your network requires a password, you're then prompted to enter it before continuing. You can skip this step if you prefer.
 
+.Selecting a wireless network in the configuration wizard
 image::images/initial-setup/network.png[alt="Selecting a wireless network.",width="80%"]
 
-If your network requires a password, you can enter it here.
+==== Default browser
 
-image::images/initial-setup/network_password.png[alt="Entering a password for a wireless network.",width="80%"]
-
-=== Browser
-
-This page lets you select Firefox or Chromium as your default internet browser. You can optionally uninstall the browser you don't set as default.
+Select your default internet browser: *Chromium* or *Firefox*. Optionally, to save space on your boot media, uninstall the browser that you don't set as default.
 
 image::images/initial-setup/browser.png[alt="The Choose Browser page.",width="80%"]
 
-=== Raspberry Pi Connect
+==== Software update
 
-This page lets you enable xref:../services/connect.adoc[Raspberry Pi Connect], which provides the ability to access your Raspberry Pi remotely with no manual network configuration.
+If you configured internet access for your Raspberry Pi, or if your Raspberry Pi is connected to the internet using an Ethernet cable, you can update your OS and software to the latest versions. 
 
-image::images/initial-setup/connect.png[alt="The Enable Raspberry Pi Connect page.",width="80%"]
+During the software update process, the configuration wizard removes the non-default browser if you opted to uninstall it in the *Browser* step. 
 
-=== Software updates
+A software update may take up to half an hour, depending on how many updates are available and the speed of your internet connection.
 
-Once your Raspberry Pi has internet access, this page helps you update your operating system and software to the latest versions. During the software update process, the wizard will remove the non-default browser if you opted to uninstall it in the browser selection step. Downloading updates may take several minutes.
-
-NOTE: If you are updating your Raspberry Pi 500+ for the first time, this can take up to half an hour. Grab a cup of coffee or go for a walk while you wait.
-
+.Updating your software in the configuration wizard
 image::images/initial-setup/update.png[alt="You can download the latest software updates during the wizard before you boot for the first time.",width="80%"]
 
-image::images/initial-setup/download.png[alt="You can download the latest software updates during the wizard before you boot for the first time.",width="80%"]
+==== Finish
 
-When you see a popup indicating that your system is up to date, click **OK** to proceed to the next step.
+When you've gone through each step of the configuration wizard, a confirmation window stating that your system is set up appears. Select *OK* and then *Launch* (or, if you see *Restart* instead, select this to reboot your Raspberry Pi). Your configuration is applied to your Raspberry Pi, which then boots and loads the graphical desktop environment where you can use windows, icons, and menus, similar to other desktop computers.
 
-=== Finish
+[.clearfix]
+--
+.System update success message
+image::images/initial-setup/ok.png[alt="System is up to date.",width="100%"]
+.Setup complete success message
+[.left]
+image::images/initial-setup/launch.png[alt="Setup complete.",width="100%"]
+--
 
-At the end of the configuration wizard, click **Restart** to reboot your Raspberry Pi. Your Raspberry Pi will apply your configuration and boot to the desktop.
+=== Configuration changes
+You can reconfigure most settings, such as changing your password or hostname, from the desktop GUI: open the Raspberry Pi icon in the top-left corner, then navigate to *Preferences > Control Centre*. 
 
-image::images/initial-setup/restart.png[alt="The Setup Complete dialogue prompts to restart your Raspberry Pi.",width="80%"]
+You can also reconfigure most settings from the Terminal: enter `sudo raspi-config` to open a menu of options.
+
+For more detailed instructions, see xref:configuration.adoc[Configuration].
+
+[[shutdown]]
+== Shutdown options
+Raspberry Pi OS provides options for safely shutting down, restarting, locking, and signing out of your Raspberry Pi device from the desktop graphical user interface (GUI) and from the command line.
+
+[[desktop-shutdown]]
+=== Desktop shutdown options
+The *Shutdown Options* window in the desktop GUI gives you the following options:
+
+* *Shutdown.* Closes all running programs and powers off your Raspberry Pi. Use this option before disconnecting your Raspberry Pi from power.
+* *Reboot.* Restarts your system. This is useful after applying updates, changing configurations, and connecting to new hardware.
+* *Lock Screen.* Locks your current session to prevent unauthorised access while keeping open programs running. Enter your password to unlock the screen again.
+* *Logout.* Signs out of your current user account and closes all running programs without shutting down the system.
+
+You can perform all of the same actions except locking your screen from the command line.
+
+=== Open shutdown options from the desktop
+To open the *Shutdown Options* window from the desktop, select the Raspberry Pi icon in the top-left corner of the system tray then select *Shutdown*. If you have a Raspberry Pi 5, 500, or 500+, you can press the power button to open the same menu.
+
+[.clearfix]
+--
+.Desktop shutdown option
+[.left]
+image::images/shutdown.png[alt="Shutdown from the desktop menu.",width="60%"]
+.Desktop shutdown menu
+[.left]
+image::images/shutdown-menu.png[alt="Shutdown menu.",width="100%"]
+--
+
+You can then select from one of the following four options: Shutdown, Reboot, Lock Screen, and Logout, described in <<desktop-shutdown>>. If you don't want to choose one of these options, select the cross (*×*) icon in the top-right corner of the window instead.
+
+[[cmd-shutdown]]
+=== Shutdown options from the command line
+You can perform most shutdown options from the command line. Open a Terminal and then use one of the following commands:
+
+[cols="2,2", options="header"]
+|===
+| Action | Command
+
+| Shut down your Raspberry Pi
+| `sudo poweroff`
+
+| Reboot your Raspberry Pi
+| `sudo reboot`
+
+| When in Console mode, sign out of your Raspberry Pi without shutting down the system
+| `logout`
+
+|===
+
+[[troubleshooting]]
+== Troubleshooting
+
+If your Raspberry Pi doesn't boot within 5 minutes, check the status LED. If the status LED is flashing, check the xref:configuration.adoc#led-warning-flash-codes[LED warning flash codes] to diagnose the problem.
+
+If your Raspberry Pi still doesn't boot and the LED information doesn't help you to resolve the issue, try the following:
+
+* If you used a boot device other than an SD card, try booting from an SD card.
+* Re-image your SD card by following the instructions in xref:getting-started.adoc#imager-install[Install using Imager], completing the entire *Verify* step.
+* Using Imager on a host computer, xref:raspberry-pi.adoc#bootloader_reflash[reflash the bootloader] on your storage device and then xref:getting-started.adoc#imager-install[re-image your SD card].

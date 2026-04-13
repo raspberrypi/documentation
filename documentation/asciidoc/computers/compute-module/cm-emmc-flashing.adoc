@@ -7,7 +7,7 @@ TIP: To flash the same image to multiple Compute Modules, use the https://github
 
 The Compute Module has an on-board eMMC device connected to the primary SD card interface. This guide explains how to flash (write) an operating system image to the eMMC storage of a single Compute Module.
 
-**Lite** variants of Compute Modules do not have on-board eMMC. Instead, follow the procedure to flash a storage device for other Raspberry Pi devices at xref:../computers/getting-started.adoc#installing-the-operating-system[Install an operating system].
+**Lite** variants of Compute Modules do not have on-board eMMC. Instead, follow the procedure to flash a storage device for other Raspberry Pi devices at xref:../computers/getting-started.adoc#install[Install an operating system].
 
 === Prerequisites
 
@@ -106,7 +106,7 @@ To set up software on a Windows 11 host device:
 
 === Flash the eMMC
 
-You can use xref:../computers/getting-started.adoc#raspberry-pi-imager[Raspberry Pi Imager] to flash an operating system image to a Compute Module.
+You can use xref:../computers/getting-started.adoc#imager-install[Raspberry Pi Imager] to flash an operating system image to a Compute Module.
 
 Alternatively, use `dd` to write a raw OS image (such as xref:../computers/os.adoc#introduction[Raspberry Pi OS]) to your Compute Module. Run the following command, replacing `/dev/sdX` with the path to the mass storage device representation of your Compute Module and `raw_os_image.img` with the path to your raw OS image:
 

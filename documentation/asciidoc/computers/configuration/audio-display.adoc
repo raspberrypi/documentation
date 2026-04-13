@@ -1,0 +1,278 @@
+== Audio and visual output
+
+Raspberry Pi OS supports multiple audio output and display modes. This section summarises how to configure audio and display settings on your Raspberry Pi, including how to:
+
+* <<audio-output>> from the desktop and from the command line.
+* <<pro-audio-profile>> from the desktop and from the command line.
+* <<display-settings>> (resolution, frequency, orientation, and scaling) from the desktop; if you're a console mode user, use the kernel command line instead.
+* <<screen-blanking>> from the desktop, using the interactive `raspi-config` TUI, and from the command line.
+* <<video>> (composite versus HDMI) using the interactive `raspi-config` TUI.
+* <<onscreen-keyboard>> and choose what monitor it appears on from the desktop and using the interactive `raspi-config` TUI.
+
+[[audio-output]]
+=== Change audio output
+Raspberry Pi OS supports multiple audio output modes that you can choose from: *HDMI*, the *3.5 mm headphone jack* (if your device has one), and *USB audio devices*. By default, your Raspberry Pi outputs audio to the first HDMI device. If no HDMI device is detected, it automatically routes audio to the headphone jack or a connected USB device. You can change where audio is played from the desktop GUI or from the command line.
+
+[tabs]
+======
+Desktop::
+The audio output selector on your Raspberry Pi desktop allows you to choose between multiple audio devices connected to your Raspberry Pi. On newer Raspberry Pi devices, this can include audio through one of the HDMI ports or USB ports.
++
+If you've connected an audio device through the jack on the back of a Raspberry Pi monitor, it still appears as HDMI in the list because the monitor is attached to the HDMI port on your Raspberry Pi.
++
+To change the audio output destination through the desktop:
++
+. Right-click the volume icon in the top-right corner of the system tray on your desktop. This opens the audio output selector.
+. Select the audio output of the device that you want to use.
+CLI::
+. *List your audio devices.* Open the Terminal on your Raspberry Pi and then run the following command:
++
+[source,console]
+----
+$ wpctl status
+----
++
+. *Identify the target 'sink'.* Look for a section labelled `Sinks`, which provides a list of available audio output devices. Each device has a numerical ID. The default is indicated by an asterisk (***).
+. *Change the default option.* To switch to a different device run the following command, replacing `<ID>` with the number you identified in the previous step:
++
+[source,console]
+----
+$ wpctl set-default <ID>
+----
++
+. *Verify the change.* Run the status command again and check that there is an asterisk (***) next to your chosen device.
++
+[source,console]
+----
+$ wpctl status
+----
+======
+
+[[pro-audio-profile]]
+=== Choose audio device profile
+A device profile defines how an audio device is configured and what capabilities it exposes. Different profiles are optimised for different use cases. You can choose the device profile from the desktop and, on newer Raspberry Pi devices, from the command line.
+
+[tabs]
+======
+Desktop::
+. Right-click the volume icon in the top-right corner of the system tray on your desktop.
+. Select *Device Profiles*.
+. Choose from one of the following options:
+** *Off.* Turns off audio output for the Raspberry Pi.
+** *Digital Stereo.* Outputs standard two-channel (left and right) audio. This is the default profile and works with most speakers, headphones, and monitors.
+** **Pro Audio.** Exposes the maximum number of channels across every audio device, allowing greater control over signal routing. We don't recommend choosing this device profile unless you require fine-tuned control over audio output. For more information about the Pro Audio profile, see https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/FAQ#what-is-the-pro-audio-profile[PipeWire's FAQ].
+
+CLI::
+Newer versions of Raspberry Pi allow you to manage device profiles using `pactl` commands. To use `pactl`, you must first install `pulseaudio`. Then, to change the device profile through the command line:
++
+. *List your audio cards.* Open the Terminal on your Raspberry Pi and then run the following command to list your audio devices:
++
+[source,console]
+----
+$ pactl list cards
+----
++
+. *Identify your card and active profile.* Search the output for your target audio device (card). The audio device is typically one you already have active on your Raspberry Pi and the ID is typically a short number. Check the ID for the profile that isn't set to `Active Profile: off`.
+. *View available profiles.* Under `Profiles` for the target audio device in the output, look for options such as `off`, `output:hdmi-stereo`, and `pro-audio`.
+. *Set the new profile.* Set the device profile for that audio device using the following syntax, replacing `<CARD_ID>` and `<PROFILE_NAME>`: `pactl set-card-profile <CARD_ID> <PROFILE_NAME>`. 
++
+For example:
++
+[source,console]
+----
+$ pactl set-card-profile 48 output:hdmi-stereo
+----
++
+. *Verify the change.* Verify that it worked by listing the audio devices again:
++
+[source,console]
+----
+$ pactl list cards
+----
+======
+
+[[display-settings]]
+
+With most HDMI monitors, Raspberry Pi OS uses the highest resolution and refresh rate supported by your Raspberry Pi and your monitor. Connect the cables before turning on your Raspberry Pi.
+
+.Display capabilities of Raspberry Pi models
+[cols="2,1,2,1,2", options="header"]
+|===
+| Models | HDMI type | Cable adapter | Max displays | Max resolution
+
+| Raspberry Pi Zero, Zero W, and Zero 2 W
+| Mini HDMI
+| Requires a mini-HDMI-to-HDMI cable or adapter
+| 1
+| Depends on the display; usually up to 1920 x 1080 pixels
+
+| Raspberry Pi 4B and 400, and Compute Module 4
+| Dual micro HDMI
+| Requires a micro-HDMI-to-HDMI cable or adapter for each display you want to attach
+| 2 (except CM4S)
+| Two 4K at 30 Hz or one 4K at 60 Hz
+
+| Raspberry Pi 5, 500, and 500+, and Compute Module 5
+| Dual micro HDMI
+| Requires a micro-HDMI-to-HDMI cable or adapter for each display you want to attach
+| 2
+| Two 4K at 60 Hz
+
+|===
+
+Raspberry Pi 4B, 400, and Compute Module 4, support either:
+
+* Two displays with resolution up to 3840 × 2160 pixels (4K; Ultra HD) at a 30 Hz refresh rate.
+* One display with resolution up to 1920 × 1080 pixels (Full HD) at a 60 Hz refresh rate, which is standard for most displays.
+* One display with resolution up to 3840 × 2160 pixels (4K; Ultra HD) at a 60 Hz refresh rate if you connect the display to the HDMI0 port and then set the `hdmi_enable_4kp60=1` flag in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`].
+
+Raspberry Pi 5, 500, 500+, and Compute Module 5 support two displays with resolution up to 3840 × 2160 pixels (4K; Ultra HD) at a 60 Hz refresh rate with no additional configuration.
+You can adjust your display resolution and screen orientation through the desktop and through the console.
+
+NOTE: Raspberry Pi OS Bookworm and earlier used `raindrop` or `arandr` to configure display behaviours. The latest version of Raspberry Pi OS doesn't support these tools.
+
+The command line instructions apply specifically to Raspberry Pi OS Lite or systems operating without a graphical desktop environment. If you're using a desktop GUI, follow the desktop instructions instead.
+
+On systems without a desktop environment (running in console mode), display settings must be configured manually. Recent Raspberry Pi OS versions allow you to use Kernel Mode Setting (KMS) to configure display settings. This is done by adding the `video=` parameter to your kernel command line file (`cmdline.txt`). For more information about this file, see xref:../computers/configuration.adoc#kms[Configure the kernel command line].
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Screens* tab in the left-side menu.
+. Select the screen that you want to configure by one of the following methods:
+** Right-click the box representing the screen that you want to configure.
+** Open the *Screens* dropdown menu and select the screen you want to configure.
+. Choose one of the following properties to configure:
+** *Resolution.* Choose a screen resolution (for example, 1920 × 1080).
+** *Frequency.* Choose a refresh rate (for example, 60 Hz).
+** *Orientation.* Choose between *Normal*, *Left*, *Inverted*, and *Right*.
+** *Scaling.* Choose between *1.0*, *1.5*, *2.0*, and *3.0* times the scale of the original screen.
+. Select *Apply* in the bottom-right corner of the *Control Centre*. Your changes are displayed for 10 seconds and you're asked to confirm that the changes are correct before continuing.
+. To confirm your changes, select *OK*. If you don't confirm the changes, the screen reverts back to its previous setting.
+CLI (basic resolution)::
+Use the following format to specify the display, resolution, and refresh rate, replacing `<display>` with the display port, `<width>x<height` with the screen resolution, and `<refresh_rate>` with the refresh rate in Hz:
++
+[source,console]
+----
+$ video=<display>:<width>x<height>M@<refresh_rate>
+----
++
+For example, `video=HDMI-A-1:1920x1080M@60` translates to: use the HDMI-A-1 display at 1920 by 1080 resolution with a 60 Hz refresh rate.
++
+If you don't specify a resolution, your Raspberry Pi tries to guess it based on your monitor's data (https://en.wikipedia.org/wiki/Extended_Display_Identification_Data[EDID]). It automatically chooses the best resolution supported by your display based on information in the Linux kernel.
++
+Your display port can be any of the following:
++
+* `HDMI-A-1`: The first HDMI display output (often called HDMI 1 in software). On a Raspberry Pi 4B and 5, this corresponds to the HDMI port labelled HDMI0 on the board silkscreen; on single-HDMI models, this corresponds to the HDMI port labelled HDMI.
+* `HDMI-A-2`: The second HDMI display output (often called HDMI 2 in software). On a Raspberry Pi 4B and 5, this corresponds to the HDMI port labelled HDMI1 on the board silkscreen.
+* `DSI-1`: DSI or DPI.
+* `Composite-1`: Composite.
+CLI (rotation and reflection)::
+Rotation and reflection parameters must be explicitly specified by extending the basic resolution configuration with additional parameters, which follow standard Linux framebuffer options.
++
+Add the following to your basic resolution configuration:
++
+* `rotate=<number>`, replacing `<number>` with a rotation angle in degrees (for example, 90 degrees) to rotate the display output. All connected displays share the same rotation settings.
+* `reflect_<axis>` replacing `<axis>` with `x`, `y`, or `xy` to mirror the display horizontally, vertically, or both.
++
+For example, `video=HDMI-A-1:1920x1080M@60,rotate=90,reflect_x` translates to: use the HDMI-A-1 display at 1920 by 1080 resolution with a 60 Hz refresh rate, rotated 90 degrees and horizontally mirrored.
++
+NOTE: When using console mode with multiple displays, all connected displays share the same rotation settings.
+======
+
+[[screen-blanking]]
+=== Configure screen blanking
+You can configure your Raspberry Pi to blank the screen after a period of inactivity. When screen blanking is enabled, Raspberry Pi OS blanks the screen after ten minutes of inactivity by default.
+
+You can configure screen blanking through the desktop GUI, using the `raspi-config` TUI, and from the command line.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Display* tab in the left-side menu.
+. Use the toggle to turn *Screen Blanking* on or off.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `2 Display Options > D2 Screen Blanking`.
+. Select `Yes` or `No` in response to the question *Would you like to enable screen blanking?*
+. Select `<OK>` and then `<Finish>` when you're done.
+CLI::
+You can control screen blanking from the command line using the `consoleblank` kernel parameter. Unlike the screen blanking setting modified by the *Control Centre* and `raspi-config`, which only affects desktop sessions, the `consoleblank` parameter applies when your Raspberry Pi is running with a monitor and keyboard in a text-only terminal session. By setting `consoleblank` in the kernel command line, you can specify how long the console waits before turning off the screen.
++
+. Use the following command to open `/boot/firmware/cmdline.txt` in a text editor as an administrator:
++
+[source,console]
+----
+$ sudo nano /boot/firmware/cmdline.txt
+----
+. Set the number of seconds before Raspberry Pi OS blanks the console. All parameters must remain on a single line. You can:
++
+** Set how many seconds of inactivity before the screen blanks. For example, adding `consoleblank=600` blanks the screen after 600 seconds (10 minutes) of inactivity.
+** Add `consoleblank=0` to never blank the screen.
++
+. Use the following command to reboot the Raspberry Pi so that the changes take effect:
++
+[source,console]
+----
+$ sudo reboot
+----
++
+After reboot, the console blanking timeout follows your new setting.
++
+You can display the current console blank time (in seconds) with the following command:
++
+[source,console]
+----
+$ cat /sys/module/kernel/parameters/consoleblank
+----
+
+======
+
+[[video]]
+=== Configure video output
+For flagship models of Raspberry Pi, you can use the interactive `raspi-config` TUI to configure video output to be composite video or HDMI. Enabling composite video output disables HDMI output for all models except Raspberry Pi 5. To enable or disable composite video output using the interactive `raspi-config` TUI:
+
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `2 Display Options > D4 Composite`.
+. Select `Yes` or `No` in response to the question *Would you like composite video output to be enabled?*
+. Select `<OK>` to confirm this choice.
+. Select `<Finish>` when you're done.
+. Reboot your Raspberry Pi for the change to take effect.
+
+[[onscreen-keyboard]]
+=== Configure onscreen keyboard
+You can configure your Raspberry Pi to show an onscreen keyboard and choose which screen this keyboard is displayed on through the desktop GUI and using the interactive `raspi-config` TUI. In the `raspi-config` TUI, the following settings are configured separately:
+
+* Go to `D6 Onscreen Keyboard` to enable or disable the onscreen keyboard.
+* Go to `D7 Keyboard` to specify which screen the onscreen keyboard is displayed on.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Display* tab in the left-side menu.
+. Choose one of the following options from the *On-screen keyboard* dropdown menu:
+** *Enabled always*, which means the keyboard is always onscreen.
+** *Enabled if touchscreen found*, which means the keyboard is onscreen when a touchscreen is attached to your Raspberry Pi.
+** *Disabled*, which means the keyboard isn't on screen.
+. If you have more than one screen attached to your Raspberry Pi, choose a screen to display your keyboard on from the *On-Screen Keyboard Location* dropdown menu.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+raspi-config (enable or disable)::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `2 Display Options > D6 Onscreen Keyboard`.
+. Choose between one of the following options:
+** `S1 Always On`, which means the keyboard is always on screen.
+** `S2 Autodetect`, which means the keyboard is on screen when a touchscreen is attached to your Raspberry Pi.
+** `S3 Always Off`, which means the keyboard isn't on screen.
+. Select `<OK>` and then `<OK>` again to confirm your choice.
+. Select `<Finish>` when you're done.
+raspi-config (specify screen)::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `2 Display Options > D6 Onscreen Keyboard`.
+. Choose the display on which you want your keyboard to appear.
+. Select `<OK>` and then `<OK>` again to confirm your choice.
+. Select `<Finish>` when you're done.
+======

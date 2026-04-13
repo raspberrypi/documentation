@@ -1649,7 +1649,7 @@ Setting `hdmi_ignore_hotplug` to `1` pretends that the HDMI hotplug signal is no
 
 The default value for `disable_overscan` is `0` which gives default values of overscan for the left, right, top, and bottom edges of `48` for HD CEA modes, `32` for SD CEA modes, and `0` for DMT modes.
 
-Set `disable_overscan` to `1` to disable the default values of xref:configuration.adoc#underscan[overscan] that are set by the firmware.
+Set `disable_overscan` to `1` to disable the default values of overscan that are set by the firmware.
 
 ==== `overscan_left`
 

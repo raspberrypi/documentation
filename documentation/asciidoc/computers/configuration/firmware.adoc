@@ -1,0 +1,178 @@
+== Firmware
+
+This section covers how to:
+
+* <<boot-order>> on newer Raspberry Pi models using the interactive `raspi-config` TUI.
+* <<update-bootloader-version>> using the interactive `raspi-config` TUI and directly from the command line.
+* <<manage-bootloader-config>> directly from the command line.
+* <<network-install-ui>> using the interactive `raspi-config` TUI.
+
+[[boot-order]]
+=== Change the boot order
+Boot order determines where your Raspberry Pi tries to boot from. On Raspberry Pi 4 and later, you can specify whether to boot from USB or network when no SD card or SSD has been detected. The default is to boot from the SD card first.
+
+To change the boot order using the raspi-config TUI:
+
+. Open the Terminal and run `sudo raspi-config`.
+. Navigate to and select `6 Advanced Options > A4 Boot Order`.
+. Choose from one of the following options:
+** `B1 SD Card Boot` (recommended) boots the system from the SD card first. If no bootable SD card is found, the bootloader then tries NVMe and then USB.
+** `B2 NVMe/USB Boot` boots from NVMe storage first. If no bootable NVMe device is found, the bootloader then tries USB and then the SD card.
+** `B3 Network Boot` boots from the SD card first. If no bootable SD card is found, the bootloader then tries to boot over the network (PXE).
+. The Terminal briefly runs some code before returning to the TUI confirming that your selection has been implemented. Select `<OK>` and then `<Finish>`.
+
+[[update-bootloader-version]]
+=== Update the bootloader
+On Raspberry Pi OS, the bootloader version is automatically updated when important bug fixes and improvements are released. CM4 and CM4S don't support automatic bootloader updates because their boot ROM can't load the `recovery.bin` file from eMMC. For these models, manual update tools such as `rpiboot` and `flashrom` are recommended. For details, run:
+
+[source,console]
+----
+$ `rpi-eeprom-update -h`
+----
+
+On Raspberry Pi 4 and later, you can manually switch to the latest boot ROM software. Alternatively, you can revert to the factory default. Specifically, bootloader version updates are supported on:
+
+* Flagship models since Raspberry Pi 4B.
+* Compute Modules since CM5.
+* All keyboard computers (Raspberry Pi 400, 500, and 500+).
+
+You can update the bootloader by switching between the latest and the default bootloader using `raspi-config` TUI. Alternatively, use the command line to update the bootloader without switching.
+
+If, instead of updating the bootloader version, you want to reset the bootloader, see xref:../computers/raspberry-pi.adoc#bootloader_reset[Reset the bootloader].
+
+[tabs]
+======
+raspi-config::
+First, open the Terminal and run the following code to update Raspberry Pi OS, getting the latest version of the rpi-eeprom package:
++
+[source,console]
+----
+$ sudo apt update && sudo apt full-upgrade
+----
++
+Then:
++
+. Use the keyboard to navigate to and select `6 Advanced Options > A5 Bootloader Version`.
+. Select one of the following release tracks:
+** `E1 Latest` for the latest bootloader release and new bootloader features. This option is more appropriate for advanced users who want the latest, untested functionality.
+** `E2 Default` for stable, factory-default settings. This option provides critical bug fixes, hardware support, and the latest tested features.
+. Select `Yes` to confirm your choice.
+. Reboot your Raspberry Pi to apply your changes.
+CLI::
+. Run the following command to check to check for the latest bootloader version, write it to EEPROM, and apply it during the next reboot:
++
+[source,console]
+----
+$ sudo rpi-eeprom-update -a
+----
+. Run the following command to reboot your Raspberry Pi:
++
+[source,console]
+----
+$ sudo reboot
+----
+. After reboot, verify the update by running the following command (as described in <<check-bootloader>>):
++
+[source,console]
+----
+$ sudo rpi-eeprom-update
+----
+. Check that you have the most recent version of the bootloader. If your bootloader is up to date, the `CURRENT` date matches the `LATEST` date. For example:
++
+[source]
+----
+BOOTLOADER: up to date
+   CURRENT: Mon 22 Jan 10:41:21 UTC 2026 (1705920081)
+    LATEST: Mon 22 Jan 10:41:21 UTC 2026 (1705920081)
+   RELEASE: latest (/lib/firmware/raspberrypi/bootloader-2711/latest)
+            Use raspi-config to change the release.
+
+  VL805_FW: Using bootloader EEPROM
+     VL805: up to date
+   CURRENT: 000138c0
+    LATEST: 000138c0
+----
+======
+
+[[manage-bootloader-config]]
+=== Manage bootloader configuration
+This section provides instructions for reading the bootloader version and managing the bootloader configuration from the command line. Developers and system administrators can find the scripts and pre-compiled binaries used to create `rpi-eeprom` images in the https://github.com/raspberrypi/rpi-eeprom/[rpi-eeprom GitHub repository].
+
+[[check-bootloader]]
+==== Check bootloader version and configuration
+Run the following command to check the current bootloader version:
+
+[source,console]
+----
+$ sudo rpi-eeprom-update
+----
+
+The output tells you what version is currently installed on your Raspberry Pi (CURRENT), what the most recent available release is (LATEST), and the release track used by the system (RELEASE). For example:
+
+[source]
+----
+*** UPDATE AVAILABLE ***
+BOOTLOADER: update available
+   CURRENT: Thu 18 Jan 13:59:23 UTC 2024 (1705586363)
+    LATEST: Mon 22 Jan 10:41:21 UTC 2024 (1705920081)
+   RELEASE: latest (/lib/firmware/raspberrypi/bootloader-2711/latest)
+            Use raspi-config to change the release.
+
+  VL805_FW: Using bootloader EEPROM
+     VL805: up to date
+   CURRENT: 000138c0
+    LATEST: 000138c0
+----
+
+==== Read the current bootloader configuration
+Run the following command to view the configuration used by the current running bootloader:
+
+[source,console]
+----
+$ rpi-eeprom-config
+----
+
+Run the following command to read the configuration from a bootloader image:
+
+[source,console]
+----
+$ rpi-eeprom-config pieeprom.bin
+----
+
+==== Edit the bootloader configuration
+The following commands load the current bootloader configuration into a text editor. The text editor is selected by the `EDITOR` environment variable.
+
+When the editor is closed, `rpi-eeprom-config` applies the updated configuration to the latest available bootloader release and uses `rpi-eeprom-update` to schedule an update when the system is rebooted:
+[source,console]
+----
+$ sudo -E rpi-eeprom-config --edit
+$ sudo reboot
+----
+
+If the updated configuration is identical or empty, the bootloader remains unchanged.
+
+==== Apply a saved configuration
+Run the following commands to apply a saved configuration file (for example, `boot.conf`) to the latest bootloader release.
+
+[source,console]
+----
+$ sudo rpi-eeprom-config --apply boot.conf
+$ sudo reboot
+----
+
+This schedules the changes to take effect after reboot.
+
+[[network-install-ui]]
+=== Enable or disable the network install UI
+The user interface (UI) for network install controls whether your Raspberry Pi displays a menu for network-based OS installation when no local boot media is detected. On Raspberry Pi 4 and later, enabling this option allows you to interact with the bootloader to perform a network installation (PXE boot). Disabling this option keeps the network install process hidden.
+
+To change the network install UI setting using the interactive `raspi-config` TUI:
+
+. Open the Terminal and run `sudo raspi-config.`
+. Use the keyboard to navigate to and select `6 Advanced Options > A9 Network Install UI`.
+. Choose between one of the following options:
+** `B1 Always`, which always displays the network install UI for a few seconds after power on.
+** `B2 On demand`, which displays the network install UI if the *Shift* key on your keyboard is pressed or if there is an error.
+. Select `<OK>` and then `<Finish>` when you're done.
+
+

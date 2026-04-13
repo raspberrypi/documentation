@@ -1,8 +1,86 @@
-== LED warning flash codes
+== LED behaviour
+On-board LEDs on Raspberry Pi devices provide a simple way to monitor system status and diagnose issues. Depending on the model, these LEDs indicate power state, SD card activity, and fault conditions, with some offering additional configurability for custom use.
 
-If a Raspberry Pi fails to boot for some reason, or has to shut down, in many cases an LED will flash a specific number of times to indicate what happened. The LED will blink for a number of long flashes (0 or more), then produce short flashes, to indicate the exact status. In most cases, the pattern will repeat after a two-second gap.
+[[prerequisite-led]]
+=== Prerequisite information
 
-[cols="^,^,"]
+Different Raspberry Pi models use different LED hardware configurations, and their exact behaviour and configurability differs accordingly.
+
+* Raspberry Pi 1 (models A, B, A+ and B+), 2, 3, and 4 use two distinct LEDs:
+** Red for power (`PWR`), indicating normal operation with a stable 5 V power supply. The red LED is off or flickering when there is undervoltage.
+** Green for storage activity (`ACT`), indicating no storage activity when off, card access in progress when flashing, a series of short flashes after `sudo poweroff` to indicate that it's now safe to remove the USB PSU cable.
+* Raspberry Pi Zero, Zero W, and Zero 2 W use one green LED, which represents both power and storage activity. You can reconfigure the LED to prioritise either power indication or storage activity by following the instructions in <<led-zero>>.
+** The LED is lit when the board is powered on.
+** The LED flashes off briefly when there is storage activity.
+* Raspberry Pi 400 and 500 integrate status LEDs behind a single lens. Raspberry Pi 5 and 500+ have a power button that integrates status LEDs into the power button key.
+** Red
+*** Raspberry Pi 400: Power is being applied and the device is operating as expected. 
+*** Raspberry Pi 5 and 500+: The device is in the low-power standby state.
+** Green flashing for storage activity.
+** Orange for power and activity simultaneously.
+
+NOTE: The power button on Raspberry Pi 5, 500, and 500+ allows the computer to enter a soft-off state. In this state, the CPU and most system activity stops, but the power rails remain active and the system can be restarted by pressing the power button again, or by removing and restoring power as normal.
+
+[[led-zero]]
+=== Change LED behaviour on Raspberry Pi Zero
+Raspberry Pi Zero, Zero W, and Zero 2 W have a single power LED for indicating power and storage activity. 
+
+You can use the interactive `raspi-config` TUI to change the behaviour of the power LED on your Raspberry Pi Zero, Zero W, or Zero 2 W.
+
+You can also choose whether the LED is prioritised to flash for disk activity or is illuminated at all times while the device is on.
+
+To change the power LED priority using the interactive `raspi-config` TUI:
+
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `1 System Options > S8 Power LED`.
+. Select `Yes` or `No` in response to the question *Would you like the power LED to flash during disk activity?*
+** Selecting `Yes` prioritises having a flashing LED when there's storage activity.
+** Selecting `No` keeps the LED lit when the board is powered on.
+. Select `<OK>` to confirm this choice and then `<Finish>` when you're done.
+
+[[led-keyboard]]
+=== Configure keyboard computer LEDs
+Raspberry Pi 400 and 500 have three LEDs.
+
+On a *Raspberry Pi 400*, these LEDs are:
+
+* A num-lock LED, indicated with the number *1* inside a square.
+* A caps-lock LED, indicated with the capital letter *A* inside a square.
+* A dual status LED (described in <<prerequisite-led>>).
+
+On a *Raspberry Pi 500*, these LEDs are:
+
+* A user-programmable LED, indicated with an icon consisting of a circle, square, and triangle. Its function isn't hardwired to system events, which means you can use the LED as a status light for your custom projects, for example, notification alerts and process indicators.
+* A caps-lock LED, indicated with the capital letter *A* inside a square.
+* A dual status LED (described in <<prerequisite-led>>).
+
+The user-configurable LED can be controlled through the `pinctrl` tool, which is used to interact with GPIO pins and peripherals.
+
+* `pinctrl 123 op dh` turns the user LED on.
+* `pinctrl 123 op dl` turns the user LED off.
+
+You can also also use Python to call `pinctrl`:
+
+[source,python]
+----
+import subprocess
+from time import sleep
+
+while True:
+    subprocess.run(['pinctrl', 'USER_LED', 'op', 'dh'])
+    print("On")
+    sleep(1)
+    subprocess.run(['pinctrl', 'USER_LED', 'op', 'dl'])
+    print("Off")
+    sleep(1)
+----
+
+[[led-warning-flash-codes]]
+=== Check LED warning codes
+If a Raspberry Pi device fails to boot or shuts down unexpectedly, the on-board LED often provides a diagnostic signal in the form of a specific flashing pattern. Long flashes always occur before short ones that indicate the exact issue; sometimes there are no long flashes at all. In most cases, the pattern repeats after a two-second pause.
+
+
+[cols="1,1,4",options="header"]
 |===
 | Long flashes | Short flashes | Status
 
@@ -12,7 +90,7 @@ If a Raspberry Pi fails to boot for some reason, or has to shut down, in many ca
 
 | 0
 | 4
-| start*.elf not found
+| `start*.elf` not found
 
 | 0
 | 7
@@ -48,23 +126,23 @@ If a Raspberry Pi fails to boot for some reason, or has to shut down, in many ca
 
 | 2
 | 4
-| File signature/hash mismatch - Pi 4 and Pi 5
+| File signature/hash mismatch (Raspberry Pi 4 and 5)
 
 | 3
 | 1
-| SPI EEPROM error - Pi 4 and Pi 5
+| SPI EEPROM error (Raspberry Pi 4 and 5)
 
 | 3
 | 2
-| SPI EEPROM is write protected - Pi 4 and Pi 5
+| SPI EEPROM is write protected (Raspberry Pi 4 and 5)
 
 | 3
 | 3
-| I2C error - Pi 4 and Pi 5
+| I2C error (Raspberry Pi 4 and 5)
 
 | 3
 | 4
-| Secure-boot configuration is not valid
+| Secure-boot configuration isn't valid
 
 | 4
 | 3

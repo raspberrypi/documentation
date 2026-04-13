@@ -2,7 +2,7 @@
 
 === HDMI mode
 
-To control HDMI settings, use the xref:configuration.adoc#set-resolution-and-rotation[Screen Configuration utility] or xref:configuration.adoc#set-the-kms-display-mode[KMS video settings] in `cmdline.txt`.
+To control HDMI settings, follow the instructions in xref:configuration.adoc#display-settings[Display settings] in the *Configuration* page.
 
 ==== HDMI Pipeline for 4-series devices
 

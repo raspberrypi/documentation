@@ -1,0 +1,224 @@
+[[boot-behaviour]]
+== Boot behaviour
+Boot behaviour determines what your Raspberry Pi loads when it starts up. You can configure it to either launch a full desktop graphical user interface (GUI) or start in a text-based command-line interface (CLI), also referred to as console mode. For instructions, see <<console-or-desktop>>.
+
+You can also control what is displayed during boot. Specifically, you can turn the standard Plymouth splash screen on or off, and you can replace the default early boot Raspberry Pi splash screen with a custom early boot splash screen. For instructions, see <<splash-screens>>.
+
+This section also covers the kernel command line, which is the primary mechanism for passing low-level instructions to the Linux kernel during the boot process. While the bootloader initialises the hardware (through `config.txt`), the kernel command line defines how the OS itself behaves when it takes over (through `cmdline.txt`). For instructions, see <<kms>>.
+
+NOTE: If you're looking for information about auto login, see xref:../computers/configuration.adoc#auto-login[Require a password from startup].
+
+[[console-or-desktop]]
+=== Boot to console or desktop
+You can choose whether to boot your Raspberry Pi to console or to desktop when you start up your Raspberry Pi from the desktop and using the interactive `raspi-config` TUI.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *System* tab in the left-side menu.
+. Next to *Boot*, choose either *To desktop* or *To CLI.* Selecting *To CLI* turns off desktop auto login, requiring you to enter your password if you change this setting back to *To desktop* in the future.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+. Reboot your Raspberry Pi to apply your changes.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `1 System Options > S5 Boot`.
+. Choose between:
+** `B1 Console Text console`
+** `B2 Desktop Desktop GUI`
+. Select `<OK>` to continue.
+. Reboot your Raspberry Pi to apply your changes.
+======
+
+[[splash-screens]]
+=== Configure splash screens
+Raspberry Pi OS can display two types of splash screen during boot:
+
+* *A standard Plymouth splash screen.* This is a graphical boot that you can turn on or off. If the standard Plymouth splash screen is turned off, the system shows text-based console log messages instead.
+* *A custom early boot splash screen.* A fullscreen image that appears before the standard Plymouth splash screen, replacing the Raspberry Pi logos.
+
+==== Show or remove the Plymouth splash screen
+You can choose whether to show the Raspberry Pi graphical splash screen instead of console log messages (text) on boot using either the desktop GUI or the interactive `raspi-config` TUI.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *System* tab in the left-side menu.
+. Use the toggle next to *Splash Screen* to add or remove the graphical splash screen at boot.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `1 System Options > S7 Splashscreen`.
+. Select `Yes` or `No` in response to the question *Would you like to show the splash screen at boot?*
+** Selecting `Yes` keeps the splash screen in the boot sequence.
+** Selecting `No` removes the splash screen from the boot sequence.
+. Select `<OK>` and then `<Finish>` when you're done.
+======
+
+==== Customise the early boot splash screen
+The early boot splash screen is a fullscreen image that appears in the initial seconds of the boot process, appearing before the standard Plymouth splash screen. It provides visual feedback that the system is loading; you can choose whether to show this screen and you can customise it.
+
+The fullscreen splash image must meet the following file requirements:
+
+* *Maximum dimensions.* 1920 × 1080 pixels.
+    - If the image is smaller than the screen, the remaining area around your image is filled with a solid color taken from the top-left pixel of your image `(0, 0)`.
+    - Scaling isn't applied. If the screen is smaller than the image, the image is clipped and centred.
+* *Maximum colours.* 224 unique colours.
+* *Colour depth.* 24-bit (8 bits per channel, no alpha channel).
+* *Format.* Uncompressed TGA.
+
+[[file-reqs]]
+You can use ImageMagick's `convert` command to convert an image to the TGA format expected by the kernel. For example, to convert `image.png` to a suitably-formatted `splash-image.tga` file:
+
+[source,console]
+----
+$ sudo apt install imagemagick
+$ convert image.png -colors 224 -depth 8 -type TrueColor -alpha off -compress none -define tga:bits-per-sample=8 splash-image.tga
+----
+
+There are two ways to enable a fullscreen splash image on your Raspberry Pi. Depending on your technical expertise, you can either:
+
+* <<apt-package, *Use the APT package>>.* This method is more straightforward, allowing you to enable the splash screen with minimal configuration. You install a pre-made package (`rpi-splash-screen-support`) that automates most of the setup. It copies your image, sets kernel parameters, and configures the system for you.
+* <<cli-splash, *Edit the `cmdline.txt` system file>>.* This method is more technical, but gives you control over every step. You manually configure the splash image on the command line and then update your `initramfs` to contain the splash image.
+
+[[apt-package]]
+===== Use the APT package
+
+Install the `rpi-splash-screen-support` package to simplify the set up of fullscreen splash images. The package provides the `configure-splash` tool, which sets the necessary kernel parameters and updates your `initramfs`.
+
+1. Install the package using the following command:
++
+[source,console]
+----
+$ sudo apt install rpi-splash-screen-support
+----
+2. After the APT package is installed, run the following command to configure your splash image, replacing `<splash-image.tga>` with the name or path of the image file. This path can be relative or absolute:
++
+[source,console]
+----
+$ sudo configure-splash <splash-image.tga>
+----
+3. Run the following command to reboot your Raspberry Pi and see the splash image:
++
+[source,console]
+----
+$ sudo reboot
+----
+
+If the image appears upside down when booting, edit the  <<file-reqs, `convert` command>> to add the `-flip` flag before the `splash-image.tga`. Then run `configure-splash` to update the image with the correct orientation.
+
+[[cli-splash]]
+===== Edit the `cmdline.txt` system file
+
+The following method requires editing system files and manually updating the `initramfs`.
+
+1. Use the following command to open `/boot/firmware/cmdline.txt` in a text editor as an administrator: 
++
+[source,console]
+----
+$ sudo nano /boot/firmware/cmdline.txt
+----
+2. Disable on-screen console messages to prevent boot messages from covering your splash image. Edit `cmdline.txt` to remove the following:
+    - `console=tty1`.
+    - `quiet` (if present).
+3. Edit `cmdline.txt` to add the following parameters:
+    - `fullscreen_logo_name=logo.tga fullscreen_logo=1` to enable fullscreen splash.
+    - `vt.global_cursor_default=0` to remove the flashing cursor in the splash image.
++
+Your entry should end with something like the following:
++
+[source]
+----
+fullscreen_logo_name=logo.tga fullscreen_logo=1 vt.global_cursor_default=0
+----
+4. Place the image file in the correct location.
+    - The kernel expects the image file in `/lib/firmware`.
+    - The TGA file is read from the `initramfs` during boot.
+    - The filename must match fullscreen_logo_name in `cmdline.txt`.
+
+For example code for embedding TGA images in `initramfs`, see the https://github.com/raspberrypi/rpi-splash-screen-support/blob/master/configure-splash[Raspberry Pi splash screen support tool] in GitHub.
+
+NOTE: *Step 2* doesn't prevent `getty` from launching a login prompt. Your splash image appears during boot, but when the system is ready for login, the console takes over, and the splash disappears. `getty` clears the splash screen and writes the login prompt over it when the system is ready.
+
+[[kms]]
+=== Configure the kernel command line
+When a Raspberry Pi (or any Linux system) boots, the kernel is given a set of startup parameters called the *kernel command line*. The kernel command line allows you to configure various aspects of the system, from troubleshooting USB lag to customising your display resolution.
+
+==== Access and edit `cmdline.txt`
+
+The Linux kernel receives a set of parameters during boot. On a Raspberry Pi, these are stored in a specific file in the boot partition called `cmdline.txt`. Use the following command to modify the boot parameters:
+
+[source,console]
+----
+$ sudo nano /boot/firmware/cmdline.txt
+----
+
+IMPORTANT: All parameters in `cmdline.txt` must stay on the same single line. Don't use newlines or press *Enter* or *Return* on your keyboard between commands because the kernel ignores anything after the first line.
+
+==== View current settings
+
+Use the following command to view the Linux kernel's current boot parameters:
+
+
+[source,console]
+----
+$ cat /proc/cmdline
+----
+
+This reads a specific file in `/proc` that reflects the live kernel state. This might not exactly match your original `cmdline.txt`. This is because Raspberry Pi firmware makes changes to the kernel command line before launching the kernel.
+
+==== Define core parameters
+The following standard entries define how your Raspberry Pi identifies its hardware and loads the operating system.
+
+[cols="1,2,2", options="header"]
+|===
+|Standard entry |Description |Notes
+
+|`console`
+|Defines where boot messages are sent.
+|There are usually two entries:
+`console=serial0,115200` (serial mode) +
+`console=tty1` (main screen)
+
+|`root`
+|Defines the location of the root filesystem (where the OS lives).
+|For example, `root=/dev/mmcblk0p2` means multimedia card block-device 0, partition 2 (for the second partition on the microSD card). 
+
+|`rootfstype`
+|Specifies the format of the partition (the type of filesystem the `rootfs` uses). 
+|For example, `rootfstype=ext4`.
+
+|quiet
+|Sets the default kernel log level to `KERN_WARNING`.
+|This suppresses all but very serious log messages during boot.
+|===
+
+==== Additional kernel command line entries
+This section contains some of the other entries you can use in the kernel command line. This list is not exhaustive.
+
+[cols="1,2", options="header"]
+|===
+|Entry |Description
+
+|`splash`
+|Tells the boot to use a splash screen through the Plymouth module.
+
+|`plymouth.ignore-serial-consoles`
+|Normally, Plymouth suppresses boot messages on serial consoles. This entry forces Plymouth to ignore serial consoles so boot messages remain visible.
+
+|`dwc_otg.lpm_enable=0`
+|Disables Link Power Management (LPM) in the `dwc_otg` USB driver used by the processor's USB controller. On Raspberry Pi 4, this controller only affects the USB-C power input and not the USB-A ports.
+
+|`dwc_otg.speed=1`
+|Sets the USB controller speed to full speed (USB 1.0). Useful for troubleshooting USB issues but slower than high speed (USB 2.0). Only use this entry when diagnosing problems.
+
+|`smsc95xx.turbo_mode`
+|Applicable only to Raspberry Pi 1B, 1B+, 2B, 3B, and 3B+. Enables or disables turbo mode for the wired Ethernet driver. Setting `smsc95xx.turbo_mode=N` disables turbo mode.
+
+|`usbhid.mousepoll`
+|Adjusts mouse polling interval. Setting `usbhid.mousepoll=0` might help with slow or erratic wireless mice.
+
+|`drm.edid_firmware=HDMI-A-1:edid/your_edid.bin`
+|Overrides the monitor's built-in EDID using a custom EDID file located in `/usr/lib/firmware/edid/`.
+|===
