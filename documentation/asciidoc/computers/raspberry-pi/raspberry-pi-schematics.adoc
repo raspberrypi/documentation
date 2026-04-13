@@ -39,8 +39,8 @@ Schematics for the various Raspberry Pi board versions:
 === Raspberry Pi 1 Model B+
 
 * https://pip.raspberrypi.com/documents/RP-008353-DS[Schematics, revision 1.2]
-* https://pip.raspberrypi.com/documents/RP-008352-DS[Mechanical drawings, PDF]
-* https://pip.raspberrypi.com/documents/RP-008351-DS[Mechanical drawings, DXF]
+* https://pip.raspberrypi.com/documents/RP-008351-DS[Mechanical drawings, PDF]
+* https://pip.raspberrypi.com/documents/RP-008352-DS[Mechanical drawings, DXF]
 
 === Raspberry Pi 1 Model A+
 
