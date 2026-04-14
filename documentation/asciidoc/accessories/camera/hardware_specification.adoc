@@ -96,14 +96,14 @@ The following table compares the features and capabilities of the Raspberry Pi c
 | Adjustable
 | Adjustable
 
-| Depth of field
-| Approx 1 m to ∞
+| Focus range
+|  Approx 1 m to ∞
 | Approx 10 cm to ∞
 | Approx 10 cm to ∞
 | Approx 5 cm to ∞
-| N/A
+| Depends on lens
 | Approx 20 cm to ∞
-| N/A
+| Depends on lens
 
 | Focal length
 | 3.60 mm ± 0.01
