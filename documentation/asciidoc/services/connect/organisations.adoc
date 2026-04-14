@@ -70,6 +70,72 @@ image::images/transfer.png[width="70%"]
 
 . Select **Transfer**.
 
+[[tag-devices]]
+=== Tag devices
+
+Tags help you categorise and find devices in your organisation. For example, you could tag devices by location (`london`, `leeds`), environment (`production`, `staging`), or function (`point-of-sale`, `kiosk`).
+
+Tags appear beneath the device name on both the device page and the device list.
+
+You must be an administrator to add or remove tags. 
+
+To add or remove tags on a device:
+
+. Select the device from the device list.
+
+. From the top right of the device page, open the **Settings** dropdown menu.
+
+. Select **Edit tags...**
++
+image::images/tagging.png[alt="The Edit tags dialog, showing applied tags and the autocomplete dropdown with suggestions.",width="70%"]
+
+    * To add a tag, type in the text field. You can select an existing tag from the dropdown, or type a new tag name and select the **Create** option.
+    * To remove a tag, select the **x** next to the tag you want to remove.
+
+. Select **Done** when you've finished.
+
+Each device supports up to 10 tags. Tag names must be 30 characters or fewer and can only contain lowercase letters, numbers, hyphens, and underscores.
+
+[[search-filter-devices]]
+=== Search and filter devices
+
+The search bar at the top of the device list lets you find devices by combining free-text search with structured filters.
+
+To search by device name or serial number, type any text into the search bar. Results update automatically as you type.
+
+To filter by a specific attribute, type a qualifier followed by a colon and a value. The available qualifiers are:
+
+[cols="1,3"]
+|===
+| Qualifier | Description
+
+| `model:`
+| Filter by Raspberry Pi model (for example, `model:5`, `model:4b`)
+
+| `memory:`
+| Filter by RAM size (for example, `memory:4gb`, `memory:512mb`)
+
+| `os:`
+| Filter by operating system (for example, `os:raspios-13`)
+
+| `tag:`
+| Filter by tag (for example, `tag:kiosk`, `tag:production`)
+|===
+
+NOTE: The `model:`, `memory:`, and `os:` qualifiers will only find devices running Connect client version 2.9.0 or later. To update Connect on your devices, see xref:connect.adoc#update[Update].
+
+You can combine multiple filters and free text in a single query. For example, `model:5 tag:production dashboard` finds Raspberry Pi 5 devices tagged `production` with "dashboard" in their name.
+
+image::images/filters.png[alt="The device list with model and tag filters applied in the search bar.",width="70%"]
+
+When you start typing in the search bar, a dropdown suggests available qualifiers and values. Select a qualifier from the dropdown to see its available values, then select a value to add it as a filter. Applied filters appear in the search bar.
+
+Remove a filter by selecting the **x** next to it or by pressing **Backspace**.
+
+Use the `tag:` qualifier multiple times to find devices that have _all_ of the specified tags. For example, `tag:production tag:kiosk` only returns devices that have both the `production` and `kiosk` tags.
+
+TIP: Select a tag on any device in the list to quickly add it as a filter.
+
 === Set up your subscription
 
 A subscription to Connect for Organisations starts when your four-week trial period ends, after which, you're billed in arrears every month.
@@ -149,9 +215,27 @@ Replace these values in the code below:
 * `+my-auth-key+`: a description for your auth key
 * `+1+`: how many days until the auth key expires (optional, defaults to 1 day)
 * `+pi5-001+`: name used when adding devices with this key (optional, defaults to the device's hostname)
+* `+production+`, `+kiosk+`: tags applied to the device when the auth key is exchanged (optional). Each tag must contain only lowercase letters, numbers, hyphens, and underscores, with a maximum length of 30 characters. You can apply up to 10 tags per auth key.
 
 [tabs]
 ======
+JSON::
++
+[source,http]
+----
+POST /organisation/auth-keys HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/json
+
+{
+    "description": "my-auth-key",
+    "ttl_days": 1,
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"]
+}
+----
+
 HTTP::
 +
 [source,http]
@@ -161,14 +245,14 @@ Host: api.connect.raspberrypi.com
 Authorization: Bearer rporg_accesstokenhere
 Content-Type: application/x-www-form-urlencoded
 
-description=my-auth-key&ttl_days=1&device_name=pi5-001
+description=my-auth-key&ttl_days=1&device_name=pi5-001&tags[]=production&tags[]=kiosk
 ----
 
 curl::
 +
 [source,console]
 ----
-$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --data-urlencode 'description=my-auth-key' --data-urlencode 'ttl_days=1' --data-urlencode 'device_name=pi5-001' https://api.connect.raspberrypi.com/organisation/auth-keys
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --data-urlencode 'description=my-auth-key' --data-urlencode 'ttl_days=1' --data-urlencode 'device_name=pi5-001' --data-urlencode 'tags[]=production' --data-urlencode 'tags[]=kiosk' https://api.connect.raspberrypi.com/organisation/auth-keys
 ----
 
 ======
@@ -180,13 +264,22 @@ If successful, you get a **201 Created** response with your auth key in JSON for
 HTTP/2 201
 Content-Type: application/json; charset=utf-8
 
-{"id":"12345","description":"my-auth-key","secret":"rpoak_123456","expires_at":"2025-01-01T00:00:30Z"}
+{
+    "id": "12345",
+    "description": "my-auth-key",
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"],
+    "secret": "rpoak_123456",
+    "expires_at": "2025-01-01T00:00:30Z"
+}
 ----
 
 The response contains the following fields:
 
 id:: A unique identifier for the auth key.
 description:: The description used to create the auth key.
+device_name:: The name that will be assigned to the device when the auth key is exchanged.
+tags:: The tags that will be applied to the device when the auth key is exchanged.
 secret:: A random token prefixed with `+rpoak_+`.
 expires_at:: The date and time when the key will expire (in ISO 8601 format).
 
@@ -246,7 +339,8 @@ Content-Type: application/json; charset=utf-8
         {
             "id": "69739b44-ebb2-468e-9e24-08126dec4925",
             "name": "raspberrypi5",
-            "serial_number": "ea636879c4d47a37"
+            "serial_number": "ea636879c4d47a37",
+            "tags": ["production", "kiosk"]
         }
     ],
     "meta": {
@@ -268,6 +362,7 @@ Each item in the `+devices+` list contains the following fields:
 id:: A unique identifier for the device.
 name:: The name of the device.
 serial_number:: The serial number of the device.
+tags:: The tags applied to the device.
 
 The `+meta+` object contains the following fields:
 
@@ -371,6 +466,7 @@ for DEVICE in pi5-001 pi5-002 pi5-003; do
     --header 'Authorization: Bearer rporg_accesstokenhere' \
     --data-urlencode "description=${DEVICE}" \
     --data-urlencode "device_name=${DEVICE}" \
+    --data-urlencode "tags[]=production" \
     https://api.connect.raspberrypi.com/organisation/auth-keys \
     | jq -r '.secret')
   if [ -z "${SECRET}" ]; then

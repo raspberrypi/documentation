@@ -94,19 +94,11 @@ Now that your device appears on your Connect dashboard, you can access your devi
 
 === Viewing your devices
 
-Connect lists all your linked devices on the *Devices* tab. For organisations, you can search this list by device name or filter it by device characteristics.
+Connect lists all your linked devices on the *Devices* tab. For organisations, you can xref:connect.adoc#search-filter-devices[search and filter] this list, and add xref:connect.adoc#tag-devices[tags] to devices.
 
 Sign in to https://connect.raspberrypi.com[connect.raspberrypi.com] and go to the **Devices** tab. Connect displays a list of linked devices.
 
 image::images/devices.png[alt="The Connect page, showing the linked devices screen.",width="80%"]
-
-(Connect for Organisations only) To search for a device by its name, enter text in the *Search* field. Connect matches results as you type.
-
-(Connect for Organisations only) To filter your device list, select *Filter* and choose from the available filter options. You can filter your devices by the device model, the amount of memory it has, or the installed operating system.
-
-image::images/filters.png[alt="The Connect page, showing the linked device screen with filters applied.",width="80%"]
-
-This feature is available only for devices running the client version 2.9.0 or later. To update Connect on your devices, see <<update>>.
 
 The connection methods available for each device are displayed as a grey badge below the name of the device. You can connect to your devices through the following methods:
 
