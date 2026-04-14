@@ -209,7 +209,7 @@ WARNING: Always disconnect your Raspberry Pi from power before connecting or dis
 
 To boot from an NVMe drive attached to the M.2 HAT+ or M.2 HAT+ Compact, complete the following steps:
 
-. xref:../computers/getting-started.adoc#raspberry-pi-imager[Install an operating system to your NVMe drive by using Raspberry Pi Imager]. You can do this from your Raspberry Pi if you already have an SD card with a Raspberry Pi OS image.
+. xref:../computers/getting-started.adoc#imager-install[Install an operating system to your NVMe drive by using Raspberry Pi Imager]. You can do this from your Raspberry Pi if you already have an SD card with a Raspberry Pi OS image.
 . Reboot your Raspberry Pi.
 * If you don't have an SD card inserted in your Raspberry Pi 5, it boots automatically from your NVMe drive.
 * If you do have an SD card inserted in your Raspberry Pi 5, it attempts to boot from the SD card first. You can change the boot order on your Raspberry Pi by completing the following steps:

@@ -1,30 +1,11 @@
-== Secure your Raspberry Pi
+== Operational security
 
-Here, we describe some common ways to improve the security of your Raspberry Pi.
-
-=== Require a password for `sudo` commands
-
-Prefixing a command with `sudo` runs it as a superuser. By default, that does not need a password. However, you can make your Raspberry Pi more secure by requiring a password for all commands run with `sudo`.
-
-To force `sudo` to require a password, edit the `010_pi-nopasswd` sudoers file:
-
-[source,console]
-----
-$ sudo visudo /etc/sudoers.d/010_pi-nopasswd
-----
-
-Change the `<username>` entry to the following, replacing `<username>` with your username:
-
-[source,bash]
-----
-<username> ALL=(ALL) PASSWD: ALL
-----
-
-Save the file. Your new preference should take effect immediately.
+This section summarises common ways to improve the security of your Raspberry Pi. If you're looking for password instructions, see xref:../computers/configuration.adoc#users[User access and management].
 
 === Update Raspberry Pi OS
+To get the latest security features, we recommend that you keep your software up to date. For more information, see  xref:os.adoc#update-software[Update your current Raspberry Pi software] in the *Raspberry Pi OS* page.
 
-Only the latest OS distribution contains all the latest security fixes. Always keep your device xref:os.adoc#update-software[updated] to the latest version of Raspberry Pi OS.
+Only the most recent major release of Raspberry Pi OS contains all the latest security fixes. We therefore recommend that you also upgrade to the most recent major release when it becomes available (for example, from Bookworm to Trixie). This is different from _updating_ your Raspberry Pi OS , which installs the latest packages and security fixes within your current release without changing to a new major version. For instructions on upgrading your OS, see xref:../computers/os.adoc#upgrade[Upgrade to a new major version].
 
 === Automatically update your SSH server
 
@@ -70,80 +51,188 @@ $ sudo systemctl restart ssh
 ----
 
 === Use a firewall
+A firewall is a network security system that monitors and controls incoming and outgoing network traffic based on a defined set of security rules. This section introduces *Uncomplicated Firewall (UFW)*, a firewall tool that offers a simplified command-line interface for controlling network traffic through https://www.netfilter.org/projects/iptables/index.html[`iptables`]. There are also some graphical user interface (GUI) frontends available for UFW, such as GUFW, but `ufw` commands are typically run on the command line. This section provides an overview of, and basic instructions for, the UFW command-line interface.
 
-There are many firewall solutions available for Linux. Most use the underlying https://www.netfilter.org/projects/iptables/index.html[iptables] project to provide packet filtering. This project sits over the Linux netfiltering system. By default, `iptables` is installed on Raspberry Pi OS, but is not set up. Setting it up can be a complicated task, and one project that offers a simpler interface than `iptables` is https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw[Uncomplicated Firewall (UFW)]. This is the default firewall tool in Ubuntu, and can be installed on your Raspberry Pi:
+==== Uncomplicated Firewall (UFW)
+Network traffic is organised by port numbers, which are numerical labels used to direct data to specific applications. Firewalls control traffic by opening and closing particular ports to allow or block certain types of communication.
 
-[source,console]
-----
-$ sudo apt install ufw
-----
+On Linux systems, network traffic is filtered through the kernel's firewall subsystem, called *netfilter*. Netfilter implements packet filtering; it blocks or allows data packets to pass through your system based on things like their source IP address, destination IP address, port number, protocol, and direction.
 
-`ufw` is a command-line tool, although there are some GUIs available for it. Note that `ufw` needs to be run with superuser privileges, so all commands are preceded with `sudo`. It is also possible to use the option `--dry-run` any `ufw` commands, which indicates the results of the command without actually making any changes.
+System administrators can interact with netfilter through `iptables`, which is the main command-line tool for defining packet filtering rules. However, `iptables` can be complex. https://www.linux.com/learn/introduction-uncomplicated-firewall-ufw[UFW (Uncomplicated Firewall)], the default firewall tool used by Ubuntu, simplifies firewall configuration and management. It acts as a wrapper for `iptables`, allowing system administrators to set firewall rules without dealing with the complexity of raw `iptables` commands.
 
-To enable the firewall, which will also ensure it starts up on boot, use:
+==== UFW commands
+UFW is a command-line program used to define firewall access rules. The typical syntax for ufw commands is: `sudo ufw [--dry-run] <command> [rule]`.
 
-[source,console]
-----
-$ sudo ufw enable
-----
+* All `ufw` commands require superuser privileges, and so must be preceded with `sudo`.
+* Optionally, you can add `--dry-run` to simulate the `ufw` command without making actual changes.
+* The `<command>` is the main action that you want to perform, such as `allow`.
+* Depending on the command, you can optionally specify a `rule` to apply to the command, such as `allow 22`.
 
-To disable the firewall, and disable start up on boot, use:
+For example, `sudo ufw --dry-run allow 22` shows you the would-be outcome of allowing traffic on port 22, including the entire set of rules if the change were made.
+
+==== Install and enable UFW
+To use UFW, you must first install it onto your Raspberry Pi device. After installation, UFW is present but disabled, meaning that it doesn't block any traffic yet. This allows you to configure default access rules without locking yourself out. This is especially important if you're connected to your Raspberry Pi device over SSH (or any other remote method); to avoid being locked out, you must allow remote access before enabling UFW.
+
+If you're connected over SSH, the recommended flow of actions is as follows:
+
+[cols="1,6,5", options="header"]
+|===
+|Step |Description |Command
+
+|1
+|Update your package list.
+|`sudo apt-get update`
+
+|2
+|Install UFW. Before UFW is enabled, the output says that UFW is inactive.
+|`sudo apt install ufw`
+
+|3
+|Verify the installation by checking the status. For information about this command, see <<rule-management>>.
+|`sudo ufw status`
+
+|4
+|Optionally (but recommended), configure default policies, such as denying all incoming traffic. Defaults apply globally.
+|`sudo ufw default deny incoming`
+
+|5
+|To maintain remote access, allow SSH (before enabling UFW), either by specifying the service name (ssh) or the default port (22/tcp).
+|`sudo ufw allow ssh` +
+OR +
+`sudo ufw allow 22/tcp`
+
+|6
+|Optionally, if you’re running a web server, allow HTTP and HTTPS traffic, either by specifying the service names (http and https) or their default ports (80/tcp and 443/tcp, respectively).
+|`sudo ufw allow http` +
+`sudo ufw allow https` +
+OR +
+`sudo ufw allow 80/tcp` +
+`sudo ufw allow 443/tcp`
+
+|7
+|Enable UFW to activate the firewall and configure it to start up on boot.
+|`sudo ufw enable`
+
+|8
+|Verify the status of the firewall and review the configured rules. For information about this command, see <<rule-management>>.
+|`sudo ufw status verbose`
+|===
+
+You can disable UFW at any time, which stops it from starting up on boot. Use the following command to disable the UFW firewall:
 
 [source,console]
 ----
 $ sudo ufw disable
 ----
 
-Allow a particular port to have access (we have used port 22 in our example):
+==== Use allow and deny rules
+
+This section lists the basic commands for allowing and denying traffic through specified service names, ports, and services. The general `ufw` syntax for `allow` and `deny` commands are as follows:
+
+* Allow access to a particular port or service: `sudo ufw allow [rule]`
+* Deny access to a particular port or service: `sudo ufw deny [rule]`
+
+The following table provides specific examples.
+
+[cols="2,3", options="header"]
+|===
+|Command |Description
+
+|`sudo ufw allow 22`
+|Allows access to port *22* through the firewall. This opens the port for all protocols (TCP and UDP).
+
+|`sudo ufw allow 22/tcp`
+|Allows *TCP only* on port *22*.
+
+|`sudo ufw allow ssh`
+|Allows the *SSH* service without specifying the port (SSH is usually port `22/tcp`).
+
+|`sudo ufw deny 22`
+|Denies access to port *22* through the firewall. This closes the port for all protocols (TCP and UDP).
+
+|`sudo ufw deny 22/tcp`
+|Denies *TCP only* on port *22*.
+
+|`sudo ufw deny ssh`
+|Denies the *SSH* service without specifying the port (SSH is usually port `22/tcp`).
+|===
+
+==== Advanced UFW rules
+UFW can do more than basic allow and deny rules. It can also:
+
+* <<allow-block-ip-addresses>> from a specific port.
+* <<traffic-direction>> (incoming and outgoing).
+* <<rate-limit>> to help protect against brute-force or DDoS attacks.
+* <<specify-network-interfaces>> to apply rules specifically to wired or wireless networks.
+
+For more information about these options, run the following command: `man ufw`. This displays the UFW manual page in your terminal, which includes documentation on UFW syntax, options, rule formatting, and examples.
+
+[[allow-block-ip-addresses]]
+===== Allow or block a specific IP address
+You can allow or deny access from a specific IP address to a specific port. This is useful if you want to block suspicious hosts or allow trusted hosts only. For example, the following command denies access to port 30 from IP address 192.168.2.1
 
 [source,console]
 ----
-$ sudo ufw allow 22
+$ sudo ufw deny from 192.168.2.1 to any port 30
 ----
 
-Denying access on a port is also very simple (again, we have used port 22 as an example):
+[[traffic-direction]]
+===== Specify traffic direction
+To control how your system sends or receives network traffic, perhaps to block threats to your system (incoming) or protect system resources (outgoing), you can prevent traffic from coming in one or both directions. Specifically, you can add `out` (for outgoing traffic) or `in` (for incoming traffic) to one of the following commands:
+
+* `allow`, which allows the traffic to flow in the specified direction.
+* `deny`, which silently drops the traffic flowing in the specified direction.
+* `reject`, which actively refuses the traffic flowing in the specified direction.
+
+For example, the following command prevents all outgoing traffic on the SMTP port (usually port 25/TCP):
 
 [source,console]
 ----
-$ sudo ufw deny 22
+$ sudo ufw reject out smtp
 ----
 
-You can also specify which service you are allowing or denying on a port. In this example, we are denying TCP on port 22:
-
-[source,console]
-----
-$ sudo ufw deny 22/tcp
-----
-
-You can specify the service even if you do not know which port it uses. This example allows the ssh service access through the firewall:
-
-[source,console]
-----
-$ sudo ufw allow ssh
-----
-
-The status command lists all current settings for the firewall:
-
-[source,console]
-----
-$ sudo ufw status
-----
-
-The rules can be quite complicated, allowing specific IP addresses to be blocked, specifying in which direction traffic is allowed, or limiting the number of attempts to connect (for example to help defeat a DDoS attack). You can also specify the device rules are to be applied to (e.g. eth0, wlan0). Please refer to the `ufw` man page (`man ufw`) for full details beyond the commands below.
-
-Limit login attempts on ssh port using TCP. This denies connection if an IP address has attempted to connect six or more times in the last 30 seconds:
+[[rate-limit]]
+===== Rate limit connection attempts
+To protect against brute-force and DDoS attacks, the `limit` command temporarily blocks any IP address that attempts to make too many connections in a short period of time (approximately 6 or more times within 30 seconds). For example, the following command watches how often an IP address attempts to open a new connection to SSH (usually port `22/tcp`) and applies the rate limit.
 
 [source,console]
 ----
 $ sudo ufw limit ssh/tcp
 ----
 
-Deny access to port 30 from IP address 192.168.2.1
+[[specify-network-interfaces]]
+===== Specify network interfaces
+You can set firewall rules to apply only to a specific network connection (`eth0` for wired networks or `wlan0` for Wi-Fi). For example, the following command allows incoming TCP traffic on port 80 only on the `eth0` network interface:
 
 [source,console]
 ----
-$ sudo ufw deny from 192.168.2.1 port 30
+$ sudo ufw allow in on eth0 to any port 80 proto tcp
 ----
+
+[[rule-management]]
+==== Rule management
+UFW processes rules in order, and so the order of rules matters. The following table lists useful commands to help you inspect your current firewall configuration and remove rules when necessary.
+
+[cols="2,3", options="header"]
+|===
+|Command |Description
+
+|`sudo ufw status`
+|Displays whether UFW is active and lists all current settings for the firewall (which ports and services are allowed and denied).
+
+|`sudo ufw status verbose`
+|Displays additional details, such as default policies and logging settings.
+
+|`sudo ufw show added`
+|Displays only user-added rules (excluding internal and system rules). This is useful if you want to review changes or compare configurations across systems.
+
+|`sudo ufw status numbered`
+|Displays rules with their assigned index number. This is useful if you want to delete a specific rule.
+
+|`sudo ufw delete <number>`
+|Deletes the rule that you specify based on its assigned index number. UFW then renumbers the remaining entries. You can rerun `sudo ufw status numbered` to confirm the rule was removed.
+|===
+
 
 === Block suspicious activity with `fail2ban`
 

@@ -1,78 +1,171 @@
-== Users
+[[users]]
+== User access and management
 
-[[change-user-password]]
-=== Change a user's password
+This section covers how to:
 
-You can change the password for the current user account via the `raspi-config` application on from the command line:
+* Manage other users of your Raspberry Pi from the command line, including how to:
+** <<add-user>> if you want to have multiple users of your Raspberry Pi with separate accounts and home directories.
+** <<verify>>, which you might want to do to check that you successfully added another user to your Raspberry Pi.
+** <<grant-user-access>>, which means giving other users of your Raspberry Pi superuser permissions.
+** <<delete-user>> from your Raspberry Pi.
+* Manage user passwords, which you can do from the desktop and using the interactive `raspi-config` TUI, including how to:
+** <<change-user-password>>. You can also do this from the command line.
+** <<auto-login>> by turning off auto login.
+** <<disable-sudo-password>>. The default is to require a password whenever a user attempts to use a `sudo` command.
 
-[source,console]
-----
-$ sudo raspi-config
-----
-
-Select option 2, and follow the instructions to change the password.
-
-Alternatively, use the `passwd` application:
-
-[source,console]
-----
-$ passwd
-----
-
+[[add-user]]
 === Add a user
+To add a new user to your Raspberry Pi:
 
-To add a new user, enter the following command, replacing the `<username>` placeholder with the username for the new user:
-
+. Enter the following command, replacing <username> with the username for the new user:
++
 [source,console]
 ----
 $ sudo adduser <username>
 ----
+. When prompted, enter a password for the new user.
+. Optionally, add additional information about the user, such as their full name, room number, and so on. If you don't want to include this information, press *Enter* or *Return* on your keyboard to skip.
+. Press *Y* followed by *Enter* or *Return* to indicate that the information is correct.
 
-When prompted, enter a password for the new user.
+[[verify]]
+=== Verify a user exists
+When you create a new user, the home directory is automatically created at `/home/<username>`. You can check the home directory for the new user by running the following in the command line: `/home/<username>/`, replacing `<username>` with the user's username. This returns something like the following:
 
-You can find the home directory for the new user at `/home/<username>/`.
+[source]
+----
+-bash: /home/<username>: Is a directory
+----
 
-To grant the new user necessary permissions, like `sudo`, run the following command to add the user to the associated user groups, replacing the `<username>` placeholder with the username for the new user:
+This verifies that the new user exists and has a home directory.
+
+To check the home directories of all users, run the following command. Your new user's home directory appears in the resulting list.
+
+[source,console]
+----
+$ ls -l /home
+----
+
+You can navigate into the home directory of a user listed here using the following command, replacing `<username>` with the username of the user you're interested in:
+
+[source,console]
+----
+$ cd /home/<username>
+$ ls -la
+----
+
+[[grant-user-access]]
+=== Grant user access permissions
+To grant a user permissions, run the following command, replacing `<username>` with the username of the new user. This adds the user to important system groups. Notably, `sudo` in the following command gives superuser access to the user:
 
 [source,console]
 ----
 $ sudo usermod -a -G adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,render,netdev,lpadmin,gpio,i2c,spi <username>
 ----
 
-To check that the permissions were successfully granted, run the following command, replacing the `<username>` placeholder with the username for the new user:
+To check that the permissions were successfully granted, switch to the new user. Run the following command, replacing `<username>` with the username of the new user:
 
 [source,console]
 ----
 $ sudo su - <username>
 ----
 
-If the above command runs successfully, permissions were successfully configured for the user.
+If the command runs successfully, permissions were successfully configured for the user.
 
-If you've changed your keyboard layout, you might find that the newly added user is using the "wrong" keyboard layout. To fix this, sign in as the new user and run:
+[[delete-user]]
+=== Remove a user
 
-[source,console]
-----
-$ sudo raspi-config nonint update_labwc_keyboard
-----
-
-=== Delete a user
-
-To delete a user, run the following command, replacing the `<username>` placeholder with the username you would like to delete:
+If you want to delete a user from your Raspberry Pi, enter the following command, replacing `<username>` with the username for the user:
 
 [source,console]
 ----
-$ sudo deluser -remove-home <username>
+$ sudo deluser --remove-home <username>
 ----
 
-This command deletes the user as well as their home directory. If you'd like to preserve the user's home directory, run the command without the `-remove-home` option.
+This command deletes the user as well as their home directory. If you want to preserve the user's home directory, run the command without the `--remove-home` option.
 
-=== Change the default user
+Press *Y* followed by *Enter* or *Return* on your keyboard to indicate that the information is correct.
 
-To change the user that automatically logs into your Raspberry Pi on boot, run the following command:
+[[change-user-password]]
+=== Change your password
+You can add or change the password for the current user from the desktop, using the interactive `raspi-config` TUI, and from the command line.
 
-[source,console]
-----
-$ sudo raspi-config
-----
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *System* tab in the left-side menu.
+. Select *Change Password*.
+. In the *Enter new password* field, enter a new password.
+. In the *Confirm new password* field, enter the same password again.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+. Reboot your Raspberry Pi to apply your new password.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `1 System Options > S3 Password`.
+. Select `<OK>` to confirm that you want to change the password for the current, named user.
+. Enter a password and then press the *Enter* or *Return* key on your keyboard. The Terminal doesn't show your characters as you type them.
+. Enter the same password a second time and then press the *Enter* or *Return* key on your keyboard. If this is done correctly, a success message appears telling you that the password was updated successfully.
+. Select `<OK>` and then `<Finish>` when you're done.
+. Reboot your Raspberry Pi to apply your new password.
+CLI::
+For a fully command-line experience of changing your password, you can manually set your password using use the `passwd` CLI  application:
 
-Select option `1`, `Boot/Auto login`. Reboot to put your changes into effect.
+. Open the Terminal and run `passwd`.
+. Enter your current password and then press the *Enter* or *Return* key on your keyboard. The Terminal doesn't show your characters as you type them.
+. Enter a password and then press the *Enter* or *Return* key on your keyboard.
+. Enter the same password a second time and then press the *Enter* or *Return* key on your keyboard. If this is done correctly, a success message appears telling you that the password was updated successfully.
+. Reboot your Raspberry Pi to apply your new password.
+======
+
+[[auto-login]]
+=== Require a password from startup
+You can require users to enter their password when booting the Raspberry Pi by turning off *Auto Login*. 
+
+You can do this from the desktop and using the interactive `raspi-config` TUI. 
+
+When you turn off auto login, you choose whether to separately require the password for booting into the *console* and the *desktop*. 
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *System* tab in the left-side menu.
+. To configure your Raspberry Pi to require a password when you boot into the console, turn off *Console Auto Login* using the respective toggle.
+. To configure your Raspberry Pi to require a password when you boot into the desktop, turn off *Desktop Auto Login* using the respective toggle.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+. Reboot your Raspberry Pi to apply your changes.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `1 System Options > S6 Auto Login`.
+. Select `Yes` or `No` in response to the question *Would you like to automatically log in to the console?* Selecting `No` configures your Raspberry Pi to require a password when you boot into the Raspberry Pi command line (CLI).
+. Select `<OK>` to confirm this choice.
+. Select `Yes` or `No` in response to the question *Would you like to automatically log in to the desktop?* Selecting `No` configures your Raspberry Pi to require a password when you boot into the Raspberry Pi desktop.
+. Select `<OK>` to confirm this choice.
+. Select `<Finish>` when you're done.
+. Reboot your Raspberry Pi to apply your changes.
+======
+
+[[disable-sudo-password]]
+=== Turn off password for superuser commands
+Prefixing a command in Raspberry Pi with `sudo` runs that command with superuser (admin) privileges.
+
+By default, Raspberry Pi OS requires you to enter your password when running sudo commands. This prevents unauthorised users from running `sudo` commands on your device.
+
+You can override this setting during installation with Imager, or after installation through either the desktop or by using the interactive `raspi-config` TUI.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *System* tab in the left-side menu.
+. Use the toggle next to *Admin Password* to turn off the password requirement for `sudo` commands.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+. Reboot your Raspberry Pi to apply your changes.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `1 System Options > S10 Admin Password`.
+. Select `Yes` or `No` in response to the question *Would you like the admin (sudo) password to be enabled?* Selecting `No` turns off the password requirement for `sudo` commands.
+. Select `<OK>` to confirm this choice.
+. Select `<Finish>` when you're done.
+. Reboot your Raspberry Pi to apply your changes.
+======

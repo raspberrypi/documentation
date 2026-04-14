@@ -3,7 +3,7 @@
 
 After starting Connect on your Raspberry Pi device, you must associate your device with your Connect account.
 
-If you used Raspberry Pi Imager to install Raspberry Pi OS on your device, you might have already linked your device with your Connect account. For more information, see xref:../computers/getting-started.adoc#raspberry-pi-imager[Install using Imager].
+If you used Raspberry Pi Imager to install Raspberry Pi OS on your device, you might have already linked your device with your Connect account. For more information, see xref:../computers/getting-started.adoc#imager-install[Install using Imager].
 
 [tabs]
 ======
@@ -40,7 +40,7 @@ Using an Auth Key::
 +
 An auth key is a single-use, temporary token that lets you link a device to a Connect account automatically (without using the web interface).
 +
-The easiest way of creating and using an auth key is by using the xref:../computers/getting-started.adoc#raspberry-pi-imager[customisation options in Imager]. You can also manually create an auth key from the **Settings** page of a personal or organisation's Connect account, and organisation administrators can create auth keys using the xref:connect.adoc#organisations-management-api[management API].
+The easiest way of creating and using an auth key is by using the xref:../computers/getting-started.adoc#imager-install[customisation options in Imager]. You can also manually create an auth key from the **Settings** page of a personal or organisation's Connect account, and organisation administrators can create auth keys using the xref:connect.adoc#organisations-management-api[management API].
 +
 NOTE: Personal accounts can only have one auth key active at a time; organisations can have multiple auth keys active at once. You need a unique auth key for each device.
 +

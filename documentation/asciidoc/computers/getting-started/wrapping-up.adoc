@@ -1,20 +1,20 @@
+[[next]]
 == Next steps
+After installing and configuring your Raspberry Pi, you can download software, start using your new Raspberry Pi computer, and connect to the wider community for ideas and support.
 
-Now that your Raspberry Pi is set up and ready to go, what's next?
+=== Recommended applications
+Raspberry Pi OS includes pre-installed applications that allow you to start using your Raspberry Pi as soon as possible.
 
-=== Recommended software
+You can download other recommended applications for free: select the Raspberry Pi icon in the top-left corner of the screen, and then select *Preferences > Recommended Software*. From here, you can install a variety of recommended applications.
 
-Raspberry Pi OS comes with many essential applications pre-installed so you can start using them straight away. If you'd like to take advantage of other applications we find useful, click the raspberry icon in the top left corner of the screen. Select **Preferences > Recommended Software** from the drop-down menu, and you'll find the package manager. You can install a wide variety of recommended software here for free.
+For example, if you plan to use your Raspberry Pi as a home computer, you might find LibreOffice useful for writing and editing documents and spreadsheets. You can also make your Raspberry Pi more accessible with the Orca screen reader, found under *Universal Access*.
 
-image::images/recommended-software.jpg[alt="Opening the package manager GUI in Raspberry Pi OS",width="80%"]
+=== Resources
+Explore our https://www.raspberrypi.com/tutorials/[tutorials] to discover various ways you can use your new Raspberry Pi computer.
 
-For example, if you plan to use your Raspberry Pi as a home computer, you might find LibreOffice useful for writing and editing documents and spreadsheets. You can also make your Raspberry Pi more accessible with apps like a screen magnifier and Orca screen reader, found under Universal Access.
-
-=== Tutorials
-
-Our tutorials demonstrate various ways you can use your new computer. You can learn to code, control external devices, and build exciting new projects by following https://www.raspberrypi.com/tutorials/[tutorials] that pique your interest.
-
-=== Support
+You can learn to code, control external devices, and build new projects by following tutorials that interest you.
 
 For support with official Raspberry Pi products, or to connect with other Raspberry Pi users, visit the https://forums.raspberrypi.com/[Raspberry Pi forums].
+
+For more inspiration, subscribe to https://magazine.raspberrypi.com/[Raspberry Pi Magazine], which features in-depth tutorials, step-by-step projects, coding guides, and community stories.
 

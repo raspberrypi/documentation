@@ -1,0 +1,505 @@
+[[remote]]
+== Remote access
+
+This section covers how to control your Raspberry Pi from another computer without being physically next to it. Specifically, this section covers how to:
+
+* <<ssh>> for remote access to your Raspberry Pi command line. You can do this from the desktop, using the interactive `raspi-config` TUI, and manually from the command line.
+* <<connect>>, a Raspberry Pi service that provides remote access to your Raspberry Pi desktop and Terminal with no manual network configuration. You can enable this from the desktop, using the interactive `raspi-config` TUI, and manually from the command line.
+* <<vnc>> (virtual network computing) for remote access to your Raspberry Pi's desktop. You can do this from the desktop and using the interactive `raspi-config` TUI.
+
+[[ssh]]
+=== Enable or disable SSH
+Enabling SSH allows you to remotely access the command line of your Raspberry Pi from another computer. You can enable SSH from the desktop, using the interactive `raspi-config` TUI, and manually from the command line. You can also enable SSH as part of the installation process using Imager. For more information, see xref:../computers/getting-started.adoc#imager-install[Install using Imager].
+
+After you've enabled SSH, the next step is to connect to connect to your Raspberry Pi from another computer using an SSH client. For more information, see the xref:remote-access.adoc[Remote access] documentation.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Interfaces* tab in the left-side menu.
+. Use the toggle next to *SSH* to turn it on or off.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+. Reboot your Raspberry Pi to apply your changes.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `3 Interface Options > I1 SSH`.
+. Select `Yes` or `No` in response to the question *Would you like the SSH server to be enabled?*
+. Select `<OK>` and then `<Finish>` when you're done.
+CLI::
+To enable or disable SSH manually from the command line, open the Terminal and run `touch /boot/firmware/ssh`. Then reboot your Raspberry Pi, which you can do by running `sudo reboot`.
+======
+
+[[connect]]
+=== Enable or disable Connect
+Raspberry Pi Connect allows you to remotely access the desktop of your Raspberry Pi from another computer. You can enable Raspberry Pi Connect from the desktop, using the interactive `raspi-config` TUI, and manually from the command line.
+
+After you've enabled Raspberry Pi Connect, the next step is to link a Raspberry Pi device. For more information, see the xref:remote-access.adoc[Remote access] and xref:../services/connect.adoc[Raspberry Pi Connect] documentation.
+
+[tabs]
+======
+Desktop::
+Raspberry Pi connect is enabled and disabled from the Raspberry Pi Connect icon in the system tray in the top right of your desktop GUI. The Raspberry Pi Connect icon is two small squares connected by a circle.
+
+* To enable Raspberry Pi Connect from the desktop, select the Raspberry Pi Connect icon in the top right of the system tray and then select *Turn On Raspberry Pi Connect*.
+* To disable Raspberry Pi Connect from the desktop, select the Raspberry Pi Connect icon in the top right of the system tray and then select *Turn off Raspberry Pi Connect*.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `3 Interface Options > RPi Connect`.
+. Select `Yes` or `No` in response to the question *Would you like to enable screen sharing over Raspberry Pi Connect?*
+. Select `Yes` or `No` in response to the question *Would you like to enable remote shell access over Raspberry Pi Connect?*
+. Select `<OK>` and then `<Finish>` when you're done.
+CLI::
+To enable Raspberry Pi Connect from the command line, open the Terminal and run the following command:
++
+[source,console]
+----
+$ rpi-connect on
+----
++
+To disable Raspberry Pi Connect from the command line, open the Terminal and run the following command:
++
+[source,console]
+----
+$ rpi-connect off
+----
+======
+
+[[vnc]]
+=== Enable or disable VNC
+Enabling VNC allows you to access your Raspberry Pi's desktop from another computer. You can enable VNC from the desktop, using the interactive `raspi-config` TUI.
+
+After you've enabled VNC, the next step is to connect to your Raspberry Pi from another computer using a VNC client. For more information, see the xref:remote-access.adoc[Remote access] documentation.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Interfaces* tab in the left-side menu.
+. Use the toggle next to *VNC* to turn it on or off.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `3 Interface Options > I3 VNC`.
+. Select `Yes` or `No` in response to the question *Would you like the VNC server to be enabled?*
+. Select `<OK>` and then `<Finish>` when you're done.
+======
+
+== Hardware communication
+
+This section covers how to enable hardware communication protocols on your Raspberry Pi so that your Raspberry Pi can interact with external devices, such as sensors, displays, and microcontrollers. Specifically, this section covers how to:
+
+* <<spi>> for high-speed communication with peripherals, such as small displays. You can do this from the desktop and using the interactive `raspi-config` TUI.
+* <<i2c>> for communication with low-speed devices like sensors, RTC modules, and some HATs. You can do this from the desktop and using the interactive `raspi-config` TUI.
+* <<one-wire>> for simple communication with devices like temperature sensors and LEDs. You can do this from the desktop and using the interactive `raspi-config` TUI.
+* <<serial-port>> for UART communication with other devices. You can do this from the desktop and using the interactive `raspi-config` TUI.
+* <<uarts>> for different purposes, such as selecting which UART is used for communication and adjusting serial settings. Most of these instructions involve using the command line.
+
+[[spi]]
+=== Enable or disable SPI
+Enabling SPI (Serial Peripheral Interface) allows your Raspberry Pi to communicate with compatible devices using a high-speed synchronous protocol. Specifically, enabling SPI does two things:
+
+* Turns on the SPI interface on your Raspberry Pi.
+* Loads the SPI kernel module at boot so that connected devices can communicate.
+
+You can enable SPI from the desktop and using the interactive `raspi-config` TUI.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Interfaces* tab in the left-side menu.
+. Use the toggle next to *SPI* to turn it on or off.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `3 Interface Options > I4 SPI`.
+. Select `Yes` or `No` in response to the question *Would you like the SPI interface to be enabled?*
+. Select `<OK>` and then `<Finish>` when you're done.
+======
+
+[[i2c]]
+=== Enable or disable I2C
+Enabling I2C (Inter-Integrated Circuit) allows your Raspberry Pi to communicate with low-speed peripherals, such as sensors and real-time clocks. Specifically, enabling I2C does two things:
+
+* Turns on the I2C interface on your Raspberry Pi.
+* Loads the I2C kernel module at boot so that connected devices can communicate.
+
+You can enable I2C from the desktop and using the interactive `raspi-config` TUI.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Interfaces* tab in the left-side menu.
+. Use the toggle next to *I2C* to turn it on or off.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `3 Interface Options > I5 I2C`.
+. Select `Yes` or `No` in response to the question *Would you like the ARM I2C interface to be enabled?*
+. Select `<OK>` and then `<Finish>` when you're done.
+======
+
+[[one-wire]]
+=== Enable or disable the one-wire interface
+Enabling the one-wire interface allows your Raspberry Pi to communicate with simple devices, such as temperature sensors. You can enable and disable the one-wire interface from the desktop and using the interactive `raspi-config` TUI.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Interfaces* tab in the left-side menu.
+. Use the toggle next to *1-Wire* to turn it on or off.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+. Reboot your Raspberry Pi for changes to take effect.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `3 Interface Options > I7 1-Wire`.
+. Select `Yes` or `No` in response to the question *Would you like the one-wire interface to be enabled?*
+. Select `<OK>` and then `<Finish>` when you're done.
+. Reboot your Raspberry Pi for changes to take effect.
+======
+
+[[serial-port]]
+=== Enable or disable serial port
+Enabling the Serial Port allows your Raspberry Pi to communicate over UART (Universal Asynchronous Receiver-Transmitter) with other devices, such as microcontrollers. There are two separate serial settings, which control different things:
+
+* *Serial port hardware.* Enables the UART pins (TX/RX) for communication.
+* *Serial console.* Sends kernel boot messages and provides a login shell over the serial connection.
+
+You can enable and disable these serial port options separately from the desktop and using the interactive `raspi-config` TUI. For most hardware projects, you enable the serial port hardware and disable the serial console.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Interfaces* tab in the left-side menu.
+. Use the toggles to turn on the following settings as needed:
+** *Serial Port*, which enables and disables UART hardware.
+** *Serial Console*, which enables and disables login shell over serial.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+. Reboot your Raspberry Pi for changes to take effect.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `3 Interface Options > I6 Serial Port`.
+. Select `Yes` or `No` in response to the question *Would you like a login shell to be accessible over serial?* This controls the serial console.
+. If you selected no to the first question, you are now asked to select `Yes` or `No` in response to the question *Would you like the serial port hardware to be enabled?* This controls the UART hardware.
+. Select `<OK>` and then `<Finish>` when you're done.
+. Reboot your Raspberry Pi for changes to take effect.
+======
+
+[[uarts]]
+=== Configure UARTs
+UART (Universal Asynchronous Receiver-Transmitter) is a hardware communication protocol used for serial communication. UARTs on Raspberry Pi devices allow you to communicate with peripheral devices and to access the Linux terminal through a serial console.
+
+==== Prerequisite information
+To use UARTs on a Raspberry Pi, you must ensure that the correct UART is enabled, assigned to the appropriate pins, and not conflicting with other system services such as the serial console or Bluetooth.
+
+===== UART types
+
+Raspberry Pi supports two types of UART:
+
+* *PL011.* A full-featured, 16550-compatible UART that provides hardware-timed serial communication.
+* *Mini UART.* A lightweight UART that provides a simple and efficient serial interface.
+
+Unlike https://developer.arm.com/documentation/ddi0183/g/[PL011], the mini UART has no break detection, no framing errors detection, no parity bit, and no receive timeout interrupt. The mini UART also has smaller FIFOs. Combined with the lack of flow control, this makes the mini UART more prone to losing characters at higher baud rates. It's also generally less capable than PL011, mainly due to its baud rate link to the VPU clock speed. Further information about the mini UART can be found in the https://pip.raspberrypi.com/documents/RP-008249-DS[SoC peripherals document].
+
+Neither the mini UART nor the BCM2835 implementation of PL011 has DCD, DSR, DTR, or RI signals.
+
+WARNING: All UARTs operate at 3.3 V; connecting to 5 V systems causes damage. For 5 V systems, use a level-shifter or a USB-to-3.3 V serial adaptor.
+
+The available UART interfaces vary by Raspberry Pi model. The following table summarises the default UART configurations across common Raspberry Pi devices.
+
+.UART by Raspberry Pi model
+|===
+| Model | UARTs
+
+| Raspberry Pi Zero, 1, 2, and 3
+| `UART0`: PL011 +
+  `UART1`: mini UART
+
+| Raspberry Pi 4, 400, and Compute Module 4 and 4S
+| `UART0`: PL011 +
+  `UART1`: mini UART +
+  `UART2` through to `UART5`: PL011 (disabled by default)
+
+| Raspberry Pi 5, 500, 500+, and Compute Module 5
+| `UART0` through to `UART4`: PL011 (disabled by default) +
+  No mini UART
+
+| Compute Module 1, 3, and 3+
+| `UART0`: PL011 +
+  `UART1`: mini UART
+|===
+
+On Compute Modules, all UARTs are disabled by default and can be enabled through a Device Tree overlay, for example:
+
+[source,console]
+----
+$ dtoverlay=uart1,txd1_pin=32,rxd1_pin=33
+----
+
+[[primary-and-secondary-uart]]
+===== Primary and secondary UARTs
+The *primary UART* is the main serial interface that a Raspberry Pi exposes. This is the UART that you typically use when you connect external devices and for a Linux serial console. For all Raspberry Pis other than Raspberry Pi 5, the primary UART is routed to specific GPIO pins:
+
+* *GPIO 14* (transmit) is pin 8 on the GPIO header.
+* *GPIO 15* (receive) is pin 10 on the GPIO header.
+
+On Raspberry Pi 5, the primary UART is exposed through the dedicated debug header instead.
+
+The *secondary UART* is another serial interface available internally on the system; it isn't typically exposed through the GPIO header pins by default. On models with built-in wireless, this UART is commonly connected internally to the Bluetooth controller. This allows the system to communicate with Bluetooth hardware without using the external GPIO pins.
+
+.Primary and secondary UARTs
+|===
+| Model | Primary (Linux console) | Secondary (Bluetooth on Raspberry Pis with wireless)
+
+| Raspberry Pi Zero
+| `UART0`
+| `UART1`
+
+| Raspberry Pi Zero W and Zero 2 W
+| `UART1`
+| `UART0`
+
+| Raspberry Pi 1 and 2
+| `UART0`
+| `UART1`
+
+| Raspberry Pi 3 and 4
+| `UART1`
+| `UART0`
+
+| Raspberry Pi 5
+| `UART10`
+| Dedicated UART
+
+| Compute Module 1, 3, 3+, and 4
+| `UART0`
+| `UART1`
+|===
+
+===== Linux device names
+In Linux, UARTs are accessed through files in `/dev/`. Each UART appears as a device node. These nodes act as interfaces that allow software to send and receive data by reading from or writing to the file.
+
+.Linux device nodes for UARTs
+|===
+| Device node | Type | Description
+
+| `/dev/ttyS0`
+| Hardware
+| Mini UART
+
+| `/dev/ttyAMA0`
+| Hardware
+| First PL011 (`UART0`)
+
+| `/dev/ttyAMA10`
+| Hardware
+| Debug UART on Raspberry Pi 5
+
+| `/dev/serial0`
+| Symbolic link
+| Primary UART: Depending on model, points to `/dev/ttyS0`, `/dev/ttyAMA0`, or `/dev/ttyAMA10` (Raspberry Pi 5).
+
+| '/dev/serial1'
+| Symbolic link
+| Secondary UART: Points to `/dev/ttyAMA0` or `/dev/ttyS0`.
+|===
+
+Because different Raspberry Pi models use different hardware for their primary serial port, Raspberry Pi OS creates symbolic links that point to the correct hardware port.
+
+For *Bookworm* and later, `/dev/serial1` might not exist by default. To enable it, add the following to `config.txt`:
+
+[source,console]
+----
+$ dtparam=krnbt=off
+----
+
+This option might not work on all models in the future. Only use this option if there's no other alternative for your use case.
+
+===== Mini UART and core frequency
+
+Because the mini UART clock is derived from the VPU core clock, its reliability is affected when the core frequency changes dynamically; when the core clock frequency changes, the UART baud rate also changes. Variable core frequency disables the mini UART if it is primary or when Bluetooth is off. To enable it, set a fixed VPU clock:
+
+[source,console]
+----
+$ enable_uart=1
+----
+
+The following table summarises the different configuration options and what happens in each case when you combine whether the mini UART is primary or secondary and whether the core clock is fixed or variable.
+
+.Mini UART configuration and core clock behaviour
+|===
+| Mini UART set to | Core clock | Result
+
+| Primary UART
+| Variable
+| Mini UART disabled
+
+| Primary UART
+| Fixed (`enable_uart=1`)
+| Mini UART enabled; core fixed at 250 MHz (or turbo frequency if forced)
+
+| Secondary UART
+| Variable
+| Mini UART disabled
+
+| Secondary UART
+| Fixed (`core_freq=250`)
+| Mini UART enabled
+|===
+
+The system automatically determines whether to enable UART based on which hardware type is assigned as the primary UART. If the primary interface is PL011, the system defaults to 'on'. If the primary interface is the more sensitive mini UART, the system defaults to 'off' unless explicitly overridden to avoid issues with dynamic frequency scaling.
+
+.Default enable_uart behaviour by primary UART type
+|===
+| Primary UART | Default enable_uart
+
+| Mini UART
+| 0
+
+| PL011 (`UART0` or `UART10`)
+| 1
+|===
+
+==== Disable the Linux serial console
+By default, the primary UART is assigned to the Linux console. If you want to use the primary UART for connecting to other serial devices, you must disable the console while leaving the UART enabled. You can do this from the desktop and using the interactive `raspi-config` TUI:
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Interfaces* tab in the left-side menu.
+. Turn on serial port hardware using the toggle next to *Serial Port*.
+. Turn off serial console using the toggle next to *Serial Console*.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+. Reboot your Raspberry Pi for changes to take effect.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `3 Interface Options > I6 Serial Port`.
+. Select `No` in response to the question *Would you like a login shell to be accessible over serial?* This disables the serial console.
+. Select `Yes` in response to the question *Would you like the serial port hardware to be enabled?* This enables the serial port hardware.
+. Select `<OK>` and then `<Finish>` when you're done.
+. Reboot your Raspberry Pi for changes to take effect.
+======
+
+==== Enable early console for Linux
+For kernel debugging or monitoring early boot stages, the Linux console might not be immediately available. Enabling early console support for one of the UARTs can help to diagnose boot problems and hardware initialisation issues.
+
+To enable early console support, add the relevant `earlycon` parameter to `cmdline.txt`, depending on your Raspberry Pi model and UART:
+
+.Early console configuration parameters by model
+|===
+| Model | Parameter string (add to `cmdline.txt`)
+
+| Raspberry Pi 5 (through the debug header)
+| `earlycon=pl011,0x107d001000,115200n8`
+
+| Raspberry Pi 4, 400, Compute Module 4, and 4S
+| `earlycon=uart8250,mmio32,0xfe215040 +
+  earlycon=pl011,mmio32,0xfe201000`
+
+| Raspberry Pi 2, 3, 3+, Zero 2 W, Compute Module 3, and 3+
+|`earlycon=uart8250,mmio32,0x3f215040 +
+  earlycon=pl011,mmio32,0x3f201000`
+
+| Raspberry Pi 1, Zero, Zero W, and Compute Module 1
+| `earlycon=uart8250,mmio32,0x20215040 +
+  earlycon=pl011,mmio32,0x20201000`
+|===
+
+The baud rate defaults to 115200 bps.
+
+WARNING: Selecting the wrong early console can prevent your Raspberry Pi from booting
+
+==== Configure Device Tree Overlays for UARTs
+You can use Device Tree Overlays to configure UART functionality, such as enabling additional UARTs, switching Bluetooth between PL011 and mini UART, or remapping GPIO pins used by UARTs.
+
+When specifying an overlay in `config.txt`, use the overlay name only. The `-overlay.dts` suffix from the source filename is omitted.
+
+You can find various UART Device Tree overlay definitions in the https://github.com/raspberrypi/linux[kernel GitHub]. The two most useful overlays are:
+
+* https://github.com/raspberrypi/linux/blob/rpi-6.12.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts[`disable-bt`]
+* https://github.com/raspberrypi/linux/blob/rpi-6.12.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts[`miniuart-bt`]
+
+===== Disable Bluetooth and make UART0 primary
+To disable the Bluetooth modem initialisation service and make the first PL011 (UART0) the primary UART:
+
+. Disable the Bluetooth modem service:
++
+[source,console]
+----
+$ sudo systemctl disable hciuart
+----
+. Open the configuration file:
++
+[source,console]
+----
+$ sudo nano /boot/firmware/config.txt
+----
+. Add the overlay to the configuration file:
++
+[source,console]
+----
+dtoverlay=disable-bt
+----
+. Save the file (*Ctrl+O*) and exit (*Ctrl+X*).
+. Reboot your Raspberry Pi for the changes to take effect.
+
+===== Switch Bluetooth to use mini UART and make UART0 primary
+
+To keep Bluetooth enabled but reassign it to the mini UART while making the first PL011 (UART0) the primary UART:
+
+. Open the configuration file:
++
+[source,console]
+----
+$ sudo nano /boot/firmware/config.txt
+----
+. Set a fixed VPU core clock in the configuration file by adding either:
+** `force_turbo=1` (locks clock to maximum)
+** `core_freq=250` (locks clock to standard speed)
+. Add the overlay to the configuration file:
++
+[source,console]
+----
+dtoverlay=miniuart-bt
+----
+. Save the file (*Ctrl+O*) and exit (*Ctrl+X*).
+. Reboot your Raspberry Pi for the changes to take effect
+
+This can reduce the maximum usable baud rate for Bluetooth.
+
+===== Enable additional UARTs on Raspberry Pi 4, 400, CM4, and CM4S
+The overlays `uart2`, `uart3`, `uart4`, and `uart5` are used to enable the four additional UARTs on Raspberry Pi 4, 400, Compute Module 4, and Compute Module 4S.
+
+For Raspberry Pi 5, 500, 500+ and Compute Module 5,
+`uart0-pi5``, `uart1-pi5`, `uart2-pi5`, `uart3-pi5` and `uart4-pi5` overlays are used.
+
+To see the available pins and options for these UARTs, use the following help command, replacing `x` in `uartx` with the UART number you want to investigate:
+
+[source,console]
+----
+dtoverlay -h uartx
+----
+
+Alternatively, refer to `/boot/firmware/overlays/README` for details on Device Tree Overlays.
+
+Then, to apply an overlay, add it to `config.txt`:
+
+. Open the configuration file:
++
+[source,console]
+----
+$ sudo nano /boot/firmware/config.txt
+----
+. Add the overlay to `config.txt`, replacing `x` in `uartx` with the appropriate UART number:
++
+[source,console]
+----
+dtoverlay=uartx
+----
+. Save the file (*Ctrl+O*) and exit (*Ctrl+X*).
+. Reboot your Raspberry Pi for the changes to take effect

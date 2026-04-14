@@ -1,0 +1,139 @@
+
+[[performance]]
+== Performance
+This section covers how to:
+
+* <<overclock>> on a Raspberry Pi 1 or 2. You can do this using the `raspi-config` TUI.
+* <<case-fan>> for a Raspberry Pi 4 with a case, which comes with an in-built fan. You can configure case fan behaviour from the desktop and using the `raspi-config` TUI.
+* <<usb-current-limit>> for higher-power USB devices connected to your Raspberry Pi 5, 500, or 500+. You can enable or disable this setting from the desktop and using the `raspi-config` TUI.
+* <<overlay-filesystem>> to write-protect your storage device and make your Raspberry Pi read-only. You can do this from the desktop and using the `raspi-config` TUI.
+* <<pcie-speed>> for your Raspberry Pi 5, which is an advanced option that you can set using the `raspi-config` TUI and from the command line.
+* <<shutdown-behaviour>>, which is applicable only to the Raspberry Pi 4 and 5 families of devices, is an advanced option used to save power when your Raspberry Pi is turned off. You can configure this using the `raspi-config` TUI.
+
+[[overclock]]
+=== Configure CPU overclocking
+You can configure CPU overclocking on a Raspberry Pi 1 or 2 to boost performance for CPU-intensive tasks. Overclocking can increase heat output and power consumption.
+
+To configure CPU overclocking on your Raspberry Pi 1 or 2 using the interactive `raspi-config` TUI:
+
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `4 Performance Options > P1 Overclock`.
+. Choose an overclock preset:
+** For Raspberry Pi 1, choose between:
+*** `None`, which runs the CPU at 700 MHz, GPU at 250 MHz, and RAM at 400 MHz, with no extra voltage.
+*** `Modest`, which runs the CPU at 800 MHz, GPU at 250 MHz, and RAM at 400 MHz, with no extra voltage.
+*** `Medium`, which runs the CPU at 900 MHz, GPU at 250 MHz, and RAM at 450 MHz, and adds 2 overvolt.
+*** `High`, which runs the CPU at 950 MHz, GPU at 250 MHz, and RAM at 450 MHz, and adds 6 overvolt.
+*** `Turbo`, which runs the CPU at 1000 MHz, GPU at 500 MHz, and RAM at 600 MHz, and adds 6 overvolt.
+** For Raspberry Pi 2, choose between:
+*** `None`, which runs the CPU at 900 MHz, GPU at 250 MHz, and RAM at 450 MHz, with no extra voltage.
+*** `High`, which runs the CPU at 1000 MHz, GPU at 500 MHz, and RAM at 500 MHz, and adds 2 overvolt.
+. Select `<OK>` and then `<Finish>` when you're done.
+. Reboot your Raspberry Pi for the changes to take effect.
+
+[[case-fan]]
+=== Set case fan behaviour
+The following instructions are only relevant to Raspberry Pi 4 for which you have a case, which comes with an attached fan.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Performance* tab in the left-side menu.
+. Use the toggle next to *Case Fan* to turn it on.
+. Enter a number next to *FAN GPIO* to specify which GPIO the fan is connected to. For example, if you plugged your fan into GPIO 14, enter *14*.
+. Enter a number next to *Fan Temperature* to specify at what temperature in degrees Celsius you want the fan to turn on at. For example, if you want your fan to start working at 80ºC, enter *80*.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+. Reboot your Raspberry Pi for the changes to take effect.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `4 Performance Options > P3 Fan`.
+. Select `Yes` or `No` in response to the question *Would you like to enable fan temperature control?*
+. If you select `Yes`:
+** Specify which GPIO the fan is connected to. For example, if you plugged your fan into GPIO 14, enter `14`.
+** Specify at what temperature in degrees Celsius you want the fan to turn on at. For example, if you want your fan to start working at 80ºC, enter `80`.
+. Select `<OK>` and then `<OK>` again.
+. Select `<Finish>` when you're done.
+. Reboot your Raspberry Pi for the changes to take effect.
+======
+
+[[usb-current-limit]]
+=== Enable or disable USB current limit
+Applicable only if you're not using the official Raspberry Pi 5 power supply unit, the USB current limit controls how much power is supplied to USB ports on your Raspberry Pi. Removing the limit allows the use of higher-power USB devices. This setting is relevant to Raspberry Pi 5, 500, and 500+.
+
+WARNING: Disabling the USB current limit can cause system instability, crashes, or data loss if connected USB devices require more power than the power supply can safely deliver.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Performance* tab in the left-side menu.
+. Use the toggle next to *Disable USB Current Limit* to turn it off and on.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+. Reboot your Raspberry Pi for the changes to take effect.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `4 Performance Options > P4 USB Current`.
+. Select `Yes` or `No` in response to the question *Would you like the current limit to be disabled?*
+. Select `<OK>` and then `<Finish>` when you're done.
+. Reboot your Raspberry Pi for the changes to take effect.
+======
+
+[[overlay-filesystem]]
+=== Enable or disable overlay file system
+Overlay file system improves performance in write-heavy workloads by using RAM instead of slower storage. However, any changes will be lost when your Raspberry Pi reboots or powers off.
+
+There are two separate overlay file system settings, which control different things:
+
+* *Set the root file system to read-only.* This uses a temporary overlay stored in RAM. Any changes made to files outside of `/boot` while the system is running aren't permanently saved and disappear when you power off or reboot your Raspberry Pi.
+* *Write-protect the boot partition.* This prevents any modifications to the `/boot` directory, which contains the firmware and configuration files needed to start your Raspberry Pi.
+
+[tabs]
+======
+Desktop::
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Performance* tab in the left-side menu.
+. Select *Configure* next to *Overlay File System*.
+. Use the toggles to turn on the following settings as needed:
+.. *Use Overlay*, which enables the read-only root file system overlay.
+.. *Write-protect Boot Partition*, which prevents modifications to `/boot`.
+. Select *OK* in the bottom-right corner of the *Overlay File System* window
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+. Reboot your Raspberry Pi for the changes to take effect.
+raspi-config::
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `4 Performance Options > P2 Overlay File System`.
+. Select `Yes` or `No` in response to the question *Would you like the overlay file system to be enabled?* This enables or disables the read-only status of the root file system.
+. Select `Yes` or `No` in response to the question *Would you like the boot partition to be write-protected?* This determines whether the `/boot` directory can be modified.
+. Select `<OK>` and then `<Finish>` when you're done.
+. Reboot your Raspberry Pi for the changes to take effect.
+======
+
+[[pcie-speed]]
+=== Set PCIe port speed
+Setting PCIe port speed is only relevant to Raspberry Pi 5. This is an advanced option in `raspi-config` that we don't recommend setting unless required by a PCIe-attached HAT. This is because Raspberry Pi 5 is certified for PCIe Gen 2.0 speeds and PCIe Gen 3.0 is thus disabled by default. Forcing a higher rate can lead to data corruption or system instability if the connected HAT or ribbon cable can't handle the increased frequency.
+
+To enable PCIe Gen 3 using the interactive `raspi-config` TUI:
+
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `6 Advanced Options > A8 PCIe Speed`.
+. Select `Yes` or `No` in response to the question *Would you like PCIe Gen 3 to be enabled?*
+. Select `<OK>` to continue.
+. Reboot your Raspberry Pi for the change to take effect.
+
+[[shutdown-behaviour]]
+=== Configure shutdown behaviour
+This is an advanced option in `raspi-config` used to save power when your Raspberry Pi is turned off. The default option depends on your Raspberry Pi model.
+
+** On Raspberry Pi 400, 500, 500+, and Compute Module 5, the default is `Full power off`.
+** On Raspberry Pi 4B, 5, and Compute Module 4, the default is `VPU sleep mode`.
+
+To configure shutdown behaviour using the interactive `raspi-config` TUI:
+
+. Open the Terminal and run `sudo raspi-config`.
+. Use the keyboard to navigate to and select `6 Advanced Options > A11 Shutdown Behaviour`.
+. Choose between:
+** `B1 Full power off`
+** `B2 VPU sleep mode`
+. Select `<OK>`` to continue and then `<Finish>` when you're done.
+. Reboot your Raspberry Pi for the change to take effect.
