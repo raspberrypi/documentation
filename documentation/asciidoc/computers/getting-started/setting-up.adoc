@@ -6,7 +6,7 @@ Raspberry Pi devices are available in several series:
 
 * *Raspberry Pi single-board computers (SBC).* Classic or 'flagship' Raspberry Pi devices that you can connect to a monitor, keyboard, and mouse like a desktop computer.
 * *Raspberry Pi Zero.* A smaller version of flagship Raspberry Pi devices with fewer USB ports and lower power consumption.
-* *Raspberry Pi keyboard computers.* Devices that have the circuit board built into the keyboard case, designed to be plugged into a monitor and mouse.
+* *Raspberry Pi keyboard computers.* Devices that have the computer built into a keyboard case, designed to be plugged into a monitor and mouse.
 * *Raspberry Pi compute modules.* Small system-on-module versions of Raspberry Pi computers designed for industrial and embedded applications.
 * *Raspberry Pi Pico.* A microcontroller board that uses Raspberry Pi microcontrollers (RP2040 or RP2350).
 
