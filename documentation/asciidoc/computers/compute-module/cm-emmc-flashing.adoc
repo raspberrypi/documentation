@@ -161,3 +161,5 @@ $ sudo cp -r <files>/* <mountpoint>
 ----
 
 * The CM1 bootloader returns a slightly incorrect USB packet to the host. Most USB hosts ignore it, but some USB ports don't work due to this bug. CM3 fixed this bug.
+
+* The rpiboot version distributed with Ubuntu 24.04 and earlier has been known to fail to communicate with the device. To resolve this issue, https://github.com/raspberrypi/usbboot?tab=readme-ov-file#linux--cygwin--wsl[build `rpiboot` from source].
