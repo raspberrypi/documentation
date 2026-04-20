@@ -1,47 +1,111 @@
 [[connect-organisations]]
 == Connect for Organisations
 
-**Connect for Organisations** lets multiple users share access to devices. Creating an organisation automatically starts a free, four-week trial for that organisation.
+**Connect for Organisations** lets multiple users share access to devices.
+
+Creating your first organisation automatically starts a free, four-week trial for that organisation.
 
 === Create an organisation
 
-To create a new organisation, first sign in to your Raspberry Pi Connect account and then select the account switcher icon in the top left of the navigation menu.
+To create a new organisation:
 
-image::images/account-switcher.png[width="70%"]
+. Sign in to your Raspberry Pi Connect account.
 
-Select **New organisation** and provide a name, then select **Start your free trial**. Your Connect account is automatically added to the organisation as an administrator.
-
-If you already have devices associated with your personal account, you can transfer them all to the organisation that you just created. To do so:
-
-. Select the *Transfer them all to this organisation?* link in the prompt.
-. Confirm that you want to add the billable devices to your organisation's account by selecting *Transfer x devices* where "x" is the number of devices.
-
-=== Invite users
-
-You must be an administrator to invite other users to your organisation. To invite a user:
-
-. Open the **Users** tab at the top of the page. This shows all members of your organisation, with their name, email, role, and join date.
+. Select the **account switcher icon** (the two opposing arrows) at the top left of the navigation menu.
 +
-image::images/users.png[width="70%"]
+image::images/account-switcher.png[alt="The Raspberry Pi Connect interface, showing the account switcher dropdown menu. The account switcher lets you change between your personal and organisation Connect accounts.", width=70%"]
 
-. Select **Invite someone** to add a new user to your organisation.
+. Select **+New organisation**, then type the organisation name.
+. If this is the first organisation you have created, **Start your free trial** displays. If you have previously created an organisation, **Create organisation** displays. Select whichever is displayed you. 
 +
-image::images/invite-user.png[width="70%"]
+The organisation is created and your Connect account is automatically added to it as an administrator.
 
-. Choose a **Role** from the dropdown menu. There are two roles available for members of an organisation:
+If there are devices associated with your personal Connect account, you're presented with an option to transfer them to the new organisation now.
 
-    * **Member.** A user that can remotely access all devices within an organisation but can't make any changes to the organisation.
-    * **Administrator.** A user that can remotely access all devices within an organisation and make changes to the organisation. They also receive organisation-wide notification emails for sensitive actions, such as the addition of new devices and new management API access tokens.
+To transfer your devices:
+
+. Follow the *Transfer them all to this organisation?* link.
++
+The *Transfer personal devices* page displays.
++
+image::images/transfer-personal-devices-link.png[alt="The Raspberry Pi Connect interface, showing a link for importing Raspberry Pi devices from a personal Connect account to an organisation Connect account.", width=70%"]
++
+If you have personal devices that can be transferred to your new organisation, you're asked to confirm the transfer before it takes place:
++
+image::images/transfer-devices.png[alt="The Raspberry Pi Connect interface, checking whether you want to import devices to an organisation Connect account.", width="70%"]
+
+. Review the personal devices by selecting the **personal devices link**, or confirm that you want to add the billable devices to your organisation's account by selecting *Transfer x devices* (where "x" is the number of devices).
++
+If you don't want to add the devices now, you can always do so later. See <<transfer-device>>.
+
+=== Manage users
+
+You must be an administrator to invite users to, remove users from, or change a user's role in your organisation.
+
+To invite a user:
+
+. Sign in to your Raspberry Pi Connect account.
+
+. Select the **account switcher icon** (the two opposing arrows) at the top left of the navigation menu, then select your organisation from the list.
+
+. Select the **Users** tab at the top of the page, then select **Invite someone**.
++
+image::images/users.png[alt="The Raspberry Pi Connect interface, showing users associated with an organisation Connect account.", width="70%"]
+
+. Choose a **Role** from the dropdown menu.
++
+There are two roles available for members of an organisation:
+
+    * **Member.** A user who can remotely access all devices within an organisation but can't make any changes to the organisation.
+    * **Administrator.** A user who can remotely access all devices within an organisation and make changes to the organisation. They also receive organisation-wide notification emails for sensitive actions, such as the addition of new devices and new management API access tokens.
 
 . Enter the email address where you want to send the invitation.
 
 . Select **Send invitation**.
++
+image::images/invite-user.png[width="70%"]
++
+An invitation is sent to the email address you provided in Step 5. The user can follow the invitation link in the email, and can sign in using either the same email address or any valid Raspberry Pi ID.
 
-The person you invite doesn't need to sign in with that email address. They can join using any valid Raspberry Pi ID.
+To remove a user:
+
+. Sign in to your Raspberry Pi Connect account.
+
+. Select the **account switcher icon** (the two opposing arrows) at the top left of the navigation menu, then select your organisation from the list.
+
+. Select the **Users** tab at the top of the page.
++
+This shows all members of your organisation.
+
+. Next to the user to remove, select the **more options icon** (three vertical dots), then select **Remove...**.
++
+A confirmation pop-up window appears.
+
+. If you are sure you want to remove this user, select **Remove user**.
++
+The user is immediately removed from the organisation, and their shell and screen sharing sessions with your organisation are terminated within a few minutes.
+
+To change a user's role:
+
+. Sign in to your Raspberry Pi Connect account.
+
+. Select the **account switcher icon** (the two opposing arrows) at the top left of the navigation menu, then select your organisation from the list.
+
+. Select the **Users** tab at the top of the page.
++
+This shows all members of your organisation.
+
+. Next to the user to remove, select the **more options icon** (three vertical dots), then select **Change role...**.
+
+. From the dropdown, select the role to assign to the user, then select **Change role**.
++
+The user's role is changed and a confirmation screen appears.
 
 === Link a Raspberry Pi device with an organisation
 
-You must be an administrator to link a device to an organisation. To link a device to an organisation:
+You must be an administrator to link a device to an organisation.
+
+To link a device to an organisation:
 
 * If the device isn't linked to a Connect account, see xref:connect.adoc#link-connect[Link a Raspberry Pi device with a Connect account].
 
@@ -50,11 +114,15 @@ You must be an administrator to link a device to an organisation. To link a devi
 [[transfer-device]]
 === Transfer a device
 
-You must be an administrator to transfer a device between accounts. To transfer a device:
+You must be an administrator to transfer a device between accounts.
+
+To transfer a device:
+
+. Sign in to your Raspberry Pi Connect account.
 
 . Select the account switcher icon in the top left of the navigation menu.
 +
-image::images/account-switcher-with-organisation.png[width="70%"]
+image::images/account-switcher.png[alt="The Raspberry Pi Connect interface, showing the account switcher dropdown. The account switcher lets you change between personal and organisation Connect accounts.", width="70%"]
 
 . Switch to the account that currently owns the device (your personal account or an organisation).
 
@@ -64,7 +132,7 @@ image::images/account-switcher-with-organisation.png[width="70%"]
 
 . Select **Transfer...**
 +
-image::images/transfer.png[width="70%"]
+image::images/transfer.png[alt="The Raspberry Pi Connect interface, showing the accounts to which a device can be transferred.",width="70%"]
 
 . Select the account you want to transfer the device to.
 
@@ -140,7 +208,9 @@ TIP: Select a tag on any device in the list to quickly add it as a filter.
 
 A subscription to Connect for Organisations starts when your four-week trial period ends, after which, you're billed in arrears every month.
 
-You must be an administrator to set up a subscription. To set up a subscription:
+You must be an administrator to set up a subscription. 
+
+To set up a subscription:
 
 . Select **Set up billing** from the trial banner underneath the tabs at the top of the page.
 . Enter the email address to which you want to receive billing-related notifications such as invoices.
