@@ -1,4 +1,4 @@
-At Raspberry Pi we're trying to open source as much of our code as possible to make it easy to use and adapt for your own uses. Raspberry Pi develops and supports software specifically for our products and focuses its energy on software which provides the most optimal user experience. For example, drivers which optimize multimedia acceleration such as the 3D, HEVC decode, the camera imaging pipeline, AI acceleration, dual HDMI and audio.
+At Raspberry Pi we're trying to open source as much of our code as possible to make it easy to use and adapt for your own uses. Raspberry Pi develops and supports software specifically for our products and focuses its energy on software which provides the most optimal user experience. For example, drivers which optimise multimedia acceleration such as the 3D, HEVC decode, the camera imaging pipeline, AI acceleration, dual HDMI and audio.
 
 == Finding software sources in Raspberry Pi OS
 
@@ -40,15 +40,19 @@ $ cd labwc-0.8.4
 $ debuild -uc -us
 ----
 
-== Our GitHub organizations
+== Our GitHub organisations
 
-The other place you can find our software in a more standard form is in our GitHub repositories, we have three GitHub organisations we use to store our sources:
+The other place you can find our software in a more standard form is in our GitHub repositories; we have three GitHub organisations we use to publish our sources:
 
 * https://github.com/raspberrypi
 * https://github.com/raspberrypi-ui
 * https://github.com/RPi-Distro
 
-== List of categorized sources
+We also publish content related to our books in the following organisation:
+
+* https://github.com/raspberrypipress
+
+== List of categorised sources
 
 The following is a curated list of repositories that most people are interested in:
 
@@ -68,7 +72,7 @@ Installation scripts and binaries for the Raspberry Pi 4 and Raspberry Pi 5 boot
 === Libraries and applications
 
 https://github.com/raspberrypi/utils::
-A collection of useful utilities such as pinctrl, piolib and raspinfo, also gpiolib a Raspberry Pi supported method of directly accessing GPIO pins.
+A collection of useful utilities such as pinctrl, piolib, and raspinfo, also gpiolib a Raspberry Pi supported method of directly accessing GPIO pins.
 
 https://github.com/raspberrypi/libcamera::
 A libcamera library implementation for controlling the Raspberry Pi's ISP and cameras.
