@@ -291,6 +291,8 @@ Deleting a device from Connect automatically signs you out of Connect on the dev
 [[update]]
 == Update
 
+WARNING: Upgrading Connect disconnects any screen sharing or remote shell sessions in progress. We don't recommended using remote shell to upgrade Connect unless you're running commands in a way that'll survive disconnection, for example, using `screen` or `tmux`.
+
 To update to the latest version of Connect, run the following command:
 
 [source, console]
@@ -299,7 +301,7 @@ $ sudo apt update
 $ sudo apt install --only-upgrade rpi-connect
 ----
 
-TIP: If you installed Connect Lite, replace `rpi-connect` with `rpi-connect-lite` in the above command.
+If you installed Connect Lite, replace `rpi-connect` with `rpi-connect-lite` in the above command.
 
 == Disconnect a device from Connect
 
