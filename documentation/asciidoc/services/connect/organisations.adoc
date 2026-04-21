@@ -275,6 +275,119 @@ IMPORTANT: Your access token is only shown once. Copy it now, because you won't 
 
 The Management API lets you manage your organisation automatically, without using the Connect web interface. Requests to the Management API must be authenticated using a valid management API access token. The base URL is https://api.connect.raspberrypi.com.
 
+[[device-identities]]
+==== Create a device identity
+
+Device identities let you pre-authenticate a Raspberry Pi device with an organisation without interactive sign-in. Unlike auth keys, device identities are multi-use and rely on a private key stored in the device's one-time programmable memory.
+
+Creating device identities is free. You're only billed for a device from the time that it first authenticates to your organisation's Connect account, making device identities useful for organisations preconfiguring Raspberry Pi devices with Connect before deploying them.
+
+The request must include an `+X-Connect-Identity-Signature+` header. To generate it, construct a newline-separated payload containing, in this order:
+
+* The HTTP request method (for example, `+POST+`)
+* The full request URL
+* `+Authorization: <value>+`
+* `+Content-Type: <value>+`
+* `+Accept: <value>+` (if your HTTP client sends one)
+* The SHA256 hexadecimal digest of the HTTP request body (the JSON body of the `+POST+` shown below)
+
+Sign this payload with the device's private key using ECDSA with SHA256, then Base64-encode the result.
+
+For example, a request to register a device identity produces the following payload:
+
+[source]
+----
+POST
+https://api.connect.raspberrypi.com/organisation/device-identities
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/json
+Accept: */*
+<SHA256 hex digest of the HTTP request body>
+----
+
+On the device, use https://github.com/raspberrypi/utils/tree/master/rpifwcrypto[rpi-fw-crypto] to sign the payload. For example, with the payload written to `+payload.txt+`:
+
+[source,console]
+----
+$ rpi-fw-crypto sign --in payload.txt --key-id 1 --alg ec | base64 -w 0
+----
+
+The output is the `+X-Connect-Identity-Signature+` header value.
+
+To create a device identity for your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token
+* `+signaturehere+`: the `+X-Connect-Identity-Signature+` value for this request
+* `+-----BEGIN PUBLIC KEY-----...+`: the device's PEM-encoded public key
+* `+my-device-identity+`: a description for the device identity, visible in the organisation's audit log
+* `+pi5-001+`: the name assigned to the device when the identity is exchanged (optional, defaults to the device's hostname)
+
+[tabs]
+======
+JSON::
++
+[source,http]
+----
+POST /organisation/device-identities HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/json
+X-Connect-Identity-Signature: signaturehere
+
+{
+    "public_key": "-----BEGIN PUBLIC KEY-----...",
+    "description": "my-device-identity",
+    "device_name": "pi5-001"
+}
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --header 'X-Connect-Identity-Signature: signaturehere' --header 'Content-Type: application/json' --data '{"public_key":"-----BEGIN PUBLIC KEY-----...","description":"my-device-identity","device_name":"pi5-001"}' https://api.connect.raspberrypi.com/organisation/device-identities
+----
+
+======
+
+If successful, you get a **201 Created** response with the device identity in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 201
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "096ce472-2cbd-412a-8295-6c03a1a07ba4",
+    "description": "my-device-identity",
+    "device_name": "pi5-001",
+    "created_at": "2026-02-25T16:09:52Z",
+    "public_key": "-----BEGIN PUBLIC KEY-----..."
+}
+----
+
+The response contains the following fields:
+
+id:: A unique identifier for the device identity.
+description:: The description used to create the device identity.
+device_name:: The name that will be assigned to the device when the identity is exchanged.
+created_at:: The date and time when the device identity was created (in ISO 8601 format).
+public_key:: The PEM-encoded public key for the device identity.
+
+If your management API access token is invalid, you get a **401 Unauthorized** response.
+
+If the device identity can't be created, you get a **422 Unprocessable Content** response.
+
+[source,http]
+----
+HTTP/2 422
+Content-Type: application/json; charset=utf-8
+
+{"message":"Validation failed: Public key is invalid"}
+----
+
 ==== Create an auth key
 
 To create an auth key to xref:connect.adoc#link-connect[link a device with Connect], use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
