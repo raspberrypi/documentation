@@ -3,7 +3,7 @@
 
 This https://www.raspberrypi.com/products/camera-module-3/[12-megapixel camera] is built around the Sony IMX708 sensor with a resolution of 4608 × 2592 pixels. It has https://www.raspberrypi.com/news/new-autofocus-camera-modules/[powered autofocus] and can record an exposure time of up to 112 seconds.
 
- Camera Module 3 comes in the following variants:
+Camera Module 3 comes in the following variants:
 
 * Standard, normal field of view (FoV)
 * Standard, wide FoV
@@ -11,6 +11,8 @@ This https://www.raspberrypi.com/products/camera-module-3/[12-megapixel camera] 
 * NoIR, wide FoV
 
 The standard variants capture visible light only; infrared light is filtered out. The NoIR variants don't have an infrared filter; they capture both visible light and infrared light. Use a NoIR camera with infrared lighting to see in the dark or use it with the included square of blue gel to monitor the health of green plants.
+
+All of these variants are also available for the standalone https://www.raspberrypi.com/products/camera-module-3-sensor-assembly/[Camera Module 3 sensor assembly].
 
 .Camera Module 3 (left) and Camera Module 3 Wide (right)
 image::images/cm3.jpg[Camera Module 3 normal and wide angle]
