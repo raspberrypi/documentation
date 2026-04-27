@@ -120,11 +120,8 @@ image::images/imager/user-subtab.png[alt="Imager OS Customisation User tab.",wid
 The username must be lowercase and contain only letters, numbers, underscores, and hyphens.
 
 * For a headless setup, your Raspberry Pi uses these credentials to connect to the network on first boot.
-* By default, the password you set here is required when running `sudo` commands. If you prefer not to enter a password for these commands, you can turn off this requirement by deselecting *Enable passwordless sudo*. You can also turn this off later. For instructions, see xref:../computers/configuration.adoc#disable-sudo-password[Turn off password for superuser commands] in the *Configuration* page.
 
 Creating a username and password at this stage doesn't require these credentials to be entered whenever you boot your Raspberry Pi. To require a password on boot, turn off Auto Login. For instructions, see xref:../computers/configuration.adoc#auto-login[Require a password from startup].
-
-image::images/imager/passwordless-sudo.png[alt="Imager OS Customisation User tab passwordless sudo.",width="80%"]
 
 ===== Wi-Fi
 In the *Wi-Fi* subtab, select whether to connect to a *secure network* or an *open network*. Before this, if you're on a Mac computer, you might be asked whether you'd like to pre-fill the Wi-Fi password from the system keychain. Confirm whether you want to do this and sign in with your Mac computer credentials.
@@ -232,7 +229,7 @@ Network Install requires the following:
 ==== Launch Network Install
 
 . Connect a monitor and keyboard to your Raspberry Pi device, then either:
-.. Connect a blank (non-bootable) storage device, such as an SD card or USB drive, to your Raspberry Pi device, 
+.. Connect a blank (non-bootable) storage device, such as an SD card or USB drive, to your Raspberry Pi device,
 +
 or
 +
