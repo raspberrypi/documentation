@@ -36,7 +36,7 @@ If your Raspberry Pi device fails to boot, the bootloader provides feedback in t
 ==== Reflash the bootloader
 Reflash the bootloader if your system fails to boot or if you want to reset the bootloader configuration. Reflashing the bootloader clears any local bootloader configuration that might be preventing your Raspberry Pi from booting.
 
-NOTE: You can also reflash the bootloader using USB `rpiboot`. This method is typically used to mass provision Compute Modules. Reflashing the bootloader over USB is also the only option available for CM4 and CM4S. For more information, see xref:../computers/compute-module.adoc#attaching-the-touch-display-2-lcd-panel[Compute Module hardware].
+NOTE: You can also reflash the bootloader using USB `rpiboot`. This method is typically used to mass provision Compute Modules. Reflashing the bootloader over USB is also the only option available for CM4 and CM4S. For more information, see xref:../computers/compute-module.adoc#compute-module-eeprom-bootloader[Compute Module hardware].
 
 To reflash the bootloader on your Raspberry Pi device:
 

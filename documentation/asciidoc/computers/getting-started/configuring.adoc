@@ -17,7 +17,9 @@ If you have a *desktop setup* and skipped OS customisation in Imager, or if you'
 
 A *headless setup* bypasses the configuration wizard; because you preconfigured the settings in Imager, your headless Raspberry Pi boots straight to the network. If you chose SSH for remote access, you can connect remotely to your headless Raspberry Pi by typing `ssh username@hostname.local` into the command line on your computer. For more information, see xref:../computers/getting-started.adoc#headless-setup[Headless (remote) setup].
 
-You need a monitor and a keyboard to navigate through the configuration wizard; a mouse is optional. If you plan on pairing a USB Bluetooth mouse or keyboard as part of this configuration process, plug the USB adapter in before booting your Raspberry Pi.
+You need a monitor and a keyboard to navigate through the configuration wizard. A mouse is optional, and you can use the *Tab* key to advance through the wizard, if desired.
+
+If you plan on pairing a USB Bluetooth mouse or keyboard as part of this configuration process, plug the USB adapter in before booting your Raspberry Pi.
 
 The configuration wizard walks you through the following setup options. Select *Next* in the bottom-right corner to proceed through each of the options.
 
@@ -27,19 +29,15 @@ The following image shows the configuration wizard's welcome window, which is al
 NOTE: The IP address on this welcome window is only visible if your Raspberry Pi is connected to a network over Ethernet.
 
 .Configuration wizard welcome window
-image::images/initial-setup/welcome_bt.png[alt="Welcome window of the configuration window.",width="80%"]
+image::images/initial-setup/welcome_bt.png[alt="Welcome window of the configuration window.",width="100%"]
 
 If you're using a Bluetooth keyboard or mouse, your Raspberry Pi searches for pairable devices and connects to the first device it finds for each peripheral. This process works with built-in or external USB Bluetooth adapters. If you're using a USB adapter, plug it in before booting your Raspberry Pi.
 
-[.clearfix]
---
 .Attempting to pair with a Bluetooth device
-[.left]
 image::images/initial-setup/pairing.png[alt="Configuration window attempting to pair with a Bluetooth device.",width="100%"]
+
 .Success message for Bluetooth pairing
-[.left]
 image::images/initial-setup/pairing_success.png[alt="Success message for Bluetooth pairing.",width="100%"]
---
 
 ==== Country
 Use the dropdown menus to set your country, language, and time zone. Optionally, you can also:
@@ -48,27 +46,27 @@ Use the dropdown menus to set your country, language, and time zone. Optionally,
 * Select *Use US keyboard* to ensure that the OS interprets input from a US-layout keyboard correctly.
 
 .Setting your country window in the configuration wizard
-image::images/initial-setup/locale.png[alt="Adjust country, language, time zone, and keyboard layout.",width="80%"]
+image::images/initial-setup/locale.png[alt="Adjust country, language, time zone, and keyboard layout.",width="100%"]
 
 ==== User
 
 Configure your username and password for the default user account. Your username must start with a letter and can only contain lowercase letters, numbers, underscores, and hyphens.
 
 .Create User window in the configuration wizard
-image::images/initial-setup/user.png[alt="Create your username and password.",width="80%"]
+image::images/initial-setup/user.png[alt="Create your username and password.",width="100%"]
 
 ==== Wireless network
 
 Choose your preferred Wi-Fi network from the list. If your network requires a password, you're then prompted to enter it before continuing. You can skip this step if you prefer.
 
 .Selecting a wireless network in the configuration wizard
-image::images/initial-setup/network.png[alt="Selecting a wireless network.",width="80%"]
+image::images/initial-setup/network.png[alt="Selecting a wireless network.",width="100%"]
 
 ==== Default browser
 
 Select your default internet browser: *Chromium* or *Firefox*. Optionally, to save space on your boot media, uninstall the browser that you don't set as default.
 
-image::images/initial-setup/browser.png[alt="The Choose Browser page.",width="80%"]
+image::images/initial-setup/browser.png[alt="The Choose Browser page.",width="100%"]
 
 ==== Software update
 
@@ -79,61 +77,64 @@ During the software update process, the configuration wizard removes the non-def
 A software update may take up to half an hour, depending on how many updates are available and the speed of your internet connection.
 
 .Updating your software in the configuration wizard
-image::images/initial-setup/update.png[alt="You can download the latest software updates during the wizard before you boot for the first time.",width="80%"]
+image::images/initial-setup/update.png[alt="You can download the latest software updates during the wizard before you boot for the first time.",width="100%"]
 
 ==== Finish
 
 When you've gone through each step of the configuration wizard, a confirmation window stating that your system is set up appears. Select *OK* and then *Launch* (or, if you see *Restart* instead, select this to reboot your Raspberry Pi). Your configuration is applied to your Raspberry Pi, which then boots and loads the graphical desktop environment where you can use windows, icons, and menus, similar to other desktop computers.
 
-[.clearfix]
---
 .System update success message
 image::images/initial-setup/ok.png[alt="System is up to date.",width="100%"]
+
 .Setup complete success message
-[.left]
 image::images/initial-setup/launch.png[alt="Setup complete.",width="100%"]
---
 
 === Configuration changes
-You can reconfigure most settings, such as changing your password or hostname, from the desktop GUI: open the Raspberry Pi icon in the top-left corner, then navigate to *Preferences > Control Centre*. 
+You can reconfigure your Raspberry Pi from the command line or the desktop.
 
-You can also reconfigure most settings from the Terminal: enter `sudo raspi-config` to open a menu of options.
+To reconfigure from the desktop, open the Raspberry Pi icon in the top-left corner, then navigate to *Preferences > Control Centre*. 
 
-For more detailed instructions, see xref:configuration.adoc[Configuration].
+To reconfigure from the Terminal, enter `sudo raspi-config` to open the *Control Centre*.
+
+For detailed instructions, see xref:configuration.adoc[Configuration].
 
 [[shutdown]]
 == Shutdown options
-Raspberry Pi OS provides options for safely shutting down, restarting, locking, and signing out of your Raspberry Pi device from the desktop graphical user interface (GUI) and from the command line.
+Raspberry Pi OS provides options for safely shutting down, restarting, locking, and signing out of your Raspberry Pi device from the desktop and from the command line.
 
 [[desktop-shutdown]]
 === Desktop shutdown options
-The *Shutdown Options* window in the desktop GUI gives you the following options:
+The *Shutdown Options* window in the desktop gives you the following options:
 
 * *Shutdown.* Closes all running programs and powers off your Raspberry Pi. Use this option before disconnecting your Raspberry Pi from power.
 * *Reboot.* Restarts your system. This is useful after applying updates, changing configurations, and connecting to new hardware.
 * *Lock Screen.* Locks your current session to prevent unauthorised access while keeping open programs running. Enter your password to unlock the screen again.
 * *Logout.* Signs out of your current user account and closes all running programs without shutting down the system.
 
-You can perform all of the same actions except locking your screen from the command line.
-
 === Open shutdown options from the desktop
-To open the *Shutdown Options* window from the desktop, select the Raspberry Pi icon in the top-left corner of the system tray then select *Shutdown*. If you have a Raspberry Pi 5, 500, or 500+, you can press the power button to open the same menu.
+To open the *Shutdown Options* window from the desktop, select the Raspberry Pi icon in the top-left corner of the system tray then select *Shutdown*.
 
-[.clearfix]
---
+The following devices also offer shutdown shortcuts:
+
+* Raspberry Pi 5: Double-press the power button to shut the device down (the *Shutdown Options* window might display briefly).
+* Raspberry Pi 5, 500, or 500+: Single press the *power button* to open the *Shutdown Options* window.
+* Raspberry Pi 400: Press *Fn* + *F10* to open the *Shutdown Options* window.
+
 .Desktop shutdown option
-[.left]
-image::images/shutdown.png[alt="Shutdown from the desktop menu.",width="60%"]
-.Desktop shutdown menu
-[.left]
-image::images/shutdown-menu.png[alt="Shutdown menu.",width="100%"]
---
+image::images/shutdown.png[alt="Shutdown from the desktop menu.",width="40%"]
 
-You can then select from one of the following four options: Shutdown, Reboot, Lock Screen, and Logout, described in <<desktop-shutdown>>. If you don't want to choose one of these options, select the cross (*×*) icon in the top-right corner of the window instead.
+.Desktop shutdown menu
+image::images/shutdown-menu.png[alt="Shutdown menu.",width="40%"]
+
+You can use the mouse, or your keyboard cursor keys and *Enter* key, to select from one of the following four options: Shutdown, Reboot, Lock Screen, and Logout, described in <<desktop-shutdown>>. 
+
+To exit the menu without choosing any of these options, select the cross (*×*) icon at the top-right corner or press *Esc*.
 
 [[cmd-shutdown]]
 === Shutdown options from the command line
-You can perform most shutdown options from the command line. Open a Terminal and then use one of the following commands:
+You can perform most shutdown options from the command line. 
+
+Open a Terminal and then use one of the following commands:
 
 [cols="2,2", options="header"]
 |===

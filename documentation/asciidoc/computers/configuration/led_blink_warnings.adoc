@@ -56,8 +56,8 @@ On a *Raspberry Pi 500*, these LEDs are:
 
 The user-configurable LED can be controlled through the `pinctrl` tool, which is used to interact with GPIO pins and peripherals.
 
-* `pinctrl 123 op dh` turns the user LED on.
-* `pinctrl 123 op dl` turns the user LED off.
+* `pinctrl USER_LED op dh` turns the user LED on.
+* `pinctrl USER_LED op dl` turns the user LED off.
 
 You can also also use Python to call `pinctrl`:
 

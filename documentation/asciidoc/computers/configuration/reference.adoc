@@ -24,7 +24,7 @@ Binary firmware blobs loaded onto the VideoCore GPU in the SoC, which then take 
 `start.elf`:: the basic firmware.
 `start_x.elf`:: includes additional codecs.
 `start_db.elf`:: used for debugging.
-`start_cd.elf`:: a cut-down version of the firmware that removes support for hardware blocks such as codecs and 3D as well as debug logging support; it also imposes initial frame buffer limitations. The cut-down firmware is automatically used when `gpu_mem=16` is specified in `config.txt`.
+`start_cd.elf`:: a cut-down version of the firmware that removes support for hardware blocks such as codecs and 3D as well as debug logging support. It also imposes initial frame buffer limitations.
 
 `start4.elf`, `start4x.elf`, `start4db.elf` and `start4cd.elf` are equivalent firmware files specific to the Raspberry Pi 4-series (Model 4B, Pi 400, Compute Module 4 and Compute Module 4S).
 
@@ -38,7 +38,7 @@ Linker files found in matched pairs with the `start*.elf` files listed in the pr
 
 ==== `cmdline.txt`
 
-The xref:../computers/configuration.adoc#kms[kernel command line] passed into the kernel at boot.
+The xref:../computers/configuration.adoc#cmdline[kernel command line] passed into the kernel at boot.
 
 ==== `config.txt`
 
@@ -83,7 +83,7 @@ Various xref:linux_kernel.adoc#kernel[kernel] image files that correspond to Ras
 | `kernel7.img`
 | BCM2836, BCM2837
 | Pi Zero 2 W, Pi 2, Pi 3, CM3, Pi 3+, CM3+
-| Later revisions of Pi 2 use BCM2837
+| Early revisions of Pi 2 used BCM2836
 
 | `kernel7l.img`
 | BCM2711
@@ -118,7 +118,9 @@ User-provided parameters in `config.txt` are scanned, along with any overlays an
 [[part1]]
 ==== Device Trees
 
-A Device Tree (DT) is a description of the hardware in a system. It should include the name of the base CPU, its memory configuration, and any peripherals (internal and external). A DT should not be used to describe the software, although by listing the hardware modules it does usually cause driver modules to be loaded.
+A Device Tree (DT) is a description of the hardware in a system.
+
+It includes the name of the base CPU, its memory configuration, and any peripherals (internal and external). It is not used to describe the software, although by listing the hardware modules it can cause driver modules to be loaded.
 
 NOTE: It helps to remember that DTs are supposed to be OS-neutral, so anything which is Linux-specific shouldn't be there.
 
@@ -1393,11 +1395,13 @@ There are a number of separate `pins_*` sections, based on particular Raspberry 
 * `pins_pi0`: Raspberry Pi Zero
 * `pins_pi0w`: Raspberry Pi Zero W
 * `pins_pi02w`: Raspberry Pi Zero 2 W
+* `pins_cm0`: Raspberry Pi Compute Module Zero
 * `pins_cm`: Raspberry Pi Compute Module 1. The default for this is the default for the chip, so it is a useful source of information about default pull-ups/pull-downs on the chip.
 * `pins_cm3`: Raspberry Pi Compute Module 3
 * `pins_cm3plus`: Raspberry Pi Compute Module 3+
-* `pins_cm4s`: Raspberry Pi Compute Module 4S
 * `pins_cm4`: Raspberry Pi Compute Module 4
+* `pins_4b`: Raspberry Pi 4 Model B
+* `pins_cm4s`: Raspberry Pi Compute Module 4S
 
 Each `pins_*` section can contain `pin_config` and `pin_defines` sections.
 

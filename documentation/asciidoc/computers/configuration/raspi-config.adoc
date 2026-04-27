@@ -10,7 +10,7 @@ There are several ways to configure your Raspberry Pi settings. While each metho
 
 If your system includes a desktop environment, you can configure common settings from the desktop GUI. For more granular control, or if you're using Raspberry Pi OS Lite or have a xref:../computers/getting-started.adoc#headless-setup[headless setup], Raspberry Pi OS includes the interactive `raspi-config` TUI, which is a Terminal-based configuration tool for managing common system settings.
 
-The desktop GUI is the most user-friendly, but the method you choose depends on a number of factors, like whether you're using a headless computer (a Raspberry Pi with no output display connected) and your comfort level with the command line. For example, if you're using a headless Raspberry Pi with no connected display, you can't access a graphical desktop environment. In this case, you must use the official `raspi-config` configuration utility or manually edit the relevant configuration files from the command line.
+The desktop GUI is the most user-friendly, but the method you choose depends on a number of factors, like whether you're using a headless computer (a Raspberry Pi with no output display connected) and your comfort level with the command line. For example, if you're using a headless Raspberry Pi with no connected display, you can't access a graphical desktop environment. In this case, you must use the `raspi-config` configuration utility or manually edit the relevant configuration files from the command line.
 
 Some other settings can only be configured from the command line or in console mode. Although these don't appear in the desktop GUI or in the `raspi-config` TUI, they're still described in the relevant categories on this page.
 

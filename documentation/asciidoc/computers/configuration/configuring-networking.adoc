@@ -229,7 +229,7 @@ Before connecting to a wireless network, you must find or specify an available o
 [tabs]
 ======
 Desktop::
-To view available Wi-Fi networks from the desktop, select the wireless icon in the top-right system tray. This icon shows the strength of the Wi-Fi signal currently connected and opens *Network Manager*. From Raspberry Pi OS *Bookworm* onwards, Network Manager is the default network configuration tool. Earlier versions of Raspberry Pi OS use `dhcpd` and other tools for network configuration.
+To view available Wi-Fi networks from the desktop, select the wireless icon in the top-right system tray. This icon shows the strength of the Wi-Fi signal currently connected and opens *Network Manager*. From Raspberry Pi OS *Bookworm* onwards, Network Manager is the default network configuration tool.
 +
 The Network Manager shows a list of available wireless networks. The icons next to each available network indicate:
 +
