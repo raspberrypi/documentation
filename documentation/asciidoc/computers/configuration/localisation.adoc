@@ -164,7 +164,7 @@ If you're not in Unicode mode, regardless of what you choose at this point, you 
 === Expand the file system
 Expanding your file system is an advanced option, typically only needed if you're moving to a larger boot media and you're not using Raspberry Pi OS. Expanding the OS partition allows your Raspberry Pi to use the full capacity of the new boot media.
 
-In most cases, Raspberry Pi OS performs the expansion automatically on first boot. 
+In most cases, Raspberry Pi OS performs the expansion automatically on first boot.
 
 WARNING: There is no confirmation step. When you choose to expand your file system, partition expansion starts immediately.
 
@@ -211,9 +211,7 @@ To enable or disable beta access using the interactive raspi-config TUI:
 
 [[wayland]]
 === Switch between Wayland and X11
-Since Raspberry Pi OS Bookworm, all Raspberry Pi models run Wayland using `labwc` by default.
-
-This setting allows you to switch between the Wayland and X11 backends. To use Wayland on Raspberry Pi models prior to Raspberry Pi 4 running a version of Raspberry Pi OS earlier than Bookworm, add `wayland=on` to `/boot/firmware/cmdline.txt`.
+From Raspberry Pi OS Bookworm onwards, all Raspberry Pi models run Wayland using `labwc` by default.
 
 WARNING: We don't recommend switching from Wayland to X because we aren't actively developing X11.
 
