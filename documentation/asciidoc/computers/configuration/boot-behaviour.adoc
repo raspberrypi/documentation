@@ -4,7 +4,7 @@ Boot behaviour determines what your Raspberry Pi loads when it starts up. You ca
 
 You can also control what is displayed during boot. Specifically, you can turn the standard Plymouth splash screen on or off, and you can replace the default early boot Raspberry Pi splash screen with a custom early boot splash screen. For instructions, see <<splash-screens>>.
 
-This section also covers the kernel command line, which is the primary mechanism for passing low-level instructions to the Linux kernel during the boot process. While the bootloader initialises the hardware (through `config.txt`), the kernel command line defines how the OS itself behaves when it takes over (through `cmdline.txt`). For instructions, see <<kms>>.
+This section also covers the kernel command line, which is the primary mechanism for passing low-level instructions to the Linux kernel during the boot process. While the bootloader initialises the hardware (through `config.txt`), the kernel command line defines how the OS itself behaves when it takes over (through `cmdline.txt`). For instructions, see <<cmdline>>.
 
 NOTE: If you're looking for information about auto login, see xref:../computers/configuration.adoc#auto-login[Require a password from startup].
 
@@ -141,7 +141,7 @@ For example code for embedding TGA images in `initramfs`, see the https://github
 
 NOTE: *Step 2* doesn't prevent `getty` from launching a login prompt. Your splash image appears during boot, but when the system is ready for login, the console takes over, and the splash disappears. `getty` clears the splash screen and writes the login prompt over it when the system is ready.
 
-[[kms]]
+[[cmdline]]
 === Configure the kernel command line
 When a Raspberry Pi (or any Linux system) boots, the kernel is given a set of startup parameters called the *kernel command line*. The kernel command line allows you to configure various aspects of the system, from troubleshooting USB lag to customising your display resolution.
 
@@ -208,7 +208,7 @@ This section contains some of the other entries you can use in the kernel comman
 |Normally, Plymouth suppresses boot messages on serial consoles. This entry forces Plymouth to ignore serial consoles so boot messages remain visible.
 
 |`dwc_otg.lpm_enable=0`
-|Disables Link Power Management (LPM) in the `dwc_otg` USB driver used by the processor's USB controller. On Raspberry Pi 4, this controller only affects the USB-C power input and not the USB-A ports.
+|Disables Link Power Management (LPM) in the `dwc_otg` USB driver used by the processor's USB controller. On Raspberry Pi 4 and later, this controller only affects the USB-C power input and not the USB-A ports.
 
 |`dwc_otg.speed=1`
 |Sets the USB controller speed to full speed (USB 1.0). Useful for troubleshooting USB issues but slower than high speed (USB 2.0). Only use this entry when diagnosing problems.

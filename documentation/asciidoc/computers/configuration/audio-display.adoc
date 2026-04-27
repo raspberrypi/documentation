@@ -133,7 +133,7 @@ NOTE: Raspberry Pi OS Bookworm and earlier used `raindrop` or `arandr` to config
 
 The command line instructions apply specifically to Raspberry Pi OS Lite or systems operating without a graphical desktop environment. If you're using a desktop GUI, follow the desktop instructions instead.
 
-On systems without a desktop environment (running in console mode), display settings must be configured manually. Recent Raspberry Pi OS versions allow you to use Kernel Mode Setting (KMS) to configure display settings. This is done by adding the `video=` parameter to your kernel command line file (`cmdline.txt`). For more information about this file, see xref:../computers/configuration.adoc#kms[Configure the kernel command line].
+On systems without a desktop environment (running in console mode), display settings must be configured manually. Recent Raspberry Pi OS versions allow you to use Kernel Mode Setting (KMS) to configure display settings. This is done by adding the `video=` parameter to your kernel command line file (`cmdline.txt`). For more information about this file, see xref:../computers/configuration.adoc#cmdline[Configure the kernel command line].
 
 [tabs]
 ======

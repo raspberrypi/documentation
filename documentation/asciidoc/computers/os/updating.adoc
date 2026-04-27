@@ -18,7 +18,7 @@ We recommend using APT to keep your Raspberry Pi software up to date. You can al
 
 To use APT to update your current Raspberry Pi software with the latest fixes, Linux kernel, and firmware, run the following commands regularly:
 
-. *Update your package list.* APT maintains a list of available software sources in `/etc/apt/sources.list` and `/etc/apt/sources.list.d/`; run the following command to refresh your list of available software packages: 
+. *Update your package list.* APT maintains a list of available software sources in `/etc/apt/sources.list` and `/etc/apt/sources.list.d/`; run the following command to refresh your list of available software packages:
 +
 [source,console]
 ----
@@ -74,7 +74,10 @@ This reinstalls the officially supported firmware from Raspberry Pi OS, restorin
 
 [[manage-software]]
 === Manage software packages
-*APT* is the default package manager used to install, update, and remove software within the Raspberry Pi OS you're currently running. You control it using Terminal commands like `apt-cache` and `apt install`.
+
+From the Terminal, *APT* is the default package manager used to install, update, and remove software within the Raspberry Pi OS you're currently running. You control it using Terminal commands like `apt-cache` and `apt install`.
+
+From the Desktop, you can use the *Preferences > Add / Remove Software* tool to manage software using the graphical interface.
 
 ==== Search for software
 
@@ -153,22 +156,18 @@ Rather than an in-place upgrade on your existing boot media, we strongly recomme
 
 The following instructions require:
 
-* A new storage device for your boot media (typically a microSD card, but you can modify the instructions to suit your storage type).
-* A computer to write a new OS image to your new boot media. You can also use network-based flashing tools or USB storage adapters for other storage types.
-* A way of connecting your boot media to your computer, one for the old boot media and one for the new boot media. You need this to move files from your old boot media onto your new boot media. Alternatively, you can use network storage.
+* A new storage device for your boot media (typically a microSD card), and a way to connect it to a computer (for example, a USB card reader).
+* A computer to write a new OS image to your new boot media, and to store and move data between boot media.
 
 The following instructions assume that you're using a microSD card as your new boot media and Raspberry Pi Imager to install a new OS image onto that boot media. If you're using a different type of storage for your boot media, modify the steps below as appropriate.
 
 . *Create a backup of your current boot media.* 
 
-NOTE: This step will permanently delete all files on the storage device you choose to use. Make sure you've backed them up before continuing.
+WARNING: This step will permanently delete all files on the storage device you choose to use. Back them up before continuing.
 
-Copy your most important configuration files to a flash drive or cloud storage.
-
-. *Prepare a new storage device.* On a new storage device, typically another microSD card, install a new OS image with the latest Raspberry Pi OS version. For instructions, see xref:../computers/getting-started.adoc#imager-install[Install using Imager].
-
-. *Copy your files and configurations.* Insert a USB flash drive into your Raspberry Pi while it's still running the Bookworm OS, copy any important files from your microSD card to the USB drive, then use your computer (and a suitable card-reader) to write Trixie OS onto the SD card. Once Trixie OS has been booted up on your Pi, copy any important files from the USB drive back to the micro SD card.
-. *Insert the new boot media into your Raspberry Pi.* Eject both microSD cards from your computer and then insert the newest microSD card into your Raspberry Pi.
+. *Prepare a new storage device with the new OS.* On a new storage device, install a new OS image with the latest Raspberry Pi OS version. For instructions, see xref:../computers/getting-started.adoc#imager-install[Install using Imager].
+. *Copy your existing files and configurations.* Use a storage device to copy any important files from your Raspberry Pi.
+. *Insert the new boot media into your Raspberry Pi.* Insert the storage device containing the new OS into your Raspberry Pi.
 . *Boot your Raspberry Pi.* Connect your Raspberry Pi to power and power it on.
 
 === Convert Raspberry Pi OS Lite into Raspberry Pi OS Desktop

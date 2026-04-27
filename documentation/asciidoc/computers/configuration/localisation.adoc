@@ -18,7 +18,11 @@ If you're looking for instructions for how to set the WLAN country on your Raspb
 
 [[browser]]
 === Change default browser
-You can change the default browser on your Raspberry Pi through the desktop and using the interactive `raspi-config` TUI. You can choose between *Chromium* and  *Firefox*.
+The default browser in new installations is *Chromium*, but you can choose between either *Chromium* or *Firefox* as the default.
+
+Regardless of which browser you set as default, the other remains available in the *Internet* system menu.
+
+To change the default browser:
 
 [tabs]
 ======
@@ -102,13 +106,21 @@ raspi-config::
 
 [[keyboard]]
 === Configure your keyboard
-Configuring your keyboard involves specifying its:
 
-* *Model.* The physical hardware design and number of keys on your device, for example, *Generic 105-key PC* for a standard full-sized keyboard with numeric keypad.
-* *Layout.* The primary language and symbol arrangement assigned to the keys on your keyboard, for example, *English (UK)* for a layout where the “ and @ symbols are swapped compared to a US keyboard.
-* *Variant.* A specific modification of a layout for specialised hardware or regional preferences, for example, *English (UK, Macintosh)* for Apple keyboards where the *Alt* and *Cmd* keys are remapped. If you don't have a specific modification, the variant is the same as the layout.
+You can customise and configure your keyboard by changing any of the following settings:
 
-If you configure your keyboard from the desktop, you can also add an alternate keyboard and select a key combination to switch layouts. Configuring the keyboard with `raspi-config` doesn't match configuring the keyboard from the desktop because it relies on a standard Debian keyboard configuration package, which also modifies the system-wide console settings.
+* *Model.* The physical hardware design and number of keys on your device. For example, choose *Generic 105-key PC* if you have a standard full-sized keyboard with numeric keypad.
+* *Layout.* The primary language and symbol arrangement assigned to the keys on your keyboard. For example, choose *English (UK)* for a layout where the " and @ symbols are swapped compared to a US keyboard.
+* *Variant.* Available only through the desktop Control Centre. A specific modification of a layout for specialised hardware or regional preferences. For example, choose *English (UK, Macintosh)* for Apple keyboards where the *Alt* and *Cmd* keys are remapped. If you don't have a specific modification, the variant is the same as the layout.
+* *Alternate Layout*: Available only through the desktop Control Centre. An alternative keyboard layout that you can switch to using the Toggle Key. For example, you can choose *English (US)* as your alternative layout.
+* *Alternative Variant*: Available only through the desktop Control Centre. A specific modification of a layout for specialised hardware or regional preferences. For example, choose *Cherokee* for Cherokee English.
+* *Toggle Key*: Available only through the desktop Control Centre. The key, or key combination such as *Ctrl + Alt*, used to switch between the Layout and any Alternate Layout you've set.
+* *Indicator*: Available only through the desktop Control Centre. An optional keyboard LED that can illuminate when an Alternate Layout is active. Typically, *Caps*, *Num*, or *Scroll*.
+* *AltGr*. Available only through `sudo raspi-config` in the Terminal. A modifier key used to input some characters that are unusual for the language of the keyboard layout, such as foreign currency symbols and accented letters.
+
+Because the desktop *Control Centre* and `sudo raspi-config` each have their own configuration settings, you might have to follow both procedures to complete your keyboard customisation.
+
+To configure your keyboard:
 
 [tabs]
 ======
@@ -137,12 +149,15 @@ raspi-config::
 . Use the *Tab* key on your keyboard to exit the list and select `<OK>`.
 . Navigate down the list to highlight the appropriate *Keyboard layout*.
 . Use the *Tab* key on your keyboard to exit the list and select `<OK>`.
-. Choose a key to function as the *Alt Gr* key on your keyboard. *Alt Gr* is a modifier key used to input some characters that are unusual for the language of the keyboard layout, such as foreign currency symbols and accented letters.
+. Choose a key to function as the *AltGr* key on your keyboard.
 . Select `<OK>` to continue.
-. Choose a compose key, prompting your Raspberry Pi to interpret the next collection of keystrokes as a combination in order to produce a character set not found on the keyboard. The compose key doesn't work in Unicode mode. If you're not in Unicode mode, regardless of what you choose at this point, you can always use *Control+Period* as the compose key.
+. Choose a compose key. This prompts your Raspberry Pi to interpret the next collection of keystrokes as a combination that creates a character not found on the keyboard.
++
+The compose key doesn't work in Unicode mode.
++
+If you're not in Unicode mode, regardless of what you choose at this point, you can always use *Control+Period* as the compose key.
 . Select `<OK>` to continue.
-. Presuming you're using Wayland, select the default option, `<No>` to continue. If you're using X, select `<Yes>` if you want to ensure that *Control+Alt+Backspace* ends the X server.
-. Reboot your Raspberry Pi for the changes to take effect.
+. If you're using Wayland, select the default option, `<No>`, to continue. If you're using X, select `<Yes>` if you want to ensure that *Control+Alt+Backspace* ends the X server.
 ======
 
 [[expand-filesystem]]

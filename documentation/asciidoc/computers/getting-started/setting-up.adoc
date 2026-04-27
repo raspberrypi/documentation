@@ -50,11 +50,15 @@ If you have a Raspberry Pi keyboard computer (Raspberry Pi 400, 500, or 500+), o
 [[recommended-capacity]]
 ==== Recommended minimum storage requirements
 
-The boot media storage that you need depends on how much software is included in the OS version you install. The following recommendations are enough to get started based on your chosen OS, but we recommend choosing more storage space to allow room to grow:
+The boot media storage that you need depends on how much software is included in the OS version you install.
 
-* For *Raspberry Pi OS* (desktop with basic software), we recommend using an SD card with at least 32 GB of storage.
-* For *Raspberry Pi OS Full* (desktop with basic software and recommended applications), we recommend using an SD card with at least 32 GB of storage.
-* For *Raspberry Pi OS Lite* (a command-line-only version for headless setups), we recommend using an SD card with at least 8 GB of storage.
+The following recommendations are enough to get started based on your chosen OS, but we recommend choosing more storage space to allow room to grow:
+
+* *Raspberry Pi OS* (desktop with basic software): SD card with at least 32 GB of storage.
+* *Raspberry Pi OS Full* (desktop with basic software and recommended applications): SD card with at least 32 GB of storage.
+* *Raspberry Pi OS Lite* (a command-line-only version for headless setups): SD card with at least 8 GB of storage.
+
+Other operating systems might have different storage requirements, so always check the documentation for the OS you plan to install.
 
 ==== Maximum supported capacity
 
@@ -66,12 +70,10 @@ Some older Raspberry Pi devices can only boot from a boot partition of 256 GB or
 * The first flagship Raspberry Pi device.
 * Early Raspberry Pi 2 models with the BCM2836 SoC.
 
-Other operating systems might have different storage requirements. Always check the documentation for the OS you plan to install.
-
 ==== Inserting a microSD card
 You must configure your microSD card before inserting it into your Raspberry Pi. For step-by-step guidance on configuring the boot media for your Raspberry Pi, see xref:../computers/getting-started.adoc#install[Install an OS onto boot media].
 
-When you've configured your microSD card with an OS, insert it into the microSD slot with the label facing away from the Raspberry Pi. 
+When you've configured your microSD card with an OS, insert it into the microSD slot with the label facing away from the Raspberry Pi.
 
 .Inserting a microSD card into a Raspberry Pi
 image::images/peripherals/sd-card.png[alt="Inserting a microSD card into a Raspberry Pi.",width="80%"]
@@ -134,7 +136,7 @@ NOTE: Displays typically require their own source of power. If you're using an o
 On Raspberry Pi 4 and later, both HDMI outputs support up to 4K resolution, though at different refresh rates depending on model.
 
 .Plugging a micro HDMI cable into a Raspberry Pi
-image::images/peripherals/cable-hdmi.png[alt="Plugging a micro HDMI cable into a Raspberry Pi.",width="80%"] 
+image::images/peripherals/cable-hdmi.png[alt="Plugging a micro HDMI cable into a Raspberry Pi.",width="80%"]
 
 While newer Raspberry Pi models use micro HDMI, and Raspberry Pi Zero models use mini HDMI, most displays use full-size HDMI. You can use a https://www.raspberrypi.com/products/micro-hdmi-to-standard-hdmi-a-cable/[micro-HDMI-to-HDMI cable] or https://www.raspberrypi.com/products/standard-hdmi-a-male-to-mini-hdmi-c-male-cable/[mini-HDMI-to-HDMI cable] (or an https://www.raspberrypi.com/products/mini-hdmi-c-male-to-standard-hdmi-a-female-adapter/[mini-HDMI-to-HDMI adaptor]) to connect these models to an HDMI display. If your display doesn't have an HDMI connector, use an adapter cable to convert the HDMI end into a DVI-D, DisplayPort or VGA connector.
 
@@ -190,12 +192,16 @@ Depending on your Raspberry Pi model, you can output audio over HDMI, USB, Bluet
 
 [[power]]
 === Power supply
-Connecting your Raspberry Pi to power is the last step in setting up your hardware. We recommend using an official Raspberry Pi power supply suitable for the Raspberry Pi model you're powering. Your Raspberry Pi turns on as soon as you connect it to power.
+Connecting your Raspberry Pi to power is the last step in setting up your hardware. We recommend using an official Raspberry Pi power supply suitable for the Raspberry Pi model you're powering.
+
+Your Raspberry Pi turns on as soon as you connect it to power. This is true unless you've xref:../computers/raspberry-pi.adoc#raspberry-pi-bootloader-configuration[edited your EEPROM settings] to keep your Raspberry Pi 5 device powered off until you press the power button.
 
 ==== Recommended power supply
 We recommend using an official Raspberry Pi power supply.
 
 Different Raspberry Pi models require different amounts of power to run properly. The following table lists which USB Power Delivery mode is required for each model.
+
+NOTE: The recommended voltage requirements shown here are measured at the plug, not the supply. Allow for voltage loss in the cable, especially if your power supply cable is removable.
 
 .Recommended power supply depending on Raspberry Pi model
 [cols="1,1,1", options="header"]
@@ -244,32 +250,48 @@ image::images/peripherals/cable-power.png[alt="Plugging a power supply into a Ra
 
 [[networking]]
 == Networking
-The following table lists Raspberry Pi models that come with Wi-Fi and Bluetooth connectivity, and specifies which of these also come with an Ethernet port.
+The following table lists the connectivity specifications for Raspberry Pi devices.
 
 If your Raspberry Pi device doesn't have an Ethernet port, you can still connect to a wired internet connection using a USB-to-Ethernet adapter.
 
 Similarly, if your Raspberry Pi device doesn't have built-in Wi-Fi, you can still connect to a wireless internet connection using a USB-to-Wi-Fi adapter.
 
-.Ethernet availability on wireless Raspberry Pi models
-[cols="2,2", options="header"]
+.Raspberry Pi models with built-in connectivity
+[cols="2,1,1",options="header"]
 |===
-| Wireless models | Ethernet
+|Model Name |Wireless |Ethernet
 
-| Flagship models since Raspberry Pi 3 Model B. Raspberry Pi 5 includes Gigabit Ethernet and dual-band Wi-Fi (2.4/5 GHz).
-| Model A: No; Model B: Yes
+|Raspberry Pi 3B+ and newer
+|Yes. Dual-band Wi-Fi (2.4/5 GHz)
+|Yes. 300 Mb/s for Rasberry Pi 3B+, and Gigabit Ethernet for Raspberry Pi 4B and newer
 
-| All keyboard computers (Raspberry Pi 400, 500, and 500+)
-| Yes
+|Raspberry Pi 3B
+|Yes, 2.4 GHz only
+|Yes
 
-| Raspberry Pi Zero W and Zero 2 W (where 'W' means 'Wireless')
-| No
+|Raspberry Pi 3A+
+|Yes. Dual-band Wi-Fi (2.4/5 GHz)
+|No
 
-| Raspberry Pi Pico W and Pico 2 W (where 'W' means 'Wireless')
-| No
+|Raspberry Pi 1B, 1B+, and 2B
+|No
+|Yes
 
-| Compute modules configured with wireless, available since Compute Module 4 (CM4)
-| No, unless the carrier board adds it.
+|All keyboard computers (Raspberry Pi 400, 500, and 500+)
+|Yes. Dual-band Wi-Fi (2.4/5 GHz)
+|Yes. Gigabit Ethernet
 
+|Raspberry Pi Zero W and Zero 2 W
+|Yes, 2.4 GHz only
+|No
+
+|Compute Module 5 (CM5) and Compute Module 4 (CM4)
+|Optional dual-band Wi-Fi (2.4/5 GHz)
+|Yes. Gigabit Ethernet.
+
+|Compute Modules 3+ (CM3+) and older
+|No
+|Optional
 |===
 
 [[setup]]
@@ -286,7 +308,9 @@ Broadly, a desktop setup for your Raspberry Pi involves boot media, peripherals,
 
 ==== Step 1. Prepare your boot media
 
-Use Raspberry Pi Imager to install the OS onto your boot media. This is a prerequisite for using your Raspberry Pi and is where you configure most of its key settings for the first time, including hostname, localisation, user credentials, Wi-Fi connection, and remote access. 
+Use *Raspberry Pi Imager* to install the OS onto your boot media.
+
+This is a prerequisite for using your Raspberry Pi and is where you configure most of its key settings for the first time, including hostname, localisation, user credentials, Wi-Fi connection, and remote access.
 
 Other settings can be configured later. For instructions, see xref:../computers/getting-started.adoc#install[Install an OS onto boot media].
 
@@ -307,7 +331,9 @@ To use your Raspberry Pi as a desktop computer, you can connect the following pe
 image::images/peripherals/cable-all.png[alt="Attaching the power supply to a Raspberry Pi.",width="80%"]
 
 ==== Step 3. Connect to power
-After connecting your peripherals, plug the power supply onto the USB-C (or micro USB on older models) power port on your Raspberry Pi. Ensure that your power supply meets the voltage and current requirements of your Raspberry Pi model. For more information, see <<power>>.
+After connecting your peripherals, plug the power supply onto the USB-C (or micro USB on older models) power port on your Raspberry Pi.
+
+Ensure that your power supply meets the voltage and current requirements of your Raspberry Pi model. For more information, see <<power>>.
 
 When your Raspberry Pi powers on, a status LED lights up, and if your Raspberry Pi is connected to a monitor, a boot screen appears. This can take a few minutes.
 
@@ -315,7 +341,7 @@ When your Raspberry Pi powers on, a status LED lights up, and if your Raspberry 
 After you've installed an OS onto your boot media and inserted it into your Raspberry Pi, you can set up network connectivity. This can be a wired (Ethernet) connection or a wireless (Wi-Fi) connection.
 
 ===== Connect to a wireless network
-Connecting to a wireless network typically happens during boot media configuration. For instructions on configuring your boot media, see xref:../computers/getting-started.adoc#install[Install an OS onto boot media]. You can also configure a wireless network later from the desktop or from the command line. For instructions, see xref:../computers/configuration.adoc#connect-to-wireless[Connect to a wireless network] in the *Configuration* page. 
+Connecting to a wireless network typically happens during boot media configuration. For instructions on configuring your boot media, see xref:../computers/getting-started.adoc#install[Install an OS onto boot media]. You can also configure a wireless network later from the desktop or from the command line. For instructions, see xref:../computers/configuration.adoc#connect-to-wireless[Connect to a wireless network] in the *Configuration* page.
 
 Some wireless adapters and some Raspberry Pi models don't support 5 GHz networks; check the link:https://www.raspberrypi.com/products/[Raspberry Pi Product page] for your wireless module to ensure compatibility with your preferred network. For information about which Raspberry Pi models support wireless networks, see <<networking>>.
 
@@ -331,59 +357,61 @@ image::images/peripherals/cable-net.png[alt="Plugging an Ethernet cable into a R
 
 [[headless-setup]]
 === Headless (remote) setup
-A headless Raspberry Pi operates without a monitor, keyboard, or mouse. You control it remotely from another computer over a network. For this, you need:
+A headless Raspberry Pi operates without a monitor, keyboard, or mouse.
+
+You control it remotely over a network. For this, you must have:
 
 * A network connection (Ethernet or Wi-Fi).
-* A remote access method, typically SSH. The following guidance provides instructions for SSH.
+* Remote access using either SSH or xref:../services/connect.adoc[Raspberry Pi Connect] for the first boot of the device. You can use xref:remote-access.adoc#vnc[VNC] for subsequent boots. Note that VNC is not compatible with the Lite versions of Raspberry Pi OS.
 
-After you've connected over SSH, you can set up xref:../services/connect.adoc[Raspberry Pi Connect], which provides remote access to your Raspberry Pi desktop and Terminal with no manual network configuration. Alternatively, you can xref:remote-access.adoc#vnc[enable VNC] if you prefer a graphical desktop environment.
+We recommend you set up a headless device using *Raspberry Pi Imager*. This allows you to choose between *Raspberry Pi OS* and *Raspberry Pi OS Lite*, and to configure networking, remote access, and user credentials (username and password).
 
-VNC and Raspberry Pi Connect can be enabled from the desktop and using the interactive `raspi-config` tool. For instructions, see xref:configuration.adoc#remote[Remote access] in the *Configuration* page.
+VNC and *Raspberry Pi Connect* can be enabled either from the desktop or by using the interactive `raspi-config` tool. For instructions, see xref:configuration.adoc#remote[Remote access].
+
+=== To set up a headless Raspberry Pi using SSH:
+
+Before you start Step 1, note the following:
+
+* Some wireless adapters and Raspberry Pi models don't support 5 GHz networks, so check the documentation for your wireless module to ensure compatibility with your preferred network. For more information, see <<networking>>.
+
+* Because a headless setup doesn't have a desktop, we recommend choosing *Raspberry Pi OS Lite* as your operating system when preparing the boot media using *Raspberry Pi Imager*.
 
 ==== Step 1. Prepare your boot media
-The recommended way to set up a headless computer is during the installation process using Imager, where you can configure the networking, remote access, and user credentials (username and password) required for a headless setup. For instructions, see xref:../computers/getting-started.adoc#install[Install an OS onto boot media].
 
-Because a headless setup doesn't have a desktop, we recommend choosing *Raspberry Pi OS Lite* as your operating system.
+The first step is to prepare a bootable disk with the Raspberry Pi operating system installed on it.
 
-After installing an OS onto your boot media, insert it into your Raspberry Pi. On newer models, this is typically a microSD card inserted into the slot on the underside of the device. If you installed the OS on any other storage device, you can connect it to your Raspberry Pi using other compatible connectors.
+. Follow the instructions to xref:../computers/getting-started.adoc#install[install an OS onto boot media] using *Raspberry Pi Imager*.
 
-==== Step 2. Connect to power
+. After installing an OS onto your boot media, insert it into your Raspberry Pi or connect it to your Raspberry Pi using a compatible connector.
 
-After preparing your boot media and connecting it to your Raspberry Pi, attach the Ethernet cable.
+==== Step 2 (Optional). Connect to a wired network
+Next, set up network connectivity so that the headless device can communicate with your computer.
 
-Plug the power supply into the USB-C (or micro USB on older models) power port on your Raspberry Pi. Ensure that your power supply meets the voltage and current requirements of your Raspberry Pi model. For more information, see <<power>>.
+If you used Imager to set up your SSID and wireless network details in Step 1, you can skip this step and go to Step 3.
 
-When your Raspberry Pi powers on, a status LED lights up. This can take a few minutes.
+If you didn't set up a wireless network connection in Step 1, connect the headless device to a wired network now:
 
-==== Step 3. Connect to a network
-After you've installed an OS onto your boot media, inserted it into your Raspberry Pi, and connected your Raspberry Pi to power, you can set up network connectivity so that it can communicate with your computer. This can be a wired (Ethernet) connection or a wireless (Wi-Fi) connection.
+. Attach an Ethernet cable into your Raspberry Pi device's Ethernet port until you hear a click. Use a USB Ethernet adapter if your Raspberry Pi model doesn't include an Ethernet port.
 
-===== Connect to a wireless network
-If configured during installation using Imager, your Raspberry Pi attempts to connect to the wireless network on first boot. Enter the SSID and password for your wireless network.
-
-Some wireless adapters and some Raspberry Pi models don't support 5 GHz networks; check the documentation for your wireless module to ensure compatibility with your preferred network. For information about which Raspberry Pi models support wireless networks, see <<networking>>.
-
-NOTE: Previous versions of Raspberry Pi OS made use of a `wpa_supplicant.conf` file, which could be placed into the boot folder to configure wireless network settings. This functionality isn't available from Raspberry Pi OS *Bookworm* and onwards.
-
-===== Connect to a wired network
-Plug an Ethernet cable into your Raspberry Pi and your router. 
-
-Attach an Ethernet cable into your Raspberry Pi device's Ethernet port until you hear a click. Use a USB Ethernet adapter if your Raspberry Pi model doesn't include an Ethernet port. 
-
-Connect the other end of the cable to a port in your router. Raspberry Pi OS automatically connects to the network.
-
-To remove the Ethernet cable, press on the clip at the bottom of the connector and gently slide the cable out from the port.
-
+. Connect the other end of the cable to a port in your router. Raspberry Pi OS automatically connects to the network.
 
 .Plugging an Ethernet cable into a Raspberry Pi
 image::images/peripherals/cable-net.png[alt="Plugging an Ethernet cable into a Raspberry Pi.",width="80%"]
 
+==== Step 3. Connect to power
+
+Before continuing, check that your power supply meets the voltage and current requirements of your Raspberry Pi model. For more information, see <<power>>.
+
+. Plug the power supply into the USB-C (or micro USB on older models) power port on your Raspberry Pi.
+
+When your Raspberry Pi powers on, a status LED lights up. This can take a few minutes.
+
 ==== Step 4. Access your Raspberry Pi
-A headless setup requires a remote access method. On first boot, the only remote access option is SSH or Raspberry Pi Connect. 
+On first boot, the only remote access options are SSH or Raspberry Pi Connect.
 
-The recommended way to enable SSH is during installation using Imager, as described in xref:../computers/getting-started.adoc#install[Install an OS onto boot media].
+If you didn't customise the image using Raspberry Pi Imager in Step 1, set up remote access manually.
 
-If you didn't customise the image during installation you can instead set up remote access manually. On your boot media's `bootfs` partition:
+On your boot media's `bootfs` partition:
 
 . Create an empty file named `ssh`.
 . Create a file named `userconf.txt` with a single line of text: `<username>:<enrcypted-password>`.
@@ -393,4 +421,4 @@ Replace `<username>` with your username and `<enrcypted-password>` with an *encr
 * *Username.* Your username must start with a letter and may only contain lowercase letters, digits, underscores, and hyphens. Your username can be a maximum of 31 characters.
 * *Encrypted password.* Use https://www.openssl.org[OpenSSL] on another computer to generate an encrypted password. From the command line, run `openssl passwd -6` and then, when prompted, enter your password and verify it. This command outputs an encrypted version of the supplied password.
 
-For more detailed information, see xref:../computers/remote-access.adoc#ssh[Access a remote terminal with SSH].
+For detailed information, see xref:../computers/remote-access.adoc#ssh[Access a remote terminal with SSH].

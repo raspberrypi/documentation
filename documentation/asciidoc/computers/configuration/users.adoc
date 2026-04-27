@@ -1,17 +1,92 @@
 [[users]]
 == User access and management
 
-This section covers how to:
+This section covers how to manage users and passwords on your Raspberry Pi, including:
 
-* Manage other users of your Raspberry Pi from the command line, including how to:
-** <<add-user>> if you want to have multiple users of your Raspberry Pi with separate accounts and home directories.
-** <<verify>>, which you might want to do to check that you successfully added another user to your Raspberry Pi.
-** <<grant-user-access>>, which means giving other users of your Raspberry Pi superuser permissions.
-** <<delete-user>> from your Raspberry Pi.
-* Manage user passwords, which you can do from the desktop and using the interactive `raspi-config` TUI, including how to:
-** <<change-user-password>>. You can also do this from the command line.
-** <<auto-login>> by turning off auto login.
-** <<disable-sudo-password>>. The default is to require a password whenever a user attempts to use a `sudo` command.
+* <<list-users>> to see which users exist on the device.
+* <<add-user>> to create a new user with a separate account and home directory.
+* <<switch-user>> to change the active user.
+* <<grant-user-access>> to give user accounts access to groups and superuser permissions.
+* <<delete-user>> from your Raspberry Pi.
+* <<change-user-password>> in the TUI or from the command line.
+* <<auto-login>> by turning off auto login.
+* <<disable-sudo-password>>.
+
+=== User access and management quick reference:
+
+This is a short list of some of the commands referenced by the procedures in this section.
+
+[cols="1,2",%autowidth]
+|===
+|Function |Command
+
+|List all existing users.
+a|
+[source,console]
+----
+$ ls -l /home
+----
+
+|Check the group permissions for the current user.
+a|
+[source,console]
+----
+$ groups
+----
+
+|Add a new user.
+a|
+[source,console]
+----
+$ sudo adduser
+----
+
+|Switch to a different user.
+a|
+[source,console]
+----
+$ sudo su - <username>
+----
+
+|Delete a user and their home directory.
+a|
+[source,console]
+----
+$ sudo deluser --remove-home <username>
+----
+
+|Change the current user's password.
+a|
+[source,console]
+----
+$ sudo passwd
+----
+
+|Open the configuration centre.
+a|
+[source,console]
+----
+$ sudo raspi-config
+----
+
+|===
+
+[[list-users]]
+=== Get a list of users
+To get a list of all existing users and their home directories, run the following command:
+
+[source,console]
+----
+$ ls -l /home
+----
+
+You can navigate to the home directory of any user listed here using the following command, replacing `<username>` with the username of the user:
+
+[source,console]
+----
+$ cd /home/<username>
+$ ls -la
+----
 
 [[add-user]]
 === Add a user
@@ -24,70 +99,70 @@ To add a new user to your Raspberry Pi:
 $ sudo adduser <username>
 ----
 . When prompted, enter a password for the new user.
-. Optionally, add additional information about the user, such as their full name, room number, and so on. If you don't want to include this information, press *Enter* or *Return* on your keyboard to skip.
+. Optionally, add additional information about the new user, such as their full name, room number, and so on. If you don't want to include this information, press *Enter* or *Return* on your keyboard to skip.
 . Press *Y* followed by *Enter* or *Return* to indicate that the information is correct.
 
-[[verify]]
-=== Verify a user exists
-When you create a new user, the home directory is automatically created at `/home/<username>`. You can check the home directory for the new user by running the following in the command line: `/home/<username>/`, replacing `<username>` with the user's username. This returns something like the following:
+When you create a new user, their home directory is automatically created at `/home/<username>`.
+
+To check the home directory for the new user, run the following command: `/home/<username>/`, replacing `<username>` with the user's username.
+
+It returns something like:
 
 [source]
 ----
 -bash: /home/<username>: Is a directory
 ----
 
-This verifies that the new user exists and has a home directory.
-
-To check the home directories of all users, run the following command. Your new user's home directory appears in the resulting list.
-
-[source,console]
-----
-$ ls -l /home
-----
-
-You can navigate into the home directory of a user listed here using the following command, replacing `<username>` with the username of the user you're interested in:
-
-[source,console]
-----
-$ cd /home/<username>
-$ ls -la
-----
-
 [[grant-user-access]]
 === Grant user access permissions
-To grant a user permissions, run the following command, replacing `<username>` with the username of the new user. This adds the user to important system groups. Notably, `sudo` in the following command gives superuser access to the user:
+You can give a user access to system groups.
+
+NOTE: Including `sudo` in the following list gives superuser access to the user.
+
+To grant a user permissions, run the following command, replacing `<username>` with the username of the new user.
 
 [source,console]
 ----
 $ sudo usermod -a -G adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,input,render,netdev,lpadmin,gpio,i2c,spi <username>
 ----
 
-To check that the permissions were successfully granted, switch to the new user. Run the following command, replacing `<username>` with the username of the new user:
+You can verify that this was successful by switching to the user account and checking permissions.
+
+[[switch-user]]
+=== Switch user
+To switch to a different user, run the following command, replacing `<username>` with the username of the user:
 
 [source,console]
 ----
 $ sudo su - <username>
 ----
 
-If the command runs successfully, permissions were successfully configured for the user.
+[[check-permissions]]
+=== Check permissions
+To check the groups a user belongs to, switch to the user then run the following command:
+
+[source,console]
+----
+$ groups
+----
 
 [[delete-user]]
-=== Remove a user
+=== Delete a user
 
-If you want to delete a user from your Raspberry Pi, enter the following command, replacing `<username>` with the username for the user:
+To delete a user, enter the following command, replacing `<username>` with the username for the user:
+
+NOTE: This deletes both the user and their home directory. To preserve the user's home directory, run the command without the `--remove-home` option.
 
 [source,console]
 ----
 $ sudo deluser --remove-home <username>
 ----
 
-This command deletes the user as well as their home directory. If you want to preserve the user's home directory, run the command without the `--remove-home` option.
-
 Press *Y* followed by *Enter* or *Return* on your keyboard to indicate that the information is correct.
 
 [[change-user-password]]
 === Change your password
-You can add or change the password for the current user from the desktop, using the interactive `raspi-config` TUI, and from the command line.
+To change the password for the current user, or to add a password if the user was created without one, do one of the following:
 
 [tabs]
 ======
@@ -119,11 +194,9 @@ For a fully command-line experience of changing your password, you can manually 
 
 [[auto-login]]
 === Require a password from startup
-You can require users to enter their password when booting the Raspberry Pi by turning off *Auto Login*. 
+You can require users to enter their password when booting the Raspberry Pi by turning off *Auto Login*.
 
-You can do this from the desktop and using the interactive `raspi-config` TUI. 
-
-When you turn off auto login, you choose whether to separately require the password for booting into the *console* and the *desktop*. 
+Because you can access the console from the desktop, you're asked to choose whether to require the password to log into the *console*, and whether to require it to log into the *desktop*.
 
 [tabs]
 ======
@@ -147,6 +220,7 @@ raspi-config::
 
 [[disable-sudo-password]]
 === Turn off password for superuser commands
+
 Prefixing a command in Raspberry Pi with `sudo` runs that command with superuser (admin) privileges.
 
 By default, Raspberry Pi OS requires you to enter your password when running sudo commands. This prevents unauthorised users from running `sudo` commands on your device.
