@@ -12,7 +12,7 @@ From the Connect icon in the menu bar, select **Turn On Raspberry Pi Connect**.
 +
 If you aren't already signed in with your Raspberry Pi ID, a browser will open and you will be prompted to do so now. Once you've signed in, your Raspberry Pi links to your Connect account.
 +
-image::images/turn-on-connect.png[alt="The Connect interface, showing the Turn On Raspberry Pi Connect dropdown menu option.",width="80%"]
+image::images/turn-on-connect.png[alt="The Connect interface, showing the Turn On Raspberry Pi Connect dropdown menu option.",width="100%"]
 +
 To turn off Connect:
 +
@@ -20,7 +20,7 @@ From the Connect icon in the menu bar, select **Turn Off Raspberry Pi Connect**.
 +
 This stops Connect from running.
 +
-image::images/turn-off-connect.png[alt="The Connect interface, showing the Turn Off Raspberry Pi Connect dropdown menu option."width="80%"]
+image::images/turn-off-connect.png[alt="The Connect interface, showing the Turn Off Raspberry Pi Connect dropdown menu option.",width="100%"]
 
 CLI::
 +

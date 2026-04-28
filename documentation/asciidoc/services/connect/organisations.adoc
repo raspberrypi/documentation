@@ -13,7 +13,7 @@ To create a new organisation:
 
 . Select the **account switcher icon** (the two opposing arrows) at the top left of the navigation menu.
 +
-image::images/account-switcher.png[alt="The Raspberry Pi Connect interface, showing the account switcher dropdown menu. The account switcher lets you change between your personal and organisation Connect accounts.", width=70%"]
+image::images/account-switcher.png[alt="The Raspberry Pi Connect interface, showing the account switcher dropdown menu. The account switcher lets you change between your personal and organisation Connect accounts.", width=100%"]
 
 . Select **+New organisation**, then type the organisation name.
 . If this is the first organisation you have created, **Start your free trial** displays. If you have previously created an organisation, **Create organisation** displays. Select whichever is displayed you. 
@@ -28,11 +28,11 @@ To transfer your devices:
 +
 The *Transfer personal devices* page displays.
 +
-image::images/transfer-personal-devices-link.png[alt="The Raspberry Pi Connect interface, showing a link for importing Raspberry Pi devices from a personal Connect account to an organisation Connect account.", width=70%"]
+image::images/transfer-personal-devices-link.png[alt="The Raspberry Pi Connect interface, showing a link for importing Raspberry Pi devices from a personal Connect account to an organisation Connect account.", width=100%"]
 +
 If you have personal devices that can be transferred to your new organisation, you're asked to confirm the transfer before it takes place:
 +
-image::images/transfer-devices.png[alt="The Raspberry Pi Connect interface, checking whether you want to import devices to an organisation Connect account.", width="70%"]
+image::images/transfer-devices.png[alt="The Raspberry Pi Connect interface, checking whether you want to import devices to an organisation Connect account.", width="100%"]
 
 . Review the personal devices by selecting the **personal devices link**, or confirm that you want to add the billable devices to your organisation's account by selecting *Transfer x devices* (where "x" is the number of devices).
 +
@@ -50,7 +50,7 @@ To invite a user:
 
 . Select the **Users** tab at the top of the page, then select **Invite someone**.
 +
-image::images/users.png[alt="The Raspberry Pi Connect interface, showing users associated with an organisation Connect account.", width="70%"]
+image::images/users.png[alt="The Raspberry Pi Connect interface, showing users associated with an organisation Connect account.", width="100%"]
 
 . Choose a **Role** from the dropdown menu.
 +
@@ -63,7 +63,7 @@ There are two roles available for members of an organisation:
 
 . Select **Send invitation**.
 +
-image::images/invite-user.png[width="70%"]
+image::images/invite-user.png[alt="The Connect interface, showing the Invite user page that consists of a role dropdown menu, an email address, and a Send invitation button.",width="100%"]
 +
 An invitation is sent to the email address you provided in Step 5. The user can follow the invitation link in the email, and can sign in using either the same email address or any valid Raspberry Pi ID.
 
@@ -122,7 +122,7 @@ To transfer a device:
 
 . Select the account switcher icon in the top left of the navigation menu.
 +
-image::images/account-switcher.png[alt="The Raspberry Pi Connect interface, showing the account switcher dropdown. The account switcher lets you change between personal and organisation Connect accounts.", width="70%"]
+image::images/account-switcher.png[alt="The Raspberry Pi Connect interface, showing the account switcher dropdown menu. The account switcher lets you change between personal and organisation Connect accounts.", width="100%"]
 
 . Switch to the account that currently owns the device (your personal account or an organisation).
 
@@ -132,7 +132,7 @@ image::images/account-switcher.png[alt="The Raspberry Pi Connect interface, show
 
 . Select **Transfer...**
 +
-image::images/transfer.png[alt="The Raspberry Pi Connect interface, showing the accounts to which a device can be transferred.",width="70%"]
+image::images/transfer.png[alt="The Raspberry Pi Connect interface, showing the accounts to which a device can be transferred.",width="100%"]
 
 . Select the account you want to transfer the device to.
 
@@ -145,7 +145,7 @@ Tags help you categorise and find devices in your organisation. For example, you
 
 Tags appear beneath the device name on both the device page and the device list.
 
-You must be an administrator to add or remove tags. 
+You must be an administrator to add or remove tags.
 
 To add or remove tags on a device:
 
@@ -155,7 +155,7 @@ To add or remove tags on a device:
 
 . Select **Edit tags...**
 +
-image::images/tagging.png[alt="The Edit tags dialog, showing applied tags and the autocomplete dropdown with suggestions.",width="70%"]
+image::images/tagging.png[alt="The Edit tags dialog, showing applied tags and the autocomplete dropdown with suggestions.",width="100%"]
 
     * To add a tag, type in the text field. You can select an existing tag from the dropdown, or type a new tag name and select the **Create** option.
     * To remove a tag, select the **x** next to the tag you want to remove.
@@ -194,7 +194,7 @@ NOTE: The `model:`, `memory:`, and `os:` qualifiers will only find devices runni
 
 You can combine multiple filters and free text in a single query. For example, `model:5 tag:production dashboard` finds Raspberry Pi 5 devices tagged `production` with "dashboard" in their name.
 
-image::images/filters.png[alt="The device list with model and tag filters applied in the search bar.",width="70%"]
+image::images/filters.png[alt="The device list with model and tag filters applied in the search bar.",width="100%"]
 
 When you start typing in the search bar, a dropdown suggests available qualifiers and values. Select a qualifier from the dropdown to see its available values, then select a value to add it as a filter. Applied filters appear in the search bar.
 
@@ -220,7 +220,7 @@ To set up a subscription:
 
 Once your free trial ends, you won't be able to remotely access the devices in your organisation until you set up a subscription.
 
-image::images/billing.png[width="70%"]
+image::images/billing.png[alt="The Connect billing interface, showing the 28-day free trial and payment details fields that you have to fill in to start your trial.",width="100%"]
 
 === View the audit log
 
@@ -228,7 +228,7 @@ The audit log shows all activity from the past 90 days ordered chronologically, 
 
 You must be an administrator to view the activity in your organisation from the past 90 days. To view the audit log, open the **Audit log** tab at the top of the page.
 
-image::images/audit-log.png[width="70%"]
+image::images/audit-log.png[alt="The Connect audit interface, showing the dropdown filter menu and the results.",width="100%"]
 
 Each event in the list includes the following information:
 
@@ -246,7 +246,7 @@ Select **Download CSV** above the top-right corner of the list to download it in
 
 Administrators of an organisation can configure the following from the **Settings** tab at the top of the page.
 
-image::images/organisation-settings.png[width="70%"]
+image::images/organisation-settings.png[alt="The Connect organisation settings interface, showing organisation name and other data fields for your organisation.",width="100%"]
 
 ==== Rename the organisation
 
