@@ -360,7 +360,7 @@ When you connect the official Raspberry Pi display with auto detect enabled, KMS
 
 ==== Manually configure a display
 
-NOTE: In Raspberry Pi OS _Bookworm_ or later, the `dpi_output_format` and `dpi_timings` entries in `config.txt` previously used to set up DPI have been superseded by the `vc4-kms-dpi-generic` overlay.
+NOTE: From Raspberry Pi OS _Bookworm_ onwards, the `dpi_output_format` and `dpi_timings` entries in `config.txt` previously used to set up DPI have been superseded by the `vc4-kms-dpi-generic` overlay.
 
 To use any display other than the official Raspberry Pi display, you must specify a `dtoverlay` entry in `config.txt`. The panel manufacturer should configure timings for your display in Linux kernel code and provide an overlay to enable those settings. See the https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/vc4-kms-kippah-7inch-overlay.dts[Adafruit Kippah display entry] for an example. The following example demonstrates how to set a `dtoverlay` entry for the Kippah display in your xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file:
 

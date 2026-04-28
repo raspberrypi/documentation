@@ -129,7 +129,7 @@ Raspberry Pi 4B, 400, and Compute Module 4, support either:
 Raspberry Pi 5, 500, 500+, and Compute Module 5 support two displays with resolution up to 3840 × 2160 pixels (4K; Ultra HD) at a 60 Hz refresh rate with no additional configuration.
 You can adjust your display resolution and screen orientation through the desktop and through the console.
 
-NOTE: Raspberry Pi OS Bookworm and earlier used `raindrop` or `arandr` to configure display behaviours. The latest version of Raspberry Pi OS doesn't support these tools.
+NOTE: Raspberry Pi OS Bookworm was the final version to support `raindrop` or `arandr` to configure display behaviours.
 
 The command line instructions apply specifically to Raspberry Pi OS Lite or systems operating without a graphical desktop environment. If you're using a desktop GUI, follow the desktop instructions instead.
 

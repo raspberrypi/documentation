@@ -2,9 +2,6 @@
 
 If your Camera Module doesn't work like you expect, try some of the following fixes:
 
-* On Raspberry Pi 3 and earlier devices running Raspberry Pi OS _Bullseye_ or earlier:
-** To enable hardware-accelerated camera previews, enable *Glamor*. To enable Glamor, enter `sudo raspi-config` in a terminal, select `Advanced Options` > `Glamor` > `Yes`. Then reboot your Raspberry Pi with `sudo reboot`.
-** If you see an error related to the display driver, add `dtoverlay=vc4-fkms-v3d` or `dtoverlay=vc4-kms-v3d` to `/boot/config.txt`. Then reboot your Raspberry Pi with `sudo reboot`.
 * On Raspberry Pi 3 and earlier, the graphics hardware can only support images up to 2048×2048 pixels, which places a limit on the camera images that can be resized into the preview window. As a result, video encoding of images larger than 2048 pixels wide produces corrupted or missing preview images.
 * On Raspberry Pi 4, the graphics hardware can only support images up to 4096×4096 pixels, which places a limit on the camera images that can be resized into the preview window. As a result, video encoding of images larger than 4096 pixels wide produces corrupted or missing preview images.
 * The preview window may show display tearing in a desktop environment. This is a known, unfixable issue.

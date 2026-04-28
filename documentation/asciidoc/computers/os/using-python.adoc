@@ -7,7 +7,7 @@ On Linux, you can install `python` dependencies in two ways:
 * use `apt` to install pre-configured system packages
 * use `pip` to install libraries using Python's dependency manager _in a virtual environment_
 +
-IMPORTANT: Starting in Raspberry Pi OS _Bookworm_, you can only use `pip` to install into a Python Virtual Environment (`venv`). This change was introduced by the Python community, not by Raspberry Pi: for more information, see https://peps.python.org/pep-0668/[PEP 668].
+IMPORTANT: From Raspberry Pi OS _Bookworm_ onwards, you can only use `pip` to install into a Python Virtual Environment (`venv`). This change was introduced by the Python community, not by Raspberry Pi: for more information, see https://peps.python.org/pep-0668/[PEP 668].
 
 === Install Python packages using `apt`
 
@@ -28,7 +28,7 @@ To find Python packages distributed with `apt`, xref:os.adoc#search-for-software
 
 ==== _Bookworm_ changes to `pip` installation
 
-In older versions of Raspberry Pi OS, you could install libraries directly into the system version of Python using `pip`. Since Raspberry Pi OS _Bookworm_, users cannot install libraries directly into the system version of Python.
+From Raspberry Pi OS _Bookworm_ onwards, you cannot install libraries directly into the system version of Python.
 
 Instead, xref:os.adoc#use-pip-with-virtual-environments[install libraries into a virtual environment (`venv`)]. To install a library at the system level for all users, xref:os.adoc#install-python-packages-using-apt[install it with `apt`].
 
@@ -57,7 +57,7 @@ hint: See PEP 668 for the detailed specification.
 
 Python users have long dealt with conflicts between OS package managers like `apt` and Python-specific package management tools like `pip`. These conflicts include both Python-level API incompatibilities and conflicts over file ownership.
 
-Starting in Raspberry Pi OS _Bookworm_, packages installed via `pip` _must be installed into a Python virtual environment_ (``venv``). A virtual environment is a container where you can safely install third-party modules so they won't interfere with your system Python.
+From Raspberry Pi OS _Bookworm_ onwards, packages installed via `pip` _must be installed into a Python virtual environment_ (``venv``). A virtual environment is a container where you can safely install third-party modules so they won't interfere with your system Python.
 
 ==== Use `pip` with virtual environments
 

@@ -226,7 +226,7 @@ net.core.rmem_max=1000000
 
 Reboot or run `sudo sysctl -p /etc/sysctl.d/99-network-tuning.conf`.
 
-On Raspberry Pi OS Bookworm or earlier, you must instead add these lines to `/etc/sysctl.conf` (and then either reboot or run `sudo sysctl -p`).
+On Raspberry Pi OS Bookworm, you must instead add these lines to `/etc/sysctl.conf` (and then either reboot or run `sudo sysctl -p`).
 
 For more information about MediaMTX and its capabilities, see the https://mediamtx.org/docs/kickoff/introduction[MediaMTX documentation].
 

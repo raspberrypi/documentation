@@ -2,10 +2,12 @@
 
 [NOTE]
 ====
-Raspberry Pi OS _Bookworm_ renamed the camera capture applications from ``libcamera-\*`` to ``rpicam-*``. Symbolic links allow users to use the old names for now. **Adopt the new application names as soon as possible.** Raspberry Pi OS versions prior to _Bookworm_ still use the ``libcamera-*`` name.
+From Raspberry Pi OS _Bookworm_ onwards, the camera capture applications are named ``rpicam-*``.
 ====
 
-Raspberry Pi supplies a small set of example `rpicam-apps`. These CLI applications, built on top of `libcamera`, capture images and video from a camera. These applications include:
+Raspberry Pi supplies a small set of example `rpicam-apps`. These CLI applications, built on top of `libcamera`, capture images and video from a camera.
+
+These applications include:
 
 * `rpicam-hello`: A "hello world"-equivalent for cameras, which starts a camera preview stream and displays it on the screen.
 * `rpicam-jpeg`: Runs a preview window, then captures high-resolution still images.
@@ -14,9 +16,9 @@ Raspberry Pi supplies a small set of example `rpicam-apps`. These CLI applicatio
 * `rpicam-raw`: Captures raw (unprocessed Bayer) frames directly from the sensor.
 * `rpicam-detect`: Not built by default, but users can build it if they have TensorFlow Lite installed on their Raspberry Pi. Captures JPEG images when certain objects are detected.
 
-Recent versions of Raspberry Pi OS include the five basic `rpicam-apps`, so you can record images and videos using a camera even on a fresh Raspberry Pi OS installation.
+Raspberry Pi OS includes the five basic `rpicam-apps`, so you can record images and videos using a camera even on a fresh Raspberry Pi OS installation.
 
-Users can create their own `rpicam`-based applications with custom functionality to suit their own requirements. The https://github.com/raspberrypi/rpicam-apps[`rpicam-apps` source code] is freely available under a BSD-2-Clause licence.
+You can create your own `rpicam`-based applications with custom functionality to suit your own requirements. The https://github.com/raspberrypi/rpicam-apps[`rpicam-apps` source code] is freely available under a BSD-2-Clause licence.
 
 === `libcamera`
 

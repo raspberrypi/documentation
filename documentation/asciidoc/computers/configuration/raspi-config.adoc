@@ -25,7 +25,7 @@ To open the Control Centre, select the Raspberry Pi icon in the top-left corner 
 .How to access the Control Centre from the Raspberry Pi desktop
 image::images/cc-menu.png[Control Center menu option]
 
-NOTE: Instead of *Control Centre*, versions of Raspberry Pi OS prior to Trixie used a configuration tool called *Raspberry Pi Configuration*. 
+NOTE: Instead of *Control Centre*, Raspberry Pi OS _Bookworm_ uses a configuration tool called *Raspberry Pi Configuration*.
 
 [[raspi-config]]
 === Interactive `raspi-config` TUI

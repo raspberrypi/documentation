@@ -1,8 +1,8 @@
 == Manage software and firmware updates
 There are two ways to update your current operating system:
 
-* *APT-based updates*, recommended for most users, which update the software, kernel, and stable firmware of your current Raspberry Pi OS installation. For instructions, see <<update-software>>.
-* *`rpi-update`* for experimental or pre-release kernel and firmware for testing, development, or specific bug fixes. For instructions, see <<rpi-update>>.
+* *APT-based*. We recommend this for most users. Use it to update the software, kernel, and stable firmware of your current Raspberry Pi OS installation. For instructions, see <<update-software>>.
+* *`rpi-update`*. Use this for experimental or pre-release kernel and firmware testing, development, or specific bug fixes. For instructions, see <<rpi-update>>.
 
 Normal firmware updates are included in APT updates (`raspi-firmware` package); `rpi-update` is only appropriate for developers and testers, or when you're specifically instructed by Raspberry Pi engineers to use it.
 

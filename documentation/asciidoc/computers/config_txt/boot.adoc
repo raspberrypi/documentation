@@ -230,7 +230,7 @@ This property sets the `systemd` `watchdog.open_timeout` parameter, which contro
 
 [NOTE]
 ====
-On Raspberry Pi OS _Bookworm_ and earlier, the `RuntimeWatchdogSec` parameter is **not enabled by default** and this setting must be configured first in `/etc/systemd/system.conf` before the firmware kernel watchdog can be used.
+On Raspberry Pi OS _Bookworm_, the `RuntimeWatchdogSec` parameter is **not enabled by default** and this setting must be configured first in `/etc/systemd/system.conf` before the firmware kernel watchdog can be used.
 
 If both `BOOT_WATCHDOG_TIMEOUT` (EEPROM/bootloader setting, only supported on Raspberry Pi 4 and 5) and `kernel_watchdog_timeout` are set, the bootloader will seamlessly hand over from the bootloader watchdog to the kernel watchdog at the point the OS is started. This provides continuous watchdog coverage from power-on through to OS runtime.
 

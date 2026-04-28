@@ -2,8 +2,6 @@
 
 Instead of the https://en.wikipedia.org/wiki/BIOS[BIOS] found on a conventional PC, Raspberry Pi devices use a configuration file called `config.txt`. The GPU reads `config.txt` before the Arm CPU and Linux initialise. Raspberry Pi OS looks for this file in the *boot partition*, located at `/boot/firmware/`.
 
-NOTE: Prior to Raspberry Pi OS _Bookworm_, Raspberry Pi OS stored the boot partition at `/boot/`.
-
 You can edit `config.txt` directly from your Raspberry Pi OS installation. You can also remove the storage device and edit files in the boot partition, including `config.txt`, from a separate computer.
 
 Changes to `config.txt` only take effect after a reboot. You can view the current active settings using the following commands:
