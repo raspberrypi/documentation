@@ -16,7 +16,7 @@ To create a new organisation:
 image::images/account-switcher.png[alt="The Raspberry Pi Connect interface, showing the account switcher dropdown menu. The account switcher lets you change between your personal and organisation Connect accounts.", width=100%"]
 
 . Select **+New organisation**, then type the organisation name.
-. If this is the first organisation you have created, **Start your free trial** displays. If you have previously created an organisation, **Create organisation** displays. Select whichever is displayed you. 
+. If this is the first organisation you have created, **Start your free trial** displays. If you have previously created an organisation, **Create organisation** displays. Select whichever is displayed you.
 +
 The organisation is created and your Connect account is automatically added to it as an administrator.
 
@@ -251,6 +251,34 @@ image::images/organisation-settings.png[alt="The Connect organisation settings i
 ==== Rename the organisation
 
 To change the name of the organisation, enter a new name in the **General** section. This won't affect your devices or the members of your organisation.
+
+==== Require two-factor authentication
+
+You can require all members of your organisation to have two-factor authentication (2FA) enabled on their Raspberry Pi ID. This adds a layer of protection against compromised member accounts being used to access your organisation's devices.
+
+To enable the requirement for 2FA:
+
+. Sign in to Raspberry Pi Connect.
+. From the **account switcher** icon at the top left, select your organisation account.
+. Select the **Settings** tab, then select **Require two-factor authentication**.
+A notice displays confirming that your organisation's settings were successfully updated.
+
+image::images/organisation-authentication.png[alt="The Authentication section of the Connect organisation settings, showing the Require two-factor authentication button.",width="100%"]
+
+This starts a 14-day grace period. During the grace period, we display a banner to the members of your organisation who have not yet set up 2FA.
+
+When the grace period ends, members who still have not set up 2FA are blocked from your organisation. They can no longer access your organisation's devices or other resources until they enable 2FA on their Raspberry Pi ID.
+
+image::images/organisation-2fa-required.png[alt="The Two-factor authentication required page shown to members without 2FA after the grace period ends, with a link to enable 2FA on their Raspberry Pi ID.",width="100%"]
+
+To disable the requirement for 2FA:
+
+. Sign in to Raspberry Pi Connect.
+. From the **account switcher** icon at the top left, select your organisation account.
+. Select the **Settings** tab, then select **Stop requiring two-factor authentication**.
+A notice displays confirming that your organisation's settings were successfully updated.
+
+NOTE: Disabling and then re-enabling the 2FA requirement resets the 14-day grace period.
 
 [[organisation-auth-keys]]
 ==== Create auth keys
