@@ -6,6 +6,7 @@ To learn more about Compute Module 5 (CM5) and its corresponding IO Board, see t
 
 * https://pip.raspberrypi.com/documents/RP-008180-DS[CM5 datasheet]
 * https://rpltd.co/cm5-design-files[CM5 design files]
+* https://kovirobi.github.io/rpi-cm5-testpoints[CM5 testpoints visualisation]
 
 === Compute Module 5 IO Board datasheet
 
