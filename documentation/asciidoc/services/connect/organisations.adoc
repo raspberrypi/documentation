@@ -11,7 +11,7 @@ To create a new organisation:
 
 . Sign in to your Raspberry Pi Connect account.
 
-. Select the **account switcher icon** (the two opposing arrows) at the top left of the navigation menu.
+. Select the **account switcher icon** (the two opposing arrows) at the top right of the navigation menu.
 +
 image::images/account-switcher.png[alt="The Raspberry Pi Connect interface, showing the account switcher dropdown menu. The account switcher lets you change between your personal and organisation Connect accounts.", width=100%"]
 
@@ -46,7 +46,7 @@ To invite a user:
 
 . Sign in to your Raspberry Pi Connect account.
 
-. Select the **account switcher icon** (the two opposing arrows) at the top left of the navigation menu, then select your organisation from the list.
+. Select the **account switcher icon** (the two opposing arrows) at the top right of the navigation menu, then select your organisation from the list.
 
 . Select the **Users** tab at the top of the page, then select **Invite someone**.
 +
@@ -71,7 +71,7 @@ To remove a user:
 
 . Sign in to your Raspberry Pi Connect account.
 
-. Select the **account switcher icon** (the two opposing arrows) at the top left of the navigation menu, then select your organisation from the list.
+. Select the **account switcher icon** (the two opposing arrows) at the top right of the navigation menu, then select your organisation from the list.
 
 . Select the **Users** tab at the top of the page.
 +
@@ -89,7 +89,7 @@ To change a user's role:
 
 . Sign in to your Raspberry Pi Connect account.
 
-. Select the **account switcher icon** (the two opposing arrows) at the top left of the navigation menu, then select your organisation from the list.
+. Select the **account switcher icon** (the two opposing arrows) at the top right of the navigation menu, then select your organisation from the list.
 
 . Select the **Users** tab at the top of the page.
 +
@@ -120,17 +120,17 @@ To transfer a device:
 
 . Sign in to your Raspberry Pi Connect account.
 
-. Select the account switcher icon in the top left of the navigation menu.
+. Select the account switcher icon in the top right of the navigation menu.
 +
-image::images/account-switcher.png[alt="The Raspberry Pi Connect interface, showing the account switcher dropdown menu. The account switcher lets you change between personal and organisation Connect accounts.", width="100%"]
+image::images/account-switcher-with-organisation.png[alt="The Raspberry Pi Connect interface, showing the account switcher dropdown menu. The account switcher lets you change between personal and organisation Connect accounts.", width="100%"]
 
 . Switch to the account that currently owns the device (your personal account or an organisation).
 
 . Select the device you want to transfer.
 
-. Open the **Settings** dropdown menu from the top right of the device page.
+. Select **Settings** on the device page.
 
-. Select **Transfer...**
+. Under **Danger zone**, select **Transfer device…**
 +
 image::images/transfer.png[alt="The Raspberry Pi Connect interface, showing the accounts to which a device can be transferred.",width="100%"]
 
@@ -151,16 +151,16 @@ To add or remove tags on a device:
 
 . Select the device from the device list.
 
-. From the top right of the device page, open the **Settings** dropdown menu.
-
-. Select **Edit tags...**
+. Select **Settings** on the device page.
 +
 image::images/tagging.png[alt="The Edit tags dialog, showing applied tags and the autocomplete dropdown with suggestions.",width="100%"]
+
+. Under the **Tags** field in the **General** section:
 
     * To add a tag, type in the text field. You can select an existing tag from the dropdown, or type a new tag name and select the **Create** option.
     * To remove a tag, select the **x** next to the tag you want to remove.
 
-. Select **Done** when you've finished.
+. Select **Update Device** to save your changes.
 
 Each device supports up to 10 tags. Tag names must be 30 characters or fewer and can only contain lowercase letters, numbers, hyphens, and underscores.
 
@@ -259,7 +259,7 @@ You can require all members of your organisation to have two-factor authenticati
 To enable the requirement for 2FA:
 
 . Sign in to Raspberry Pi Connect.
-. From the **account switcher** icon at the top left, select your organisation account.
+. From the **account switcher** icon at the top right, select your organisation account.
 . Select the **Settings** tab, then select **Require two-factor authentication**.
 A notice displays confirming that your organisation's settings were successfully updated.
 
@@ -274,7 +274,7 @@ image::images/organisation-2fa-required.png[alt="The Two-factor authentication r
 To disable the requirement for 2FA:
 
 . Sign in to Raspberry Pi Connect.
-. From the **account switcher** icon at the top left, select your organisation account.
+. From the **account switcher** icon at the top right, select your organisation account.
 . Select the **Settings** tab, then select **Stop requiring two-factor authentication**.
 A notice displays confirming that your organisation's settings were successfully updated.
 
