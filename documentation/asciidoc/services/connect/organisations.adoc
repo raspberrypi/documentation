@@ -294,6 +294,8 @@ IMPORTANT: Your auth key is only shown once. Copy it now, because you won't be a
 
 To create auth keys automatically (without using the web interface) to xref:connect.adoc#link-connect[link a device with Connect], you can create an API access token for the xref:connect.adoc#organisations-management-api[Connect for Organisations management API]. Select **New** from the **API access tokens** section and enter a description for the access token.
 
+WARNING: A management API access token is equivalent to an administrator's username and password for your organisation. It can manage every device, auth key, and device identity in the organisation. Keep it on the machine that calls the Management API (such as a provisioning workstation or CI system); never embed it in a Raspberry Pi OS image or copy it onto a device. To authenticate devices themselves, generate per-device credentials with xref:connect.adoc#device-identities[device identities] or xref:connect.adoc#organisation-auth-keys[auth keys] and ship those instead.
+
 Your new access token appears. Select the clipboard icon next to it to copy it. Copy this access token now because it can't be viewed again later.
 
 IMPORTANT: Your access token is only shown once. Copy it now, because you won't be able to see it again later.
@@ -669,6 +671,10 @@ If the given device ID is not found in the organisation, you get a **404 Not Fou
 You can script auth key creation using the xref:connect.adoc#organisations-management-api[Management API] to provision multiple devices without manual interaction. This approach combines the Management API with the methods described in xref:connect.adoc#link-connect[link a device with Connect].
 
 The following example creates an auth key for each device and saves the secret to a file. Replace `+rporg_accesstokenhere+` with your xref:connect.adoc#management-api-access-tokens[management API access token].
+
+WARNING: Run this script on a trusted provisioning machine, not on the Raspberry Pi devices themselves. The management API access token must stay on the provisioning machine — only the per-device auth-key secret it produces (the `.key` file) should be copied to a device.
+
+TIP: If you can program devices ahead of deployment, consider xref:connect.adoc#device-identities[device identities] instead. The private key lives in the Raspberry Pi's one-time programmable memory, so no secret ever needs to be copied to the device.
 
 [source,bash]
 ----
