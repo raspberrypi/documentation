@@ -38,13 +38,13 @@ To link your device with your Connect account, visit the verification URL on any
 
 Using an Auth Key::
 +
-An auth key is a single-use, temporary token that lets you link a device to a Connect account automatically (without using the web interface).
+An auth key is a single-use, temporary token that lets you link a device to a Connect account automatically (without using the web interface). Personal auth keys expire six hours after creation; organisation auth keys expire between 1 and 90 days after creation (1 day by default).
 +
 The easiest way of creating and using an auth key is by using the xref:../computers/getting-started.adoc#imager-install[customisation options in Imager]. You can also manually create an auth key from the **Settings** page of a personal or organisation's Connect account, and organisation administrators can create auth keys using the xref:connect.adoc#organisations-management-api[management API].
 +
 NOTE: Personal accounts can only have one auth key active at a time; organisations can have multiple auth keys active at once. You need a unique auth key for each device.
 +
-TIP: The Raspberry Pi Connect website displays how long after its creation the auth key expires. To use the auth key, ensure that you boot your Raspberry Pi and connect it to the internet before the expiry time.
+TIP: To use an auth key, ensure that you boot your Raspberry Pi and connect it to the internet before the expiry time shown on the Raspberry Pi Connect website.
 +
 After creating an auth key, you can provide this to your device using the `rpi-connect signin` command, or by writing the auth key to a file in your home directory.
 +

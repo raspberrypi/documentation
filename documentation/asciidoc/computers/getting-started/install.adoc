@@ -156,7 +156,7 @@ image::images/imager/connect-subtab.png[alt="Imager OS Customisation Raspberry P
 +
 image::images/imager/os-customisation-site.png[alt="Raspberry Pi Connect page.",width="60%"]
 . Sign in to your Raspberry Pi ID account or, if you don't have an account yet, sign up.
-. In the *New auth key* page, create your auth key. This is a single-use, temporary token. The Raspberry Pi Connect website displays how long after its creation the token expires. To use the token, boot your Raspberry Pi and connect it to the internet before the expiry time.
+. In the *New auth key* page, create your auth key. This is a single-use, temporary token. Personal auth keys expire six hours after creation, and organisation auth keys expire between 1 and 90 days after creation (1 day by default). To use the token, boot your Raspberry Pi and connect it to the internet before the expiry time.
 +
 image::images/imager/connect-auth-key.png[alt="Raspberry Pi Connect new auth key page.",width="60%"]
 ** If you're a member of one or more organisations, select the organisation or account to associate the key with. Then select *Create auth key and launch Raspberry Pi Imager*. 
