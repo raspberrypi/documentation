@@ -283,7 +283,7 @@ NOTE: Disabling and then re-enabling the 2FA requirement resets the 14-day grace
 [[organisation-auth-keys]]
 ==== Create auth keys
 
-To xref:connect.adoc#link-connect[link a device with Connect] automatically (without using the web interface), create an auth key. Select **New** from the **Auth keys** section and enter a description and expiry time in days.
+To xref:connect.adoc#link-connect[link a device with Connect] automatically (without using the web interface), create an auth key. Select **New** from the **Auth keys** section and enter a description and expiry time (between 1 and 90 days).
 
 Your new auth key appears. Select the clipboard icon next to it to copy it. Copy this auth key now because it can't be viewed again later.
 
@@ -426,7 +426,7 @@ Replace these values in the code below:
 
 * `+rporg_accesstokenhere+`: your management API access token
 * `+my-auth-key+`: a description for your auth key
-* `+1+`: how many days until the auth key expires (optional, defaults to 1 day)
+* `+1+`: how many days until the auth key expires, between 1 and 90 (optional, defaults to 1 day)
 * `+pi5-001+`: name used when adding devices with this key (optional, defaults to the device's hostname)
 * `+production+`, `+kiosk+`: tags applied to the device when the auth key is exchanged (optional). Each tag must contain only lowercase letters, numbers, hyphens, and underscores, with a maximum length of 30 characters. You can apply up to 10 tags per auth key.
 
