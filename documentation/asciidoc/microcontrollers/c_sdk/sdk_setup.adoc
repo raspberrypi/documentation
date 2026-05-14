@@ -1,6 +1,17 @@
 == SDK Setup
 
-For a full walk-through of how to get going with the C/{cpp} SDK, read our https://pip.raspberrypi.com/documents/RP-008276-DS[getting started] documentation. However, if you are intending to develop for Pico on a xref:../computers/os.adoc[Raspberry Pi], then you can set up the C/{cpp} toolchain quickly by running our https://raw.githubusercontent.com/raspberrypi/pico-setup/master/pico_setup.sh[setup script] from the command line.
+To get going with the C/{cpp} SDK, read our https://pip.raspberrypi.com/documents/RP-008276-DS[getting started] documentation, which describes how to set up VS Code with the https://pip.raspberrypi.com/documents/RP-008276-DS[Raspberry Pi Pico extension] and create a simple project. The supported operating systems can be found in https://github.com/raspberrypi/pico-vscode#requirements-by-os[the extension readme].
 
-NOTE: You should make sure the OS on your Raspberry Pi is xref:../computers/os.adoc#update-software[up to date] before running the setup script.
+However, if you intend to develop for Pico on a xref:../computers/os.adoc[32-bit Raspberry Pi OS or Raspberry Pi OS Lite], our VS Code extension is not supported on these operating systems. Instead, you can set up the C/{cpp} toolchain quickly by running our setup script from the command line.
+
+. Make sure the Raspberry Pi OS on your Raspberry Pi is xref:../computers/os.adoc#update-software[up to date] before running the setup script.
+. Download and run the setup script by running the following commands:
++
+[source,console]
+----
+wget https://raw.githubusercontent.com/raspberrypi/pico-setup/master/pico_setup.sh
+chmod +x pico_setup.sh
+./pico_setup.sh
+----
+. For more information and instructions for testing your set up, see the pico-setup https://github.com/raspberrypi/pico-setup[README].
 
