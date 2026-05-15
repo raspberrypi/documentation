@@ -21,7 +21,7 @@ RP1 includes dedicated multimedia and audio hardware to support display outputs,
 [[interfaces]]
 == Peripheral interfaces
 
-RPI provides the following peripheral interfaces:
+RP1 provides the following peripheral interfaces:
 
 * 4-lane PCIe 2.0 endpoint
 * Gigabit Ethernet MAC
