@@ -259,7 +259,6 @@ You can require all members of your organisation to have two-factor authenticati
 To enable the requirement for 2FA:
 
 . Sign in to Raspberry Pi Connect.
-. From the **account switcher** icon at the top left, select your organisation account.
 . From the **account switcher** icon at the top right, select your organisation account.
 . Select the **Settings** tab, then select **Require two-factor authentication**.
 A notice displays confirming that your organisation's settings were successfully updated.
@@ -275,7 +274,6 @@ image::images/organisation-2fa-required.png[alt="The Two-factor authentication r
 To disable the requirement for 2FA:
 
 . Sign in to Raspberry Pi Connect.
-. From the **account switcher** icon at the top left, select your organisation account.
 . From the **account switcher** icon at the top right, select your organisation account.
 . Select the **Settings** tab, then select **Stop requiring two-factor authentication**.
 A notice displays confirming that your organisation's settings were successfully updated.
