@@ -66,7 +66,7 @@ If updating to the latest pre-release firmware causes issues, you can revert to 
 [source,console]
 ----
 $ sudo apt update
-$ sudo apt install --reinstall raspi firmware
+$ sudo apt install --reinstall raspi-firmware
 $ sudo reboot
 ----
 

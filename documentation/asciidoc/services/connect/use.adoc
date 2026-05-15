@@ -38,13 +38,13 @@ To link your device with your Connect account, visit the verification URL on any
 
 Using an Auth Key::
 +
-An auth key is a single-use, temporary token that lets you link a device to a Connect account automatically (without using the web interface).
+An auth key is a single-use, temporary token that lets you link a device to a Connect account automatically (without using the web interface). Personal auth keys expire six hours after creation; organisation auth keys expire between 1 and 90 days after creation (1 day by default).
 +
 The easiest way of creating and using an auth key is by using the xref:../computers/getting-started.adoc#imager-install[customisation options in Imager]. You can also manually create an auth key from the **Settings** page of a personal or organisation's Connect account, and organisation administrators can create auth keys using the xref:connect.adoc#organisations-management-api[management API].
 +
 NOTE: Personal accounts can only have one auth key active at a time; organisations can have multiple auth keys active at once. You need a unique auth key for each device.
 +
-TIP: The Raspberry Pi Connect website displays how long after its creation the auth key expires. To use the auth key, ensure that you boot your Raspberry Pi and connect it to the internet before the expiry time.
+TIP: To use an auth key, ensure that you boot your Raspberry Pi and connect it to the internet before the expiry time shown on the Raspberry Pi Connect website.
 +
 After creating an auth key, you can provide this to your device using the `rpi-connect signin` command, or by writing the auth key to a file in your home directory.
 +
@@ -283,9 +283,11 @@ The Connect dashboard lists all of the devices linked with your Connect account 
 
 image::images/devices.png[alt="The Connect page, showing the linked devices screen.",width="100%"]
 
-Select a device name to open the device details page. This screen provides low-level information about your device. You can also edit the device name or remove the device from Connect.
+Select a device name to open the device details page. This screen provides low-level information about your device.
 
-image::images/new-device.png[alt="The Connect page inviting you to create a new device and sign in.",width="80%"]
+To rename or delete the device, select **Settings** on the device page.
+
+image::images/device.png[alt="The details page for a specific device, showing hardware and Connect client details.",width="100%"]
 
 Deleting a device from Connect automatically signs you out of Connect on the device. The Connect icon in the menu bar turns grey and the menu only provides a **Sign In...** option.
 
