@@ -159,7 +159,7 @@ For more information about the wireless hardware and functionality of Raspberry 
 
 Raspberry Pi offers additional technical documentation relevant to Raspberry Pi Pico W and Pico WH:
 
-* https://pip.raspberrypi.com/documents/RP-008373-DS[RP2040 Datasheet: A microcontroller by Raspberry Pi]
+* https://pip.raspberrypi.com/documents/RP-008371-DS[RP2040 Datasheet: A microcontroller by Raspberry Pi]
 * https://pip.raspberrypi.com/documents/RP-008312-DS[Raspberry Pi Pico W Datasheet: An RP2040-based microcontroller board]
 * https://pip.raspberrypi.com/documents/RP-008279-DS[Hardware design with RP2040: Using RP2040 microcontrollers to build boards and products]
 * https://pip.raspberrypi.com/documents/RP-008257-DS[Connecting to the Internet with Raspberry Pi Pico W-series: Getting online with C/{cpp} or MicroPython on W-series devices]
