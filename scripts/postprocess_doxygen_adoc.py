@@ -57,7 +57,8 @@ def tag_content(adoc_content):
         tag = re.sub("PICO_", "", this_id[3])
         img = f" [.contexttag {tag}]*{tag}*"
         # `void <<group_hardware_gpio_1ga5d7dbadb2233e2e6627e9101411beb27,gpio_rp2040>> ()`:: An rp2040 function.
-        adoc_content = re.sub(rf'(\n`.*?<<{this_id[1]},.*?`)(::)', f"\\1{img}\\2", adoc_content)
+        # DODGY HACK: prevent gpio_get_function incorrectly getting tagged as RP2040-only
+        adoc_content = re.sub(rf'(\n`.*?<<{this_id[1]},(?!gpio_function_t).*?`)(::)', f"\\1{img}\\2", adoc_content)
         # |<<group_hardware_base,hardware_base>>\n|Low-level types and (atomic) accessors for memory-mapped hardware registers.
         adoc_content = re.sub(rf'(\n\|<<{this_id[1]},.*?>>\n\|.*?)(\n)', f"\\1{img}\\2", adoc_content)
     # [#group_cyw43_ll_1ga0411cd49bb5b71852cecd93bcbf0ca2d,role=contextspecific,tag=PICO_RP2040,type=PICO_RP2040]\n=== anonymous enum
