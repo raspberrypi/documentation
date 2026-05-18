@@ -488,7 +488,7 @@ One Raspberry Pi Pico-series device can be used to debug another by running `deb
 . Download the latest firmware release form the debugprobe GitHub repository:
     * `debugprobe_on_pico.uf2` for the first generation of Raspberry Pi Pico.
     * `debugprobe_on_pico2.uf2` for Raspberry Pi Pico 2.
-. On the Raspberry Pi Pico that you intend to use as a debugger, hold down the *BOOTSEL* button at the same time as you connect it to your computer. A USB mass storage device named *RPI-RP2* appears and is mounted as a volume.
+. On the Raspberry Pi Pico that you intend to use as a debugger, hold down the *BOOTSEL* button at the same time as you connect it to your computer. A USB mass storage device named RPI-RP2 (Pico) or RP2350 (Pico 2) appears and is mounted as a volume.
 . Copy the appropriate UF2 file to the mounted volume. The volume automatically ejects after the transfer completes.
 . Wait for the device to reboot. Your device now runs the `debugprobe` firmware and you can start using it as a debugger.
 

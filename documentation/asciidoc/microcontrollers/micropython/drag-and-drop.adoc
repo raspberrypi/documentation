@@ -22,9 +22,9 @@ NOTE: MicroPython distributions for other RP2040- and RP2350-based boards are av
 
 To program your device, follow these steps:
 
-. Push and hold the BOOTSEL button while connecting your Pico with a USB cable to a computer. Release the BOOTSEL button once your Pico appears as a Mass Storage Device called RPI-RP2.
+. Push and hold the BOOTSEL button while connecting your Pico with a USB cable to a computer. Release the BOOTSEL button once your Pico appears as a Mass Storage Device called RPI-RP2 (Pico) or RP2350 (Pico 2).
 
-. Drag and drop the MicroPython UF2 file onto the RPI-RP2 volume. Your Pico will reboot. You are now running MicroPython.
+. Drag and drop the MicroPython UF2 file onto the mounted volume. Your Pico reboots. You are now running MicroPython.
 
 . Access the REPL via USB Serial.
 
