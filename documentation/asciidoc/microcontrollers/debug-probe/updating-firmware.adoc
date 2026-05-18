@@ -19,6 +19,6 @@ To update the firmware version of your Debug Probe:
 
 . Download `debugprobe.uf2` from the latest release.
 . Pinch to remove the top of the Debug Probe enclosure.
-. Push and hold the BOOTSEL button as you plug the Debug Probe into your computer, to mount a volume called "RPI-RP2".
-. Copy `debugprobe.uf2` onto the "RPI-RP2" volume. The volume will dismount automatically after the file finishes copying onto the device.
+. Push and hold the BOOTSEL button as you plug the Debug Probe into your computer, to mount a volume called RPI-RP2 (Pico) or RP2350 (Pico 2).
+. Copy `debugprobe.uf2` onto the mounted volume. The volume will dismount automatically after the file finishes copying onto the device.
 . Your Debug Probe reboots and now runs an updated version of the Debug Probe firmware. It is now ready for debugging.

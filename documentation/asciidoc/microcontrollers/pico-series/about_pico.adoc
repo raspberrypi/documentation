@@ -159,7 +159,7 @@ For more information about the wireless hardware and functionality of Raspberry 
 
 Raspberry Pi offers additional technical documentation relevant to Raspberry Pi Pico W and Pico WH:
 
-* https://pip.raspberrypi.com/documents/RP-008373-DS[RP2040 Datasheet: A microcontroller by Raspberry Pi]
+* https://pip.raspberrypi.com/documents/RP-008371-DS[RP2040 Datasheet: A microcontroller by Raspberry Pi]
 * https://pip.raspberrypi.com/documents/RP-008312-DS[Raspberry Pi Pico W Datasheet: An RP2040-based microcontroller board]
 * https://pip.raspberrypi.com/documents/RP-008279-DS[Hardware design with RP2040: Using RP2040 microcontrollers to build boards and products]
 * https://pip.raspberrypi.com/documents/RP-008257-DS[Connecting to the Internet with Raspberry Pi Pico W-series: Getting online with C/{cpp} or MicroPython on W-series devices]
@@ -488,7 +488,7 @@ One Raspberry Pi Pico-series device can be used to debug another by running `deb
 . Download the latest firmware release form the debugprobe GitHub repository:
     * `debugprobe_on_pico.uf2` for the first generation of Raspberry Pi Pico.
     * `debugprobe_on_pico2.uf2` for Raspberry Pi Pico 2.
-. On the Raspberry Pi Pico that you intend to use as a debugger, hold down the *BOOTSEL* button at the same time as you connect it to your computer. A USB mass storage device named *RPI-RP2* appears and is mounted as a volume.
+. On the Raspberry Pi Pico that you intend to use as a debugger, hold down the *BOOTSEL* button at the same time as you connect it to your computer. A USB mass storage device named RPI-RP2 (Pico) or RP2350 (Pico 2) appears and is mounted as a volume.
 . Copy the appropriate UF2 file to the mounted volume. The volume automatically ejects after the transfer completes.
 . Wait for the device to reboot. Your device now runs the `debugprobe` firmware and you can start using it as a debugger.
 

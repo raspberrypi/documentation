@@ -208,7 +208,7 @@ TIP: Select a tag on any device in the list to quickly add it as a filter.
 
 A subscription to Connect for Organisations starts when your four-week trial period ends, after which, you're billed in arrears every month.
 
-You must be an administrator to set up a subscription. 
+You must be an administrator to set up a subscription.
 
 To set up a subscription:
 

@@ -62,14 +62,14 @@ clean_submodules:
 	git submodule deinit --all
 
 # Create the pico-sdk Doxygen XML files
-$(DOXYGEN_XML_DIR) $(DOXYGEN_XML_DIR)/index.xml: | $(ALL_SUBMODULE_CMAKELISTS) $(DOXYGEN_PICO_SDK_BUILD_DIR)
+$(DOXYGEN_XML_DIR) $(DOXYGEN_XML_DIR)/index.xml: $(SCRIPTS_DIR)/postprocess_doxygen_xml.py | $(ALL_SUBMODULE_CMAKELISTS) $(DOXYGEN_PICO_SDK_BUILD_DIR)
 	cmake -S $(PICO_SDK_DIR) -B $(DOXYGEN_PICO_SDK_BUILD_DIR)/combined -D PICO_EXAMPLES_PATH=../../$(PICO_EXAMPLES_DIR) -D PICO_NO_PICOTOOL=1 -D PICO_PLATFORM=combined-docs
 	cmake -S $(PICO_SDK_DIR) -B $(DOXYGEN_PICO_SDK_BUILD_DIR)/PICO_RP2040 -D PICO_EXAMPLES_PATH=../../$(PICO_EXAMPLES_DIR) -D PICO_NO_PICOTOOL=1 -D PICO_PLATFORM=rp2040
 	cmake -S $(PICO_SDK_DIR) -B $(DOXYGEN_PICO_SDK_BUILD_DIR)/PICO_RP2350 -D PICO_EXAMPLES_PATH=../../$(PICO_EXAMPLES_DIR) -D PICO_NO_PICOTOOL=1 -D PICO_PLATFORM=rp2350
 	$(MAKE) -C $(DOXYGEN_PICO_SDK_BUILD_DIR)/combined docs
 	$(MAKE) -C $(DOXYGEN_PICO_SDK_BUILD_DIR)/PICO_RP2040 docs
 	$(MAKE) -C $(DOXYGEN_PICO_SDK_BUILD_DIR)/PICO_RP2350 docs
-	python3 $(SCRIPTS_DIR)/postprocess_doxygen_xml.py $(DOXYGEN_PICO_SDK_BUILD_DIR)
+	$< $(DOXYGEN_PICO_SDK_BUILD_DIR)
 
 $(DOXYGEN_PICO_SDK_BUILD_DIR)/combined/docs/Doxyfile: | $(DOXYGEN_XML_DIR)
 
@@ -80,13 +80,13 @@ clean_doxygen_xml:
 	rm -rf $(DOXYGEN_PICO_SDK_BUILD_DIR)
 
 # create the sdk adoc and the json file
-$(ASCIIDOC_DOXYGEN_DIR)/picosdk_index.json $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen.adoc: $(ASCIIDOC_DOXYGEN_DIR) $(DOXYGEN_XML_DIR)/index.xml $(DOXYGEN_TO_ASCIIDOC_DIR)/__main__.py $(DOXYGEN_TO_ASCIIDOC_DIR)/cli.py $(DOXYGEN_TO_ASCIIDOC_DIR)/nodes.py $(DOXYGEN_TO_ASCIIDOC_DIR)/helpers.py | $(BUILD_DIR) $(DOXYGEN_TO_ASCIIDOC_DIR)/requirements.txt
+$(ASCIIDOC_DOXYGEN_DIR)/picosdk_index.json $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen.adoc: $(SCRIPTS_DIR)/postprocess_doxygen_adoc.py $(ASCIIDOC_DOXYGEN_DIR) $(DOXYGEN_XML_DIR)/index.xml $(DOXYGEN_TO_ASCIIDOC_DIR)/__main__.py $(DOXYGEN_TO_ASCIIDOC_DIR)/cli.py $(DOXYGEN_TO_ASCIIDOC_DIR)/nodes.py $(DOXYGEN_TO_ASCIIDOC_DIR)/helpers.py | $(BUILD_DIR) $(DOXYGEN_TO_ASCIIDOC_DIR)/requirements.txt
 	$(MAKE) clean_ninja
 	pip3 install -r $(DOXYGEN_TO_ASCIIDOC_DIR)/requirements.txt
 	PYTHONPATH=$(DOXYGEN_TO_ASCIIDOC_DIR)/.. python3 -m doxygentoasciidoc -o $(ASCIIDOC_DOXYGEN_DIR)/all_groups.adoc $(DOXYGEN_XML_DIR)/index.xml
 	PYTHONPATH=$(DOXYGEN_TO_ASCIIDOC_DIR)/.. python3 -m doxygentoasciidoc -c -o $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen.adoc $(DOXYGEN_XML_DIR)/indexpage.xml
 	PYTHONPATH=$(DOXYGEN_TO_ASCIIDOC_DIR)/.. python3 -m doxygentoasciidoc -c -o $(ASCIIDOC_DOXYGEN_DIR)/examples_page.adoc $(DOXYGEN_XML_DIR)/examples_page.xml
-	python3 $(SCRIPTS_DIR)/postprocess_doxygen_adoc.py $(ASCIIDOC_DOXYGEN_DIR)
+	$< $(ASCIIDOC_DOXYGEN_DIR)
 	-cp $(DOXYGEN_XML_DIR)/*.png $(ASCIIDOC_DOXYGEN_DIR) 2>/dev/null || true
 
 build_doxygen_adoc: $(ASCIIDOC_DOXYGEN_DIR)/index_doxygen.adoc
