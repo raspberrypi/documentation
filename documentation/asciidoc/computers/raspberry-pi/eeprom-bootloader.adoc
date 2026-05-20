@@ -178,6 +178,17 @@ If the RESTART (`0xf`) boot-mode is encountered more than MAX_RESTARTS times the
 
 Default: `-1` (infinite)
 
+[[REBOOT_ON_FATAL_ERROR]]
+==== `REBOOT_ON_FATAL_ERROR`
+
+If a fatal error is encountered during boot, the bootloader displays the error pattern on the activity LED three times and then performs a hard reset. This can mitigate intermittent hardware issues caused by power supplies, HATs, or board temperature. This setting only applies to the bootloader and has no effect after the OS has started.
+
+Displaying the error pattern three times before resetting rate-limits reboots. If a faster reboot is required, use `BOOT_WATCHDOG_TIMEOUT` instead.
+
+Set `REBOOT_ON_FATAL_ERROR=0` to disable automatic rebooting and instead display the error pattern indefinitely.
+
+Default: `1`
+
 [[SD_BOOT_MAX_RETRIES]]
 ==== `SD_BOOT_MAX_RETRIES`
 
