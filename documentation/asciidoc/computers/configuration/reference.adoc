@@ -1026,7 +1026,7 @@ The format is defined by the https://usb.org/document-library/usb-power-delivery
 
 The following properties are specific to the BCM2711 and BCM2712 SPI EEPROM bootloaders.
 
-`build_timestamp`:: The UTC build time for the EEPROM bootloader.
+`build_timestamp`:: The UTC build time for the EEPROM bootloader, stored as a Unix epoch value. The build timestamp is embedded in the EEPROM binary and can be extracted with `strings pieeprom.bin | grep BUILD_TIMESTAMP`.
 
 `capabilities`:: This bit-field describes the features supported by the current bootloader. This may be used to check whether a feature (e.g. USB boot) is supported before enabling it in the bootloader EEPROM config.
 
@@ -1058,7 +1058,7 @@ The following properties are specific to the BCM2711 and BCM2712 SPI EEPROM boot
 | https://github.com/raspberrypi/usbboot/blob/master/Readme.md#secure-boot[Secure Boot]
 |===
 
-`update_timestamp`:: The UTC update timestamp set by `rpi-eeprom-update`.
+`update_timestamp`:: The UTC time when the EEPROM update was applied, stored as a Unix epoch value. This value is set by `rpi-eeprom-update` and stored in the `.sig` file alongside the EEPROM image. The bootloader uses this to avoid applying stale updates during self-update.
 
 `signed`:: If Secure Boot is enabled, this bit-field will be non-zero. The individual bits indicate the current Secure Boot configuration.
 
