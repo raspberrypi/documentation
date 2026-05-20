@@ -963,6 +963,8 @@ printf "%d" "0x$(od "/proc/device-tree/chosen/bootloader/partition" -v -An -t x1
 
 `rpi-duid`:: _(string)_ Raspberry Pi 5 only. A string representation of the QR code on the PCB.
 
+`rpi-machine-id`:: _(string)_ A 128-bit machine identifier represented as a 32-character hexadecimal string, generated from a hash of the 64-bit serial number and, on Raspberry Pi 4 and Raspberry Pi 5, the Ethernet MAC address provisioned at manufacture. This provides a stable, unique identity suitable for use in automated or provisioning systems.
+
 `rpi-serial64`:: _(string)_ A string representation of the 64-bit serial number. On flagship models since Raspberry Pi 5 this is same as the normal serial number (`/proc/device-tree/serial-number`). On earlier models the default serial number is still 32-bit but with newer firmware a 64-bit serial number is now available and is visible through this node.
 
 ===== Common bootloader properties `/chosen/bootloader`
