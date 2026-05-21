@@ -208,6 +208,14 @@ Raspberry Pi 5 only.
 
 Sets the value of `boot_arg1` to be passed via a reset-safe register to the bootloader after a reboot.
 See xref:config_txt.adoc#boot_arg1[`boot_arg1`] for more details.
+
+To set the reboot argument at runtime without editing `config.txt`, you can use `vcmailbox`. For example, to set `boot_arg1` to `42` on the next reboot:
+
+[source,console]
+----
+$ sudo vcmailbox 0x0003808c 8 8 1 42
+----
+
 Default: ``
 
 [[set_reboot_order]]
@@ -218,6 +226,14 @@ Raspberry Pi 5 only.
 Sets the value of xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER] to be passed via a reset-safe register to the bootloader after a reboot. As with `tryboot`, this is a one-time setting and is automatically cleared after use.
 
 This property could be used to debug different xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER] settings. Alternatively, it could be used in a provisioning system which has control over power and the `nRPIBOOT` GPIO to override the boot mode without specifying xref:config_txt.adoc#conditional-filters[conditional filter] statements in the EEPROM config.
+
+To set the reboot order at runtime without editing `config.txt`, you can use `vcmailbox`. For example, to test network boot on the next reboot:
+
+[source,console]
+----
+$ sudo vcmailbox 0x0003808b 4 4 0xf4612
+$ sudo reboot
+----
 
 Default: ``
 
