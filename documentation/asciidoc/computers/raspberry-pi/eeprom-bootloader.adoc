@@ -605,6 +605,15 @@ Allows setting the conditional variable `bootvar0` used by `config.txt`. See xre
 
 Default: `0`
 
+[[PCIE_PROBE]]
+==== `PCIE_PROBE`
+
+Flagship models since Raspberry Pi 5 only.
+
+If set to `1`, the bootloader enumerates the PCIe x1 interface to discover NVMe devices during boot. This is required for custom PCIe expansion designs that don't support the HAT+ specification. HAT+ compliant devices are auto-detected and don't require this setting.
+
+Default: `0`
+
 [[PSU_MAX_CURRENT]]
 ==== `PSU_MAX_CURRENT`
 
