@@ -125,7 +125,8 @@ The `BOOT_ORDER` property defines the sequence for the different boot modes. It 
 | Restart from the first boot-mode in the `BOOT_ORDER` field i.e. loop.
 |===
 
-`RPIBOOT` is intended for use with Compute Module 4 to load a custom debug image (e.g. a Linux RAM-disk) instead of the normal boot. This should be the last boot option because it does not currently support timeouts or retries.
+`RPIBOOT` is normally enabled implicitly by selecting the `nRPIBOOT` jumper on a CM4 or CM5 IO board. However, it can be useful to set this within a custom `BOOT_ORDER` for development or provisioning, for example, by using `set_reboot_order`.
+If used, always set it as the last option in the `BOOT_ORDER` because this boot mode doesn't support timeouts or retries.
 
 ===== `BOOT_ORDER` examples
 
