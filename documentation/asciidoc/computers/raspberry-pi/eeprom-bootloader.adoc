@@ -596,7 +596,7 @@ This property is designed to improve the reliability of `A/B` boot schemes using
 
 During the "partition walk" `autoboot.txt` files are not processed to avoid cycling dependencies. It is assumed that the requested boot partition has failed and the system is attempting recovery.
 
-Default: `0`
+Default: `1`
 
 [[BOOTVAR0]]
 ==== `BOOTVAR0`
