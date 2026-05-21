@@ -418,6 +418,245 @@ Content-Type: application/json; charset=utf-8
 {"message":"Validation failed: Public key is invalid"}
 ----
 
+==== List device identities
+
+To list all device identities in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/device-identities HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/device-identities
+----
+
+======
+
+If successful, you get a **200 OK** response with up to 100 of the organisation's device identities sorted alphabetically by description in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "device_identities": [
+        {
+            "id": "096ce472-2cbd-412a-8295-6c03a1a07ba4",
+            "description": "my-device-identity",
+            "device_name": "pi5-001",
+            "tags": [],
+            "created_at": "2026-02-25T16:09:52Z",
+            "public_key": "-----BEGIN PUBLIC KEY-----..."
+        }
+    ],
+    "meta": {
+        "page": 1,
+        "per_page": 100,
+        "total_count": 1,
+        "total_pages": 1
+    }
+}
+----
+
+The response contains the following fields:
+
+device_identities:: List of device identities in the organisation (up to 100 for each page).
+meta:: Pagination details.
+
+Each item in the `+device_identities+` list contains the following fields:
+
+id:: A unique identifier for the device identity.
+description:: The description used to create the device identity.
+device_name:: The name that will be assigned to the device when the identity is exchanged.
+tags:: The tags that will be applied to the device when the identity is exchanged.
+created_at:: The date and time when the device identity was created (in ISO 8601 format).
+public_key:: The PEM-encoded public key for the device identity.
+
+The `+meta+` object contains the following fields:
+
+page:: The current page number of the response.
+per_page:: The number of device identities for each page (maximum 100).
+total_count:: The total number of device identities in the organisation.
+total_pages:: The total number of pages of device identities for the organisation.
+
+If your management API access token is invalid, you get a **401 Unauthorized** response.
+
+The `+page+` and `+per_page+` query parameters work the same way as for xref:connect.adoc#list-devices[listing devices].
+
+==== Show a device identity
+
+To show a single device identity in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+device-identity-id+`: the unique identifier for the device identity.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/device-identities/device-identity-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/device-identities/device-identity-id
+----
+
+======
+
+If successful, you get a **200 OK** response with the device identity's details in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "096ce472-2cbd-412a-8295-6c03a1a07ba4",
+    "description": "my-device-identity",
+    "device_name": "pi5-001",
+    "tags": [],
+    "created_at": "2026-02-25T16:09:52Z",
+    "public_key": "-----BEGIN PUBLIC KEY-----..."
+}
+----
+
+If your management API access token is invalid, you get a **401 Unauthorized** response.
+
+If the device identity isn't found in the organisation, you get a **404 Not Found** response.
+
+==== Update a device identity
+
+To update an existing device identity in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+device-identity-id+`: the unique identifier for the device identity.
+* `+my-renamed-device-identity+`: the new description for the device identity.
+* `+pi5-001+`: the new name that will be assigned to the device when the identity is exchanged (optional).
+* `+production+`, `+kiosk+`: tags applied to the device when the identity is exchanged (optional).
+
+[tabs]
+======
+JSON::
++
+[source,http]
+----
+PATCH /organisation/device-identities/device-identity-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/json
+
+{
+    "description": "my-renamed-device-identity",
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"]
+}
+----
+
+curl::
++
+[source,console]
+----
+$ curl --request PATCH --header 'Authorization: Bearer rporg_accesstokenhere' --header 'Content-Type: application/json' --data '{"description":"my-renamed-device-identity","device_name":"pi5-001","tags":["production","kiosk"]}' https://api.connect.raspberrypi.com/organisation/device-identities/device-identity-id
+----
+
+======
+
+If successful, you get a **200 OK** response with the updated device identity in JSON format:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "096ce472-2cbd-412a-8295-6c03a1a07ba4",
+    "description": "my-renamed-device-identity",
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"],
+    "created_at": "2026-02-25T16:09:52Z",
+    "public_key": "-----BEGIN PUBLIC KEY-----..."
+}
+----
+
+NOTE: Once a device identity has been exchanged for a device, only the `+description+` can be updated. Any `+device_name+` or `+tags+` values in the request body are ignored, because those fields are only applied when the identity is first exchanged.
+
+If your management API access token is invalid, you get a **401 Unauthorized** response.
+
+If the device identity isn't found in the organisation, you get a **404 Not Found** response.
+
+If the device identity can't be updated, you get a **422 Unprocessable Content** response containing the reason why the device identity couldn't be updated:
+
+[source,http]
+----
+HTTP/2 422
+Content-Type: application/json; charset=utf-8
+
+{"message":"Validation failed: Description can't be blank"}
+----
+
+==== Delete a device identity
+
+To delete a device identity in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+device-identity-id+`: the unique identifier for the device identity.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+DELETE /organisation/device-identities/device-identity-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --request DELETE --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/device-identities/device-identity-id
+----
+
+======
+
+If the device identity has already been exchanged for a device, the linked device is also deleted and signed out of Raspberry Pi Connect.
+
+If successful, you get a **204 No Content** response with an empty response body.
+
+If your management API access token is invalid, you get a **401 Unauthorized** response.
+
+If the device identity isn't found in the organisation, you get a **404 Not Found** response.
+
 ==== Create an auth key
 
 To create an auth key to xref:connect.adoc#link-connect[link a device with Connect], use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
