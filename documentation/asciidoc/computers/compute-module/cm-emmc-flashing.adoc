@@ -17,7 +17,7 @@ To flash the Compute Module eMMC, you need the following:
 * The Compute Module IO Board xref:compute-module.adoc#io-board-compatibility[that corresponds to your Compute Module model].
 * A micro USB cable, or a USB-C cable for Compute Module models since CM5IO.
 
-TIP: In some cases, USB hubs can prevent the host device from recognising the Compute Module. If your host device does not recognise the Compute Module, try connecting the Compute Module directly to the host device. For more diagnostic tips, see https://github.com/raspberrypi/usbboot?tab=readme-ov-file#troubleshooting[the usbboot troubleshooting guide].
+TIP: In some cases, USB hubs can prevent the host device from recognising the Compute Module. If your host device doesn't recognise the Compute Module, try connecting the Compute Module directly to the host device. For more diagnostic tips, see https://github.com/raspberrypi/usbboot/blob/master/docs/troubleshooting.md[the usbboot troubleshooting guide].
 
 === Set up the IO Board
 
