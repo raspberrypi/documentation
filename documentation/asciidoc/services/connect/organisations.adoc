@@ -348,11 +348,11 @@ To create a device identity for your organisation, use a xref:connect.adoc#manag
 
 Replace these values in the code below:
 
-* `+rporg_accesstokenhere+`: your management API access token
-* `+signaturehere+`: the `+X-Connect-Identity-Signature+` value for this request
-* `+-----BEGIN PUBLIC KEY-----...+`: the device's PEM-encoded public key
-* `+my-device-identity+`: a description for the device identity, visible in the organisation's audit log
-* `+pi5-001+`: the name assigned to the device when the identity is exchanged (optional, defaults to the device's hostname)
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+signaturehere+`: the `+X-Connect-Identity-Signature+` value for this request.
+* `+-----BEGIN PUBLIC KEY-----...+`: the device's PEM-encoded public key.
+* `+my-device-identity+`: a description for the device identity, visible in the organisation's audit log.
+* `+pi5-001+`: the name assigned to the device when the identity is exchanged (optional, defaults to the device's hostname).
 
 [tabs]
 ======
@@ -424,10 +424,10 @@ To create an auth key to xref:connect.adoc#link-connect[link a device with Conne
 
 Replace these values in the code below:
 
-* `+rporg_accesstokenhere+`: your management API access token
-* `+my-auth-key+`: a description for your auth key
-* `+1+`: how many days until the auth key expires, between 1 and 90 (optional, defaults to 1 day)
-* `+pi5-001+`: name used when adding devices with this key (optional, defaults to the device's hostname)
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+my-auth-key+`: a description for your auth key.
+* `+1+`: how many days until the auth key expires, between 1 and 90 (optional, defaults to 1 day).
+* `+pi5-001+`: name used when adding devices with this key (optional, defaults to the device's hostname).
 * `+production+`, `+kiosk+`: tags applied to the device when the auth key is exchanged (optional). Each tag must contain only lowercase letters, numbers, hyphens, and underscores, with a maximum length of 30 characters. You can apply up to 10 tags per auth key.
 
 [tabs]
@@ -518,7 +518,7 @@ To list all devices in your organisation, use a xref:connect.adoc#management-api
 
 Replace these values in the code below:
 
-* `+rporg_accesstokenhere+`: your management API access token
+* `+rporg_accesstokenhere+`: your management API access token.
 
 [tabs]
 ======
@@ -636,8 +636,8 @@ To delete a device in your organisation and sign it out of Raspberry Pi Connect,
 
 Replace these values in the code below:
 
-* `+rporg_accesstokenhere+`: your management API access token
-* `+device-id+`: the unique identifier for your device
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+device-id+`: the unique identifier for your device.
 
 [tabs]
 ======
@@ -664,6 +664,417 @@ If successful, you get a **204 No Content** response with an empty response body
 If your management API access token is invalid, you get a **401 Unauthorized** response.
 
 If the given device ID is not found in the organisation, you get a **404 Not Found** response.
+
+==== List artefacts
+
+To list all remote update artefacts in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/artefacts HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/artefacts
+----
+
+======
+
+If successful, you get a **200 OK** response with up to 100 of the organisation's artefacts sorted alphabetically by name in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "artefacts": [
+        {
+            "id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
+            "name": "kiosk-v1.0",
+            "uri": "https://example.com/kiosk-v1.0.tar.zst",
+            "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6"
+        }
+    ],
+    "meta": {
+        "page": 1,
+        "per_page": 100,
+        "total_count": 1,
+        "total_pages": 1
+    }
+}
+----
+
+The `+page+` and `+per_page+` query parameters work the same way as for xref:connect.adoc#list-devices[listing devices].
+
+If your management API access token is invalid, you get a **401 Unauthorized** response.
+
+==== Create an artefact
+
+To create a remote update artefact for your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+kiosk-v1.0+`: a unique name for the artefact within the organisation.
+* `+https://example.com/kiosk-v1.0.tar.zst+`: the URI from which devices will download the artefact.
+* `+d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6+`: the hex-encoded SHA-256 checksum of the artefact.
+
+[tabs]
+======
+JSON::
++
+[source,http]
+----
+POST /organisation/artefacts HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/json
+
+{
+    "name": "kiosk-v1.0",
+    "uri": "https://example.com/kiosk-v1.0.tar.zst",
+    "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6"
+}
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --data-urlencode 'name=kiosk-v1.0' --data-urlencode 'uri=https://example.com/kiosk-v1.0.tar.zst' --data-urlencode 'checksum=d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6' https://api.connect.raspberrypi.com/organisation/artefacts
+----
+
+======
+
+If successful, you get a **201 Created** response with the artefact's details in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 201
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
+    "name": "kiosk-v1.0",
+    "uri": "https://example.com/kiosk-v1.0.tar.zst",
+    "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6"
+}
+----
+
+If your management API access token is invalid, you get a **401 Unauthorized** response.
+
+If the artefact can't be created, you get a **422 Unprocessable Content** response containing the reason why the artefact couldn't be created:
+
+[source,http]
+----
+HTTP/2 422
+Content-Type: application/json; charset=utf-8
+
+{"message":"Validation failed: Name can't be blank"}
+----
+
+==== Delete an artefact
+
+To delete an artefact in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+artefact-id+`: the artefact's `+id+` (as returned by xref:connect.adoc#create-an-artefact[Create an artefact]).
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+DELETE /organisation/artefacts/artefact-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --request DELETE --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/artefacts/artefact-id
+----
+
+======
+
+If successful, you get a **204 No Content** response with an empty response body.
+
+If your management API access token is invalid, you get a **401 Unauthorized** response.
+
+If the given artefact ID is not found in the organisation, you get a **404 Not Found** response.
+
+If the artefact has been deployed to a device, you get a **422 Unprocessable Content** response containing the reason why the artefact couldn't be deleted:
+
+[source,http]
+----
+HTTP/2 422
+Content-Type: application/json; charset=utf-8
+
+{"message":"Cannot delete artefacts that have been deployed"}
+----
+
+==== List deployments
+
+To list remote update deployments for a device in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+device-id+`: the unique identifier for the device.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/devices/device-id/deployments HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/devices/device-id/deployments
+----
+
+======
+
+If successful, you get a **200 OK** response with up to 100 of the device's deployments in JSON format, ordered most recent first. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "deployments": [
+        {
+            "id": "fdf45c44-2c0e-4f12-9b04-3a6a1c0d3b8d",
+            "state": "failed",
+            "state_reason": "Checksum mismatch",
+            "device_id": "69739b44-ebb2-468e-9e24-08126dec4925",
+            "artefact_id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
+            "created_at": "2026-02-25T16:09:52Z",
+            "updated_at": "2026-02-25T16:10:30Z"
+        }
+    ],
+    "meta": {
+        "page": 1,
+        "per_page": 100,
+        "total_count": 1,
+        "total_pages": 1
+    }
+}
+----
+
+The `+state+` of each deployment is one of `+pending+`, `+in_progress+`, `+succeeded+`, `+failed+`, or `+cancelled+`. For `+failed+` deployments, `+state_reason+` contains a human-readable explanation of why the deployment failed (for example, when a checksum mismatch occurs or the deployment is superseded by a newer one); for other states it is `+null+`.
+
+If your management API access token is invalid, you get a **401 Unauthorized** response.
+
+If the given device ID is not found in the organisation, you get a **404 Not Found** response.
+
+==== Show a deployment
+
+To show a single deployment in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+deployment-id+`: the unique identifier for the deployment.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/deployments/deployment-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/deployments/deployment-id
+----
+
+======
+
+If successful, you get a **200 OK** response with the deployment's details in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "fdf45c44-2c0e-4f12-9b04-3a6a1c0d3b8d",
+    "state": "succeeded",
+    "state_reason": null,
+    "device_id": "69739b44-ebb2-468e-9e24-08126dec4925",
+    "artefact_id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
+    "created_at": "2026-02-25T16:09:52Z",
+    "updated_at": "2026-02-25T16:10:30Z"
+}
+----
+
+If your management API access token is invalid, you get a **401 Unauthorized** response.
+
+If the deployment isn't found in the organisation, you get a **404 Not Found** response.
+
+==== Create a deployment
+
+To deploy an artefact to a device, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request. The new deployment supersedes any pending deployment already queued for the device.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+device-id+`: the unique identifier for the target device.
+* `+artefact-id+`: the artefact's `+id+` (as returned by xref:connect.adoc#create-an-artefact[Create an artefact]).
+
+[tabs]
+======
+JSON::
++
+[source,http]
+----
+POST /organisation/devices/device-id/deployments HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/json
+
+{
+    "artefact_id": "artefact-id"
+}
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --data-urlencode 'artefact_id=artefact-id' https://api.connect.raspberrypi.com/organisation/devices/device-id/deployments
+----
+
+======
+
+If successful, you get a **201 Created** response with the deployment's details in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 201
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "fdf45c44-2c0e-4f12-9b04-3a6a1c0d3b8d",
+    "state": "pending",
+    "state_reason": null,
+    "device_id": "69739b44-ebb2-468e-9e24-08126dec4925",
+    "artefact_id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
+    "created_at": "2026-02-25T16:09:52Z",
+    "updated_at": "2026-02-25T16:09:52Z"
+}
+----
+
+If `+artefact_id+` is missing, you get a **400 Bad Request** response.
+
+If your management API access token is invalid, you get a **401 Unauthorized** response.
+
+If the device or artefact is not found in the organisation, you get a **404 Not Found** response.
+
+If your organisation's free trial has ended and billing has not been set up, you get a **403 Forbidden** response:
+
+[source,http]
+----
+HTTP/2 403
+Content-Type: application/json; charset=utf-8
+
+{"message":"Deployments are blocked until billing has been set up"}
+----
+
+==== Cancel a deployment
+
+To cancel a pending deployment, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+deployment-id+`: the unique identifier for the deployment.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+PUT /organisation/deployments/deployment-id/cancel HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --request PUT --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/deployments/deployment-id/cancel
+----
+
+======
+
+If successful, you get a **200 OK** response with the updated deployment's details in JSON format:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "fdf45c44-2c0e-4f12-9b04-3a6a1c0d3b8d",
+    "state": "cancelled",
+    "state_reason": null,
+    "device_id": "69739b44-ebb2-468e-9e24-08126dec4925",
+    "artefact_id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
+    "created_at": "2026-02-25T16:09:52Z",
+    "updated_at": "2026-02-25T16:10:30Z"
+}
+----
+
+If your management API access token is invalid, you get a **401 Unauthorized** response.
+
+If the deployment isn't found in the organisation, you get a **404 Not Found** response.
+
+If the deployment can't be cancelled (because it's already cancelled, succeeded, or failed), you get a **422 Unprocessable Content** response containing the reason why the deployment couldn't be cancelled:
+
+[source,http]
+----
+HTTP/2 422
+Content-Type: application/json; charset=utf-8
+
+{"message":"Cannot cancel deployment in state \"succeeded\""}
+----
 
 [[bulk-provisioning]]
 === Bulk provisioning

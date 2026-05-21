@@ -125,7 +125,8 @@ The `BOOT_ORDER` property defines the sequence for the different boot modes. It 
 | Restart from the first boot-mode in the `BOOT_ORDER` field i.e. loop.
 |===
 
-`RPIBOOT` is intended for use with Compute Module 4 to load a custom debug image (e.g. a Linux RAM-disk) instead of the normal boot. This should be the last boot option because it does not currently support timeouts or retries.
+`RPIBOOT` is normally enabled implicitly by selecting the `nRPIBOOT` jumper on a CM4 or CM5 IO board. However, it can be useful to set this within a custom `BOOT_ORDER` for development or provisioning, for example, by using `set_reboot_order`.
+If used, always set it as the last option in the `BOOT_ORDER` because this boot mode doesn't support timeouts or retries.
 
 ===== `BOOT_ORDER` examples
 
@@ -177,6 +178,17 @@ Default: `0`
 If the RESTART (`0xf`) boot-mode is encountered more than MAX_RESTARTS times then a watchdog reset is triggered. This isn't recommended for general use but may be useful for test or remote systems where a full reset is needed to resolve issues with hardware or network interfaces.
 
 Default: `-1` (infinite)
+
+[[REBOOT_ON_FATAL_ERROR]]
+==== `REBOOT_ON_FATAL_ERROR`
+
+If a fatal error is encountered during boot, the bootloader displays the error pattern on the activity LED three times and then performs a hard reset. This can mitigate intermittent hardware issues caused by power supplies, HATs, or board temperature. This setting only applies to the bootloader and has no effect after the OS has started.
+
+Displaying the error pattern three times before resetting rate-limits reboots. If a faster reboot is required, use `BOOT_WATCHDOG_TIMEOUT` instead.
+
+Set `REBOOT_ON_FATAL_ERROR=0` to disable automatic rebooting and instead display the error pattern indefinitely.
+
+Default: `1`
 
 [[SD_BOOT_MAX_RETRIES]]
 ==== `SD_BOOT_MAX_RETRIES`
