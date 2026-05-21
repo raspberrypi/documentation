@@ -455,6 +455,17 @@ If `HTTP_HOST` is not set, `HTTP_PATH` is ignored and the URL will be `\https://
 
 Default: `net_install`
 
+[[HTTP_CACERT_HASH]]
+==== `HTTP_CACERT_HASH`
+
+The SHA-256 hash (as a hex string) of a DER-encoded CA certificate to use for HTTPS network install and HTTP boot when `HTTP_HOST` is set to a custom server. The CA certificate itself is embedded in the EEPROM image using `rpi-eeprom-config --cacertder`.
+
+When `HTTP_CACERT_HASH` is specified alongside `HTTP_HOST` and `HTTP_PATH`, network install and HTTP boot use HTTPS over port 443 instead of plain HTTP over port 80.
+
+See xref:raspberry-pi.adoc#http-boot[HTTP boot] for more details.
+
+Default: `""` (not set)
+
 [[IMAGER_REPO_URL]]
 ==== `IMAGER_REPO_URL`
 
