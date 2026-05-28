@@ -6,7 +6,7 @@
 
 NOTE: This option applies only to Raspberry Pi 4, Compute Module 4, Compute Module 4S, and Pi 400.
 
-By default, when connected to a 4K monitor, certain models select a 30Hz refresh rate. Use this option to allow selection of 60Hz refresh rates. Models impacted by this setting do _not_ support 4Kp60 output on both micro HDMI ports simultaneously. Enabling this setting increases power consumption and temperature.
+By default, when connected to a 4K monitor, certain models select a 30Hz refresh rate. Use this option to allow selection of 60Hz refresh rates. Models impacted by this setting only support 4Kp60 output on HDMI0. Enabling this setting increases power consumption and temperature.
 
 === Common hardware configuration options
 
