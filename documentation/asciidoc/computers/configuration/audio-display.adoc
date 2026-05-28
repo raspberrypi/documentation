@@ -92,6 +92,7 @@ $ pactl list cards
 ======
 
 [[display-settings]]
+=== Configure display settings
 
 With most HDMI monitors, Raspberry Pi OS uses the highest resolution and refresh rate supported by your Raspberry Pi and your monitor. Connect the cables before turning on your Raspberry Pi.
 

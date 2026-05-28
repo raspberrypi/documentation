@@ -21,9 +21,9 @@ $ ./rpiboot -d recovery
 
 === Flash storage devices other than SD cards
 
-The Linux-based https://github.com/raspberrypi/usbboot/blob/master/mass-storage-gadget/README.md[`mass-storage-gadget`] supports flashing of NVMe, eMMC and USB block devices. `mass-storage-gadget` writes devices faster than the firmware-based `rpiboot` mechanism, and also provides a UART console to the device for debugging.
+The Linux-based https://github.com/raspberrypi/usbboot/blob/master/mass-storage-gadget64/README.md[`mass-storage-gadget`] supports flashing of NVMe, eMMC, and USB block devices. `mass-storage-gadget` writes devices faster than the firmware-based `rpiboot` mechanism, and also provides a UART console to the device for debugging.
 
-`usbboot` also includes a number of https://github.com/raspberrypi/usbboot/blob/master/Readme.md#compute-module-4-extensions[extensions] that enable you to interact with the EEPROM bootloader on a Compute Module.
+`usbboot` also includes a number of https://github.com/raspberrypi/usbboot/tree/master#provisioning-extensions[extensions] that enable you to provision secure-boot or launch custom Linux initramfs images.
 
 === Update the Compute Module bootloader
 
