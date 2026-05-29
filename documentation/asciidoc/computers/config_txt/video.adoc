@@ -93,13 +93,13 @@ Replace the `<video_mode>` placeholder with one of the following values:
 
 ==== `ignore_lcd`
 
-By default, the Raspberry Pi Touch Display is used when detected on the I2C bus. `ignore_lcd=1` skips this detection phase. This prevents the LCD display from being used.
+By default, the Raspberry Pi Touch Displays are used when detected on the I2C bus. `ignore_lcd=1` skips this detection phase. This prevents the LCD display from being used.
 
 ==== `disable_touchscreen`
 
 Enables and disables the touchscreen.
 
-`disable_touchscreen=1` disables the touchscreen component of the official Raspberry Pi Touch Display.
+`disable_touchscreen=1` disables the touchscreen component of the official Raspberry Pi Touch Displays.
 
 === Generic display options
 

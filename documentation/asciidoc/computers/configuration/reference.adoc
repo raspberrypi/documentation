@@ -967,6 +967,8 @@ printf "%d" "0x$(od "/proc/device-tree/chosen/bootloader/partition" -v -An -t x1
 
 `rpi-machine-id`:: _(string)_ A 128-bit machine identifier represented as a 32-character hexadecimal string, generated from a hash of the 64-bit serial number and, on Raspberry Pi 4 and Raspberry Pi 5, the Ethernet MAC address provisioned at manufacture. This provides a stable, unique identity suitable for use in automated or provisioning systems.
 
+`rpi-min-boot-ver`:: The minimum bootloader manufacturing version required by the board's hardware, programmed into OTP during production. Before applying an update, `rpi-eeprom-update` extracts the `MFG_VER` field from the EEPROM image and compares it against this value. If the image version is lower than the board's minimum, the update is rejected. The `MFG_VER` field embedded in an EEPROM image can be inspected with `strings pieeprom.bin | grep 'MFG_VER:'`. Raspberry Pi 4 and Raspberry Pi 5 only.
+
 `rpi-serial64`:: _(string)_ A string representation of the 64-bit serial number. On flagship models since Raspberry Pi 5 this is same as the normal serial number (`/proc/device-tree/serial-number`). On earlier models the default serial number is still 32-bit but with newer firmware a 64-bit serial number is now available and is visible through this node.
 
 ===== Common bootloader properties `/chosen/bootloader`

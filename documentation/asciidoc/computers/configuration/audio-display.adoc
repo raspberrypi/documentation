@@ -123,9 +123,8 @@ With most HDMI monitors, Raspberry Pi OS uses the highest resolution and refresh
 
 Raspberry Pi 4B, 400, and Compute Module 4, support either:
 
-* Two displays with resolution up to 3840 × 2160 pixels (4K; Ultra HD) at a 30 Hz refresh rate.
-* One display with resolution up to 1920 × 1080 pixels (Full HD) at a 60 Hz refresh rate, which is standard for most displays.
-* One display with resolution up to 3840 × 2160 pixels (4K; Ultra HD) at a 60 Hz refresh rate if you connect the display to the HDMI0 port and then set the `hdmi_enable_4kp60=1` flag in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`].
+* Two displays with resolution up to 3840 × 2160 pixels (4K; Ultra HD) at a 30 Hz refresh rate, or resolution up to 1920 × 1080 pixels (Full HD) at a 60 Hz refresh rate.
+* The display connected the HDMI0 port can support a resolution up to 3840 × 2160 pixels (4K; Ultra HD) at a 60 Hz refresh rate if you set the `hdmi_enable_4kp60=1` flag in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]; the second display still supports a resolution up to 3840 × 2160 pixels (4K; Ultra HD) at a 30 Hz refresh rate or 1920 × 1080 pixels (Full HD) at a 60 Hz refresh rate.
 
 Raspberry Pi 5, 500, 500+, and Compute Module 5 support two displays with resolution up to 3840 × 2160 pixels (4K; Ultra HD) at a 60 Hz refresh rate with no additional configuration.
 You can adjust your display resolution and screen orientation through the desktop and through the console.
