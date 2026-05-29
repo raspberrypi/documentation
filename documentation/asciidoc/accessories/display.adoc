@@ -1,3 +1,1 @@
 include::display/display_intro.adoc[]
-
-include::display/legacy.adoc[]

@@ -127,6 +127,12 @@
                     "subpath": "m2-hat-plus.adoc"
                 },
                 {
+                    "title": "Touch Display",
+                    "description": "The Raspberry Pi Touch Display",
+                    "image": "full-sized/Display.png",
+                    "subpath": "display.adoc"
+                },
+                {
                     "title": "Touch Display 2",
                     "description": "The Raspberry Pi Touch Display 2",
                     "image": "full-sized/Touch-Display-2.png",
@@ -197,12 +203,6 @@
                     "description": "Information on the HAT specification",
                     "image": "full-sized/Designing-a-HAT.png",
                     "url": "https://pip.raspberrypi.com/documents/RP-008281-DS"
-                },
-                {
-                    "title": "Touch Display",
-                    "description": "The Raspberry Pi Touch Display",
-                    "image": "full-sized/Display.png",
-                    "subpath": "display.adoc"
                 },
                 {
                     "title": "TV HAT",
