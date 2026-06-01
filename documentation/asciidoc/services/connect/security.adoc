@@ -10,7 +10,7 @@ In situations where direct peer-to-peer connections aren't possible (for example
 
 The Raspberry Pi Connect API temporarily stores the IP addresses and ports required to negotiate a peer-to-peer connection. All traffic to this API is encrypted using https://en.wikipedia.org/wiki/HTTPS[HTTP over TLS], supporting only TLS 1.2 and newer for security. This ensures that connection information is never sent in the clear. This metadata is stored securely for at most 1 minute, and deleted as soon as a connection is established.
 
-Raspberry Pi Connect, along with its API and software components, has undergone security assessments by penetration testing and security analysts at https://cure53.de[Cure53].
+Raspberry Pi Connect, along with its API and software components, has undergone security assessments by penetration testing and security analysts at https://cure53.de[Cure53]. You can read the https://cure53.de/pentest-report_raspberry-web.pdf[full report] on the Cure53 site.
 
 For more details on WebRTC security, see https://webrtc-security.github.io/[A Study of WebRTC Security].
 
