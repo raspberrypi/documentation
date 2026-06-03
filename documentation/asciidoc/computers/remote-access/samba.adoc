@@ -81,14 +81,14 @@ $ ls windowshare/
 
 ==== "Host is down" error
 
-This error occurs when SMB protocol version do not match and the Linux Samba client returns a misleading error message. By default Raspberry Pi OS uses versions 2.1 and above, compatible with Windows 7 and later. Older devices, including some NAS, may require version 1.0. To fix this error, append a version entry (e.g. `,vers=1.0`) to your mount command:
+This error occurs when SMB protocol versions don't match and the Linux Samba client returns a misleading error message. By default, Raspberry Pi OS uses versions 2.1 and later, compatible with Windows 7 and later. Older devices, including some NAS devices, might require version 1.0. To fix this error, append a version entry (for example, `,vers=1.0`) to your mount command:
 
 [source,console]
 ----
 $ sudo mount.cifs //IP/share /mnt/point -o user=<uname>,vers=1.0
 ----
 
-You may need to try different versions to match up with the server version. Possible values are:
+You might need to try different versions to match up with the server version. Possible values are:
 
 |===
 | Version | Description

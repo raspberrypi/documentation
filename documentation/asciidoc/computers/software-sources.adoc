@@ -48,9 +48,10 @@ The other place you can find our software in a more standard form is in our GitH
 * https://github.com/raspberrypi-ui
 * https://github.com/RPi-Distro
 
-We also publish content related to our books in the following organisation:
+We also publish content related to our books and magazine in the following organisations:
 
 * https://github.com/raspberrypipress
+* https://github.com/themagpimag
 
 == List of categorised sources
 
