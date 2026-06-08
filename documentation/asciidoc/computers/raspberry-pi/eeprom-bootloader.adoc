@@ -27,7 +27,7 @@ This section describes all the configuration items available in the bootloader. 
 [[BOOT_UART]]
 ==== `BOOT_UART`
 
-If `1` then enable UART debug output on GPIO 14 and 15. Configure the receiving debug terminal at 115200bps, 8 bits, no parity bits, 1 stop bit.
+If `1` then enable UART debug output on the primary UART. On the Raspberry Pi 5 this is `UART10`, which is exposed on the debug UART connector. On all older Raspberry Pi models the primary UART is exposed on GPIO 14 and 15. Configure the receiving debug terminal at 115200bps, 8 bits, no parity bits, 1 stop bit.
 
 Default: `0`
 

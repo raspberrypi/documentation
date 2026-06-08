@@ -225,7 +225,7 @@ The available UART interfaces vary by Raspberry Pi model. The following table su
   `UART2` through to `UART5`: PL011 (disabled by default)
 
 | Raspberry Pi 5, 500, 500+, and Compute Module 5
-| `UART0` through to `UART4`: PL011 (disabled by default) +
+| `UART0` through to `UART4` and `UART10` (also called `debug uart`): PL011 (disabled by default) +
   No mini UART
 |===
 
