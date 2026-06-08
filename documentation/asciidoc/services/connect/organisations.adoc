@@ -792,7 +792,22 @@ Content-Type: application/json; charset=utf-8
             "id": "69739b44-ebb2-468e-9e24-08126dec4925",
             "name": "raspberrypi5",
             "serial_number": "ea636879c4d47a37",
-            "tags": ["production", "kiosk"]
+            "tags": ["production", "kiosk"],
+            "board": {
+                "model": "Raspberry Pi 5",
+                "revision": "1.0",
+                "memory": "8 GB"
+            },
+            "os": {
+                "name": "Raspberry Pi OS",
+                "version": "13 (Trixie)"
+            },
+            "kernel_architecture": "aarch64",
+            "filters": {
+                "model": "5",
+                "memory": "8gb",
+                "os": "raspios-13"
+            }
         }
     ],
     "meta": {
@@ -815,6 +830,12 @@ id:: A unique identifier for the device.
 name:: The name of the device.
 serial_number:: The serial number of the device.
 tags:: The tags applied to the device.
+board:: The device's board model, revision, and memory. `+null+` if unknown.
+os:: The operating system name and version running on the device. `+null+` if unknown.
+kernel_architecture:: The kernel architecture reported by the device (for example, `+aarch64+`). `+null+` if unknown.
+filters:: The qualifiers that match this device, for use with the `+query+` parameter (see below). Only includes attributes that are known for the device, so this object may be empty.
+
+The `+board+`, `+os+`, `+kernel_architecture+`, and `+filters+` fields are only populated for devices running Connect client version 2.9.0 or later.
 
 The `+meta+` object contains the following fields:
 
@@ -868,6 +889,145 @@ $ curl --header 'Authorization: Bearer rporg_accesstokenhere' 'https://api.conne
 ----
 
 ======
+
+To filter the devices returned, use the `+query+` parameter in the query string. This accepts the same syntax as the <<search-filter-devices,search bar in the web interface>>, combining free-text search with structured filters:
+
+* Free text matches against device name and serial number.
+* The `+model:+`, `+memory:+`, `+os:+`, and `+tag:+` qualifiers filter by a specific attribute (for example, `+model:5+` or `+tag:production+`).
+
+You can combine multiple filters and free text in a single query. The value must be URL-encoded, including the spaces between terms.
+
+For example, to find Raspberry Pi 5 devices tagged `+production+`:
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/devices?query=model%3A5%20tag%3Aproduction HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --get --data-urlencode 'query=model:5 tag:production' https://api.connect.raspberrypi.com/organisation/devices
+----
+
+======
+
+The `+query+` parameter composes with the `+page+` and `+per_page+` parameters, so you can paginate through a filtered list.
+
+The `+filters+` object returned for each device lists the exact qualifier values that match it, so you can use those values to build a `+query+`. For example, a device with `+"os": "raspios-13"+` in its `+filters+` matches the query `+os:raspios-13+`.
+
+The `+model:+` qualifier accepts the following values:
+
+[cols="1,2"]
+|===
+| Value | Model
+
+| `+a+`
+| Raspberry Pi A
+
+| `+b+`
+| Raspberry Pi B
+
+| `+a++`
+| Raspberry Pi A+
+
+| `+b++`
+| Raspberry Pi B+
+
+| `+2b+`
+| Raspberry Pi 2B
+
+| `+cm1+`
+| Raspberry Pi CM1
+
+| `+3b+`
+| Raspberry Pi 3B
+
+| `+zero+`
+| Raspberry Pi Zero
+
+| `+cm3+`
+| Raspberry Pi CM3
+
+| `+zerow+`
+| Raspberry Pi Zero W
+
+| `+3b++`
+| Raspberry Pi 3B+
+
+| `+3a++`
+| Raspberry Pi 3A+
+
+| `+cm3++`
+| Raspberry Pi CM3+
+
+| `+4b+`
+| Raspberry Pi 4B
+
+| `+zero2w+`
+| Raspberry Pi Zero 2 W
+
+| `+400+`
+| Raspberry Pi 400
+
+| `+cm4+`
+| Raspberry Pi CM4
+
+| `+cm4s+`
+| Raspberry Pi CM4S
+
+| `+5+`
+| Raspberry Pi 5
+
+| `+cm5+`
+| Raspberry Pi CM5
+
+| `+500+`
+| Raspberry Pi 500
+
+| `+cm5lite+`
+| Raspberry Pi CM5 Lite
+
+| `+cm0+`
+| Raspberry Pi CM0
+|===
+
+The `+memory:+` qualifier accepts the following values:
+
+[cols="1,2"]
+|===
+| Value | Memory
+
+| `+256mb+`
+| 256 MB
+
+| `+512mb+`
+| 512 MB
+
+| `+1gb+`
+| 1 GB
+
+| `+2gb+`
+| 2 GB
+
+| `+4gb+`
+| 4 GB
+
+| `+8gb+`
+| 8 GB
+
+| `+16gb+`
+| 16 GB
+|===
+
+NOTE: As with the web interface, the `+model:+`, `+memory:+`, and `+os:+` qualifiers only match devices running Connect client version 2.9.0 or later.
 
 ==== Delete a device
 

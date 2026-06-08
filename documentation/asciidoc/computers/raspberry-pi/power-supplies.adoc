@@ -124,7 +124,7 @@ Run the following command to check the status of power output to the USB ports:
 $ vcgencmd get_config usb_max_current_enable
 ----
 
-The following table describes the amount of power (in amps) drawn by different Raspberry Pi models during various workloads:
+The following table describes the amount of current (in amps) drawn by different Raspberry Pi models during various workloads:
 
 |===
 | | | Raspberry Pi 1B+ | Raspberry Pi 2B | Raspberry Pi 3B | Raspberry Pi Zero | Raspberry Pi 4B

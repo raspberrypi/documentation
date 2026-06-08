@@ -7,6 +7,8 @@ image::images/display.png[The Raspberry Pi 7-inch Touch Display, width="70%"]
 
 The display features a metal-framed back and comes with a Raspberry Pi display conversion board and metal stand-offs pre-installed. Download a mechanical drawing of the Touch Display https://pip.raspberrypi.com/documents/RP-008246-DS[here].
 
+WARNING: The display must be mounted in a suitable enclosure. The enclosure, including any gaps provided for ventilation or cable entry, must ensure all parts of the circuit board are inaccessible during operation.
+
 == Compatibility
 
 Touch Display is compatible with Raspberry Pi B+ and later.
@@ -57,7 +59,7 @@ Touch Display has the following features:
 
 === Power
 
-- *Power draw* 200mA at 5V typical, at maximum brightness.
+- *Power draw* 200mA at 5 V typical, at maximum brightness.
 
 === Dimensions and environmentals
 
@@ -69,225 +71,354 @@ Touch Display has the following features:
 The Touch Display box contains the following:
 
 - A Touch Display
-- Four standoffs and screws (pre-installed but removable)
+- Four standoffs and four M2.5 screws (pre-installed but removable)
 - A 15-way to 15-way flat flexible cable
 - Four jumper wires
 
-== Mount a Raspberry Pi to the Touch Display
+=== Connections
+Touch Display connects to a Raspberry Pi device using:
+
+- A *DSI connector*. Attach the appropriate flat flexible cable (FFC) to this to carry video and touch data.
+* Raspberry Pi 4 and earlier use the supplied 15-way to 15-way FFC.
+* Raspberry Pi 5 and Raspberry Pi Compute Module IO Boards use a Raspberry Pi Standard-Mini FFC (https://www.raspberrypi.com/products/display-cable/[sold separately]).
+
+- The *GPIO header*. The supplied jumper wires carry power from the GPIO header on the Raspberry Pi to the display.
+
+== Connect to a Raspberry Pi device
+
+Follow the appropriate procedures for your device.
+
+No special tools are required to connect your device to the display, but you must have the correct FFC cable ready. You also need your device, its boot media, and its power supply.
+
+To attach your device to the display, use a Phillips/cross-head screwdriver that fits the M2.5 screws included with the display. If you don't want to attach your device to the display, you might need a longer FFC cable.
+
+[tabs]
+======
+Raspberry Pi B+ and later::
++
+--
+[discrete]
+=== Raspberry Pi B+ and later
+
+WARNING: Disconnect your Raspberry Pi from power before starting Step 1.
+
+[discrete]
+==== Step 1. Connect the FFC to the Touch Display
+
+Before you start, check that you have the correct flat flexible cable for your Raspberry Pi model:
+
+- For *Raspberry Pi 5*, use a *22-way to 15-way FFC*.
+- For all other Raspberry Pi models, use the supplied *15-way to 15-way FFC*.
+
+To connect the FFC:
+
+. Slide the retaining clip outwards from both sides of the FFC connector on the Touch Display.
+. Insert the FFC into the Touch Display FFC connector, then slide the retaining clip back into place to secure the cable.
++
+Position the metal contacts facing upwards, away from the Touch Display.
++
+If connecting to a Raspberry Pi 5, and therefore using a 22-way to 15-way FFC, the 22-way end is the smaller end of the cable. Insert the larger end of the cable into the Touch Display  FFC connector.
+
+[discrete]
+==== Step 2. (Optional) Mount the Raspberry Pi to the Touch Display
 
 You can mount any Raspberry Pi B+ and later to the back of the Touch Display.
-
-You can also mount the Touch Display in a separate chassis, if you have one available. The connections remain the same, though you may need longer cables depending on the chassis.
 
 .A Raspberry Pi connected to the Touch Display
 image::images/GPIO_power-500x333.jpg[Image of Raspberry Pi connected to the Touch Display, width="100%"]
 
 To mount the device to the display:
 
-. Slide the retaining clip outwards from both sides of the FFC connector on the Touch Display.
-. Connect one end of the Flat Flexible Cable (FFC) to the `RPI-DISPLAY` port on the Touch Display PCB, then slide the retaining clip back into place to secure the cable.
-+
-The silver or gold contacts should face away from the display.
-. Slide the retaining clip outwards from both sides of the FFC connector on the device.
-. Connect the other end of the FFC to the `DISPLAY` port on the Raspberry Pi, then slide the retaining clip back into place to secure the cable.
-+
-The contacts on this end should face inward, towards the Raspberry Pi.
 . Align the four corner stand-offs of your Raspberry Pi with the four mounting points on the back of the Touch Display.
-. Insert the M2.5 screws (included) into the four corner stand-offs and tighten until your Raspberry Pi is secure.
+. Insert the M2.5 screws (included) into the four corner stand-offs and tighten until the Raspberry Pi is secure.
 
-If the FFC is not fully inserted or positioned correctly, you will experience issues with the display. Double check this connection if your display is blank, or shows only a single colour, when you power it on.
+[discrete]
+==== Step 3. Connect the FFC to the Raspberry Pi
 
-== Connect to a Raspberry Pi B+ and later
+CAUTION: Take care not to pinch the FFC in this step.
 
-We recommend using the Raspberry Pi's GPIO to provide power to the Touch Display.
+. Slide the retaining clip upwards from both sides of the FFC connector on the Raspberry Pi. This is labelled `DISPLAY` on Raspberry Pi 4B and earlier.
+. Connect the other end of the FFC to the port on the Raspberry Pi, then slide the retaining clip back into place to secure the cable.
++
+The metal contacts must face towards the Ethernet and USB-A ports.
+
+[discrete]
+==== Step 4. Connect power to the display, then power it on
+
+WARNING: Before applying power, the display must be mounted in an enclosure that ensures all parts of the circuit board are inaccessible.
+
+We recommend using xref:../computers/raspberry-pi.adoc#gpio[Raspberry Pi's GPIO header] to provide power to the Touch Display.
 
 Alternatively, you can power the display directly with a separate micro USB power supply.
 
-WARNING: Before you begin, make sure the Raspberry Pi is powered off and disconnected from the power source.
+[discrete]
+===== Connect to the GPIO header:
 
-=== Power from a Raspberry Pi
-
-To power the Touch Display using a Raspberry Pi:
-
-. Connect jumper wires between the 5V and `GND` pins on the xref:../computers/raspberry-pi.adoc#gpio[Raspberry Pi's GPIO] and the 5V and `GND` pins on the display.
-+
-.The location of the display's 5V and `GND` pins
-image::images/display_plugs.png[Illustration of display pins, width="40%"]
-+
-. Connect one end of the black jumper wire to pin six (`GND`) on the Raspberry Pi and one end of the red jumper wire to pin four (5V).
-+
-If pin six isn't available, use any other open `GND` pin to connect the black wire.
-+
-If pin four isn't available, use any other 5V pin to connect the red wire, such as pin two.
+. Connect jumper wires between the 5 V and `GND` pins on the xref:../computers/raspberry-pi.adoc#gpio[Raspberry Pi's GPIO] and the 5 V and `GND` pins on the display.
 +
 .The location of the Raspberry Pi headers
 image::images/pi_plugs.png[Illustration of Raspberry Pi headers, width="40%"]
 +
-. Connect the other end of the black wire to the `GND` pin on the display, and connect the other end of the red wire to the 5V pin on the display.
+. Connect one end of the black jumper wire to pin six (`GND`) on the Raspberry Pi.
+. Connect one end of the red jumper wire to pin four (5 V).
++
+If pin six isn't available, use any other `GND` pin to connect the black wire.
++
+If pin four isn't available, use the other 5 V pin (pin two) to connect the red wire.
++
+.The location of the display's 5 V and `GND` pins
+image::images/display_plugs.png[Illustration of display pins, width="40%"]
++
+. Connect the other end of the black wire to the `GND` pin on the display.
+. Connect the other end of the red wire to the 5 V pin on the display.
 . Connect your Raspberry Pi to a power source, then turn it on. The Touch Display turns on.
 
-=== Power from a micro USB supply
+[discrete]
+===== Connect using a micro USB supply
 
-If you don't want to use a Raspberry Pi to provide power to the Touch Display, you can use a micro USB power supply instead.
+If you don't want to use a Raspberry Pi to provide power to the Touch Display, you can use a micro USB power supply instead. We recommend using the https://www.raspberrypi.com/products/micro-usb-power-supply/[Raspberry Pi 12.5 W power supply] to make sure the display runs as advertised.
 
-We recommend using the https://www.raspberrypi.com/products/micro-usb-power-supply/[Raspberry Pi 12.5 W power supply] to make sure the display runs as intended.
+CAUTION: Don't connect the GPIO pins on your Raspberry Pi to the display if you choose to use micro USB for power.
 
-Do not connect the GPIO pins on your Raspberry Pi to the display if you choose to use micro USB for power. The only connection between the two boards should be the FFC.
+. Plug in the micro USB power cable.
 
-WARNING: When using a micro USB cable to power the display, mount it inside a chassis that blocks access to the display's PCB during use.
+[discrete]
+===== Power on the Raspberry Pi
 
-== Connect to a Raspberry Pi 1 and earlier
-
-These instructions are for the original Raspberry Pi, Model A, and B, boards only.
-
-To identify an original Raspberry Pi, check the GPIO header connector: Only the original model has a 26-pin GPIO header connector. Subsequent models have 40 pins.
-
-The DSI connector on both the Raspberry Pi 1 Model A and B boards does not have the I2C connections required to talk to the touchscreen controller and DSI controller. To work around this, use the additional set of jumper cables provided with the display kit.
-
-DSI display autodetection is disabled by default on these boards.
-
-To connect to the Raspberry Pi Model B and earlier:
-
-. Enable autodetection on the Raspberry Pi by adding this line to the xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]:
+. Connect your boot media to the Raspberry Pi.
+. Connect the Raspberry Pi to your power supply.
 +
-[source,ini]
-----
-ignore_lcd=0
-----
-+
-. Turn off the device, then remove the power source.
-. Connect SCL/SDA on the GPIO header to the horizontal pins marked `SCL/SDA` on the display board.
-. Power the Touch Display from the Raspberry Pi using the GPIO pins and the supplied jumper cables.
-. Connect your Raspberry Pi to a power source, then turn it on. The Touch Display turns on.
-. Power the setup via the `PWR IN` micro-USB connector on the display board.
-+
- WARNING: Do not power the setup via the Raspberry Pi's micro-USB port. This will exceed the input polyfuse's maximum current rating, since the display consumes approximately 400mA.
+The Touch Display turns on when the device boots, but it can take up to one minute for Raspberry Pi OS to start displaying output on the screen.
+--
 
+Raspberry Pi Compute Module::
++
+--
+
+[discrete]
 [[connect-to-cm]]
-== Connect to a Raspberry Pi Compute Module.
+=== Raspberry Pi Compute Module
 
-Autodetection of the Touch Display is disabled for Compute Modules. This means that the Device Tree fragments required to set up the display must be loaded by any of these methods:
+This section assumes that you're familiar with your Compute Module. For more information, see xref:../computers/compute-module.adoc[Raspberry Pi Compute Module].
 
-* A dtoverlay entry in config.txt.
-* A custom base DT file.
-* A HAT EEPROM, if present.
+You can connect a Touch Display to a Raspberry Pi Compute Module that is attached to an IO Board. A Raspberry Pi Standard-Mini FFC (sold separately) is required to do this.
 
-Update your Raspberry Pi Compute Module's system software and firmware to the latest version before starting.
+Before you begin, update your Compute Module's system software and firmware to the latest version.
 
-WARNING: Before you begin, make sure the Raspberry Pi Compute Module is powered off and disconnected from the power source.
+[discrete]
+==== Step 1. Specify the display in `config.txt`
 
-=== Connect a display to DISP1/DSI1
+Raspberry Pi Compute Modules don't automatically detect Touch Displays.
 
-To connect a display to `DISP1/DSI1`:
+Configure the Compute Module for the device it is connecting to by adding an overlay entry in `config.txt`. The default connection is port `1`, but you can also use port `0`.
 
-. Connect the display to the `DISP1/DSI1` port on the Compute Module IO board through the 22 W to 15 W display adapter.
-. Complete the appropriate jumper connections:
-  - For *CM1*, *CM3*, *CM3+*, and *CM4S*, connect the following GPIO pins with jumper cables:
-    * `0` to `CD1_SDA`
-    * `1` to `CD1_SCL`
-  - For *CM5*, on the Compute Module 5 IO board, add the appropriate jumpers to J6, as indicated on the silkscreen.
-. Connect your Raspberry Pi Compute Module to a power source, then turn it on. The Touch Display turns on.
-. Add `dtoverlay=vc4-kms-dsi-7inch` to xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`].
-. Reboot your Compute Module using `sudo reboot`. Your device should detect and begin displaying output to your display.
+To complete this step, either connect the Compute Module to a monitor, or use a remote method such as SSH or Raspberry Pi Connect's screen sharing or remote shell.
 
-=== Connect a display to DISP0/DSI0
+NOTE: If you're using a Raspberry Pi Compute Module that has eMMC memory, make sure you edit the *configuration file that is used to boot the device*: either the one stored on the eMMC or one on external boot media if you've reconfigured the boot order.  For more information, see xref:../computers/compute-module.adoc#flash-compute-module-emmc[rpiboot].
 
-To connect a display to `DISP0/DSI0` on CM1, CM3, and CM4 IO boards:
+To enable Touch Display:
 
-. Connect the display to the `DISP0/DSI0` port on the Compute Module IO board through the 22 W to 15 W display adapter.
-. Complete the appropriate jumper connections:
-  - For *CM1*, *CM3*, *CM3+*, and *CM4S*, connect the following GPIO pins with jumper cables:
-    * `28` to `CD0_SDA`
-    * `29` to `CD0_SCL`
-  - For *CM4*, on the Compute Module 4 IO board, add the appropriate jumpers to J6, as indicated on the silkscreen.
-. Reconnect the Compute Module to power.
-. Add `dtoverlay=vc4-kms-dsi-7inch,dsi0` to `/boot/firmware/config.txt`.
-. Reboot your Compute Module with `sudo reboot`. Your device detects and begins displaying output to your display.
+. Boot your Compute Module, then open xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`].
++
+- To connect the display to `DISP1/DSI1`, add `dtoverlay=vc4-kms-dsi-7inch` to the end of the file.
+- To connect the display to `DISP0/DSI0`, add `dtoverlay=vc4-kms-dsi-7inch,dsi0` to the end of the file.
+. Remove the `display_auto_detect` line, if it exists.
+. Shut down the device.
 
-== Disable touchscreen
+[discrete]
+==== Step 2. Connect the Touch Display to the Compute Module IO Board
 
-To disable the touchscreen element, but still use the display, add the following line to `/boot/firmware/config.txt`:
+IMPORTANT: Disconnect the IO Board from power before continuing.
 
-[source,ini]
-----
-disable_touchscreen=1
-----
+Connect the Touch Display to whichever IO Board port chosen in Step 1 (either `DISP1/DSI1` or `DISP0/DSI0`). Once you've connected the FFC, set the appropriate jumpers, then connect the power cables between the display and the board.
+
+To connect to the Touch Display:
+
+. Slide the retaining clip outwards from both sides of the FFC connector on the Touch Display.
+. Insert one end of the FFC into the Touch Display FFC connector, then slide the retaining clip back into place to secure the cable.
+. Insert the other end of the FFC into the port chosen in Step 1, then slide the retaining clip back into place.
+. Reference the table below and set the jumpers that correspond to the overlay entry you created in Step 1.
++
+[cols="1,2,2"]
+|===
+|Display |Board |Action
+
+|`DISP1/DSI1`
+|*CM1*, *CM3*, *CM3+*, or *CM4S* on the CMIO1 or CMIO3 Boards.
+|Connect GPIO `0` to `CD1_SDA` and `1` to `CD1_SCL` with jumper cables.
+
+|`DISP1/DSI1`
+|*CM4* on the *CM4IO Board*.
+|No additional jumpers are required.
+
+|`DISP1/DSI1`
+|*CM5* on the *CM5IO Board*.
+|Add jumpers to `J6`, as indicated on the silkscreen.
+
+|`DISP0/DSI0`
+|*CM1*, *CM3*, *CM3+*, or *CM4S* on the CMIO1 or CMIO3 Boards.
+|Connect GPIO `28` to `CD0_SDA` and `29` to `CD0_SCL` with jumper cables.
+
+|`DISP0/DSI0`
+|*CM4* on the *CM4IO Board*.
+|Add jumpers to `J6`, as indicated on the silkscreen.
+
+|`DISP0/DSI0`
+|*CM5* on the *CM5IO Board*.
+|No additional jumpers are required.
+|===
++
+. Connect one end of the black jumper wire to pin six (`GND`) of the GPIO header on the IO Board.
+. Connect one end of the red jumper wire to pin four, 5 V, of the GPIO header on the IO Board.
++
+.The location of the Raspberry Pi GPIO headers on an CM4IO Board.
+image::images/cmio4pins.png[Illustration of Raspberry Pi GPIO header on a CM4IO board, width="40%"]
++
+. Connect the other end of the black wire to the `GND` pin on the display.
+. Connect the other end of the red wire to the 5 V pin on the display.
++
+.The location of the display's 5 V and `GND` pins
+image::images/display_plugs.png[Illustration of display pins, width="40%"]
+
+[discrete]
+==== Step 3. Power on the Compute Module
+
+WARNING: Before applying power, the display must be mounted in an enclosure that ensures all parts of the circuit board are inaccessible.
+
+To power on the Compute Module:
+
+. Connect the boot media to the Compute Module – skip this if you're booting from eMMC.
+. Connect the Raspberry Pi device to the power supply.
+. If the IO Board has one, press and release the *Power Button*.
++
+The Touch Display turns on when the device boots, but it can take up to one minute for Raspberry Pi OS to start displaying output on the screen.
+--
+======
+
+== Troubleshooting
+
+Your display is now ready to use, but if it's not turning on or not displaying anything, check the following:
+
+* *DSI connections*. Check the FFC cable is seated properly at both ends, that the metal strips point towards the connections correctly, and that it is connected to the correct DSI connector.
+* *Power*. Check your device is powered on and has boot media attached (if required). If you're using a Compute Module with a power switch, check that it has been pressed.
+* *GPIO connections*. If the display is powered by your device, check that the power cables are seated properly, and connected to the correct pins on the display and the GPIO header.
+* *Micro USB connection*. If the display is powered by micro USB, check the connection and the power supply.
+* *`config.txt`*. If you're using a Compute Module, check the syntax of the overlay you added to `config.txt` in Step 1. Check also that you've specified the correct display port and that you removed any `display_auto_detect` line in the file.
+* *EEPROM boot order*. If you're using a Compute Module with onboard boot media, or you have multiple drives attached to your Compute Module, make sure the `config.txt` file you edited in Step 1 is on the boot media you're booting from.
+
+If none of these things help, visit the https://forums.raspberrypi.com/viewforum.php?f=108[Raspberry Pi forums] to get further assistance.
+
+== On-screen keyboard
+
+Raspberry Pi OS _Bookworm_ and later include the **Squeekboard on-screen keyboard**.
+
+With Touch Display, this keyboard automatically appears when you can enter text. It automatically disappears when you can't.
+
+For applications that don't support text entry detection, you can manually show or hide the keyboard by selecting the keyboard icon at the top-right of the taskbar.
+
+To always show, or to always disable, the on-screen keyboard using the Raspberry Pi graphical interface:
+
+. From the Raspberry Pi menu, go to **Preferences > Control Centre > Display**.
+. Select **Enabled always** or **Disabled**, as required.
+
+To permanently show, or to disable, the on-screen keyboard using the command line:
+
+. Open a terminal, and enter `sudo raspi-config`.
+. Navigate to the **Display** section of `raspi-config`, then choose your keyboard setting.
 
 == Disable display
 
-To entirely ignore the display when connected, add the following line to `/boot/firmware/config.txt`:
+NOTE: To reverse this action, use an SSH connection (such as Raspberry Pi Connect's remote access), an HDMI display, or a separate computer with the Raspberry Pi's boot media attached.
 
-[source,ini]
-----
-ignore_lcd=1
-----
+To disable the display when connected to a Raspberry Pi:
 
-== Use an on-screen keyboard
+. Open `/boot/firmware/config.txt`
+. Add the following line `ignore_lcd=1`
+. Reboot by typing `sudo reboot` in the command line.
 
-Raspberry Pi OS _Bookworm_ and later include the Squeekboard on-screen keyboard by default. When a touch display is attached, the on-screen keyboard should automatically show when it is possible to enter text and automatically hide when it is not possible to enter text.
+== Disable touchscreen
 
-For applications which do not support text entry detection, use the keyboard icon at the right end of the taskbar to manually show and hide the keyboard.
+You can disable the touchscreen and continue to use the Touch Display as a standard screen.
 
-You can also permanently show or hide the on-screen keyboard in the **Display** tab of Control Centre or the `Display` section of `raspi-config`.
+To disable the touchscreen:
 
-TIP: In Raspberry Pi OS releases prior to _Bookworm_, use `matchbox-keyboard` instead. If you use the Wayfire desktop compositor, use `wvkbd` instead.
+. Open `/boot/firmware/config.txt`
+. Add the following line `disable_touchscreen=1`
+. Reboot by typing `sudo reboot` into the command line.
 
-== Change screen orientation
+== Change display orientation
 
-If you want to physically rotate the display, or mount it in a specific position, select **Screen Configuration** from the **Preferences** menu. Right-click on the touch display rectangle (likely DSI-1) in the layout editor, select **Orientation**, then pick the best option to fit your needs.
+If you're using Raspberry Pi OS with a desktop environment, you can change the orientation of Touch Display with the Raspberry Pi Control Centre application. This allows you to independently change the orientation of multiple connected displays.
 
-image::images/display-rotation.png[Screenshot of orientation options in screen configuration, width="80%"]
+If you're using Raspberry Pi OS Lite (which has no desktop environment), you can change the orientation of Touch Display by editing `/boot/firmware/cmdline.txt`. However, if you have multiple displays connected, this method changes the orientation of them all.
 
-=== Rotate screen without a desktop
+There are four orientations to choose from:
 
-To set the screen orientation on a device that lacks a desktop environment, edit the `/boot/firmware/cmdline.txt` configuration file to pass an orientation to the system. Add the following line to `cmdline.txt`:
+- **Normal** (default). Portrait format.
+- **Left**. Display rotated 90 degrees clockwise.
+- **Inverted**. Display rotated 180 degrees.
+- **Right**. Display rotated 270 degrees clockwise.
 
+=== With the desktop
+
+To change the display orientation using the Raspberry Pi desktop:
+
+. Go to **Preferences > Control Centre > Screens**.
+. Right-click the rectangle in the layout editor that represents your Touch Display (likely labelled `DSI-1`).
+. Select **Orientation**.
+. Choose between **Normal**, **Left**, **Inverted**, or **Right**, to rotate the display.
+. Select **Apply**, then select **OK** to keep your change or **Cancel** to discard it.
+
+=== With the kernel command line
+
+NOTE: It's not possible to rotate the DSI display separately from the HDMI display with `cmdline.txt`. When DSI and HDMI connections are used simultaneously, they share the same rotation value.
+
+To change the display orientation in console mode by editing the kernel command line:
+
+. Open the `/boot/firmware/cmdline.txt` file, which contains parameters that Raspberry Pi OS reads when it boots.
+. Add the following to the end of the file, replacing `<rotation-value>` with the number of degrees clockwise to rotate by (`0`, `90`, `180`, or `270`):
++
 [source,ini]
 ----
 video=DSI-1:800x480@60,rotate=<rotation-value>
 ----
++
+The `rotate=` setting only rotates the text-mode console. For applications that write directly to DRM, such as `cvlc` or the libcamera apps, use the rotation options that come with them (if available).
 
-Replace the `<rotation-value>` placeholder with one of the following values, which correspond to the degree of rotation relative to the default on your display:
+== Change display brightness
 
-* `0`
-* `90`
-* `180`
-* `270`
+. Go to **Preferences > Control Centre > Screens**.
+. Right-click the rectangle in the layout editor that represents your Touch Display (likely labelled `DSI-1`).
+. Select **Brightness**.
+. Choose a brightness level.
++
+The brightness level changes immediately.
 
-For example, a rotation value of `90` rotates the display 90 degrees to the right. `180` rotates the display 180 degrees, or upside-down.
+== Customise touchscreen settings
 
-NOTE: It is not possible to rotate the DSI display separately from the HDMI display with `cmdline.txt`. When you use DSI and HDMI simultaneously, they share the same rotation value.
+NOTE: These settings are only required when rotating the display and using touch inputs in a non-desktop environment.
 
-== Rotate touch input
+Use the Device Tree overlay to tell Raspberry Pi OS how to configure the Touch Display at boot. The overlay is called `vc4-kms-dsi-7inch`.
 
-WARNING: Rotating touch input via device tree can cause conflicts with your input library. Whenever possible, configure touch event rotation in your input library or desktop.
+To modify the Device Tree overlay in the boot configuration:
 
-Rotation of touch input is independent of the orientation of the display itself. To change this you need to manually add a `dtoverlay` instruction in xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`]. Add the following line at the end of `config.txt`:
+. Open `/boot/firmware/config.txt`.
+. Add the required Device Tree parameters to a `dtoverlay` line, separated by commas. See the Device Tree options table for details.
 
-[source,ini]
-----
-dtoverlay=vc4-kms-dsi-7inch,invx,invy
-----
-
-Then, disable automatic display detection by removing the following line from `config.txt`, if it exists:
-
-[source,ini]
-----
-display_auto_detect=1
-----
-
-== Touch Display device tree option reference
+==== Device Tree options
 
 The `vc4-kms-dsi-7inch` overlay supports the following options:
+
+[cols="1,2", options="header"]
 
 |===
 | DT parameter | Action
 
 | `sizex`
-| Sets X resolution (default 800)
+| Sets X touch resolution (default 800)
 
 | `sizey`
-| Sets Y resolution (default 480)
+| Sets Y touch resolution (default 480)
 
 | `invx`
 | Invert X coordinates
@@ -301,10 +432,40 @@ The `vc4-kms-dsi-7inch` overlay supports the following options:
 | `disable_touch`
 | Disables the touch overlay
 |===
+--
+- Booleans (`invx`, `invy`, `swapxy`, and `disable_touch`) default to true if present, but you can set them to false using the suffix `=0`.
+- Integers (`sizex` and `sizey`) require a number, for example, `sizey=240`.
+--
 
-To specify these options, add them, separated by commas, to your `dtoverlay` line in `/boot/firmware/config.txt`. Boolean values default to true when present, but you can set them to false using the suffix "=0". Integer values require a value, e.g. `sizey=240`. For instance, to set the X resolution to 400 pixels and invert both X and Y coordinates, use the following line:
+Example
+
+In the following example the X touch resolution is set to 400 pixels, and both X and Y coordinates are inverted:
 
 [source,ini]
 ----
 dtoverlay=vc4-kms-dsi-7inch,sizex=400,invx,invy
+----
+
+=== Rotate touch input
+
+WARNING: Rotating touch input using the device tree can cause conflicts with your input library. When possible, configure touch event rotation in your input library or desktop.
+
+Rotation of touch input is independent of the orientation of the display itself.
+
+To change touch input orientation:
+
+. Open xref:../computers/config_txt.adoc[`/boot/firmware/config.txt`].
+. Add `dtoverlay` at the end of file.
+. Reboot using `sudo reboot` from the command line.
+
+[source,ini]
+----
+dtoverlay=vc4-kms-dsi-7inch,invx,invy
+----
+
+Then, disable automatic display detection by removing the following line from `config.txt`, if it exists:
+
+[source,ini]
+----
+display_auto_detect=1
 ----
