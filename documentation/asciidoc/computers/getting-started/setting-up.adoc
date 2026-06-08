@@ -366,9 +366,9 @@ You control it remotely over a network. For this, you must have:
 
 We recommend you set up a headless device using *Raspberry Pi Imager*. This allows you to choose between *Raspberry Pi OS* and *Raspberry Pi OS Lite*, and to configure networking, remote access, and user credentials (username and password).
 
-VNC and *Raspberry Pi Connect* can be enabled either from the desktop or by using the interactive `raspi-config` tool. For instructions, see xref:configuration.adoc#remote[Remote access].
+You can enable VNC and *Raspberry Pi Connect* either from the desktop or by using the interactive `raspi-config` tool. For instructions, see xref:configuration.adoc#remote[Remote access].
 
-=== To set up a headless Raspberry Pi using SSH:
+==== To set up a headless Raspberry Pi using SSH:
 
 Before you start Step 1, note the following:
 
@@ -381,10 +381,13 @@ Before you start Step 1, note the following:
 The first step is to prepare a bootable disk with the Raspberry Pi operating system installed on it.
 
 . Follow the instructions to xref:../computers/getting-started.adoc#install[install an OS onto boot media] using *Raspberry Pi Imager*.
++
+On first boot, the only remote access options are SSH or Raspberry Pi Connect. Ensure that you configure one of these options when customising your operating system with Imager. If you choose not to customise the image using Raspberry Pi Imager, you can instead <<manual-ssh-setup, set up SSH manually>>.
 
 . After installing an OS onto your boot media, insert it into your Raspberry Pi or connect it to your Raspberry Pi using a compatible connector.
 
 ==== Step 2 (Optional). Connect to a wired network
+
 Next, set up network connectivity so that the headless device can communicate with your computer.
 
 If you used Imager to set up your SSID and wireless network details in Step 1, you can skip this step and go to Step 3.
@@ -407,18 +410,27 @@ Before continuing, check that your power supply meets the voltage and current re
 When your Raspberry Pi powers on, a status LED lights up. This can take a few minutes.
 
 ==== Step 4. Access your Raspberry Pi
-On first boot, the only remote access options are SSH or Raspberry Pi Connect.
 
-If you didn't customise the image using Raspberry Pi Imager in Step 1, set up remote access manually.
+On first boot, the only remote access options to your headless Raspberry Pi are SSH or Raspberry Pi Connect.
+
+* For information about using SSH from another computer, see xref:../computers/remote-access.adoc#connect-to-an-ssh-server[Connect to an SSH server].
+* For information about using Raspberry Pi Connect, see the xref:../services/connect.adoc[Raspberry Pi Connect] documentation.
+
+If you installed a version of Raspberry Pi OS that includes the desktop (that is, the standard or Full version), you can now enable VNC for subsequent connections. For instructions, see xref:configuration.adoc#remote[Remote access].
+
+[[manual-ssh-setup]]
+==== Manual setup for SSH
+
+If you didn't customise the image using Raspberry Pi Imager in Step 1, you can instead set up remote access manually.
 
 On your boot media's `bootfs` partition:
 
 . Create an empty file named `ssh`.
-. Create a file named `userconf.txt` with a single line of text: `<username>:<enrcypted-password>`.
+. Create a file named `userconf.txt` with a single line of text: `<username>:<encrypted-password>`.
 
-Replace `<username>` with your username and `<enrcypted-password>` with an *encrypted* representation of your password.
+Replace `<username>` with your username and `<encrypted-password>` with an *encrypted* representation of your password.
 
-* *Username.* Your username must start with a letter and may only contain lowercase letters, digits, underscores, and hyphens. Your username can be a maximum of 31 characters.
-* *Encrypted password.* Use https://www.openssl.org[OpenSSL] on another computer to generate an encrypted password. From the command line, run `openssl passwd -6` and then, when prompted, enter your password and verify it. This command outputs an encrypted version of the supplied password.
-
-For detailed information, see xref:../computers/remote-access.adoc#ssh[Access a remote terminal with SSH].
+* *Username.* Your username must start with a letter and can only contain lowercase letters, digits, underscores, and hyphens. Your username can be a maximum of 31 characters.
+* *Encrypted password.* Use https://www.openssl.org[OpenSSL] to generate an encrypted password. From the command line, run `openssl passwd -6` and then, when prompted, enter your password and verify it. This command outputs an encrypted version of the supplied password.
++
+NOTE: On macOS, ensure that you use OpenSSL to run the command. The default SSL application on macOS is LibreSSL, which doesn't support the `-6` parameter. To verify whether you're running OpenSSL or LibreSSL, run `openssl version`. You can install OpenSSL with `brew install openssl`. For more information, see the documentation for https://openssl.org/[OpenSSL], https://brew.sh/[brew], and macOS.
