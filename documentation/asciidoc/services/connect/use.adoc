@@ -5,7 +5,7 @@ After starting Connect on your Raspberry Pi device, you must associate your devi
 
 If you used Raspberry Pi Imager to install Raspberry Pi OS on your device, you might have already linked your device with your Connect account. For more information, see xref:../computers/getting-started.adoc#imager-install[Install using Imager].
 
-If you want to use Raspberry Pi Connect with multiple users, see xref:../services/connect-for-organisations.adoc[Raspberrry Pi Connect for Organisations].
+If you want to use Raspberry Pi Connect with multiple users, see xref:../services/connect-for-organisations.adoc[Raspberry Pi Connect for Organisations].
 
 [tabs]
 ======

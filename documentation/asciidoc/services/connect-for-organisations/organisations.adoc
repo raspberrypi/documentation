@@ -282,7 +282,7 @@ NOTE: Disabling and then re-enabling the 2FA requirement resets the 14-day grace
 [[organisation-auth-keys]]
 === Create auth keys
 
-To xref:../services/connect.adoc#link-connect[link a device with Connect] automatically (without using the web interface), create an auth key. Select **New** from the **Auth keys** section and enter a description and expiry time in days.
+To xref:../services/connect.adoc#link-connect[link a device with Connect] automatically (without using the web interface), create an auth key. Select **New** from the **Auth keys** section and enter a description and expiry time (between 1 and 90 days).
 
 Your new auth key appears. Select the clipboard icon next to it to copy it. Copy this auth key now because it can't be viewed again later.
 
