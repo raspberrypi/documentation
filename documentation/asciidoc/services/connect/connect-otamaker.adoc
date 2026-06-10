@@ -1,0 +1,5 @@
+[[remoteupdate-otamaker]]
+
+== Otamaker
+
+To be written

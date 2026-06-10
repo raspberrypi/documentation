@@ -216,7 +216,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 |
 |
-| 7: Other
+| 7: Other^3^
 
 | CCCC (bits 16-19)
 | Manufacturer
@@ -375,6 +375,8 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 ^1^ Information on xref:raspberry-pi.adoc#otp-register-and-bit-definitions[programming the OTP bits].
 
 ^2^ The warranty bit is never set on Raspberry Pi 4.
+
+^3^ For a memory size of "Other", the actual memory capacity can be determined from the `rpi-sdram-size-gbit` xref:configuration.adoc#part4[firmware parameter].
 
 === New-style revision codes in use
 

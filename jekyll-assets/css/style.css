@@ -1792,3 +1792,7 @@ div.imageblock div.title{
     font-weight: bold;
     font-style: normal;
 }
+
+dt.hdlist1{
+  font-weight: bold;
+}
