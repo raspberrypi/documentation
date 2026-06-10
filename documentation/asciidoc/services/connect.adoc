@@ -4,7 +4,9 @@ include::connect/install.adoc[]
 
 include::connect/use.adoc[]
 
-include::connect/organisations.adoc[]
+include::connect/connect-remoteupdate-intro.adoc[]
+
+include::connect/connect-AB.adoc[]
 
 include::connect/troubleshooting.adoc[]
 

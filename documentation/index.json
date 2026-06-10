@@ -277,6 +277,12 @@
                     "subpath": "connect.adoc"
                 },
                 {
+                    "title": "Raspberry Pi Connect for Organisations",
+                    "description": "Our service for multiple users",
+                    "image": "full-sized/Organisations.png",
+                    "subpath": "connect-for-organisations.adoc"
+                },
+                {
                     "title": "Bookshelf",
                     "description": "Read titles published by Raspberry Pi Press",
                     "image": "full-sized/Bookshelf.png",

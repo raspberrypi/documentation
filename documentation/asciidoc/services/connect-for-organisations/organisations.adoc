@@ -1,11 +1,10 @@
-[[connect-organisations]]
-== Connect for Organisations
+== Introduction
 
-**Connect for Organisations** lets multiple users share access to devices.
+**Connect for Organisations** lets multiple users share access to devices using xref:../services/connect.adoc[Raspberry Pi Connect].
 
 Creating your first organisation automatically starts a free, four-week trial for that organisation.
 
-=== Create an organisation
+== Create an organisation
 
 To create a new organisation:
 
@@ -13,10 +12,10 @@ To create a new organisation:
 
 . Select the **account switcher icon** (the two opposing arrows) at the top right of the navigation menu.
 +
-image::images/account-switcher.png[alt="The Raspberry Pi Connect interface, showing the account switcher dropdown menu. The account switcher lets you change between your personal and organisation Connect accounts.", width=100%"]
+image::images/account-switcher.png[alt="The Raspberry Pi Connect interface, showing the account switcher dropdown menu. The account switcher lets you change between your personal and organisation Connect accounts.", width="100%"]
 
 . Select **+New organisation**, then type the organisation name.
-. If this is the first organisation you have created, **Start your free trial** displays. If you have previously created an organisation, **Create organisation** displays. Select whichever is displayed you.
+. If this is the first organisation you have created, **Start your free trial** displays. If you have previously created an organisation, **Create organisation** displays. Select whichever is displayed to you.
 +
 The organisation is created and your Connect account is automatically added to it as an administrator.
 
@@ -28,7 +27,7 @@ To transfer your devices:
 +
 The *Transfer personal devices* page displays.
 +
-image::images/transfer-personal-devices-link.png[alt="The Raspberry Pi Connect interface, showing a link for importing Raspberry Pi devices from a personal Connect account to an organisation Connect account.", width=100%"]
+image::images/transfer-personal-devices-link.png[alt="The Raspberry Pi Connect interface, showing a link for importing Raspberry Pi devices from a personal Connect account to an organisation Connect account.", width="100%"]
 +
 If you have personal devices that can be transferred to your new organisation, you're asked to confirm the transfer before it takes place:
 +
@@ -38,7 +37,7 @@ image::images/transfer-devices.png[alt="The Raspberry Pi Connect interface, chec
 +
 If you don't want to add the devices now, you can always do so later. See <<transfer-device>>.
 
-=== Manage users
+== Manage users
 
 You must be an administrator to invite users to, remove users from, or change a user's role in your organisation.
 
@@ -101,18 +100,18 @@ This shows all members of your organisation.
 +
 The user's role is changed and a confirmation screen appears.
 
-=== Link a Raspberry Pi device with an organisation
+== Link a Raspberry Pi device with an organisation
 
 You must be an administrator to link a device to an organisation.
 
 To link a device to an organisation:
 
-* If the device isn't linked to a Connect account, see xref:connect.adoc#link-connect[Link a Raspberry Pi device with a Connect account].
+* If the device isn't linked to a Connect account, see xref:../services/connect.adoc#link-connect[Link a Raspberry Pi device with a Connect account].
 
-* If the device is already linked to a Connect account, see xref:connect.adoc#transfer-device[Transfer a device].
+* If the device is already linked to a Connect account, see <<transfer-device,Transfer a device>>.
 
 [[transfer-device]]
-=== Transfer a device
+== Transfer a device
 
 You must be an administrator to transfer a device between accounts.
 
@@ -139,7 +138,7 @@ image::images/transfer.png[alt="The Raspberry Pi Connect interface, showing the 
 . Select **Transfer**.
 
 [[tag-devices]]
-=== Tag devices
+== Tag devices
 
 Tags help you categorise and find devices in your organisation. For example, you could tag devices by location (`london`, `leeds`), environment (`production`, `staging`), or function (`point-of-sale`, `kiosk`).
 
@@ -165,7 +164,7 @@ image::images/tagging.png[alt="The Edit tags dialog, showing applied tags and th
 Each device supports up to 10 tags. Tag names must be 30 characters or fewer and can only contain lowercase letters, numbers, hyphens, and underscores.
 
 [[search-filter-devices]]
-=== Search and filter devices
+== Search and filter devices
 
 The search bar at the top of the device list lets you find devices by combining free-text search with structured filters.
 
@@ -190,7 +189,7 @@ To filter by a specific attribute, type a qualifier followed by a colon and a va
 | Filter by tag (for example, `tag:kiosk`, `tag:production`)
 |===
 
-NOTE: The `model:`, `memory:`, and `os:` qualifiers will only find devices running Connect client version 2.9.0 or later. To update Connect on your devices, see xref:connect.adoc#update[Update].
+NOTE: The `model:`, `memory:`, and `os:` qualifiers will only find devices running Connect client version 2.9.0 or later. To update Connect on your devices, see xref:../services/connect.adoc#update[Update].
 
 You can combine multiple filters and free text in a single query. For example, `model:5 tag:production dashboard` finds Raspberry Pi 5 devices tagged `production` with "dashboard" in their name.
 
@@ -204,7 +203,7 @@ Use the `tag:` qualifier multiple times to find devices that have _all_ of the s
 
 TIP: Select a tag on any device in the list to quickly add it as a filter.
 
-=== Set up your subscription
+== Set up your subscription
 
 A subscription to Connect for Organisations starts when your four-week trial period ends, after which, you're billed in arrears every month.
 
@@ -222,7 +221,7 @@ Once your free trial ends, you won't be able to remotely access the devices in y
 
 image::images/billing.png[alt="The Connect billing interface, showing the 28-day free trial and payment details fields that you have to fill in to start your trial.",width="100%"]
 
-=== View the audit log
+== View the audit log
 
 The audit log shows all activity from the past 90 days ordered chronologically, with the most recent events first. Events include things like changes to devices, organisation members, API access tokens, and remote access sessions. Events that took place over 90 days ago are automatically deleted.
 
@@ -242,17 +241,17 @@ You can filter events by types of action (such as **Remote shell session started
 
 Select **Download CSV** above the top-right corner of the list to download it in CSV format.
 
-=== Change organisation settings
+== Change organisation settings
 
 Administrators of an organisation can configure the following from the **Settings** tab at the top of the page.
 
 image::images/organisation-settings.png[alt="The Connect organisation settings interface, showing organisation name and other data fields for your organisation.",width="100%"]
 
-==== Rename the organisation
+=== Rename the organisation
 
 To change the name of the organisation, enter a new name in the **General** section. This won't affect your devices or the members of your organisation.
 
-==== Require two-factor authentication
+=== Require two-factor authentication
 
 You can require all members of your organisation to have two-factor authentication (2FA) enabled on their Raspberry Pi ID. This adds a layer of protection against compromised member accounts being used to access your organisation's devices.
 
@@ -281,32 +280,32 @@ A notice displays confirming that your organisation's settings were successfully
 NOTE: Disabling and then re-enabling the 2FA requirement resets the 14-day grace period.
 
 [[organisation-auth-keys]]
-==== Create auth keys
+=== Create auth keys
 
-To xref:connect.adoc#link-connect[link a device with Connect] automatically (without using the web interface), create an auth key. Select **New** from the **Auth keys** section and enter a description and expiry time (between 1 and 90 days).
+To xref:../services/connect.adoc#link-connect[link a device with Connect] automatically (without using the web interface), create an auth key. Select **New** from the **Auth keys** section and enter a description and expiry time in days.
 
 Your new auth key appears. Select the clipboard icon next to it to copy it. Copy this auth key now because it can't be viewed again later.
 
 IMPORTANT: Your auth key is only shown once. Copy it now, because you won't be able to see it again later.
 
 [[management-api-access-tokens]]
-==== Create management API access tokens
+=== Create management API access tokens
 
-To create auth keys automatically (without using the web interface) to xref:connect.adoc#link-connect[link a device with Connect], you can create an API access token for the xref:connect.adoc#organisations-management-api[Connect for Organisations management API]. Select **New** from the **API access tokens** section and enter a description for the access token.
+To create auth keys automatically (without using the web interface) to xref:../services/connect.adoc#link-connect[link a device with Connect], you can create an API access token for the <<organisations-management-api,Connect for Organisations management API>>. Select **New** from the **API access tokens** section and enter a description for the access token.
 
-WARNING: A management API access token is equivalent to an administrator's username and password for your organisation. It can manage every device, auth key, and device identity in the organisation. Keep it on the machine that calls the Management API (such as a provisioning workstation or CI system); never embed it in a Raspberry Pi OS image or copy it onto a device. To authenticate devices themselves, generate per-device credentials with xref:connect.adoc#device-identities[device identities] or xref:connect.adoc#organisation-auth-keys[auth keys] and ship those instead.
+WARNING: A management API access token is equivalent to an administrator's username and password for your organisation. It can manage every device, auth key, and device identity in the organisation. Keep it on the machine that calls the Management API (such as a provisioning workstation or CI system); never embed it in a Raspberry Pi OS image or copy it onto a device. To authenticate devices themselves, generate per-device credentials with <<device-identities, device identities>> or <<organisation-auth-keys, auth keys>> and ship those instead.
 
 Your new access token appears. Select the clipboard icon next to it to copy it. Copy this access token now because it can't be viewed again later.
 
 IMPORTANT: Your access token is only shown once. Copy it now, because you won't be able to see it again later.
 
 [[organisations-management-api]]
-=== Management API
+== Management API
 
 The Management API lets you manage your organisation automatically, without using the Connect web interface. Requests to the Management API must be authenticated using a valid management API access token. The base URL is https://api.connect.raspberrypi.com.
 
 [[device-identities]]
-==== Create a device identity
+=== Create a device identity
 
 Device identities let you pre-authenticate a Raspberry Pi device with an organisation without interactive sign-in. Unlike auth keys, device identities are multi-use and rely on a private key stored in the device's one-time programmable memory.
 
@@ -344,7 +343,7 @@ $ rpi-fw-crypto sign --in payload.txt --key-id 1 --alg ec | base64 -w 0
 
 The output is the `+X-Connect-Identity-Signature+` header value.
 
-To create a device identity for your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To create a device identity for your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
 
 Replace these values in the code below:
 
@@ -418,9 +417,10 @@ Content-Type: application/json; charset=utf-8
 {"message":"Validation failed: Public key is invalid"}
 ----
 
-==== List device identities
+[[list-device-identities]]
+=== List device identities
 
-To list all device identities in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To list all device identities in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
 
 Replace these values in the code below:
 
@@ -496,11 +496,11 @@ total_pages:: The total number of pages of device identities for the organisatio
 
 If your management API access token is invalid, you get a **401 Unauthorized** response.
 
-The `+page+` and `+per_page+` query parameters work the same way as for xref:connect.adoc#list-devices[listing devices].
+The `+page+` and `+per_page+` query parameters work the same way as for <<list-devices,listing devices>>.
 
-==== Show a device identity
+=== Show a device identity
 
-To show a single device identity in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To show a single device identity in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
 
 Replace these values in the code below:
 
@@ -548,9 +548,9 @@ If your management API access token is invalid, you get a **401 Unauthorized** r
 
 If the device identity isn't found in the organisation, you get a **404 Not Found** response.
 
-==== Update a device identity
+=== Update a device identity
 
-To update an existing device identity in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To update an existing device identity in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
 
 Replace these values in the code below:
 
@@ -620,9 +620,9 @@ Content-Type: application/json; charset=utf-8
 {"message":"Validation failed: Description can't be blank"}
 ----
 
-==== Delete a device identity
+=== Delete a device identity
 
-To delete a device identity in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To delete a device identity in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
 
 Replace these values in the code below:
 
@@ -657,9 +657,9 @@ If your management API access token is invalid, you get a **401 Unauthorized** r
 
 If the device identity isn't found in the organisation, you get a **404 Not Found** response.
 
-==== Create an auth key
+=== Create an auth key
 
-To create an auth key to xref:connect.adoc#link-connect[link a device with Connect], use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To create an auth key to xref:../services/connect.adoc#link-connect[link a device with Connect], use a management API access token to make the following HTTP request.
 
 Replace these values in the code below:
 
@@ -735,7 +735,7 @@ tags:: The tags that will be applied to the device when the auth key is exchange
 secret:: A random token prefixed with `+rpoak_+`.
 expires_at:: The date and time when the key will expire (in ISO 8601 format).
 
-The `+secret+` can then be used to xref:connect.adoc#link-connect[link a device with Connect] before it expires.
+The `+secret+` can then be used to xref:../services/connect.adoc#link-connect[link a device with Connect] before it expires.
 
 If your management API access token is invalid, you get a **401 Unauthorized** response.
 
@@ -749,11 +749,12 @@ Content-Type: application/json; charset=utf-8
 {"message":"Validation failed: Description can't be blank"}
 ----
 
-NOTE: You can also manually xref:connect.adoc#organisation-auth-keys[create an auth key on your organisation's **Settings** page].
+NOTE: You can also manually create an auth key on your organisation's **Settings** page.
 
-==== List devices
+[[list-devices]]
+=== List devices
 
-To list all devices in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To list all devices in your organisation, use a management API access token to make the following HTTP request.
 
 Replace these values in the code below:
 
@@ -1029,9 +1030,9 @@ The `+memory:+` qualifier accepts the following values:
 
 NOTE: As with the web interface, the `+model:+`, `+memory:+`, and `+os:+` qualifiers only match devices running Connect client version 2.9.0 or later.
 
-==== Delete a device
+=== Delete a device
 
-To delete a device in your organisation and sign it out of Raspberry Pi Connect, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To delete a device in your organisation and sign it out of Raspberry Pi Connect, use a management API access token to make the following HTTP request.
 
 Replace these values in the code below:
 
@@ -1064,9 +1065,9 @@ If your management API access token is invalid, you get a **401 Unauthorized** r
 
 If the given device ID is not found in the organisation, you get a **404 Not Found** response.
 
-==== List artefacts
+=== List artefacts
 
-To list all remote update artefacts in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To list all remote update artefacts in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
 
 Replace these values in the code below:
 
@@ -1117,13 +1118,14 @@ Content-Type: application/json; charset=utf-8
 }
 ----
 
-The `+page+` and `+per_page+` query parameters work the same way as for xref:connect.adoc#list-devices[listing devices].
+The `+page+` and `+per_page+` query parameters work the same way as for <<list-devices,listing devices>>.
 
 If your management API access token is invalid, you get a **401 Unauthorized** response.
 
-==== Create an artefact
+[[create-artefact]]
+=== Create an artefact
 
-To create a remote update artefact for your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To create a remote update artefact for your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
 
 Replace these values in the code below:
 
@@ -1186,14 +1188,14 @@ Content-Type: application/json; charset=utf-8
 {"message":"Validation failed: Name can't be blank"}
 ----
 
-==== Delete an artefact
+=== Delete an artefact
 
-To delete an artefact in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To delete an artefact in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
 
 Replace these values in the code below:
 
 * `+rporg_accesstokenhere+`: your management API access token.
-* `+artefact-id+`: the artefact's `+id+` (as returned by xref:connect.adoc#create-an-artefact[Create an artefact]).
+* `+artefact-id+`: the artefact's `+id+` (as returned by <<create-artefact, Create an artefact>>).
 
 [tabs]
 ======
@@ -1231,9 +1233,9 @@ Content-Type: application/json; charset=utf-8
 {"message":"Cannot delete artefacts that have been deployed"}
 ----
 
-==== List deployments
+=== List deployments
 
-To list remote update deployments for a device in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To list remote update deployments for a device in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
 
 Replace these values in the code below:
 
@@ -1294,9 +1296,9 @@ If your management API access token is invalid, you get a **401 Unauthorized** r
 
 If the given device ID is not found in the organisation, you get a **404 Not Found** response.
 
-==== Show a deployment
+=== Show a deployment
 
-To show a single deployment in your organisation, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To show a single deployment in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
 
 Replace these values in the code below:
 
@@ -1345,15 +1347,15 @@ If your management API access token is invalid, you get a **401 Unauthorized** r
 
 If the deployment isn't found in the organisation, you get a **404 Not Found** response.
 
-==== Create a deployment
+=== Create a deployment
 
-To deploy an artefact to a device, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request. The new deployment supersedes any pending deployment already queued for the device.
+To deploy an artefact to a device, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request. The new deployment supersedes any pending deployment already queued for the device.
 
 Replace these values in the code below:
 
 * `+rporg_accesstokenhere+`: your management API access token.
 * `+device-id+`: the unique identifier for the target device.
-* `+artefact-id+`: the artefact's `+id+` (as returned by xref:connect.adoc#create-an-artefact[Create an artefact]).
+* `+artefact-id+`: the artefact's `+id+` (as returned by <<create-artefact, Create an artefact>>).
 
 [tabs]
 ======
@@ -1414,9 +1416,9 @@ Content-Type: application/json; charset=utf-8
 {"message":"Deployments are blocked until billing has been set up"}
 ----
 
-==== Cancel a deployment
+=== Cancel a deployment
 
-To cancel a pending deployment, use a xref:connect.adoc#management-api-access-tokens[management API access token] to make the following HTTP request.
+To cancel a pending deployment, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
 
 Replace these values in the code below:
 
@@ -1476,15 +1478,15 @@ Content-Type: application/json; charset=utf-8
 ----
 
 [[bulk-provisioning]]
-=== Bulk provisioning
+== Bulk provisioning
 
-You can script auth key creation using the xref:connect.adoc#organisations-management-api[Management API] to provision multiple devices without manual interaction. This approach combines the Management API with the methods described in xref:connect.adoc#link-connect[link a device with Connect].
+You can script auth key creation using the Management API to provision multiple devices without manual interaction. This approach combines the Management API with the methods described in xref:../services/connect.adoc#link-connect[link a device with Connect].
 
-The following example creates an auth key for each device and saves the secret to a file. Replace `+rporg_accesstokenhere+` with your xref:connect.adoc#management-api-access-tokens[management API access token].
+The following example creates an auth key for each device and saves the secret to a file. Replace `+rporg_accesstokenhere+` with your management API access token.
 
 WARNING: Run this script on a trusted provisioning machine, not on the Raspberry Pi devices themselves. The management API access token must stay on the provisioning machine — only the per-device auth-key secret it produces (the `.key` file) should be copied to a device.
 
-TIP: If you can program devices ahead of deployment, consider xref:connect.adoc#device-identities[device identities] instead. The private key lives in the Raspberry Pi's one-time programmable memory, so no secret ever needs to be copied to the device.
+TIP: If you can program devices ahead of deployment, consider <<device-identities, device identities>> instead. The private key lives in the Raspberry Pi's one-time programmable memory, so no secret ever needs to be copied to the device.
 
 [source,bash]
 ----
@@ -1511,4 +1513,4 @@ Each `.key` file contains an auth key secret (prefixed with `+rpoak_+`). Organis
 . Copy the contents of the corresponding `.key` file to `+~/.config/com.raspberrypi.connect/auth.key+`.
 . Delete the `.key` file from your provisioning machine. These files contain sensitive secrets.
 
-When the file is detected, Connect automatically signs the device in and then deletes the file. For more information, see xref:connect.adoc#link-connect[Link a Raspberry Pi device with a Connect account].
+When the file is detected, Connect automatically signs the device in and then deletes the file. For more information, see xref:../services/connect.adoc#link-connect[Link a Raspberry Pi device with a Connect account].

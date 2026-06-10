@@ -405,7 +405,7 @@ To modify the Device Tree overlay in the boot configuration:
 . Open `/boot/firmware/config.txt`.
 . Add the required Device Tree parameters to a `dtoverlay` line, separated by commas. See the Device Tree options table for details.
 
-==== Device Tree options
+=== Device Tree options
 
 The `vc4-kms-dsi-7inch` overlay supports the following options:
 

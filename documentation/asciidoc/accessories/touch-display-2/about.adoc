@@ -346,7 +346,7 @@ To modify the Device Tree overlay in the boot configuration:
 . Open `/boot/firmware/config.txt`.
 . Add the required Device Tree parameters to a `dtoverlay` line, separated by commas. See the Device Tree options table below for details.
 
-==== Device Tree options
+=== Device Tree options
 
 [cols="1,2", options="header"]
 |===

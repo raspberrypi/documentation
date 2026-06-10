@@ -5,6 +5,8 @@ After starting Connect on your Raspberry Pi device, you must associate your devi
 
 If you used Raspberry Pi Imager to install Raspberry Pi OS on your device, you might have already linked your device with your Connect account. For more information, see xref:../computers/getting-started.adoc#imager-install[Install using Imager].
 
+If you want to use Raspberry Pi Connect with multiple users, see xref:../services/connect-for-organisations.adoc[Raspberrry Pi Connect for Organisations].
+
 [tabs]
 ======
 Desktop::
@@ -40,7 +42,7 @@ Using an Auth Key::
 +
 An auth key is a single-use, temporary token that lets you link a device to a Connect account automatically (without using the web interface). Personal auth keys expire six hours after creation; organisation auth keys expire between 1 and 90 days after creation (1 day by default).
 +
-The easiest way of creating and using an auth key is by using the xref:../computers/getting-started.adoc#imager-install[customisation options in Imager]. You can also manually create an auth key from the **Settings** page of a personal or organisation's Connect account, and organisation administrators can create auth keys using the xref:connect.adoc#organisations-management-api[management API].
+The easiest way of creating and using an auth key is by using the xref:../computers/getting-started.adoc#imager-install[customisation options in Imager]. You can also manually create an auth key from the **Settings** page of a personal or organisation's Connect account, and organisation administrators can create auth keys using the xref:../services/connect-for-organisations.adoc#organisations-management-api[management API].
 +
 NOTE: Personal accounts can only have one auth key active at a time; organisations can have multiple auth keys active at once. You need a unique auth key for each device.
 +
@@ -72,7 +74,7 @@ After authenticating, assign a name to your device. Choose a name that uniquely 
 
 image::images/new-device.png[alt="The Connect page inviting you to create a new device and sign in.",width="100%"]
 
-If you're an administrator of an xref:connect.adoc#connect-organisations[organisation], select whether to add this device to your personal account or to a specific organisation.
+If you're an administrator of an xref:../services/connect-for-organisations.adoc[organisation], select whether to add this device to your personal account or to a specific organisation.
 
 image::images/new-organisation-device.png[alt="The Connect page, showing the new device account selection screen.",width="100%"]
 
@@ -94,7 +96,7 @@ Now that your device appears on your Connect dashboard, you can access your devi
 
 === Viewing your devices
 
-Connect lists all your linked devices on the *Devices* tab. For organisations, you can xref:connect.adoc#search-filter-devices[search and filter] this list, and add xref:connect.adoc#tag-devices[tags] to devices.
+Connect lists all your linked devices on the *Devices* tab. For organisations, you can xref:../services/connect-for-organisations.adoc#search-filter-devices[search and filter] this list, and add xref:../services/connect-for-organisations.adoc#tag-devices[tags] to devices.
 
 Sign in to https://connect.raspberrypi.com[connect.raspberrypi.com] and go to the **Devices** tab. Connect displays a list of linked devices.
 
