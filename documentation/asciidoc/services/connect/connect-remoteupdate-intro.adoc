@@ -1,6 +1,8 @@
 [[remoteupdate-intro]]
 == Remotely update your Raspberry Pi devices
 
-Raspberry Pi Connect Remote Update allows you to update your Raspberry Pi devices by remotely pushing them updates.
+Raspberry Pi Connect includes the ability to update your Raspberry Pi devices by remotely pushing them updates.
 
-It is useful for updating devices behind a firewall, devices that are offline (these are updated the next time they sign in to Raspberry Pi Connect), and devices that are physically remote or hard to reach.
+Remote updates are useful for updating devices behind a firewall, devices that are offline (these are updated the next time they sign in to Raspberry Pi Connect), and devices that are physically remote or hard to reach.
+
+If you manage a fleet of devices with a team, xref:../services/connect-for-organisations.adoc[Connect for Organisations] administrators can also manage update artefacts and deployments automatically using the xref:../services/connect-for-organisations.adoc#organisations-management-api[management API].

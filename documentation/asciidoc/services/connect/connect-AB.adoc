@@ -6,13 +6,13 @@ The A/B boot update prevents a failed or faulty update from causing your device 
 
 The configuration has two independent slots, each made up of a boot and a system partition. Slot A is used for the existing operating system (OS) and slot B is used for the update. The device boots from slot B, but reverts to booting from the known working partition, slot A, if that fails. This process repeats with each successive update.
 
-Configuring for A/B boot requires being able to physically access the device. This is because you must image the device with the appropriate A/B boot layout. However, once configured, you can then deliver remote updates using Raspberry Pi Connect Remote Update.
+Configuring for A/B boot requires being able to physically access the device. This is because you must image the device with the appropriate A/B boot layout. However, once configured, you can then deliver remote updates using Raspberry Pi Connect.
 
 Use https://github.com/raspberrypi/rpi-image-gen[rpi-image-gen] to create both the A/B boot configuration (`.img` file) and the update artefacts (`.tar.zst` files). Use https://www.raspberrypi.com/software/[Raspberry Pi Imager] to configure the `.img` file and write it to the storage device for transfer to the recipient Raspberry Pi.
 
 ==== Prerequisites
 
-The following are required to use Raspberry Pi Connect Remote Update and the A/B boot configuration:
+The following are required to use remote update and the A/B boot configuration:
 
 ===== For creation of the A/B boot configuration and creation of the update artefact using rpi-image-gen:
 
@@ -33,7 +33,7 @@ You must have at least 16 GB of space, but you must decide exactly how much disk
 
 * A web server accessible from the recipient device.
 +
-The service supports HTTP, HTTPS, FTP, SFTP, and File URI.
+Remote update supports HTTP, HTTPS, FTP, SFTP, and File URI.
 +
 The location doesn't have to be open to the internet, but it must be accessible from the recipient Raspberry Pi device.
 
@@ -46,12 +46,12 @@ The location doesn't have to be open to the internet, but it must be accessible 
 
 ==== Implement A/B boot and remotely update the first image
 
-Follow the four stages below to implement the A/B configuration and send updates using Raspberry Pi Connect Remote Update:
+Follow the four stages below to implement the A/B configuration and send updates using Raspberry Pi Connect:
 
 . Stage 1: Prepare the recipient Raspberry Pi 4 and later device for remote updates by creating an A/B boot file, then deploy it to the device.
 . Stage 2: Create an update artefact file for deployment to the recipient device.
 . Stage 3: Host the update artefact and register it on the Raspberry Pi Connect website.
-. Stage 4: Use the Raspberry Pi Connect Remote Update feature to select the recipient device, then deploy the update artefact to that device.
+. Stage 4: Use Raspberry Pi Connect's remote update feature to select the recipient device, then deploy the update artefact to that device.
 
 ==== Stage 1: Create A/B boot configuration
 
@@ -59,7 +59,7 @@ Standard Raspberry Pi OS installations don't feature an A/B boot configuration. 
 
 rpi-image-gen outputs an `.img` file containing the A/B boot image.
 
-Raspberry Pi Imager then uses the `.img` file to write the operating system configuration to the storage device. This includes opting the device in to OTA (over-the-air) updates so that Raspberry Pi Connect Remote Update works.
+Raspberry Pi Imager then uses the `.img` file to write the operating system configuration to the storage device. This includes opting the device in to OTA (over-the-air) updates so that Raspberry Pi Connect can update it remotely.
 
 You must have physical access to the recipient device to update it for the first time, but once you’ve configured it, you can send updates remotely thereafter.
 
@@ -88,7 +88,7 @@ $ sudo ./install_deps.sh
 
 ===== Step 2: Prepare and configure the image
 
-TIP: rpi-image-gen contains an example application, with layers and configuration, to build an image compatible with Raspberry Pi Connect Remote Update.
+TIP: rpi-image-gen contains an example application, with layers and configuration, to build an image compatible with remote updates.
 
 For descriptions of the `.yaml` file metadata, see https://raspberrypi.github.io/rpi-image-gen/layer/index.html#_x_env_metadata[X environment metadata] and https://raspberrypi.github.io/rpi-image-gen/layer/index.html[Layer].
 
@@ -114,6 +114,8 @@ To prepare the image:
 In this step, you create the auth key and copy it down for use in Step 4.
 
 When you boot the recipient device after the A/B boot update (Step 6), it exchanges the auth key for an access token that is saved in the user data partition. This key persists across future updates, so you only have to generate it once.
+
+For more information about creating auth keys for an organisation, see xref:../services/connect-for-organisations.adoc#organisation-auth-keys[Create auth keys].
 
 To generate the auth key:
 
@@ -196,7 +198,7 @@ You can now safely remove the storage device in preparation for Step 6.
 +
 The device appears on the Raspberry Pi Connect dashboard and the *Remote update* label appears beneath the device.
 
-The device is now ready to update using Raspberry Pi Connect Remote Update.
+The device is now ready to update remotely using Raspberry Pi Connect.
 
 [discrete]
 ===== Step 7: Confirm the deployed version
@@ -224,9 +226,9 @@ Artefact version: 1.0.0
 
 ==== Stage 2: Create update artefact
 
-Now the device is configured for A/B booting, deliver update artefacts to it using Raspberry Pi Connect Remote Update.
+Now the device is configured for A/B booting, deliver update artefacts to it using Raspberry Pi Connect.
 
-Update artefacts are created by rpi-image-gen as `.tar.zst` files. These are much smaller than the `.img` file you created in Stage 1, and are deployed in Stage 4 to the recipient device by Raspberry Pi Connect Remote Update.
+Update artefacts are created by rpi-image-gen as `.tar.zst` files. These are much smaller than the `.img` file you created in Stage 1, and are deployed in Stage 4 to the recipient device by Raspberry Pi Connect.
 
 For the purposes of illustration, we continue to use the example update from Stage 1 here. Amend these procedures to reflect the path and naming of your own update .yaml file.
 
@@ -252,9 +254,9 @@ $ ./rpi-image-gen build -S ./examples/ota/ -c ota.yaml
 
 ==== Stage 3: Host the update artefact
 
-Now that you’ve created an update artefact to deploy using Raspberry Pi Connect Remote Update, you can host it on an FTP/SFTP server, save it locally using a `file://` URI, put it on a public web server, an S3 bucket, or any other website that the recipient device can download from using HTTP.
+Now that you’ve created an update artefact to deploy using Raspberry Pi Connect, you can host it on an FTP/SFTP server, save it locally using a `file://` URI, put it on a public web server, an S3 bucket, or any other website that the recipient device can download from using HTTP.
 
-Next, you register the URI and SHA-256 checksum with Raspberry Pi Connect. This is so that the remote update service can tell the device – which you select in Stage 4 – where to find the update file.
+Next, you register the URI and SHA-256 checksum with Raspberry Pi Connect. This is so that Connect can tell the device – which you select in Stage 4 – where to find the update file.
 
 The URI you provide is used to find and push the update artefact to the recipient device. This location must therefore be accessible to the recipient device, but it doesn't have to be accessible to the Raspberry Pi Connect servers.
 
@@ -386,7 +388,7 @@ Artefact version: 1.1.0
 [[ab-troubleshooting]]
 ==== A/B troubleshooting
 
-If the A/B boot configuration or Connect Remote Update process fails, refer to the following list of common faults and fixes.
+If the A/B boot configuration or remote update process fails, refer to the following list of common faults and fixes.
 
 You can also refer to the https://github.com/raspberrypi/rpi-image-gen/blob/master/docs/execution/index.adoc[rpi-image-gen documentation] and visit the https://forums.raspberrypi.com/viewforum.php?f=28&sid=376757fde13953b7bfdcc0b1061edeca[Raspberry Pi Troubleshooting forum].
 
