@@ -2,11 +2,13 @@ include::connect/introduction.adoc[]
 
 include::connect/install.adoc[]
 
-include::connect/use.adoc[]
+include::connect/access.adoc[]
 
-include::connect/connect-remoteupdate-intro.adoc[]
+include::connect/remote-update.adoc[]
 
-include::connect/connect-AB.adoc[]
+include::connect/ab-boot-update.adoc[]
+
+include::connect/manage.adoc[]
 
 include::connect/troubleshooting.adoc[]
 
