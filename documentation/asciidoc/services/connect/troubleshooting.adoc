@@ -135,6 +135,48 @@ If Connect can't communicate properly on your network, you'll see an "x" instead
 ** `turn2.raspberrypi.com`
 ** `turn3.raspberrypi.com`
 
+[[ab-troubleshooting]]
+==== Remote update failures
+
+If the A/B boot configuration or remote update process fails, refer to the following list of common faults and fixes.
+
+You can also refer to the https://github.com/raspberrypi/rpi-image-gen/blob/master/docs/execution/index.adoc[rpi-image-gen documentation] and visit the https://forums.raspberrypi.com/viewforum.php?f=28&sid=376757fde13953b7bfdcc0b1061edeca[Raspberry Pi Troubleshooting forum].
+
+[TIP]
+====
+If you see an error, use Raspberry Pi Connect's remote shell access to view the `systemd` journal for additional information:
+
+[source,console]
+----
+$ journalctl
+----
+====
+
+[cols="1,2",options="header"]
+|===
+|Error |Suggested fix
+
+a|`Download could not connect to server (retry).`
+a|The recipient device must be able to locate the update file. Open a remote shell connection to the recipient device, then use curl to check whether the device can access the IP address contained in the URI you provided when registering the update artefact.
+
+[source,console]
+----
+$ curl -I http://192.168.0.1:8080
+----
+
+a|`update file rejected.`
+|Make sure that the URI provided when registering the update artefact contains the URL of the `.tar.zst` update file, not the `.img` full image file.
+
+a|No *Deploy* option appears next to the device in Raspberry Pi Connect.
+a|Enable OTA opt-in using the following command, then refresh your browser:
+
+[source,console]
+----
+$ rpi-connect ota on
+----
+
+|===
+
 === View Connect status
 
 To view the current status of the Connect service, run the following command:
