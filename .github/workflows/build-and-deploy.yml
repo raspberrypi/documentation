@@ -25,16 +25,15 @@ jobs:
         with:
           python-version: 3.9
       - name: Install Python dependencies
-        uses: py-actions/py-dependency-install@30aa0023464ed4b5b116bd9fbdab87acf01a484e
-      - name: Install Python libs
-        run: pip3 install -r ./requirements.txt
+        run: |
+          pip3 install --upgrade pip setuptools wheel
+          pip3 install -r ./requirements.txt
       - uses: ruby/setup-ruby@afeafc3d1ab54a631816aba4c914a0081c12ff2f
         with:
           ruby-version: 3.2
           bundler-cache: true
-      - uses: seanmiddleditch/gha-setup-ninja@3b1f8f94a2f8254bd26914c4ab9474d4f0015f67
-        with:
-          version: 1.10.2
+      - name: Install Ninja
+        run: pip3 install ninja==1.10.2.4
       - name: Install arm-none-eabi-gcc GNU Arm Embedded Toolchain
         if: ${{ inputs.deploy }}
         uses: carlosperate/arm-none-eabi-gcc-action@0725d97b026acf7fc8e22dfd5bee912998879ba8
