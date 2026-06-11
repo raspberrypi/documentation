@@ -2,6 +2,8 @@
 
 **Connect for Organisations** lets multiple users share access to devices using xref:../services/connect.adoc[Raspberry Pi Connect].
 
+Devices in an organisation support all of Connect's features, including xref:../services/connect.adoc#screen-sharing[screen sharing], xref:../services/connect.adoc#remote-shell[remote shell] access, and xref:../services/connect.adoc#remoteupdate-intro[remote updates].
+
 Creating your first organisation automatically starts a free, four-week trial for that organisation.
 
 == Create an organisation
@@ -221,6 +223,7 @@ Once your free trial ends, you won't be able to remotely access the devices in y
 
 image::images/billing.png[alt="The Connect billing interface, showing the 28-day free trial and payment details fields that you have to fill in to start your trial.",width="100%"]
 
+[[audit-log]]
 == View the audit log
 
 The audit log shows all activity from the past 90 days ordered chronologically, with the most recent events first. Events include things like changes to devices, organisation members, API access tokens, and remote access sessions. Events that took place over 90 days ago are automatically deleted.
@@ -282,7 +285,7 @@ NOTE: Disabling and then re-enabling the 2FA requirement resets the 14-day grace
 [[organisation-auth-keys]]
 === Create auth keys
 
-To xref:../services/connect.adoc#link-connect[link a device with Connect] automatically (without using the web interface), create an auth key. Select **New** from the **Auth keys** section and enter a description and expiry time in days.
+To xref:../services/connect.adoc#link-connect[link a device with Connect] automatically (without using the web interface), create an auth key. Select **New** from the **Auth keys** section and enter a description and expiry time (between 1 and 90 days).
 
 Your new auth key appears. Select the clipboard icon next to it to copy it. Copy this auth key now because it can't be viewed again later.
 

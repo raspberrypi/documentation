@@ -14,4 +14,4 @@ Raspberry Pi Connect, along with its API and software components, has undergone 
 
 For more details on WebRTC security, see https://webrtc-security.github.io/[A Study of WebRTC Security].
 
-For **Connect for Organisations** customers, we provide an audit log to review activity from the past 90 days. To preserve privacy, we store only the country code when geolocating events by IP address.
+For xref:../services/connect-for-organisations.adoc[**Connect for Organisations**] customers, we provide an xref:../services/connect-for-organisations.adoc#audit-log[audit log] to review activity from the past 90 days. To preserve privacy, we store only the country code when geolocating events by IP address.
