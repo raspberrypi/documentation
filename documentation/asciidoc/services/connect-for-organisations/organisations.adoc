@@ -355,6 +355,7 @@ Replace these values in the code below:
 * `+-----BEGIN PUBLIC KEY-----...+`: the device's PEM-encoded public key.
 * `+my-device-identity+`: a description for the device identity, visible in the organisation's audit log.
 * `+pi5-001+`: the name assigned to the device when the identity is exchanged (optional, defaults to the device's hostname).
+* `+production+`, `+kiosk+`: (optional) tags applied to the device when the identity is exchanged. Each tag must contain only lowercase letters, numbers, hyphens, and underscores, with a maximum length of 30 characters. You can apply up to ten tags per device identity.
 
 [tabs]
 ======
@@ -371,7 +372,8 @@ X-Connect-Identity-Signature: signaturehere
 {
     "public_key": "-----BEGIN PUBLIC KEY-----...",
     "description": "my-device-identity",
-    "device_name": "pi5-001"
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"]
 }
 ----
 
@@ -379,7 +381,7 @@ curl::
 +
 [source,console]
 ----
-$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --header 'X-Connect-Identity-Signature: signaturehere' --header 'Content-Type: application/json' --data '{"public_key":"-----BEGIN PUBLIC KEY-----...","description":"my-device-identity","device_name":"pi5-001"}' https://api.connect.raspberrypi.com/organisation/device-identities
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --header 'X-Connect-Identity-Signature: signaturehere' --header 'Content-Type: application/json' --data '{"public_key":"-----BEGIN PUBLIC KEY-----...","description":"my-device-identity","device_name":"pi5-001","tags":["production","kiosk"]}' https://api.connect.raspberrypi.com/organisation/device-identities
 ----
 
 ======
@@ -395,6 +397,7 @@ Content-Type: application/json; charset=utf-8
     "id": "096ce472-2cbd-412a-8295-6c03a1a07ba4",
     "description": "my-device-identity",
     "device_name": "pi5-001",
+    "tags": ["production", "kiosk"],
     "created_at": "2026-02-25T16:09:52Z",
     "public_key": "-----BEGIN PUBLIC KEY-----..."
 }
@@ -405,6 +408,7 @@ The response contains the following fields:
 id:: A unique identifier for the device identity.
 description:: The description used to create the device identity.
 device_name:: The name that will be assigned to the device when the identity is exchanged.
+tags:: The tags that will be applied to the device when the identity is exchanged.
 created_at:: The date and time when the device identity was created (in ISO 8601 format).
 public_key:: The PEM-encoded public key for the device identity.
 
@@ -1294,6 +1298,40 @@ Content-Type: application/json; charset=utf-8
 ----
 
 The `+state+` of each deployment is one of `+pending+`, `+in_progress+`, `+succeeded+`, `+failed+`, or `+cancelled+`. For `+failed+` deployments, `+state_reason+` contains a human-readable explanation of why the deployment failed (for example, when a checksum mismatch occurs or the deployment is superseded by a newer one); for other states it is `+null+`.
+
+To filter the deployments returned, use the `+state+` parameter in the query string with one of the states listed above:
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/devices/device-id/deployments?state=pending HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' 'https://api.connect.raspberrypi.com/organisation/devices/device-id/deployments?state=pending'
+----
+
+======
+
+If the `+state+` parameter isn't one of the recognised states, you get a **400 Bad Request** response:
+
+[source,http]
+----
+HTTP/2 400
+Content-Type: application/json; charset=utf-8
+
+{"message":"Unknown state \"exploded\""}
+----
+
+The `+page+` and `+per_page+` query parameters work the same way as for <<list-devices,listing devices>>.
 
 If your management API access token is invalid, you get a **401 Unauthorized** response.
 
