@@ -1,5 +1,136 @@
 [[remoteupdate-otamaker]]
 
-== Otamaker
+=== Script artefacts
 
-To be written
+A script artefact packages a shell script that Raspberry Pi Connect runs as root on the recipient device. Use script artefacts for maintenance tasks such as upgrading packages, changing configuration, or installing software.
+
+Unlike an <<remoteupdate-ab,A/B boot update>>, a script artefact doesn't require a special partition layout, so you can deploy one to any device running a standard installation of Raspberry Pi OS. However, there is no automatic recovery if a script fails, so test your scripts carefully before deploying them to remote devices.
+
+Use https://github.com/raspberrypi/utils/tree/master/otamaker[otamaker] to create script artefacts.
+
+==== Prerequisites
+
+The following are required to create and deploy a script artefact:
+
+===== For the recipient device receiving the update artefact:
+
+A Raspberry Pi device that is:
+
+* Connected to the internet.
+* Registered with, and signed in to, your Raspberry Pi Connect account.
+* Running the latest version of Raspberry Pi Connect or Connect Lite with the `rpi-connect-ota` package installed:
++
+[source,console]
+----
+$ sudo apt update
+$ sudo apt install rpi-connect rpi-connect-ota
+----
++
+If you use Connect Lite, install `rpi-connect-lite` instead of `rpi-connect`.
+* Opted in to remote updates, which `rpi-connect` manages using its `ota` (over-the-air) subcommand:
++
+[source,console]
+----
+$ rpi-connect ota on
+----
+
+===== For creation of the update artefact using otamaker:
+
+* The `otamaker` utility, which is included in the `rpi-connect-ota` package.
++
+TIP: To build artefacts on a computer other than a Raspberry Pi, download `otamaker` from the https://github.com/raspberrypi/utils[utils repository] on GitHub.
+
+===== To host the artefact for remote deployment to a recipient device:
+
+* A web server accessible from the recipient device.
++
+Remote update supports HTTP, HTTPS, FTP, SFTP, and File URI.
++
+The location doesn't have to be open to the internet, but it must be accessible from the recipient Raspberry Pi device.
+
+==== Step 1: Create the script
+
+Write the shell script you want to run on the recipient device. The script runs as root, so it has full access to the device's filesystem.
+
+Use the script's exit code to report the outcome of the update to Raspberry Pi Connect:
+
+* `0`: the update succeeded.
+* `1`: the update failed.
+* `2`: the update succeeded, and the device must reboot to finish applying it.
+
+For example, the following script, saved as `aptupgradescript`, upgrades all of the packages installed on the recipient device, and reboots it if any of the upgraded packages require a reboot:
+
+[source,shell]
+----
+#!/bin/sh
+export DEBIAN_FRONTEND=noninteractive
+if ! apt update; then
+    echo Package index update failed
+    exit 1 # EXIT_FAILURE
+fi
+if apt -y -o DPKG::Options::="--force-confnew" upgrade > output.txt 2>&1; then
+    if [ -r /var/run/reboot-required ]; then
+        echo Rebooting to finish the upgrade
+        exit 2 # EXIT_REBOOT
+    fi
+else
+    echo Upgrade failed:
+    echo
+    cat output.txt
+    exit 1 # EXIT_FAILURE
+fi
+echo Upgrade complete
+exit 0 # EXIT_SUCCESS
+----
+
+Anything the script prints to standard output or standard error is recorded in the recipient device's `systemd` journal, which you can view after deployment to verify the update or diagnose a failure. The example script captures the output of `apt` to a file and prints it only when the upgrade fails, so a successful run records just `Upgrade complete`.
+
+==== Step 2: Create the manifest
+
+Next, create a YAML manifest that describes the artefact and the payloads it contains.
+
+The following manifest, saved as `aptupgrade.yaml`, packages the script from Step 1:
+
+[source,yaml]
+----
+# Run apt upgrade on a remote device
+artefact:
+  name: aptupgrade
+  version: 1.0
+  device_type: rpi
+
+payloads:
+- name: aptupgradescript
+  type: script
+----
+
+The `artefact` section names and versions the artefact. The `payloads` section lists the files to package: each payload's `name` is the name of a file in the directory where you run `otamaker`, and a `type` of `script` tells the recipient device to execute it. To package a file from another directory, add its path as a comment after the payload's name, for example `- name: aptupgradescript # scripts/aptupgradescript`.
+
+==== Step 3: Build the artefact
+
+Build the artefact by passing the manifest to `otamaker`:
+
+[source,console]
+----
+$ otamaker aptupgrade.yaml
+----
+
+This creates a Zstandard-compressed update artefact (`.tar.zst` file) containing the manifest and the script, and outputs the artefact's SHA-256 checksum.
+
+Copy down the checksum: you need it to register the artefact on the Raspberry Pi Connect website.
+
+==== Step 4: Host, register, and deploy the artefact
+
+Deploy a script artefact in the same way as an A/B boot update artefact:
+
+. Host the `.tar.zst` file somewhere the recipient device can download it from, then register its URI and SHA-256 checksum on the Raspberry Pi Connect website, as described in <<host-the-update-artefact,Host the update artefact>>. You can skip the step that calculates the checksum: `otamaker` already output it when it built the artefact.
+. Select the recipient device and deploy the artefact to it, as described in <<update-remotely,Update remotely>>. Skip the final verification step, which applies only to A/B boot updates: verify a script artefact as described in Step 5 below.
+
+==== Step 5: Verify the update
+
+When the deployment shows as *Succeeded*, connect to the recipient device using Raspberry Pi Connect and view the script's output in the `systemd` journal:
+
+[source,console]
+----
+$ journalctl -t rpi-ota-connector
+----
