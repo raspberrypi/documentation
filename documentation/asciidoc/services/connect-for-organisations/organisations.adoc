@@ -1125,7 +1125,29 @@ Content-Type: application/json; charset=utf-8
 }
 ----
 
-The `+page+` and `+per_page+` query parameters work the same way as for <<list-devices,listing devices>>.
+To filter the artefacts returned, use the `+name+` parameter in the query string. This performs a case-insensitive prefix match against the artefact name:
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/artefacts?name=kiosk HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --get --data-urlencode 'name=kiosk' https://api.connect.raspberrypi.com/organisation/artefacts
+----
+
+======
+
+The `+page+` and `+per_page+` query parameters work the same way as for <<list-devices,listing devices>>, and compose with the `+name+` parameter so you can paginate through a filtered list.
 
 If your management API access token is invalid, you get a **401 Unauthorized** response.
 
