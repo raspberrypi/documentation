@@ -191,7 +191,7 @@ To filter by a specific attribute, type a qualifier followed by a colon and a va
 | Filter by tag (for example, `tag:kiosk`, `tag:production`)
 |===
 
-NOTE: The `model:`, `memory:`, and `os:` qualifiers will only find devices running Connect client version 2.9.0 or later. To update Connect on your devices, see xref:../services/connect.adoc#update[Update].
+NOTE: The `model:`, `memory:`, and `os:` qualifiers only find devices running Connect client version 2.9.0 or later. To update Connect on your devices, see xref:../services/connect.adoc#update[Update].
 
 You can combine multiple filters and free text in a single query. For example, `model:5 tag:production dashboard` finds Raspberry Pi 5 devices tagged `production` with "dashboard" in their name.
 
@@ -407,8 +407,8 @@ The response contains the following fields:
 
 id:: A unique identifier for the device identity.
 description:: The description used to create the device identity.
-device_name:: The name that will be assigned to the device when the identity is exchanged.
-tags:: The tags that will be applied to the device when the identity is exchanged.
+device_name:: The name that is assigned to the device when the identity is exchanged.
+tags:: The tags that are applied to the device when the identity is exchanged.
 created_at:: The date and time when the device identity was created (in ISO 8601 format).
 public_key:: The PEM-encoded public key for the device identity.
 
@@ -489,8 +489,8 @@ Each item in the `+device_identities+` list contains the following fields:
 
 id:: A unique identifier for the device identity.
 description:: The description used to create the device identity.
-device_name:: The name that will be assigned to the device when the identity is exchanged.
-tags:: The tags that will be applied to the device when the identity is exchanged.
+device_name:: The name that is assigned to the device when the identity is exchanged.
+tags:: The tags that are applied to the device when the identity is exchanged.
 created_at:: The date and time when the device identity was created (in ISO 8601 format).
 public_key:: The PEM-encoded public key for the device identity.
 
@@ -564,7 +564,7 @@ Replace these values in the code below:
 * `+rporg_accesstokenhere+`: your management API access token.
 * `+device-identity-id+`: the unique identifier for the device identity.
 * `+my-renamed-device-identity+`: the new description for the device identity.
-* `+pi5-001+`: the new name that will be assigned to the device when the identity is exchanged (optional).
+* `+pi5-001+`: the new name that is assigned to the device when the identity is exchanged (optional).
 * `+production+`, `+kiosk+`: tags applied to the device when the identity is exchanged (optional).
 
 [tabs]
@@ -737,10 +737,10 @@ The response contains the following fields:
 
 id:: A unique identifier for the auth key.
 description:: The description used to create the auth key.
-device_name:: The name that will be assigned to the device when the auth key is exchanged.
-tags:: The tags that will be applied to the device when the auth key is exchanged.
+device_name:: The name that is assigned to the device when the auth key is exchanged.
+tags:: The tags that are applied to the device when the auth key is exchanged.
 secret:: A random token prefixed with `+rpoak_+`.
-expires_at:: The date and time when the key will expire (in ISO 8601 format).
+expires_at:: The date and time when the key expires (in ISO 8601 format).
 
 The `+secret+` can then be used to xref:../services/connect.adoc#link-connect[link a device with Connect] before it expires.
 
@@ -1160,7 +1160,7 @@ Replace these values in the code below:
 
 * `+rporg_accesstokenhere+`: your management API access token.
 * `+kiosk-v1.0+`: a unique name for the artefact within the organisation.
-* `+https://example.com/kiosk-v1.0.tar.zst+`: the URI from which devices will download the artefact.
+* `+https://example.com/kiosk-v1.0.tar.zst+`: the URI from which devices download the artefact.
 * `+d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6+`: the hex-encoded SHA-256 checksum of the artefact.
 
 [tabs]
