@@ -24,7 +24,7 @@ Binary firmware blobs loaded onto the VideoCore GPU in the SoC, which then take 
 `start_db.elf`:: used for debugging.
 `start_cd.elf`:: a cut-down version of the firmware that removes support for hardware blocks such as codecs and 3D as well as debug logging support. It also imposes initial frame buffer limitations.
 
-`start4.elf`, `start4x.elf`, `start4db.elf` and `start4cd.elf` are equivalent firmware files specific to the Raspberry Pi 4-series (Model 4B, Pi 400, Compute Module 4 and Compute Module 4S).
+`start4.elf`, `start4x.elf`, `start4db.elf` and `start4cd.elf` are equivalent firmware files specific to the Raspberry Pi 4-series (Model 4B, Raspberry Pi 400, Compute Module 4 and Compute Module 4S).
 
 For more information on how to use these files, see the xref:config_txt.adoc#boot-options[`config.txt` documentation].
 
@@ -81,7 +81,7 @@ Various xref:linux_kernel.adoc#kernel[kernel] image files that correspond to Ras
 | `kernel7.img`
 | BCM2836, BCM2837
 | Pi Zero 2 W, Pi 2, Pi 3, CM3, Pi 3+, CM3+
-| Early revisions of Pi 2 used BCM2836
+| Early revisions of Raspberry Pi 2 used BCM2836
 
 | `kernel7l.img`
 | BCM2711
@@ -96,7 +96,7 @@ Various xref:linux_kernel.adoc#kernel[kernel] image files that correspond to Ras
 | `kernel_2712.img`
 | BCM2712
 | Pi 5, CM5, Pi 500, Pi 500+
-| Pi 5-optimized xref:config_txt.adoc#boot-options[64-bit kernel].
+| Raspberry Pi 5-optimized xref:config_txt.adoc#boot-options[64-bit kernel].
 |===
 
 NOTE: `lscpu` reports a CPU architecture of `armv7l` for systems running a 32-bit kernel, and `aarch64` for systems running a 64-bit kernel. The `l` in the `armv7l` case refers to little-endian CPU architecture, not `LPAE` as is indicated by the `l` in the `kernel7l.img` filename.

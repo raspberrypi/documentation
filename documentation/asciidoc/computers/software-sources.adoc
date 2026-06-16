@@ -60,7 +60,7 @@ The following is a curated list of repositories that most people are interested 
 === Main sources
 
 https://github.com/raspberrypi/linux::
-This repository contains the source code for the downstream Linux kernel supported and working on all versions of Raspberry Pi from Pi 1 to Pi 5.
+This repository contains the source code for the downstream Linux kernel supported and working on all versions of Raspberry Pi from 1 to 5.
 
 https://github.com/raspberrypi/firmware::
 This repository contains the closed source firmware, although the following two links are useful:

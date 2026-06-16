@@ -89,9 +89,9 @@ To enable the `libav` backend, pass `libav` to the xref:camera_software.adoc#cod
 $ rpicam-vid --codec libav --libav-format avi --libav-audio --output example.avi
 ----
 
-==== Low latency video with the Pi 5
+==== Low latency video with Raspberry Pi 5
 
-Pi 5 uses software video encoders. These generally output frames with a longer latency than the old hardware encoders, and this can sometimes be an issue for real-time streaming applications.
+Raspberry Pi 5 uses software video encoders. These generally output frames with a longer latency than the old hardware encoders, and this can sometimes be an issue for real-time streaming applications.
 
 In this case, please add the option `--low-latency` to the `rpicam-vid` command. This will alter certain encoder options to output the encoded frame more quickly.
 

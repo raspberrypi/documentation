@@ -47,7 +47,7 @@ Default: `115200`
 
 If `1` then `sudo halt` will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.
 
-This setting is not relevant on Flagship models since Raspberry Pi 5, Compute Modules since CM5, and Keyboard models since Pi 500 because the xref:raspberry-pi.adoc#power-button[dedicated power button] may always be used to wake from `HALT` or `STANDBY`.
+This setting is not relevant Raspberry Pi 5 and later, Raspberry Pi Compute Module 5 and later, and Raspberry Pi 500 and later, because the xref:raspberry-pi.adoc#power-button[dedicated power button] can always be used to wake from `HALT` or `STANDBY`.
 
 Default: `1`
 
@@ -56,9 +56,9 @@ Default: `1`
 
 If `1` and `WAKE_ON_GPIO=0` then `sudo halt` will switch off all PMIC outputs. This is lowest possible power state for halt but may cause problems with some HATs because 5V will still be on. `GLOBAL_EN` must be shorted to ground to boot.
 
-The dedicated power button on Pi 400 operates even if the processor is switched off. This behaviour is enabled by default, however, `WAKE_ON_GPIO=2` may be set to use an external GPIO power button instead of the dedicated power button.
+The dedicated power button on Raspberry Pi 400 operates even if the processor is switched off. This behaviour is enabled by default, however, `WAKE_ON_GPIO=2` may be set to use an external GPIO power button instead of the dedicated power button.
 
-On Flagship models since Raspberry Pi 5 and Keyboard models since Pi 500, this places the PMIC in `STANDBY` mode where all outputs are switched off. There is no need to set `WAKE_ON_GPIO` and pressing the xref:raspberry-pi.adoc#power-button[dedicated power button] boots the device.
+On Raspberry Pi 5 and later, and on Raspberry Pi 500 and later, this places the PMIC in `STANDBY` mode where all outputs are switched off. There is no need to set `WAKE_ON_GPIO` and pressing the xref:raspberry-pi.adoc#power-button[dedicated power button] boots the device.
 
 Default: `1` on Compute Modules since CM5 and Keyboard models; otherwise `0`
 
@@ -110,7 +110,7 @@ The `BOOT_ORDER` property defines the sequence for the different boot modes. It 
 
 | 0x6
 | NVME
-| CM4 and Pi 5 only: boot from an NVMe SSD connected to the PCIe interface. See xref:raspberry-pi.adoc#nvme-ssd-boot[NVMe boot] for more details.
+| CM4 and Raspberry Pi 5 only: boot from an NVMe SSD connected to the PCIe interface. See xref:raspberry-pi.adoc#nvme-ssd-boot[NVMe boot] for more details.
 
 | 0x7
 | HTTP
@@ -592,7 +592,7 @@ Default: 0
 
 [[PARTITION_WALK]]
 ==== `PARTITION_WALK`
-This property is designed to improve the reliability of `A/B` boot schemes using `autoboot.txt` by searching for bootable partitions if the specified partition does not appear to be bootable. If `PARTITION_WALK=1` and the requested partition is not bootable and does not have a valid `autoboot.txt` then the bootloader will check each partition in turn (up to 8 and wrapping to 0) to see if it is bootable (contains `start4.elf` on a Pi4, or `config.txt` and a suitable device-tree on Pi 5 or newer).
+This property is designed to improve the reliability of `A/B` boot schemes using `autoboot.txt` by searching for bootable partitions if the specified partition does not appear to be bootable. If `PARTITION_WALK=1` and the requested partition is not bootable and does not have a valid `autoboot.txt` then the bootloader will check each partition in turn (up to 8 and wrapping to 0) to see if it is bootable (contains `start4.elf` on a Pi4, or `config.txt` and a suitable device-tree on Raspberry Pi 5 or later).
 
 During the "partition walk" `autoboot.txt` files are not processed to avoid cycling dependencies. It is assumed that the requested boot partition has failed and the system is attempting recovery.
 
@@ -658,7 +658,7 @@ Default: `2000` (2 seconds)
 
 Raspberry Pi 4 only.
 
-When the Pi is rebooted power USB power is switched off by the hardware. A short power off time can cause problems with some USB devices so this parameter may be used to force a longer power off as though the cable was physically removed.
+When the Raspberry Pi is rebooted, USB power is switched off by the hardware. A short power off time can cause problems with some USB devices so this parameter may be used to force a longer power off as though the cable was physically removed.
 
 On RaspberryPi 4 version 1.3 and older, the configurable/long power off requires the XHCI controller to be enabled so there is actually a short power off followed by a longer configurable power off. The longer configurable power off may be skipped by setting this parameter to zero.
 
@@ -741,7 +741,7 @@ Default: `0x0` (no USB debug messages enabled)
 SDRAM_BANKLOW controls how the SDRAM banks are arranged within the system address space. The number of bank bits may be selectively mapped to being located in the MSBs of the address, or being located between the row and column address bits.
 This setting can significantly affect SDRAM performance.
 
-When unset, the bootloader will choose the preferred option. This is currently 3 on Pi 4 family and 1 on Pi 5 family.
+When unset, the bootloader will choose the preferred option. This is currently 3 on Raspberry Pi 4 family and 1 on Raspberry Pi 5 family.
 
 [cols="1m,3"]
 |===
@@ -766,7 +766,7 @@ When unset, the bootloader will choose the preferred option. This is currently 3
 This setting also causes the bootloader to add a setting for the number of NUMA regions to be used by the kernel ("numa=fake=<n>").
 For best performance these settings should be left as default.
 
-Note: on a Pi 5 family device, if NUMA is not available in the kernel then performance will be adversely affected.
+NOTE: On a Raspberry Pi 5 family device, if NUMA is not available in the kernel then performance will be adversely affected.
 Manually choosing SDRAM_BANKLOW=3 will mitigate this performance hit, although for highest performance, ensure NUMA is available.
 
 Default: unset (use bootloader recommended setting)

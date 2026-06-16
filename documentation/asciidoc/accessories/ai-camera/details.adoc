@@ -29,7 +29,7 @@ At startup, the IMX500 sensor module loads firmware to run a particular neural n
 
 === Device drivers
 
-At the lowest level, the the IMX500 sensor kernel driver configures the camera module over the I2C bus. The CSI2 driver (`CFE` on Pi 5, `Unicam` on all other Pi platforms) sets up the receiver to write the image data stream into a frame buffer, together with the embedded data and inference data streams into another buffer in memory.
+At the lowest level, the the IMX500 sensor kernel driver configures the camera module over the I2C bus. The CSI2 driver (`CFE` on Raspberry Pi 5, `Unicam` on all other Raspberry Pi platforms) sets up the receiver to write the image data stream into a frame buffer, together with the embedded data and inference data streams into another buffer in memory.
 
 The firmware files also transfer over the I2C bus wires. On most devices, this uses the standard I2C protocol, but Raspberry Pi 5 uses a custom high speed protocol. The RP2040 SPI driver in the kernel handles firmware file transfer, since the transfer uses the RP2040 microcontroller. The microcontroller bridges the I2C transfers from the kernel to the IMX500 via a SPI bus. Additionally, the RP2040 caches firmware files in on-board storage. This avoids the need to transfer entire firmware blobs over the I2C bus, significantly speeding up firmware loading for firmware you've already used.
 

@@ -119,26 +119,27 @@ Then, we use the GStreamer `fdsrc` element to receive the bitstream, and extra G
 $ rpicam-vid -t 0 -n --codec libav --libav-format mpegts -o - | gst-launch-1.0 fdsrc fd=0 ! udpsink host=<ip-addr> port=<port>
 ----
 
-We could of course use anything (such as vlc) as the client, and the best GStreamer clients for playback are beyond the scope of this document. However, we note that the following pipeline (with the obvious substitutions) would work on a Pi 4 or earlier device:
+We could of course use anything (such as vlc) as the client, and the best GStreamer clients for playback are beyond the scope of this document. However, we note that the following pipeline (with the obvious substitutions) would work on a Raspberry Pi 4 or earlier device:
 
 [source,console]
 ----
 $ gst-launch-1.0 udpsrc address=<ip-addr> port=<port> ! tsparse ! tsdemux ! h264parse ! queue ! v4l2h264dec ! autovideosink
 ----
 
-For a Pi 5, replace `v4l2h264dec` by `avdec_h264`.
+For a Raspberry Pi 5 device, replace `v4l2h264dec` by `avdec_h264`.
 
 TIP: To test this configuration, run the server and client commands in separate terminals on the same device, using `localhost` as the address.
 
 ==== `libcamerasrc` GStreamer element
 
-`libcamera` provides a `libcamerasrc` GStreamer element which can be used directly instead of `rpicam-vid`. To use this element, run the following command on the server, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming. On a Pi 4 or earlier device, use:
+`libcamera` provides a `libcamerasrc` GStreamer element which can be used directly instead of `rpicam-vid`. To use this element, run the following command on the server, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming. On a Raspberry Pi 4 or earlier device, use:
 
 [source,console]
 ----
 $ gst-launch-1.0 libcamerasrc ! capsfilter caps=video/x-raw,width=640,height=360,format=NV12,interlace-mode=progressive ! v4l2h264enc extra-controls="controls,repeat_sequence_header=1" ! 'video/x-h264,level=(string)4' ! h264parse ! mpegtsmux ! udpsink host=<ip-addr> port=<port>
 ----
-On a Pi 5 you would have to replace `v4l2h264enc extra-controls="controls,repeat_sequence_header=1"` by `x264enc speed-preset=1 threads=1`.
+
+On a Raspberry Pi 5 device, replace `v4l2h264enc extra-controls="controls,repeat_sequence_header=1"` by `x264enc speed-preset=1 threads=1`.
 
 On the client we could use the same playback pipeline as we did just above, or other streaming media players.
 
