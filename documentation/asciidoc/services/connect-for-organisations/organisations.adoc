@@ -636,7 +636,7 @@ Otherwise, you get one of the following responses:
 | Response | Description | Example
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 |
 
 | **404 Not Found**
@@ -692,7 +692,7 @@ Otherwise, you get one of the following responses:
 | Response | Description
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 
 | **404 Not Found**
 | The device identity isn't found in the organisation.
@@ -789,7 +789,7 @@ Otherwise, you get one of the following responses:
 | Response | Description | Example
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 |
 
 | **422 Unprocessable Content**
@@ -942,7 +942,7 @@ Otherwise, you get one of the following responses:
 | Response | Description
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 
 | **404 Not Found**
 | The auth key isn't found in the organisation.
@@ -1012,7 +1012,7 @@ Otherwise, you get one of the following responses:
 | Response | Description | Example
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 |
 
 | **404 Not Found**
@@ -1076,7 +1076,7 @@ Otherwise, you get one of the following responses:
 | Response | Description
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 
 | **404 Not Found**
 | The auth key isn't found in the organisation.
@@ -1399,7 +1399,7 @@ Otherwise, you get one of the following responses:
 | Response | Description
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 
 | **404 Not Found**
 | The given device ID is not found in the organisation.
@@ -1545,7 +1545,7 @@ Otherwise, you get one of the following responses:
 | Response | Description | Example
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 |
 
 | **422 Unprocessable Content**
@@ -1595,7 +1595,7 @@ Otherwise, you get one of the following responses:
 | Response | Description | Example
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 |
 
 | **404 Not Found**
@@ -1709,7 +1709,7 @@ a|
 ----
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 |
 
 | **404 Not Found**
@@ -1841,7 +1841,7 @@ Otherwise, you get one of the following responses:
 |
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 |
 
 | **404 Not Found**
@@ -1911,7 +1911,7 @@ Otherwise, you get one of the following responses:
 | Response | Description | Example
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 |
 
 | **404 Not Found**
