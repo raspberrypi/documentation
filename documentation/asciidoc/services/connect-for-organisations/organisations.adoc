@@ -1784,8 +1784,8 @@ To deploy an artefact to a device, use a <<management-api-access-tokens, managem
 Replace these values in the code below:
 
 * `+rporg_accesstokenhere+`: your management API access token.
-* `+device-id+`: the unique identifier for the target device.
-* `+artefact-id+`: the artefact's `+id+` (as returned by <<create-artefact, Create an artefact>>).
+* `+device-id+`: the unique identifier for the recipient device.
+* `+artefact-id+`: the artefact's `+id+` (as returned by <<create-artefact,Create an artefact>>.
 
 [tabs]
 ======
@@ -1930,37 +1930,142 @@ a|
 [[bulk-provisioning]]
 == Bulk provisioning
 
-You can script auth key creation using the Management API to provision multiple devices without manual interaction. This approach combines the Management API with the methods described in xref:../services/connect.adoc#link-connect[link a device with Connect].
+You can provision multiple Raspberry Pi 5 family devices (Raspberry Pi 5, Raspberry Pi 500, and Raspberry Pi 500+) in succession by setting up a single Raspberry Pi 5 family device to act as a provisioning host.
 
-The following example creates an auth key for each device and saves the secret to a file. Replace `+rporg_accesstokenhere+` with your management API access token.
+=== Requirements
 
-WARNING: Run this script on a trusted provisioning machine, not on the Raspberry Pi devices themselves. The management API access token must stay on the provisioning machine — only the per-device auth-key secret it produces (the `.key` file) should be copied to a device.
+To bulk provision using device identities, you must have the following:
 
-TIP: If you can program devices ahead of deployment, consider <<device-identities, device identities>> instead. The private key lives in the Raspberry Pi's one-time programmable memory, so no secret ever needs to be copied to the device.
+* Two Raspberry Pi 5 family devices (one as the host, one as the recipient).
+* A Raspberry Pi Connect organisation account.
+* An Ethernet cable (this workflow does not yet support Wi-Fi).
+* A short, high-quality USB-A to USB-C cable to carry power and data during provisioning. Do not use a flimsy, charge-only, or long cable because these can cause provisioning failures.
+* For the recipient device boot media: a 32 GB or larger microSD card.
+* For the host device: a 32 GB or larger microSD card. For faster provisioning, use a 32 GB or larger SSD.
 
-[source,bash]
+=== Step 1: Prepare the devices
+
+. Disconnect or remove external USB devices or HATs from the recipient and host devices.
++
+USB devices and HATs create additional power draw that can interfere with the provisioning process.
+
+=== Step 2: Install `rpi-sb-provisioner` on the host device
+
+TIP: Image generation consumes significant disk space (multiple gigabytes per build or more), and the build process is noticeably faster on an SSD than on a microSD card. A Raspberry Pi 500+ or a Raspberry Pi 5 with an M.2 HAT+ are good choices for the host.
+
+. Download the latest firmware to the host device by entering the following into the command line:
++
+[source,console]
 ----
-for DEVICE in pi5-001 pi5-002 pi5-003; do
-  SECRET=$(curl --silent --fail \
-    --header 'Authorization: Bearer rporg_accesstokenhere' \
-    --data-urlencode "description=${DEVICE}" \
-    --data-urlencode "device_name=${DEVICE}" \
-    --data-urlencode "tags[]=production" \
-    https://api.connect.raspberrypi.com/organisation/auth-keys \
-    | jq -r '.secret')
-  if [ -z "${SECRET}" ]; then
-    echo "Failed to create auth key for ${DEVICE}" >&2
-    continue
-  fi
-  echo "${SECRET}" > "${DEVICE}.key"
-  echo "Created auth key for ${DEVICE}: ${DEVICE}.key"
-done
+sudo apt update
+sudo apt upgrade
+----
++
+. Install Raspberry Pi Secure Boot Provisioner (`rpi-sb-provisioner`) on the host device by entering the following into the command line:
++
+[source,console]
+----
+sudo apt update
+sudo apt install rpi-sb-provisioner=2.3.0
+----
+. Once installed, access the Raspberry Pi Secure Boot web provisioner UI from the host device's web browser: http://localhost:3142.
++
+.The web provisioner UI provides confirmation that `rpi-sb-provisioner` has been successfully installed.
+image::images/provisioner-webui.png[alt="An image showing the Raspberry Pi Secure Boot Provisioner web interface", width="100%"]
+
+=== Step 3: Install `rpi-image-gen`
+
+`rpi-image-gen` builds the OS image that is flashed to recipient devices.
+
+. On the host device, from the command line, run the following command to clone the `rpi-image-gen` repository from GitHub:
++
+[source,console]
+----
+$ git clone https://github.com/raspberrypi/rpi-image-gen.git
+----
++
+. Navigate to the cloned directory, then install the dependencies by running the following commands:
++
+[source,console]
+----
+$ cd rpi-image-gen
+$ sudo ./install_deps.sh
 ----
 
-Each `.key` file contains an auth key secret (prefixed with `+rpoak_+`). Organisation auth keys expire after one day by default, so generate keys shortly before devices are first powered on. To provision a device:
+=== Step 4: Prepare and configure the image on the host device
 
-. On the device, run `+loginctl enable-linger+` and `+rpi-connect on+` as your desired user to enable Connect.
-. Copy the contents of the corresponding `.key` file to `+~/.config/com.raspberrypi.connect/auth.key+`.
-. Delete the `.key` file from your provisioning machine. These files contain sensitive secrets.
+TIP: rpi-image-gen contains an example application with layers and configuration. For more information, see xref:../services/connect.adoc[remote update.].
 
-When the file is detected, Connect automatically signs the device in and then deletes the file. For more information, see xref:../services/connect.adoc#link-connect[Link a Raspberry Pi device with a Connect account].
+To prepare the image on the host device:
+
+. Navigate to the `rpi-image-gen` installation folder.
+. Define additional packages to install at build time. For more information, see https://raspberrypi.github.io/rpi-image-gen/config/index.html#_packages[Packages].
+. Add wireless networking credentials. For more information, see https://github.com/raspberrypi/rpi-image-gen/tree/master/examples/ota[Wireless Networking].
+. Set a user account and password from the command line, and generate the build:
++
+[source,console]
+----
+./rpi-image-gen build -S ./examples/ota/ -c ota.yaml -- \
+  IGconf_device_user1=admin \
+  IGconf_device_user1pass='R@spb3rry*pi'
+----
++
+`rpi-image-gen` creates a `.tar.zst` image file in the `rpi-image-gen/work/deploy` folder.
+
+=== Step 5: Import the image into provisioner and configure the device
+
+. On the host device, either open the provisioner web UI at http://localhost:3142/options/get, or select *Get* from the tab at the top of the UI.
+. In the *Gold Master OS Image* box, select *Upload New Image*, then drag and drop the `.tar.zst` file you just created (for example, `rpi-image-gen/work/deploy-1.0.0/myapp-1.0.0.tar.zst`) into the box.
++
+.The image you created is shown in the *Available Images* table of the provisioner's web interface.
+image::images/provisioner-osimages.png[alt="An image of the provisioner web UI showing OS images listed in the available images table", width="100%"]
++
+. Select the image in the *Available Images* table.
+. Scroll down to the *Device & Firmware* table, then selected the following:
+- Device Family: *Raspberry Pi 5*.
++
+.Set the recipient device type, storage and firmware in the *Device & Firmware* table.
+image::images/provisioner-firmware.png[alt="The Device & Firmware table showing the device type, storage type and firmware settings of the recipient device.", width="100%"]
++
+- Storage Type: *SD Card*.
+- Device Firmware: *2026-05-26*.
+. Scroll down to the *Security Configuration* table, then select *Naked*.
++
+.The *Naked* security configuration provides a basic provisioning configuration without encryption.
+image::images/provisioner-security.png[alt="The provisioning web UI showing naked security configuration selected", width="100%"]
++
+Your changes are automatically saved.
+
+=== Step 6: Create a management API token
+
+To allow provisioner to automatically register device identities with your Connect organisation during provisioning, create a <<management-api-access-tokens, management API access token>>.
+
+. Open Raspberry Pi Connect, then select your organisation.
+. Navigate to the *API access tokens* section, then select the *Provisioning* tab.
+. Select *New* in the *Auth keys* section, follow the on-screen prompts to configure the key, then select *Create Auth key*.
+. Copy the key.
+. Open the provisioner web UI at http://localhost:3142/options/get.
+. Scroll down to the *Cloud Services* section, then paste the key into the *Connect Management API Access Token* field.
++
+.Enter the API access token in the *Cloud Services* table.
+image::images/provisioner-API.png[alt="The Cloud Services section of the provisioning web UI showing the field for the API access token and an optional prefix field", width="100%"]
+
+=== Step 7: Connect the recipient device to the host device
+
+Next, put the recipient device into USB boot mode so the host device can take over.
+
+. Plug the USB-A end of the cable into the host device.
+. Hold down the power button on the recipient device while plugging in the USB-C end of the cable. Release the power button when power is applied.
++
+The recipient device appears in the provisioner UI on the host device. Provisioning starts automatically.
+
+=== Step 8: Boot the recipient device
+
+When provisioning is complete:
+
+. Unplug the recipient device from the host device.
+. Connect the recipient device to its own power supply.
+. Connect an Ethernet cable.
+. Turn on the recipient device.
++
+After the recipient device has booted, it appears in the Raspberry Pi Connect *Devices* tab.
