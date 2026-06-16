@@ -419,7 +419,7 @@ Otherwise, you get one of the following responses:
 | Response | Description | Example
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 |
 
 | **422 Unprocessable Content**
@@ -508,7 +508,7 @@ per_page:: The number of device identities for each page (maximum 100).
 total_count:: The total number of device identities in the organisation.
 total_pages:: The total number of pages of device identities for the organisation.
 
-If your management API access token is invalid, you get a **401 Unauthorized** response.
+If the management API access token is invalid, you get a **401 Unauthorized** response.
 
 The `+page+` and `+per_page+` query parameters work the same way as for <<list-devices,listing devices>>.
 
@@ -565,7 +565,7 @@ Otherwise, you get one of the following responses:
 | Response | Description
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 
 | **404 Not Found**
 | The device identity isn't found in the organisation.
@@ -884,7 +884,7 @@ per_page:: The number of auth keys for each page (maximum 100).
 total_count:: The total number of auth keys in the organisation.
 total_pages:: The total number of pages of auth keys for the organisation.
 
-If your management API access token is invalid, you get a **401 Unauthorized** response.
+If the management API access token is invalid, you get a **401 Unauthorized** response.
 
 The `+page+` and `+per_page+` query parameters work the same way as for <<list-devices,listing devices>>.
 
@@ -1176,7 +1176,7 @@ per_page:: The number of devices for each page (maximum 100).
 total_count:: The total number of devices in the organisation.
 total_pages:: The total number of pages of devices for the organisation.
 
-If your management API access token is invalid, you get a **401 Unauthorized** response.
+If the management API access token is invalid, you get a **401 Unauthorized** response.
 
 To fetch subsequent pages of devices, use the `+page+` parameter in the query string:
 
@@ -1482,7 +1482,7 @@ $ curl --header 'Authorization: Bearer rporg_accesstokenhere' --get --data-urlen
 
 The `+page+` and `+per_page+` query parameters work the same way as for <<list-devices,listing devices>>, and compose with the `+name+` parameter so you can paginate through a filtered list.
 
-If your management API access token is invalid, you get a **401 Unauthorized** response.
+If the management API access token is invalid, you get a **401 Unauthorized** response.
 
 [[create-artefact]]
 === Create an artefact
@@ -1771,7 +1771,7 @@ Otherwise, you get one of the following responses:
 | Response | Description
 
 | **401 Unauthorized**
-| Your management API access token is invalid.
+| The management API access token is invalid.
 
 | **404 Not Found**
 | The deployment isn't found in the organisation.
