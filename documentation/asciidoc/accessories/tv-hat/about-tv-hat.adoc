@@ -4,7 +4,7 @@
 .The Raspberry Pi TV HAT
 image::images/tv-hat.jpg[width="80%"]
 
-The Raspberry Pi TV HAT allows you to receive digital terrestrial TV broadcast systems, using an onboard DVB-T and DVB-T2 tuner, on a Raspberry Pi. With the board you can receive and view TV on a Raspberry Pi, or create a TV server that allows you to stream received TV over a network to other devices. The TV HAT can be used with any 40-pin Raspberry Pi board as a server for other devices on the network. Performance when receiving and viewing TV on the Pi itself can vary, and we recommend using a Raspberry Pi 2 or later for this purpose
+The Raspberry Pi TV HAT allows you to receive digital terrestrial TV broadcast systems, using an onboard DVB-T and DVB-T2 tuner, on a Raspberry Pi. With the board you can receive and view TV on a Raspberry Pi, or create a TV server that allows you to stream received TV over a network to other devices. The TV HAT can be used with any 40-pin Raspberry Pi board as a server for other devices on the network. Performance when receiving and viewing TV on the Raspberry Pi device itself can vary, and we recommend using a Raspberry Pi 2 or later for this purpose
 
 Key features:
 

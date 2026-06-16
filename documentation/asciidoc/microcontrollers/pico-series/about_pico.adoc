@@ -498,7 +498,7 @@ For more detailed instructions, see https://pip.raspberrypi.com/documents/RP-008
 
 `BOOTSEL` mode resides in read-only memory, inside the microcontroller chip on the Raspberry Pi Pico board; it can't be re-written. As a result, holding the *BOOTSEL* button while connecting the board always presents the device as a USB mass storage device, ensuring that the board can't be permanently bricked through software.
 
-If you want to erase the external flash memory, you can copy a special https://pip.raspberrypi.com/documents/RP-008273-DS[UF2 file] to the Raspberry Pi Pico device while it's in `BOOTSEL` mode. For the code to erase the external flash memory, see our https://github.com/raspberrypi/pico-examples/blob/master/flash/nuke/nuke.c[pico-examples GitHub repository].
+If you want to erase the external flash memory, you can copy a special https://github.com/raspberrypi/pico-sdk-prebuilts/releases/latest/download/nuke_universal.uf2[UF2 file] to the Raspberry Pi Pico device while it's in `BOOTSEL` mode. For the code to erase the external flash memory, see our https://github.com/raspberrypi/pico-examples/blob/master/flash/nuke/nuke.c[pico-examples GitHub repository].
 
 === Resources for software development
 Raspberry Pi offers additional technical documentation development with Raspberry Pi Pico:

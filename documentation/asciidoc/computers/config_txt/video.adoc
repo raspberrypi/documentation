@@ -6,7 +6,7 @@ To control HDMI settings, follow the instructions in xref:configuration.adoc#dis
 
 ==== HDMI Pipeline for 4-series devices
 
-In order to support dual displays and modes up to 4Kp60, Raspberry Pi 4, Compute Module 4, and Pi 400 generate 2 output pixels for every clock cycle.
+To support dual displays and modes up to 4Kp60, Raspberry Pi 4, Compute Module 4, and Raspberry Pi 400 generate two output pixels per clock cycle.
 
 Every HDMI mode has a list of timings that control all the parameters around sync pulse durations. These are typically defined via a pixel clock, and then a number of active pixels, a front porch, sync pulse, and back porch for each of the horizontal and vertical directions.
 
@@ -18,7 +18,7 @@ If your monitor has this resolution, 4-series devices automatically drop down to
 
 ==== HDMI Pipeline for 5-series devices
 
-Flagship models since Raspberry Pi 5, Compute Module models since CM5, and Keyboard models since Pi 500 also work at 2 output pixels per clock cycle. These models have special handling for odd timings and can handle these modes directly.
+Raspberry Pi 5 and later, Raspberry Pi Compute Module 5 and later, and Raspberry Pi 500 and later, also work at two output pixels per clock cycle. These models have special handling for odd timings and can handle these modes directly.
 
 === Composite video mode
 
