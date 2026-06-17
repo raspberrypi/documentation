@@ -17,7 +17,7 @@ If you have a *desktop setup* and skipped OS customisation in Imager, or if you'
 
 A *headless setup* bypasses the configuration wizard; because you preconfigured the settings in Imager, your headless Raspberry Pi boots straight to the network. If you chose SSH for remote access, you can connect remotely to your headless Raspberry Pi by typing `ssh username@hostname.local` into the command line on your computer. For more information, see xref:../computers/getting-started.adoc#headless-setup[Headless (remote) setup].
 
-You need a monitor and a keyboard to navigate through the configuration wizard. A mouse is optional, and you can use the *Tab* key to advance through the wizard, if desired.
+You need a monitor and a keyboard to navigate through the configuration wizard. A mouse is optional; you can use the *Tab* key to advance through the wizard.
 
 If you plan on pairing a USB Bluetooth mouse or keyboard as part of this configuration process, plug the USB adapter in before booting your Raspberry Pi.
 
@@ -92,7 +92,7 @@ image::images/initial-setup/launch.png[alt="Setup complete.",width="100%"]
 === Configuration changes
 You can reconfigure your Raspberry Pi from the command line or the desktop.
 
-To reconfigure from the desktop, open the Raspberry Pi icon in the top-left corner, then navigate to *Preferences > Control Centre*. 
+To reconfigure from the desktop, open the Raspberry Pi icon in the top-left corner, then navigate to *Preferences > Control Centre*.
 
 To reconfigure from the Terminal, enter `sudo raspi-config` to open the *Control Centre*.
 
@@ -121,18 +121,18 @@ The following devices also offer shutdown shortcuts:
 * Raspberry Pi 400: Press *Fn* + *F10* to open the *Shutdown Options* window.
 
 .Desktop shutdown option
-image::images/shutdown.png[alt="Shutdown from the desktop menu.",width="40%"]
+image::images/shutdown.png[alt="Shutdown from the desktop menu.",width="30%"]
 
 .Desktop shutdown menu
-image::images/shutdown-menu.png[alt="Shutdown menu.",width="40%"]
+image::images/shutdown-menu.png[alt="Shutdown menu.",width="25%"]
 
-You can use the mouse, or your keyboard cursor keys and *Enter* key, to select from one of the following four options: Shutdown, Reboot, Lock Screen, and Logout, described in <<desktop-shutdown>>. 
+You can use the mouse, or your keyboard cursor keys and *Enter* key, to select from one of the following options: *Shutdown*, *Reboot*, *Lock Screen*, and *Logout*, described in <<desktop-shutdown>>.
 
 To exit the menu without choosing any of these options, select the cross (*×*) icon at the top-right corner or press *Esc*.
 
 [[cmd-shutdown]]
 === Shutdown options from the command line
-You can perform most shutdown options from the command line. 
+You can perform most shutdown options from the command line.
 
 Open a Terminal and then use one of the following commands:
 

@@ -119,12 +119,12 @@ image::images/imager/user-subtab.png[alt="Imager OS Customisation User tab.",wid
 
 The username must be lowercase and contain only letters, numbers, underscores, and hyphens.
 
-* For a headless setup, your Raspberry Pi uses these credentials to connect to the network on first boot.
-
-Creating a username and password at this stage doesn't require these credentials to be entered whenever you boot your Raspberry Pi. To require a password on boot, turn off Auto Login. For instructions, see xref:../computers/configuration.adoc#auto-login[Require a password from startup].
+* For a headless setup, these are the credentials used to connect to your Raspberry Pi over the network.
+* Creating a username and password at this stage doesn't require these credentials to be entered whenever you boot your Raspberry Pi. To require a password on boot, turn off Auto Login. For instructions, see xref:../computers/configuration.adoc#auto-login[Require a password from startup].
+* The password you set here is required when running commands as a superuser (`sudo` commands). If you prefer not to enter a password for these commands, you can turn off this requirement later. For instructions, see xref:../computers/configuration.adoc#disable-sudo-password[Turn off password for superuser commands] in the *Configuration* page.
 
 ===== Wi-Fi
-In the *Wi-Fi* subtab, select whether to connect to a *secure network* or an *open network*. Before this, if you're on a Mac computer, you might be asked whether you'd like to pre-fill the Wi-Fi password from the system keychain. Confirm whether you want to do this and sign in with your Mac computer credentials.
+In the *Wi-Fi* subtab, select whether to connect to a *secure network* or an *open network*. Before this, if you're on a Mac computer, you might be asked whether you'd like to pre-fill the Wi-Fi password from the system keychain. Confirm whether you want to do this and enter your Mac computer credentials.
 
 On first use, Imager typically pre-fills the SSID (name) and password of the Wi-Fi network you're currently connected to. If there's no pre-filled information, or if you want to change it, enter the SSID of the appropriate wireless network. For secure networks, enter and confirm the password for the network. If your network doesn't broadcast an SSID publicly, enable the *Hidden SSID* setting so that your OS can find it. Select *Next* when you're done.
 
