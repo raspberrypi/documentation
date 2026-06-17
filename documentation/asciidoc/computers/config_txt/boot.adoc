@@ -114,11 +114,11 @@ See also <<overlay_prefix,`overlay_prefix`>> and xref:legacy_config_txt.adoc#ups
 
 === `otg_mode` (Raspberry Pi 4 only)
 
-USB On-The-Go (often abbreviated to OTG) is a feature that allows supporting USB devices with an appropriate OTG cable to configure themselves as USB hosts. On older Raspberry Pis, a single USB 2 controller was used in both USB host and device mode.
+USB On-The-Go (often abbreviated to OTG) is a feature that allows supporting USB devices with an appropriate OTG cable to configure themselves as USB hosts. On older Raspberry Pis, a single USB 2.0 controller was used in both USB host and device mode.
 
 A high-performance USB 3.0 controller, attached using PCIe, drives the main USB ports on Raspberry Pi 4B and later, and on Raspberry Pi 400 and later. The legacy USB 2.0 controller is still available on the USB-C power connector for use as a device (`otg_mode=0`, the default). Raspberry Pi Compute Module 4 and earlier do not include the USB 3.0 controller.
 
-`otg_mode=1` requests that a more capable XHCI USB 2 controller is used as an alternative host controller on that USB-C connector.
+`otg_mode=1` requests that a more capable XHCI USB 2.0 controller is used as an alternative host controller on that USB-C connector.
 
 NOTE: By default, Raspberry Pi OS includes a line in `/boot/firmware/config.txt` that enables this setting on Compute Module 4.
 
