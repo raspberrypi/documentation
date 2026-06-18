@@ -1,23 +1,37 @@
-<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-<script type="text/javascript">
+<div id="docs-search" role="search">
+  <button type="button" class="search-trigger" aria-label="Search documentation">
+    <svg class="search-trigger-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+      <path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    <span class="search-trigger-text">Search</span>
+    <span class="search-trigger-key">Ctrl K</span>
+  </button>
+</div>
+
+<script
+  async
+  src="https://widget.kapa.ai/kapa-widget.bundle.js"
+  data-website-id="72c65e53-1965-4d07-8d4e-71897fbe1f17"
+  data-project-name="Raspberry Pi Documentation"
+  data-modal-title="Raspberry Pi Documentation"
+  data-project-color="#cd2355"
+  data-project-logo="https://www.raspberrypi.com/app/uploads/2021/10/cropped-Raspberry-Pi-Favicon-100x100-1-150x150.png"
+  data-user-analytics-cookie-enabled="false"
+  data-button-hide="true"
+  data-search-mode-enabled="true"
+  data-search-mode-default="true"
+  data-modal-open-on-command-k="true"
+  data-modal-command-k-search-mode-default="true"
+  data-modal-override-open-selector-search="#docs-search .search-trigger"
+></script>
+
+<script>
   (function () {
-    var lvl0 = document.querySelector('#tab-menu li.selected'),
-        lvl1 = document.querySelector('#content h1'),
-        searchParameters = { optionalFilters: [] };
-
-    if (lvl0) {
-      searchParameters.optionalFilters.push("hierarchy.lvl0:" + lvl0.innerText);
+    if (!/Mac|iPhone|iPad|iPod/i.test(navigator.platform || navigator.userAgent || "")) {
+      return;
     }
-    if (lvl1) {
-      searchParameters.optionalFilters.push("hierarchy.lvl1:" + lvl1.innerText + "<score=2>");
-    }
-
-    docsearch({
-      appId: 'IHWGNTJ1NP',
-      apiKey: '94f8e1d1619229399fe8b33bcf750dfd',
-      indexName: 'raspberrypi',
-      container: '#docsearch',
-      searchParameters: searchParameters
+    document.querySelectorAll(".search-trigger-key").forEach(function (key) {
+      key.textContent = "⌘K";
     });
   }());
 </script>
