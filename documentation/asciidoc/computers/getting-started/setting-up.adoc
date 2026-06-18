@@ -54,9 +54,9 @@ The boot media storage that you need depends on how much software is included in
 
 The following recommendations are enough to get started based on your chosen OS, but we recommend choosing more storage space to allow room to grow:
 
-* *Raspberry Pi OS* (desktop with basic software): SD card with at least 32 GB of storage.
-* *Raspberry Pi OS Full* (desktop with basic software and recommended applications): SD card with at least 32 GB of storage.
-* *Raspberry Pi OS Lite* (a command-line-only version for headless setups): SD card with at least 8 GB of storage.
+* For *Raspberry Pi OS* (desktop with basic software), we recommend using an SD card with at least 32 GB of storage.
+* For *Raspberry Pi OS Full* (desktop with basic software and recommended applications), we recommend using an SD card with at least 32 GB of storage.
+* For *Raspberry Pi OS Lite* (a command-line-only version for headless setups), we recommend using an SD card with at least 8 GB of storage.
 
 Other operating systems might have different storage requirements, so always check the documentation for the OS you plan to install.
 
@@ -357,57 +357,64 @@ image::images/peripherals/cable-net.png[alt="Plugging an Ethernet cable into a R
 
 [[headless-setup]]
 === Headless (remote) setup
-A headless Raspberry Pi operates without a monitor, keyboard, or mouse.
+A headless Raspberry Pi operates without a monitor, keyboard, or mouse. You control it remotely over a network. For this, you must have:
 
-You control it remotely over a network. For this, you must have:
+* A network connection (Wi-Fi or Ethernet). Some wireless adapters and some Raspberry Pi models don't support 5 GHz networks; check the documentation for your wireless module to ensure compatibility with your preferred network. For information about which Raspberry Pi models support wireless networks, see <<networking>>.
+* Remote access using either SSH or xref:../services/connect.adoc[Raspberry Pi Connect] for the first boot of the device. After first boot, you can also use xref:remote-access.adoc#vnc[VNC] for remote desktop access.
 
-* A network connection (Ethernet or Wi-Fi).
-* Remote access using either SSH or xref:../services/connect.adoc[Raspberry Pi Connect] for the first boot of the device. You can use xref:remote-access.adoc#vnc[VNC] for subsequent boots. Note that VNC is not compatible with the Lite versions of Raspberry Pi OS.
+NOTE: VNC is incompatible with the Lite versions of Raspberry Pi OS.
 
-We recommend you set up a headless device using *Raspberry Pi Imager*. This allows you to choose between *Raspberry Pi OS* and *Raspberry Pi OS Lite*, and to configure networking, remote access, and user credentials (username and password).
+We recommend that you set up a headless device using *Raspberry Pi Imager*. This allows you to:
 
-You can enable VNC and *Raspberry Pi Connect* either from the desktop or by using the interactive `raspi-config` tool. For instructions, see xref:configuration.adoc#remote[Remote access].
+* Choose between *Raspberry Pi OS* and *Raspberry Pi OS Lite*.
+* Configure networking.
+* Configure remote access.
+* Set user credentials (username and password).
 
-==== To set up a headless Raspberry Pi using SSH:
-
-Before you start Step 1, note the following:
-
-* Some wireless adapters and Raspberry Pi models don't support 5 GHz networks, so check the documentation for your wireless module to ensure compatibility with your preferred network. For more information, see <<networking>>.
-
-* Because a headless setup doesn't have a desktop, we recommend choosing *Raspberry Pi OS Lite* as your operating system when preparing the boot media using *Raspberry Pi Imager*.
+You can additionally enable VNC and *Raspberry Pi Connect* either from the desktop or by using the interactive `raspi-config` tool. For instructions, see xref:configuration.adoc#remote[Remote access].
 
 ==== Step 1. Prepare your boot media
 
-The first step is to prepare a bootable disk with the Raspberry Pi operating system installed on it.
+Use *Raspberry Pi Imager* to transform your storage device into bootable media with the Raspberry Pi operating system installed. During this process, you also also configure the networking, remote access, and user credentials (username and password) required for a headless setup.
 
 . Follow the instructions to xref:../computers/getting-started.adoc#install[install an OS onto boot media] using *Raspberry Pi Imager*.
-+
-On first boot, the only remote access options are SSH or Raspberry Pi Connect. Ensure that you configure one of these options when customising your operating system with Imager. If you choose not to customise the image using Raspberry Pi Imager, you can instead <<manual-ssh-setup, set up SSH manually>>.
+    ** Because a headless setup doesn't require a desktop environment, we recommend choosing *Raspberry Pi OS Lite* as your operating system in Raspberry Pi Imager.
+    ** On first boot, only SSH and Raspberry Pi Connect are available for remote access. Ensure that you configure one of these options when customising your operating system with Imager. If you choose not to customise the image using Raspberry Pi Imager, you can instead <<manual-ssh-setup, set up SSH manually>>.
 
-. After installing an OS onto your boot media, insert it into your Raspberry Pi or connect it to your Raspberry Pi using a compatible connector.
+. After installing an OS, connect your boot media to your Raspberry Pi.
+    ** For most models, this is typically a microSD card inserted into the slot on the underside of the device.
+    ** If you installed the OS on any other storage device, you can connect it to your Raspberry Pi using the appropriate adapter or a compatible connector.
 
-==== Step 2 (Optional). Connect to a wired network
+==== Step 2. Connect to power
 
-Next, set up network connectivity so that the headless device can communicate with your computer.
+After preparing your boot media and connecting it to your Raspberry Pi, plug the power supply into the USB-C (or micro USB on older models) power port on your Raspberry Pi. Ensure that your power supply meets the voltage and current requirements of your Raspberry Pi model. For more information, see <<power>>.
 
-If you used Imager to set up your SSID and wireless network details in Step 1, you can skip this step and go to Step 3.
+When your Raspberry Pi powers on, a status LED lights up.
 
-If you didn't set up a wireless network connection in Step 1, connect the headless device to a wired network now:
+==== Step 3. Connect to a network
 
-. Attach an Ethernet cable into your Raspberry Pi device's Ethernet port until you hear a click. Use a USB Ethernet adapter if your Raspberry Pi model doesn't include an Ethernet port.
+After you've installed an OS onto your boot media, inserted it into your Raspberry Pi, and connected your Raspberry Pi to power, you can set up network connectivity so that it can communicate with your computer. This can be a wireless (Wi-Fi) connection (typically set up during step 1 using Imager) or a wired (Ethernet) connection.
 
+===== Connect to a wireless network
+
+NOTE: Some wireless adapters and Raspberry Pi models don't support 5 GHz networks, so check the documentation for your wireless model to ensure compatibility with your preferred network. For more information, see <<networking>>.
+
+If you used Imager to set up your SSID and wireless network details in Step 1, your Raspberry Pi attempts to connect to the wireless network on first boot.
+
+If you didn't set up a wireless network connection in Step 1, connect the headless Raspberry Pi device to a wired network instead. For instructions, see <<headless-ethernet>>.
+
+NOTE: Previous versions of Raspberry Pi OS made use of a `wpa_supplicant.conf` file, which could be placed into the boot folder to configure wireless network settings. This functionality isn't available from Raspberry Pi OS *Bookworm* and onwards.
+
+[[headless-ethernet]]
+===== Connect to a wired network
+
+If you used Imager to set up your SSID and wireless network details in Step 1, you can skip this step and go to Step 4.
+
+. Attach an Ethernet cable into your Raspberry Pi device's Ethernet port until you hear a click. If your Raspberry Pi model doesn't include an Ethernet port, use a USB Ethernet adapter.
 . Connect the other end of the cable to a port in your router. Raspberry Pi OS automatically connects to the network.
 
 .Plugging an Ethernet cable into a Raspberry Pi
 image::images/peripherals/cable-net.png[alt="Plugging an Ethernet cable into a Raspberry Pi.",width="80%"]
-
-==== Step 3. Connect to power
-
-Before continuing, check that your power supply meets the voltage and current requirements of your Raspberry Pi model. For more information, see <<power>>.
-
-. Plug the power supply into the USB-C (or micro USB on older models) power port on your Raspberry Pi.
-
-When your Raspberry Pi powers on, a status LED lights up. This can take a few minutes.
 
 ==== Step 4. Access your Raspberry Pi
 
@@ -416,14 +423,12 @@ On first boot, the only remote access options to your headless Raspberry Pi are 
 * For information about using SSH from another computer, see xref:../computers/remote-access.adoc#connect-to-an-ssh-server[Connect to an SSH server].
 * For information about using Raspberry Pi Connect, see the xref:../services/connect.adoc[Raspberry Pi Connect] documentation.
 
-If you installed a version of Raspberry Pi OS that includes the desktop (that is, the standard or Full version), you can now enable VNC for subsequent connections. For instructions, see xref:configuration.adoc#remote[Remote access].
+If you installed a version of Raspberry Pi OS that includes the desktop (*Raspberry Pi OS* or *Raspberry Pi OS Full*), you can now enable VNC for subsequent connections. For instructions, see xref:configuration.adoc#remote[Remote access].
 
 [[manual-ssh-setup]]
 ==== Manual setup for SSH
 
-If you didn't customise the image using Raspberry Pi Imager in Step 1, you can instead set up remote access manually.
-
-On your boot media's `bootfs` partition:
+If you didn't customise the image for remote access using Raspberry Pi Imager in Step 1, you can instead set up SSH manually. On your boot media's `bootfs` partition:
 
 . Create an empty file named `ssh`.
 . Create a file named `userconf.txt` with a single line of text: `<username>:<encrypted-password>`.

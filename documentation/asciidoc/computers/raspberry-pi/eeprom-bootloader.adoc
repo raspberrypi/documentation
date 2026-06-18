@@ -47,7 +47,7 @@ Default: `115200`
 
 If `1` then `sudo halt` will run in a lower power mode until either GPIO3 or GLOBAL_EN are shorted to ground.
 
-This setting is not relevant Raspberry Pi 5 and later, Raspberry Pi Compute Module 5 and later, and Raspberry Pi 500 and later, because the xref:raspberry-pi.adoc#power-button[dedicated power button] can always be used to wake from `HALT` or `STANDBY`.
+This setting is not relevant for Raspberry Pi 5 and later, Raspberry Pi Compute Module 5 and later, and Raspberry Pi 500 and later, because the xref:raspberry-pi.adoc#power-button[dedicated power button] can always be used to wake from `HALT` or `STANDBY`.
 
 Default: `1`
 
@@ -110,7 +110,7 @@ The `BOOT_ORDER` property defines the sequence for the different boot modes. It 
 
 | 0x6
 | NVME
-| CM4 and Raspberry Pi 5 only: boot from an NVMe SSD connected to the PCIe interface. See xref:raspberry-pi.adoc#nvme-ssd-boot[NVMe boot] for more details.
+| CM4, CM5, Raspberry Pi 5, and 500+ only: boot from an NVMe SSD connected to the PCIe interface. For more information, see xref:raspberry-pi.adoc#nvme-ssd-boot[NVMe boot].
 
 | 0x7
 | HTTP
@@ -592,7 +592,7 @@ Default: 0
 
 [[PARTITION_WALK]]
 ==== `PARTITION_WALK`
-This property is designed to improve the reliability of `A/B` boot schemes using `autoboot.txt` by searching for bootable partitions if the specified partition does not appear to be bootable. If `PARTITION_WALK=1` and the requested partition is not bootable and does not have a valid `autoboot.txt` then the bootloader will check each partition in turn (up to 8 and wrapping to 0) to see if it is bootable (contains `start4.elf` on a Pi4, or `config.txt` and a suitable device-tree on Raspberry Pi 5 or later).
+This property is designed to improve the reliability of `A/B` boot schemes using `autoboot.txt` by searching for bootable partitions if the specified partition does not appear to be bootable. If `PARTITION_WALK=1` and the requested partition is not bootable and does not have a valid `autoboot.txt` then the bootloader will check each partition in turn (up to 8 and wrapping to 0) to see if it is bootable (contains `start4.elf` on a Raspberry Pi 4, or `config.txt` and a suitable device-tree on Raspberry Pi 5 or later).
 
 During the "partition walk" `autoboot.txt` files are not processed to avoid cycling dependencies. It is assumed that the requested boot partition has failed and the system is attempting recovery.
 
@@ -658,9 +658,9 @@ Default: `2000` (2 seconds)
 
 Raspberry Pi 4 only.
 
-When the Raspberry Pi is rebooted, USB power is switched off by the hardware. A short power off time can cause problems with some USB devices so this parameter may be used to force a longer power off as though the cable was physically removed.
+When the Raspberry Pi is rebooted, USB power is switched off by the hardware. A short power-off time can cause problems with some USB devices so this parameter can be used to force a longer power off, as though the cable was physically removed.
 
-On RaspberryPi 4 version 1.3 and older, the configurable/long power off requires the XHCI controller to be enabled so there is actually a short power off followed by a longer configurable power off. The longer configurable power off may be skipped by setting this parameter to zero.
+On Raspberry Pi 4 version 1.3 and older, the configurable/long power off requires the XHCI controller to be enabled so there is actually a short power off followed by a longer configurable power off. You can skip the longer configurable power off by setting this parameter to zero.
 
 On newer revisions the hardware ensures that USB power is off from reboot and the bootloader only enables power after this timeout has elapsed. This is happens after memory is initialised ensuring that USB power is off for at least two seconds. Therefore, this parameter generally has no effect on newer hardware revisions.
 

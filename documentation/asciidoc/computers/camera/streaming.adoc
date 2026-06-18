@@ -119,7 +119,7 @@ Then, we use the GStreamer `fdsrc` element to receive the bitstream, and extra G
 $ rpicam-vid -t 0 -n --codec libav --libav-format mpegts -o - | gst-launch-1.0 fdsrc fd=0 ! udpsink host=<ip-addr> port=<port>
 ----
 
-We could of course use anything (such as vlc) as the client, and the best GStreamer clients for playback are beyond the scope of this document. However, we note that the following pipeline (with the obvious substitutions) would work on a Raspberry Pi 4 or earlier device:
+You can use anything (such as VLC) as the client; the best GStreamer clients for playback are beyond the scope of this document. However, the following pipeline (with the obvious substitutions) works on a Raspberry Pi 4B or earlier device:
 
 [source,console]
 ----
@@ -132,7 +132,7 @@ TIP: To test this configuration, run the server and client commands in separate 
 
 ==== `libcamerasrc` GStreamer element
 
-`libcamera` provides a `libcamerasrc` GStreamer element which can be used directly instead of `rpicam-vid`. To use this element, run the following command on the server, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming. On a Raspberry Pi 4 or earlier device, use:
+`libcamera` provides a `libcamerasrc` GStreamer element which can be used directly instead of `rpicam-vid`. To use this element, run the following command on the server, replacing the `<ip-addr>` placeholder with the IP address of the client or multicast address and replacing the `<port>` placeholder with the port you would like to use for streaming. On a Raspberry Pi 4B or earlier device, use:
 
 [source,console]
 ----

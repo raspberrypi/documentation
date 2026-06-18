@@ -10,7 +10,7 @@ The Raspberry Pi 4 Model B continues with the same PCB technology as the Raspber
 
 === Use DVFS
 
-NOTE: Discussion of DVFS applies to 4-series devices only (Raspberry Pi 4, Compute Module 4, and Raspberry Pi 400).
+NOTE: Discussion of DVFS applies to 4-series devices only (Raspberry Pi 4B, Compute Module 4, Compute Module 4S, and Raspberry Pi 400).
 
 Raspberry Pi 4 devices implement dynamic voltage and frequency scaling (DVFS). This technique allows 4-series devices to run at lower temperatures whilst still providing the same performance.
 
@@ -72,7 +72,7 @@ For Raspberry Pi 5, use one of the official fan options:
 * https://www.raspberrypi.com/products/active-cooler/[Active Cooler]
 * https://www.raspberrypi.com/products/raspberry-pi-5-case/[Case for Raspberry Pi 5]
 
-Both of the Raspberry Pi 5 fan options plug into the four-pin JST-SH PWM fan connector located in the upper right of the board between the 40-pin GPIO header and the USB 2 ports. The fan connector pulls from the same current limit as USB peripherals. We recommend the Active Cooler case for overclockers, since it provides better cooling performance.
+Both of the Raspberry Pi 5 fan options plug into the four-pin JST-SH PWM fan connector located in the upper right of the board between the 40-pin GPIO header and the USB 2.0 ports. The fan connector pulls from the same current limit as USB peripherals. We recommend the Active Cooler case for overclockers, since it provides better cooling performance.
 
 As the temperature of the Raspberry Pi 5 increases, the fan reacts in the following way:
 
