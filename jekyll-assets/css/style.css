@@ -238,6 +238,16 @@ div.subtitle p {
   font-size: 0.8em;
 }
 
+@media (prefers-color-scheme: dark) {
+  #docs-search .search-trigger {
+    color: #888;
+  }
+}
+
+#kapa-widget-container {
+  color-scheme: light dark;
+}
+
 #main-window {
   display: flex;
   justify-content: center;
