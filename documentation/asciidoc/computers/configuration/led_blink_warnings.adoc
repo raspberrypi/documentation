@@ -6,60 +6,129 @@ On-board LEDs on Raspberry Pi devices provide a simple way to monitor system sta
 
 Different Raspberry Pi models use different LED hardware configurations, and their exact behaviour and configurability differs accordingly.
 
-* Raspberry Pi 1 (models A, B, A+ and B+), 2, 3, and 4 use two distinct LEDs:
-** Red for power (`PWR`), indicating normal operation with a stable 5 V power supply. The red LED is off or flickering when there is undervoltage.
-** Green for storage activity (`ACT`), indicating no storage activity when off, card access in progress when flashing, a series of short flashes after `sudo poweroff` to indicate that it's now safe to remove the USB PSU cable.
-* Raspberry Pi Zero, Zero W, and Zero 2 W use one green LED, which represents both power and storage activity. You can reconfigure the LED to prioritise either power indication or storage activity by following the instructions in <<led-zero>>.
-** The LED is lit when the board is powered on.
-** The LED flashes off briefly when there is storage activity.
-* Raspberry Pi 400 and 500 integrate status LEDs behind a single lens. Raspberry Pi 5 and 500+ have a power button that integrates status LEDs into the power button key.
-** Red
-*** Raspberry Pi 400: Power is being applied and the device is operating as expected. 
-*** Raspberry Pi 5 and 500+: The device is in the low-power standby state.
-** Green flashing for storage activity.
-** Orange for power and activity simultaneously.
+The following table provides a high-level summary of power and activity LEDs, organised by Raspberry Pi model. Raspberry Pi 400 and 500 have two additional LEDs, described in more detail after this table.
 
-NOTE: The power button on Raspberry Pi 5, 500, and 500+ allows the computer to enter a soft-off state. In this state, the CPU and most system activity stops, but the power rails remain active and the system can be restarted by pressing the power button again, or by removing and restoring power as normal.
+[[power-leds]]
+.Power and activity LEDs by Raspberry Pi model
+[cols="1,1,1,1",options="header"]
+|===
+| Models
+| LED count
+| LED colours
+| MicroSD card activity indication
+
+
+| Raspberry Pi 1, 2, 3, and 4
+| 2 (1 power LED and 1 activity LED)
+| Red and green
+| Green LED flashes during activity
+
+| Raspberry Pi Zero series
+| 1
+| Green
+| LED flashes off during activity
+
+| Raspberry Pi 400
+| 1
+| Green
+| No activity indication
+
+| Raspberry Pi 5, 500, 500+
+| 1 bi-colour power and activity LED
+| Red or green depending on activity
+| Green LED flashes off during microSD activity
+
+|===
+
+==== Raspberry Pi 1, 2, 3, and 4 LEDs
+
+Raspberry Pi 1, 2, 3, and 4 use two distinct LEDs:
+
+* Red for power (`PWR`), indicating normal operation with a stable 5 V power supply. The red LED is off or flickering when there is undervoltage.
+* Green for microSD card activity (`ACT`), indicating no storage activity when off and microSD card access in progress when flashing.
+
+When shutting down one of these Raspberry Pi models, the green activity LED briefly displays a series of short flashes to indicate that it's now safe to remove the USB PSU cable.
+
+==== Raspberry Pi Zero LEDs
+
+Raspberry Pi Zero, Zero W, and Zero 2 W use one green LED, which represents both power and microSD card activity. You can configure the LED to either:
+
+** Flash off briefly when there is microSD card activity. This is the default behaviour.
+** Remain lit when the board is powered on regardless of microSD card activity.
+
+For instructions, see <<led-zero>>.
+
+==== Raspberry Pi 400 LEDs
+
+Raspberry Pi 400 has a single green power LED alongside two keyboard-specific indicator lights in the following order:
+
+* A num-lock LED, indicated on the keyboard with the number *1* inside a square.
+* A caps-lock LED, indicated on the keyboard with the capital letter *A* inside a square.
+* A power LED (described in <<power-leds>>), indicated on the keyboard with a power symbol. This LED illuminates when power is applied and remains lit while the system is powered on. After the system has been shut down, all LEDs turn off.
+
+For more detailed information about Raspberry Pi 400, see xref:keyboard-computers.adoc[Keyboard computers].
+
+==== Raspberry Pi 500 LEDs
+
+Raspberry Pi 500 uses a bi-colour (red and green) LED located above and to the left of the power key to indicate power and activity. It is located alongside two other indicator lights in the following order:
+
+* A user-programmable LED, indicated on the keyboard with an icon consisting of a circle, square, and triangle. Its function isn't hardwired to system events, which means you can use the LED as a status light for your custom projects, for example, notification alerts and process indicators. For instructions, see <<led-keyboard>>.
+* A caps-lock LED, indicated on the keyboard with the capital letter *A* inside a square.
+* A bi-colour power LED (described in <<power-leds>>), indicated on the keyboard with a power symbol. This LED:
+    ** Illuminates red when power is first applied.
+    ** Changes to green as firmware startup progresses.
+    ** Remains green while the system is running.
+    ** Flashes off to indicate storage activity when booting from the microSD card.
+
+After the operating system has been shut down, the LED changes to red to indicate the low-power standby state.
+
+NOTE: The power key on Raspberry Pi 500 allows the computer to enter a soft-off state. In this state, the CPU and most system activity stops, but the power rails remain active and the system can be restarted by pressing the power key again, or by removing and restoring power as normal.
+
+For more detailed information about Raspberry Pi 500, see xref:keyboard-computers.adoc[Keyboard computers].
+
+==== Raspberry Pi 5 and 500+ LEDs
+
+Raspberry Pi 5 and 500+ use a bi-colour (red and green) system to indicate power and activity.
+
+On Raspberry Pi 5, the power LED is located next to the power button; if assembled into a Raspberry Pi 5 case, the power button and LED appear integrated behind a single pressable lens.
+
+On Raspberry Pi 500+, the power LED is located underneath the power key.
+
+On both Raspberry Pi 5 and 500+, the bi-colour power LED (described in <<power-leds>>):
+
+    ** Illuminates red when power is first applied.
+    ** Changes to green as firmware startup progresses.
+    ** Remains green while the system is running.
+    ** Flashes off to indicate microSD card activity. It doesn't flash if you're booting from the internal SSD on a Raspberry Pi 500+, or from an SSD on an M.2 HAT+ on a Raspberry Pi 5.
+
+After the operating system has been shut down, the LED changes to red to indicate the low-power standby state.
+
+NOTE: The power button on Raspberry Pi 5 and the power key on Raspberry Pi 500+ allows the computer to enter a soft-off state. In this state, the CPU and most system activity stops, but the power rails remain active and the system can be restarted by pressing the power button or key again, or by removing and restoring power as normal.
+
+For more detailed information about Raspberry Pi 500+, see xref:keyboard-computers.adoc[Keyboard computers].
 
 [[led-zero]]
 === Change LED behaviour on Raspberry Pi Zero
-Raspberry Pi Zero, Zero W, and Zero 2 W have a single power LED for indicating power and storage activity. 
+Raspberry Pi Zero, Zero W, and Zero 2 W have a single power LED for indicating power and storage activity.
 
-You can use the interactive `raspi-config` TUI to change the behaviour of the power LED on your Raspberry Pi Zero, Zero W, or Zero 2 W.
-
-You can also choose whether the LED is prioritised to flash for disk activity or is illuminated at all times while the device is on.
-
-To change the power LED priority using the interactive `raspi-config` TUI:
+You can use the interactive `raspi-config` TUI to change the behaviour of the power LED on your Raspberry Pi Zero, Zero W, or Zero 2 W:
 
 . Open the Terminal and run `sudo raspi-config`.
 . Use the keyboard to navigate to and select `1 System Options > S8 Power LED`.
 . Select `Yes` or `No` in response to the question *Would you like the power LED to flash during disk activity?*
-** Selecting `Yes` prioritises having a flashing LED when there's storage activity.
+** Selecting `Yes` configures the LED to flash when there's storage activity.
 ** Selecting `No` keeps the LED lit when the board is powered on.
 . Select `<OK>` to confirm this choice and then `<Finish>` when you're done.
 
 [[led-keyboard]]
-=== Configure keyboard computer LEDs
-Raspberry Pi 400 and 500 have three LEDs.
+=== Configure Raspberry Pi 500 LEDs
 
-On a *Raspberry Pi 400*, these LEDs are:
-
-* A num-lock LED, indicated with the number *1* inside a square.
-* A caps-lock LED, indicated with the capital letter *A* inside a square.
-* A dual status LED (described in <<prerequisite-led>>).
-
-On a *Raspberry Pi 500*, these LEDs are:
-
-* A user-programmable LED, indicated with an icon consisting of a circle, square, and triangle. Its function isn't hardwired to system events, which means you can use the LED as a status light for your custom projects, for example, notification alerts and process indicators.
-* A caps-lock LED, indicated with the capital letter *A* inside a square.
-* A dual status LED (described in <<prerequisite-led>>).
-
-The user-configurable LED can be controlled through the `pinctrl` tool, which is used to interact with GPIO pins and peripherals.
+The user-configurable LED on Raspberry Pi 500 can be controlled through the `pinctrl` tool, which is used to interact with GPIO pins and peripherals.
 
 * `pinctrl USER_LED op dh` turns the user LED on.
 * `pinctrl USER_LED op dl` turns the user LED off.
 
-You can also also use Python to call `pinctrl`:
+You can also use Python to call `pinctrl`:
 
 [source,python]
 ----
