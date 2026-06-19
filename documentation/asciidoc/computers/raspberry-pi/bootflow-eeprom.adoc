@@ -12,15 +12,15 @@ The boot flow for the ROM (first stage) is as follows:
 * If `nRPIBOOT` GPIO is high or OTP does NOT define `nRPIBOOT` GPIO
  ** Check OTP to see if `recovery.bin` can be loaded from SD/EMMC
   *** If SD recovery.bin is enabled then check primary SD/EMMC for `recovery.bin`
-   **** Success - run `recovery.bin` and update the SPI EEPROM
-   **** Fail - continue
+   **** Success – run `recovery.bin` and update the SPI EEPROM
+   **** Fail – continue
  ** Check SPI EEPROM for second stage loader
-  *** Success - run second stage bootloader
-  *** Fail - continue
+  *** Success – run second stage bootloader
+  *** Fail – continue
 * While True
  ** Attempt to load `recovery.bin` from xref:compute-module.adoc#flash-compute-module-emmc[USB device boot]
-  *** Success - run `recovery.bin` and update the SPI EEPROM or switch to USB mass storage device mode
-  *** Fail - retry USB device boot
+  *** Success – run `recovery.bin` and update the SPI EEPROM or switch to USB mass storage device mode
+  *** Fail – retry USB device boot
 
 NOTE: `recovery.bin` is a minimal second stage program used to reflash the bootloader SPI EEPROM image.
 
@@ -47,8 +47,8 @@ Please see the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[boot
   *** Display start.elf not found xref:configuration.adoc#led-warning-flash-codes[error pattern] and wait forever.
  ** Else if boot-mode == `SD CARD`
   *** Attempt to load firmware from the SD card
-   **** Success - run the firmware
-   **** Failure - continue
+   **** Success – run the firmware
+   **** Failure – continue
  ** Else if boot-mode == `NETWORK` then
   *** Use DHCP protocol to request IP address
   *** Load firmware from the DHCP or statically defined TFTP server
@@ -59,15 +59,15 @@ Please see the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[boot
    **** If a new mass storage device is found then
     ***** For each drive (LUN)
      ****** Attempt to load firmware
-      ******* Success - run the firmware
-      ******* Failed - advance to next LUN
+      ******* Success – run the firmware
+      ******* Failed – advance to next LUN
  ** Else if boot-mode == `NVME` then
   *** Scan PCIe for an NVMe device and if found
    **** Attempt to load firmware from the NVMe device
-    ***** Success - run the firmware
-    ***** Failure - continue
+    ***** Success – run the firmware
+    ***** Failure – continue
  ** Else if boot-mode == `RPIBOOT` then
-  *** Attempt to load firmware using USB device mode from the USB OTG port - see https://github.com/raspberrypi/usbboot[USB boot]. There is no timeout for `RPIBOOT` mode.
+  *** Attempt to load firmware using USB device mode from the USB OTG port – see https://github.com/raspberrypi/usbboot[USB boot]. There is no timeout for `RPIBOOT` mode.
 
 NOTE: The bootloader may also be updated before the firmware is started if a `pieeprom.upd` file is found. See the xref:raspberry-pi.adoc#raspberry-pi-boot-eeprom[bootloader EEPROM] page for more information about bootloader updates.
 

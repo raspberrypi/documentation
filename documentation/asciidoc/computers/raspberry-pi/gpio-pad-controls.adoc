@@ -35,7 +35,7 @@ V~OH~=3.0V means that if the output is High, it will be >= 3.0V.
 
 As an example, a drive strength of 16mA means that if you set the pad high, you can draw up to 16mA, and the output voltage is guaranteed to be >=V~OH~. This also means that if you set a drive strength of 2mA and you draw 16mA, the voltage will *not* be V~OH~ but lower. In fact, it may not be high enough to be seen as high by an external device.
 
-There is more information on the xref:raspberry-pi.adoc#gpio[physical characteristics] of the GPIO pins. 
+There is more information on the xref:raspberry-pi.adoc#gpio[physical characteristics] of the GPIO pins.
 
 NOTE: On the Compute Module devices, it is possible to change the VDD IO from the standard 3.3V. In this case, V~OL~ and V~OH~ will change according to the table in the xref:raspberry-pi.adoc#gpio[GPIO] section.
 
@@ -62,7 +62,7 @@ All the electronics of the pads are designed for 16mA. This is a safe value unde
 
 | 23:5
 |
-| *Reserved* - Write as 0, read as don't care
+| *Reserved* – Write as 0, read as don't care
 |
 |
 

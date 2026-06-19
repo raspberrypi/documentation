@@ -159,7 +159,7 @@ Open your crontab for editing:
 $ crontab -e
 ----
 +
-Once you have the file open in an editor, add the following line to schedule an image capture every minute, replacing the `<username>` placeholder with the username of your primary user account:
+When you have the file open in an editor, add the following line to schedule an image capture every minute, replacing the `<username>` placeholder with the username of your primary user account:
 +
 ----
 * * * * * /home/<username>/timelapse.sh 2>&1
@@ -177,7 +177,7 @@ To stop recording images for the time lapse, run `crontab -e` again and remove t
 
 ===== Stitch images together
 
-Once you have a series of time lapse photos, you probably want to combine them into a video. Use `ffmpeg` to do this on a Raspberry Pi.
+When you have a series of time lapse photos, you probably want to combine them into a video. Use `ffmpeg` to do this on a Raspberry Pi.
 
 First, install `ffmpeg`:
 

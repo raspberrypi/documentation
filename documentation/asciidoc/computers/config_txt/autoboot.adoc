@@ -9,7 +9,7 @@ This can also be used in conjunction with the `tryboot` feature to implement A/B
 See also xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] boot flow.
 
 === `boot_partition`
-Specifies the partition number for booting unless the partition number was already specified as a parameter to the `reboot` command (e.g. `sudo reboot 2`).
+Specifies the partition number for booting unless the partition number was already specified as a parameter to the `reboot` command (for example, `sudo reboot 2`).
 
 Partition numbers start at `1` and the MBR partitions are `1` to `4`. Specifying partition `0` means boot from the `default` partition which is the first bootable FAT partition.
 
@@ -57,10 +57,10 @@ boot_partition=3
   *** The `Update Service` validates the system to verify that the update was successful
   *** If the update was successful
    **** Replace `autoboot.txt` swapping the `boot_partition` configuration
-   **** Normal reboot - partition 3 is now the default boot partition
+   **** Normal reboot – partition 3 is now the default boot partition
   *** Else
-   **** `Update Service` marks the update as failed e.g. it removes the update files.
-   **** Normal reboot - partition 2 is still the default boot partition because the `tryboot` flag is automatically cleared
+   **** `Update Service` marks the update as failed, for example, it removes the update files.
+   **** Normal reboot – partition 2 is still the default boot partition because the `tryboot` flag is automatically cleared
   *** End if
  ** End If
 * End If

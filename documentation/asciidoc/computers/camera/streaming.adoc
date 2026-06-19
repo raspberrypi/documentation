@@ -90,7 +90,7 @@ If you want to see a preview window on the server, just drop the `-n` option (se
 
 === `libav` and Audio
 
-We have already been using `libav` as the backend for network streaming. `libav` allows us to add an audio stream, so long as we're using a format - like the MPEG-2 Transport Stream - that permits audio data.
+We have already been using `libav` as the backend for network streaming. `libav` allows us to add an audio stream, so long as we're using a format – like the MPEG-2 Transport Stream – that permits audio data.
 
 We can take one of our previous commands, like the one for streaming an MPEG-2 Transport Stream over TCP, and simply add the `--libav-audio` option:
 

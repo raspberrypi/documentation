@@ -39,7 +39,7 @@ pico_sdk_init()
 
 Go ahead and write your code, see https://github.com/raspberrypi/pico-examples[pico-examples] or the https://pip.raspberrypi.com/documents/RP-009085-KB[Raspberry Pi Pico C/{cpp} SDK] book for more information on how to go about that.
 
-About the simplest you can do is a single source file (e.g. `hello_world.c`)
+About the simplest you can do is a single source file (for example, `hello_world.c`)
 
 [source,c]
 ----
@@ -78,9 +78,9 @@ $ cd build
 $ cmake ..
 ----
 
-When building for a board other than the Raspberry Pi Pico, you should pass `-DPICO_BOARD=board_name` to the cmake command above, e.g. cmake `-DPICO_BOARD=pico_w ..` to configure the SDK and build options accordingly for that particular board.
+When building for a board other than the Raspberry Pi Pico, you should pass `-DPICO_BOARD=board_name` to the cmake command above, for example, cmake `-DPICO_BOARD=pico_w ..` to configure the SDK and build options accordingly for that particular board.
 
-Doing so sets up various compiler defines (e.g. default pin numbers for UART and other hardware) and in certain cases also enables the use of additional libraries (e.g. wireless support when building for `PICO_BOARD=pico_w`) which cannot be built without a board which provides the requisite functionality.
+Doing so sets up various compiler defines (for example, default pin numbers for UART and other hardware) and in certain cases also enables the use of additional libraries (for example, wireless support when building for `PICO_BOARD=pico_w`) which cannot be built without a board which provides the requisite functionality.
 
 For a list of boards defined in the SDK itself, look in https://github.com/raspberrypi/pico-sdk/blob/master/src/boards/include/boards[this directory] which has a header for each named board.
 

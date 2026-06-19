@@ -84,7 +84,7 @@ X11 enables graphical applications over SSH. Pass the `-Y` flag to forward an X 
 $ ssh -Y <username>@<ip address>
 ----
 
-Once authenticated, you will see the command line as usual. However, you can also open graphical windows that an X server can render for you. For example, type the following command to launch a https://www.geany.org/[Geany] window:
+When authenticated, you see the command line as usual. However, you can also open graphical windows that an X server can render for you. For example, type the following command to launch a https://www.geany.org/[Geany] window:
 
 [source,console]
 ----

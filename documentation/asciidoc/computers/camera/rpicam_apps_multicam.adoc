@@ -24,7 +24,7 @@ Clients and servers need to be set running at the same nominal framerate (such a
 
 In normal operation, running the same make of camera on the same Raspberry Pi, we would expect the frame start times of the camera images to match within "several tens of microseconds". When the camera models are different this could be significantly larger as the cameras will probably not be able to match framerates exactly and will therefore be continually drifting apart (and brought back together with every timing message).
 
-When cameras are on different devices, the system clocks should be synchronised using NTP (normally the case by default for Raspberry Pi OS), or if this is insufficiently precise, another protocol like PTP might be used. Any discrepancy between system clocks will feed directly into extra error in frame start times - even though the advertised timestamps on the frames will not tell you.
+When cameras are on different devices, the system clocks should be synchronised using NTP (normally the case by default for Raspberry Pi OS), or if this is insufficiently precise, another protocol like PTP might be used. Any discrepancy between system clocks will feed directly into extra error in frame start times – even though the advertised timestamps on the frames will not tell you.
 
 **The Server**
 
@@ -50,7 +50,7 @@ First we should start the client:
 $ rpicam-vid -n -t 20s --camera 1 --codec libav -o client.mp4 --sync client
 ----
 
-Note the `--sync client` parameter. This will record for 20 seconds but _only_ once the synchronisation point has been reached. If necessary, it will wait indefinitely for the first server message.
+Note the `--sync client` parameter. This will record for 20 seconds but _only_ after the synchronisation point has been reached. If necessary, it will wait indefinitely for the first server message.
 
 To start the server:
 [source,console]
@@ -65,4 +65,4 @@ The server's broadcast address and port, the frequency of the timing messages an
 In practical operation there are a few final points to be aware of:
 
 * The fixed framerate needs to be below the maximum framerate at which the camera can operate (in the camera mode that is being used). This is because the synchronisation algorithm may need to _shorten_ camera frames so that clients can catch up with the server, and this will fail if it is already running as fast as it can.
-* Whilst camera frames should be correctly synchronised, at higher framerates or depending on system load, it is possible for frames, either on the clients or server, to be dropped. In these cases the frame timestamps will help an application to work out what has happened, though it's usually simpler to try and avoid frame drops - perhaps by lowering the framerate, increasing the number of buffers being allocated to the camera queues (see the xref:camera_software.adoc#buffer-count[`--buffer-count` option]), or reducing system load.
+* Whilst camera frames should be correctly synchronised, at higher framerates or depending on system load, it is possible for frames, either on the clients or server, to be dropped. In these cases the frame timestamps will help an application to work out what has happened, though it's usually simpler to try and avoid frame drops – perhaps by lowering the framerate, increasing the number of buffers being allocated to the camera queues (see the xref:camera_software.adoc#buffer-count[`--buffer-count` option]), or reducing system load.

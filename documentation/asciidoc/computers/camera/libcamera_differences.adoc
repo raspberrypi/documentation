@@ -22,7 +22,7 @@ xref:camera_software.adoc#post-processing-with-rpicam-apps[Post-processing] repl
 * `rpicam-apps` removed xref:camera_software.adoc#rotation[`rotation`] option support for 90° and 270° rotations.
 
 * `raspicam` conflated metering and exposure; `rpicam-apps` separates these options.
-* To disable Auto White Balance (AWB) in `rpicam-apps`, set a pair of colour gains with xref:camera_software.adoc#awbgains[`awbgains`] (e.g. `1.0,1.0`).
+* To disable Auto White Balance (AWB) in `rpicam-apps`, set a pair of colour gains with xref:camera_software.adoc#awbgains[`awbgains`] (for example, `1.0,1.0`).
 
 * `rpicam-apps` cannot set Auto White Balance (AWB) into greyworld mode for NoIR camera modules. Instead, pass the xref:camera_software.adoc#tuning-file[`tuning-file`] option a NoIR-specific tuning file like `imx219_noir.json`.
 

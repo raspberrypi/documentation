@@ -6,16 +6,13 @@
   --brand-colour: #cd2355;
   --code-bg-colour: #f7f8fa;
   --code-bg-colour-transparent: rgba(247, 248, 250, 0.9);
-  --tab-bg-colour: #eff1f6;
+  --tab-bg-colour: #eae8f0;
   --toc-hover-colour: #fff;
   --subtle: #707070;
   --less-subtle: #333;
   --home: #cd2355;
   --rp2040-context-tag: #50C878;
   --accent: #cd2355;
-  --docsearch-primary-color: var(--accent);
-  --docsearch-logo-color: var(--red-tint);
-  --docsearch-muted-color: #333;
   --copy-button-bg: #f6f6f6;
   --copy-button-text: #444;
   --textcolor: black;
@@ -55,9 +52,6 @@
     --home: #cd2355;
     --rp2040-context-tag: #50C878;
     --accent: #d75a64;
-    --docsearch-primary-color: var(--accent);
-    --docsearch-logo-color: var(--red-tint);
-    --docsearch-muted-color: #333;
     --copy-button-bg: #707070;
     --copy-button-text: #CCC;
     --textcolor: white;
@@ -205,12 +199,53 @@ div.subtitle p {
   padding: 5px;
 }
 
-#docsearch .DocSearch-Button {
-  margin-top: 6px;
-  margin-left: auto;
-  margin-right: auto;
+/* Styled search box that opens the Kapa widget */
+#docs-search .search-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px auto 0;
   width: 100%;
+  height: 40px;
+  padding: 0 12px;
   border: 1px solid var(--accent);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--subtle);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+#docs-search .search-trigger:hover {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+#docs-search .search-trigger-icon {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+#docs-search .search-trigger-text {
+  flex-grow: 1;
+}
+
+#docs-search .search-trigger-key {
+  flex-shrink: 0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--near-bg);
+  font-size: 0.8em;
+}
+
+@media (prefers-color-scheme: dark) {
+  #docs-search .search-trigger {
+    color: #888;
+  }
+}
+
+#kapa-widget-container {
+  color-scheme: light dark;
 }
 
 #main-window {
@@ -289,14 +324,14 @@ pre {
   color: var(--subtle-text);
 }
 
-#toc-container #docsearch {
+#toc-container #docs-search {
   margin-left: 5px;
   margin-right: 5px;
   padding-bottom: 5px;
   align-content: center;
 }
 
-#docsearch {
+#docs-search {
   flex-grow: 1;
 }
 
@@ -1426,9 +1461,14 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
   }
 
   /* make the docs search button slightly less aggressively large */
-  #docsearch .DocSearch-Button {
+  #docs-search .search-trigger {
     max-width: 50%;
     float: right;
+  }
+
+  /* no Cmd+K on touch devices, so drop the keyboard hint on mobile */
+  #docs-search .search-trigger-key {
+    display: none;
   }
 
   /* no need for box shadow in mobile mode */
@@ -1514,7 +1554,7 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
     display: flex;
   }
 
-  #docsearch {
+  #docs-search {
     flex-grow: 3;
   }
 

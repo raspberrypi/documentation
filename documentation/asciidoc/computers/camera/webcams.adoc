@@ -155,7 +155,7 @@ First, open the cron table for editing:
 $ crontab -e
 ----
 
-Once you have the file open in an editor, add the following line to the schedule to take a picture every minute, replacing `<username>` with your username:
+When you have the file open in an editor, add the following line to the schedule to take a picture every minute, replacing `<username>` with your username:
 
 [,bash]
 ----

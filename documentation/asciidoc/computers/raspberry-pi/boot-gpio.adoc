@@ -2,7 +2,7 @@
 
 NOTE: GPIO boot mode is only available on the Raspberry Pi 3A+, 3B, 3B+, Compute Module 3 and 3+.
 
-Earlier Raspberry Pis can be configured to allow the boot mode to be selected at power-on using hardware attached to the GPIO connector. This is done by setting bits in the OTP memory of the SoC. Once the bits are set, they permanently allocate five GPIOs to allow this selection to be made. Once the OTP bits are set, they cannot be unset. You should think carefully about enabling this, since those five GPIO lines will always control booting. Although you can use the GPIOs for some other function once the Raspberry Pi has booted, you must set them up so that they enable the desired boot modes when the Raspberry Pi boots.
+Earlier Raspberry Pis can be configured to allow the boot mode to be selected at power-on using hardware attached to the GPIO connector. This is done by setting bits in the OTP memory of the SoC. When the bits are set, they permanently allocate five GPIOs to allow this selection to be made. After the OTP bits are set, they cannot be unset. You should think carefully about enabling this, since those five GPIO lines will always control booting. Although you can use the GPIOs for some other function when the Raspberry Pi has booted, you must set them up so that they enable the desired boot modes when the Raspberry Pi boots.
 
 To enable GPIO boot mode, add the following line to the `config.txt` file:
 
@@ -11,9 +11,9 @@ To enable GPIO boot mode, add the following line to the `config.txt` file:
 program_gpio_bootmode=n
 ----
 
-Where `n` is the bank of GPIOs which you wish to use. Then reboot the Raspberry Pi once to program the OTP with this setting. Bank 1 is GPIOs 22-26, Bank 2 is GPIOs 39-43. Unless you have a Compute Module, you must use bank 1: the GPIOs in Bank 2 are only available on the Compute Module. Because of the way the OTP bits are arranged, if you first program GPIO boot mode for Bank 1, you then have the option of selecting Bank 2 later. The reverse is not true: once Bank 2 has been selected for GPIO boot mode, you cannot select Bank 1.
+Where `n` is the bank of GPIOs which you wish to use. Then reboot the Raspberry Pi once to program the OTP with this setting. Bank 1 is GPIOs 22-26, Bank 2 is GPIOs 39-43. Unless you have a Compute Module, you must use bank 1: the GPIOs in Bank 2 are only available on the Compute Module. Because of the way the OTP bits are arranged, if you first program GPIO boot mode for Bank 1, you then have the option of selecting Bank 2 later. The reverse is not true: when Bank 2 has been selected for GPIO boot mode, you cannot select Bank 1.
 
-Once GPIO boot mode is enabled, the Raspberry Pi will no longer boot. You must pull up at least one boot-mode GPIO pin in order for the Raspberry Pi to boot.
+When GPIO boot mode is enabled, the Raspberry Pi no longer boots. You must pull up at least one boot-mode GPIO pin in order for the Raspberry Pi to boot.
 
 === Pin assignments
 
@@ -74,14 +74,14 @@ USB in the table above selects both USB device boot mode and USB host boot mode.
 
 | 25
 | 42
-| USB host - mass storage device
+| USB host – mass storage device
 
 | 26
 | 43
-| USB host - Ethernet
+| USB host – Ethernet
 |===
 
-NOTE: The various boot modes are attempted in the numerical order of the GPIO lines, i.e. SD0, then SD1, then NAND and so on.
+NOTE: The various boot modes are attempted in the numerical order of the GPIO lines: SD0, then SD1, then NAND, and so on.
 
 === Boot flow
 

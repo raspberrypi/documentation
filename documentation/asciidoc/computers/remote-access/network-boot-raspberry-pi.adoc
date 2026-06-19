@@ -1,6 +1,6 @@
 == Network boot your Raspberry Pi
 
-You can set up a DHCP/TFTP server which will allow you to boot a Raspberry Pi 3 or 4 from the network. 
+You can set up a DHCP/TFTP server which allows you to boot a Raspberry Pi 3 or later from the network.
 
 The instructions assume that you have an existing home network, and that you want to use a Raspberry Pi for the *server*. You will also need an additional Raspberry Pi 3 or 4 as a *client* to be booted. Only one SD Card is needed because the client will be booted from the server after the initial client configuration.
 
@@ -12,7 +12,7 @@ NOTE: Due to the huge range of networking devices and routers available, we can'
 
 NOTE: This section only applies to the Raspberry Pi 3 Model B, as network boot is enabled on the Raspberry Pi 3 Model B+ at the factory.
 
-Before the Raspberry Pi 3 Model B will network boot it needs to be booted from an SD Card with a config option to enable USB boot mode. This will set a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. Once this is done, the Raspberry Pi 3B will attempt to boot from USB, and from the network, if it cannot boot from the SD card.
+Before the Raspberry Pi 3 Model B can network boot it needs to be booted from an SD card with a config option to enable USB boot mode. This sets a bit in the OTP (One Time Programmable) memory in the Raspberry Pi SoC that enables network booting. When this is done, the Raspberry Pi 3B attempts to boot from USB, and from the network, if it can't boot from the SD card.
 
 Install Raspberry Pi OS Lite, or Raspberry Pi OS with desktop, on the SD card in the usual fashion. Next, enable USB boot mode with the following command:
 
@@ -21,7 +21,7 @@ Install Raspberry Pi OS Lite, or Raspberry Pi OS with desktop, on the SD card in
 $ echo program_usb_boot_mode=1 | sudo tee -a /boot/firmware/config.txt
 ----
 
-This adds `program_usb_boot_mode=1` to the end of xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]. Reboot the Raspberry Pi with `sudo reboot`. Once the client Raspberry Pi has rebooted, check that the OTP has been programmed with:
+This adds `program_usb_boot_mode=1` to the end of xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]. Reboot the Raspberry Pi with `sudo reboot`. After the client Raspberry Pi has rebooted, check that the OTP has been programmed with:
 
 [source,console]
 ----
@@ -49,7 +49,7 @@ Network boot can be enabled on the Raspberry Pi 4 using the `raspi-config` tool.
 $ sudo raspi-config
 ----
 
-Within `raspi-config`, choose `Advanced Options`, then `Boot Order`, then `Network Boot`. You must then reboot the device for the change to the boot order to be programmed into the bootloader EEPROM. Once the Raspberry Pi has rebooted, check that the boot order is now `0xf21`:
+Within `raspi-config`, choose `Advanced Options`, then `Boot Order`, then `Network Boot`. You must then reboot the device for the change to the boot order to be programmed into the bootloader EEPROM. Atfer the Raspberry Pi reboots, check that the boot order is now `0xf21`:
 
 [source,console]
 ----

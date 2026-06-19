@@ -28,9 +28,9 @@ To disable, set `display_auto_detect=0` (or remove `display_auto_detect=1`).
 
 ==== `dtoverlay`
 
-The `dtoverlay` option requests the firmware to load a named Device Tree overlay - a configuration file that can enable kernel support for built-in and external hardware. For example, `dtoverlay=vc4-kms-v3d` loads an overlay that enables the kernel graphics driver.
+The `dtoverlay` option requests the firmware to load a named Device Tree overlay – a configuration file that can enable kernel support for built-in and external hardware. For example, `dtoverlay=vc4-kms-v3d` loads an overlay that enables the kernel graphics driver.
 
-As a special case, if called with no value - `dtoverlay=` - the option marks the end of a list of overlay parameters. If used before any other `dtoverlay` or `dtparam` setting, it prevents the loading of any HAT overlay.
+As a special case, if called with no value – `dtoverlay=` – the option marks the end of a list of overlay parameters. If used before any other `dtoverlay` or `dtparam` setting, it prevents the loading of any HAT overlay.
 
 For more details, see xref:configuration.adoc#part3.1[DTBs, overlays and config.txt].
 

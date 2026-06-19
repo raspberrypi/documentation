@@ -20,8 +20,7 @@
                 <div class="mobile-menu-toggle-inner"></div>
               </label>
             </div>
-            <div id="docsearch" role="search">
-            </div>
+            {% include search.html %}
           </div>
           <div class="toc" role="navigation">
           {% for subdir in site.data.nav %}
@@ -168,7 +167,6 @@
           });
         </script>
 
-        {% include search.html %}
       </div>
     </div>
   </body>

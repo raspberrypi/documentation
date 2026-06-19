@@ -80,7 +80,7 @@ Get the UUID of the disk partition:
 $ sudo blkid
 ----
 
-Find the disk partition from the list and note the UUID. (For example, `5C24-1453`.) Open the fstab file using a command line editor such as nano:
+Find the disk partition from the list and note the UUID (for example, `5C24-1453`). Open the `fstab` file using a command line editor such as nano:
 
 [source,console]
 ----
@@ -96,7 +96,7 @@ UUID=5C24-1453 /mnt/mydisk fstype defaults,auto,users,rw,nofail 0 0
 
 Replace `fstype` with the type of your file system, which you found when you went through the steps above, for example: `ntfs`.
 
-If the filesystem type is FAT or NTFS, add `,umask=000` immediately after `nofail` - this will allow all users full read/write access to every file on the storage device.
+If the filesystem type is FAT or NTFS, add `,umask=000` immediately after `nofail` – this will allow all users full read/write access to every file on the storage device.
 
 Now that you have set an entry in `fstab`, you can start up your Raspberry Pi with or without the storage device attached. Before you unplug the device you must either shut down the Raspberry Pi, or manually unmount it.
 

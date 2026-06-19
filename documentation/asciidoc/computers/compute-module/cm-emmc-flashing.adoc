@@ -115,7 +115,7 @@ Alternatively, use `dd` to write a raw OS image (such as xref:../computers/os.ad
 $ sudo dd if=raw_os_image.img of=/dev/sdX bs=4MiB
 ----
 
-Once the image has been written, disconnect and reconnect the Compute Module. You should now see two partitions (for Raspberry Pi OS):
+After the image has been written, disconnect and reconnect the Compute Module. You now see two partitions (for Raspberry Pi OS):
 
 [source,console]
 ----

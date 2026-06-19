@@ -46,7 +46,7 @@ $ sudo reboot
 
 == Run example applications
 
-Once all the system packages are updated and firmware files installed, we can start running some example applications. As mentioned earlier, the Raspberry Pi AI Camera integrates fully with `libcamera`, `rpicam-apps`, and `Picamera2`.
+After all the system packages are updated and firmware files installed, we can start running some example applications. As mentioned earlier, the Raspberry Pi AI Camera integrates fully with `libcamera`, `rpicam-apps`, and `Picamera2`.
 
 === `rpicam-apps`
 

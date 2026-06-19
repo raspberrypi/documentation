@@ -58,9 +58,9 @@ Each GPIO pin, when configured as a general-purpose input, can be configured as 
 * Rising/falling edge
 * Asynchronous rising/falling edge
 
-Level interrupts maintain the interrupt status until the level has been cleared by system software (e.g. by servicing the attached peripheral generating the interrupt).
+Level interrupts maintain the interrupt status until the level has been cleared by system software (for example, by servicing the attached peripheral generating the interrupt).
 
-The normal rising/falling edge detection has a small amount of synchronisation built into the detection. At the system clock frequency, the pin is sampled with the criteria for generation of an interrupt being a stable transition within a three-cycle window, i.e. a record of 1 0 0 or 0 1 1. Asynchronous detection bypasses this synchronisation to enable the detection of very narrow events.
+The normal rising/falling edge detection has a small amount of synchronisation built into the detection. At the system clock frequency, the pin is sampled with the criteria for generation of an interrupt being a stable transition within a three-cycle window, that is, a record of 1 0 0 or 0 1 1. Asynchronous detection bypasses this synchronisation to enable the detection of very narrow events.
 
 === Alternative functions
 
@@ -82,9 +82,9 @@ Some functions are available on all pins, others on specific pins:
 
 === Voltage specifications
 
-Two 5V pins and two 3.3V pins are present on the board, as well as a number of ground pins (GND), which can not be reconfigured. The remaining pins are all general-purpose 3.3V pins, meaning outputs are set to 3.3V and inputs are 3.3V-tolerant.
+Two 5V pins and two 3.3 V pins are present on the board, as well as a number of ground pins (GND), which can not be reconfigured. The remaining pins are all general-purpose 3.3 V pins, meaning outputs are set to 3.3 V and inputs are 3.3V-tolerant.
 
-The table below gives the various voltage specifications for the GPIO pins for BCM2835, BCM2836, BCM2837 and RP3A0-based products (e.g. Raspberry Pi Zero or Raspberry Pi 3+). For information about Compute Modules you should see the xref:compute-module.adoc#specifications[relevant datasheets].
+The table below gives the various voltage specifications for the GPIO pins for BCM2835, BCM2836, BCM2837 and RP3A0-based products (for example, Raspberry Pi Zero or Raspberry Pi 3+). For information about Compute Modules you should see the xref:compute-module.adoc#specifications[relevant datasheets].
 
 |===
 | Symbol | Parameter | Conditions &emsp; | Min | Typical | Max | Unit

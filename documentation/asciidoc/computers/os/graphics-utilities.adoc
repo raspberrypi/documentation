@@ -120,7 +120,7 @@ This returns the current frequency of the specified clock. Accepts the following
 | Display Parallel Interface
 |===
 
-e.g. `vcgencmd measure_clock arm`
+For example, `vcgencmd measure_clock arm`
 
 ==== `measure_volts [block]`
 

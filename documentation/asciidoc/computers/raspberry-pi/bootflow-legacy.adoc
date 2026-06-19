@@ -12,11 +12,11 @@ Next, the boot ROM checks each of the boot sources for a file called `bootcode.b
 * Read OTP to determine which boot modes to enable
 * If GPIO boot mode enabled, use GPIO boot mode to refine list of enabled boot modes
 * If enabled: check primary SD for `bootcode.bin` on GPIO 48-53
- ** Success - boot
- ** Fail - timeout (five seconds)
+ ** Success – boot
+ ** Fail – timeout (five seconds)
 * If enabled: check secondary SD
- ** Success - boot
- ** Fail - timeout (five seconds)
+ ** Success – boot
+ ** Fail – timeout (five seconds)
 * If enabled: check NAND
 * If enabled: check SPI
 * If enabled: check USB
@@ -47,10 +47,10 @@ Next, the boot ROM checks each of the boot sources for a file called `bootcode.b
 * The LAN951x is detected using the Vendor ID `0x0424` and Product ID `0xec00`: this is different to the standalone LAN9500 device, which has a product ID of `0x9500` or `0x9e00`.  To use the standalone LAN9500, an I2C EEPROM would need to be added to change these IDs to match the LAN951x.
 ====
 
-The primary SD card boot mode is, as standard, set to be GPIOs 49-53. It is possible to boot from the secondary SD card on a second set of pins, i.e. to add a secondary SD card to the GPIO pins. However, we have not yet enabled this ability.
+The primary SD card boot mode is, as standard, set to be GPIOs 49-53. It is possible to boot from the secondary SD card on a second set of pins, that is, to add a secondary SD card to the GPIO pins. However, we have not yet enabled this ability.
 
 NAND boot and SPI boot modes do work, although they do not yet have full GPU support.
 
-The USB device boot mode is enabled by default at the time of manufacture, but the USB host boot mode is only enabled with `program_usb_boot_mode=1`. Once enabled, the processor will use the value of the OTGID pin on the processor to decide between the two modes. On any Raspberry Pi Model B/B+, the OTGID pin is driven to 0 and therefore will only boot via host mode once enabled (it is not possible to boot through device mode because the LAN951x device is in the way).
+The USB device boot mode is enabled by default at the time of manufacture, but the USB host boot mode is only enabled with `program_usb_boot_mode=1`. When enabled, the processor uses the value of the OTGID pin on the processor to decide between the two modes. On any Raspberry Pi Model B/B+, the OTGID pin is driven to 0 and therefore only boots through host mode when enabled (it isn't possible to boot through device mode because the LAN951x device is in the way).
 
 The USB will boot as a USB device on the Raspberry Pi Zero or Compute Module if the OTGID pin is left floating (when plugged into a PC for example), so you can push the `bootcode.bin` into the device. The `usbboot` code for doing this is https://github.com/raspberrypi/usbboot[available on GitHub].

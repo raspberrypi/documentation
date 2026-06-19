@@ -91,7 +91,7 @@ The `hdmi_pixel_encoding` command forces the pixel encoding mode. By default, it
 
 ==== `hdmi_max_pixel_freq`
 
-The pixel frequency is used by the firmware and KMS to filter HDMI modes. Note, this is not the same as the frame rate. It specifies the maximum frequency that a valid mode can have, thereby culling out higher frequency modes. So for example, if you wish to disable all 4K modes, you could specify a maximum frequency of 200000000, since all 4K modes have frequencies greater than this.
+The pixel frequency is used by the firmware and KMS to filter HDMI modes. Note, this is not the same as the frame rate. It specifies the maximum frequency that a valid mode can have, thereby culling out higher frequency modes. So, for example, if you wish to disable all 4K modes, you could specify a maximum frequency of 200000000, since all 4K modes have frequencies greater than this.
 
 ==== `hdmi_blanking`
 
@@ -1723,7 +1723,7 @@ Set `framebuffer_ignore_alpha` to `1` to disable the alpha channel. Can help wit
 
 ==== `framebuffer_priority`
 
-In a system with multiple displays, using the legacy (pre-KMS) graphics driver, this forces a specific internal display device to be the first Linux framebuffer (i.e. `/dev/fb0`).
+In a system with multiple displays, using the legacy (pre-KMS) graphics driver, this forces a specific internal display device to be the first Linux framebuffer (`/dev/fb0`).
 
 The options that can be set are:
 
@@ -1786,7 +1786,7 @@ Use `display_hdmi_rotate` to rotate or flip the HDMI display orientation. The de
 
 Note that the 90 and 270 degree rotation options require additional memory on the GPU, so these will not work with the 16 MB GPU split.
 
-You can combine the rotation settings with the flips by adding them together. You can also have both horizontal and vertical flips in the same way. E.g. A 180 degree rotation with a vertical and horizontal flip will be 0x20000 + 0x10000 + 2 = 0x30002.
+You can combine the rotation settings with the flips by adding them together. You can also have both horizontal and vertical flips in the same way. For example, a 180 degree rotation with a vertical and horizontal flip will be 0x20000 + 0x10000 + 2 = 0x30002.
 
 ==== `display_lcd_rotate`
 

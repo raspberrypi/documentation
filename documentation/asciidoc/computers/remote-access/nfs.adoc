@@ -193,7 +193,7 @@ A user's file access is determined by their membership of groups on the client, 
 
 ==== DNS (optional, only if using DNS)
 
-Add any client name and IP addresses to `/etc/hosts`. (The IP address of the server should already be there.) This ensures that NFS will still work even if DNS goes down. Alternatively you can rely on DNS if you want - it's up to you.
+Add any client name and IP addresses to `/etc/hosts`. (The IP address of the server should already be there.) This ensures that NFS will still work even if DNS goes down. Alternatively you can rely on DNS if you want – it's up to you.
 
 ==== NIS (optional, only if using NIS)
 
@@ -264,7 +264,7 @@ The example above shares `/home` and `/usr/local` to two clients with static IP 
 /usr/local 192.168.0.0/255.255.255.0(rw,sync,no_subtree_check)
 ----
 
-Here, `rw` makes the share read/write, and `sync` requires the server to only reply to requests once any changes have been flushed to disk. This is the safest option; `async` is faster, but dangerous. It is strongly recommended that you read `man exports` if you are considering other options.
+Here, `rw` makes the share read/write, and `sync` requires the server to only reply to requests after any changes have been flushed to disk. This is the safest option; `async` is faster, but dangerous. It is strongly recommended that you read `man exports` if you are considering other options.
 
 After setting up `/etc/exports`, export the shares:
 

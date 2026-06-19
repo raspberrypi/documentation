@@ -91,11 +91,11 @@ Default value: 5000 milliseconds (5 seconds)
 
 Specify how long the application runs before closing. This value is interpreted as a number of milliseconds unless an optional suffix is used to change the unit. The suffix may be one of:
 
-* `min` - minutes
-* `s` or `sec` - seconds
-* `ms` - milliseconds (the default if no suffix used)
-* `us` - microseconds
-* `ns` - nanoseconds.
+* `min` – minutes
+* `s` or `sec` – seconds
+* `ms` – milliseconds (the default if no suffix used)
+* `us` – microseconds
+* `ns` – nanoseconds.
 
 This time applies to both video recording and preview windows. When capturing a still image, the application shows a preview window for the length of time specified by the `timeout` parameter before capturing the output image.
 
@@ -206,10 +206,10 @@ For information about the bit-depth, resolution, and packing options available f
 
 Examples:
 
-* `4056:3040:12:P` - 4056×3040 resolution, 12 bits per pixel, packed.
-* `1632:1224:10` - 1632×1224 resolution, 10 bits per pixel.
-* `2592:1944:10:U` - 2592×1944 resolution, 10 bits per pixel, unpacked.
-* `3264:2448` - 3264×2448 resolution.
+* `4056:3040:12:P` – 4056×3040 resolution, 12 bits per pixel, packed.
+* `1632:1224:10` – 1632×1224 resolution, 10 bits per pixel.
+* `2592:1944:10:U` – 2592×1944 resolution, 10 bits per pixel, unpacked.
+* `3264:2448` – 3264×2448 resolution.
 
 ===== Packed format details
 
@@ -285,9 +285,9 @@ Default value: `off`
 
 Runs the camera in HDR mode. If passed without a value, assumes `auto`. Accepts one of the following values:
 
-* `off` - Disables HDR.
-* `auto` - Enables HDR on supported devices. Uses the sensor's built-in HDR mode if available. If the sensor lacks a built-in HDR mode, uses on-board HDR mode, if available.
-* `single-exp` - Uses on-board HDR mode, if available, even if the sensor has a built-in HDR mode. If on-board HDR mode is not available, disables HDR.
+* `off` – Disables HDR.
+* `auto` – Enables HDR on supported devices. Uses the sensor's built-in HDR mode if available. If the sensor lacks a built-in HDR mode, uses on-board HDR mode, if available.
+* `single-exp` – Uses on-board HDR mode, if available, even if the sensor has a built-in HDR mode. If on-board HDR mode is not available, disables HDR.
 
 Raspberry Pi 5 and later devices have an on-board HDR mode.
 
@@ -368,10 +368,10 @@ Default value: `centre`
 
 Sets the metering mode of the Automatic Exposure/Gain Control (AEC/AGC) algorithm. Accepts the following values:
 
-* `centre` - centre weighted metering
-* `spot` - spot metering
-* `average` - average or whole frame metering
-* `custom` - custom metering mode defined in the camera tuning file
+* `centre` – centre weighted metering
+* `spot` – spot metering
+* `average` – average or whole frame metering
+* `custom` – custom metering mode defined in the camera tuning file
 
 For more information on defining a custom metering mode, and adjusting region weights in existing metering modes, see the https://pip.raspberrypi.com/documents/RP-009070-TC[Tuning guide for the Raspberry Pi cameras and libcamera].
 
@@ -546,7 +546,7 @@ Sets the name of the file used to record images or video. Besides plaintext file
 
 Examples:
 
-* `rpicam-vid -t 100000 --segment 10000 -o chunk%04d.h264` records a 100 second file in 10 second segments, where each file includes an incrementing four-digit counter padded with leading zeros: e.g. `chunk0001.h264`, `chunk0002.h264`, etc.
+* `rpicam-vid -t 100000 --segment 10000 -o chunk%04d.h264` records a 100 second file in 10 second segments, where each file includes an incrementing four-digit counter padded with leading zeros: for example, `chunk0001.h264`, `chunk0002.h264`, etc.
 
 * `rpicam-vid -t 0 --inline -o udp://192.168.1.13:5000` streams H.264 video to network address 192.168.1.13 using UDP on port 5000.
 

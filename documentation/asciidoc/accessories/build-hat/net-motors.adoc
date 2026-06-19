@@ -49,7 +49,7 @@ Console.WriteLine("Stop the train");
 train.Stop();
 ----
 
-NOTE: Once the train is started, you can adjust the speed and the motor will adjust accordingly.
+NOTE: When the train is started, you can adjust the speed and the motor adjusts accordingly.
 
 ==== Active Motors
 
