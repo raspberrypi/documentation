@@ -38,7 +38,7 @@ The diagnostic information is as follows:
 | Master Boot Record primary partitions type:LBA
 
 | fw
-| Filename for `start.elf` and `fixup.dat` if present (e.g. `start4x.elf`, `fixup4x.dat`)
+| Filename for `start.elf` and `fixup.dat` if present (for example, `start4x.elf`, `fixup4x.dat`)
 
 | net
 | Network boot: link status (up/down), client IP address (ip), subnet (sn), default gateway (gw)

@@ -7,9 +7,9 @@ These options specify the firmware files transferred to the VideoCore GPU prior 
 `start_file` specifies the VideoCore firmware file to use.
 `fixup_file` specifies the file used to fix up memory locations used in the `start_file` to match the GPU memory split.
 
-The `start_file` and the `fixup_file` are a matched pair - using unmatched files will stop the board from booting. This is an advanced option, so we advise that you use `start_x` and `start_debug` rather than this option.
+The `start_file` and the `fixup_file` are a matched pair – using unmatched files will stop the board from booting. This is an advanced option, so we advise that you use `start_x` and `start_debug` rather than this option.
 
-NOTE: Cut-down firmware (`start*cd.elf` and `fixup*cd.dat`) cannot be selected this way - the system will fail to boot.  The only way to enable the cut-down firmware is to specify `gpu_mem=16`. The cut-down firmware removes support for codecs, 3D and debug logging as well as limiting the initial early-boot framebuffer to 1080p @16bpp - although KMS can replace this with up to 32bpp 4K framebuffer(s) at a later stage as with any firmware.
+NOTE: Cut-down firmware (`start*cd.elf` and `fixup*cd.dat`) cannot be selected this way – the system will fail to boot.  The only way to enable the cut-down firmware is to specify `gpu_mem=16`. The cut-down firmware removes support for codecs, 3D and debug logging as well as limiting the initial early-boot framebuffer to 1080p @16bpp – although KMS can replace this with up to 32bpp 4K framebuffer(s) at a later stage as with any firmware.
 
 NOTE: The Raspberry Pi 5, 500, 500+, and Compute Module 5 firmware is self-contained in the bootloader EEPROM.
 
@@ -21,15 +21,15 @@ NOTE: The Raspberry Pi 5, 500, 500+, and Compute Module 5 firmware is self-conta
 
 `kernel` is the alternative filename on the boot partition for loading the kernel. The default value on the Raspberry Pi 1, Zero and Zero W, and Raspberry Pi Compute Module 1 is `kernel.img`. The default value on the Raspberry Pi 2, 3, 3+ and Zero 2 W, and Raspberry Pi Compute Modules 3 and 3+ is `kernel7.img`. The default value on the Raspberry Pi 4 and 400, and Raspberry Pi Compute Module 4 is `kernel8.img`, or `kernel7l.img` if `arm_64bit` is set to 0.
 
-The Raspberry Pi 5, 500, 500+, and Compute Module 5 firmware defaults to loading `kernel_2712.img` because this image contains optimisations specific to those models (e.g. 16K page-size). If this file is not present, then the common 64-bit kernel (`kernel8.img`) will be loaded instead.
+The Raspberry Pi 5, 500, 500+, and Compute Module 5 firmware defaults to loading `kernel_2712.img` because this image contains optimisations specific to those models (for example, 16K page-size). If this file is not present, then the common 64-bit kernel (`kernel8.img`) will be loaded instead.
 
 === `arm_64bit`
 
 If set to 1, the kernel will be started in 64-bit mode. Setting to 0 selects 32-bit mode.
 
-In 64-bit mode, the firmware will choose an appropriate kernel (e.g. `kernel8.img`), unless there is an explicit `kernel` option defined, in which case that is used instead.
+In 64-bit mode, the firmware will choose an appropriate kernel (for example, `kernel8.img`), unless there is an explicit `kernel` option defined, in which case that is used instead.
 
-Defaults to 1 on Raspberry Pi 4, 400 and Compute Module 4, 4S platforms. Defaults to 0 on all other platforms. However, if the name given in an explicit `kernel` option matches one of the known kernels then `arm_64bit` will be set accordingly.
+Defaults to 1 on Raspberry Pi 4, 400, and Compute Module 4 and 4S platforms. Defaults to 0 on all other platforms. However, if the name given in an explicit `kernel` option matches one of the known kernels then `arm_64bit` is set accordingly.
 
 64-bit kernels come in the following forms:
 
@@ -80,7 +80,7 @@ NOTE: This option uses different syntax from all the other options, and you shou
 [[auto_initramfs]]
 === `auto_initramfs`
 
-If `auto_initramfs` is set to `1`, the firmware looks for an `initramfs` file to match the kernel. The file must be in the same location as the kernel image, and the name is derived from the name of the kernel by replacing the `kernel` prefix with `initramfs`, and removing any extension such as `.img`, e.g. `kernel8.img` requires `initramfs8`. You can make use of `auto_initramfs` with custom kernel names provided the names begin with `kernel` and `initramfs` respectively and everything else matches (except for the absence of the file extension on the initramfs). Otherwise, an explicit xref:config_txt.adoc#initramfs[`initramfs`] statement is required.
+If `auto_initramfs` is set to `1`, the firmware looks for an `initramfs` file to match the kernel. The file must be in the same location as the kernel image, and the name is derived from the name of the kernel by replacing the `kernel` prefix with `initramfs`, and removing any extension such as `.img`. For example, `kernel8.img` requires `initramfs8`. You can make use of `auto_initramfs` with custom kernel names provided the names begin with `kernel` and `initramfs` respectively and everything else matches (except for the absence of the file extension on the initramfs). Otherwise, an explicit xref:config_txt.adoc#initramfs[`initramfs`] statement is required.
 
 [[disable_poe_fan]]
 === `disable_poe_fan`
@@ -104,11 +104,11 @@ Set this option to `0` to prevent the firmware from trying to read an I2C HAT EE
 
 `os_prefix` is an optional setting that allows you to choose between multiple versions of the kernel and Device Tree files installed on the same card. Any value in `os_prefix` is prepended to the name of any operating system files loaded by the firmware, where "operating system files" is defined to mean kernels, `initramfs`, `cmdline.txt`, `.dtbs` and overlays. The prefix would commonly be a directory name, but it could also be part of the filename such as "test-". For this reason, directory prefixes must include the trailing `/` character.
 
-In an attempt to reduce the chance of a non-bootable system, the firmware first tests the supplied prefix value for viability - unless the expected kernel and .dtb can be found at the new location/name, the prefix is ignored (set to ""). A special case of this viability test is applied to overlays, which will only be loaded from `+${os_prefix}${overlay_prefix}+` (where the default value of <<overlay_prefix,`overlay_prefix`>> is "overlays/") if `+${os_prefix}${overlay_prefix}README+` exists, otherwise it ignores `os_prefix` and treats overlays as shared.
+In an attempt to reduce the chance of a non-bootable system, the firmware first tests the supplied prefix value for viability – unless the expected kernel and .dtb can be found at the new location/name, the prefix is ignored (set to ""). A special case of this viability test is applied to overlays, which will only be loaded from `+${os_prefix}${overlay_prefix}+` (where the default value of <<overlay_prefix,`overlay_prefix`>> is "overlays/") if `+${os_prefix}${overlay_prefix}README+` exists, otherwise it ignores `os_prefix` and treats overlays as shared.
 
 (The reason the firmware checks for the existence of key files rather than directories when checking prefixes is twofold: the prefix may not be a directory, and not all boot methods support testing for the existence of a directory.)
 
-NOTE: Any user-specified OS file can bypass all prefixes by using an absolute path (with respect to the boot partition) - just start the file path with a `/`, e.g. `kernel=/my_common_kernel.img`.
+NOTE: Any user-specified OS file can bypass all prefixes by using an absolute path (with respect to the boot partition) – just start the file path with a `/`, for example, `kernel=/my_common_kernel.img`.
 
 See also <<overlay_prefix,`overlay_prefix`>> and xref:legacy_config_txt.adoc#upstream_kernel[`upstream_kernel`].
 
@@ -126,9 +126,9 @@ NOTE: By default, Raspberry Pi OS includes a line in `/boot/firmware/config.txt`
 [[overlay_prefix]]
 === `overlay_prefix`
 
-Specifies a subdirectory/prefix from which to load overlays, and defaults to `overlays/` (note the trailing `/`). If used in conjunction with <<os_prefix,`os_prefix`>>, the `os_prefix` comes before the `overlay_prefix`, i.e. `dtoverlay=disable-bt` will attempt to load `+${os_prefix}${overlay_prefix}disable-bt.dtbo+`.
+Specifies a subdirectory/prefix from which to load overlays, and defaults to `overlays/` (note the trailing `/`). If used in conjunction with <<os_prefix,`os_prefix`>>, the `os_prefix` comes before the `overlay_prefix`; for example, `dtoverlay=disable-bt` attempts to load `+${os_prefix}${overlay_prefix}disable-bt.dtbo+`.
 
-NOTE: Unless `+${os_prefix}${overlay_prefix}README+` exists, overlays are shared with the main OS (i.e. `os_prefix` is ignored).
+NOTE: Unless `+${os_prefix}${overlay_prefix}README+` exists, overlays are shared with the main OS (that is, `os_prefix` is ignored).
 
 === Configuration Properties
 
@@ -137,7 +137,7 @@ Raspberry Pi 5 requires a `config.txt` file to be present to indicate that the p
 [[boot_ramdisk]]
 ==== `boot_ramdisk`
 
-If this property is set to `1` then the bootloader will attempt load a ramdisk file called `boot.img` containing the xref:configuration.adoc#boot-folder-contents[boot filesystem]. Subsequent files (e.g. `start4.elf`) are read from the ramdisk instead of the original boot file system.
+If this property is set to `1` then the bootloader will attempt load a ramdisk file called `boot.img` containing the xref:configuration.adoc#boot-folder-contents[boot filesystem]. Subsequent files (for example, `start4.elf`) are read from the ramdisk instead of the original boot file system.
 
 The primary purpose of `boot_ramdisk` is to support `secure-boot`, however, unsigned `boot.img` files can also be useful to Network Boot or `RPIBOOT` configurations.
 
@@ -156,7 +156,7 @@ Default: `0`
 
 Experimental property for custom firmware (bare metal).
 
-Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatibility checks (e.g. is USB MSD boot supported) and resets PCIe before starting the executable.
+Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatibility checks (for example, is USB MSD boot supported) and resets PCIe before starting the executable.
 
 Not relevant on Raspberry Pi 5 because there is no `start.elf` file.
 
@@ -260,7 +260,7 @@ Default: `0` (disabled)
 [[kernel_watchdog_partition]]
 ==== `kernel_watchdog_partition`
 
-If the kernel watchdog triggers (i.e. the OS fails to reset the watchdog within the timeout), this property specifies the partition number to boot from after the reset. This allows for automatic failover to a recovery or alternate partition.
+If the kernel watchdog triggers (specifically, the OS fails to reset the watchdog within the timeout), this property specifies the partition number to boot from after the reset. This allows for automatic failover to a recovery or alternate partition.
 
 You can use this in conjunction with the xref:config_txt.adoc#the-expression-filter[expression filter] to apply different settings or select a different boot flow when the watchdog triggers a reboot to a specific partition.
 
@@ -303,14 +303,14 @@ Default: `-1`
 ==== `os_check`
 
 On Raspberry Pi 5 the firmware automatically checks for a compatible Device Tree file before attempting to boot from the current partition. Otherwise, older non-compatible kernels would be loaded and then hang.
-To disable this check (e.g. for bare-metal development), set `os_check=0` in config.txt
+To disable this check (for example, for bare-metal development), set `os_check=0` in config.txt
 
 Default: `1`
 
 [[bootloader_update]]
 ==== `bootloader_update`
 
-This option may be set to 0 to block self-update without requiring the EEPROM configuration to be updated. This is sometimes useful when updating multiple Raspberry Pis via network boot because this option can be controlled per Raspberry Pi (e.g. via a serial number filter in `config.txt`).
+This option may be set to 0 to block self-update without requiring the EEPROM configuration to be updated. This is sometimes useful when updating multiple Raspberry Pis via network boot because this option can be controlled per Raspberry Pi (for example, via a serial number filter in `config.txt`).
 
 Default: `1`
 
@@ -328,7 +328,7 @@ For more information about enabling `secure-boot` please see the https://github.
 [[program_pubkey]]
 ==== `program_pubkey`
 
-If this property is set to `1` then `recovery.bin` will write the hash of the public key in the EEPROM image to OTP.  Once set, the bootloader will reject EEPROM images signed with different RSA keys or unsigned images.
+If this property is set to `1` then `recovery.bin` will write the hash of the public key in the EEPROM image to OTP.  When set, the bootloader rejects EEPROM images signed with different RSA keys or unsigned images.
 
 Default: `0`
 

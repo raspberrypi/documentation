@@ -380,7 +380,7 @@ NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
 
 === New-style revision codes in use
 
-NOTE: This list is not exhaustive - there may be codes in use that are not in this table. Please see the next section for best practices on using revision codes to identify boards.
+NOTE: This list is not exhaustive – there may be codes in use that are not in this table. Please see the next section for best practices on using revision codes to identify boards.
 
 // This table is now sorted by Type (from table above), then Revision, then RAM, and finally Code. This is the most likely order-of-manufacture, which means we'll normally just add new revision-codes to the very bottom of the table, without having to worry about re-ordering entries.
 
@@ -816,10 +816,10 @@ if new and model == 0x11 and mem >= 3 : # Note, 3 in the mem field is 2 GB
 
 === Best practices for revision code usage
 
-To avoid problems when new board revisions are created, do not use the revision code (e.g. `c03111`).
+To avoid problems when new board revisions are created, do not use the revision code (for example, `c03111`).
 
 A naive implementation uses a list of supported revision codes, comparing the detected code with the list to decide if the device is supported.
-This breaks when a new board revision comes out or if the production location changes: each creates a new revision code not in the supported revision code list. This would cause rejections of new revisions of the same board type, despite the fact that they are always backwards-compatible. Every time a new revision appears, you would have to release a new supported revision code list containing the new revision code - an onerous support burden.
+This breaks when a new board revision comes out or if the production location changes: each creates a new revision code not in the supported revision code list. This would cause rejections of new revisions of the same board type, despite the fact that they are always backwards-compatible. Every time a new revision appears, you would have to release a new supported revision code list containing the new revision code – an onerous support burden.
 
 Instead, use one of the following approaches:
 

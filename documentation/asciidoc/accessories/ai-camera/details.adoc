@@ -35,7 +35,7 @@ The firmware files also transfer over the I2C bus wires. On most devices, this u
 
 === `libcamera`
 
-Once `libcamera` dequeues the image and inference data buffers from the kernel, the IMX500 specific `cam-helper` library (part of the Raspberry Pi IPA within `libcamera`) parses the inference buffer to access the input/output tensors. These tensors are packaged as Raspberry Pi vendor-specific https://libcamera.org/api-html/namespacelibcamera_1_1controls.html[`libcamera` controls]. `libcamera` returns the following controls:
+After `libcamera` dequeues the image and inference data buffers from the kernel, the IMX500 specific `cam-helper` library (part of the Raspberry Pi IPA within `libcamera`) parses the inference buffer to access the input/output tensors. These tensors are packaged as Raspberry Pi vendor-specific https://libcamera.org/api-html/namespacelibcamera_1_1controls.html[`libcamera` controls]. `libcamera` returns the following controls:
 
 [%header,cols="a,a"]
 |===
@@ -116,7 +116,7 @@ if (!output)
 std::vector<float> output_tensor(output->data(), output->data() + output->size());
 ----
 
-Once completed, the final results can either be visualised or saved in metadata and consumed by either another downstream stage, or the top level application itself. In the object inference case:
+When completed, the final results can either be visualised or saved in metadata and consumed by either another downstream stage, or the top level application itself. In the object inference case:
 
 [source,cpp]
 ----

@@ -132,7 +132,7 @@ To leave the virtual environment, run the following command from any directory:
 
 ===== Create a virtual environment
 
-Run the following command to create a virtual environment configuration folder, replacing `<env-name>` with the name you would like to use for the virtual environment (e.g. `env`):
+Run the following command to create a virtual environment configuration folder, replacing `<env-name>` with the name you would like to use for the virtual environment (for example, `env`):
 
 [source,console]
 ----

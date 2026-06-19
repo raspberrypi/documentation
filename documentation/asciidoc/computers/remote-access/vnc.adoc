@@ -16,7 +16,7 @@ Before you can use VNC on your Raspberry Pi, you must enable the VNC server.
 
 Raspberry Pi OS supports enabling the VNC server both graphically and at the command line.
 
-TIP: Once enabled, you can access your WayVNC configuration at `/etc/wayvnc/`.
+TIP: When enabled, you can access your WayVNC configuration at `/etc/wayvnc/`.
 
 ==== Enable VNC Server Graphically
 
@@ -54,7 +54,7 @@ $ sudo raspi-config
 
 To connect to your Raspberry Pi, you'll need the following:
 
-* your Raspberry Pi and the device running the VNC client, connected to the same network (e.g. a home wireless network or VPN)
+* your Raspberry Pi and the device running the VNC client, connected to the same network (for example, a home wireless network or VPN)
 * the hostname or IP address of your Raspberry Pi
 * a valid username and password combination for an account on your Raspberry Pi
 

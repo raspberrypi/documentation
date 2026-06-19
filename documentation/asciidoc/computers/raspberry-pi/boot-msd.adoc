@@ -30,7 +30,7 @@ On Raspberry Pi 2B v1.2 and v1.3, 3A+, 3B and Compute Module 3 and 3+, you must 
 
 NOTE: Raspberry Pi 3A+ doesn't support network boot.
 
-To enable USB host boot mode on these devices, set the USB host bit in OTP (one-time programmable) memory. To set the bit, boot from an SD card where xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] contains the line `program_usb_boot_mode=1`. Once you set the bit, you can boot from USB without the SD card.
+To enable USB host boot mode on these devices, set the USB host bit in OTP (one-time programmable) memory. To set the bit, boot from an SD card where xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] contains the line `program_usb_boot_mode=1`. After you set the bit, you can boot from USB without the SD card.
 
 ==== Enable USB host boot mode with OTP
 
@@ -64,7 +64,7 @@ You can now boot from a USB mass storage device in the same way as booting from 
 
 === Boot from USB mass storage
 
-The xref:getting-started.adoc#install[procedure] is the same as for SD cards - flash the USB storage device with the operating system image.
+The xref:getting-started.adoc#install[procedure] is the same as for SD cards – flash the USB storage device with the operating system image.
 
 After preparing the storage device, connect the drive and power up the Raspberry Pi, being aware of the extra USB power requirements of the external drive.
 

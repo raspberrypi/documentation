@@ -18,7 +18,7 @@ $ vcgencmd otp_dump
 
 This list contains the publicly available information on the registers. If a register or bit is not defined here, then it is not public.
 
-`16`:: OTP control register - BCM2711
+`16`:: OTP control register – BCM2711
 +
 * Bit 26: disables VC JTAG
 * Bit 27: disables VC JTAG
@@ -27,7 +27,7 @@ This list contains the publicly available information on the registers. If a reg
 +
 * Bit 1: sets the oscillator frequency to 19.2 MHz
 * Bit 3: enables pull ups on the SDIO pins
-* Bit 15: disables ROM RSA key 0 - (secure boot enabled if set) (BCM2711)
+* Bit 15: disables ROM RSA key 0 – (secure boot enabled if set) (BCM2711)
 * Bit 19: enables GPIO bootmode
 * Bit 20: sets the bank to check for GPIO bootmode
 * Bit 21: enables booting from SD card
@@ -41,16 +41,16 @@ NOTE: On BCM2711 the bootmode is defined by the xref:raspberry-pi.adoc#raspberry
 `28`:: serial number
 `29`:: ~(serial number)
 `30`:: xref:raspberry-pi.adoc#raspberry-pi-revision-codes[revision code] ^1^
-`33`:: board revision extended - the meaning depends on the board model.
+`33`:: board revision extended – the meaning depends on the board model.
 This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext` and for testing purposes this OTP value can be temporarily overridden by setting `board_rev_ext` in `config.txt`.
 +
 * Compute Module 4
  ** Bit 30: Whether the Compute Module has a Wi-Fi module fitted
-  *** 0 - Wi-Fi
-  *** 1 - No Wi-Fi
+  *** 0 – Wi-Fi
+  *** 1 – No Wi-Fi
  ** Bit 31: Whether the Compute Module has an EMMC module fitted
-  *** 0 - EMMC
-  *** 1 - No EMMC (Lite)
+  *** 0 – EMMC
+  *** 1 – No EMMC (Lite)
 * Raspberry Pi 400
  ** Bits 0-7: The default keyboard country code used by https://github.com/raspberrypi-ui/piwiz[piwiz]
 
@@ -70,8 +70,8 @@ This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext`
 * Bit 15: enables LAN_RUN output
 * Bit 24: extends USB HUB timeout parameter
 * Bit 25: ETH_CLK frequency:
- ** 0 - 25 MHz
- ** 1 - 24 MHz
+ ** 0 – 25 MHz
+ ** 1 – 24 MHz
 
 ^1^Also contains bits to disable overvoltage, OTP programming, and OTP reading.
 
@@ -95,24 +95,24 @@ This list contains the publicly available information on the registers. If a reg
 
 `31`:: lower 32 bits of serial number
 `32`:: xref:raspberry-pi.adoc#raspberry-pi-revision-codes[board revision]
-`33`:: board attributes - the meaning depends on the board model.
+`33`:: board attributes – the meaning depends on the board model.
 This is available via device-tree in `/proc/device-tree/chosen/rpi-boardrev-ext`
 
 `35`:: upper 32 bits of serial number
 The full 64 bit serial number is available in `/proc/device-tree/serial-number`
 
 `50-51`:: Ethernet MAC address
-This is passed to the operating system in the Device Tree, e.g. `/proc/device-tree/axi/pcie@120000/rp1/ethernet@100000/local-mac-address`
+This is passed to the operating system in the Device Tree, for example, `/proc/device-tree/axi/pcie@120000/rp1/ethernet@100000/local-mac-address`
 
 `52-53`:: Wi-Fi MAC address
-This is passed to the operating system in the Device Tree, e.g. `/proc/device-tree/axi/mmc@1100000/wifi@1/local-mac-address`
+This is passed to the operating system in the Device Tree, for example, `/proc/device-tree/axi/mmc@1100000/wifi@1/local-mac-address`
 
 `54-55`:: Bluetooth MAC address
-This is passed to the operating system in the Device Tree, e.g. `/proc/device-tree/soc/serial@7d50c000/bluetooth/local-bd-address`
+This is passed to the operating system in the Device Tree, for example, `/proc/device-tree/soc/serial@7d50c000/bluetooth/local-bd-address`
 
 `77-84`:: xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer OTP values]
 
-`86`:: board country - The default keyboard country code used by https://github.com/raspberrypi-ui/piwiz[piwiz]
+`86`:: board country – The default keyboard country code used by https://github.com/raspberrypi-ui/piwiz[piwiz]
 If set, this is available via Device Tree in `/proc/device-tree/chosen/rpi-country-code`
 
 `87-88`:: xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Ethernet MAC address]

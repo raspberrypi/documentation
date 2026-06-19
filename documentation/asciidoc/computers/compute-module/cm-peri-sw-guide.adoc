@@ -32,7 +32,7 @@ In BCM283x devices, the DSP core in the GPU boots first. It handles setup before
 Raspberry Pi BCM283x devices have a three-stage boot process:
 
 * The GPU DSP comes out of reset and executes code from the small internal boot ROM. This code loads a second-stage bootloader via an external interface. This code first looks for a second-stage boot loader on the boot device called `bootcode.bin` on the boot partition. If no boot device is found or `bootcode.bin` is not found, the boot ROM waits in USB boot mode for a host to provide a second-stage boot loader (`usbbootcode.bin`).
-* The second-stage boot loader is responsible for setting up the LPDDR2 SDRAM interface and other critical system functions. Once set up, the second-stage boot loader loads and executes the main GPU firmware (`start.elf`).
+* The second-stage boot loader is responsible for setting up the LPDDR2 SDRAM interface and other critical system functions. When set up, the second-stage boot loader loads and executes the main GPU firmware (`start.elf`).
 * `start.elf` handles additional system setup and boots up the Arm processor subsystem. It contains the GPU firmware. The GPU firmware first reads `dt-blob.bin` to determine initial GPIO pin states and GPU-specific interfaces and clocks, then parses `config.txt`. It then loads a model-specific Arm device tree file and any Device Tree overlays specified in `config.txt` before starting the Arm subsystem and passing the Device Tree data to the booting Linux kernel.
 
 === Device Tree
@@ -199,7 +199,7 @@ dtoverlay=example1
 
 Finally, reboot with `sudo reboot`.
 
-Once rebooted, you should see an `rtc0` entry in `/dev`. Run the following command to view the hardware clock time:
+After reboot, you see an `rtc0` entry in `/dev`. Run the following command to view the hardware clock time:
 
 [source,console]
 ----

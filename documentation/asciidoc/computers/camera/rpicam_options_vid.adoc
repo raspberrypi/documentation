@@ -55,10 +55,10 @@ Only applies to videos encoded in the H.264 format.
 
 Sets the encoder to use for video output. Accepts the following values:
 
-* `h264` - use H.264 encoder (the default)
-* `mjpeg` - use MJPEG encoder
-* `yuv420` - output uncompressed YUV420 frames.
-* `libav` - use the libav backend to encode audio and video (for more information, see xref:camera_software.adoc#libav-integration-with-rpicam-vid[`libav`])
+* `h264` – use H.264 encoder (the default)
+* `mjpeg` – use MJPEG encoder
+* `yuv420` – output uncompressed YUV420 frames.
+* `libav` – use the libav backend to encode audio and video (for more information, see xref:camera_software.adoc#libav-integration-with-rpicam-vid[`libav`])
 
 ==== `save-pts`
 
@@ -106,7 +106,7 @@ When toggling recording with xref:camera_software.adoc#keypress[`keypress`] or x
 
 Cuts video output into multiple files of the passed duration. Accepts a duration in milliseconds. If passed a very small duration (for instance, `1`), records each frame to a separate output file to simulate burst capture.
 
-You can specify separate filenames for each file using string formatting, e.g. `--output test%04d.h264`.
+You can specify separate filenames for each file using string formatting, for example, `--output test%04d.h264`.
 
 ==== `circular`
 

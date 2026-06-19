@@ -9,7 +9,7 @@ Enter an email and password. Click the **Sign up** button to create your account
 
 image::images/create_account_identity.png[width="80%"]
 
-Once you have created an account, you will receive a verification email.
+After you create an account, you receive a verification email.
 
 image::images/verify_identity.png[width="80%"]
 

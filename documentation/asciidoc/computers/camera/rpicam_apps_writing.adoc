@@ -38,7 +38,7 @@ Because this code passes the encoder a reference to the `CompletedRequest`, `rpi
 
 ==== `rpicam-raw`
 
-`rpicam-raw` is similar to `rpicam-vid`. It also encodes during the event loop. However, `rpicam-raw` uses a dummy encoder called the `NullEncoder`. This uses the input image as the output buffer instead of encoding it with a codec. `NullEncoder` only discards its reference to the buffer once the output callback completes. This guarantees that the buffer isn't recycled before the callback processes the image.
+`rpicam-raw` is similar to `rpicam-vid`. It also encodes during the event loop. However, `rpicam-raw` uses a dummy encoder called the `NullEncoder`. This uses the input image as the output buffer instead of encoding it with a codec. `NullEncoder` only discards its reference to the buffer when the output callback completes. This guarantees that the buffer isn't recycled before the callback processes the image.
 
 `rpicam-raw` doesn't forward anything to the preview window.
 

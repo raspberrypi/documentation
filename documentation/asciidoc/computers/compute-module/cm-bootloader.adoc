@@ -17,7 +17,7 @@ To flash the bootloader EEPROM:
 ----
 $ ./rpiboot -d recovery
 ----
-. Once complete, `EEPROM_nWP` may be pulled low again.
+. When complete, `EEPROM_nWP` may be pulled low again.
 
 === Flash storage devices other than SD cards
 
@@ -46,7 +46,7 @@ To modify the Compute Module EEPROM bootloader configuration:
  * For NVMe boot, use `BOOT_ORDER=0xf6`.
 . Run `./update-pieeprom.sh` to generate a new EEPROM image `pieeprom.bin` image file.
 . If you require EEPROM write-protection, add `eeprom_write_protect=1` to  `/boot/firmware/config.txt`.
- * Once enabled in software, you can lock hardware write-protection by pulling the `EEPROM_nWP` pin low.
+ * When enabled in software, you can lock hardware write-protection by pulling the `EEPROM_nWP` pin low.
 . Run the following command to write the updated `pieeprom.bin` image to EEPROM:
 +
 [source,console]

@@ -8,7 +8,7 @@ We recommend the use of the Raspberry Pi Pico VSCode extension, which integrates
 
 === Standalone program upload
 
-Once you have built a binary:
+After you have built a binary:
 
 [source,console]
 ----
@@ -23,7 +23,7 @@ This will use `openocd` in server mode, and connect GDB, which gives you breakpo
 
 [IMPORTANT]
 ======
-To allow debugging, you must build your binaries as `Debug` rather than `Release` build type, e.g.
+To allow debugging, you must build your binaries as `Debug` rather than `Release` build type, for example,
 
 ----
 $ cd ~/pico/pico-examples/

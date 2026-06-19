@@ -29,7 +29,7 @@ The following pins are used by the Build HAT itself and you should not connect a
 
 === Set up your Raspberry Pi
 
-Once the Raspberry Pi has booted, open the Control Centre tool by selecting the Raspberry Menu button and then selecting **Preferences > Control Centre**.
+After the Raspberry Pi has booted, open the Control Centre tool by selecting the Raspberry Menu button and then selecting **Preferences > Control Centre**.
 
 Select the **Interfaces** tab and adjust the serial settings as shown in the following image:
 

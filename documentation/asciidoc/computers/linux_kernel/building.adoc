@@ -244,7 +244,7 @@ $ sudo reboot
 
 [TIP]
 ====
-Alternatively, copy the kernel with a different filename (e.g. `kernel-myconfig.img`) instead of overwriting the `kernel.img` file. Then, edit `config.txt` in the boot partition to select your kernel:
+Alternatively, copy the kernel with a different filename (for example, `kernel-myconfig.img`) instead of overwriting the `kernel.img` file. Then, edit `config.txt` in the boot partition to select your kernel:
 
 [source,ini]
 ----
@@ -499,7 +499,7 @@ Finally, connect the boot media to your Raspberry Pi and connect it to power to 
 
 [TIP]
 ====
-Alternatively, copy the kernel with a different filename (e.g. `kernel-myconfig.img`) instead of overwriting the `kernel.img` file. Then, edit `config.txt` in the boot partition to select your kernel:
+Alternatively, copy the kernel with a different filename (for example, `kernel-myconfig.img`) instead of overwriting the `kernel.img` file. Then, edit `config.txt` in the boot partition to select your kernel:
 
 [source,ini]
 ----

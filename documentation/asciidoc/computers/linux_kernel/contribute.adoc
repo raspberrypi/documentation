@@ -8,17 +8,17 @@ There are many reasons you may want to put something into the kernel:
 * You've fixed a Raspberry Pi-specific kernel bug
 
 For Raspberry Pi-specific changes or bug fixes, submit a pull request to the Raspberry Pi kernel.
-For general Linux kernel changes (i.e. a new driver), submit a pull request to the upstream Linux kernel first. Once the Linux kernel accepts your change, we'll receive it.
+For general Linux kernel changes (for example, a new driver), submit a pull request to the upstream Linux kernel first. After the Linux kernel accepts your change, we'll receive it.
 
 === Contribute to the Raspberry Pi Kernel
 
 First, fork the https://github.com/raspberrypi/linux[Raspberry Pi kernel repository] and clone it to your development device. You can then make your changes, test them, and commit them into your fork.
 
-Then, submit a pull request containing your changes to the https://github.com/raspberrypi/linux[Raspberry Pi kernel repository]. Raspberry Pi engineers will review your contribution and suggest improvements. Once approved, we'll merge in your changes, and they'll eventually make their way to the stable release of the Raspberry Pi kernel.
+Then, submit a pull request containing your changes to the https://github.com/raspberrypi/linux[Raspberry Pi kernel repository]. Raspberry Pi engineers review your contribution and suggest improvements. When approved, we merge in your changes, and they eventually make their way to the stable release of the Raspberry Pi kernel.
 
 === Contribute to the Linux kernel
 
 First, clone the https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git[Linux kernel tree] to your development device. You can then make your changes, test them, and commit them into your local tree.
 
-Once your change is ready you can submit it to the Linux kernel community. Linux kernel development happens on mailing lists, rather than on GitHub. In order for your change to become part of Linux, please email it to the community as a patch. Please follow https://www.kernel.org/doc/html/latest/process/submitting-patches.html[Submitting patches: the essential guide to getting your code into the kernel] and https://www.kernel.org/doc/html/latest/process/coding-style.html[Linux kernel coding style] in the Linux kernel documentation.
-Linux kernel contributors will review your contribution and suggest improvements. Once approved, they'll merge in your changes. Eventually, they'll make their way into a long-term release of the Linux kernel. Once we've tested that long-term release for compatibility with the Raspberry Pi kernel, your changes will make their way into a stable release of the Raspberry Pi kernel.
+When your change is ready you can submit it to the Linux kernel community. Linux kernel development happens on mailing lists, rather than on GitHub. In order for your change to become part of Linux, please email it to the community as a patch. Please follow https://www.kernel.org/doc/html/latest/process/submitting-patches.html[Submitting patches: the essential guide to getting your code into the kernel] and https://www.kernel.org/doc/html/latest/process/coding-style.html[Linux kernel coding style] in the Linux kernel documentation.
+Linux kernel contributors review your contribution and suggest improvements. When approved, they merge in your changes. Eventually, they make their way into a long-term release of the Linux kernel. After we've tested that long-term release for compatibility with the Raspberry Pi kernel, your changes make their way into a stable release of the Raspberry Pi kernel.

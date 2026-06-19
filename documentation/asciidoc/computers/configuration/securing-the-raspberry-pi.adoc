@@ -277,7 +277,7 @@ The `[default]` section in this same file defines the default banning action, `i
 
 [source,ini]
 ----
-# Default banning action (e.g. iptables, iptables-new,
+# Default banning action (for example, iptables, iptables-new,
 # iptables-multiport, shorewall, etc) It is used to define
 # action_* variables. Can be overridden globally or per
 # section within jail.local file

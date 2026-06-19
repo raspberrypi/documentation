@@ -17,7 +17,7 @@ Next, xref:linux_kernel.adoc#download-kernel-source[download your kernel sources
 
 === `menuconfig`
 
-Once you've got everything set up, you can compile and run the `menuconfig` utility as follows:
+After you set everything up, you can compile and run the `menuconfig` utility as follows:
 
 [source,console]
 ----
@@ -51,6 +51,6 @@ After a brief compilation, `menuconfig` presents a list of submenus containing a
 
 === Save your changes
 
-Once you're done making changes, press *Escape* until you're prompted to save your new configuration. By default, this saves to the `.config` file. You can save and load configurations by copying this file.
+When you finish making changes, press *Escape* until you're prompted to save your new configuration. By default, this saves to the `.config` file. You can save and load configurations by copying this file.
 
 After customising, you should now be ready to xref:linux_kernel.adoc#building[build the kernel].

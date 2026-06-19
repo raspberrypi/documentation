@@ -1,7 +1,7 @@
 [[spi-overview]]
 == Serial peripheral interface (SPI)
 
-Raspberry Pi computers are equipped with a number of https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus[SPI] buses. SPI can be used to connect a wide variety of peripherals - displays, network controllers (Ethernet, CAN bus), UARTs, etc. These devices are best supported by kernel device drivers, but the `spidev` API allows userspace drivers to be written in a wide array of languages.
+Raspberry Pi computers are equipped with a number of https://en.wikipedia.org/wiki/Serial_Peripheral_Interface_Bus[SPI] buses. SPI can be used to connect a wide variety of peripherals – displays, network controllers (Ethernet, CAN bus), UARTs, etc. These devices are best supported by kernel device drivers, but the `spidev` API allows userspace drivers to be written in a wide array of languages.
 
 [[spi-hardware]]
 === SPI hardware
@@ -343,7 +343,7 @@ dtoverlay=spi1-3cs
 
 Similar overlays exist for SPI2, SPI3, SPI4, SPI5 and SPI6.
 
-The driver does not make use of the hardware chip select lines because of some limitations. Instead, it can use an arbitrary number of GPIOs as software/GPIO chip selects. This means you are free to choose any spare GPIO as a CS line, and all of these SPI overlays include that control - see `/boot/firmware/overlays/README` for details, or run (for example) `dtoverlay -h spi0-2cs` (`dtoverlay -a | grep spi` might be helpful to list them all).
+The driver does not make use of the hardware chip select lines because of some limitations. Instead, it can use an arbitrary number of GPIOs as software/GPIO chip selects. This means you are free to choose any spare GPIO as a CS line, and all of these SPI overlays include that control – see `/boot/firmware/overlays/README` for details, or run (for example) `dtoverlay -h spi0-2cs` (`dtoverlay -a | grep spi` might be helpful to list them all).
 
 ===== Speed
 
@@ -361,8 +361,8 @@ Bidirectional mode, also called 3-wire mode, is supported by the `spi-bcm2835` k
 
 ===== Supported bits per word
 
-* 8 - normal
-* 9 - supported using LoSSI mode
+* 8 – normal
+* 9 – supported using LoSSI mode
 
 ===== Transfer modes
 
@@ -374,7 +374,7 @@ This https://forums.raspberrypi.com/viewtopic.php?f=44&t=19489[thread] discusses
 
 ==== spidev
 
-`spidev` presents an `ioctl`-based userspace interface to individual SPI CS lines. Device Tree is used to indicate whether a CS line is going to be driven by a kernel driver module or managed by `spidev` on behalf of the user; it is not possible to do both at the same time. Note that Raspberry Pi's own kernels are more relaxed about the use of Device Tree to enable `spidev` - the upstream kernels print warnings about such usage, and ultimately may prevent it altogether.
+`spidev` presents an `ioctl`-based userspace interface to individual SPI CS lines. Device Tree is used to indicate whether a CS line is going to be driven by a kernel driver module or managed by `spidev` on behalf of the user; it is not possible to do both at the same time. Note that Raspberry Pi's own kernels are more relaxed about the use of Device Tree to enable `spidev` – the upstream kernels print warnings about such usage, and ultimately may prevent it altogether.
 
 ===== Use `spidev` from C
 
@@ -382,7 +382,7 @@ There is a loopback test program in the Linux documentation that can be used as 
 
 ===== Use `spidev` from Python
 
-There are several Python libraries that provide access to `spidev`, including `spidev` (`pip install spidev` - see https://pypi.org/project/spidev/) and `SPI-Py` (https://github.com/lthiery/SPI-Py).
+There are several Python libraries that provide access to `spidev`, including `spidev` (`pip install spidev` – see https://pypi.org/project/spidev/) and `SPI-Py` (https://github.com/lthiery/SPI-Py).
 
 ===== Use `spidev` from a shell such as bash
 

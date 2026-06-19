@@ -80,8 +80,8 @@ Interprets xref:camera_software.adoc#info-text[`info-text` directives] first, th
 For example, to achieve a datetime stamp on the video, pass `%F %T %z`:
 
 * `%F` displays the ISO-8601 date (2023-03-07)
-* `%T` displays 24h local time (e.g. "09:57:12")
-* `%z` displays the timezone relative to UTC (e.g. "-0800")
+* `%T` displays 24h local time (for example, "09:57:12")
+* `%z` displays the timezone relative to UTC (for example, "-0800")
 
 This stage does not output any metadata, but it writes metadata found in `annotate.text` in place of anything in the JSON configuration file. This allows other post-processing stages to write text onto images.
 

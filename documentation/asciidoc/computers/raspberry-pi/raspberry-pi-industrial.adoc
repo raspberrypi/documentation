@@ -6,7 +6,7 @@ Raspberry Pi is often used as part of another product. This documentation descri
 
 [.whitepaper, title="Using the one-time programmable memory on Raspberry Pi single-board computers", subtitle="", link=https://pip.raspberrypi.com/documents/RP-003611-WP]
 ****
-All Raspberry Pi single-board computers (SBCs) have an inbuilt area of one-time programmable (OTP) memory, which is actually part of the main system on a chip (SoC). As its name implies, OTP memory can be written to (i.e. a binary 0 can be changed to a 1) only once. Once a bit has been changed to 1, it can never be returned to 0. One way of looking at the OTP is to consider each bit as a fuse. Programming it involves deliberately blowing the fuse — an irreversible process, as you cannot get inside the chip to replace it!
+All Raspberry Pi single-board computers (SBCs) have an inbuilt area of one-time programmable (OTP) memory, which is actually part of the main system on a chip (SoC). As its name implies, OTP memory can be written to (that is, a binary 0 can be changed to a 1) only once. When a bit has been changed to 1, it can never be returned to 0. One way of looking at the OTP is to consider each bit as a fuse. Programming it involves deliberately blowing the fuse — an irreversible process, as you cannot get inside the chip to replace it!
 
 This whitepaper assumes that the Raspberry Pi is running the Raspberry Pi operating system (OS), and is fully up-to-date with the latest firmware and kernels.
 ****
@@ -20,9 +20,9 @@ $ vcgencmd otp_dump
 
 Some interesting lines from this dump are:
 
-* 28 - Serial number
-* 29 - Ones complement of serial number
-* 30 - Board revision number
+* 28 – Serial number
+* 29 – Ones complement of serial number
+* 30 – Board revision number
 
 Also, from 36 to 43 (inclusive), there are eight rows of 32 bits available for the customer.
 
@@ -47,7 +47,7 @@ The above uses the https://github.com/raspberrypi/firmware/wiki/Mailbox-property
 
 === Write and read customer OTP values
 
-WARNING: The OTP values are one-time programmable. Once a bit has been changed from 0 to 1, it can't be changed back.
+WARNING: The OTP values are one-time programmable. After a bit has been changed from 0 to 1, it can't be changed back.
 
 To set the customer OTP values you will need to use the `SET_CUSTOMER_OTP` (0x38021) tag as follows:
 
@@ -95,7 +95,7 @@ This can be done using a special argument with the OTP write mailbox:
 $ vcmailbox 0x00038021 8 8 0xffffffff 0xaffe0000
 ----
 
-Once locked, the customer OTP values can no longer be altered. Note that this locking operation is irreversible.
+When locked, the customer OTP values can no longer be altered. Note that this locking operation is irreversible.
 
 === Locking OTP on BCM2712 devices
 

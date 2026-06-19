@@ -71,7 +71,7 @@ The conditional model filters apply according to the following table.
 | Zero 2 W (also sees `[pi0w]` and `[pi0]` contents)
 
 | `[board-type=Type]`
-| Filter by `Type` number - see xref:raspberry-pi.adoc#raspberry-pi-revision-codes[Raspberry Pi Revision Codes] E.g `[board-type=0x14]` would match CM4.
+| Filter by `Type` number – see xref:raspberry-pi.adoc#raspberry-pi-revision-codes[Raspberry Pi Revision Codes]. For example,  `[board-type=0x14]` matches CM4.
 
 |===
 
@@ -91,8 +91,8 @@ Remember to use the `[all]` filter at the end, so that any subsequent settings a
 ====
 Some models of Raspberry Pi, including Zero, Compute Module, and Keyboard models, read settings from multiple filters. To apply a setting to only one model:
 
-* apply the setting to the base model (e.g. `[pi4]`), then revert the setting for all models that read the base model's filters (e.g. `[pi400]`, `[cm4]`, `[cm4s]`)
-* use the `board-type` filter with a revision code to target a single model (e.g. `[board-type=0x11]`)
+* apply the setting to the base model (for example, `[pi4]`), then revert the setting for all models that read the base model's filters (for example, `[pi400]`, `[cm4]`, `[cm4s]`)
+* use the `board-type` filter with a revision code to target a single model (for example, `[board-type=0x11]`)
 ====
 
 === The `[none]` filter
@@ -112,10 +112,10 @@ SD_QUIRKS=0x1
 HDMI_DELAY=0
 ----
 
-Example `config.txt` - (Currently Raspberry Pi 5 onwards)
+Example `config.txt` – (currently, Raspberry Pi 5 onwards)
 [source,ini]
 ----
-# config.txt - If the original requested partition number in PM_RSTS was a
+# config.txt – If the original requested partition number in PM_RSTS was a
 # special number then use an alternate cmdline.txt
 [partition=62]
 cmdline=cmdline-recovery.txt
@@ -130,7 +130,7 @@ The expression filter provides support for comparing unsigned integer "boot vari
 * The "boot variables" are `boot_arg1`, `cust_otpN`, `bootvar0`, `boot_count`, `boot_partition` and `partition`.
 * Boot variables are always lower case.
 * Integer constants may either be written as decimal or as hex.
-* Expression conditional filters have no side-effects e.g. no assignment operators.
+* Expression conditional filters have no side-effects, for example, no assignment operators.
 * As with other filter types the expression filter cannot be nested.
 * Use the `[all]` filter to reset expressions and all other conditional filter types.
 
@@ -169,7 +169,7 @@ Reading `boot_arg1` via vcmailbox:
 [source,console]
 ----
 sudo vcmailbox 0x0003008c 8 8 1 0
-# Example output - boot_arg1 is 42
+# Example output – boot_arg1 is 42
 # 0x00000020 0x80000000 0x0003008c 0x00000008 0x80000008 0x00000001 0x0000002a 0x0000000
 ----
 The value of the `boot_arg1` variable when the OS was started can be read via xref:configuration.adoc#part4[device-tree] at `/proc/device-tree/chosen/bootloader/arg1`
@@ -231,11 +231,11 @@ sudo vcmailbox 0x0003808d 4 4 0
 The value of `boot_count` when the OS was started can be read via xref:configuration.adoc#part4[device-tree] at `/proc/device-tree/chosen/bootloader/count`
 
 ==== `boot_partition`
-The `boot_partition` variable can be used to select alternate OS files (e.g. `cmdline.txt`) to be loaded, depending on which partition `config.txt` was loaded from after processing xref:config_txt.adoc#autoboot-txt[autoboot.txt]. This is intended for use with an `A/B` boot-system with `autoboot.txt` where it is desirable to be able to have identical files installed to the boot partition for both the `A` and `B` images.
+The `boot_partition` variable can be used to select alternate OS files (for example, `cmdline.txt`) to be loaded, depending on which partition `config.txt` was loaded from after processing xref:config_txt.adoc#autoboot-txt[autoboot.txt]. This is intended for use with an `A/B` boot-system with `autoboot.txt` where it is desirable to be able to have identical files installed to the boot partition for both the `A` and `B` images.
 
 The value of the `boot_partition` can be different to the requested `partition` variable if it was overridden by setting `boot_partition` in xref:config_txt.adoc#autoboot-txt[autoboot.txt] or if the specified partition was not bootable and xref:raspberry-pi.adoc#PARTITION_WALK[PARTITION_WALK] was enabled in the EEPROM config.
 
-Example `config.txt` - select the matching root filesystem for the `A/B` boot file-system:
+Example `config.txt` – select the matching root filesystem for the `A/B` boot file-system:
 [source,ini]
 ----
 # Use different cmdline files to point to different root filesystems based on which partition the system booted from.
@@ -246,7 +246,7 @@ cmdline=cmdline_rootfs_a.txt  # Points to root filesystem A
 cmdline=cmdline_rootfs_b.txt  # Points to root filesystem B
 ----
 
-The value of `boot_partition` i.e. the partition used to boot the OS can be read from xref:configuration.adoc#part4[device-tree] at `/proc/device-tree/chosen/bootloader/partition`
+The value of `boot_partition` – the partition used to boot the OS – can be read from xref:configuration.adoc#part4[device-tree] at `/proc/device-tree/chosen/bootloader/partition`
 
 ==== `partition`
 The `partition` variable can be used to select alternate boot flows according to the requested partition number (`sudo reboot N`) or via direct usage of the `PM_RSTS` watchdog register.

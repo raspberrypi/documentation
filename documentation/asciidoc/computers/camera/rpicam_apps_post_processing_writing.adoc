@@ -43,7 +43,7 @@ This class delegates model execution to a separate thread to prevent camera stut
 The `TfStage` class implements all the `PostProcessingStage` member functions post-processing stages must normally implement, _except for_ ``Name``.
 All `TfStage`-derived stages must implement the ``Name`` function, and should implement some or all of the following virtual member functions:
 
-`void readExtras()`:: The base class reads the named model and certain other parameters like the `refresh_rate`. Use this function this to read extra parameters for the derived stage and check that the loaded model is correct (e.g. has right input and output dimensions).
+`void readExtras()`:: The base class reads the named model and certain other parameters like the `refresh_rate`. Use this function to read extra parameters for the derived stage and check that the loaded model is correct (for example, has right input and output dimensions).
 `void checkConfiguration()`:: The base class fetches the low resolution stream that TFLite operates on and the full resolution stream in case the derived stage needs it. Use this function to check for the streams required by your stage. If your stage can't access one of the required streams, you might skip processing or throw an error.
 `void interpretOutputs()`:: Use this function to read and interpret the model output. _Runs in the same thread as the model when the model completes_.
 `void applyResults()`::  Use this function to apply results of the model (could be several frames old) to the current frame. Typically involves attaching metadata or drawing. _Runs in the main thread, before frames are delivered_.

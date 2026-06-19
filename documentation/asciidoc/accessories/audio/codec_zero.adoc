@@ -8,7 +8,7 @@ Raspberry Pi Codec Zero is a Raspberry Pi Zero-sized audio HAT. It delivers bi-d
 * Mono electret microphone (Mic2 left)
 * Automatic MEMS disabling on Mic2 insert detect
 * Supports additional (no fit) mono electret microphone (Mic1 right)
-* Stereo auxiliary input channel (AUX IN) - PHONO/RCA connectors
+* Stereo auxiliary input channel (AUX IN) – PHONO/RCA connectors
 * Stereo auxiliary output channel (Headphone/AUX OUT)
 * Flexible analogue and digital mixing paths
 * Digital signal processors (DSP) for automatic level control (ALC)
