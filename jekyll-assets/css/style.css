@@ -336,6 +336,10 @@ pre {
   align-content: center;
 }
 
+#toc-container #docs-search .search-trigger {
+  max-width: none;
+}
+
 #docs-search {
   flex-grow: 1;
   display: flex;
@@ -1553,6 +1557,10 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
 
   #docs-search {
     flex-grow: 3;
+  }
+
+  #toc-container #docs-search .search-trigger {
+    max-width: 280px;
   }
 
   #__rptl-header {
