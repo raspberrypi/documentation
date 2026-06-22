@@ -204,8 +204,9 @@ div.subtitle p {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 6px auto 0;
   width: 100%;
+  min-width: 160px;
+  max-width: 280px;
   height: 40px;
   padding: 0 12px;
   border: 1px solid var(--accent);
@@ -238,6 +239,12 @@ div.subtitle p {
   font-size: 0.8em;
 }
 
+@media (hover: none), (pointer: coarse) {
+  #docs-search .search-trigger-key {
+    display: none;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   #docs-search .search-trigger {
     color: #888;
@@ -254,7 +261,6 @@ div.subtitle p {
 }
 
 #search-container {
-  width: 50%;
   margin: 20px auto 0;
   max-width: 900px;
 }
@@ -327,12 +333,14 @@ pre {
 #toc-container #docs-search {
   margin-left: 5px;
   margin-right: 5px;
-  padding-bottom: 5px;
   align-content: center;
 }
 
 #docs-search {
   flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .toc-toggle-container {
@@ -1457,17 +1465,6 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
 
   /* when the mobile menu is visible, hide all page content so we don't end up with dueling scrollbars */
   #mobile-toggle:checked ~ #__rptl-header {
-    display: none;
-  }
-
-  /* make the docs search button slightly less aggressively large */
-  #docs-search .search-trigger {
-    max-width: 50%;
-    float: right;
-  }
-
-  /* no Cmd+K on touch devices, so drop the keyboard hint on mobile */
-  #docs-search .search-trigger-key {
     display: none;
   }
 
