@@ -88,7 +88,7 @@ For more detailed information about Raspberry Pi 500, see xref:keyboard-computer
 
 ==== Raspberry Pi 5 and 500+ LEDs
 
-Raspberry Pi 5 and 500+ use a bi-colour (red and green) system to indicate power and activity.
+Raspberry Pi 5 and 500+ use a bi-colour (red and green) LED to indicate power and activity.
 
 On Raspberry Pi 5, the power LED is located next to the power button; if assembled into a Raspberry Pi 5 case, the power button and LED appear integrated behind a single pressable lens.
 
