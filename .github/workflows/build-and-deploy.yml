@@ -18,7 +18,7 @@ jobs:
       name: ${{ inputs.environment }}
       url: ${{ inputs.url }}
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
         with:
           persist-credentials: false
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405
@@ -28,7 +28,7 @@ jobs:
         run: |
           pip3 install --upgrade pip setuptools wheel
           pip3 install -r ./requirements.txt
-      - uses: ruby/setup-ruby@12fd324f1d0b43274fdc8130f6980590a667c455
+      - uses: ruby/setup-ruby@89f90524b88a01fe6e0b732220432cc6142926af
         with:
           ruby-version: 3.2
           bundler-cache: true

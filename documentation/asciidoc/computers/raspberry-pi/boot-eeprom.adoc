@@ -225,6 +225,48 @@ Display the built-in documentation:
 $ rpi-eeprom-update -h
 ----
 
+[[ab-bootloader-updates]]
+==== A/B bootloader updates
+
+A/B EEPROM bootloader updates protect against a Raspberry Pi device being unable to boot after an interrupted update — this protects the device if power is removed from it mid-update.
+
+A/B-capable firmware splits the EEPROM into two partitions, A and B. At any time, one partition is 'committed' and is the partition that the device boots from by default. Updates are written to the other partition, leaving the committed partition untouched until the new image has been written in full and checked.
+
+It is compatible only with the Raspberry Pi 5, Raspberry Pi Compute Module 5, and Raspberry Pi 5 keyboard computer devices.
+
+A/B-capable firmware also supports a `tryboot` rollback mechanism that can test a new partition before committing to it. For more information, see the https://github.com/raspberrypi/utils/tree/master/rpieepromab[`rpi-eeprom-ab` README].
+
+For information about A/B update for *Raspberry Pi OS*, see xref:../services/connect.adoc#ab-boot-update[A/B boot update].
+
+===== Enable A/B bootloader updates
+
+NOTE: While A/B firmware updates are enabled, tools that write to EEPROM directly (such as `flashrom`) no longer work.
+
+To enable or disable A/B firmware updates with `raspi-config`:
+
+. From the command line, run the following command to update your Raspberry Pi software to the latest version:
++
+[source,console]
+----
+$ sudo apt update && sudo apt full-upgrade
+----
++
+. From the command line, run the following command to open `raspi-config`:
++
+[source,console]
+----
+$ sudo raspi-config
+----
++
+. Navigate to *`6 Advanced Options > A14 AB Firmware`* and select `Enable` or `Disable`.
+. Select *`Finish`* and reboot when prompted.
+. From the command line, run the following command to perform the A/B update.
++
+[source,console]
+----
+$ rpi-eeprom-update
+----
+
 [[bootloader-release]]
 === Bootloader release status
 
