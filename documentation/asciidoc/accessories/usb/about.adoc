@@ -73,13 +73,13 @@ The Raspberry Pi Flash Drive is lightweight and travel-friendly, with a compact,
 |Works with USB 3.0 Type-A ports and is backward compatible with USB 2.0.
 
 |*SMART reporting*
-|The drives support ATA-style health reports readable through tools like smartctl. See <<smart-information>>.
+|Supports ATA-style health reports readable through tools like `smartctl`. For more information, see <<smart-information>>.
 |===
 
-The Flash Drive is capable of high input/output operations per second (IOPS) for fast access to small files. It also offers responsive performance for computing tasks such as booting operating systems and running applications. The following table summarises the key performance features of the Raspberry Pi Flash Drive based on whether you choose the 128 GB or the 256 GB storage capacity option.
+The Raspberry Pi Flash Drive provides high input/output operations per second (IOPS) for fast access to small files. It also offers responsive performance for computing tasks such as booting operating systems and running applications. The following table summarises the key performance features of the Raspberry Pi Flash Drive for each storage capacity (128 GB or 256 GB).
 
 [[performance]]
-.Raspberry Pi Flash Drive performance features based on the chosen storage capacity
+.Raspberry Pi Flash Drive performance features based on the storage capacity
 [cols="2,1,1", options="header"]
 |===
 |Performance feature |128 GB |256 GB
@@ -100,28 +100,32 @@ The Flash Drive is capable of high input/output operations per second (IOPS) for
 [[smart-information]]
 === Flash Drive SMART reporting
 
-The USB controller used in the Flash Drive parses 12-byte ATA pass-through SCSI commands and can deliver a self-assessment of its own health.
+The USB controller used in the Raspberry Pi Flash Drive supports 12-byte ATA pass-through SCSI commands and can provide an assessment of the drive's own health.
 
-The recommended application to read and display this report is *smartctl*, part of the *smartmontools* package.
+==== View SMART data
+The recommended application for reading and displaying a SMART report is `smartctl`, which is included in the `smartmontools` package. To display the complete SMART report, run the following command:
 
-Read the health info with:
 [source,bash]
 ----
 sudo smartctl -d sat,12 -x /dev/sda
 ----
+The `-d sat,12` option instructs `smartctl` to communicate with the USB controller using the SAT-12 ATA pass-through protocol.
 
-==== SMART Attribute ID descriptions
+==== SMART attribute descriptions
 
-NOTE: smartmontools doesn't assign vendor-unique field names to USB devices, as the application considers all USB mass-storage devices to be a bridge to an ATA hard drive.
+The following table describes the SMART attributes reported by the Raspberry Pi Flash Drive. Attributes marked as *Unused* are reserved and don't report any information.
 
-[cols="1,1,3,4,options="header]
+NOTE: `smartmontools` doesn't assign vendor-unique field names to USB devices because the application treats USB mass-storage devices as a bridge to an ATA hard drive.
+
+.SMART attributes reported by the Raspberry Pi Flash Drive
+[cols="1,1,3,4, options="header"]
 |===
-|ID (hex) | ID (decimal) |  Attribute name | Description
+|*ID (hex)* | *ID (decimal)*|  *Attribute name* | *Description*
 |01  |   1 | Read Error Rate| Rate of errors when reading data from flash memory
 |05  |   5 | Reallocated Sectors Count| Number of bad sectors that have been replaced by spare blocks
 |09  |   9 | Power-On Hours| Total hours the drive has been powered on
 |0C  |  12 | Power Cycle Count| Number of times the drive has been powered on and off
-|A0  | 160 | Uncorrectable sectors count when read/write| Number of sectors that could not be corrected during read/write operations
+|A0  | 160 | Uncorrectable Read/Write Sector Count| Number of sectors that couldn't be corrected during read/write operations
 |A1  | 161 | Number of Valid Spare Blocks| Remaining usable spare blocks reserved for replacing bad blocks
 |A3  | 163 2+| Unused
 |A4  | 164 | Total Erase Count| Total number of flash block erase operations
@@ -137,8 +141,8 @@ NOTE: smartmontools doesn't assign vendor-unique field names to USB devices, as 
 |C2  | 194 | Temperature| Current drive temperature in Celsius
 |C4  | 196 | Reallocation Event Count| Number of times the drive attempted to reallocate bad sectors
 |C7  | 199 | Ultra DMA CRC Error Count| Communication errors between drive and host (cable/interface issues)
-|F1  | 241 | Total GiB Written| Total amount of data written to the drive, rounded down to nearest GiB
-|F2  | 242 | Total GiB Read| Total amount of data read from the drive, rounded down to nearest GiB.
+|F1  | 241 | Total GiB Written| Total amount of data written to the drive, rounded down to the nearest GiB
+|F2  | 242 | Total GiB Read| Total amount of data read from the drive, rounded down to the nearest GiB.
 |F5  | 245 | Unused
 |===
 
