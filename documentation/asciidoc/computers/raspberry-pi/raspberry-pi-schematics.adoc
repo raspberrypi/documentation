@@ -5,7 +5,8 @@ Schematics for the various Raspberry Pi board versions:
 === Raspberry Pi 5
 
 * https://pip.raspberrypi.com/documents/RP-008347-DS[Mechanical drawings, PDF]
-* https://pip.raspberrypi.com/documents/RP-008369-DS[STEP file] for Raspberry Pi 5
+* https://pip.raspberrypi.com/documents/RP-010083-CA[STEP file]
+* https://pip.raspberrypi.com/documents/RP-010082-CA[STEP file (including silkscreen graphics)]
 
 === Raspberry Pi 4 Model B
 
