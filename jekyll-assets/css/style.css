@@ -13,6 +13,9 @@
   --home: #cd2355;
   --rp2040-context-tag: #50C878;
   --accent: #cd2355;
+  --docsearch-primary-color: var(--accent);
+  --docsearch-logo-color: var(--red-tint);
+  --docsearch-muted-color: #333;
   --copy-button-bg: #f6f6f6;
   --copy-button-text: #444;
   --textcolor: black;
@@ -52,6 +55,9 @@
     --home: #cd2355;
     --rp2040-context-tag: #50C878;
     --accent: #d75a64;
+    --docsearch-primary-color: var(--accent);
+    --docsearch-logo-color: var(--red-tint);
+    --docsearch-muted-color: #333;
     --copy-button-bg: #707070;
     --copy-button-text: #CCC;
     --textcolor: white;
@@ -199,60 +205,199 @@ div.subtitle p {
   padding: 5px;
 }
 
-/* Styled search box that opens the Kapa widget */
-#docs-search .search-trigger {
+#docs-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  max-width: 560px;
+  margin: 6px auto 0;
+}
+
+#docsearch {
+  flex: 1 1 auto;
+  min-width: 120px;
+}
+
+#search-container #docsearch {
+  flex: 0 1 250px;
+  min-width: 250px;
+}
+
+#docsearch .DocSearch-Button {
   display: flex;
   align-items: center;
   gap: 8px;
   width: 100%;
-  min-width: 160px;
-  max-width: 280px;
   height: 40px;
+  margin: 0;
   padding: 0 12px;
   border: 1px solid var(--accent);
   border-radius: 5px;
   background: var(--bg);
   color: var(--subtle);
   font: inherit;
-  text-align: left;
-  cursor: pointer;
 }
 
-#docs-search .search-trigger:hover {
+#docsearch .DocSearch-Button:hover {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
-#docs-search .search-trigger-icon {
+#docsearch .DocSearch-Button-Container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+#docsearch .DocSearch-Search-Icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+  stroke-width: 2;
+}
+
+#docsearch .DocSearch-Button-Placeholder {
+  display: block;
+  flex-grow: 1;
+  padding: 0;
+  font-size: inherit;
+  text-align: left;
+}
+
+#docsearch .DocSearch-Button-Keys {
+  flex-shrink: 0;
+  min-width: auto;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--near-bg);
+}
+
+#docsearch .DocSearch-Button-Key {
+  position: static;
+  top: auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--subtle);
+  font-size: 0.8em;
+}
+
+.search-or {
+  flex-shrink: 0;
+  color: var(--subtle);
+  white-space: nowrap;
+}
+
+.ask-ai-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--textcolor);
+  font: inherit;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.ask-ai-trigger:hover {
+  color: var(--accent);
+}
+
+.ask-ai-icon {
   flex-shrink: 0;
   color: var(--accent);
 }
 
-#docs-search .search-trigger-text {
-  flex-grow: 1;
+.ask-ai-label-short {
+  display: none;
 }
 
-#docs-search .search-trigger-key {
-  flex-shrink: 0;
-  padding: 2px 6px;
-  border-radius: 4px;
-  background: var(--near-bg);
-  font-size: 0.8em;
+#toc-container .ask-ai-label {
+  display: none;
+}
+
+#toc-container .ask-ai-label-short {
+  display: inline;
+}
+
+@media (max-width: 700px) {
+  .ask-ai-label {
+    display: none;
+  }
+
+  .ask-ai-label-short {
+    display: inline;
+  }
 }
 
 @media (hover: none), (pointer: coarse) {
-  #docs-search .search-trigger-key {
+  #docsearch .DocSearch-Button-Keys {
     display: none;
   }
 }
 
 @media (prefers-color-scheme: dark) {
-  #docs-search .search-trigger {
+  #docsearch .DocSearch-Button {
     color: #888;
   }
 }
 
 #kapa-widget-container {
   color-scheme: light dark;
+}
+
+.DocSearch-AskAI {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 40px;
+  margin: 8px 0 4px;
+  padding: 0 12px;
+  border: 1px solid var(--accent);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--accent);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.DocSearch-AskAI:hover {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.DocSearch-AskAI-Icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.DocSearch-AskAI-Text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.DocSearch-Dropdown-Container {
+  display: flex;
+  flex-direction: column;
+}
+
+.DocSearch-HitsFooter {
+  order: -1;
+  padding: 0;
+  margin-bottom: 4px;
 }
 
 #main-window {
@@ -331,20 +476,8 @@ pre {
 }
 
 #toc-container #docs-search {
-  margin-left: 5px;
-  margin-right: 5px;
-  align-content: center;
-}
-
-#toc-container #docs-search .search-trigger {
-  max-width: none;
-}
-
-#docs-search {
-  flex-grow: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .toc-toggle-container {
@@ -1555,12 +1688,10 @@ input:not(:checked) ~ li ~ .itemcontents .sectlevel1 {
     display: flex;
   }
 
-  #docs-search {
-    flex-grow: 3;
-  }
-
-  #toc-container #docs-search .search-trigger {
-    max-width: 280px;
+  #toc-container #docs-search {
+    flex: 0 0 auto;
+    width: min(60vw, 320px);
+    margin: 0 10px 0 auto;
   }
 
   #__rptl-header {
