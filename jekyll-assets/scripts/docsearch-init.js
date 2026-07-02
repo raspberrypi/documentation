@@ -21,8 +21,8 @@
   var lvl1 = document.querySelector("#content h1");
   var searchParameters = { optionalFilters: [] };
 
-  if (lvl0) {
-    searchParameters.optionalFilters.push("hierarchy.lvl0:" + lvl0.innerText);
+  if (lvl0 && lvl0.innerText.trim() === "Pico C SDK") {
+    searchParameters.optionalFilters.push("hierarchy.lvl0:" + lvl0.innerText.trim());
   }
   if (lvl1) {
     searchParameters.optionalFilters.push("hierarchy.lvl1:" + lvl1.innerText + "<score=2>");
