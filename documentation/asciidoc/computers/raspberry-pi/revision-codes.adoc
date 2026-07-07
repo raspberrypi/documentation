@@ -867,6 +867,7 @@ Raspberry Pi models have the following device tree values:
 | Raspberry Pi 3 Model A+       | `raspberrypi`   | `3-model-a-plus`            | `brcm`     | `bcm2837`
 | Raspberry Pi 3 Model B+       | `raspberrypi`   | `3-model-b-plus`            | `brcm`     | `bcm2837`
 | Raspberry Pi 3 Model B        | `raspberrypi`   | `3-model-b`                 | `brcm`     | `bcm2837`
+| Raspberry Pi 2 Model B Rev 2  | `raspberrypi`   | `2-model-b-rev2`            | `brcm`     | `bcm2837`
 | Raspberry Pi 2 Model B        | `raspberrypi`   | `2-model-b`                 | `brcm`     | `bcm2836`
 | Raspberry Pi Zero W           | `raspberrypi`   | `model-zero-w`              | `brcm`     | `bcm2835`
 | Raspberry Pi Zero             | `raspberrypi`   | `model-zero`                | `brcm`     | `bcm2835`
