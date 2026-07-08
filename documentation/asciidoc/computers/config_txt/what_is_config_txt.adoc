@@ -63,4 +63,4 @@ Settings which are handled by the bootloader will only take effect if they are s
 
 ==== Conditional filtering
 
-Conditional filters are covered in the xref:config_txt.adoc#conditional-filters[conditionals section].
+Conditional filters are covered in the xref:conditional.adoc[conditionals section].
