@@ -144,7 +144,7 @@ Raspberry Pi keyboard computers are available as standalone keyboards or as part
 
 == Getting started
 
-This section guides you through setting up your Raspberry Pi keyboard computer with a xref:../computers/os.adoc#os-installation[Raspberry Pi operating system (OS)], Wi-Fi, and peripherals (mouse and display) so that you can use it as a desktop computer. For more detailed guidance on setting up your Raspberry Pi, or if want to get started with a different setup, see xref:../computers/getting-started.adoc[Getting started].
+This section guides you through setting up your Raspberry Pi keyboard computer with a xref:../computers/os.adoc#os-installation[Raspberry Pi operating system (OS)], Wi-Fi, and peripherals (mouse and display) so that you can use it as a desktop computer. For more detailed guidance on setting up your Raspberry Pi, or if you want to get started with a different setup, see xref:../computers/getting-started.adoc[Getting started].
 
 You can skip <<step1-bootmedia>> and start from <<step2-peripherals>> instead if:
 
