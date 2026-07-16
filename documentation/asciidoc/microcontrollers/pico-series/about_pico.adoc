@@ -162,7 +162,7 @@ Raspberry Pi offers additional technical documentation relevant to Raspberry Pi 
 * https://pip.raspberrypi.com/documents/RP-008371-DS[RP2040 Datasheet: A microcontroller by Raspberry Pi]
 * https://pip.raspberrypi.com/documents/RP-008312-DS[Raspberry Pi Pico W Datasheet: An RP2040-based microcontroller board]
 * https://pip.raspberrypi.com/documents/RP-008279-DS[Hardware design with RP2040: Using RP2040 microcontrollers to build boards and products]
-* https://pip.raspberrypi.com/documents/RP-008257-DS[Connecting to the Internet with Raspberry Pi Pico W-series: Getting online with C/{cpp} or MicroPython on W-series devices]
+* https://pip.raspberrypi.com/documents/RP-008257-DS[Wi-Fi and Bluetooth connectivity on Pico W-series devices]
 
 Additionally, Raspberry Pi provides the following supporting hardware design resources:
 
@@ -327,7 +327,7 @@ Raspberry Pi offers additional technical documentation relevant to Raspberry Pi 
 * https://pip.raspberrypi.com/documents/RP-008373-DS[RP2350 Datasheet: A microcontroller by Raspberry Pi]
 * https://pip.raspberrypi.com/documents/RP-008304-DS[Raspberry Pi Pico 2 W Datasheet: An RP2350-based microcontroller board]
 * https://pip.raspberrypi.com/documents/RP-008280-DS[Hardware design with RP2350: Using RP2350 microcontrollers to build boards and products]
-* https://pip.raspberrypi.com/documents/RP-008257-DS[Connecting to the Internet with Raspberry Pi Pico W-series: Getting online with C/{cpp} or MicroPython on W-series devices]
+* https://pip.raspberrypi.com/documents/RP-008257-DS[Wi-Fi and Bluetooth connectivity on Pico W-series devices]
 
 Additionally, Raspberry Pi provides a https://pip.raspberrypi.com/documents/RP-008306-DS[schematic diagram] to support hardware design.
 
