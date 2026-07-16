@@ -112,7 +112,7 @@ Raspberry Pi Zero models use micro USB instead of full-size USB, and so require 
 
 Raspberry Pi Zero devices don't supply enough power for both a keyboard and a mouse (unless the keyboard has a built-in touchpad). For this reason, you need to plug a powered USB hub into the micro USB OTG adapter connected to your Raspberry Pi Zero. You can then plug a mouse into the USB hub.
 
-NOTE: Plugging in a USB device to a Raspberry Pi Zero after it has booted can cause the voltage to droop enough that it causes the CPU to reboot. We therefore recommend that you use a powered USB hub, or that you connect USB devices before booting up
+NOTE: Plugging in a USB device to a Raspberry Pi Zero after it has booted can cause the voltage to drop enough that it causes the CPU to reboot. We therefore recommend that you use a powered USB hub, or that you connect USB devices before booting up.
 
 ===== Wireless input devices
 

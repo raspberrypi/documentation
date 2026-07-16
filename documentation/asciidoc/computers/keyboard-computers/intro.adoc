@@ -22,7 +22,7 @@ The features of your Raspberry Pi keyboard computer depend on the model.
 Raspberry Pi 500+ offers additional features, including:
 
 * Mechanical keys with customisable RGB LEDs and replaceable keycaps. For more information, see <<mechanical-keys, Raspberry Pi 500+ mechanical keys>>. For instructions, see <<backlighting, Customise your backlighting>> and <<replace-keycaps, Change your keycaps>>.
-* Internal 256 GB M.2 SSD, which is replaceable. This SSD comes installed with Raspberry Pi OS. For instructions, see <<replace-m2, Replace your M.2 SSD>>.
+* Internal 256 GB M.2 SSD, which comes installed with Raspberry Pi OS and is replaceable. For instructions, see <<replace-m2, Replace your M.2 SSD>>.
 * More RAM (16 GB). For a comparison, see the following table.
 
 [cols="1,1,1,1", options="header"]
@@ -105,7 +105,7 @@ Raspberry Pi 500+ offers additional features, including:
 | Dedicated button
 
 | *Customisability*
-|
+|–
 | Key remapping
 | Key remapping; RGB backlighting; ability to change keycaps
 |===
@@ -144,9 +144,73 @@ Raspberry Pi keyboard computers are available as standalone keyboards or as part
 
 == Getting started
 
-To get up and running with your Raspberry Pi keyboard computer, you can follow the instructions at xref:../computers/getting-started.adoc#desktop-setup[Getting started with your Raspberry Pi].
+This section guides you through setting up your Raspberry Pi keyboard computer with a xref:../computers/os.adoc#os-installation[Raspberry Pi operating system (OS)], Wi-Fi, and peripherals (mouse and display) so that you can use it as a desktop computer. For more detailed guidance on setting up your Raspberry Pi, or if want to get started with a different setup, see xref:../computers/getting-started.adoc[Getting started].
 
-If you have a Raspberry Pi 500+ or got your 400 or 500 as part of a kit that includes a microSD card pre-programmed with Raspberry Pi OS, you can skip ahead in the instructions to xref:../computers/getting-started.adoc#desktop-setup[Set up your Raspberry Pi].
+You can skip <<step1-bootmedia>> and start from <<step2-peripherals>> instead if:
+
+- You have a Raspberry Pi 500+, which comes with an M.2 SSD preprogrammed with Raspberry Pi OS.
+- You got your Raspberry Pi 400 or 500 as part of a kit that includes a microSD card preprogrammed with Raspberry Pi OS.
+
+NOTE: The first releases of Raspberry Pi 500+ keyboard computers came with the previous Raspberry Pi OS, Bookworm. Newer Raspberry Pi 500+ keyboard computers come with the most recent Raspberry Pi OS, Trixie.
+
+=== Hardware prerequisites
+
+If you aren't setting up a Raspberry Pi keyboard computer as part of a keyboard computer kit, you need the following hardware:
+
+* A Raspberry Pi 400, 500, or 500+.
+* An official Raspberry Pi xref:../computers/getting-started.adoc#power[power supply] suitable for your Raspberry Pi keyboard computer.
+* A xref:../computers/keyboard-computers.adoc[microSD card] with at least 32 GB of storage and a way to connect it to another computer. You need a microSD if:
+** You aren't using a keyboard computer kit to set up a Raspberry Pi 400 or 500.
+** You have a Raspberry Pi 500+ and want to use a microSD card instead of the preinstalled M.2 SSD card as your boot media.
+* Another computer running Windows, macOS, or Linux to prepare the microSD card.
+* An internet connection and your Wi-Fi credentials (SSID and password).
+* A USB mouse to connect to your Raspberry Pi keyboard computer.
+* A monitor or display (and appropriate power cable) to connect to your Raspberry Pi keyboard computer. For ease, we recommend the xref:../computers/keyboard-computers.adoc[Raspberry Pi Monitor], which you can connect to power through your Raspberry Pi keyboard computer.
+* A micro HDMI cable to connect your monitor or display to your Raspberry Pi keyboard computer. Depending on your monitor, you might also need a micro-HDMI-to-HDMI cable.
+
+[[step1-bootmedia]]
+=== Step 1. Prepare your boot media
+
+This is a necessary step only if your keyboard computer didn't come as part of a kit, or if you're setting up a Raspberry Pi 500+ and want to use a microSD card instead of the preinstalled M.2 SSD card.
+
+. On your computer, xref:../computers/getting-started.adoc#imager-install[install and launch Raspberry Pi Imager]. You use this tool to write xref:../computers/os.adoc#os-installation[Raspberry Pi OS] to your microSD card, which transforms it into boot media for your Raspberry Pi keyboard computer.
+. Follow the instructions in Imager to configure the Raspberry Pi device, OS, storage, customisation, and Imager options. For guidance on what to configure, see steps 2 to 4 in xref:../computers/getting-started.adoc#imager-install[Install using Imager].
+. Write the image to your microSD card. This transforms the storage device into your boot media.
+. After Raspberry Pi Imager has completed writing the boot media, safely remove the microSD card from your computer and then insert it into your Raspberry Pi keyboard computer. Looking at the back of your keyboard computer, the microSD card slot is located to the right of the USB ports and to the left of the power port.
+
+If you experience any issues, want to go through a more detailed setup of your device, or want to get started with a different setup of your Raspberry Pi, see xref:../computers/getting-started.adoc[Getting started].
+
+[[step2-peripherals]]
+=== Step 2. Connect peripherals
+
+For a desktop computer setup, you can connect the following peripherals directly into the back of your keyboard computer:
+
+* A USB mouse, which you can connect to the white USB 2.0 port, leaving the faster USB 3.0 ports available for any faster peripherals you might want to connect.
+* One or two displays as required. Both micro HDMI ports support up to 4K resolutions.
+** If required, use a micro-HDMI-to-HDMI adapter and connect the larger (full HDMI) end of the cable to your display.
+** Displays typically require their own power source. If you're using an official xref:../computers/keyboard-computers.adoc[Raspberry Pi Monitor], you can connect your monitor to power through a USB cable connected to your Raspberry Pi keyboard computer. When you power on your keyboard computer, it then provides power to the Raspberry Pi Monitor.
+* Optionally, speakers or headphones for audio output.
+** You can output audio over micro HDMI, USB, or Bluetooth.
+** If you're using an official xref:../computers/keyboard-computers.adoc[Raspberry Pi Monitor], you can connect speakers or headphones through the 3.5 mm audio jack at the back of the display.
+
+[[step3-power]]
+=== Step 3. Connect to power
+
+Connect your Raspberry Pi keyboard computer to power and turn it on.
+
+* On a *Raspberry Pi 400*, you turn on the keyboard computer using the following key combination: *Fn + F10*. The LED status light turns on and Raspberry Pi OS goes through its first-time boot setup process.
+* On a *Raspberry Pi 500*, you turn on the keyboard computer using the dedicated power button in the top-right corner of the keyboard. The LED status light turns on and Raspberry Pi OS goes through its first-time boot setup process.
+* On a *Raspberry Pi 500+*, you turn on the keyboard computer using the dedicated power button in the top-right corner of the keyboard. The keyboard lights up and Raspberry Pi OS goes through its first-time boot setup process.
+
+Your Raspberry Pi keyboard computer can take 60 to 90 seconds to boot, and you don't need to do anything while it does this.
+
+[[step4-network]]
+=== Step 4. Connect to a network (optional)
+After you've set up your keyboard computer with the above instructions, you can connect it to a network. This can be a wired (Ethernet) connection or a wireless (Wi-Fi) connection.
+
+Configuring your wireless network typically happens during <<step1-bootmedia>>, but you can also configure a wireless connection from the desktop or the command line.
+
+For detailed instructions, see xref:../computers/getting-started.adoc#step-4-connect-to-a-network-optional[Connect to a network] in the *Getting started* page.
 
 [[mechanical-keys]]
 == Raspberry Pi 500+ mechanical keys
@@ -566,9 +630,8 @@ Use the `rpi-keyboard-config` software to:
 * Remap the keys on your keyboard. For information, see <<remap, Remap keys>>.
 * Watch key presses in the configuration software. For information, see <<watch, Watch key presses>>.
 * Edit up to four key-mapping layers. For information, see <<layers, Manage layers>>.
+* Remap your keys with https://get.vial.today/[Vial] on Raspberry Pi 500 and 500+. For information, see <<vial, Remap keys with Vial>>.
 * Reset your keyboard to the default key mapping. For information, see <<reset-keymap, Reset to default keyboard layout>>.
-
-The Raspberry Pi 500 and 500+ are compatible with https://get.vial.today/[Vial]. You can use the Vial web UI to remap your keys. For information, see <<vial, Remap keys with Vial>>.
 
 [[keycodes]]
 ==== List keycodes
@@ -683,6 +746,19 @@ You can set different key mappings on different layers. There are four layers th
 * `rpi-keyboard-config key get`
 * `rpi-keyboard-config key set`
 
+[[vial]]
+==== Remap keys with Vial
+
+ You can use the Vial web UI to remap your keys. Vial works with your keyboard firmware to configure your keyboard in real time.
+
+. On your Raspberry Pi 500 or 500+, go to https://vial.rocks/[Vial web interface].
+. In the window that appears, select your keyboard and then select **Connect**.
+. Use the Vial web interface to change your key mappings.
+
+For information about how to use Vial, see the https://get.vial.today/[Vial documentation].
+
+IMPORTANT: We recommend that you use Vial only for working with the key mapping and not for customising the RGB LEDs.
+
 [[reset-keymap]]
 ==== Reset to default keyboard layout
 
@@ -692,19 +768,6 @@ The following command resets your keyboard layout to the default key mappings, i
 ----
 $ rpi-keyboard-config reset-keymap
 ----
-
-[[vial]]
-==== Remap keys with Vial
-
-Vial works with your keyboard firmware to configure your keyboard in real time.
-
-. On your Raspberry Pi 500 or 500+, go to https://vial.rocks/[Vial web interface].
-. In the window that appears, select your keyboard and click **Connect**.
-. Use the Vial web interface to change your key mappings.
-
-For information about how to use Vial, see the https://get.vial.today/[Vial documentation].
-
-NOTE: We recommend that you use Vial only for working with the key mapping and not for customising the RGB LEDs.
 
 === Return to default settings
 
