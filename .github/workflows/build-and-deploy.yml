@@ -29,7 +29,7 @@ jobs:
         run: |
           pip3 install --upgrade pip setuptools wheel
           pip3 install -r ./requirements.txt
-      - uses: ruby/setup-ruby@9eb537ca036ebaed86729dcb9309076e4c5c3b74
+      - uses: ruby/setup-ruby@0dafeac902942906541bc140009cdbf32665b601
         with:
           ruby-version: 3.2
           bundler-cache: true
