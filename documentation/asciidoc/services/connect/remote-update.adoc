@@ -5,6 +5,8 @@ Raspberry Pi Connect includes the ability to update your Raspberry Pi devices by
 
 Remote updates are useful for updating devices behind a firewall, devices that are offline (these are updated the next time they sign in to Raspberry Pi Connect), and devices that are physically remote or hard to reach.
 
+NOTE: In a xref:../services/connect-for-organisations.adoc[Connect for Organisations] account, only administrators can deploy remote updates and manage update artefacts; members can't. This restriction doesn't apply to personal accounts.
+
 Connect supports two types of update artefact:
 
 * <<remoteupdate-otamaker,Script artefacts>>, created with `otamaker`, run a shell script as root on the device. They work on a standard installation of Raspberry Pi OS and suit maintenance tasks such as upgrading packages.
