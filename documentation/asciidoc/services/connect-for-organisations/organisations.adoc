@@ -57,8 +57,8 @@ image::images/users.png[alt="The Raspberry Pi Connect interface, showing users a
 +
 There are two roles available for members of an organisation:
 
-    * **Member.** A user who can remotely access all devices within an organisation but can't make any changes to the organisation.
-    * **Administrator.** A user who can remotely access all devices within an organisation and make changes to the organisation. They also receive organisation-wide notification emails for sensitive actions, such as the addition of new devices and new management API access tokens.
+    * **Member.** A user who can remotely access all devices within an organisation using screen sharing and remote shell, but can't deploy remote updates or make any changes to the organisation.
+    * **Administrator.** A user who can remotely access all devices within an organisation, deploy remote updates, and make changes to the organisation. They also receive organisation-wide notification emails for sensitive actions, such as the addition of new devices and new management API access tokens.
 
 . Enter the email address where you want to send the invitation.
 

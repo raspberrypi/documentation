@@ -14,7 +14,7 @@ Download the correct MicroPython UF2 file for your board:
 
 * https://micropython.org/download/RPI_PICO2_W/RPI_PICO2_W-latest.uf2[Pico 2 W]
 
-For more information about using Wi-Fi and Bluetooth on Raspberry Pi Pico W-series devices with C/{cpp} or MicroPython, see https://pip.raspberrypi.com/documents/RP-008257-DS[Connecting to the Internet with Raspberry Pi Pico W-series].
+For more information about using Wi-Fi and Bluetooth on Raspberry Pi Pico W-series devices with C/{cpp} or MicroPython, see https://pip.raspberrypi.com/documents/RP-008257-DS[Wi-Fi and Bluetooth connectivity on Pico W-series devices].
 
 For more information about https://github.com/bluekitchen/btstack#supported-protocols-and-profiles[supported Bluetooth protocols and profiles], see the Blue Kitchen https://github.com/bluekitchen/btstack[BTStack] Github repository.
 

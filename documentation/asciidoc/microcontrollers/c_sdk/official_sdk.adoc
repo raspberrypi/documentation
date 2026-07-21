@@ -1,20 +1,20 @@
 == Raspberry Pi Pico C/C++ SDK
 
-Our official C SDK can be used from the command line, or from popular integrated development environments like Visual Studio Code, Eclipse, and CLion. To get started, download our C/{cpp} SDK and Examples, and take a look at our https://pip.raspberrypi.com/documents/RP-008276-DS[getting started] documentation. Or for a quick setup see the next section.
+Our official C SDK can be used from the command line, or from popular integrated development environments like Visual Studio Code and CLion. To get started, download our C/{cpp} SDK and examples, and take a look at our https://pip.raspberrypi.com/documents/RP-008276-DS[getting started] documentation. Or for a quick setup see the next section.
 
 You can find documentation around the C/{cpp} SDK at:
 
-https://pip.raspberrypi.com/documents/RP-008276-DS[Getting started with Raspberry Pi Pico-series]:: C/{cpp} development with Raspberry Pi Pico, Pico 2, and other Raspberry Pi microcontroller-based boards
+- xref:../pico-sdk/index_doxygen.adoc[Raspberry Pi Pico C/{cpp} SDK API documentation]
 
-https://pip.raspberrypi.com/documents/RP-008257-DS[Connecting to the Internet with Raspberry Pi Pico W]:: Getting Raspberry Pi Pico W online with C/{cpp} or MicroPython
+- https://pip.raspberrypi.com/documents/RP-008276-DS[Getting started with Raspberry Pi Pico-series]
 
-https://pip.raspberrypi.com/documents/RP-009085-KB[Raspberry Pi Pico-series C/{cpp} SDK]:: Libraries and tools for C/{cpp} development on Raspberry Pi microcontrollers
+- https://pip.raspberrypi.com/documents/RP-008257-DS[Wi-Fi and Bluetooth connectivity on Pico W-series devices]
 
-xref:../pico-sdk/index_doxygen.adoc[API level documentation]:: Documentation for the Raspberry Pi Pico C/{cpp} SDK
+- https://pip.raspberrypi.com/documents/RP-009085-KB[Raspberry Pi Pico-series C/{cpp} SDK]
 
-https://github.com/raspberrypi/pico-examples[The pico-examples repository]:: Example projects
+- https://github.com/raspberrypi/pico-examples[The pico-examples repository]
 
-SDK source code is open source, available via the https://github.com/raspberrypi/pico-sdk[pico-sdk Github repository].
+SDK source code is open source and available in the https://github.com/raspberrypi/pico-sdk[pico-sdk Github repository].
 
 [NOTE]
 ====
