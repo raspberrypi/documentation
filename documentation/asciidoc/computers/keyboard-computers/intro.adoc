@@ -119,7 +119,7 @@ Raspberry Pi keyboard computers are available as standalone keyboards or as part
 * Raspberry Pi 400 keyboard computer.
 * 15 W Raspberry Pi USB-C power supply.
 * Raspberry Pi USB mouse.
-* 16 GB microSD card, pre-programmed with Raspberry Pi OS.
+* 16 GB microSD card, preprogrammed with Raspberry Pi OS.
 * micro-HDMI cable.
 * _Beginner's Guide_ book.
 
@@ -128,13 +128,13 @@ Raspberry Pi keyboard computers are available as standalone keyboards or as part
 * Raspberry Pi 500 keyboard computer.
 * 27 W Raspberry Pi USB-C power supply.
 * Raspberry Pi USB mouse.
-* 32 GB A2-class microSD card, pre-programmed with Raspberry Pi OS.
+* 32 GB A2-class microSD card, preprogrammed with Raspberry Pi OS.
 * micro-HDMI cable.
 * _Beginner's Guide_ book.
 
 === Raspberry Pi 500+ kit
 
-* Raspberry Pi 500+ keyboard computer, including an SSD pre-programmed with Raspberry Pi OS.
+* Raspberry Pi 500+ keyboard computer, including an SSD preprogrammed with Raspberry Pi OS.
 * 27 W Raspberry Pi USB-C power supply.
 * Raspberry Pi USB mouse.
 * micro-HDMI cable.
@@ -161,17 +161,19 @@ If you aren't setting up a Raspberry Pi keyboard computer as part of a keyboard 
 * An official Raspberry Pi xref:../computers/getting-started.adoc#power[power supply] suitable for your Raspberry Pi keyboard computer.
 * A xref:../computers/keyboard-computers.adoc[microSD card] with at least 32 GB of storage and a way to connect it to another computer. You need a microSD if:
 ** You aren't using a keyboard computer kit to set up a Raspberry Pi 400 or 500.
-** You have a Raspberry Pi 500+ and want to use a microSD card instead of the preinstalled M.2 SSD card as your boot media.
-* Another computer running Windows, macOS, or Linux to prepare the microSD card.
-* An internet connection and your Wi-Fi credentials (SSID and password).
+** You have a Raspberry Pi 500+ and want to use a microSD card instead of the preinstalled M.2 SSD as your boot media.
+* Another computer running Windows, macOS, or Linux to prepare the microSD card. This isn't required if you're booting from the preinstalled M.2 SSD inside a Raspberry Pi 500+.
+* If you want to connect to a network, one or both of the following:
+** Your Wi-Fi credentials (SSID and password).
+** An Ethernet cable.
 * A USB mouse to connect to your Raspberry Pi keyboard computer.
 * A monitor or display (and appropriate power cable) to connect to your Raspberry Pi keyboard computer. For ease, we recommend the xref:../computers/keyboard-computers.adoc[Raspberry Pi Monitor], which you can connect to power through your Raspberry Pi keyboard computer.
-* A micro HDMI cable to connect your monitor or display to your Raspberry Pi keyboard computer. Depending on your monitor, you might also need a micro-HDMI-to-HDMI cable.
+* A micro-HDMI-to-HDMI cable to connect your monitor or display to your Raspberry Pi keyboard computer.
 
 [[step1-bootmedia]]
 === Step 1. Prepare your boot media
 
-This is a necessary step only if your keyboard computer didn't come as part of a kit, or if you're setting up a Raspberry Pi 500+ and want to use a microSD card instead of the preinstalled M.2 SSD card.
+This is a necessary step only if your keyboard computer didn't come as part of a kit, or if you're setting up a Raspberry Pi 500+ and want to use a microSD card instead of the preinstalled M.2 SSD.
 
 . On your computer, xref:../computers/getting-started.adoc#imager-install[install and launch Raspberry Pi Imager]. You use this tool to write xref:../computers/os.adoc#os-installation[Raspberry Pi OS] to your microSD card, which transforms it into boot media for your Raspberry Pi keyboard computer.
 . Follow the instructions in Imager to configure the Raspberry Pi device, OS, storage, customisation, and Imager options. For guidance on what to configure, see steps 2 to 4 in xref:../computers/getting-started.adoc#imager-install[Install using Imager].
@@ -186,31 +188,35 @@ If you experience any issues, want to go through a more detailed setup of your d
 For a desktop computer setup, you can connect the following peripherals directly into the back of your keyboard computer:
 
 * A USB mouse, which you can connect to the white USB 2.0 port, leaving the faster USB 3.0 ports available for any faster peripherals you might want to connect.
-* One or two displays as required. Both micro HDMI ports support up to 4K resolutions.
-** If required, use a micro-HDMI-to-HDMI adapter and connect the larger (full HDMI) end of the cable to your display.
+* One or two displays as required.
+** Connect the larger (full-size HDMI) end of the cable to your display.
+** Both micro HDMI ports support up to 4K resolutions, though at different refresh rates depending on model; for more detailed information about the resolution options for Raspberry Pi 400, 500, and 500+, see xref:../computers/configuration.adoc#display-settings[Configure display settings].
 ** Displays typically require their own power source. If you're using an official xref:../computers/keyboard-computers.adoc[Raspberry Pi Monitor], you can connect your monitor to power through a USB cable connected to your Raspberry Pi keyboard computer. When you power on your keyboard computer, it then provides power to the Raspberry Pi Monitor.
 * Optionally, speakers or headphones for audio output.
 ** You can output audio over micro HDMI, USB, or Bluetooth.
-** If you're using an official xref:../computers/keyboard-computers.adoc[Raspberry Pi Monitor], you can connect speakers or headphones through the 3.5 mm audio jack at the back of the display.
+** The official xref:../computers/keyboard-computers.adoc[Raspberry Pi Monitor] has two front-facing speakers. You can also connect speakers or headphones through the 3.5 mm audio jack at the back of the monitor.
 
 [[step3-power]]
 === Step 3. Connect to power
 
-Connect your Raspberry Pi keyboard computer to power and turn it on.
+Connect your Raspberry Pi keyboard computer to power to turn it on.
 
-* On a *Raspberry Pi 400*, you turn on the keyboard computer using the following key combination: *Fn + F10*. The LED status light turns on and Raspberry Pi OS goes through its first-time boot setup process.
-* On a *Raspberry Pi 500*, you turn on the keyboard computer using the dedicated power button in the top-right corner of the keyboard. The LED status light turns on and Raspberry Pi OS goes through its first-time boot setup process.
-* On a *Raspberry Pi 500+*, you turn on the keyboard computer using the dedicated power button in the top-right corner of the keyboard. The keyboard lights up and Raspberry Pi OS goes through its first-time boot setup process.
+* On a *Raspberry Pi 400* and *500*, the LED status light turns on and Raspberry Pi OS goes through its first-time boot setup process.
+* On a *Raspberry Pi 500+*, the keyboard lights up and Raspberry Pi OS goes through its first-time boot setup process.
 
 Your Raspberry Pi keyboard computer can take 60 to 90 seconds to boot, and you don't need to do anything while it does this.
 
+NOTE: If you're using a preprogrammed SD card or SSD, the configuration wizard opens to help you configure your keyboard computer on first boot. For more information, see xref:../computers/getting-started.adoc#first-configuration[Configuration on first boot].
+
+You can then turn your keyboard computer on and off using *Fn + F10* on Raspberry Pi 400 or the power button in the top-right corner on Raspberry Pi 500 and 500+.
+
 [[step4-network]]
 === Step 4. Connect to a network (optional)
-After you've set up your keyboard computer with the above instructions, you can connect it to a network. This can be a wired (Ethernet) connection or a wireless (Wi-Fi) connection.
+After you've set up your keyboard computer with the above instructions, you can connect it to a network. This can be a wired (Ethernet) connection or a wireless (Wi-Fi) connection. For detailed instructions about both, see xref:../computers/getting-started.adoc#step-4-connect-to-a-network-optional[Connect to a network] in the *Getting started* page.
 
 Configuring your wireless network typically happens during <<step1-bootmedia>>, but you can also configure a wireless connection from the desktop or the command line.
 
-For detailed instructions, see xref:../computers/getting-started.adoc#step-4-connect-to-a-network-optional[Connect to a network] in the *Getting started* page.
+If you skipped <<step1-bootmedia>> because you're using a preprogrammed SD card or SSD, you can configure Wi-Fi with the configuration wizard on first boot. For more information, see xref:../computers/getting-started.adoc#first-configuration[Configuration on first boot].
 
 [[mechanical-keys]]
 == Raspberry Pi 500+ mechanical keys
@@ -265,7 +271,7 @@ image::images/M2-step-5.jpg[alt="Fold open the keyboard"]
 +
 image::images/M2-step-6.jpg[alt="Pull out M.2 SSD"]
 
-7. *Add a new M.2 SSD.* Insert another M.2 SSD by sliding it into the slot at the left side. The SSD card fits in only one orientation. Hold the newly inserted M.2 SSD down and replace the screw on the right side of it, turning the screw clockwise to tighten.
+7. *Add a new M.2 SSD.* Insert another M.2 SSD by sliding it into the slot at the left side. The SSD fits in only one orientation. Hold down the newly inserted M.2 SSD and replace the screw on the right side of it, turning the screw clockwise to tighten.
 8. *Close the keyboard.* Fold the top of the keyboard back onto the bottom of the keyboard and click it back into place.
 9. *Screw the keyboard shut.* Place and turn the five screws back into place with your cross head screwdriver.
 
