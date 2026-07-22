@@ -1,19 +1,50 @@
 == Raspberry Pi Touch Display 2
 
-https://www.raspberrypi.com/products/touch-display-2/[Raspberry Pi Touch Display 2] is a touchscreen LCD that is available in 5-inch and 7-inch versions. It is intended for interactive use cases like tablets, entertainment systems, and information dashboards.
+https://www.raspberrypi.com/products/touch-display-2/[Raspberry Pi Touch Display 2] is a touchscreen LCD that is available in 5-inch, 7-inch, and 10-inch versions. It is intended for interactive use cases like tablets, entertainment systems, and information dashboards.
 
 .The Raspberry Pi Touch Display 2.
 image::images/touch-display-2-hero.jpg[width="100%"]
 
 == Compatibility
 
-Touch Display 2 is compatible with Raspberry Pi B+ and later.
+[cols="1,1,1,1"]
+|===
+|Touch Display 2|Compatible With |Incompatible With |Multiple Touch Display 2 Support
 
-It isn't compatible with either Raspberry Pi Zero series or Raspberry Pi Keyboard computers, because these don't have DSI connectors.
+.^|*5-inch* and *7-inch*
+a|
+* Raspberry Pi B+ and later.
+* All Raspberry Pi Compute Module Interface (CMIO) Boards.
+a|
+* Raspberry Pi Zero series.
+* Raspberry Pi Keyboard computers.
+a|
+* Raspberry Pi 5 and later.
+* All Raspberry Pi Compute Module Interface (CMIO) Boards.
 
-Raspberry Pi Model 5 and Raspberry Pi Compute Modules natively support connecting up to two Touch Display 2s.
 
-You can mount an SBC form-factor Raspberry Pi directly to the back of the Touch Display 2.
+.2+.^|*10-inch*
+a|
+* Raspberry Pi CM4IO Board and earlier.
+
+Connect to the Board using `DISP1` port, only.
+.2+.^a|
+* Raspberry Pi 4B and earlier.
+* Raspberry Pi Zero series.
+* Raspberry Pi Keyboard computers.
+.2+.^a|
+* Raspberry Pi 5 and later.
+* Raspberry Pi CM5IO Board and later.
+
+a|
+* Raspberry Pi 5 and later.
+* Raspberry Pi CM5IO Board and later.
+
+Connect to the Board using either `DISP` port.
+
+|===
+
+You can mount any SBC form-factor Raspberry Pi directly to the back of the Touch Display 2.
 
 == Autodetection
 
@@ -29,9 +60,10 @@ This section describes the characteristics and capabilities of Touch Display 2.
 
 Touch Display 2 has the following features:
 
-- *720 x 1280 pixel resolution.* High-definition output.
+- *720 x 1280 pixel resolution.* High-definition output for 5-inch and 7-inch models.
+- *1200 x 1920 pixel resolution.* High-definition output for 10-inch model.
 - *24-bit RGB display.* Capable of showing over 16 million colours.
-- *Multitouch.* Supports up to five simultaneous touch points.
+- *Multitouch.* Supports five-finger touch in 5-inch and 7-inch models, and ten-finger touch in the 10-inch model.
 - *Mouse-equivalence.* Supports full desktop control without a physical mouse, for example, selecting, dragging, scrolling, and long-pressing for menus.
 - *On-screen keyboard.* Supports an on-screen keyboard in place of a physical keyboard.
 - *Integrated power.* Powered directly by the host Raspberry Pi device, requiring no separate power supply.
@@ -41,54 +73,82 @@ Touch Display 2 has the following dimensions:
 
 [cols="1,1,1,1,1"]
 |===
-|
+|*Touch Display 2*
 |*Depth*
 |*Outline dimensions*
 |*Viewing area*
 |*Active area*
 
-|*5-inch display*
+|*5-inch*
 |16 mm
-|143.5 x 91.5 mm
-|111.5 x 63 mm
-|110.5 x 62 mm
+|91.5 x 143.5 mm
+|63 x 111.5 mm
+|62 x 110.5 mm
 
-|*7-inch display*
+|*7-inch*
 |15 mm
-|189.5 x 120 mm
-|155.5 x 88 mm
-|154.5 x 87 mm
+|120 x 189.5 mm
+|88 x 155.5 mm
+|87 x 154.5 mm
+
+|*10-inch*
+|16 mm
+|161.8 x 247.3 mm
+|136.4 x 217.6 mm
+|135.4 x 216.6 mm
 |===
 
 === Hardware
 The Touch Display 2 box contains the following:
 
-- A Touch Display 2
-- Eight M2.5 screws
-- A 15-way to 15-way flat flexible cable for connecting to Raspberry Pi 4 and earlier
-- A 22-way to 15-way flat flexible cable for connecting to Raspberry Pi 5
-- A GPIO power cable
+[cols="2,1,3,2"]
+|===
+|Touch Display 2|Screws |Flat Flexible Cable |GPIO Power Cable
 
-.Parts included in the Touch Display 2 box.
-image::images/touch-display-2-whats-in-the-box.jpg["Parts included in the Touch Display 2 box", width="100%"]
+|*5-inch* / *7-inch*
+.2+.^|Eight M2.5 screws
+a|
+* 15-way to 15-way (Raspberry Pi 4 and earlier)
+* 22-way to 15-way *Standard – Mini* (Raspberry Pi 5)
+.2+.^|GPIO power cable
+
+|*10-inch*
+a|
+* 22-way to 22-way *Mini – Mini* (Raspberry Pi 5)
+
+|===
+
+.Parts included in the Touch Display 2 box for 5-inch and 7-inch models.
+image::images/touch-display-2-whats-in-the-box.jpg["Parts included in the Touch Display 2 box for 5-inch and 7-inch models", width="100%"]
 
 === Connections
-Touch Display 2 connects to a Raspberry Pi device using:
 
-- A *DSI connector*. You attach the appropriate flat flexible cable (FFC) to this to carry video and touch data.
-* Raspberry Pi 5 uses the supplied 22-way to 15-way FFC.
-* Raspberry Pi 4 and earlier use the supplied 15-way to 15-way FFC.
-* Raspberry Pi Compute Module IO Boards use a Raspberry Pi Standard-Mini FFC. This is https://www.raspberrypi.com/products/display-cable/[sold separately].
+[cols="1,3,2"]
+|===
+| Touch Display 2 |*DSI Connector* (carries video and touch data) |*GPIO Header* (carries power)
 
-- The *GPIO header*. The supplied GPIO power cable carries power from the GPIO header on the Raspberry Pi to the display.
+|*5-inch* and *7-inch*
+a|
+* Raspberry Pi 5 and later, and all CMIO Boards: supplied *Standard – Mini* 22-way to 15-way FFC
+* Raspberry Pi 4 and earlier: supplied 15-way to 15-way FFC
+.2+.^|Supplied GPIO power cable connects the GPIO header on the Raspberry Pi to the display.
+
+|*10-inch*
+a|
+* Raspberry Pi 5 and later, and all CMIO Boards: supplied *Mini – Mini* 22-way to 22-way FFC
+|===
 
 == Connect to a Raspberry Pi device
 
-Follow the appropriate procedures for your device.
+Follow the appropriate procedures for your Touch Display 2.
 
-You don't need any special tools to connect your device to the display, but you must have the correct FFC cable ready. You also need your device, its boot media, and its power supply.
+You don't need any special tools to connect your device to the display, but you must have the correct FFC cable ready. If you don't want to mount your device to the display, you might need a longer FFC cable.
 
-If you want to attach your device to the display, you need a Phillips/cross-head screwdriver that fits the M2.5 screws that are included with the display. If you don't want to attach your device to the display, you might need a longer FFC cable.
+You also need your device, its boot media, and its power supply.
+
+If you want to mount your device to the display, you need a Phillips/cross-head screwdriver that fits the M2.5 screws that are included with the display.
+
+=== Connect to a 5-inch or 7-inch Touch Display 2
 
 [tabs]
 ======
@@ -126,7 +186,7 @@ image::images/touch-display-2-ffc.jpg[alt="Image showing the flat flexible cable
 CAUTION: Take care not to pinch the FFC in this step.
 
 . Slide the retaining clip upwards from both sides of the FFC connector on the Raspberry Pi. This is labelled `DISPLAY` on Raspberry Pi 4B and earlier.
-. Connect the other end of the FFC to the port on the Raspberry Pi, then slide the retaining clip back into place to secure the cable.
+. Connect the other end of the FFC to the connector, then slide the retaining clip back into place to secure the cable.
 +
 The metal contacts must face towards the Ethernet and USB-A ports.
 +
@@ -256,11 +316,180 @@ The Touch Display 2 turns on when the device boots, but it can take up to one mi
 --
 ======
 
+=== Connect to a 10-inch Touch Display 2
+
+[tabs]
+======
+Raspberry Pi 5 and later::
++
+--
+[discrete]
+=== Raspberry Pi 5 and later
+
+[discrete]
+[[update-software]]
+==== Step 1. Update the Raspberry Pi device's software and bootloader
+
+. Run the following from the command line to update the device's operating system:
++
+[source,console]
+----
+$ sudo apt update && sudo apt full-upgrade
+----
+. Run the following from the command line to update the device's EEPROM bootloader:
++
+[source,console]
+----
+$ sudo rpi-eeprom-update -a
+----
+
+[discrete]
+==== Step 2. Connect the FFC to the Touch Display 2
+
+WARNING: Disconnect the Raspberry Pi device from power before starting Step 2.
+
+To connect the *Mini – Mini* 22-way to 22-way FFC:
+
+. Slide the retaining clip outwards from both sides of the FFC connector on the Touch Display 2.
+. Insert the FFC into the Touch Display 2 FFC connector, then slide the retaining clip back into place to secure the cable.
++
+The metal contacts must face upwards, away from the Touch Display 2.
+
+.The flat flexible cable correctly attached to the Touch Display 2 10-inch model.
+image::images/touch-display-2-10-ffc.png[alt="Image showing the flat flexible cable correctly attached to the Touch Display 2 10-inch model", width="100%"]
+
+[discrete]
+==== Step 3. Connect the FFC to the Raspberry Pi
+
+CAUTION: Take care not to pinch the FFC in this step.
+
+. Slide the retaining clip upwards from both sides of the FFC connector on the Raspberry Pi.
+. Connect the other end of the FFC to the connector, then slide the retaining clip back into place to secure the cable.
++
+The metal contacts must face towards the Ethernet and USB-A ports.
++
+
+[discrete]
+==== Step 4. Connect the GPIO power cable between the device and the display
+
+WARNING: Connecting the power cable incorrectly can damage the display.
+
+. Plug the smaller end of the GPIO power cable into the `J1` port on the Touch Display 2.
+. Connect the three-pin end of the GPIO power cable to your xref:../computers/raspberry-pi.adoc#gpio[Raspberry Pi's GPIO].
++
+With the USB and Ethernet ports facing down, the power cable must be attached vertically to the top-right of the GPIO header. This means the red 5 V power cable is at the top-right of the pin block.
++
+This results in the red cable connecting to pin 2 (top-right), and the black cable (ground) connecting to pin 6.
++
+.The GPIO cable from the Touch Display 2 attaches to the top-right of the GPIO header on the Raspberry Pi device.
+image::images/touch-display-2-gpio-connection.png[alt="The GPIO cable connected in the correct location and orientation, with the red 5 V cable at the top-right of the header", width="40%"]
+. (optional) To physically attach the Raspberry Pi to the Touch Display 2, align the device with the four corner stand-offs on the Touch Display 2, then insert the four M2.5 screws (included) into the stand-offs, and tighten until your Raspberry Pi is secure.
+
+[discrete]
+==== Step 5. Power on the Raspberry Pi
+
+Now you've connected the Raspberry Pi to the Touch Display 2, power it on.
+
+. Connect your boot media to the Raspberry Pi.
+. Connect the Raspberry Pi to a power supply.
++
+The Touch Display 2 turns on when the device boots, but it can take up to one minute for Raspberry Pi OS to start displaying output on the screen.
++
+. To enlarge the UI elements for easier viewing, select *Preferences > Control Centre*, then select *Defaults > For Large Screens: > Set Defaults*.
+--
+
+Raspberry Pi Compute Module::
++
+--
+
+[discrete]
+=== Raspberry Pi Compute Module
+
+This section assumes that you're familiar with your Compute Module. For more information, see xref:../computers/compute-module.adoc[Raspberry Pi Compute Module].
+
+You can connect a Touch Display 2 to a Raspberry Pi Compute Module that is attached to an IO Board. For this, use the supplied *Mini – Mini* FFC.
+
+NOTE: The 10-inch display requires four lanes of DSI data. On the CM5 Board and later, you can use either `DISP` port. On the CM4 Board an earlier, only port `DISP1` supports this.
+
+[discrete]
+==== Step 1. Specify the display in `config.txt`
+
+Raspberry Pi Compute Modules don't automatically detect Touch Display 2 devices.
+
+You must configure the Compute Module for the devices it is connecting to by adding an overlay entry in `config.txt`. The default connection is the port labelled `1`, but you can use the port labelled `0`.
+
+NOTE: If you're using a Raspberry Pi Compute Module that has eMMC memory, make sure you edit the *configuration file that is used to boot the device*: either the one stored on the eMMC or one on external boot media if you've reconfigured the boot order.  See xref:../computers/compute-module.adoc#flash-compute-module-emmc[rpiboot].
+
+To enable Touch Display 2:
+
+. Boot your Raspberry Pi Compute Module, then open `/boot/firmware/config.txt`.
++
+If you're running a headless setup, either open the boot media on another computer or remotely connect to the device using Raspberry Pi Connect or SSH.
+
+. Edit the `config.txt` file to *add* the following:
++
+- `dtoverlay=vc4-kms-dsi-ili79600-10-1inch`
+
+[discrete]
+==== Step 2. Connect the FFC to the Touch Display 2
+
+IMPORTANT: If you haven't already done so, disconnect your Raspberry Pi Compute Module from power before continuing.
+
+To connect the FFC to the display:
+
+. Slide the retaining clip outwards from both sides of the `DISP1` FFC connector on the Touch Display 2.
+. Insert the widest end of the FFC into the connector, then slide the retaining clip back into place to secure the cable.
++
+The metal contacts must face upwards, away from the Touch Display 2.
+. If connecting to a Raspberry Pi Compute Module 5 IO Board, add two jumpers to `J6`.
+
+.The flat flexible cable correctly attached to the Touch Display 2 10-inch model.
+image::images/touch-display-2-10-ffc.png[alt="Image showing the flat flexible cable correctly attached to the Touch Display 2 10-inch model", width="100%"]
+
+[discrete]
+==== Step 3. Connect the FFC to the Raspberry Pi Compute Module IO Board
+
+. Open the retaining clip on the FFC connector on the Raspberry Pi Compute Module IO Board. Make sure you select the connector you set (`CAM/DISP 1` or `CAM/DISP 0`) in the configuration file in Step 1.
+. Insert the other end of the FFC into the connector port, then close the retaining clip to secure the cable.
++
+The metal contacts must face downwards.
+
+[discrete]
+==== Step 4. Connect the GPIO power cable between the device and the display
+
+WARNING: Connecting the power cable incorrectly can damage the display.
+
+To connect the GPIO power cable (supplied with the display) to Raspberry Pi Compute Module 4 IO Board and later:
+
+. Plug the smaller end of the GPIO power cable into the `J1` port on the Touch Display 2.
+. Position the Compute Module IO Board with the USB and HDMI ports facing left.
+. Connect the three-pin end of the GPIO power cable to the top right of the GPIO header (labelled `Raspberry Pi HAT` on the silkscreen).
+
+.The GPIO power cable attached to the GPIO header on a Raspberry Pi Compute Module IO Board.
+image::images/touch-display-power.jpg[alt="Image showing the correct installation of a GPIO power cable on a Raspberry Pi Compute Module IO Board.", width="100%"]
+
+[discrete]
+==== Step 5. Power on your Compute Module
+
+.A Raspberry Pi Compute Module IO Board mounted and connected to a Touch Display 2 10-inch model.
+image::images/touch-display-2-10-mounted.png[alt="Image showing a Raspberry Pi Compute Module IO Board physically mounted and attached to a Touch Display 2 10-inch model.", width="100%"]
+
+Now you have connected the Raspberry Pi Compute Module to the Touch Display 2, power the Compute Module on.
+
+. Connect your boot media to the Raspberry Pi device – skip this if you're booting from eMMC.
+. Connect the Raspberry Pi device to your power supply.
+. If your IO board has one, press and release the *Power* button.
++
+The Touch Display 2 turns on when the device boots, but it can take up to one minute for Raspberry Pi OS to start displaying output on the screen.
+--
+======
+
 == Troubleshooting
 
 Your display is now ready to use, but if it's not turning on or not displaying anything, check the following:
 
-* *DSI connections*. Check the FFC cable is seated properly at both ends, that the metal strips point towards the connections correctly, and that it is connected to the correct DSI connector.
+* *Software updates*. Make sure you're running the latest version of Raspberry Pi OS and that you have the latest EEPROM bootloader firmware installed. See <<update-software,Update software and bootloader>>.
+* *DSI connections*. Check the FFC cable is seated properly at both ends, that the metal strips point towards the connections correctly, and that it's connected to the correct DSI connector.
 * *GPIO connections*. The display is powered by the GPIO cable from your device, so make sure both ends of the cable are seated properly and that the three-pin end of the cable is attached to the correct pins of the GPIO header.
 * *Power*. Check your device is powered on and has boot media attached (if required). If you're using a Compute Module with a power switch, check that it has been pressed.
 * *config.txt*. If you're using a Compute Module, check the syntax of the overlay you added to `config.txt` in Step 1. Check also that you've specified the correct screen size in the overlay.
@@ -340,6 +569,7 @@ Use the Device Tree overlay to tell Raspberry Pi OS how to configure the Touch D
 
 - For the 5-inch display, the overlay is called `vc4-kms-dsi-ili9881-5inch`.
 - For the 7-inch display, the overlay is called `vc4-kms-dsi-ili9881-7inch`.
+- For the 10-inch display, the overlay is called `vc4-kms-dsi-ili79600-10-1inch`.
 
 To modify the Device Tree overlay in the boot configuration:
 
@@ -353,10 +583,10 @@ To modify the Device Tree overlay in the boot configuration:
 | Parameter | Action
 
 | `sizex`
-| Sets the touch horizontal resolution (default 720)
+| Sets the touch horizontal resolution (default 720 for 5-inch and 7-inch models, and 1200 for 10-inch model)
 
 | `sizey`
-| Sets the touch vertical resolution (default 1280)
+| Sets the touch vertical resolution (default 1280 for 5-inch and 7-inch models, and 1920 for 10-inch model)
 
 | `invx`
 | Inverts the touch X-axis (left/right)
