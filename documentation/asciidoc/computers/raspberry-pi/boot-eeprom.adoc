@@ -236,7 +236,7 @@ It is compatible only with the Raspberry Pi 5, Raspberry Pi Compute Module 5, an
 
 A/B-capable firmware also supports a `tryboot` rollback mechanism that can test a new partition before committing to it. For more information, see the https://github.com/raspberrypi/utils/tree/master/rpieepromab[`rpi-eeprom-ab` README].
 
-For information about A/B update for *Raspberry Pi OS*, see xref:../services/connect.adoc#ab-boot-update[A/B boot update].
+For information about A/B update for *Raspberry Pi OS*, see xref:../services/connect.adoc#remoteupdate-ab[A/B boot update].
 
 ===== Enable A/B bootloader updates
 
