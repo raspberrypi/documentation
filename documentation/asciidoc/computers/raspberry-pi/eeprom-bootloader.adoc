@@ -15,7 +15,7 @@ To edit the current EEPROM configuration and apply the updates to latest EEPROM 
 
 [source,console]
 ----
-$ sudo -E rpi-eeprom-config --edit
+$ sudo rpi-eeprom-config --edit
 ----
 
 For more information about the EEPROM update process, see xref:raspberry-pi.adoc#raspberry-pi-boot-eeprom[boot EEPROM].

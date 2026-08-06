@@ -137,7 +137,7 @@ The following command loads the current bootloader configuration into a text edi
 
 [source,console]
 ----
-$ sudo -E rpi-eeprom-config --edit
+$ sudo --preserve-env=EDITOR rpi-eeprom-config --edit
 $ sudo reboot
 ----
 

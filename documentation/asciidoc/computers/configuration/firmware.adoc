@@ -145,7 +145,7 @@ The following commands load the current bootloader configuration into a text edi
 When the editor is closed, `rpi-eeprom-config` applies the updated configuration to the latest available bootloader release and uses `rpi-eeprom-update` to schedule an update when the system is rebooted:
 [source,console]
 ----
-$ sudo -E rpi-eeprom-config --edit
+$ sudo --preserve-env=EDITOR rpi-eeprom-config --edit
 $ sudo reboot
 ----
 

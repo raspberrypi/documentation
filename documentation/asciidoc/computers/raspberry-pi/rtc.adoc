@@ -13,7 +13,7 @@ To support the low-power mode for wake alarms:
 +
 [source,console]
 ----
-$ sudo -E rpi-eeprom-config --edit
+$ sudo rpi-eeprom-config --edit
 ----
 
 . Add the following two lines.
