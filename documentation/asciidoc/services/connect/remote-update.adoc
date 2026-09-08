@@ -23,19 +23,19 @@ Host the artefact anywhere the recipient device can reach it: your own web serve
 
 The location must be accessible to the recipient device, but it doesn't have to be accessible to the Raspberry Pi Connect servers, or to the internet at large. Serving an artefact from another computer on the same local network as the recipient device works well.
 
-Here is an example URI: http://192.168.0.1:8080/path/to/update.tar.zst
+Here is an example URI: http://192.168.0.1:8080/path/to/app.update.tar.zst
 
 It contains the following required information:
 
 * The host IP: 192.168.0.1
 * The port: 8080
-* The path: /path/to/update.tar.zst
+* The path: /path/to/app.update.tar.zst
 
 You also need the artefact's SHA-256 checksum, which Connect passes to the device so that it can check that the artefact hasn't been corrupted or tampered with in transit. `otamaker` prints the checksum when it builds a script artefact; otherwise, calculate it with `sha256sum`:
 
 [source,console]
 ----
-$ sha256sum update.tar.zst
+$ sha256sum app.update.tar.zst
 ----
 
 Copy down the URI and the checksum; you need both in the next section.

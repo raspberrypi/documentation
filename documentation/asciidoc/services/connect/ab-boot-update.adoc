@@ -10,7 +10,7 @@ Configuring for A/B boot requires being able to physically access the device. Th
 
 Raspberry Pi 5 and later devices that use EEPROM boot can also be configured to use A/B boot update. See xref:../computers/raspberry-pi.adoc#ab-bootloader-updates[A/B bootloader updates].
 
-Use https://github.com/raspberrypi/rpi-image-gen[rpi-image-gen] to create both the A/B boot configuration (`.img` file) and the update artefacts (`.tar.zst` files). Use https://www.raspberrypi.com/software/[Raspberry Pi Imager] to configure the `.img` file and write it to the storage device for transfer to the recipient Raspberry Pi.
+Use https://github.com/raspberrypi/rpi-image-gen[rpi-image-gen] to create both the A/B boot configuration (`.img` file) and the update artefacts (`update.tar.zst` files). Use https://www.raspberrypi.com/software/[Raspberry Pi Imager] to configure the `.img` file and write it to the storage device for transfer to the recipient Raspberry Pi.
 
 ==== Prerequisites
 
@@ -264,7 +264,7 @@ To host the update artefact:
 +
 [source,console]
 ----
-$ python -m http.server 8080 --directory ./work/image-myapp-1.1.0
+$ python -m http.server 8080 --directory ./work/image-myapp
 ----
 
 ===== Step 2: Calculate the SHA-256 checksum of the update file
@@ -273,7 +273,7 @@ $ python -m http.server 8080 --directory ./work/image-myapp-1.1.0
 +
 [source,console]
 ----
-$ sha256sum ./work/image-myapp-1.1.0/update.tar.zst
+$ sha256sum ./work/image-myapp/myapp-update.tar.zst
 ----
 . Copy down the checksum.
 
