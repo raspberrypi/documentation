@@ -27,11 +27,11 @@ You can configure your Raspberry Pi device to prevent unauthorised access and im
 
 For more information and instructions, see xref:../security/operational-security.adoc[Operational security].
 
-== Firewall using UFW
+== Firewalls using UFW
 
 Configuring a packet-filtering firewall using *Uncomplicated Firewall (UFW)* on a Raspberry Pi device helps to harden the system. It can be used to limit network access to only essential services and mitigate external threats by blocking unwanted or malicious connections.
 
-For more information and instructions, see xref:../security/ufw.adoc[Firewall using UFW].
+For more information and instructions, see xref:../security/ufw.adoc[Firewalls using UFW].
 
 == Frontline security disclosure
 
