@@ -21,3 +21,5 @@ include::remote-access/apache.adoc[]
 include::remote-access/network-boot-raspberry-pi.adoc[]
 
 include::remote-access/network-boot-ipv6.adoc[]
+
+include::remote-access/http-boot-two-stage-kexec.adoc[]

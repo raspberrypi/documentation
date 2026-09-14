@@ -1,0 +1,67 @@
+== Two-stage HTTP boot with kexec (advanced)
+
+This page describes an advanced boot pattern:
+
+. Boot a minimal stage-1 system.
+. Fetch a newer stage-2 kernel/initramfs over the network (for example, HTTP boot).
+. Switch to stage-2 using `kexec` (without a full firmware reboot).
+
+This pattern is useful when you want to keep a very small, stable first stage and move update logic into userspace.
+
+== Why use this pattern
+
+A two-stage HTTP boot pipeline can provide:
+
+* Faster iteration for kernel/initramfs updates (replace stage-2 artifacts on the server).
+* Reduced wear on local storage when frequently testing new images.
+* A consistent first-stage environment for recovery and diagnostics.
+* Faster transition than a full reboot in some workflows, because `kexec` jumps directly to the next kernel.
+
+== Multicore synchronisation issues in stage-1
+
+On some multicore systems, very early stage-1 boot can expose SMP timing/race behaviour (for example, around early driver bring-up, network initialisation timing, or handoff sequencing before `kexec`).
+
+A practical workaround is to boot stage-1 with one CPU:
+
+* Add `maxcpus=1` to the stage-1 Linux kernel command line.
+
+IMPORTANT: Use `maxcpus=1` (no hyphen). `max-cpus=1` is not a valid Linux kernel parameter.
+
+Example (`cmdline.txt`, one line):
+
+----
+console=serial0,115200 console=tty1 root=PARTUUID=... rootfstype=ext4 fsck.repair=yes rootwait ip=dhcp maxcpus=1
+----
+
+Then perform the stage-2 handoff with `kexec`, and in stage-2 use normal CPU configuration (do not keep `maxcpus=1` unless debugging).
+
+== Typical stage-1 flow (HTTP -> kexec)
+
+. Bring up network (`ip=dhcp` or equivalent).
+. Download stage-2 kernel/initramfs (and DTB, if required by your flow).
+. Verify integrity/authenticity of downloaded artifacts.
+. Load stage-2:
++
+----
+kexec -l /boot/stage2/vmlinuz \
+  --initrd=/boot/stage2/initramfs.img \
+  --command-line="console=serial0,115200 console=tty1 root=PARTUUID=... rootwait"
+----
+. Execute handoff:
++
+----
+kexec -e
+----
+
+== Why this helps
+
+Using `maxcpus=1` in stage-1 reduces parallel early-boot activity and can make timing-sensitive paths more deterministic while you prepare and execute the `kexec` handoff.
+
+This can improve reliability in custom pipelines that otherwise fail intermittently only on multicore bring-up.
+
+== Trade-offs and cautions
+
+* Stage-1 performance is lower with a single CPU.
+* This is a workaround for specific custom pipelines, not a requirement for normal Raspberry Pi boot.
+* Keep stage-1 minimal and robust; move complexity to validated stage-2 artifacts.
+* Always verify downloaded stage-2 artifacts before `kexec` to avoid booting untrusted images.
