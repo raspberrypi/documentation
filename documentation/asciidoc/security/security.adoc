@@ -45,4 +45,4 @@ To report security issues on Raspberry Pi, email mailto:security@raspberrypi.com
 
 A Software Bill of Materials (SBOM) lists all components in a software application and includes metadata for each component, such as its name, version, supplier, license, and unique identifier. This information is provided in an open-standard, machine-readable format.
 
-We provide an SBOM for Raspberry Pi OS. You can download the SBOM file from the https://www.raspberrypi.com/software/operating-systems/[Raspberry Pi OS downloads page].
+We provide an SBOM for each edition of Raspberry Pi OS. You can download the SBOM file from the https://www.raspberrypi.com/software/operating-systems/[Raspberry Pi OS downloads page].
