@@ -1,5 +1,7 @@
 include::configuration/raspi-config.adoc[]
 
+include::configuration/appearance.adoc[]
+
 include::configuration/audio-display.adoc[]
 
 include::configuration/configuring-networking.adoc[]
