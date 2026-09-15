@@ -2,16 +2,115 @@
 
 All connections between Raspberry Pi devices and the user's browser use https://webrtc.org[WebRTC]: the same real-time communication technology used by Zoom, Microsoft Teams, and Google Meet.
 
-This means that all screen sharing and remote shell access traffic is encrypted using https://en.wikipedia.org/wiki/Datagram_Transport_Layer_Security[DTLS] on the Raspberry Pi device and the user's browser. We don't (and can't) decrypt the traffic, ensuring your data remains private.
+[[end-to-end-encryption]]
+=== End-to-end encryption
+
+All screen sharing and remote shell access traffic is encrypted using https://en.wikipedia.org/wiki/Datagram_Transport_Layer_Security[DTLS] between the Raspberry Pi device and the user's browser. We don't (and can't) decrypt the traffic, ensuring your data remains private.
+
+Every screen sharing and remote shell session uses a new WebRTC peer connection. For each connection, the Connect client on your Raspberry Pi device generates a fresh public and private key pair in memory, and your browser generates its own. The device never writes its private key to disk or sends it anywhere, and discards it when the session ends. The device and browser exchange their public keys and derive the keys that encrypt the session in a handshake directly between them, so our servers can't derive those keys. The only key-related information that passes through our API is the fingerprint of each public certificate, which doesn't allow decryption.
+
+Everything in a session travels over this single encrypted channel: screen frames, keyboard and mouse input, clipboard data, remote shell input and output, and any credentials you enter during the session. None of this passes through our API. The API only exchanges the information needed to set up the connection, and receives device state such as whether the device is online, whether screen sharing is enabled, and the number of active sessions.
 
 Furthermore, traffic is mostly peer-to-peer, meaning that the encrypted traffic doesn't pass through our infrastructure. Instead, the encrypted traffic is sent directly between your Raspberry Pi device and your browser. This makes it impossible for us to observe it.
 
-In situations where direct peer-to-peer connections aren't possible (for example, due to networking issues), only encrypted data is relayed through one of our https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT[TURN] servers. These servers are hosted in London and California, and your traffic is routed through the relay closest to you. We don't have the keys to decrypt this data, and it's neither logged nor stored.
+[[relay-servers]]
+=== Relay servers
 
-The Raspberry Pi Connect API temporarily stores the IP addresses and ports required to negotiate a peer-to-peer connection. All traffic to this API is encrypted using https://en.wikipedia.org/wiki/HTTPS[HTTP over TLS], supporting only TLS 1.2 and newer for security. This ensures that connection information is never sent in the clear. This metadata is stored securely for at most 1 minute, and deleted as soon as a connection is established.
+In situations where direct peer-to-peer connections aren't possible (for example, due to networking issues), only encrypted data is relayed through one of our https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT[TURN] servers. These servers are hosted in London and California. Only your device and your browser hold the keys to decrypt this data, and it's neither logged nor stored.
 
-Raspberry Pi Connect, along with its API and software components, has undergone security assessments by penetration testing and security analysts at https://cure53.de[Cure53]. You can read the https://cure53.de/pentest-report_raspberry-web.pdf[full report] on the Cure53 site.
+Connect selects a relay for your device and for your browser separately, based on the continent of each one's IP address. Devices and browsers in Europe and Africa use the relays in London; those in the Americas, Asia, and Oceania use the relay in California. If the location can't be determined, London is used. If your device and browser are assigned different relays, the session can be relayed through either or both of them.
+
+Connect has no setting to restrict which relays are used or to disable relaying. If you require direct peer-to-peer connections only, you can block traffic to the TURN servers listed in <<networking-and-firewall-issues,Networking and firewall issues>>. Connect then only works between devices and browsers that can reach each other directly.
+
+[[connection-setup]]
+=== Connection setup
+
+The Raspberry Pi Connect API temporarily stores the WebRTC offer and answer required to negotiate a connection, including the IP addresses and ports of your device and browser. All traffic to this API is encrypted using https://en.wikipedia.org/wiki/HTTPS[HTTP over TLS], supporting only TLS 1.2 and newer for security. This ensures that connection information is never sent in the clear. This metadata is stored securely for at most 1 minute.
+
+The offer from your browser is stored exactly as received and is never parsed or rewritten. Only the Connect web application, acting on behalf of a signed-in user, can create an offer; devices can't.
+
+A session can only be started by a user who is signed in with a Raspberry Pi ID that owns the device, or that belongs to the organisation that owns it, and who has authenticated with Raspberry Pi ID within the past hour.
+
+[[data-retention]]
+=== Data retention
+
+Connect retains only the metadata needed to operate the service.
+
+[cols="2,3",options="header"]
+|===
+|Data |Retention
+
+|IP addresses
+|Not stored. IP addresses are used in memory to select the nearest relay and for rate limiting, and are included once in the notification email sent when a new device is linked. Audit log events store only the two-letter country code derived from the IP address.
+
+|Connection setup information (WebRTC offers and answers)
+|At most 1 minute
+
+|Device heartbeat and state
+|Current state only; no history is kept
+
+|Device data (serial number, model, OS name and version, architecture, Connect version, hostname, and last seen time)
+|For as long as the device is linked to an account; deleted with the device or the account
+
+|Account data (name and email address)
+|Encrypted at rest and held for the life of the account; deleted with the account
+
+|Organisation audit log, including the start of each screen sharing and remote shell session with its timestamp, user, device, and country code
+|90 days
+|===
+
+For xref:../services/connect-for-organisations.adoc[**Connect for Organisations**] customers, we provide an xref:../services/connect-for-organisations.adoc#audit-log[audit log] to review activity from the past 90 days. Personal accounts have no connection log.
+
+[[security-assessments]]
+=== Security assessments
+
+In January 2025, penetration testing and security analysts at https://cure53.de[Cure53] assessed the Raspberry Pi Connect web application and infrastructure, Raspberry Pi ID, and versions 2.2 to 2.3 of the Connect client software. You can read the https://cure53.de/pentest-report_raspberry-web.pdf[full report] on the Cure53 site.
 
 For more details on WebRTC security, see https://webrtc-security.github.io/[A Study of WebRTC Security].
 
-For xref:../services/connect-for-organisations.adoc[**Connect for Organisations**] customers, we provide an xref:../services/connect-for-organisations.adoc#audit-log[audit log] to review activity from the past 90 days. To preserve privacy, we store only the country code when geolocating events by IP address.
+[[sub-processors]]
+=== Sub-processors
+
+Raspberry Pi Ltd uses the following third parties to process personal data in order to provide Connect. None of them can access the contents of screen sharing or remote shell sessions, which are <<end-to-end-encryption,end-to-end encrypted>> between your Raspberry Pi device and your browser.
+
+[cols="2,3,3,2",options="header"]
+|===
+|Sub-processor |Purpose |Personal data |Location
+
+|https://www.mythic-beasts.com[Mythic Beasts Ltd]
+|Hosting of the Connect service, including its database, email delivery, and TURN relay servers
+|All account and device data held by Connect, IP addresses, and encrypted session traffic when a relay is used
+|United Kingdom. The California TURN relay is in the United States, but it only forwards encrypted session traffic and stores nothing.
+
+|https://www.cloudflare.com[Cloudflare, Inc.]
+|Caching and delivery of static assets (images, stylesheets, and scripts) for the Connect website
+|IP addresses and browser details of requests for static assets
+|Global edge network
+
+|https://cloud.google.com[Google LLC]
+|Analytics warehouse (Google Cloud) and product analytics (Google Analytics)
+|Account and device records (names and email addresses remain encrypted), and pseudonymous usage events containing device and session identifiers
+|European Union (warehouse) and United States (analytics)
+
+|https://sentry.io[Functional Software, Inc. (Sentry)]
+|Error monitoring
+|Technical error reports, which can include device and organisation identifiers
+|United States
+
+|https://www.maxmind.com[MaxMind, Inc.]
+|Geolocation of the IP address shown in the notification email when a new device signs in
+|IP addresses
+|United States
+
+|https://stripe.com[Stripe]
+|Payment processing for Connect for Organisations subscriptions
+|Billing contact details and payment information
+|United States and Ireland
+
+|https://www.freshworks.com[Freshworks, Inc. (Freshdesk)]
+|Customer support
+|Name, email address, and the contents of support requests
+|United States
+|===
+
+This list was last updated on 15 September 2026.

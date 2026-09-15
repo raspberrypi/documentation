@@ -94,6 +94,7 @@ Connect runs as a user-level service and is therefore only available if there is
 
 For screen sharing, Connect can only share an existing graphical desktop session: it does not create entirely new sessions. There must already be a desktop session in progress. To start such a session automatically on boot, enable *Desktop Autologin* in the *System Options* in `raspi-config`.
 
+[[networking-and-firewall-issues]]
 ==== Networking and firewall issues
 
 Connect usually communicates between devices without requiring changes to your network or firewall. However, especially restrictive networks can sometimes block Connect communication. To help debug problems with such networks, `rpi-connect` and `rpi-connect-lite` include the `rpi-connect doctor` command. `rpi-connect doctor` runs a series of tests to check that Connect communication functions properly on your network.
