@@ -93,7 +93,7 @@ https://github.com/raspberrypi-ui/rpd-metas::
 The metapackages used to create the desktop.
 
 https://github.com/raspberrypi-ui/wf-panel-pi::
-The taskbar displayed at the top of the screen when running the Wayland-based desktop.
+The taskbar or dock displayed on the screen when running the Wayland-based desktop.
 
 https://github.com/raspberrypi-ui/lxpanel-pi::
 The taskbar displayed at the top of the screen when running the legacy X-based desktop.
@@ -110,7 +110,7 @@ https://github.com/raspberrypi-ui/pplug-netman::
 https://github.com/raspberrypi-ui/pplug-power::
 https://github.com/raspberrypi-ui/pplug-updater::
 https://github.com/raspberrypi-ui/pplug-volumepulse::
-The plugins displayed on the taskbars.
+The widgets displayed on the taskbars.
 
 https://github.com/raspberrypi-ui/pcmanfm::
 https://github.com/raspberrypi-ui/libfm::
