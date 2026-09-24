@@ -39,17 +39,23 @@ Raspberry Pi BCM283x devices have a three-stage boot process:
 
 xref:configuration.adoc#device-trees-overlays-and-parameters[Linux Device Tree for Raspberry Pi] encodes information about hardware attached to a system as well as the drivers used to communicate with that hardware.
 
+NOTE: Raspberry Pi Compute Module 5 requires updated device tree support and kernel drivers. When transitioning from CM4 to CM5, use Raspberry Pi OS Bookworm (or later), kernel 6.12.x or later, and firmware from 10 March 2025 or later.
+
 The boot partition contains several binary Device Tree (`.dtb`) files. The Device Tree compiler creates these binary files using human-readable Device Tree descriptions (`.dts`).
 
 The boot partition contains two different types of Device Tree files. One is used by the GPU only; the rest are standard Arm Device Tree files for each of the BCM283x-based Raspberry Pi products:
 
 * `dt-blob.bin` (used by the GPU)
-* `bcm2708-rpi-b.dtb` (Used for Raspberry Pi 1 Models A and B)
-* `bcm2708-rpi-b-plus.dtb` (Used for Raspberry Pi 1 Models B+ and A+)
-* `bcm2709-rpi-2-b.dtb` (Used for Raspberry Pi 2 Model B)
-* `bcm2710-rpi-3-b.dtb` (Used for Raspberry Pi 3 Model B)
-* `bcm2708-rpi-cm.dtb` (Used for Raspberry Pi Compute Module 1)
-* `bcm2710-rpi-cm3.dtb` (Used for Raspberry Pi Compute Module 3)
+* `bcm2708-rpi-b.dtb` (used for Raspberry Pi 1 Models A and B)
+* `bcm2708-rpi-b-plus.dtb` (used for Raspberry Pi 1 Models B+ and A+)
+* `bcm2709-rpi-2-b.dtb` (used for Raspberry Pi 2 Model B)
+* `bcm2710-rpi-3-b.dtb` (used for Raspberry Pi 3 Model B)
+* `bcm2711-rpi-4-b.dtb` (used for Raspberry Pi 4 Model B)
+* `bcm2712-rpi-5-b.dtb` (used for Raspberry Pi 5)
+* `bcm2708-rpi-cm.dtb` (used for Raspberry Pi Compute Module 1)
+* `bcm2710-rpi-cm3.dtb` (used for Raspberry Pi Compute Module 3)
+* `bcm2711-rpi-cm4.dtb` (used for Raspberry Pi Compute Module 4; if not found, `bcm2711-rpi-4-b.dtb` is used instead)
+* `bcm2712-rpi-cm5.dtb` (used for Raspberry Pi Compute Module 5. If the CM5 device tree file is not found, the Raspberry Pi 5 device tree file (`bcm2712-rpi-5-b.dtb`) is used instead)
 
 During boot, the user can specify a specific Arm Device Tree to use by setting the `device_tree` parameter in `config.txt`. For example, the line `device_tree=mydt.dtb` in `config.txt` specifies an Arm Device Tree in a file named `mydt.dtb`.
 
