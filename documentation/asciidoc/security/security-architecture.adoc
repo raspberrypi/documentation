@@ -1,10 +1,10 @@
 This page provides a high-level conceptual architecture overview of how Raspberry Pi devices protect themselves during boot and storage access. It summarises:
 
-* The chain of trust used in Raspberry Pi's *secure (verified) boot* process.
-* How *disk encryption* integrates into the boot process, when enabled.
+* When configured, the chain of trust used in Raspberry Pi's *secure (verified) boot* process.
+* How *disk encryption* integrates into the boot process, when enabled along with secure boot.
 * The *software components* available in Raspberry Pi OS that offer security functionality.
 
-NOTE: To implement secure boot and encryption, we recommend using our Secure Boot Provisioner, which can configure and deploy secure boot and disk encryption on multiple devices. For more information and instructions, see xref:../security/secure-boot-provisioner.adoc[Secure Boot Provisioner].
+NOTE: To implement *secure boot* and *encryption*, we recommend using our Secure Boot Provisioner, which can configure and deploy secure boot and disk encryption on multiple devices. For more information and instructions, see xref:../security/secure-boot-provisioner.adoc[Secure Boot Provisioner].
 
 == Secure boot chain of trust
 
@@ -18,21 +18,23 @@ We recommend provisioning your devices with secure boot using Raspberry Pi Secur
 
 The secure boot chain starts in immutable hardware and extends to customer software. It consists of the following cryptographic components:
 
-. *Boot ROM public key.* The boot ROM is the immutable hardware root of trust that contains a Raspberry Pi public key burned into silicon. This key is used to authenticate Raspberry Pi-signed firmware.
-. *Customer-generated RSA key pair.* Before provisioning your Raspberry Pi devices, you, the customer, generate your own RSA public-private key pair. The private key signs your OS boot image. Using Raspberry Pi Secure Boot Provisioner, you define which key is trusted for boot by storing the identity (a hash) of the public key in the device OTP.
-. *Device-unique disk secret.* Secure Boot Provisioner generates a device-unique secret, used to unlock the encrypted root filesystem at boot. The key is stored in OTP and protected by software mechanisms.
+* *Boot ROM public key.* The boot ROM is the immutable hardware root of trust that contains a Raspberry Pi public key burned into silicon. This key is used to authenticate Raspberry Pi-signed firmware.
+* *Customer-generated RSA key pair.* Before provisioning your Raspberry Pi devices, you, the customer, generate your own RSA public-private key pair. The private key signs your OS boot image. Using Raspberry Pi Secure Boot Provisioner, you define which key is trusted for boot by storing the identity (a hash) of the public key in the device OTP.
+* *Device-unique disk secret.* Secure Boot Provisioner generates a device-unique secret, used to unlock the encrypted root filesystem at boot. The key is stored in OTP and protected by software mechanisms.
 
 [[bootflow]]
 === Bootflow timeline
 
-Raspberry Pi Secure Boot Provisioner establishes a chain of trust that begins in immutable hardware and extends through to the OS. If all verification steps succeed, the kernel starts to run, and then mounts the root filesystem, decrypting it first if disk encryption is enabled with the Secure Boot Provisioner tool.
+The secure boot process, configured with the Raspberry Pi xref:../security/secure-boot-provisioner.adoc[Secure Boot Provisioner], establishes a chain of trust that begins in immutable hardware and extends through to the OS. The following sections summarise each stage of this process and how disk encryption integrates into the boot flow when it's enabled.
 
-If any verification steps fail, the chain of trust is broken and the EEPROM bootloader proceeds to your next configured boot method, for example, another partition, image, or recovery mode.
+If all verification steps succeed, the kernel starts to run, and then mounts the root filesystem, decrypting it first if <<disk-encryption, disk encryption>> is also enabled with the Secure Boot Provisioner.
+
+If any verification step fails, the chain of trust is broken and the EEPROM bootloader doesn't continue with the untrusted software; instead the EEPROM bootloader proceeds to your next configured boot method, for example, another partition, image, or recovery mode.
 
 [[first-stage]]
 ==== First stage: boot ROM root of trust
 
-The first stage is the *boot ROM* embedded in each Raspberry Pi device's SoC. Because it's permanently burned into silicon, it can't be modified after manufacturing and is trusted by design; it thus forms the hardware root of trust for the secure boot process.
+The first stage is the *boot ROM* embedded in each Raspberry Pi device's SoC. Because it's permanently burned into silicon, it can't be modified after manufacturing and is trusted by design; it therefore forms the hardware root of trust for the secure boot process.
 
 The boot ROM reads a hash of your *RSA 2048-bit public key* stored in One-Time Programmable (OTP) memory. On Raspberry Pi devices using the BCM2712 SoC, this key pair is also used to sign the EEPROM bootloader, described in <<second-stage>>. This extends the BCM2711 SoC checks by also requiring a customer key signature to authenticate the EEPROM bootloader.
 
@@ -46,7 +48,16 @@ The second stage is the *EEPROM bootloader*, which is stored in the Raspberry Pi
 
 The third stage is *kernel and OS* verification and loading. The EEPROM bootloader loads a boot image (`boot.img`) from local storage or over the network, and verifies its signature (`boot.sig`) using the customer public key. The verified boot image typically contains the kernel, `initramfs`, device tree, and, on devices with the BCM2711 SoCs, the GPU firmware (`start.elf`). If verification succeeds, the bootloader runs the kernel.
 
-The kernel then initialises the hardware and mounts the root filesystem. If disk encryption is enabled, the `initramfs` retrieves the device-unique secret stored in OTP and uses it to decrypt the root filesystem before mounting it, after which the normal OS startup process continues. For more information, see <<disk-encryption>>.
+The kernel then initialises the hardware and mounts the root filesystem. If disk encryption is enabled, the boot process continues with the process summarised in <<fourth-stage>>. Otherwise, the kernel mounts the root filesystem and normal OS startup continues.
+
+[[fourth-stage]]
+==== Fourth stage: encrypted root filesystem unlock
+
+The fourth stage occurs when disk encryption is enabled as part of Secure Boot Provisioner configuration.
+
+The `initramfs` retrieves the device-unique secret stored in OTP and uses it to decrypt the root filesystem before mounting it, after which the normal OS startup process continues.
+
+For more detailed information about disk encryption and how the encrypted root filesystem is unlocked, see <<disk-encryption>>.
 
 [[disk-encryption]]
 == Disk encryption boot flow
@@ -55,16 +66,16 @@ Disk encryption on Raspberry Pi devices protects the root filesystem by encrypti
 
 By default, Raspberry Pi OS doesn't support encrypted root file systems; if you want disk encryption, you must either build your own encrypted storage or use the Raspberry Pi *Secure Boot Provisioner* tool to enable encryption during provisioning. For information about this tool, see xref:../security/secure-boot-provisioner.adoc[Secure Boot Provisioner].
 
-Disk encryption is configured during provisioning. For operating system images created with `rpi-image-gen`, the root filesystem and any number of additional partitions can be encrypted. For images created with `pi-gen`, only the root filesystem can be encrypted. Regardless of the image generation method used, a trusted but unencrypted pre-boot authentication environment is required to allow the device to start and unlock the encrypted storage. This environment includes the Raspberry Pi firmware, Linux kernel, Device Tree files, and a minimal user space, and is authenticated through digital signatures using a customer signing key rather than through encryption.
+For operating system images created with `rpi-image-gen`, the root filesystem and any number of additional partitions can be encrypted. For images created with `pi-gen`, only the root filesystem can be encrypted. Regardless of the image generation method used, a trusted but unencrypted pre-boot authentication environment is required to allow the device to start and unlock the encrypted storage. This environment includes the Raspberry Pi firmware, Linux kernel, Device Tree files, and a minimal user space, and is authenticated through digital signatures using a customer signing key rather than through encryption.
 
 For Raspberry Pi devices provisioned with disk encryption, the boot process continues from <<third-stage>> in the bootflow timeline and so is essentially the fourth step in establishing a full chain of trust. The bootloader loads the (unencrypted) Linux kernel and `initramfs` (a temporary root filesystem) from the *pre-boot authentication environment* into RAM. Because the real root filesystem is still encrypted and can't be accessed yet, the kernel initially runs from `initramfs`. Early boot scripts in `initramfs` invoke `rpi-fw-crypto` to derive the disk-specific passphrase, unlock the LUKS volume, and mount the real root file system. The kernel then switches to this unlocked root filesystem and normal Linux boot continues.
 
-The `initramfs` must include the kernel modules that implement the encryption ciphers you choose to use. To optimise performance, default cipher recommendations vary depending on the Raspberry Pi SoC, shown in the following table.
+The `initramfs` must include the kernel modules that implement the encryption ciphers you choose to use. To optimise performance, default cipher recommendations vary depending on the Raspberry Pi SoC or SiP, shown in the following table.
 
 .Default LUKS encryption ciphers by Raspberry Pi SoC
 [cols="1,1,3", options="header"]
 |===
-|SoC |LUKS encryption |Notes
+|Chip |LUKS encryption |Notes
 
 |BCM2712 devices
 |AES (`aes-xts-plain64`)
@@ -76,7 +87,7 @@ The `initramfs` must include the kernel modules that implement the encryption ci
 
 |BCM2837, BCM2837B0, and RP3A0 devices
 |Adiantum (ChaCha20)
-|Adiantum is recommended for better performance on older Raspberry Pi models that use the BCM2837 and BCM2837B0 SoCs, and the RP3A0 SiP.
+|Adiantum is recommended for better performance on older Raspberry Pi models that use the BCM2837 or BCM2837B0 SoCs, or the RP3A0 SiP.
 |===
 
 [[software-components]]

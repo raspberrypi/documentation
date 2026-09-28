@@ -16,8 +16,8 @@ With Raspberry Pi Secure Boot Provisioner, you can prepare each client device wi
 * *Encrypted storage.* To protect data, you can configure Secure Boot Provisioner to encrypt each device's storage using full-disk encryption. This is recommended because encryption ensures that data remains inaccessible even if someone bypasses the boot media or removes the storage. The encryption key is unique and tied to the hardware, so the data remains protected and unreadable on other systems. For more information, see <<encryption>> on this page.
 * *Secure OS deployment.* Secure Boot Provisioner securely installs a custom OS image by packaging it into a secure, encrypted container that only the device's firmware can load. The provisioner automatically installs this OS image during setup, ensuring a trusted and repeatable deployment process. You create a single base ('master') image, and the tool replicates it to all client devices with appropriate security modifications.
 * *Manufacturing records.* Secure Boot Provisioner maintains a manufacturing database that details each client device's serial number, MAC address, provisioning timestamp, and security configuration. These records support inventory tracking, warranty validation, and customer support operations.
-* *Consistent configuration.* Every device prepared with Secure Boot Provisioner receives an identical configuration, eliminating human error and configuration drift. This ensures consistent behaviour across your client devices and simplifies ongoing management and technical support operations.
-* *Raspberry Pi Connect for Organisations registration.* You can configure Secure Boot Provisioner to automatically register provisioned devices with Raspberry Pi Connect for Organisations. For more information, see xref:../services/connect-for-organisations.adoc#bulk-provisioning[Bulk provisioning].
+* *Consistent configuration.* Every device prepared with Secure Boot Provisioner receives an identical configuration, eliminating human error and configuration drift. This ensures consistent behaviour across your client devices, and simplifies ongoing management and technical support operations.
+* *Raspberry Pi Connect for Organisations.* You can configure Secure Boot Provisioner to automatically register provisioned devices with Raspberry Pi Connect for Organisations. For more information, see xref:../services/connect-for-organisations.adoc#bulk-provisioning[Bulk provisioning].
 
 === Use cases
 
@@ -30,7 +30,7 @@ Secure Boot Provisioner is useful for:
 
 Because the tool automatically handles cryptographic operations and security configuration, Secure Boot Provisioner offers the following benefits:
 
-* *Security.* Trusted boot and encrypted data storage.
+* *Security.* Provides trusted boot and encrypted data storage.
 * *Efficiency.* Speeds up the provisioning process and removes the need for manual cryptography or firmware knowledge.
 * *Reliability.* Ensures consistency and reduces errors that might otherwise occur with manual setup.
 * *Simplicity.* Doesn't require security expertise to operate. Knowledge of encryption algorithms or boot chain implementation is unnecessary.
@@ -45,7 +45,7 @@ Secure Boot Provisioner relies on two complementary mechanisms to secure devices
 
 Raspberry Pi secure boot is a security mechanism that uses sequential verification, starting from immutable hardware, to check that each stage of the boot process is authenticated. With secure boot, your Raspberry Pi device only boots software that you've signed with your private key. No one can modify the firmware or OS image (`boot.img`) without your signature.
 
-When secure boot is enabled on a Raspberry Pi device with Secure Boot Provisioner, the device verifies that each boot-stage binary (such as the bootloader) is cryptographically signed with a trusted private key before the OS starts. Your Raspberry Pi device stores the hash of the corresponding public key in its secure storage (OTP memory) and uses it to validate the signatures before booting. This ensures that only trusted, signed binaries can run during boot, preventing tampering or unsigned code from being loaded, whether from local storage or over the network.
+When Secure Boot Provisioner has been used to enable secure boot on a Raspberry Pi device, the device verifies that each boot-stage binary (such as the bootloader) is cryptographically signed with a trusted private key before the OS starts. Your Raspberry Pi device stores the hash of the corresponding public key in its secure storage (OTP memory) and uses it to validate the signatures before booting. This ensures that only trusted, signed binaries can run during boot, preventing tampering or unsigned code from being loaded, whether from local storage or over the network.
 
 For more detailed information about Raspberry Pi's secure boot implementation, see xref:../security/security-architecture.adoc[Security architecture].
 
@@ -59,7 +59,7 @@ You can use Secure Boot Provisioner to prepare your Raspberry Pi device with:
 * *LUKSv2 (Linux Unified Key Setup)* encryption, which is the standard format for disk encryption on Linux.
 * A device-unique secret in the *one-time programmable (OTP)* memory area of your Raspberry Pi device.
 
-The device-unique secret in your device's OTP is loaded early during the boot process and then used to unlock a LUKS-encrypted file system, allowing your Raspberry Pi device to decrypt its storage without requiring you to enter a password.
+The device-unique secret in your Raspberry Pi device's OTP is loaded early during the boot process and then used to unlock a LUKS-encrypted filesystem, allowing your Raspberry Pi device to decrypt its storage without requiring you to enter a password.
 
 For more detailed information about Raspberry Pi's disk encryption implementation, see xref:../security/security-architecture.adoc[Security architecture].
 
@@ -70,7 +70,7 @@ After provisioning devices with secure boot and disk encryption, we strongly rec
 [[security-levels]]
 === Levels of security
 
-As part of the Secure Boot Provisioner setup process, you can choose between three styles of operation that differ by the combination of secure boot and encryption applied to your client device to suit your security needs:
+As part of the Secure Boot Provisioner setup process, you can choose between three styles of operation that differ by the combination of secure boot and encryption applied to your client device to suit your security needs.
 
 .The three styles of security that you can choose for Secure Boot Provisioner
 [cols="1,3,2", options="header"]
@@ -118,7 +118,7 @@ You must have at least one RPIBOOT-capable client device to connect to the provi
 
 We strongly recommend using Compute Module 4 or 5 as your client devices, but you can use Secure Boot Provisioner to prepare any of the following RPIBOOT-capable Raspberry Pi devices. The connectors you need depend on the devices that you want to prepare.
 
-.Supported client devices in order of recommendation, and the corresponding required cables and accessories for Secure Boot Provisioner
+.Supported client devices in order of recommendation, and the corresponding required cables and accessories for configuring these client devices with Secure Boot Provisioner
 [cols="1,2", options="header"]
 |===
 |Client device |What you need for provisioning
@@ -223,7 +223,7 @@ Next, open the *Options* tab of the web UI, and complete each of the following s
 ** *Manufacturing Database.* The SQLite database that stores device information (serial numbers, MAC addresses, and hardware details). Use local storage only.
 ** *Keypair Storage Directory (Optional).* The directory that stores each client device's unique cryptographic key pairs generated during provisioning. Device key pairs are sensitive information and so you must ensure appropriate access controls. Leave this section blank to store keys alongside logs in the work directory.
 . If you want client devices to be automatically registered with *Raspberry Pi Connect for Organisations*, enable device registration during provisioning. Under *Cloud Services*, enter your organisation's management API access token, which you can find in the *Settings* tab of your Raspberry Pi Connect organisation. For more information, see xref:../services/connect-for-organisations.adoc#bulk-provisioning[Bulk provisioning].
-. Under *Hardware Security* (optional), use the toggles to permanently enable the following options on client devices. These settings can't be reverted on provisioned client devices; only enable them if you're certain of your configuration.
+. Optionally, under *Hardware Security*, use the toggles to permanently enable the following options on client devices. These settings can't be reverted on provisioned client devices; only enable them if you're certain of your configuration.
 ** *Lock JTAG Access.* This restricts debugging access to the client device. This is off by default because, after it's enabled, it prevents Raspberry Pi engineers from assisting with hardware debugging.
 ** *Enable EEPROM Write Protection.* This prevents modification of the provisioned device's EEPROM, which protects the secure boot configuration. For more information about EEPROM write protection, see xref:../computers/config_txt.adoc#eeprom_write_protect[`eeprom_write_protect`].
 
@@ -301,7 +301,7 @@ After completing the following steps, the provisioning process starts automatica
 
 ===== Step 1. Attach the Compute Module 4S to the CMIO3 Board
 
-Insert the bottom edge of the Compute Module 4S (CM4S) into the SODIMM connector on the CMIO3 Board, then tilt the CM4S backward until it lies flat against the CMIO3 Board, and the retaining clips hold it in place.
+Insert the bottom edge of the Compute Module 4S (CM4S) into the SODIMM connector on the CMIO3 Board, then tilt the CM4S backward until it lies flat against the CMIO3 Board and the retaining clips hold it in place.
 
 ===== Step 2. Enable RPIBOOT mode
 
@@ -309,7 +309,7 @@ On the header labelled `USB SLAVE BOOT ENABLE` at the bottom-right of the CMIO3 
 
 ===== Step 3. Connect your provisioner server to the IO Board.
 
-Use the USB cable to connect your provisioning server to the CMIO3 Board through the `USB SLAVE` port. RPIBOOT mode is activated on the CM4S when power is supplied to the `POWER IN` port on CMIO3 Board.
+Use the USB cable to connect your provisioning server to the CMIO3 Board through the `USB SLAVE` port. RPIBOOT mode is activated on the CM4S when power is supplied to the `POWER IN` port on the CMIO3 Board.
 
 ===== Step 4. Monitor the provisioning process
 
@@ -348,9 +348,45 @@ When provisioned, the client device:
 * Only boots images signed by your trusted private key.
 * If you also configure full-disk encryption (recommended), decrypts its storage at boot using the device-unique secret before loading the OS.
 
-== Troubleshooting
+== View the manufacturing database
 
-If you experience issues when using Secure Boot Provisioner to provision a device, use the information in this section to address or diagnose the issue.
+If you enabled the manufacturing database in the Secure Boot Provisioner, you can find the following details about each provisioned device in this database:
+
+* Serial number
+* Board type and revision
+* MAC address (Ethernet)
+* Provisioning date and time
+* Installed OS image
+* Security settings
+
+You can view the information in the database through the Secure Boot Provisioner web interface or by using the command line.
+
+On your provisioning (host) server, export the database as a CSV file:
+
+[tabs]
+======
+Using the web interface::
+To export the manufacturing database to a CSV file from the web interface:
++
+. Access http://localhost:3142 from your browser.
+. Go to the *Manufacturing Database* tab.
+. Select *Export as CSV* to download a spreadsheet file.
+
+Using the command line::
+Export the manufacturing database to a CSV file by running the following command:
++
+[source,bash]
+----
+sqlite3 ${RPI_SB_PROVISIONER_MANUFACTURING_DB} \
+  -cmd ".headers on" \
+  -cmd ".mode csv" \
+  -cmd ".output devices.csv" \
+  "SELECT * FROM rpi_sb_provisioner;"
+----
+======
+
+== Troubleshooting
+Use the information in this section to diagnose or address issues that might arise when trying to provision a client device with Secure Boot Provisioner.
 
 * Check whether you are experiencing a common problem (see <<common-problems>>).
 * Check the logs for error messages (see <<check-the-logs>>).
@@ -373,17 +409,22 @@ If provisioning starts but stops part way or never finishes, try the following:
 
 ==== Error: "Already signed"
 
-If the error logs report that the client device is already signed or secure, the client device was previously programmed with a signing key. This operation is permanent and can't be reversed. However, the following actions are available for this CM5:
+If the error logs report that the client device is already signed or secure, the client device was previously programmed with a signing key. This operation is permanent and can't be reversed. However, the following actions are available:
 
-* To skip the signing step, set the *Skip EEPROM Update* flag for this device.
-.. Go to the Secure Boot Provisioner web UI at http://localhost:3142.
-.. Go to the *Devices* tab and select the device you're programming.
-.. On the device-specific page, in the *Special Flags* section, set *Skip EEPROM Update* to *One-time*.
+* Skip the signing step by setting the *Skip EEPROM Update* flag for the client device.
+* Reprovision the device with the same key by setting the *Re-provision Device* flag for the client device.
 
-* To use the same key to completely re-provision the device, set the *Re-provision Device* flag for this device.
-.. Go to the Secure Boot Provisioner web UI at http://localhost:3142.
-.. Go to the *Devices* tab and select the device you're programming.
-.. On the device-specific page, in the *Special Flags* section, set *Re-provision Device* to *One-time*.
+To skip the signing step:
+
+. Go to the Secure Boot Provisioner web UI at http://localhost:3142.
+. Go to the *Devices* tab and select the device you're programming.
+. On the device-specific page, in the *Special Flags* section, set *Skip EEPROM Update* to *One-time*.
+
+To use the same key to completely reprovision the client device:
+
+. Go to the Secure Boot Provisioner web UI at http://localhost:3142.
+. Go to the *Devices* tab and select the device you're programming.
+. On the device-specific page, in the *Special Flags* section, set *Re-provision Device* to *One-time*.
 
 [[check-the-logs]]
 === Check the logs
@@ -396,7 +437,7 @@ Using the web interface::
 +
 . Go to the Secure Boot Provisioner web UI at http://localhost:3142.
 . Select the *Services* tab.
-. Find your CM5 in the *System Services* table.
+. Find your client device in the *System Services* table.
 . Select *View logs* to view detailed logs about it.
 
 Using the command line::

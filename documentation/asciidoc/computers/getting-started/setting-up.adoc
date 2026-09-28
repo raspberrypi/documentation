@@ -33,7 +33,7 @@ To function as a computer, your Raspberry Pi requires non-volatile storage conta
 
 You must configure your boot media before you assemble your Raspberry Pi, unless you are using a network install on Raspberry Pi 4B, 5, 500, or 500+, in which case you use the Raspberry Pi itself to configure the boot media.
 
-Whichever storage device you choose for your boot media, it must have enough storage and speed to act as a hard-drive that holds your OS image. An OS image is pre-packaged software that, when installed onto your boot image, transforms your Raspberry Pi from a blank board into a working computer.
+Whichever storage device you choose for your boot media, it must have enough storage and speed to act as a hard-drive that holds your OS image. An OS image is pre-packaged software that, when installed onto your boot media, transforms your Raspberry Pi from a blank board into a working computer.
 
 For step-by-step guidance on configuring the boot media for your Raspberry Pi, see xref:../computers/getting-started.adoc#install[Install an OS onto boot media].
 
