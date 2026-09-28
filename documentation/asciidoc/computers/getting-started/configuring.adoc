@@ -108,11 +108,12 @@ The *Shutdown Options* window in the desktop gives you the following options:
 
 * *Shutdown.* Closes all running programs and powers off your Raspberry Pi. Use this option before disconnecting your Raspberry Pi from power.
 * *Reboot.* Restarts your system. This is useful after applying updates, changing configurations, and connecting to new hardware.
-* *Lock Screen.* Locks your current session to prevent unauthorised access while keeping open programs running. Enter your password to unlock the screen again.
 * *Logout.* Signs out of your current user account and closes all running programs without shutting down the system.
 
+To lock your screen, use the keyboard shortcut: *Ctrl+Alt+L*.
+
 === Open shutdown options from the desktop
-To open the *Shutdown Options* window from the desktop, select the Raspberry Pi icon in the top-left corner of the system tray then select *Shutdown*.
+To open the *Shutdown Options* window from the desktop, select the Raspberry Pi icon in the top-left corner of the system tray, then select *Shutdown*.
 
 The following devices also offer shutdown shortcuts:
 
@@ -126,7 +127,7 @@ image::images/shutdown.png[alt="Shutdown from the desktop menu.",width="30%"]
 .Desktop shutdown menu
 image::images/shutdown-menu.png[alt="Shutdown menu.",width="25%"]
 
-You can use the mouse, or your keyboard cursor keys and *Enter* key, to select from one of the following options: *Shutdown*, *Reboot*, *Lock Screen*, and *Logout*, described in <<desktop-shutdown>>.
+You can use the mouse, or your keyboard cursor keys and *Enter* key, to select from one of the following options: *Shutdown*, *Reboot*, and *Logout*, described in <<desktop-shutdown>>.
 
 To exit the menu without choosing any of these options, select the cross (*×*) icon at the top-right corner or press *Esc*.
 

@@ -39,7 +39,7 @@ Raspberry Pi follows a structured vulnerability reporting and management process
 
 Raspberry Pi lists official security vulnerability disclosures on our website. For more information, see https://www.raspberrypi.com/security#security-advisories[Security Advisories] and https://raspberrypi.github.io/cve-list/[Raspberry Pi OS — CVE reports]
 
-To report security issues on Raspberry Pi, email mailto:security@raspberrypi.com[security@raspberrypi.com]. For more information, see https://www.raspberrypi.com/security/#reporting-a-vulnerability[Reporting a vulnerability]
+To report security issues on Raspberry Pi, email mailto:security@raspberrypi.com[security@raspberrypi.com]. For more information, see https://www.raspberrypi.com/security/#reporting-a-vulnerability[Reporting a vulnerability].
 
 == Software Bill of Materials
 

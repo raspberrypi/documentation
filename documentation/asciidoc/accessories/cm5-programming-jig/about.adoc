@@ -364,43 +364,6 @@ When the *STATUS* LED turns green, provisioning is complete. You can remove the 
 
 The CM5 is now ready for deployment.
 
-== View the manufacturing database
-
-If you enabled the manufacturing database in the Secure Boot Provisioner, the jig records details about each provisioned CM5 in this database, including:
-
-* Serial number
-* Board type and revision
-* MAC address (Ethernet)
-* Provisioning date and time
-* Installed OS image
-* Security settings
-
-You can view the information in the database through the Secure Boot Provisioner web interface or by using the command line.
-
-Connect to the jig through Raspberry Pi Connect and export the database as a CSV file:
-
-[tabs]
-======
-Using the web interface::
-To export the manufacturing database to a CSV file from the web interface:
-+
-. Access http://localhost:3142 on the jig as described in <<setup-step-use-provisioner>>.
-. Go to the *Manufacturing Database* tab.
-. Select *Export as CSV* to download a spreadsheet file.
-
-Using the command line::
-Export the manufacturing database to a CSV file by running the following command:
-+
-[source,bash]
-----
-sqlite3 ${RPI_SB_PROVISIONER_MANUFACTURING_DB} \
-  -cmd ".headers on" \
-  -cmd ".mode csv" \
-  -cmd ".output devices.csv" \
-  "SELECT * FROM rpi_sb_provisioner;"
-----
-======
-
 == Update the jig
 
 To get the latest security features, we recommend that you keep your jig software up to date.

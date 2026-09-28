@@ -115,13 +115,13 @@ This is passed to the operating system in the Device Tree, for example, `/proc/d
 `86`:: board country – The default keyboard country code used by https://github.com/raspberrypi-ui/piwiz[piwiz]
 If set, this is available through Device Tree in `/proc/device-tree/chosen/rpi-country-code`
 
-`87-88`:: xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Ethernet MAC address]
+`87-88`:: xref:raspberry-pi.adoc#customer-mac-addresses-on-bcm2712-devices[customer Ethernet MAC address]
 Overrides OTP rows 50-51 if set
 
-`89-90`:: xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Wi-Fi MAC address]
+`89-90`:: xref:raspberry-pi.adoc#customer-mac-addresses-on-bcm2712-devices[customer Wi-Fi MAC address]
 Overrides OTP rows 52-53 if set
 
-`89-90`:: xref:raspberry-pi.adoc#industrial-use-of-the-raspberry-pi[customer Bluetooth MAC address]
+`89-90`:: xref:raspberry-pi.adoc#customer-mac-addresses-on-bcm2712-devices[customer Bluetooth MAC address]
 Overrides OTP rows 54-55 if set
 
 `109-114`:: Factory device UUID

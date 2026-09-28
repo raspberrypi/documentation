@@ -318,12 +318,19 @@ Default: `1`
 
 [.whitepaper, title="How to use Raspberry Pi Secure Boot", subtitle="", link=https://pip.raspberrypi.com/documents/RP-003466-WP]
 ****
-This whitepaper describes how to implement secure boot on devices based on Raspberry Pi 4. For an overview of our approach to implementing secure boot implementation, see the https://pip.raspberrypi.com/documents/RP-004651-WP[Raspberry Pi 4 Boot Security] whitepaper. The secure boot system is intended for use with `buildroot`-based OS images; using it with Raspberry Pi OS is not recommended or supported.
+This whitepaper describes how to implement secure boot on devices based on Raspberry Pi 4. For an overview of our approach to implementing secure boot, see the https://pip.raspberrypi.com/documents/RP-004651-WP[Raspberry Pi 4 Boot Security] whitepaper.
+
+The secure boot system is intended for use with custom OS images such as those generated with `rpi-image-gen` or `buildroot`. Using it with Raspberry Pi OS isn't recommended.
+
 ****
 
 The following `config.txt` properties are used to program the `secure-boot` OTP settings. These changes are irreversible and can only be programmed by using `RPIBOOT` when flashing the bootloader EEPROM image. This ensures that `secure-boot` cannot be set remotely or by accidentally inserting a stale SD card image.
 
-For more information about enabling `secure-boot`, see the https://github.com/raspberrypi/usbboot/blob/master/Readme.md#secure-boot[Secure Boot readme] and the https://github.com/raspberrypi/usbboot/blob/master/secure-boot-example/README.md[Secure Boot tutorial] in the https://github.com/raspberrypi/usbboot[USBBOOT] repo.
+For more information about enabling `secure-boot`, see the following resources:
+
+* https://github.com/raspberrypi/usbboot/blob/master/Readme.md#secure-boot[Secure Boot readme] and the https://github.com/raspberrypi/usbboot/blob/master/secure-boot-example/README.md[Secure Boot tutorial] in the https://github.com/raspberrypi/usbboot[USBBOOT] repo.
+* xref:../security/security-architecture.adoc#secure-boot-chain-of-trust[Secure Boot Chain of Trust].
+* xref:../security/secure-boot-provisioner.adoc[Secure Boot Provisioner (`rpi-sb-provisioner`)].
 
 [[program_pubkey]]
 ==== `program_pubkey`
@@ -339,8 +346,7 @@ Raspberry Pi 4 only.
 
 If this property is set to `1` then `recovery.bin` will write a value to OTP that prevents the ROM from loading old versions of the second stage bootloader which do not support `secure-boot`. This prevents `secure-boot` from being turned off by reverting to an older release of the bootloader. Therefore, this property must be set if `secure-boot` is enabled on production devices.
 
-This property is automatically is set by `recovery.bin` `2025/05/16` and newer if `program_pubkey=1`.
-
+This property is automatically set by `recovery.bin` release version `2025/05/16` and later if `program_pubkey=1`.
 
 Default: `0`
 

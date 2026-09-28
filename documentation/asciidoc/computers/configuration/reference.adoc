@@ -338,11 +338,29 @@ Trying again, this time using the original example and adding the `-@` option to
 $ dtc -@ -Hepapr -I dts -O dtb -o 1st.dtbo 1st-overlay.dts
 ----
 
-If `dtc` returns an error about the third line, it doesn't have the extensions required for overlay work. Run `sudo apt install device-tree-compiler` and try again – this time, compilation should complete successfully. Note that a suitable compiler is also available in the kernel tree as `scripts/dtc/dtc`, built when the `dtbs` make target is used:
+If `dtc` returns the fatal error, `Unable to parse input tree`, on the `/plugin/;` line, it doesn't have the extensions required for overlay work. Run `sudo apt install device-tree-compiler` to resolve this.
+
+A suitable compiler is also available in the kernel tree as `scripts/dtc/dtc`. It's built when the `dtbs` make target is used:
 
 [source,console]
 ----
 $ make ARCH=arm dtbs
+----
+
+NOTE: Direct compilation with `dtc` works for standalone overlays. However, overlays and `.dts` files found in the Linux kernel source tree generally rely on the C preprocessor (`cpp`) to expand macros and resolve `#include` directives. Attempting to compile in-tree overlays directly with raw `dtc` fails with syntax errors. Instead, build these overlays using the kernel Makefiles (such as `make ARCH=arm dtbs` or `make ARCH=arm64 dtbs`), or through `kdtc`, a wrapper from the `raspberrypi/utils` repository that passes input files through `cpp` before invoking `dtc`.
++
+In simple mode, `kdtc <input> <output>` detects formats automatically. If run from within the kernel git tree, the kernel directory is inferred:
++
+[source,console]
+----
+$ kdtc arch/arm/boot/dts/overlays/vc4-kms-v3d-pi5-overlay.dts vc4-kms-v3d-pi5.dtbo
+----
++
+From outside the kernel tree, provide the path using `-k`:
++
+[source,console]
+----
+$ kdtc -k /path/to/kernel doofer-overlay.dts doofer.dtbo
 ----
 
 Dump the contents of the DTB file to see what the compiler has generated:
@@ -1168,7 +1186,7 @@ MODULE_DEVICE_TABLE(of, xxx_of_match);
 Failing that, `depmod` has failed or the updated modules haven't been installed on the target filesystem.
 
 [[part5.2]]
-===== Test overlays using `dtmerge`, `dtdiff` and `ovmerge`
+===== Test overlays using `dtmerge`, `dtdiff`, `ovmerge`, and `kdtc`
 
 Alongside the `dtoverlay` and `dtparam` commands is a utility for applying an overlay to a DTB – `dtmerge`. To use it you first need to obtain your base DTB, which can be obtained in one of two ways:
 
@@ -1267,7 +1285,22 @@ to get:
                 spi@7e2150C0 {
 ----
 
-The https://github.com/raspberrypi/utils[Utils] repo includes another DT utility – `ovmerge`. Unlike `dtmerge`, `ovmerge` combines files and applies overlays in source form. Because the overlay is never compiled, labels are preserved and the result is usually more readable. It also has a number of other tricks, such as the ability to list the order of file inclusion.
+The https://github.com/raspberrypi/utils[utils] repo provides additional DT tools:
+
+* `ovmerge`: Unlike `dtmerge`, `ovmerge` combines files and applies overlays in source form. Because the overlay is never compiled, labels are preserved and the result is usually more readable. It also has a number of other features, such as listing the include hierarchy for each file.
+* `kdtc`: A wrapper around `dtc` that passes input files through the C preprocessor (`cpp`) first to expand `#define` macros and resolve `#include` directives. This allows you to compile individual in-tree kernel overlays without running a full kernel build:
++
+[source,console]
+----
+$ kdtc arch/arm/boot/dts/overlays/vc4-kms-v3d-pi5-overlay.dts vc4-kms-v3d-pi5.dtbo
+----
++
+`kdtc` can also decompile a `.dtbo` file to standard output:
++
+[source,console]
+----
+$ kdtc mystery.dtbo
+----
 
 [[part5.3]]
 ===== Force a specific Device Tree

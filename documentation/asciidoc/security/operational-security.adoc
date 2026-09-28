@@ -25,7 +25,7 @@ Only the most recent major release of Raspberry Pi OS is updated with all the la
 
 A firewall helps protect your Raspberry Pi by controlling which network connections are allowed or blocked. For most users, we recommend using *Uncomplicated Firewall (UFW)* to configure firewall rules, restrict access to services, and protect internet-facing systems.
 
-For instructions on installing, configuring, and managing UFW, see xref:../security/ufw.adoc[Use Uncomplicated Firewall (UFW)].
+For instructions on installing, configuring, and managing UFW, see xref:../security/ufw.adoc[Firewalls using UFW].
 
 == Improve SSH security
 
