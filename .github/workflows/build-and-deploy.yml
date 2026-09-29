@@ -83,4 +83,4 @@ jobs:
           primary_host: ${{ secrets.DEPLOY_PRIMARY_HOST }}
           secondary_host: ${{ secrets.DEPLOY_SECONDARY_HOST }}
           source: documentation/html/
-          destination: documentation
+          destination: /
