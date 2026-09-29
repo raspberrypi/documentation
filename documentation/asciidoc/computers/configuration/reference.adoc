@@ -50,9 +50,11 @@ Text-based housekeeping information containing the date and git commit ID of the
 
 ==== `initramfs*`
 
+NOTE: Building and updating `initramfs` is considered an advanced technique that's undertaken only by experienced users. It isn't officially supported by Raspberry Pi and we therefore don't provide instructions for it.
+
 Contents of the initial ramdisk. This loads a temporary root file system into memory before the real root file system can be mounted.
 
-Raspberry Pi OS _Bookworm_ includes an `initramfs` file by default. To enable the initial ramdisk, configure it in xref:config_txt.adoc[`config.txt`] with the xref:config_txt.adoc#auto_initramfs[`auto_initramfs`] keyword.
+Raspberry Pi OS _Bookworm_  and later include an `initramfs` file by default. To enable the initial ramdisk, configure it in xref:config_txt.adoc[`config.txt`] with the xref:config_txt.adoc#auto_initramfs[`auto_initramfs`] keyword.
 
 Raspberry Pi OS _Trixie_ includes the `auto_initramfs` keyword by default.
 
