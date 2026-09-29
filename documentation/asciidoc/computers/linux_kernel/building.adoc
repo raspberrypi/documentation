@@ -223,7 +223,7 @@ $ sudo reboot
 
 [TIP]
 ====
-Alternatively, copy the kernel with a different filename (for example, `kernel-myconfig.img`) instead of overwriting the `kernel.img` file. Then, edit `config.txt` in the boot partition to select your kernel:
+Alternatively, copy the kernel with a different filename (for example, `kernel-myconfig.img`) instead of overwriting the `$KERNEL.img` file. Then, edit `config.txt` in the boot partition to select your kernel:
 
 [source,ini]
 ----
@@ -231,7 +231,20 @@ kernel=kernel-myconfig.img
 ----
 
 Combine this approach with a custom `LOCALVERSION` to keep your custom kernel separate from the stock kernel image managed by the system. With this arrangement, you can quickly revert to a stock kernel in the event that your kernel cannot boot.
+
+Raspberry Pi OS Bookworm and later include an `initramfs` by default, enabled by using `auto_initramfs` in `config.txt`.
+
+When `auto_initramfs` is set to `1`, the firmware expects the `initramfs` filename to match the kernel filename by replacing the `kernel` prefix with `initramfs` (and omitting any file extension). For example, `kernel-myconfig.img` looks for `initramfs-myconfig`.
+
+If you don't provide a matching filename, you must specify the ramdisk using an explicit `initramfs` directive without an `=` sign, for example:
+
+[source,ini]
+----
+initramfs <filename> followkernel
+----
 ====
+
+NOTE: Building and updating `initramfs` is considered an advanced technique that's undertaken only by experienced users. It isn't officially supported by Raspberry Pi and we therefore don't provide instructions for it.
 
 === Cross-compile the kernel
 
@@ -459,10 +472,9 @@ $ sudo umount mnt/root
 
 Finally, connect the boot media to your Raspberry Pi and connect it to power to run your freshly-compiled kernel.
 
-
 [TIP]
 ====
-Alternatively, copy the kernel with a different filename (for example, `kernel-myconfig.img`) instead of overwriting the `kernel.img` file. Then, edit `config.txt` in the boot partition to select your kernel:
+Alternatively, copy the kernel with a different filename (for example, `kernel-myconfig.img`) instead of overwriting the `$KERNEL.img` file. Then, edit `config.txt` in the boot partition to select your kernel:
 
 [source,ini]
 ----
@@ -470,4 +482,14 @@ kernel=kernel-myconfig.img
 ----
 
 Combine this approach with a custom `LOCALVERSION` to keep your custom kernel separate from the stock kernel image managed by the system. With this arrangement, you can quickly revert to a stock kernel in the event that your kernel cannot boot.
-====
+
+Raspberry Pi OS Bookworm and later include an `initramfs` by default, enabled by using `auto_initramfs` in `config.txt`.
+
+When `auto_initramfs` is set to `1`, the firmware expects the `initramfs` filename to match the kernel filename by replacing the `kernel` prefix with `initramfs` (and omitting any file extension). For example, `kernel-myconfig.img` looks for `initramfs-myconfig`.
+
+If you don't provide a matching filename, you must specify the ramdisk using an explicit `initramfs` directive without an `=` sign, for example:
+
+[source,ini]
+----
+initramfs <filename> followkernel
+----
