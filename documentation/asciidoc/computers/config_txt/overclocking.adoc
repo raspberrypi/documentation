@@ -365,7 +365,7 @@ $ cat /sys/class/thermal/thermal_zone0/temp
 
 Divide the result by 1000 to find the value in degrees Celsius. Alternatively, you can use `vcgencmd measure_temp` to report the GPU temperature.
 
-Hitting the temperature limit is not harmful to the SoC, but it will cause the CPU to throttle. A heat sink can help to control the core temperature, and therefore performance. This is especially useful if the Raspberry Pi is running inside a case. Airflow over the heat sink will make cooling more efficient.
+Hitting the temperature limit is not harmful to the SoC, but it will cause the CPU to throttle. A heatsink can help to control the core temperature, and therefore performance. This is especially useful if the Raspberry Pi is running inside a case. Airflow over the heatsink makes cooling more efficient.
 
 When the core temperature is between 80°C and 85°C, the Arm cores will be throttled back. If the temperature exceeds 85°C, the Arm cores and the GPU will be throttled back.
 

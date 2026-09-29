@@ -217,6 +217,12 @@
                     "subpath": "cm5-programming-jig.adoc"
                 },
                 {
+                    "title": "Smart Display Module",
+                    "description": "Integrate your Compute Module 5 with compatible digital signage",
+                    "image": "full-sized/smart-display-module.png",
+                    "subpath": "smart-display-module.adoc"
+                },
+                {
                     "title": "Bumper",
                     "description": "A protective case for your Raspberry Pi 5",
                     "image": "full-sized/bumper.png",

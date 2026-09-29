@@ -300,6 +300,7 @@ Raspberry Pi offers the following accessories for CM5 and CM5IO:
 * <<case, CM5IO Case>>, an enclosure for a CM5IO (and attached CM5). The case also optionally fits an antenna and cooler.
 * <<antenna, Antenna (CM4 and CM5)>>, a 2.4 GHz and 5 GHz antenna for wireless connectivity through CM4 or CM5.
 * <<cooler, CM5 Cooler>>, a passive heat sink to dissipate heat from CM5.
+* xref:../accessories/smart-display-module.adoc[Smart Display Module], an adapter board for using CM5 in display systems that support the Intel® Smart Display Module (Intel® SDM) specification.
 
 [[case]]
 === CM5IO Case
@@ -390,7 +391,7 @@ image::images/cm4-cm5-antenna-physical.png[alt="CM4 and CM5 antenna physical spe
 You can use the antenna with the <<case, CM5IO Case>>. To attach the antenna to your Compute Module through the CM5IO Case, complete the first four steps outlined in <<case-assembly>>, and then complete following steps:
 
 . *Connect the U.FL connector.* Connect the U.FL connector on the antenna cable to the U.FL-compatible connector on your Compute Module, next to the top-left mounting hole of your CM5. Do this before attaching a cooler (if using one) because the cooler can make it harder to attach the U.FL connector.
-. *Insert the SMA connector.* Remove the rubber plug from the antenna port on the inside of the CM5IO Case. Then, from the inside of the case, push the SMA connector with the (flat side up) into the antenna port so that it extends through and is accessible from the outside.
+. *Insert the SMA connector.* Remove the rubber plug from the antenna port on the inside of the CM5IO Case. Then, from the inside of the case, push the SMA connector (with the flat side up) into the antenna port so that it extends through and is accessible from the outside.
 . *Fasten the SMA connector into place.* Twist the retaining hexagonal nut and washer onto the SMA connector in a clockwise direction until it sits securely in place. Avoid excessive twisting when tightening to prevent damage.
 . *Attach the antenna to the SMA connector.* Insert the SMA connector into the antenna port with the antenna facing outward and twist the antenna clockwise to secure it.
 . *Adjust the antenna.* Move the antenna into its final position by turning it up to a 90 degree angle.

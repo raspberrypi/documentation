@@ -53,7 +53,7 @@ Due to the architecture of the SoCs used on Raspberry Pi devices, and the use of
 $ vcgencmd measure_temp
 ----
 
-=== Add heat sinks
+=== Add heatsinks
 
 Thanks to built-in throttling, heatsinks are not necessary to prevent overheating damage to the SoC. However, a heatsink or small fan can reduce thermal throttling and improve performance. Mount the Raspberry Pi vertically for the best airflow and thus slightly improved heat dissipation.
 
