@@ -14,9 +14,6 @@ on:
 jobs:
   build:
     runs-on: [self-hosted, web]
-    environment:
-      name: ${{ inputs.environment }}
-      url: ${{ inputs.url }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -52,11 +49,36 @@ jobs:
         run: make build_doxygen_adoc
       - name: Build documentation
         run: make -j 2
-      - name: Deploy to Mythic Beasts
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         if: ${{ inputs.deploy }}
+        with:
+          name: documentation
+          path: documentation/html/
+          if-no-files-found: error
+          retention-days: 1
+          include-hidden-files: true
+
+  deploy:
+    needs: build
+    if: ${{ inputs.deploy }}
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment }}
+      url: ${{ inputs.url }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          sparse-checkout: .github/actions
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          name: documentation
+          path: documentation/html
+      - name: Deploy to Mythic Beasts
         uses: ./.github/actions/deploy-action
         with:
           private_ssh_key: ${{ secrets.DEPLOY_SSH_KEY }}
+          known_hosts: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
           bastion_host: ${{ secrets.DEPLOY_BASTION_HOST }}
           primary_host: ${{ secrets.DEPLOY_PRIMARY_HOST }}
           secondary_host: ${{ secrets.DEPLOY_SECONDARY_HOST }}

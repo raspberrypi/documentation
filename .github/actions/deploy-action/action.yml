@@ -5,6 +5,10 @@ inputs:
     description: "The private SSH key used to authenticate with the remote servers"
     required: true
 
+  known_hosts:
+    description: "The public SSH host keys for the bastion, primary and secondary servers"
+    required: true
+
   bastion_host:
     description: "The [user@]hostname of the bastion server"
     required: true
@@ -38,10 +42,17 @@ runs:
         ssh-add - <<< "${{ inputs.private_ssh_key }}"
       shell: bash
 
+    - name: Populate known hosts
+      run: |
+        mkdir -m 700 -p ~/.ssh
+        printf "${{ inputs.known_hosts }}" >> ~/.ssh/known_hosts
+        chmod 600 ~/.ssh/known_hosts
+      shell: bash
+
     - name: Deploy to primary server
-      run: rsync -avz --delete -e 'ssh -A ${{ inputs.bastion_host }} ssh' ${{ inputs.source }} ${{ inputs.primary_host }}:${{ inputs.destination }}
+      run: rsync -avz --delete -e 'ssh -J ${{ inputs.bastion_host }}' ${{ inputs.source }} ${{ inputs.primary_host }}:${{ inputs.destination }}
       shell: bash
 
     - name: Deploy to secondary server
-      run: rsync -avz --delete -e 'ssh -A ${{ inputs.bastion_host }} ssh' ${{ inputs.source }} ${{ inputs.secondary_host }}:${{ inputs.destination }}
+      run: rsync -avz --delete -e 'ssh -J ${{ inputs.bastion_host }}' ${{ inputs.source }} ${{ inputs.secondary_host }}:${{ inputs.destination }}
       shell: bash
