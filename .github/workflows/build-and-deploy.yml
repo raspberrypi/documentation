@@ -14,6 +14,10 @@ on:
 jobs:
   build:
     runs-on: [self-hosted, web]
+    permissions:
+      contents: read
+    outputs:
+      artifact-id: ${{ steps.upload.outputs.artifact-id }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -50,6 +54,7 @@ jobs:
       - name: Build documentation
         run: make -j 2
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        id: upload
         if: ${{ inputs.deploy }}
         with:
           name: documentation
@@ -62,6 +67,8 @@ jobs:
     needs: build
     if: ${{ inputs.deploy }}
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
     environment:
       name: ${{ inputs.environment }}
       url: ${{ inputs.url }}
@@ -80,3 +87,8 @@ jobs:
           secondary_host: ${{ secrets.DEPLOY_SECONDARY_HOST }}
           source: documentation/html/
           destination: /
+      - name: Delete the uploaded build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_ID: ${{ needs.build.outputs.artifact-id }}
+        run: gh api --method DELETE "repos/$GITHUB_REPOSITORY/actions/artifacts/$ARTIFACT_ID"

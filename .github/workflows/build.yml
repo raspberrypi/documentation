@@ -18,12 +18,18 @@ permissions:
 jobs:
   build:
     uses: $/.github/workflows/build-and-deploy.yml
+    permissions:
+      contents: read
+      actions: write
     if: ${{ github.ref != 'refs/heads/develop' && github.ref != 'refs/heads/master' }}
     with:
       deploy: false
 
   staging-build:
     uses: $/.github/workflows/build-and-deploy.yml
+    permissions:
+      contents: read
+      actions: write
     if: ${{ github.ref == 'refs/heads/develop' }}
     with:
       deploy: true
@@ -33,6 +39,9 @@ jobs:
 
   production-build:
     uses: $/.github/workflows/build-and-deploy.yml
+    permissions:
+      contents: read
+      actions: write
     if: ${{ github.ref == 'refs/heads/master' }}
     with:
       deploy: true
