@@ -1,0 +1,7 @@
+rules:
+  secrets-inherit:
+    ignore:
+      - build.yml
+  artipacked:
+    ignore:
+      - mirror.yml

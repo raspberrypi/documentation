@@ -32,27 +32,40 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Configure ssh-agent for subsequent steps
-      run: echo "SSH_AUTH_SOCK=${{ runner.temp }}/ssh_agent.sock" >> $GITHUB_ENV
-      shell: bash
-
     - name: Start ssh-agent with SSH key
+      env:
+        SSH_AUTH_SOCK: ${{ runner.temp }}/ssh_agent.sock
+        PRIVATE_SSH_KEY: ${{ inputs.private_ssh_key }}
       run: |
-        ssh-agent -a $SSH_AUTH_SOCK
-        ssh-add - <<< "${{ inputs.private_ssh_key }}"
+        ssh-agent -a "$SSH_AUTH_SOCK"
+        ssh-add - <<< "$PRIVATE_SSH_KEY"
       shell: bash
 
     - name: Populate known hosts
+      env:
+        KNOWN_HOSTS: ${{ inputs.known_hosts }}
       run: |
         mkdir -m 700 -p ~/.ssh
-        printf "${{ inputs.known_hosts }}" >> ~/.ssh/known_hosts
+        printf "$KNOWN_HOSTS" >> ~/.ssh/known_hosts
         chmod 600 ~/.ssh/known_hosts
       shell: bash
 
     - name: Deploy to primary server
-      run: rsync -avz --delete -e 'ssh -J ${{ inputs.bastion_host }}' ${{ inputs.source }} ${{ inputs.primary_host }}:${{ inputs.destination }}
+      env:
+        SSH_AUTH_SOCK: ${{ runner.temp }}/ssh_agent.sock
+        BASTION_HOST: ${{ inputs.bastion_host }}
+        HOST: ${{ inputs.primary_host }}
+        SOURCE: ${{ inputs.source }}
+        DESTINATION: ${{ inputs.destination }}
+      run: rsync -avz --delete -e "ssh -J $BASTION_HOST" "$SOURCE" "$HOST:$DESTINATION"
       shell: bash
 
     - name: Deploy to secondary server
-      run: rsync -avz --delete -e 'ssh -J ${{ inputs.bastion_host }}' ${{ inputs.source }} ${{ inputs.secondary_host }}:${{ inputs.destination }}
+      env:
+        SSH_AUTH_SOCK: ${{ runner.temp }}/ssh_agent.sock
+        BASTION_HOST: ${{ inputs.bastion_host }}
+        HOST: ${{ inputs.secondary_host }}
+        SOURCE: ${{ inputs.source }}
+        DESTINATION: ${{ inputs.destination }}
+      run: rsync -avz --delete -e "ssh -J $BASTION_HOST" "$SOURCE" "$HOST:$DESTINATION"
       shell: bash
