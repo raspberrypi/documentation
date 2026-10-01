@@ -752,6 +752,56 @@ Here are some examples of different types of properties, with parameters to modi
 
 For further examples, a large collection of overlay source files is hosted in the https://github.com/raspberrypi/linux/tree/rpi-6.1.y/arch/arm/boot/dts/overlays[Raspberry Pi Linux GitHub repository].
 
+[[hat-map]]
+====== The HAT map file
+
+The HAT map file retrofits overlay names to HATs whose EEPROMs come with overlays built in.
+
+Changes to the Device Tree and kernel drivers have since meant that some of these named overlays no longer work with current software, or no longer apply at all.
+
+The HAT map lets the firmware resolve this without reprogramming the EEPROM. It associates identified HATs with the overlay that must be loaded for them. If an attached HAT matches an entry in the map, the firmware ignores the overlay built into the EEPROM of the HAT and loads the overlay specified in the map instead.
+
+Like the overlay map, the HAT map is loaded by the firmware at boot. It's written in DTS source format (`hat_map.dts`), compiled to `hat_map.dtb`, and stored in the overlays directory.
+
+The following is an extract from the map file. For the complete file, see the https://github.com/raspberrypi/linux/blob/rpi-6.12.y/arch/arm/boot/dts/overlays/hat_map.dts[hat_map.dts source]:
+
+[source,dts]
+----
+/ {
+    pisound {
+        uuid = [ ... ];
+        overlay = "pisound";
+    };
+
+    hifiberry-amp4 {
+        uuid = [ fcb6ec42 a182 419d a314 7eeae416f608 ];
+        overlay = "hifiberry-dacplus-std";
+    };
+
+    sensehat-v2 {
+        product = "Sense HAT";
+        vendor = "Raspberry Pi";
+        pver = < 0x0002 >;
+        overlay = "rpi-sense-v2";
+    };
+
+    hailo-8l {
+        product = "Raspberry Pi AI Hat, Model Hailo-8L";
+        vendor = "Hailo Technologies";
+        overlay = "none,pciex1,pciex1_gen=3";
+    };
+};
+----
+
+Each node describes one HAT. The node name is only a label. The properties identify the HAT using values read from its EEPROM, and specify the overlay to load:
+
+* `uuid` – The product UUID from the vendor information atom of the EEPROM. Most entries identify HATs this way.
+* `vendor` and `product` – The vendor and product strings from the vendor information atom of the EEPROM. These can be used to identify a HAT instead of its UUID.
+* `pver` – The product version from the vendor information atom. This can be combined with the vendor and product strings to differentiate versions of the same product, such as two versions of Sense HAT.
+* `overlay` – The overlay to load in place of the one built into the EEPROM. Like a `dtoverlay` line in `config.txt`, the value can include parameters after the overlay name, separated by commas.
+
+NOTE: Earlier firmware might not support this feature. We recommend pairing earlier firmware with a kernel and overlays from the same release.
+
 [[part2.3]]
 ===== Export labels
 
