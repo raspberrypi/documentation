@@ -6,12 +6,14 @@ on:
       - master
   workflow_dispatch:
 
+permissions: {}
+
 jobs:
   mirror:
     runs-on: ubuntu-latest
     environment: mirror
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: master
           token: ${{ secrets.DOCUMENTATION_REPO_TOKEN }}

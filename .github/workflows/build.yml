@@ -12,15 +12,24 @@ on:
       - develop
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   build:
-    uses: ./.github/workflows/build-and-deploy.yml
+    uses: $/.github/workflows/build-and-deploy.yml
+    permissions:
+      contents: read
+      actions: write
     if: ${{ github.ref != 'refs/heads/develop' && github.ref != 'refs/heads/master' }}
     with:
       deploy: false
 
   staging-build:
-    uses: ./.github/workflows/build-and-deploy.yml
+    uses: $/.github/workflows/build-and-deploy.yml
+    permissions:
+      contents: read
+      actions: write
     if: ${{ github.ref == 'refs/heads/develop' }}
     with:
       deploy: true
@@ -29,7 +38,10 @@ jobs:
     secrets: inherit
 
   production-build:
-    uses: ./.github/workflows/build-and-deploy.yml
+    uses: $/.github/workflows/build-and-deploy.yml
+    permissions:
+      contents: read
+      actions: write
     if: ${{ github.ref == 'refs/heads/master' }}
     with:
       deploy: true
