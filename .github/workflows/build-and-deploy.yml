@@ -69,6 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       actions: write
+      contents: read
     environment:
       name: ${{ inputs.environment }}
       url: ${{ inputs.url }}
