@@ -409,14 +409,14 @@ Next, install the kernel modules onto the boot media:
 +
 [source,console]
 ----
-$ sudo env PATH=$PATH make -j12 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- INSTALL_MOD_PATH=mnt/root modules_install
+$ sudo env "PATH=$PATH" make -j12 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- INSTALL_MOD_PATH=mnt/root modules_install
 ----
 
 * For 32-bit kernels:
 +
 [source,console]
 ----
-$ sudo env PATH=$PATH make -j12 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/root modules_install
+$ sudo env "PATH=$PATH" make -j12 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/root modules_install
 ----
 
 TIP: On multi-core devices, the `make -j<n>` option distributes work between cores. This can speed up compilation significantly. Run `nproc` to see how many processors you have; we recommend passing a number 1.5x your number of processors.
@@ -429,11 +429,11 @@ To install the 64-bit kernel:
 +
 [source,console]
 ----
-$ sudo cp mnt/boot/$KERNEL.img mnt/boot/$KERNEL-backup.img
-$ sudo cp arch/arm64/boot/Image mnt/boot/$KERNEL.img
-$ sudo cp arch/arm64/boot/dts/broadcom/*.dtb mnt/boot/
-$ sudo cp arch/arm64/boot/dts/overlays/*.dtb* mnt/boot/overlays/
-$ sudo cp arch/arm64/boot/dts/overlays/README mnt/boot/overlays/
+$ sudo cp mnt/boot/$KERNEL.img mnt/boot/firmware/$KERNEL-backup.img
+$ sudo cp arch/arm64/boot/Image mnt/boot/firmware/$KERNEL.img
+$ sudo cp arch/arm64/boot/dts/broadcom/*.dtb mnt/boot/firmware/
+$ sudo cp arch/arm64/boot/dts/overlays/*.dtb* mnt/boot/firmware/overlays/
+$ sudo cp arch/arm64/boot/dts/overlays/README mnt/boot/firmware/overlays/
 $ sudo umount mnt/boot
 $ sudo umount mnt/root
 ----
@@ -444,8 +444,8 @@ To install the 32-bit kernel:
 +
 [source,console]
 ----
-$ sudo cp mnt/boot/$KERNEL.img mnt/boot/$KERNEL-backup.img
-$ sudo cp arch/arm/boot/zImage mnt/boot/$KERNEL.img
+$ sudo cp mnt/boot/$KERNEL.img mnt/boot/firmware/$KERNEL-backup.img
+$ sudo cp arch/arm/boot/zImage mnt/boot/firmware/$KERNEL.img
 ----
 
 . Depending on your xref:linux_kernel.adoc#identify-your-kernel-version[kernel version], run the following command to install Device Tree blobs:
@@ -453,20 +453,20 @@ $ sudo cp arch/arm/boot/zImage mnt/boot/$KERNEL.img
 +
 [source,console]
 ----
-$ sudo cp arch/arm/boot/dts/*.dtb mnt/boot/
+$ sudo cp arch/arm/boot/dts/*.dtb mnt/boot/firmware
 ----
 ** For kernels version 6.5 and above:
 +
 [source,console]
 ----
-$ sudo cp arch/arm/boot/dts/broadcom/*.dtb mnt/boot/
+$ sudo cp arch/arm/boot/dts/broadcom/*.dtb mnt/boot/firmware
 ----
 . Finally, install the overlays and README, and unmount the partitions:
 +
 [source,console]
 ----
-$ sudo cp arch/arm/boot/dts/overlays/*.dtb* mnt/boot/overlays/
-$ sudo cp arch/arm/boot/dts/overlays/README mnt/boot/overlays/
+$ sudo cp arch/arm/boot/dts/overlays/*.dtb* mnt/boot/firmware/overlays/
+$ sudo cp arch/arm/boot/dts/overlays/README mnt/boot/firmware/overlays/
 $ sudo umount mnt/boot
 $ sudo umount mnt/root
 ----
