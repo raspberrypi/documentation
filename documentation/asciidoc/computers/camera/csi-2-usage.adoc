@@ -14,24 +14,8 @@ NOTE: The V4L2 interface for Unicam is available only when using `libcamera`.
 
 There is a fully open-source kernel driver available for the Unicam block; this kernel module, called `bcm2835-unicam`, interfaces with V4L2 subdevice drivers to deliver raw frames. This `bcm2835-unicam` driver controls the sensor and configures the Camera Serial Interface 2 (CSI-2) receiver. Peripherals write raw frames (after Debayer) to SDRAM for V4L2 to deliver to applications. There is no image processing between the camera sensor capturing the image and the `bcm2835-unicam` driver placing the image data in SDRAM except for Bayer unpacking to 16bits/pixel.
 
-----
-|------------------------|
-|     bcm2835-unicam     |
-|------------------------|
-     ^             |
-     |      |-------------|
- img |      |  Subdevice  |
-     |      |-------------|
-     v   -SW/HW-   |
-|---------|   |-----------|
-| Unicam  |   | I2C or SPI|
-|---------|   |-----------|
-csi2/ ^             |
-ccp2  |             |
-    |-----------------|
-    |     sensor      |
-    |-----------------|
-----
+.bcm2835-unicam architecture diagram
+image::images/bcm2835-unicam-diagram.png[Architecture diagram showing the relationship between the bcm2835-unicam kernel module, the Unicam hardware block, V4L2 subdevice drivers over I2C or SPI, and the camera sensor through CSI-2 or CCP2.]
 
 Mainline Linux contains a range of existing drivers. The Raspberry Pi kernel tree has some additional drivers and Device Tree overlays to configure them:
 
