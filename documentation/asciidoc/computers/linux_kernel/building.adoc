@@ -66,7 +66,7 @@ To prepare the default configuration, run the appropriate commands from the sect
 
 [tabs]
 ======
-Raspberry Pi 3, 3+, CM3, CM3+, Zero 2 W, 4, 400, CM4, CM4S::
+Raspberry Pi 3, 3+, CM3, CM3+, Zero 2 W, 4, 400, CM4, CM4S, 5, 500, 500+, and CM5::
 +
 [source,console]
 ----
@@ -75,7 +75,7 @@ $ KERNEL=kernel8
 $ make bcm2711_defconfig
 ----
 
-Raspberry Pi 5, 500, 500+, CM5::
+Raspberry Pi 5, 500, 500+, and CM5 (optimised)::
 +
 [source,console]
 ----
@@ -84,6 +84,11 @@ $ KERNEL=kernel_2712
 $ make bcm2712_defconfig
 ----
 ======
+
+[NOTE]
+====
+`bcm2712_defconfig` builds `kernel_2712.img`, which is optimised for BCM2712 devices (Raspberry Pi 5, 500, 500+, CM5) and uses a 16K page size. `bcm2711_defconfig` builds `kernel8.img`, which also runs on these devices but with a 4K page size. On BCM2712 devices the firmware loads `kernel_2712.img` if present, otherwise it falls back to `kernel8.img`.
+====
 
 ===== 32-bit architecture
 
@@ -107,7 +112,7 @@ $ KERNEL=kernel7
 $ make bcm2709_defconfig
 ----
 
-Raspberry Pi 4, 400, CM4, CM4S::
+Raspberry Pi 4, 400, CM4, CM4S (kernels before 6.18)::
 +
 [source,console]
 ----
@@ -119,7 +124,7 @@ $ make bcm2711_defconfig
 
 [NOTE]
 ====
-The 32-bit distribution of Raspberry Pi OS on 4-series devices uses a 32-bit userland, but a _64-bit kernel_. To build a 32-bit kernel, set `ARCH=arm`. To boot a 32-bit kernel, set `arm_64bit=0` in `config.txt`.
+The 32-bit distribution of Raspberry Pi OS on BCM2711 devices uses a 32-bit userland, but a _64-bit kernel_. From kernel version 6.18, 32-bit kernel builds are not supported on BCM2711 devices (Raspberry Pi 4, 400, CM4, CM4S); use the 64-bit `kernel8` build instead. For earlier kernel versions, set `ARCH=arm` to build a 32-bit kernel and `arm_64bit=0` in `config.txt` to boot it.
 ====
 
 [[native-customisation]]
@@ -293,7 +298,7 @@ To build the sources and Device Tree files, run the appropriate commands from th
 
 [tabs]
 ======
-Raspberry Pi 3, 3+, CM3, CM3+, Zero 2 W, 4, 400, CM4, CM4S::
+Raspberry Pi 3, 3+, CM3, CM3+, Zero 2 W, 4, 400, CM4, CM4S, 5, 500, 500+, and CM5::
 +
 [source,console]
 ----
@@ -302,7 +307,7 @@ $ KERNEL=kernel8
 $ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
 ----
 
-Raspberry Pi 5, 500, 500+, CM5::
+Raspberry Pi 5, 500, 500+, and CM5 (optimised)::
 +
 [source,console]
 ----
@@ -311,6 +316,11 @@ $ KERNEL=kernel_2712
 $ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2712_defconfig
 ----
 ======
+
+[NOTE]
+====
+`bcm2712_defconfig` builds `kernel_2712.img`, which is optimised for BCM2712 devices (Raspberry Pi 5, 500, 500+, CM5) and uses a 16K page size. `kernel8.img`, built with `bcm2711_defconfig`, also runs on these devices with a 4K page size. The firmware loads `kernel_2712.img` if present, otherwise it falls back to `kernel8.img`.
+====
 
 ===== 32-bit architecture
 
@@ -334,7 +344,7 @@ $ KERNEL=kernel7
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
 ----
 
-Raspberry Pi 4, 400, CM4, CM4S::
+Raspberry Pi 4, 400, CM4, and CM4S (kernels before 6.18)::
 +
 [source,console]
 ----
@@ -343,6 +353,11 @@ $ KERNEL=kernel7l
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
 ----
 ======
+
+[NOTE]
+====
+From kernel version 6.18, 32-bit kernel builds are not supported on BCM2711 devices (Raspberry Pi 4, 400, CM4, and CM4S); use the 64-bit `kernel8` build instead.
+====
 
 [[cross-compiled-customisation]]
 ==== Customise the kernel version using `LOCALVERSION`
