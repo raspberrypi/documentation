@@ -199,7 +199,7 @@ image::images/m2-hat-plus-compact-installation-07.png[width="80%"]
 
 == Start your Raspberry Pi
 
-NOTE: If your NVMe drive is brand new or unformatted, it doesn't appear as an icon on the Raspberry Pi OS desktop. Additionally, commands such as `sudo blkid` don't show a partition UUID.  You must partition and format your drive to make it visible and accessible to the operating system. For more information, see <<boot-from-nvme,Boot from NVMe>> or xref:../computers/configuration.adoc#automatically-mount-a-storage-device[automatically mount a storage device].
+If your NVMe drive is new or unformatted, it doesn't appear as an icon on the Raspberry Pi OS desktop. Additionally, commands such as `sudo blkid` don't show a partition UUID. You must partition and format your drive (for example, by using the *Erase* option in https://www.raspberrypi.com/software/[Raspberry Pi Imager]) to make it visible and accessible to the operating system. For more information, see <<boot-from-nvme,Boot from NVMe>> or xref:../computers/configuration.adoc#automatically-mount-a-storage-device[automatically mount a storage device].
 
 . Connect your Raspberry Pi to power. Raspberry Pi OS automatically detects the M.2 HAT+ or M.2 HAT+ Compact.
 +
