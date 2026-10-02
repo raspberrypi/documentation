@@ -121,7 +121,7 @@ Overrides OTP rows 50-51 if set
 `89-90`:: xref:raspberry-pi.adoc#customer-mac-addresses-on-bcm2712-devices[customer Wi-Fi MAC address]
 Overrides OTP rows 52-53 if set
 
-`89-90`:: xref:raspberry-pi.adoc#customer-mac-addresses-on-bcm2712-devices[customer Bluetooth MAC address]
+`91-92`:: xref:raspberry-pi.adoc#customer-mac-addresses-on-bcm2712-devices[customer Bluetooth MAC address]
 Overrides OTP rows 54-55 if set
 
 `109-114`:: Factory device UUID

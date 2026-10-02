@@ -9,6 +9,8 @@ You can do this using either of the following methods:
 
 Screen sharing requires the **Wayland** window server. Raspberry Pi OS _Bookworm_ and later use Wayland by default. Screen sharing isn't compatible with Raspberry Pi OS Lite or systems that use the X window server.
 
+NOTE: Screen sharing and remote shell work whether your Raspberry Pi is on the same network or a different network than your browser. However, a direct local connection is faster and more responsive than one that goes over the internet or through a <<relay-servers,relay server>>.
+
 === Screen-sharing interface
 [[screen-sharing]]
 
@@ -40,6 +42,9 @@ To start a screen sharing session:
 
 . Make sure your Raspberry Pi device is linked to your Connect account, is powered on, and that Raspberry Pi OS has booted.
 . From your PC, Mac, or other device, sign in to https://connect.raspberrypi.com[connect.raspberrypi.com].
++
+If your browser or operating system requests permission to find or connect to devices on your local network, allow it. If you disallow it, Connect still works, but sessions with devices on your local network can't use the local route.
++
 . Select the **Devices** tab.
 +
 Devices available for screen sharing show a grey **Screen sharing** badge below the name of the device.
@@ -124,6 +129,9 @@ $ rpi-connect vnc on
 To access the remote shell:
 
 . From your PC, Mac, or other device, sign in to https://connect.raspberrypi.com[connect.raspberrypi.com].
++
+If your browser or operating system requests permission to find or connect to devices on your local network, allow it. If you disallow it, Connect still works, but sessions with devices on your local network can't use the local route.
++
 . Select the **Devices** tab and locate the Raspberry Pi device in the list.
 +
 Devices available for remote shell access show a grey **Remote shell** badge below the name of the device.

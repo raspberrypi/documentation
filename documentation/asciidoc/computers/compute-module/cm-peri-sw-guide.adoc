@@ -39,7 +39,7 @@ Raspberry Pi BCM283x devices have a three-stage boot process:
 
 xref:configuration.adoc#device-trees-overlays-and-parameters[Linux Device Tree for Raspberry Pi] encodes information about hardware attached to a system as well as the drivers used to communicate with that hardware.
 
-NOTE: Raspberry Pi Compute Module 5 requires updated device tree support and kernel drivers. When transitioning from CM4 to CM5, use Raspberry Pi OS Bookworm (or later), kernel 6.12.x or later, and firmware from 10 March 2025 or later.
+NOTE: Raspberry Pi Compute Module 5 requires updated device tree support and kernel drivers. When transitioning from CM4 to CM5, use Raspberry Pi OS Bookworm or later, kernel 6.12.x or later, and firmware from 10 March 2025 or later.
 
 The boot partition contains several binary Device Tree (`.dtb`) files. The Device Tree compiler creates these binary files using human-readable Device Tree descriptions (`.dts`).
 
