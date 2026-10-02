@@ -409,14 +409,14 @@ Next, install the kernel modules onto the boot media:
 +
 [source,console]
 ----
-$ sudo env PATH=$PATH make -j12 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- INSTALL_MOD_PATH=mnt/root modules_install
+$ sudo env "PATH=$PATH" make -j12 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- INSTALL_MOD_PATH=mnt/root modules_install
 ----
 
 * For 32-bit kernels:
 +
 [source,console]
 ----
-$ sudo env PATH=$PATH make -j12 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/root modules_install
+$ sudo env "PATH=$PATH" make -j12 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/root modules_install
 ----
 
 TIP: On multi-core devices, the `make -j<n>` option distributes work between cores. This can speed up compilation significantly. Run `nproc` to see how many processors you have; we recommend passing a number 1.5x your number of processors.
