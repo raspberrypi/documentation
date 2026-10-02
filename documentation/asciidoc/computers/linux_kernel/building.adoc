@@ -243,9 +243,11 @@ If you don't provide a matching filename, you must specify the ramdisk using an 
 initramfs <filename> followkernel
 ----
 ====
-[NOTE]
 
+[NOTE]
+====
 Building and updating `initramfs` is considered an advanced technique that's undertaken only by experienced users. It isn't officially supported by Raspberry Pi and we therefore don't provide instructions for it.
+====
 
 === Cross-compile the kernel
 
