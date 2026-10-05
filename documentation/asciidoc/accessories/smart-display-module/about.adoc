@@ -48,21 +48,115 @@ Alone, the Smart Display Module weighs approximately 146 g. When assembled with 
 
 === Connectors
 
-The Smart Display Module connects directly to a Raspberry Pi Compute Module 5. It connects to the host display by a gold finger interface at the inside edge of the adapter board.
+The Smart Display Module connects directly to a Raspberry Pi Compute Module 5. It connects to the host display by a gold finger interface (the Intel SDM edge connector) at the inside edge of the adapter board.
+
+The Intel SDM edge connector transmits the following interfaces or signals from the CM5 to the host display:
+
+[cols="2,2", options="header"]
+|===
+|CM5 interface |Intel SDM interface
+
+|HDMI0
+|HDMI
+
+|USB 3.0 port 1
+|USB3
+
+|GPIO7/9/10/11 (SPI0)
+|GSPI
+
+|GPIO14/GPIO15 (UART0)
+|UART
+
+|GPIO2/GPIO3 (I2C1)
+|I2C0 (CM5 is the target)
+
+|GPIO38/39 (I2C0)
+|I2C1 (CM5 is the controller)
+
+|PWR_Button
+|Power Button
+
+|PMIC_Enable
+|Power Reset
+
+|GPIO5/GPIO17
+|SLP_S4
+
+|GPIO4
+|System Fan Control
+
+|HDMI0_CEC
+|HDMI CEC
+
+|===
+
+NOTE: The Raspberry Pi SDM doesn't connect DisplayPort, PCIe, or Ethernet interfaces over the Intel SDM edge connector.
 
 On the outside of the host display, Smart Display Module exposes the following connectors:
 
-* HDMI 2.0.
+* HDMI 2.0. This connects to HDMI1 on the CM5.
 * USB-C (USB 2.0). This port supports only device mode and is intended for programming your CM5 after installation.
 * Ethernet (RJ45) connector.
-* USB-A (USB 3.0).
+* USB-A (USB 3.0). This connects to USB 3.0 port 0 on the CM5.
 
 On the inside, Smart Display Module exposes the following connectors:
 
-* 22-way camera and display connector.
+* 22-way camera and display connector. This connects to CAM/DISP 0 on the CM5.
 * RTC battery holder (CR2032).
 * M.2 M key PCIe socket.
 * CM5 slot.
+
+On the inside, Smart Display Module also exposes the following pins on the short edge closest to the CM5.
+
+The pins are labelled in sets of two. With the pin labels in the correct orientation, the top four pairs of pins have a ground pin on the left and an active pin on the right; the bottom four pairs of pins each have two active pins with the same function.
+
+.Pinout for the top four pairs of pins
+image::images/wlan-header.jpg[alt="Pin layout for the top four pairs of pins", width="50%"]
+
+.Pinout for the bottom four pairs of pins
+image::images/fan-header.jpg[alt="Pin layout for the bottom four pairs of pins", width="45%"]
+
+[cols="1,1,3", options="header"]
+|===
+|Label |CM5 pin name |Description
+
+|*WP_N*
+|`EEPROM_nWP`
+|Connect the adjacent ground pin to the active pin to prevent changes to the contents of the on-board EEPROM.
+
+|*BL_ON*
+|`BT_nDisable`
+|Connect the adjacent ground pin to the active pin to disable the Bluetooth functionality.
+
+|*WL_ON*
+|`WL_nDisable`
+|Connect the adjacent ground pin to the active pin to disable the Wi-Fi functionality.
+
+|*12V*
+|Not applicable
+|Power supply from the host display (12 V). Be careful not to connect the 12 V pin to a ground connection; doing so damages the board.
+
+|*VBUS*
+|`VBUS_EN`
+|Signals to apply power to the external USB 3.0 port.
+
+|*FPWM*
+|`Fan_PWM`
+|Drives a variety of PWM-controlled fans.
+
+|*GND*
+|`GND`
+|Ground (0 V)
+
+|*FTACH*
+|`Fan_Tacho`
+|Read the tachometer output signal that is present on many
+PWM fans.
+
+|===
+
+For more information about these pins and how to use them, see the https://pip.raspberrypi.com/documents/RP-008180-DS[Compute Module 5 datasheet] and https://pip.raspberrypi.com/documents/RP-008182-DS[Compute Module 5 IO Board datasheet].
 
 [[set-up-sdm]]
 == Set up your Smart Display Module
