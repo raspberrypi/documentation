@@ -2165,7 +2165,7 @@ Replace these values in the code below:
 
 * `+rporg_accesstokenhere+`: your management API access token.
 * `+device-id+`: the unique identifier for the recipient device.
-* `+artefact-id+`: the artefact's `+id+` (as returned by <<create-artefact,Create an artefact>>.
+* `+artefact-id+`: the artefact's `+id+` (as returned by <<create-artefact,Create an artefact>>).
 
 [tabs]
 ======
