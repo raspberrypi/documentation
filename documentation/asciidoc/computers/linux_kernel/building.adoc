@@ -511,3 +511,4 @@ If you don't provide a matching filename, you must specify the ramdisk using an 
 ----
 initramfs <filename> followkernel
 ----
+====
