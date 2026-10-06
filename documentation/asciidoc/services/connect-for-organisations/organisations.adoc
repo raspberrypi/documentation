@@ -388,6 +388,42 @@ IMPORTANT: Your access token is only shown once. Copy it now, because you won't 
 
 The Management API lets you manage your organisation automatically, without using the Connect web interface. Requests to the Management API must be authenticated using a valid management API access token. The base URL is https://api.connect.raspberrypi.com.
 
+[[management-api-rate-limits]]
+=== Rate limits
+
+Each management API access token can make up to 5,000 requests per hour. The limit is measured in fixed one-hour windows: the counter resets at the start of every hour, regardless of when you made your first request in that hour.
+
+Every response to an authenticated request includes the following headers so that you can track your usage:
+
+X-Rate-Limit-Limit:: The maximum number of requests allowed for each hour.
+X-Rate-Limit-Remaining:: The number of requests remaining in the current hour.
+X-Rate-Limit-Reset:: The number of seconds until the current hour ends and the counter resets.
+
+For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+X-Rate-Limit-Limit: 5000
+X-Rate-Limit-Remaining: 4999
+X-Rate-Limit-Reset: 3600
+----
+
+If you exceed the limit, you get a **429 Too Many Requests** response with the same headers. Wait for the number of seconds given in `+X-Rate-Limit-Reset+` before retrying. For example:
+
+[source,http]
+----
+HTTP/2 429
+X-Rate-Limit-Limit: 5000
+X-Rate-Limit-Remaining: 0
+X-Rate-Limit-Reset: 1800
+
+Throttled
+----
+
+NOTE: Requests made with an invalid access token still count towards the limit for that token, but don't include the rate limit headers in the response.
+
 [[device-identities]]
 === Create a device identity
 
