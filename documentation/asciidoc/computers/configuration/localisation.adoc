@@ -1,23 +1,110 @@
-== System and localisation
+== Keyboard, system, and localisation
 This section covers how to:
 
-* <<browser>>. Choose between Chromium or Firefox; the default browser if you don't choose one during installation is Chromium.
-* Configure localisation settings, including how to:
+* <<shortcuts>>. View, edit, add, and delete key combinations that perform specified actions on your Raspberry Pi from the desktop.
+* <<browser>>. Choose between Chromium or Firefox from the desktop or from the interactive `raspi-config` TUI; the default browser if you don't choose one during installation is Chromium.
+* Configure localisation settings from the desktop or from the interactive `raspi-config` TUI, including how to:
 ** <<locale>>, which are the system-wide language and regional settings (country and character set).
 ** <<timezone>>, which is determined by the geographic area and city used to set the local time.
 ** <<keyboard>> by specifying the physical model, language arrangement, and key variants of your keyboard.
-* Configure advanced system settings, including how to:
+* Configure advanced system settings using the interactive `raspi-config` TUI, including how to:
 ** <<expand-filesystem>>, which might be useful if you've cloned your OS to a larger storage device and you're using an OS that doesn't auto-expand the filesystem to make use of the space.
 ** <<logging>>, which is used to set a storage location for logs.
 ** <<beta>>, which you can turn on if you're an opt-in tester user of Raspberry Pi OS.
 ** <<wayland>>. We don't recommend switching to X11 because we are no longer developing for it.
 
-The default browser and localisation settings can all be configured from the desktop and using the interactive `raspi-config` TUI. The advanced settings can only be configured using the interactive `raspi-config` TUI.
-
 If you're looking for instructions for how to set the WLAN country on your Raspberry Pi, see xref:../computers/configuration.adoc#wlan-country[Enable wireless networking instead]. The instructions for setting WLAN country is in the *Wireless connection* section because it's a prerequisite for connecting to a wireless network.
 
+[[shortcuts]]
+=== Manage keyboard shortcuts
+A keyboard shortcut is a defined combination of key presses that initiate an action on your computer.
+
+You can only configure a shortcut to initiate one action, but a single action can be initiated by multiple shortcuts. For example, you might have two shortcuts, *Alt+F4* and *Ctrl+W*, that both close a window. If you attempt to assign another action to either of these shortcuts, or if you attempt to create the same shortcut twice, the new shortcut action overwrites the old one.
+
+[[configure-shortcut]]
+==== Shortcut configuration
+Configuring a shortcut involves assigning a key combination to a system action. You can configure a shortcut using a *Preset* (a predefined action) or an *Action* (a user-defined action). For instructions, see <<edit-shortcut>> or <<add-shortcut>>.
+
+===== Preset
+
+A preset is an action that's predefined by Raspberry Pi, such as *Open Terminal* or *Show Shutdown Options*. When you choose a preset for your shortcut, the appropriate command is auto-filled in the *Command* text box. For example, the predefined command for *Open Terminal* is `lab-sensible-terminal`.
+
+===== Action
+
+An action is more flexible; it allows you to define custom system actions that aren't already defined by Raspberry Pi, such as *NextWindow* and *HideCursor*.
+
+Some actions require additional input, which you're prompted to provide after choosing the action. If an action requires no additional input, no parameter options or text boxes are displayed. If an action requires additional input, a dropdown menu with predefined parameter options or a free-text entry box appears, depending on the action selected:
+
+* *Fixed parameter list.* Actions such as *Maximize* or *SnapToEdge* require that you choose an option from a list of parameters. For example, choosing *Maximise* as an action for your shortcut reveals a *Direction* list with options for *both*, *horizontal*, or *vertical*.
+* *Free-text entry.* Actions such as *Execute* or *ShowMenu* display a text box for custom input. For example, choosing *Execute* as an action for your shortcut reveals a *Command* text box where you enter a command that you would otherwise enter into the Terminal, such as *vlc* to open VLC Media Player.
+
+For a list of actions, follow the instructions in <<view-shortcuts>>, and then select *Help* in the bottom-right corner of the *Shortcuts* tab. This opens a list of `labwc` actions that can be assigned to menus, keyboard shortcuts, and mouse bindings. Every action available in the *Actions* menu when you create or edit a shortcut is documented in this `labwc` actions list.
+
+[[view-shortcuts]]
+==== View existing keyboard shortcuts
+To view existing keyboard shortcuts:
+
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Shortcuts* tab in the left-side menu.
+
+This opens a table of existing keyboard shortcuts, with two columns:
+
+* The *Key* column on the left displays the key combination that initiates an action. Each key in the combination is separated with a hyphen, for example, *Alt-Shift-Tab*.
+* The *Function* column on the right displays the action that the corresponding key combination initiates, for example, *Previous Window*.
+
+Select *Close* in the bottom-right corner of the *Control Centre* when you're done.
+
+[[edit-shortcut]]
+==== Edit a keyboard shortcut
+The following instructions provide steps for changing the behaviour of an existing keyboard shortcut, including:
+
+* Whether the shortcut is activated before or after the key combination is released. The default is to initiate the shortcut's action as soon as your Raspberry Pi detects the key combination.
+* The action initiated by the keyboard shortcut, which can be a preset or an action, described in <<configure-shortcut>>.
+
+If you want to change the keyboard shortcut itself, you must instead <<delete-shortcut, delete the existing shortcut>> and then <<add-shortcut, add the new shortcut with the intended action>>.
+
+To edit the behaviour of an existing keyboard shortcut:
+
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Shortcuts* tab in the left-side menu.
+. Select the keyboard shortcut that you want to edit.
+. Select *Edit* at the bottom of the window. This opens an *Edit Shortcut* window.
+. Choose whether you want the shortcut to take effect before or after you release any of the keys in the key combination.
+** If you want the shortcut to take effect after you've released any the keys in the key combination, select *Activate on Release*.
+** If you want the shortcut to take effect as soon as the full key combination is pressed, leave *Activate on Release* unselected.
+. Choose either a *Preset* or an *Action*. If you choose an action, provide any required additional input when prompted. For more information about presets and actions, see <<configure-shortcut>>.
+. Select *OK* in the bottom-right corner of the *Edit Shortcut* window when you're done.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+
+[[add-shortcut]]
+==== Add a keyboard shortcut
+To add a new keyboard shortcut:
+
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Shortcuts* tab in the left-side menu.
+. Check that the shortcut you want to add isn't already in the table. If you create the same shortcut with a different action, the new shortcut action overwrites the old shortcut action.
+. Select *New* at the bottom of the window. This opens an *Edit Shortcut* window.
+. Enter the key combination that you want to use as your shortcut and then release them.
+. Choose whether you want the shortcut to take effect before or after you release any of the keys in the key combination.
+** If you want the shortcut to take effect after you've released any the keys in the key combination, select *Activate on Release*.
+** If you want the shortcut to take effect as soon as the full key combination is pressed, leave *Activate on Release* unselected.
+. Choose either a *Preset* or an *Action*. If you choose an action, provide any required additional input when prompted. For more information about presets and actions, see <<configure-shortcut>>.
+. Select *OK* in the bottom-right corner of the *Edit Shortcut* window when you're done.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+
+[[delete-shortcut]]
+==== Delete a keyboard shortcut
+To delete an existing keyboard shortcut:
+
+. Select the Raspberry Pi icon in the top-left corner of the system tray and then go to *Preferences > Control Centre*.
+. Open the *Shortcuts* tab in the left-side menu.
+. Select the keyboard shortcut that you want to delete.
+. Select *Delete* at the bottom of the window. This opens a confirmation window.
+. Select *OK* in the bottom-right corner of the confirmation window.
+. Select *Close* in the bottom-right corner of the *Control Centre*.
+
 [[browser]]
-=== Change default browser
+=== Change the default browser
 You can change the default browser on your Raspberry Pi through the desktop and using the interactive `raspi-config` TUI. You can choose between *Chromium* and *Firefox*.
 
 [tabs]
