@@ -11,14 +11,14 @@ Connect supports two types of update artefact:
 
 Whichever type of artefact you build, you deploy it from the Raspberry Pi Connect website, as described in <<update-remotely,Deploy the update artefact>>. You upload the artefact as part of the deployment, and Connect passes it to the recipient device.
 
-If your devices belong to a xref:../services/connect-for-organisations.adoc[Connect for Organisations] account, deployment works differently: instead of uploading the artefact, you host it yourself and give Connect its location. An organisation's devices also don't have to be online when you deploy; they're updated the next time they sign in to Raspberry Pi Connect. For more information, see xref:../services/connect-for-organisations.adoc#deploy-remote-updates[Deploy remote updates in an organisation].
+If your devices belong to a xref:../services/connect-for-organisations.adoc[Connect for Organisations] account, you have more options: an organisation keeps a library of artefacts that you can deploy more than once, and you can host an artefact yourself instead of uploading it. An organisation's devices also don't have to be online when you deploy; they're updated the next time they sign in to Raspberry Pi Connect. For more information, see xref:../services/connect-for-organisations.adoc#deploy-remote-updates[Deploy remote updates in an organisation].
 
 [[update-remotely]]
 === Deploy the update artefact
 
 After you've built an artefact with <<remoteupdate-otamaker,otamaker>> or <<remoteupdate-ab,rpi-image-gen>>, use the Raspberry Pi Connect website to deploy it to a device.
 
-NOTE: If the recipient device belongs to an organisation, deploy it as described in xref:../services/connect-for-organisations.adoc#deploy-remote-updates[Deploy remote updates in an organisation] instead.
+NOTE: If the recipient device belongs to an organisation, start from xref:../services/connect-for-organisations.adoc#deploy-remote-updates[Deploy remote updates in an organisation], which describes the extra options available to organisations.
 
 Deployments always start from the device you want to update, so make sure that the recipient device is registered to your personal account, and that it's online, before you proceed:
 
@@ -28,7 +28,8 @@ Deployments always start from the device you want to update, so make sure that t
 
 This opens the **New deployment** form, which creates a new artefact for the deployment in two steps.
 
-In **Step 1: Create an artefact**, upload the artefact you built:
+[[upload-the-artefact]]
+In **Step 1: Upload an artefact**, upload the artefact you built:
 
 . Enter a **Name** for the artefact. Names don't have to be unique, so use something that helps you recognise the deployment later, such as a version number.
 . Drag the artefact onto the **File** area, or select **browse** to choose it. The file must be a Zstandard-compressed tar archive (a `.tar.zst` file) of 2 GB or less.
@@ -40,7 +41,7 @@ To choose a different file, select **Remove**. To abandon a file that is still u
 .Step 1 of the New deployment form, showing the Name field and the uploaded artefact.
 image::images/new-deployment-personal-step-1.png[alt="Step 1 of the New deployment screen in Raspberry Pi Connect, showing the Name field filled in and an uploaded artefact file with its checksum and upload both complete", width="100%"]
 
-In **Step 2: Deploy to device**, check the name, file, and SHA-256 checksum, then select **Deploy**. If you spot a mistake, select **Back** to correct it.
+In **Step 2: Review and deploy**, check the name, file, and SHA-256 checksum, then select **Deploy**. If you spot a mistake, select **Back** to correct it.
 
 .Step 2 of the New deployment form, showing the artefact's details for confirmation.
 image::images/new-deployment-personal-step-2.png[alt="Step 2 of the New deployment screen in Raspberry Pi Connect, showing the name, file, and checksum of the artefact to be deployed, with a Deploy button", width="100%"]

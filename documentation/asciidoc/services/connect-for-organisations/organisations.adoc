@@ -208,18 +208,28 @@ TIP: Select a tag on any device in the list to quickly add it as a filter.
 [[deploy-remote-updates]]
 == Deploy remote updates
 
-You can push updates to the devices in your organisation using Connect's xref:../services/connect.adoc#remoteupdate-intro[remote update] feature.
+You can push updates to the devices in your organisation using Raspberry Pi Connect's xref:../services/connect.adoc#remoteupdate-intro[remote update] feature. Deploying to an organisation's devices works much like xref:../services/connect.adoc#update-remotely[deploying to a personal device], with the following differences:
 
-NOTE: Only administrators can deploy remote updates and manage update artefacts; members can't.
+* An organisation keeps a <<artefact-library,library of artefacts>> that you can deploy more than once.
+* As well as uploading an artefact, you can <<host-the-update-artefact,host an artefact yourself>>.
+* Devices don't have to be online when you deploy; they're updated the next time they come online.
+* You can manage artefacts and deployments with the <<organisations-management-api,management API>>.
 
-First, build an update artefact, as described in xref:../services/connect.adoc#remoteupdate-otamaker[Script artefacts] or xref:../services/connect.adoc#remoteupdate-ab[A/B boot updates]. Then host it somewhere the recipient device can download it from, as described in <<host-the-update-artefact,Host the update artefact>>.
+NOTE: Only administrators can deploy remote updates and manage update artefacts.
+
+First, build an update artefact, as described in xref:../services/connect.adoc#remoteupdate-otamaker[Script artefacts] or xref:../services/connect.adoc#remoteupdate-ab[A/B boot updates].
+
+Then choose how to provide it to Raspberry Pi Connect:
+
+* **Upload an artefact**: Connect hosts the file for you. Uploads are limited to 2 GB and expire two hours after you upload them. A device that doesn't pick up the deployment within that time won't receive it.
+* **Host your own artefact**: you host the file somewhere the recipient device can download it from, and provide its location, as described in <<host-the-update-artefact,Host the update artefact>>. Artefacts you host yourself don't expire, so choose this for devices that might be offline for longer than two hours, or to deploy the same artefact to many devices over time.
 
 [[host-the-update-artefact]]
 === Host the update artefact
 
-Raspberry Pi Connect doesn't store your update artefacts. Instead, you host each artefact yourself and provide Connect with its location, which Connect passes to the recipient device so it can download the file directly.
+When you host an artefact yourself, Raspberry Pi Connect doesn't store the file. Instead, you provide Connect with its location, which Connect passes to the recipient device so it can download the file directly.
 
-Host the artefact anywhere the recipient device can reach it: your own web server, an S3 bucket, an FTP or SFTP server, or a path on the recipient device itself using a `file://` URI. Remote update supports HTTP, HTTPS, FTP, SFTP, and File URIs.
+Host the artefact anywhere the recipient device can reach it: your own web server, an S3 bucket, an FTP or SFTP server, or a path on the recipient device itself using a `file://` URI. Remote update supports HTTP, HTTPS, FTP, SFTP, and file URIs.
 
 The location must be accessible to the recipient device, but it doesn't have to be accessible to the Raspberry Pi Connect servers, or to the internet at large. Serving an artefact from another computer on the same local network as the recipient device works well.
 
@@ -258,29 +268,40 @@ $ sha256sum ./work/image-myapp/myapp-update.tar.zst
 $ hostname -I
 ----
 
-=== Deploy an artefact from the Remote update tab
+[[artefact-library]]
+=== Manage the artefact library
 
-Unlike a personal account, an organisation keeps a library of artefacts that you can deploy more than once. These artefacts are listed under the **Remote update** tab.
+An organisation keeps a library of artefacts, listed under the **Remote update** tab. Artefacts you create while deploying are added to the library too.
 
-Register an artefact ahead of time by going to the *Remote update* tab and selecting *New*, then entering a name, the URI, and the SHA-256 checksum. Artefact names must be unique within an organisation.
+To add an artefact to the library ahead of time, go to the **Remote update** tab, select **New**, then choose one of the following:
 
-.The create deployment artefact screen, showing the required fields: Name, URI, and SHA-256 checksum.
-image::images/create-deployment-artefact.png[alt="The create deployment artefact screen, showing the required fields: Name, URI, and SHA-256 checksum", width="100%"]
+* **Upload an artefact**: enter a name and choose the file, as described in xref:../services/connect.adoc#upload-the-artefact[Upload an artefact], then select **Upload artefact**.
+* **Host your own artefact**: enter a name, the URI, and the SHA-256 checksum, then select **Save artefact**.
 
-To deploy an artefact, go to the *Devices* tab, then select *Deploy* next to the recipient device. *Deploy* only appears for devices that have remote update enabled.
+.The host your own artefact screen, showing the required fields: Name, URI, and SHA-256 checksum.
+image::images/create-deployment-artefact.png[alt="The host your own artefact screen, showing the required fields: Name, URI, and SHA-256 checksum", width="100%"]
+
+The library also shows when each uploaded artefact **Expires**, or when it **Expired** once that time has passed. Expired artefacts stay in the library, so you can still see what was deployed, but you can't deploy them again. To deploy the same file again, upload it again.
+
+NOTE: You can't delete an artefact after you have deployed it or attempted to deploy it. This is to provide traceability in the event that your account is compromised.
+
+=== Deploy an artefact
+
+To deploy an artefact, go to the **Devices** tab, then select **Deploy** next to the recipient device. **Deploy** only appears for devices that have remote update enabled.
 
 .The device list displays a Deploy button for the devices that have remote update enabled.
 image::images/devices-deploy-button.png[alt="The Raspberry Pi Connect device screen, showing a list of devices, one of which has a deploy button next to it", width="100%"]
 
-Then, on the *New deployment* screen, choose one of the following:
+Then, on the **New deployment** screen, choose one of the following:
 
-* *Existing*: select an artefact from the drop-down list, then select *Deploy*.
-* *New*: enter the name, URI, and SHA-256 checksum, then select *Create and deploy*. This registers the artefact and deploys it in one go.
+* **Use an existing artefact**: choose an artefact from the library, then select **Next**. Each artefact in the list shows its name, the first few characters of its checksum, its URI or file name and size, and, for uploaded artefacts, how long until it expires. Expired artefacts don't appear in the list.
+* **Upload an artefact**: enter a name and choose the file, as described in xref:../services/connect.adoc#upload-the-artefact[Upload an artefact], then select **Next**.
+* **Host your own artefact**: enter a name, the URI, and the SHA-256 checksum, then select **Next**.
 
-.After you've selected Deploy, the New deployment screen gives you the choice of selecting an existing deployment, or creating a new one.
-image::images/new-deployment-view.png[alt="The new deployment screen in Raspberry Pi Connect, showing the option to select an existing artefact or create a new one", width="100%"]
+.After you've selected Deploy, the New deployment screen gives you the choice of using an existing artefact, uploading an artefact, or hosting your own.
+image::images/new-deployment-view.png[alt="Step 1 of the New deployment screen in Raspberry Pi Connect, showing the options to use an existing artefact, upload an artefact, or host your own artefact", width="100%"]
 
-NOTE: You can't delete an artefact after you have deployed it or attempted to deploy it. This is to provide traceability in the event that your account is compromised.
+In **Step 2: Review and deploy**, check the artefact's details, then select **Deploy**.
 
 Track the deployment's progress as described in xref:../services/connect.adoc#monitor-the-deployment[Monitor the deployment].
 
@@ -387,6 +408,42 @@ IMPORTANT: Your access token is only shown once. Copy it now, because you won't 
 == Management API
 
 The Management API lets you manage your organisation automatically, without using the Connect web interface. Requests to the Management API must be authenticated using a valid management API access token. The base URL is https://api.connect.raspberrypi.com.
+
+[[management-api-rate-limits]]
+=== Rate limits
+
+Each management API access token can make up to 5,000 requests per hour. The limit is measured in fixed one-hour windows: the counter resets at the start of every hour, regardless of when you made your first request in that hour.
+
+Every response to an authenticated request includes the following headers so that you can track your usage:
+
+X-Rate-Limit-Limit:: The maximum number of requests allowed for each hour.
+X-Rate-Limit-Remaining:: The number of requests remaining in the current hour.
+X-Rate-Limit-Reset:: The number of seconds until the current hour ends and the counter resets.
+
+For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+X-Rate-Limit-Limit: 5000
+X-Rate-Limit-Remaining: 4999
+X-Rate-Limit-Reset: 3600
+----
+
+If you exceed the limit, you get a **429 Too Many Requests** response with the same headers. Wait for the number of seconds given in `+X-Rate-Limit-Reset+` before retrying. For example:
+
+[source,http]
+----
+HTTP/2 429
+X-Rate-Limit-Limit: 5000
+X-Rate-Limit-Remaining: 0
+X-Rate-Limit-Reset: 1800
+
+Throttled
+----
+
+NOTE: Requests made with an invalid access token still count towards the limit for that token, but don't include the rate limit headers in the response.
 
 [[device-identities]]
 === Create a device identity
@@ -1743,7 +1800,7 @@ $ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connec
 
 ======
 
-If successful, you get a **200 OK** response with up to 100 of the organisation's artefacts sorted alphabetically by name in JSON format. For example:
+If successful, you get a **200 OK** response with up to 100 of the organisation's artefacts in JSON format, sorted alphabetically by name and then by when they were created, oldest first. For example:
 
 [source,http]
 ----
@@ -1755,8 +1812,11 @@ Content-Type: application/json; charset=utf-8
         {
             "id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
             "name": "kiosk-v1.0",
+            "type": "uri",
             "uri": "https://example.com/kiosk-v1.0.tar.zst",
-            "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6"
+            "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6",
+            "expires_at": null,
+            "created_at": "2026-02-25T16:09:52Z"
         }
     ],
     "meta": {
@@ -1767,6 +1827,17 @@ Content-Type: application/json; charset=utf-8
     }
 }
 ----
+
+[[artefact-fields]]
+Each artefact has the following fields:
+
+id:: A unique identifier for the artefact.
+name:: The artefact's name. Names don't have to be unique within the organisation.
+type:: How the artefact is provided: `+uri+` for an artefact you <<host-the-update-artefact,host yourself>>, or `+file+` for an artefact uploaded to Connect.
+uri:: The location from which devices download the artefact. For an uploaded artefact, this is a link to the uploaded file, or `+null+` once Connect has deleted the file.
+checksum:: The hex-encoded SHA-256 checksum of the artefact.
+expires_at:: The date and time when an uploaded artefact expires and can no longer be deployed (in ISO 8601 format), or `+null+` for an artefact you host yourself.
+created_at:: The date and time when the artefact was created (in ISO 8601 format).
 
 To filter the artefacts returned, use the `+name+` parameter in the query string. This performs a case-insensitive prefix match against the artefact name:
 
@@ -1823,7 +1894,7 @@ $ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connec
 
 ======
 
-If successful, you get a **200 OK** response with the artefact's details in JSON format. For example:
+If successful, you get a **200 OK** response with the artefact's <<artefact-fields,details>> in JSON format. For example:
 
 [source,http]
 ----
@@ -1833,8 +1904,11 @@ Content-Type: application/json; charset=utf-8
 {
     "id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
     "name": "kiosk-v1.0",
+    "type": "uri",
     "uri": "https://example.com/kiosk-v1.0.tar.zst",
-    "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6"
+    "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6",
+    "expires_at": null,
+    "created_at": "2026-02-25T16:09:52Z"
 }
 ----
 
@@ -1856,10 +1930,12 @@ Otherwise, you get one of the following responses:
 
 To create a remote update artefact for your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
 
+NOTE: The management API can only create artefacts that you <<host-the-update-artefact,host yourself>>. To upload an artefact, use the <<artefact-library,Remote update tab>>.
+
 Replace these values in the code below:
 
 * `+rporg_accesstokenhere+`: your management API access token.
-* `+kiosk-v1.0+`: a unique name for the artefact within the organisation.
+* `+kiosk-v1.0+`: a name for the artefact. Names don't have to be unique within the organisation.
 * `+https://example.com/kiosk-v1.0.tar.zst+`: the URI from which devices download the artefact.
 * `+d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6+`: the hex-encoded SHA-256 checksum of the artefact.
 
@@ -1900,8 +1976,11 @@ Content-Type: application/json; charset=utf-8
 {
     "id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
     "name": "kiosk-v1.0",
+    "type": "uri",
     "uri": "https://example.com/kiosk-v1.0.tar.zst",
-    "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6"
+    "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6",
+    "expires_at": null,
+    "created_at": "2026-02-25T16:09:52Z"
 }
 ----
 
@@ -1963,8 +2042,11 @@ Content-Type: application/json; charset=utf-8
 {
     "id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
     "name": "kiosk-v1.0",
+    "type": "uri",
     "uri": "https://example.com/kiosk-v1.0.tar.zst",
-    "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6"
+    "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6",
+    "expires_at": null,
+    "created_at": "2026-02-25T16:09:52Z"
 }
 ----
 
@@ -2225,7 +2307,7 @@ Otherwise, you get one of the following responses:
 |
 
 | **404 Not Found**
-| The device or artefact is not found in the organisation.
+| The device or artefact is not found in the organisation, or the artefact has expired.
 |
 
 | **403 Forbidden**
