@@ -1,6 +1,8 @@
 include::raspberry-pi/introduction.adoc[]
 
-include::raspberry-pi/raspberry-pi-schematics.adoc[]
+include::raspberry-pi/gpio-on-raspberry-pi.adoc[]
+
+include::raspberry-pi/gpio-pad-controls.adoc[]
 
 include::raspberry-pi/raspberry-pi-compliance.adoc[]
 
@@ -31,10 +33,6 @@ include::raspberry-pi/bootflow-eeprom.adoc[]
 include::raspberry-pi/eeprom-bootloader.adoc[]
 
 include::raspberry-pi/display-parallel-interface.adoc[]
-
-include::raspberry-pi/gpio-on-raspberry-pi.adoc[]
-
-include::raspberry-pi/gpio-pad-controls.adoc[]
 
 include::raspberry-pi/raspberry-pi-industrial.adoc[]
 

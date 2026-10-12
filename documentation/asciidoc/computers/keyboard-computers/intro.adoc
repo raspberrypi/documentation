@@ -1,8 +1,12 @@
-Raspberry Pi keyboard computers are complete personal computers built into a keyboard. They include the same system-on-chip (SoC) as Raspberry Pi single-board computers (SBC). Raspberry Pi offers three keyboard computers:
+Raspberry Pi keyboard computers are complete personal computers built into a keyboard. They include the same system-on-chip (SoC) as Raspberry Pi single-board computers (SBC).
 
-* *Raspberry Pi 400*, based on Raspberry Pi 4 (4 GB), released 2020.
-* *Raspberry Pi 500*, based on Raspberry Pi 5 (8 GB), released 2024.
-* *Raspberry Pi 500+*, based on Raspberry Pi 5 (16 GB), released 2025.
+Keyboard computers use model identifiers of the form `<X00>`, where `X` indicates the corresponding classic single-board computer (SBC) series device. For example, Raspberry Pi 400 is the keyboard version of Raspberry Pi 4.
+
+Raspberry Pi offers three keyboard computers:
+
+* <<rpi400, Raspberry Pi 400>>
+* <<rpi500, Raspberry Pi 500>>
+* <<rpi500plus, Raspberry Pi 500+>>
 
 Raspberry Pi keyboard computers come in different regional variants affecting keyboard layout and required power supply.
 
@@ -25,6 +29,11 @@ Raspberry Pi 500+ offers additional features, including:
 * Internal 256 GB M.2 SSD, which comes installed with Raspberry Pi OS and is replaceable. For instructions, see <<replace-m2, Replace your M.2 SSD>>.
 * More RAM (16 GB). For a comparison, see the following table.
 
+== Specifications
+
+The following table list key similarities and differences between keyboard computer models.
+
+.Specification comparison between keyboard computer models
 [cols="1,1,1,1", options="header"]
 |===
 |  |Raspberry Pi 400 |Raspberry Pi 500 |Raspberry Pi 500+
@@ -45,9 +54,9 @@ Raspberry Pi 500+ offers additional features, including:
 | Quad-core 64-bit Arm processor (Cortex-A76 at 2.4 GHz)
 
 | *SoC and I/O controller*
-| BCM2711 SoC
-| BCM2712 SoC and RP1 I/O controller
-| BCM2712 SoC and RP1 I/O controller
+| xref:../computers/processors.adoc#bcm2711[BCM2711] SoC
+| xref:../computers/processors.adoc#bcm2712[BCM2712] SoC and xref:../computers/io-controllers.adoc[[RP1 I/O controller]
+| xref:../computers/processors.adoc#bcm2712[BCM2712] SoC and xref:../computers/io-controllers.adoc[[RP1 I/O controller]
 
 | *Memory (RAM)*
 | 4 GB synchronous dynamic RAM (SDRAM)
@@ -70,16 +79,16 @@ Raspberry Pi 500+ offers additional features, including:
 | Aluminium integrated heatsink
 
 | *Wireless connectivity*
-| Dual-band Wi-Fi and BLE
-| Dual-band Wi-Fi and BLE
-| Dual-band Wi-Fi and BLE
+| Dual-band (either 2.4 GHz or 5 GHz) 802.11ac Wi-Fi (120 Mb/s) and Bluetooth (5 and BLE)
+| Dual-band (either 2.4 GHz or 5 GHz) 802.11ac Wi-Fi (300 Mb/s) and Bluetooth (5 and BLE)
+| Dual-band (either 2.4 GHz or 5 GHz) 802.11ac Wi-Fi (300 Mb/s) and Bluetooth (5 and BLE)
 
 | *USB ports*
 | Two USB 3.0 ports; one USB 2.0 port
 | Two USB 3.0 ports; one USB 2.0 port
 | Two USB 3.0 ports; one USB 2.0 port
 
-| *Gigabit Ethernet*
+| *Gigabit (1 Gb/s) Ethernet (RJ45)*
 | Yes
 | Yes
 | Yes
@@ -92,11 +101,11 @@ Raspberry Pi 500+ offers additional features, including:
 | *Storage*
 | microSD card slot
 | microSD card slot
-| microSD card slot and M.2 SSD drive
+| microSD card slot and M.2 SSD drive (256 GB)
 
 | *Power input*
 | 5 V at 3 A (15 W) through USB-C
-| 5 V at 5 A (25 W) through USB-C
+| 5 V at 5 A (25 W) through USB-C with a 600 mA peripheral limit
 | 5 V at 5 A (25 W) through USB-C
 
 | *Power button*
@@ -110,11 +119,19 @@ Raspberry Pi 500+ offers additional features, including:
 | Key remapping; RGB backlighting; ability to change keycaps
 |===
 
-== Keyboard computer kits
+== Keyboard computers and kits
 
 Raspberry Pi keyboard computers are available as standalone keyboards or as part of a kit, including basic accessories to get started.
 
-=== Raspberry Pi 400 kit
+[[rpi400]]
+=== Raspberry Pi 400 and kit
+
+The Raspberry Pi 400 keyboard computer, released 2020, is based on Raspberry Pi 4 (4 GB).
+
+.Raspberry Pi 400
+image::images/rpi400.jpg[width="100%"]
+
+The Raspberry Pi 400 kit comes with the following:
 
 * Raspberry Pi 400 keyboard computer.
 * 15 W Raspberry Pi USB-C power supply.
@@ -123,7 +140,15 @@ Raspberry Pi keyboard computers are available as standalone keyboards or as part
 * micro-HDMI cable.
 * _Beginner's Guide_ book.
 
-=== Raspberry Pi 500 kit
+[[rpi500]]
+=== Raspberry Pi 500 and kit
+
+The Raspberry Pi 500 keyboard computer, released 2024, is based on Raspberry Pi 5 (8 GB).
+
+.Raspberry Pi 500
+image::images/rpi500.png[width="100%"]
+
+The Raspberry Pi 500 kit comes with the following:
 
 * Raspberry Pi 500 keyboard computer.
 * 27 W Raspberry Pi USB-C power supply.
@@ -132,7 +157,15 @@ Raspberry Pi keyboard computers are available as standalone keyboards or as part
 * micro-HDMI cable.
 * _Beginner's Guide_ book.
 
-=== Raspberry Pi 500+ kit
+[[rpi500plus]]
+=== Raspberry Pi 500+ and kit
+
+The Raspberry Pi 500+ keyboard computer, released 2025, is based on Raspberry Pi 5 (16 GB).
+
+Raspberry Pi 500+
+image::images/rpi500plus.png[width="100%"]
+
+The Raspberry Pi 500+ kit comes with the following:
 
 * Raspberry Pi 500+ keyboard computer, including an SSD preprogrammed with Raspberry Pi OS.
 * 27 W Raspberry Pi USB-C power supply.

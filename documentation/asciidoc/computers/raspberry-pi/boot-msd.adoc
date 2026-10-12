@@ -1,6 +1,6 @@
 == USB mass storage boot
 
-NOTE: Available on the xref:raspberry-pi.adoc#compute-module-series[Compute Module series since Compute Module 3], xref:raspberry-pi.adoc#zero-series[Zero series since Zero 2 W], and xref:raspberry-pi.adoc#flagship-series[all flagship series devices since Raspberry Pi 2B (version 1.2)].
+NOTE: Available on the xref:../computers/compute-module.adoc[Compute Module series since Compute Module 3], xref:../computers/zero.adoc[Zero series since Zero 2 W], and all xref:../computers/sbcs.adoc[classic single-board computers since Raspberry Pi 2B (version 1.2)]
 
 USB mass storage boot enables you to boot your Raspberry Pi from a USB mass storage device such as a flash drive or USB disk. When attaching USB devices, particularly hard disks and SSDs, be mindful of their power requirements. Attaching more than one disk typically requires additional external power from either a powered disk enclosure or a powered USB hub.
 
@@ -12,7 +12,7 @@ NOTE: Models prior to Raspberry Pi 4B have known issues which prevent booting wi
 
 [[cm4]]
 
-Raspberry Pi 4 and newer flagship series devices and Compute module devices since Compute Module 4 and 4S support USB boot by default, as long as you specify USB boot in the xref:raspberry-pi.adoc#BOOT_ORDER[`BOOT_ORDER`] configuration.
+Raspberry Pi 4 and newer classic single-board computers and Compute module devices since Compute Module 4 and 4S support USB boot by default, as long as you specify USB boot in the xref:raspberry-pi.adoc#BOOT_ORDER[`BOOT_ORDER`] configuration.
 
 NOTE: Early editions of Raspberry Pi 4 might require a xref:../computers/configuration.adoc#update-bootloader-version[bootloader update] to boot from USB.
 

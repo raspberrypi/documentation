@@ -4,13 +4,13 @@ A Raspberry Pi device is a compact computer that is commonly used in two main wa
 
 Raspberry Pi devices are available in several series:
 
-* *Raspberry Pi single-board computers (SBC).* Classic or 'flagship' Raspberry Pi devices that you can connect to a monitor, keyboard, and mouse like a desktop computer.
-* *Raspberry Pi Zero.* A smaller version of flagship Raspberry Pi devices with fewer USB ports and lower power consumption.
-* *Raspberry Pi keyboard computers.* Devices that have the computer built into a keyboard case, designed to be plugged into a monitor and mouse.
-* *Raspberry Pi compute modules.* Small system-on-module versions of Raspberry Pi computers designed for industrial and embedded applications.
-* *Raspberry Pi Pico.* A microcontroller board that uses Raspberry Pi microcontrollers (RP2040 or RP2350).
+* *Classic single-board computers (SBC).* Classic Raspberry Pi devices (sometimes referred to as 'flagship' models) that you can connect to a monitor, keyboard, and mouse like a desktop computer. For detailed information about classic SBCs, see xref:../computers/sbcs.adoc[Classic single-board computers].
+* *Raspberry Pi Zero.* A smaller version of classic Raspberry Pi devices with fewer USB ports and lower power consumption. For detailed information about Raspberry Pi Zero models, see xref:../computers/sbcs.adoc[Zero models].
+* *Raspberry Pi keyboard computers.* Devices that have the computer built into a keyboard case, designed to be plugged into a monitor and mouse. For detailed information about Raspberry Pi keyboard computers, see xref:../computers/keyboard-computers.adoc[Keyboard computers].
+* *Raspberry Pi Compute Modules.* Small system-on-module versions of Raspberry Pi computers designed for industrial and embedded applications. For detailed information about Raspberry Pi Compute Modules, see xref:../computers/compute-module.adoc[Compute Module hardware].
+* *Raspberry Pi Pico.* A microcontroller board that uses Raspberry Pi microcontrollers (RP2040 or RP2350). For detailed information about Raspberry Pi Pico, see xref:../microcontrollers/pico-series.adoc[Pico microcontroller boards].
 
-This page focuses on *flagship SBCs*, but much of the information also applies to Raspberry Pi *Zero* and *keyboard computers*. For detailed information about the full range of Raspberry Pi computer devices, see xref:../computers/raspberry-pi.adoc[Raspberry Pi computer hardware].
+This page focuses on *classic SBCs*, but much of the information also applies to Raspberry Pi *Zero* and *keyboard computers*.
 
 == Hardware prerequisites
 
@@ -36,7 +36,6 @@ You must configure your boot media before you assemble your Raspberry Pi, unless
 Whichever storage device you choose for your boot media, it must have enough storage and speed to act as a hard-drive that holds your OS image. An OS image is pre-packaged software that, when installed onto your boot media, transforms your Raspberry Pi from a blank board into a working computer.
 
 For step-by-step guidance on configuring the boot media for your Raspberry Pi, see xref:../computers/getting-started.adoc#install[Install an OS onto boot media].
-
 
 Faster storage devices with higher read and write speeds improve the overall performance of your Raspberry Pi, making it run more smoothly. If you're unsure which SD card to buy, consider an https://www.raspberrypi.com/products/sd-cards/[official Raspberry Pi microSD card]. You might also need an SD card reader so that you can connect your microSD card to your computer to install an OS.
 
@@ -67,7 +66,7 @@ You can use any SD card with a capacity of less than 2 TB. Cards with capacities
 Some older Raspberry Pi devices can only boot from a boot partition of 256 GB or less. These include:
 
 * Raspberry Pi Zero.
-* The first flagship Raspberry Pi device.
+* The first classic Raspberry Pi device.
 * Early Raspberry Pi 2 models with the BCM2836 SoC.
 
 ==== Inserting a microSD card
@@ -321,7 +320,7 @@ After installing an OS onto your boot media, connect it into your Raspberry Pi. 
 To use your Raspberry Pi as a desktop computer, you can connect the following peripherals:
 
 * <<input-peripherals, Input peripherals>>:
-** *Keyboard.* Required for a desktop computer using a flagship Raspberry Pi or Raspberry Pi Zero; not required if your Raspberry Pi is a keyboard computer (Raspberry Pi 400, 500, or 500+).
+** *Keyboard.* Required for a desktop computer using a classic Raspberry Pi or Raspberry Pi Zero; not required if your Raspberry Pi is a keyboard computer (Raspberry Pi 400, 500, or 500+).
 ** *Mouse.* Required for a desktop computer.
 * <<output-peripherals, Output peripherals>>:
 ** *Display.* Required for a desktop computer.

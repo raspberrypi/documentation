@@ -60,6 +60,18 @@
                     "subpath": "raspberry-pi.adoc"
                 },
                 {
+                    "title": "Classic single-board computers",
+                    "description": "Technical information about classic Raspberry Pi models",
+                    "image": "full-sized/sbc.png",
+                    "subpath": "sbcs.adoc"
+                },
+                {
+                    "title": "Zero models",
+                    "description": "Technical information about Raspberry Pi Zero models",
+                    "image": "full-sized/Zero.png",
+                    "subpath": "zero.adoc"
+                },
+                {
                     "title": "Keyboard computers",
                     "description": "Technical information about Raspberry Pi keyboard computers",
                     "image": "full-sized/keyboard-computers.png",
