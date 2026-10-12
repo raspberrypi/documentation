@@ -2,7 +2,7 @@
 
 When building your custom kernel, you might want to apply patches or collections of patches (patchsets) to the Linux kernel.
 
-Hardware makers sometimes provide patchsets as a temporary measure to support new hardware before the patches make it into the Linux kernel and the Raspberry Pi kernel. However, patchsets for other purposes exist, for instance to enable a fully pre-emptible kernel for real-time usage.
+Hardware manufacturers sometimes provide patchsets as a temporary measure to support new hardware before the patches make it into the Linux kernel and the Raspberry Pi kernel. However, patchsets for other purposes exist, for instance to enable a fully pre-emptible kernel for real-time usage.
 
 === Identify your kernel version
 
@@ -43,6 +43,17 @@ $ wget https://www.kernel.org/pub/linux/kernel/projects/rt/6.18/patch-6.18.37-rt
 $ gunzip patch-6.18.37-rt6.patch.gz
 $ cat patch-6.18.37-rt6.patch | patch -p1
 ----
+
+[NOTE]
+====
+In Linux 6.12 and later, real-time (`PREEMPT_RT`) support is part of the mainline kernel for 64-bit Arm. On current Raspberry Pi kernel branches, you can build a 64-bit real-time kernel without applying a patch:
+
+. Run `menuconfig`, as described in xref:linux_kernel.adoc#configure-the-kernel[Configure the kernel].
+. Under *General setup*, enable *Configure standard kernel features (expert users)*.
+. Under *General setup*, enable *Fully Preemptible Kernel (Real-Time)*.
+
+Real-time patchsets from `kernel.org` contain additional changes that haven't yet been merged into the mainline kernel. Use them only if you need those changes.
+====
 
 Some developers distribute patches in the *mailbox format*, a folder containing multiple patch files. Use Git to apply these patches.
 
