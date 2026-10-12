@@ -65,6 +65,8 @@ To ensure the best performance for your Raspberry Pi, use an active cooling solu
 
 For Raspberry Pi 4, add the https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan] to the lid of the Raspberry Pi 4 case.
 
+The fan is rated at 0.18 A, operates at 5 V DC supplied through the 40-pin GPIO header, and typically draws 60 mA (300 mW).
+
 ==== Raspberry Pi 5 fans
 
 For Raspberry Pi 5, use one of the official fan options:
@@ -72,15 +74,21 @@ For Raspberry Pi 5, use one of the official fan options:
 * https://www.raspberrypi.com/products/active-cooler/[Active Cooler]
 * https://www.raspberrypi.com/products/raspberry-pi-5-case/[Case for Raspberry Pi 5]
 
-Both of the Raspberry Pi 5 fan options plug into the four-pin JST-SH PWM fan connector located in the upper right of the board between the 40-pin GPIO header and the USB 2.0 ports. The fan connector pulls from the same current limit as USB peripherals. We recommend the Active Cooler case for overclockers, since it provides better cooling performance.
+Both of the Raspberry Pi 5 fan options plug into the four-pin JST-SH PWM fan connector located in the upper right of the board between the 40-pin GPIO header and the USB 2.0 ports.
 
-As the temperature of the Raspberry Pi 5 increases, the fan reacts in the following way:
+The fan connector pulls from the same current limit as USB peripherals.
 
-* below 50°C, the fan does not spin at all (0% speed)
-* at 50°C, the fan turns on at a low speed (30% speed)
-* at 60°C, the fan speed increases to a medium speed (50% speed)
-* at 67.5°C, the fan speed increases to a high speed (70% speed)
-* at 75°C the fan increases to full speed (100% speed)
+The official case fan draws approximately 60 mA at 5 V (300 mW).
+
+Given the extra cooling performance of the Active Cooler, we recommend it for customers who want to overclock their Raspberry Pi 5.
+
+The fan is scheduled to turn on and off based on the temperature of the SoC. The default temperature mapping is as follows:
+
+* Less than 50°C: the fan doesn't spin at all (0% speed).
+* 50°C: the fan turns on at a low speed (30% speed).
+* 60°C: the fan speed increases to a medium speed (50% speed).
+* 67.5°C: the fan speed increases to a high speed (70% speed).
+* 75°C: the fan increases to full speed (100% speed).
 
 Temperature decreases use the same mapping with a 5°C **hysteresis**; fan speed decreases when the temperature drops to 5°C below each of the above thresholds.
 
@@ -88,7 +96,7 @@ NOTE: The temperature, hysteresis and speed figures given above can be adjusted 
 
 At boot the fan is turned on, and the tachometer input is checked to see if the fan is spinning. If it is, then the `cooling_fan` device tree overlay is enabled. This overlay is in `bcm2712-rpi-5-b.dtb` by default, but with `status=disabled`.
 
-==== Raspberry Pi 5 fan connector pinout
+===== Raspberry Pi 5 fan connector pinout
 
 The Raspberry Pi 5 fan connector is a 1 mm pitch JST-SH socket containing the following four pins:
 
@@ -101,5 +109,3 @@ The Raspberry Pi 5 fan connector is a 1 mm pitch JST-SH socket containing the fo
 | 3 | GND | Black
 | 4 | Tach | Yellow
 |===
-
-
