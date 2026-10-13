@@ -1,0 +1,102 @@
+A single-board computer (SBC) is a complete, functional computer built on a printed circuit board (PCB). Classic Raspberry Pi SBCs integrate the following onto one board:
+
+* A System on Chip (SoC).
+* Memory.
+* A GPIO header.
+* Various connectivity options.
+
+All components and ports are exposed, but you can buy a bumper or case to protect them. You can use a Raspberry Pi SBC safely without a bumper or case so long as you don't place it on a metal surface. If you place a Raspberry Pi SBC without a case on a metal surface, it can short-circuit.
+
+You can also connect various peripherals, such as a screen, keyboard, and mouse. For instructions, see xref:../computers/getting-started.adoc#setup[Set up your Raspberry Pi].
+
+== Models
+
+Raspberry Pi devices have evolved through various models, improving on performance, connectivity, and functionality to serve different use cases.
+
+=== Model variants
+
+Model variants within a generation of classic SBC models are sometimes designated a letter, *A* or *B*, which indicates the form factor and feature set differences within that generation.
+
+* *Model B* indicates a full-featured variant that includes an Ethernet port and multiple USB ports, suitable for general-purpose use.
+* *Model A* indicates a lower-cost, smaller variant with no Ethernet port and fewer USB ports, suitable for more space-constrained applications.
+
+NOTE: If you have a Raspberry Pi 400, 500, or 500+, the Raspberry Pi circuit board is built into the keyboard case. For more information about these devices, see xref:../computers/keyboard-computers.adoc[Keyboard computers].
+
+=== Model list
+
+The following table summarises classic Raspberry Pi SBC models in reverse chronological order, listing their key differentiating features for quick reference. For more detailed information about each model, including a breakdown of connectivity options, see the following dedicated sections on this page.
+
+.List of flagship SBCs in reverse chronological order
+|===
+| Model | Microprocessor | Memory (RAM) | GPIO header | GPU | CPU
+
+| Raspberry Pi 5 (2023)
+| Broadcom xref:../computers/processors.adoc#bcm2712[BCM2712]
+| 1, 2, 4, 8, or 16 GB of RAM
+| 40-pin GPIO header
+| VideoCore VII
+| 2.4 GHz quad-core 64-bit Cortex-A76
+
+| Raspberry Pi 4B (2019)
+| Broadcom xref:../computers/processors.adoc#bcm2711[BCM2711]
+| 1, 2, 3, 4, or 8 GB of RAM
+| 40-pin GPIO header
+| VideoCore VI
+| 1.8 GHz quad-core 64-bit Cortex-A72
+
+| Raspberry Pi 3A+ (2018)
+| Broadcom xref:../computers/processors.adoc#bcm2837b0[BCM2837B0]
+| 512 MB of RAM
+| 40-pin GPIO header
+| VideoCore IV
+| 1.4 GHz quad-core 64-bit Cortex-A53
+
+| Raspberry Pi 3B+ (2018)
+| Broadcom xref:../computers/processors.adoc#bcm2837b0[BCM2837B0]
+| 1 GB of RAM
+| 40-pin GPIO header
+| VideoCore IV
+| 1.4 GHz quad-core 64-bit Cortex-A53
+
+| Raspberry Pi 3B (2017)
+| Broadcom xref:../computers/processors.adoc#bcm2837b0[BCM2837B0] (earlier versions used xref:../computers/processors.adoc#bcm2837[BCM2837])
+| 1 GB of RAM
+| 40-pin GPIO header
+| VideoCore IV
+| 1.2 GHz quad-core 64-bit Cortex-A53
+
+| Raspberry Pi 2B (2015)
+| Broadcom xref:../computers/processors.adoc#bcm2837b0[BCM2837B0] (earlier versions used xref:../computers/processors.adoc#bcm2837[BCM2837] or xref:../computers/processors.adoc#bcm2836[BCM2836])
+| 1 GB of RAM
+| 40-pin GPIO header
+| VideoCore IV
+| 900 MHz quad-core 64-bit Cortex-A53 (earlier versions used 900 MHz quad-core 32-bit Cortex-A7)
+
+| Raspberry Pi A+ (2014)
+| Broadcom xref:../computers/processors.adoc#bcm2835[BCM2835]
+| 256 or 512 MB of RAM
+| 40-pin GPIO header
+| VideoCore IV
+| 700 MHz single-core 32-bit ARM11
+
+| Raspberry Pi B+ (2014)
+| Broadcom xref:../computers/processors.adoc#bcm2835[BCM2835]
+| 512 MB of RAM
+| 40-pin GPIO header
+| VideoCore IV
+| 700 MHz single-core 32-bit ARM11
+
+| Raspberry Pi A (2013)
+| Broadcom xref:../computers/processors.adoc#bcm2835[BCM2835]
+| 256 MB of RAM
+| 26-pin GPIO header
+| VideoCore IV
+| 700 MHz single-core 32-bit ARM11
+
+| Raspberry Pi B (2012)
+| Broadcom xref:../computers/processors.adoc#bcm2835[BCM2835]
+| 256 or 512 MB of RAM
+| 26-pin GPIO header
+| VideoCore IV
+| 700 MHz single-core 32-bit ARM11
+|===

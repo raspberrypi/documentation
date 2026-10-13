@@ -8,7 +8,69 @@ There are two generations of the Raspberry Pi Pico series:
 Each generation is available in four variants, which differ based on:
 
 * *Wireless connectivity.* Variants that include the *W* suffix in the name include Wi-Fi and Bluetooth.
-* *Presoldered headers.* Variants are available either as castellated modules (for direct soldering) or with presoldered pin headers.
+* *Pre-soldered headers.* Variants are available either as castellated modules (for direct soldering) or with pre-soldered pin headers.
+
+== Models
+
+The following table summarises Raspberry Pi Pico microcontroller boards in reverse chronological order, listing their SoC, memory, and storage for quick reference.
+
+You can determine which models come with pre-soldered headers and wireless connectivity based on their names:
+
+* *Wireless connectivity.* Models that include the *W* suffix come with the following wireless connectivity:
+** Dual-band (either 2.4 GHz or 5 GHz) 802.11ac Wi-Fi (10 Mb/s).
+** Bluetooth (5.2 and BLE).
+* *Pre-soldered headers.* Models with an *H* or *with headers* suffix come with header pins attached to the GPIO header; if either of these suffixes are absent from the name of the model, you must instead solder pins manually or attach a third-party pin kit.
+** The first generation of Raspberry Pi Pico that include the *H* suffix have header pins pre-soldered to the GPIO header.
+** Raspberry Pi Pico 2 specifies *with headers* instead of using the *H* suffix.
+
+For more information about each of these models, see the following dedicated sections for <<pico1>> and <<pico2>> on this page.
+
+[cols="1,1,1,1", options="header"]
+|===
+|Model|SoC|Memory|Storage
+
+| Raspberry Pi Pico 2 W with headers
+| xref:../microcontrollers/microcontroller-chips.adoc[RP2350]
+| 520 kB
+| 4 MB
+
+| Raspberry Pi Pico 2 with headers
+| xref:../microcontrollers/microcontroller-chips.adoc[RP2350]
+| 520 kB
+| 4 MB
+
+| Raspberry Pi Pico 2 W
+| xref:../microcontrollers/microcontroller-chips.adoc[RP2350]
+| 520 kB
+| 4 MB
+
+| Raspberry Pi Pico 2
+| xref:../microcontrollers/microcontroller-chips.adoc[RP2350]
+| 520 kB
+| 4 MB
+
+| Raspberry Pi Pico WH
+| xref:../microcontrollers/microcontroller-chips.adoc[RP2040]
+| 264 kB
+| 2 MB
+
+| Raspberry Pi Pico W
+| xref:../microcontrollers/microcontroller-chips.adoc[RP2040]
+| 264 kB
+| 2 MB
+
+| Raspberry Pi Pico H
+| xref:../microcontrollers/microcontroller-chips.adoc[RP2040]
+| 264 kB
+| 2 MB
+
+| Raspberry Pi Pico
+| xref:../microcontrollers/microcontroller-chips.adoc[RP2040]
+| 264 kB
+| 2 MB
+
+|===
+
 
 [[pico1]]
 == Raspberry Pi Pico

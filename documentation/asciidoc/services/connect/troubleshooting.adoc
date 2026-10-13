@@ -171,7 +171,7 @@ a|`update file rejected.`
 a|Make sure that you deployed the `.tar.zst` update file, not the `.img` full image file. For a device in an organisation, check that the URI you provided when creating the deployment points at the `.tar.zst` file.
 
 a|The deployment shows as **Invalidated**, with the reason `File expired`.
-a|Connect keeps an artefact you upload for two hours, then deletes it. The recipient device didn't start the deployment before that happened. Check that the device is online, then deploy the artefact again.
+a|Connect keeps an artefact you upload for two hours, then deletes it. The recipient device didn't come online and start the deployment before that happened. Check that the device is online, then deploy the artefact again.
 
 a|No **Deploy** option appears next to the device in Raspberry Pi Connect.
 a|Enable OTA opt-in using the following command, then refresh your browser:
@@ -180,8 +180,6 @@ a|Enable OTA opt-in using the following command, then refresh your browser:
 ----
 $ rpi-connect ota on
 ----
-
-For a device in your personal account, also check that the device is online: **Deploy** only appears while Connect can reach the device.
 
 |===
 
