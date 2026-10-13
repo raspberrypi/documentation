@@ -20,9 +20,9 @@ To install an OS on a storage device, you need:
 [[imager-install]]
 === Install using Imager
 
-Raspberry Pi Imager is a tool you use to download and write OS images for your Raspberry Pi on Mac, Windows, and Linux. 
+Raspberry Pi Imager is a tool you use to download and write OS images for your Raspberry Pi on Mac, Windows, and Linux.
 
-Imager includes many popular OS images for Raspberry Pi devices, and supports loading images that have been manually downloaded from either https://www.raspberrypi.com/software/operating-systems/[Raspberry Pi] or third-party vendors such as https://ubuntu.com/download/raspberry-pi[Ubuntu]. 
+Imager includes many popular OS images for Raspberry Pi devices, and supports loading images that have been manually downloaded from either https://www.raspberrypi.com/software/operating-systems/[Raspberry Pi] or third-party vendors such as https://ubuntu.com/download/raspberry-pi[Ubuntu].
 
 During configuration with Imager, you can also preconfigure credentials and remote access settings for your Raspberry Pi device.
 
@@ -42,7 +42,7 @@ Download and install Raspberry Pi Imager on to your computer (Windows, Mac, or L
 . Launch the Raspberry Pi Imager application in one of the following ways:
 * Find Imager in your *Applications* menu.
 * Select the Raspberry Pi Imager icon on your computer's desktop.
-* From the command line, run the AppImage file as root. For example, with the command: `sudo ./Raspberry_Pi_Imager-<version>-desktop-x86_64.AppImage`, where `<version>` is a number representing the most recent Imager version.
+* From the command line, run the AppImage file as root. For example, with the command: `sudo ./imager-<version>-amd64.AppImage`, where `<version>` is a number representing the most recent Imager version.
 
 ==== Step 2. Configure the fundamentals
 
@@ -159,7 +159,7 @@ image::images/imager/os-customisation-site.png[alt="Raspberry Pi Connect page.",
 . In the *New auth key* page, create your auth key. This is a single-use, temporary token. Personal auth keys expire six hours after creation, and organisation auth keys expire between 1 and 90 days after creation (1 day by default). To use the token, boot your Raspberry Pi and connect it to the internet before the expiry time.
 +
 image::images/imager/connect-auth-key.png[alt="Raspberry Pi Connect new auth key page.",width="60%"]
-** If you're a member of one or more organisations, select the organisation or account to associate the key with. Then select *Create auth key and launch Raspberry Pi Imager*. 
+** If you're a member of one or more organisations, select the organisation or account to associate the key with. Then select *Create auth key and launch Raspberry Pi Imager*.
 ** If you're a member of one or more organisations, select the organisation or account to associate the key with. Then select Create auth key and launch Raspberry Pi Imager.
 . Your browser might ask you whether you want to allow the site to open Raspberry Pi Imager. Confirm that you want to open Raspberry Pi Imager.
 ** Imager opens at the *Raspberry Pi Connect* tab, which shows a message to confirm that Imager received the authentication token from the browser and a field containing the token.
