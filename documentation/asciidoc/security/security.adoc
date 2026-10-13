@@ -41,6 +41,8 @@ Raspberry Pi lists official security vulnerability disclosures on our website. F
 
 To report security issues on Raspberry Pi, email mailto:security@raspberrypi.com[security@raspberrypi.com]. For more information, see https://www.raspberrypi.com/security/#reporting-a-vulnerability[Reporting a vulnerability].
 
+To be notified by email of significant security vulnerabilities in Raspberry Pi products, subscribe using the https://www.raspberrypi.com/security/#subscribe[Be notified of security vulnerabilities] form on our security page.
+
 == Software Bill of Materials
 
 A Software Bill of Materials (SBOM) lists all components in a software application and includes metadata for each component, such as its name, version, supplier, license, and unique identifier. This information is provided in an open-standard, machine-readable format.

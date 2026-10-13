@@ -68,6 +68,13 @@ In January 2025, penetration testing and security analysts at https://cure53.de[
 
 For more details on WebRTC security, see https://webrtc-security.github.io/[A Study of WebRTC Security].
 
+[[security-notifications]]
+=== Security notifications
+
+To be notified by email of significant security vulnerabilities in Raspberry Pi products, including Connect, subscribe using the https://www.raspberrypi.com/security/#subscribe[Be notified of security vulnerabilities] form on our security page.
+
+To report a vulnerability, see https://www.raspberrypi.com/security/#reporting-a-vulnerability[Reporting a vulnerability].
+
 [[sub-processors]]
 === Sub-processors
 
