@@ -163,7 +163,7 @@ With Imager configured to use the custom content repository, you can now write t
 
 . Connect power to the jig.
 +
-The jig boots into USB mass-storage mode. Your computer detects the jig's internal storage as a removable drive.
+The jig boots into USB mass storage mode. Your computer detects the jig's internal storage as a removable drive.
 
 . Open Raspberry Pi Imager on your computer.
 

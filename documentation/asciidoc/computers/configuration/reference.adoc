@@ -1167,7 +1167,7 @@ The following properties are defined if the system was booted from USB. These ca
 
 `root-hub-port-number`:: The root hub port number that the boot device is connected to – possibly through other USB hubs.
 
-`lun`:: The Logical Unit Number for the mass-storage device.
+`lun`:: The Logical Unit Number for the mass storage device.
 
 ===== NVMEM nodes
 

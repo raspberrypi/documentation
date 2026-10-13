@@ -115,7 +115,7 @@ The `-d sat,12` option instructs `smartctl` to communicate with the USB controll
 
 The following table describes the SMART attributes reported by the Raspberry Pi Flash Drive. Attributes marked as *Unused* are reserved and don't report any information.
 
-NOTE: `smartmontools` doesn't assign vendor-unique field names to USB devices because the application treats USB mass-storage devices as a bridge to an ATA hard drive.
+NOTE: `smartmontools` doesn't assign vendor-unique field names to USB devices because the application treats USB mass storage devices as a bridge to an ATA hard drive.
 
 .SMART attributes reported by the Raspberry Pi Flash Drive
 [cols="1,1,3,4, options="header"]
