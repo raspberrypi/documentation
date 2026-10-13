@@ -86,7 +86,7 @@ Returns the throttled state of the system. This is a bit pattern. A bit being se
 ==== `measure_temp`
 
 Returns the temperature of the SoC as measured by its internal temperature sensor.
-On Raspberry Pi 4, `measure_temp pmic` returns the temperature of the PMIC.
+On Raspberry Pi 4 and Raspberry Pi 5, `measure_temp pmic` returns the temperature of the PMIC.
 
 ==== `measure_clock [clock]`
 
@@ -156,6 +156,53 @@ Displays the current voltages used by the specific block. Accepts the following 
 | SDRAM Phy Voltage
 |===
 
+==== `pmic_read_adc [channel]`
+
+On Raspberry Pi 5, displays the readings of the ADCs built into the PMIC: the current drawn from, and the voltage of, each PMIC supply rail, plus the supply voltage `EXT5V_V`. Without a parameter, the command lists every channel:
+
+[source,console]
+----
+$ vcgencmd pmic_read_adc
+ 3V7_WL_SW_A current(0)=0.09466522A
+   3V3_SYS_A current(1)=0.05465208A
+   1V8_SYS_A current(2)=0.16005250A
+  DDR_VDD2_A current(3)=0.00000000A
+  DDR_VDDQ_A current(4)=0.00000000A
+   1V1_SYS_A current(5)=0.17566740A
+    0V8_SW_A current(6)=0.26838080A
+  VDD_CORE_A current(7)=0.51794000A
+   3V3_DAC_A current(17)=0.00000000A
+   3V3_ADC_A current(18)=0.00048840A
+   0V8_AON_A current(16)=0.00293040A
+      HDMI_A current(22)=0.02576310A
+ 3V7_WL_SW_V volt(8)=3.70627200V
+   3V3_SYS_V volt(9)=3.31188900V
+   1V8_SYS_V volt(10)=1.80268400V
+  DDR_VDD2_V volt(11)=1.11355200V
+  DDR_VDDQ_V volt(12)=0.60549390V
+   1V1_SYS_V volt(13)=1.11025500V
+    0V8_SW_V volt(14)=0.80402850V
+  VDD_CORE_V volt(15)=0.75186740V
+   3V3_DAC_V volt(20)=3.31409900V
+   3V3_ADC_V volt(21)=3.30768900V
+   0V8_AON_V volt(19)=0.80146450V
+      HDMI_V volt(23)=5.06654000V
+     EXT5V_V volt(24)=5.06788000V
+      BATT_V volt(25)=0.00085470V
+----
+
+To read a single channel, pass its name. For example, to read the supply voltage:
+
+[source,console]
+----
+$ vcgencmd pmic_read_adc EXT5V_V
+     EXT5V_V volt(24)=5.06520000V
+----
+
+If the channel name isn't recognised, the command lists every channel instead of returning an error.
+
+These readings don't include USB current or anything else connected directly to the 5V supply, because that power bypasses the PMIC. For more information, see xref:raspberry-pi.adoc#power-supplies-and-raspberry-pi-os[Power supplies and Raspberry Pi OS].
+
 ==== `otp_dump`
 
 Displays the content of the OTP (one-time programmable) memory inside the SoC. These are 32-bit values, indexed from 8 to 64. See the xref:raspberry-pi.adoc#otp-register-and-bit-definitions[OTP bits page] for more details.
@@ -174,18 +221,20 @@ $ vcgencmd get_config total_mem
 
 Reports on the amount of memory addressable by the Arm and the GPU. To show the amount of Arm-addressable memory, use `vcgencmd get_mem arm`; to show the amount of GPU-addressable memory, use `vcgencmd get_mem gpu`. On devices with more than 1 GB of memory, the `arm` parameter will always return 1 GB minus the `gpu` memory value, since the GPU firmware is only aware of the first 1 GB of memory. To get an accurate report of the total memory on the device, see the `total_mem` configuration item and the <<getconfig,`get_config`>> section above.
 
-===== `codec_enabled [type]`
+==== `codec_enabled [type]`
 
 Reports whether the specified codec type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, MPG2, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, WMV9, WVC1. Because the H.265 HW block on the Raspberry Pi 4 and later device families isn't part of the VideoCore GPU, its status isn't accessed by this command.
 
-===== `mem_oom`
+==== `mem_oom`
 
 Displays statistics on any OOM (out of memory) events occurring in the VideoCore memory space.
+This command isn't available on Raspberry Pi 5.
 
-===== `mem_reloc_stats`
+==== `mem_reloc_stats`
 
 Displays statistics from the relocatable memory allocator on the VideoCore.
+This command isn't available on Raspberry Pi 5.
 
-===== `read_ring_osc`
+==== `read_ring_osc`
 
 Returns the current speed, voltage and temperature of the ring oscillator.
