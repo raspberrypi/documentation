@@ -537,7 +537,7 @@ NOTE: NETCONSOLE blocks until the Ethernet link is established or a timeout occu
 
 ===== Format
 
-For more information, see the https://wiki.archlinux.org/index.php/Netconsole[Netconsole documentation].
+For more information, see the https://docs.kernel.org/networking/netconsole.html[Netconsole documentation].
 
 [source]
 ----

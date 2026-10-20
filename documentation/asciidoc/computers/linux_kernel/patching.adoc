@@ -26,10 +26,10 @@ You should see output similar to the following:
 # SPDX-License-Identifier: GPL-2.0
 VERSION = 6
 PATCHLEVEL = 18
-SUBLEVEL = 37
+SUBLEVEL = 56
 ----
 
-In this instance, the sources are for a 6.18.37 kernel.
+In this instance, the sources are for a 6.18.56 kernel.
 
 === Apply patches
 
@@ -39,10 +39,12 @@ Developers distribute most patches as a single file. Use the `patch` utility to 
 
 [source,console]
 ----
-$ wget https://www.kernel.org/pub/linux/kernel/projects/rt/6.18/patch-6.18.37-rt6.patch.gz
-$ gunzip patch-6.18.37-rt6.patch.gz
-$ cat patch-6.18.37-rt6.patch | patch -p1
+$ wget https://www.kernel.org/pub/linux/kernel/projects/rt/6.18/patch-6.18.56-rt7.patch.gz
+$ gunzip patch-6.18.56-rt7.patch.gz
+$ cat patch-6.18.56-rt7.patch | patch -p1
 ----
+
+Check https://www.kernel.org/pub/linux/kernel/projects/rt/ to find the latest patch for your kernel.
 
 [NOTE]
 ====
