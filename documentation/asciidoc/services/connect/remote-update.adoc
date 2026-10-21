@@ -56,14 +56,14 @@ From the **Devices** tab in Raspberry Pi Connect interface, you can select a dev
 
 Deployment states are:
 
-* **Pending**: waiting for the recipient device to pick up the update.
+* **Queued**: waiting for the recipient device to pick up the update.
 * **In Progress**: the update is being applied to the device.
 * **Succeeded**: the update has been applied successfully.
 * **Failed**: the update failed. For more information, see <<ab-troubleshooting,Troubleshooting>>.
-* **Cancelled**: the update was cancelled before it could be applied. Pending deployments are automatically cancelled when another deployment is queued for the same device.
+* **Cancelled**: the update was cancelled before it could be applied. Queued deployments are automatically cancelled when you deploy another update to the same device.
 * **Invalidated**: an update that can no longer be applied.
 
-When a deployment is **Pending** or **In Progress**, the **Devices** page automatically updates with the current state. It stops updating once the deployment has entered **Succeeded**, **Failed**, **Cancelled**, or **Invalidated**.
+When a deployment is **Queued** or **In Progress**, the **Devices** page automatically updates with the current state. It stops updating once the deployment has entered **Succeeded**, **Failed**, **Cancelled**, or **Invalidated**.
 
 To check a deployment's details:
 
@@ -74,7 +74,7 @@ To check a deployment's details:
 
 To cancel a deployment:
 
-NOTE: You can only cancel a deployment that is **Pending**.
+NOTE: You can only cancel a deployment that is **Queued**.
 
 . Log in to Raspberry Pi Connect.
 . Select the **Personal** account using the account switcher at the top right.
