@@ -1,0 +1,17 @@
+== Getting help
+
+For further help with `libcamera` and the `rpicam-apps`, check the https://forums.raspberrypi.com/viewforum.php?f=43[Raspberry Pi Camera forum]. Before posting:
+
+* Make a note of your operating system version (`uname -a`).
+
+* Make a note of your `libcamera` and `rpicam-apps` versions (`rpicam-hello --version`).
+
+* Report the make and model of the camera module you are using.
+
+* Report the software you are trying to use. We don't support third-party camera module vendor software.
+
+* Report your Raspberry Pi model, including memory size.
+
+* Include any relevant excerpts from the application's console output.
+
+If there are specific problems in the camera software (such as crashes), consider https://github.com/raspberrypi/rpicam-apps[creating an issue in the `rpicam-apps` GitHub repository], including the same details listed above.

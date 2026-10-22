@@ -1,0 +1,50 @@
+This page provides an overview with links to more detailed information about securing your Raspberry Pi device.
+
+== Security architecture
+
+Raspberry Pi's security architecture ensures that only authenticated boot code runs on provisioned Raspberry Pi devices, disk encryption keys are protected, and a chain of trust verifies every stage of the boot process.
+
+For more information, see xref:../security/security-architecture.adoc[Security architecture].
+
+== Secure Boot Provisioner
+
+Raspberry Pi have created a provisioning tool for simplifying the process of:
+
+* Setting up *secure (verified) boot* to establish a hardware chain of trust that ensures that only authenticated code runs during the device startup sequence.
+* Setting up *disk encryption* to protect data stored on persistent media, such as microSD cards or USB drives.
+* Provisioning *multiple Raspberry Pi devices* with a streamlined configuration and deployment process.
+
+For more information and instructions, see xref:../security/secure-boot-provisioner.adoc[Secure Boot Provisioner].
+
+== Operational security
+
+You can configure your Raspberry Pi device to prevent unauthorised access and improve day-to-day security hygiene with:
+
+* User and access management, including authentication, user accounts, groups, and permissions.
+* Regular operating system and software updates.
+* Secure remote access with SSH hardening.
+* Protection against suspicious activity and brute force attacks.
+
+For more information and instructions, see xref:../security/operational-security.adoc[Operational security].
+
+== Firewalls using UFW
+
+Configuring a packet-filtering firewall using *Uncomplicated Firewall (UFW)* on a Raspberry Pi device helps to harden the system. It can be used to limit network access to only essential services and mitigate external threats by blocking unwanted or malicious connections.
+
+For more information and instructions, see xref:../security/ufw.adoc[Firewalls using UFW].
+
+== Frontline security disclosure
+
+Raspberry Pi follows a structured vulnerability reporting and management process. As part of this process, we track and incorporate security updates from Debian on a regular schedule.
+
+Raspberry Pi lists official security vulnerability disclosures on our website. For more information, see https://www.raspberrypi.com/security#security-advisories[Security Advisories] and https://raspberrypi.github.io/cve-list/[Raspberry Pi OS — CVE reports]
+
+To report security issues on Raspberry Pi, email mailto:security@raspberrypi.com[security@raspberrypi.com]. For more information, see https://www.raspberrypi.com/security/#reporting-a-vulnerability[Reporting a vulnerability].
+
+To be notified by email of significant security vulnerabilities in Raspberry Pi products, subscribe using the https://www.raspberrypi.com/security/#subscribe[Be notified of security vulnerabilities] form on our security page.
+
+== Software Bill of Materials
+
+A Software Bill of Materials (SBOM) lists all components in a software application and includes metadata for each component, such as its name, version, supplier, license, and unique identifier. This information is provided in an open-standard, machine-readable format.
+
+We provide an SBOM for each edition of Raspberry Pi OS. You can download the SBOM file from the https://www.raspberrypi.com/software/operating-systems/[Raspberry Pi OS downloads page].

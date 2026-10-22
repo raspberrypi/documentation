@@ -1,0 +1,20 @@
+[[next]]
+== Next steps
+After installing and configuring your Raspberry Pi, you can download software, start using your new Raspberry Pi computer, and connect to the wider community for ideas and support.
+
+=== Recommended applications
+Raspberry Pi OS includes pre-installed applications that allow you to start using your Raspberry Pi as soon as possible.
+
+You can download other recommended applications for free: select the Raspberry Pi icon in the top-left corner of the screen, and then select *Preferences > Recommended Software*. From here, you can install a variety of recommended applications.
+
+For example, if you plan to use your Raspberry Pi as a home computer, you might find LibreOffice useful for writing and editing documents and spreadsheets. You can also make your Raspberry Pi more accessible with the Orca screen reader, found under *Universal Access*.
+
+=== Resources
+Explore our https://www.raspberrypi.com/tutorials/[tutorials] to discover various ways you can use your new Raspberry Pi computer.
+
+You can learn to code, control external devices, and build new projects by following tutorials that interest you.
+
+For support with official Raspberry Pi products, or to connect with other Raspberry Pi users, visit the https://forums.raspberrypi.com/[Raspberry Pi forums].
+
+For more inspiration, subscribe to https://magazine.raspberrypi.com/[Raspberry Pi Magazine], which features in-depth tutorials, step-by-step projects, coding guides, and community stories.
+

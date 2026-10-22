@@ -1,0 +1,9 @@
+== Introduction
+
+Raspberry Pi makes computers in several different **series**:
+
+* *xref:../computers/sbcs.adoc[Classic single-board computers (SBCs)].* The classic Raspberry Pi SBC series offers high-performance hardware, a full Linux operating system, and a variety of common ports in a form factor roughly the size of a credit card.
+* *xref:../computers/zero.adoc[Zero].* Small and affordable models in a minimal form factor that provide a full Linux operating system and essential ports with low power consumption.
+* *xref:../computers/keyboard-computers.adoc[Keyboard computers (X00)].* SBC hardware, a full Linux operating system, and common ports combined into a compact keyboard case.
+* *xref:../computers/compute-module.adoc[Compute Module (CM)].* Boards designed for embedded and industrial applications that provide the same hardware as classic SBCs but in a smaller form factor with no on-board connectors. Instead, they connect to a separate baseboard that supplies the necessary ports and pins.
+* *xref:../microcontrollers/pico-series.adoc[Raspberry Pi Pico].* Small and versatile microcontroller boards that don't run Linux. Instead of removable storage, programs are flashed directly onto on-board memory. Pico microcontrollers are ideal for real-time control and lightweight embedded projects.

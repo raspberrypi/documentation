@@ -1,0 +1,12 @@
+.DS_Store
+__pycache__
+build
+build-pico-sdk-docs
+documentation/html
+documentation/asciidoc/pico-sdk
+venv
+.venv
+.env
+.vscode
+live_urls.csv
+dead_urls.csv

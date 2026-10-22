@@ -1,0 +1,21 @@
+== Features
+
+The Sense HAT has an 8×8 RGB LED matrix and a five-button joystick, and includes the following sensors:
+
+* Gyroscope
+* Accelerometer
+* Magnetometer
+* Temperature
+* Barometric pressure
+* Humidity
+* Colour and brightness
+
+Schematics and mechanical drawings for the Sense HAT and the Sense HAT V2 are available for download on the https://pip.raspberrypi.com/categories/676-raspberry-pi-sense-hat[Product Information Portal].
+
+=== LED matrix
+
+The LED matrix is an RGB565 https://www.kernel.org/doc/Documentation/fb/framebuffer.txt[framebuffer] with the id `RPi-Sense FB`. The appropriate device node can be written to as a standard file or mmap-ed. The included snake example shows how to access the framebuffer.
+
+=== Joystick
+
+The joystick comes up as an input event device named `Raspberry Pi Sense HAT Joystick`, mapped to the arrow keys and **Enter**. It is supported by any library which is capable of handling inputs or directly through the https://www.kernel.org/doc/Documentation/input/input.txt[evdev interface]. Suitable libraries include https://www.libsdl.org/[SDL], https://www.pygame.org/docs/[pygame], and https://python-evdev.readthedocs.org/en/latest/[python-evdev]. The included `snake` example shows how to access the joystick directly.

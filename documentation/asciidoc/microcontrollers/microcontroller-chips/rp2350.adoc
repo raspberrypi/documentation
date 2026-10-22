@@ -1,0 +1,95 @@
+== RP2350
+
+RP2350 is a high-performance, dual-core microcontroller available in four variants that differ in package size and the presence of on-board flash memory, described in <<RP2350_variants>>.
+
+Compared to xref:../microcontrollers/microcontroller-chips.adoc#rp2040[RP2040], RP2350 delivers higher core clock speeds, double the SRAM, more powerful Arm cores, new security features, and expanded interfacing capabilities, described in <<RP2350_features>>. For more detailed information about RP2350, see the https://pip.raspberrypi.com/documents/RP-008373-DS[RP2350 datasheet].
+
+RP2350 powers Raspberry Pi *Pico 2*, *Pico 2 W*, *Pico 2 with headers*, *Pico 2 W with headers*, and other RP2350-based boards. For more information, see xref:pico-series.adoc[Raspberry Pi Pico 2] and <<RP2350_boards>>.
+
+image::images/rp2350.jpg[]
+
+[[RP2350_variants]]
+=== RP2350 variants
+
+RP2350 comes in four variants, differing by package size and whether stacked flash memory is included. For more information about how these variants are named, see <<RP2350_naming, RP2350 naming>>.
+
+[options="header"]
+|===
+|Variant |Package |Package size (mm) |Internal flash memory |GPIO pins |Analogue inputs|PWM channels
+
+|*RP2350A* |QFN-60 |7 x 7 |None |30 |4 |16
+|*RP2350B* |QFN-80 |10 x 10 |None |48 |8| 24
+|*RP2354A* |QFN-60 |7 x 7 |Stacked 2 MB flash |30 |4| 16
+|*RP2354B* |QFN-80 |10 x 10 |Stacked 2 MB flash |48 |8| 24
+|===
+
+[[RP2350_naming]]
+=== RP2350 naming
+
+*RP2350* follows the same naming convention as other Raspberry Pi silicon chips, but the number and letter at the end changes based on the variant. Specifically, the name variants of RP2350 are derived as follows:
+
+* *RP* specifies that the chip is Raspberry Pi silicon.
+* *2* refers to the number of processor cores.
+* *3* refers to the type of core processor (Cortex-M33).
+* *5* refers to the amount of RAM, expressed as a logarithmic factor, which corresponds to 520 kB of on-chip SRAM.
+* The last number (*0* or *4*) refers to the amount of non-volatile storage, expressed as a logarithmic factor.
+    ** *0* indicates that there's no on-board flash memory.
+    ** *4* indicates that there's 2 MB of stacked flash memory.
+* The appending letter refers to the size of the microcontroller package, which is dictated by number of pins:
+    ** *A* indicates a smaller chip package with 60 pins, of which 30 are GPIO pins.
+    ** *B* indicates a larger chip package with 80 pins, of which 48 are GPIO pins.
+
+image::images/rp2350_explanation.svg[width=640]
+
+[[RP2350_features]]
+=== RP2350 features
+
+RP2350 is a standalone microcontroller designed for embedded systems, real-time control, and I/O management. Specifically, RP2350 provides the following:
+
+* *Symmetric dual-core processor options.* A choice of the following low-power, efficient CPU architectures that can run tasks in parallel at up to 150 MHz. For more information, see <<architecture_switching>>:
+    ** Dual-core Arm Cortex-M33
+    ** Dual-core Hazard3 RISC-V processor.
+* *Expanded on-chip memory.* The 520 kB of on-chip SRAM in ten independent banks provides fast internal memory for running code and storage data, and allows simultaneous access by CPUs and peripherals.
+* *Expanded support for external flash memory.*
+    ** Ability to run code directly from external flash memory over a fast QSPI interface with caching (similar to RP2040).
+    ** Ability to connect to external PSRAM (Pseudo-Static RAM) chips through the QMI interface.
+* *Thermal monitoring.* Depending on variant, 4-channel or 8-channel ADC with internal temperature sensor, 500 kS/s, and 12-bit conversion; used for reading sensors and voltages, including an on-board temperature sensor.
+* *Flexible hardware control with Programmable I/O (PIO).* A mini processor subsystem that you can program to implement custom peripherals in hardware, consisting of three PIO blocks, each with four state machines (twelve in total).
+* *Fixed function peripherals.* Built-in hardware blocks for standard protocols that handle common tasks and don't need to be implemented in software, including:
+    ** Two UARTs for serial communication.
+    ** Two SPI controllers for data transfer.
+    ** Two I2C controllers for communication with low-speed peripherals.
+    ** Depending on variant, 16 or 24 PWM channels.
+    ** A USB 1.1 controller and PHY, with host and device support.
+    ** An HSTX peripheral for high-speed digital output, such as video.
+* *Option for internal flash memory.* Depending on variant, RP2350 can either run code from external flash memory or can include on-chip flash for program storage and faster access:
+    ** *RP2350A* and *RP2350B* have no built-in flash memory, and so don't store programs internally. However, you can:
+        *** Run code directly from external flash memory over a fast QSPI interface, using caching to keep performance high.
+        *** Use one-time programmable (OTP) memory to boot from and store software. This is irreversible.
+    ** *RP2354A* and *RP2354B* include 2 MB of stacked flash memory.
+* *Security.* A comprehensive security architecture built around Arm TrustZone for Cortex-M, including:
+    ** Signed boot support.
+    ** 8 kB of on-chip antifuse one-time programmable (OTP) memory.
+    ** SHA-256 acceleration.
+    ** A hardware true random number generator (TRNG).
+    ** Encrypted code storage and boot from flash.
+
+[[architecture_switching]]
+=== Architecture switching
+
+RP2350 includes a pair of open-hardware Hazard3 RISC-V cores, which can be substituted at boot time for the Cortex-M33 cores when you program the microcontroller.
+
+The boot ROM can auto-detect the architecture for which a second-stage binary has been built, and reboot the chip into the appropriate mode. All features of the chip, apart from some security features and the double-precision floating-point accelerator, are available in RISC-V mode.
+
+[[RP2350_boards]]
+=== RP2350-based boards
+
+You can use the Raspberry Pi *Pico 2* family of microcontroller boards as development boards and as reference designs for other RP2350-based boards. For discussions about third-party RP2350-based boards, see the  https://forums.raspberrypi.com/viewforum.php?f=147[Raspberry Pi forums].
+
+Raspberry Pi offers the following design files for the RP2350 microcontroller:
+
+* https://pip.raspberrypi.com/documents/RP-010328-CA[RP2350A Minimal Viable Board] (KiCad), a reference for creating a minimal RP2350A board.
+* https://pip.raspberrypi.com/documents/RP-010329-CA[RP2350B Minimal Viable Board] (KiCad), a reference for creating a minimal RP2350B board.
+* https://pip.raspberrypi.com/documents/RP-008395-DS[VGA Carrier Board] (KiCad), a reference for using a Raspberry Pi Pico board for multimedia (also relevant to RP2040).
+
+IMPORTANT: Designs are provided 'as-is' and the author disclaims all warranties with regard to the design, including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data, or profits, whether in an action of contract, negligence, or other tortious action, arising out of or in connection with the use or performance of the design.

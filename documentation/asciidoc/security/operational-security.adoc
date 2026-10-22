@@ -1,0 +1,99 @@
+Operational security (OpSec) is the practice of protecting your device by reducing opportunities for attackers to gain access or exploit vulnerabilities. This page covers practical ways to improve the operational security of your Raspberry Pi.
+
+== Secure user accounts
+
+To prevent unauthorised access and minimise the impact of accidental or malicious changes to the system, you can protect your Raspberry Pi with the following practices:
+
+* Require a password from start up.
+* Manage user permissions.
+* Require a password for superuser (`sudo`) commands (enabled by default during setup).
+
+For instructions, and for more information about user account management, see xref:../computers/configuration.adoc#users[User access and management].
+
+== Update Raspberry Pi OS
+
+To ensure your system has the latest security features, we recommend that you keep your software up to date. For more information, see  xref:../computers/os.adoc#update-software[Update your current Raspberry Pi software] in the *Raspberry Pi OS* page.
+
+Only the most recent major release of Raspberry Pi OS is updated with all the latest security fixes. We therefore recommend that you also upgrade to the most recent major release when it becomes available (for example, from Bookworm to Trixie). For instructions on upgrading your OS, see xref:../computers/os.adoc#upgrade[Upgrade to a new major version].
+
+*Upgrading* to the most recent major release is different from *updating* your Raspberry Pi OS:
+
+* Updating installs the latest packages and security fixes within your _current_ release without changing to a new major version.
+* Upgrading moves your Raspberry Pi to a _new_ major Raspberry Pi OS release.
+
+== Use a firewall
+
+A firewall helps protect your Raspberry Pi by controlling which network connections are allowed or blocked. For most users, we recommend using *Uncomplicated Firewall (UFW)* to configure firewall rules, restrict access to services, and protect internet-facing systems.
+
+For instructions on installing, configuring, and managing UFW, see xref:../security/ufw.adoc[Firewalls using UFW].
+
+== Improve SSH security
+
+SSH is a common way to remotely access a Raspberry Pi. By default, SSH requires a username and password. To improve SSH security, use key-based authentication. For more information, see xref:../computers/remote-access.adoc#configure-ssh-without-a-password[Configure SSH without a password].
+
+You can also *allow* or *deny* specific users by altering the `sshd` configuration. For more information, see xref:../computers/remote-access.adoc#restrict-which-users-can-connect[Restrict which users can connect].
+
+== Block suspicious activity with Fail2Ban
+
+When using Raspberry Pi as a server, you must create deliberate holes in your firewall to allow server traffic. https://github.com/fail2ban/fail2ban[Fail2Ban] can help secure your server. Fail2Ban examines log files and checks for suspicious activity, like multiple brute-force login attempts. This means that you don't have to manually check log files for intrusion attempts and then update the firewall (through `iptables`) to prevent them.
+
+To install Fail2Ban, run the following command:
+
+[source,console]
+----
+$ sudo apt install fail2ban
+----
+
+On installation, Fail2Ban creates `/etc/fail2ban/jail.conf`. To enable Fail2Ban, copy `jail.conf` to `jail.local`:
+
+[source,console]
+----
+$ sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+----
+
+This configuration file contains a set of default options, together with options for checking specific services for abnormalities. To examine the rules used for `ssh`, open `jail.local` in an editor:
+
+[source,console]
+----
+$ sudo nano /etc/fail2ban/jail.local
+----
+
+If it doesn't already exist, create the `[ssh]` section, then add the following lines to the section:
+
+[source,ini]
+----
+[ssh]
+enabled   true
+port      ssh
+filter    sshd
+backend   systemd
+maxretry  6
+----
+
+This enables Fail2Ban checks for suspicious `ssh` activity, including system log checks, and allows six retries before blocking activity.
+
+The `[default]` section in this file defines the default banning action, `iptables-multiport`, which runs the `/etc/fail2ban/action.d/iptables-multiport.conf` file when the detection threshold is reached:
+
+[source,ini]
+----
+# Default banning action (for example, iptables, iptables-new,
+# iptables-multiport, shorewall, etc) It is used to define
+# action_* variables. Can be overridden globally or per
+# section within jail.local file
+banaction  iptables-multiport
+----
+
+Multiport bans all access on all ports. The `action.d` folder contains alternative action configuration files you can use to customise your server's response to suspicious activity.
+
+For example, to permanently ban an IP address after three failed attempts, change the `maxretry` value in the `[ssh]` section to `3` and set the `bantime` to a negative number:
+
+[source,ini]
+----
+[ssh]
+enabled   true
+port      ssh
+filter    sshd
+backend   systemd
+maxretry  3
+bantime   -1
+----

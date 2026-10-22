@@ -1,0 +1,1 @@
+include::connect-for-organisations/organisations.adoc[]

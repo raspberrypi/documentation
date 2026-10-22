@@ -1,0 +1,880 @@
+== Raspberry Pi revision codes
+
+Each distinct Raspberry Pi model revision has a unique revision code. You can look up a Raspberry Pi device's revision code by running:
+
+[source,console]
+----
+$ cat /proc/cpuinfo
+----
+
+The last three lines show the hardware type, the revision code, and the Raspberry Pi device's unique serial number. For example:
+
+----
+Hardware    : BCM2835
+Revision    : a02082
+Serial      : 00000000765fc593
+----
+
+NOTE: All Raspberry Pi computers report `BCM2835`, even those with BCM2836, BCM2837, BCM2711, and BCM2712 processors. You should not use this string to detect the processor. Decode the revision code using the information below, or `cat /sys/firmware/devicetree/base/model`. Depending on which kernel you're running, your `cpuinfo` might also have a "Model" line, and might not have a "Hardware" line.
+
+=== Old-style revision codes
+
+The first set of Raspberry Pi models were given sequential hex revision codes from `0002` to `0015`:
+
+|===
+| Code | Model | Revision | RAM | Manufacturer
+
+| 0002
+| B
+| 1.0
+| 256 MB
+| Egoman
+
+| 0003
+| B
+| 1.0
+| 256 MB
+| Egoman
+
+| 0004
+| B
+| 2.0
+| 256 MB
+| Sony UK
+
+| 0005
+| B
+| 2.0
+| 256 MB
+| Qisda
+
+| 0006
+| B
+| 2.0
+| 256 MB
+| Egoman
+
+| 0007
+| A
+| 2.0
+| 256 MB
+| Egoman
+
+| 0008
+| A
+| 2.0
+| 256 MB
+| Sony UK
+
+| 0009
+| A
+| 2.0
+| 256 MB
+| Qisda
+
+| 000d
+| B
+| 2.0
+| 512 MB
+| Egoman
+
+| 000e
+| B
+| 2.0
+| 512 MB
+| Sony UK
+
+| 000f
+| B
+| 2.0
+| 512 MB
+| Egoman
+
+| 0010
+| B+
+| 1.2
+| 512 MB
+| Sony UK
+
+| 0011
+| CM1
+| 1.0
+| 512 MB
+| Sony UK
+
+| 0012
+| A+
+| 1.1
+| 256 MB
+| Sony UK
+
+| 0013
+| B+
+| 1.2
+| 512 MB
+| Embest
+
+| 0014
+| CM1
+| 1.0
+| 512 MB
+| Embest
+
+| 0015
+| A+
+| 1.1
+| 256 MB / 512 MB
+| Embest
+|===
+
+=== New-style revision codes
+
+With the launch of the Raspberry Pi 2, new-style revision codes were introduced. Rather than being sequential, each bit of the hex code represents a piece of information about the revision:
+
+----
+NOQuuuWuFMMMCCCCPPPPTTTTTTTTRRRR
+----
+
+|===
+| Part | Represents | Options
+
+| N (bit 31)
+| Overvoltage
+| 0: Overvoltage allowed
+
+|
+|
+| 1: Overvoltage disallowed
+
+| O (bit 30)
+| OTP Program^1^
+| 0: OTP programming allowed
+
+|
+|
+| 1: OTP programming disallowed
+
+| Q (bit 29)
+| OTP Read^1^
+| 0: OTP reading allowed
+
+|
+|
+| 1: OTP reading disallowed
+
+| uuu (bits 26-28)
+| Unused
+| Unused
+
+| W (bit 25)
+| Warranty bit^2^
+| 0: Warranty is intact
+
+|
+|
+| 1: Warranty has been voided by xref:config_txt.adoc#overclocking-options[overclocking]
+
+| u (bit 24)
+| Unused
+| Unused
+
+| F (bit 23)
+| New flag
+| 1: new-style revision
+
+|
+|
+| 0: old-style revision
+
+| MMM (bits 20-22)
+| Memory size
+| 0: 256 MB
+
+|
+|
+| 1: 512 MB
+
+|
+|
+| 2: 1 GB
+
+|
+|
+| 3: 2 GB
+
+|
+|
+| 4: 4 GB
+
+|
+|
+| 5: 8 GB
+
+|
+|
+| 6: 16 GB
+
+|
+|
+| 7: Other^3^
+
+| CCCC (bits 16-19)
+| Manufacturer
+| 0: Sony UK
+
+|
+|
+| 1: Egoman
+
+|
+|
+| 2: Embest
+
+|
+|
+| 3: Sony Japan
+
+|
+|
+| 4: Embest
+
+|
+|
+| 5: Stadium
+
+| PPPP (bits 12-15)
+| Processor
+| 0: BCM2835
+
+|
+|
+| 1: BCM2836
+
+|
+|
+| 2: BCM2837
+
+|
+|
+| 3: BCM2711
+
+|
+|
+| 4: BCM2712
+
+| TTTTTTTT (bits 4-11)
+| Type
+| 0x00: A
+
+|
+|
+| 0x01: B
+
+|
+|
+| 0x02: A+
+
+|
+|
+| 0x03: B+
+
+|
+|
+| 0x04: 2B
+
+|
+|
+| 0x05: Alpha (early prototype)
+
+|
+|
+| 0x06: CM1
+
+|
+|
+| 0x08: 3B
+
+|
+|
+| 0x09: Zero
+
+|
+|
+| 0x0a: CM3
+
+|
+|
+| 0x0c: Zero W
+
+|
+|
+| 0x0d: 3B+
+
+|
+|
+| 0x0e: 3A+
+
+|
+|
+| 0x0f: Internal use only
+
+|
+|
+| 0x10: CM3+
+
+|
+|
+| 0x11: 4B
+
+|
+|
+| 0x12: Zero 2 W
+
+|
+|
+| 0x13: 400
+
+|
+|
+| 0x14: CM4
+
+|
+|
+| 0x15: CM4S
+
+|
+|
+| 0x16: Internal use only
+
+|
+|
+| 0x17: 5
+
+|
+|
+| 0x18: CM5
+
+|
+|
+| 0x19: 500/500+
+
+|
+|
+| 0x1a: CM5 Lite
+
+|
+|
+| 0x1b: CM0
+
+
+| RRRR (bits 0-3)
+| Revision
+| 0, 1, 2, etc.
+|===
+
+^1^ Information on xref:raspberry-pi.adoc#otp-register-and-bit-definitions[programming the OTP bits].
+
+^2^ The warranty bit is never set on Raspberry Pi 4.
+
+^3^ For a memory size of "Other", the actual memory capacity can be determined from the `rpi-sdram-size-gbit` xref:configuration.adoc#part4[firmware parameter].
+
+=== New-style revision codes in use
+
+NOTE: This list isn't exhaustive; there might be codes in use that aren't in this table. For best practices on using revision codes to identify boards, see the following section.
+
+// This table is now sorted by Type (from table above), then Revision, then RAM, and finally Code. This is the most likely order-of-manufacture, which means we'll normally just add new revision-codes to the very bottom of the table, without having to worry about re-ordering entries.
+
+|===
+| Code | Model | Revision | RAM | Manufacturer
+
+| 900021
+| A+
+| 1.1
+| 512 MB
+| Sony UK
+
+| 900032
+| B+
+| 1.2
+| 512 MB
+| Sony UK
+
+| a01040
+| 2B
+| 1.0
+| 1 GB
+| Sony UK
+
+| a01041
+| 2B
+| 1.1
+| 1 GB
+| Sony UK
+
+| a21041
+| 2B
+| 1.1
+| 1 GB
+| Embest
+
+| a02042
+| 2B (with BCM2837)
+| 1.2
+| 1 GB
+| Sony UK
+
+| a22042
+| 2B (with BCM2837)
+| 1.2
+| 1 GB
+| Embest
+
+| 900061
+| CM1
+| 1.1
+| 512 MB
+| Sony UK
+
+| a02082
+| 3B
+| 1.2
+| 1 GB
+| Sony UK
+
+| a22082
+| 3B
+| 1.2
+| 1 GB
+| Embest
+
+| a32082
+| 3B
+| 1.2
+| 1 GB
+| Sony Japan
+
+| a52082
+| 3B
+| 1.2
+| 1 GB
+| Stadium
+
+| a22083
+| 3B
+| 1.3
+| 1 GB
+| Embest
+
+| 900092
+| Zero
+| 1.2
+| 512 MB
+| Sony UK
+
+| 920092
+| Zero
+| 1.2
+| 512 MB
+| Embest
+
+| 900093
+| Zero
+| 1.3
+| 512 MB
+| Sony UK
+
+| 920093
+| Zero
+| 1.3
+| 512 MB
+| Embest
+
+| a020a0
+| CM3
+| 1.0
+| 1 GB
+| Sony UK
+
+| a220a0
+| CM3
+| 1.0
+| 1 GB
+| Embest
+
+| 9000c1
+| Zero W
+| 1.1
+| 512 MB
+| Sony UK
+
+| a020d3
+| 3B+
+| 1.3
+| 1 GB
+| Sony UK
+
+| a020d4
+| 3B+
+| 1.4
+| 1 GB
+| Sony UK
+
+| 9020e0
+| 3A+
+| 1.0
+| 512 MB
+| Sony UK
+
+| 9020e1
+| 3A+
+| 1.1
+| 512 MB
+| Sony UK
+
+| a02100
+| CM3+
+| 1.0
+| 1 GB
+| Sony UK
+
+| a03111
+| 4B
+| 1.1
+| 1 GB
+| Sony UK
+
+| b03111
+| 4B
+| 1.1
+| 2 GB
+| Sony UK
+
+| c03111
+| 4B
+| 1.1
+| 4 GB
+| Sony UK
+
+| b03112
+| 4B
+| 1.2
+| 2 GB
+| Sony UK
+
+| c03112
+| 4B
+| 1.2
+| 4 GB
+| Sony UK
+
+| b03114
+| 4B
+| 1.4
+| 2 GB
+| Sony UK
+
+| c03114
+| 4B
+| 1.4
+| 4 GB
+| Sony UK
+
+| d03114
+| 4B
+| 1.4
+| 8 GB
+| Sony UK
+
+| b03115
+| 4B
+| 1.5
+| 2 GB
+| Sony UK
+
+| c03115
+| 4B
+| 1.5
+| 4 GB
+| Sony UK
+
+| d03115
+| 4B
+| 1.5
+| 8 GB
+| Sony UK
+
+| 902120
+| Zero 2 W
+| 1.0
+| 512 MB
+| Sony UK
+
+| c03130
+| 400
+| 1.0
+| 4 GB
+| Sony UK
+
+| a03140
+| CM4
+| 1.0
+| 1 GB
+| Sony UK
+
+| b03140
+| CM4
+| 1.0
+| 2 GB
+| Sony UK
+
+| c03140
+| CM4
+| 1.0
+| 4 GB
+| Sony UK
+
+| d03140
+| CM4
+| 1.0
+| 8 GB
+| Sony UK
+
+| b04170
+| 5
+| 1.0
+| 2 GB
+| Sony UK
+
+| c04170
+| 5
+| 1.0
+| 4 GB
+| Sony UK
+
+| d04170
+| 5
+| 1.0
+| 8 GB
+| Sony UK
+
+| a04171
+| 5
+| 1.1
+| 1 GB
+| Sony UK
+
+| b04171
+| 5
+| 1.1
+| 2 GB
+| Sony UK
+
+| c04171
+| 5
+| 1.1
+| 4 GB
+| Sony UK
+
+| d04171
+| 5
+| 1.1
+| 8 GB
+| Sony UK
+
+| e04171
+| 5
+| 1.1
+| 16 GB
+| Sony UK
+
+| b04180
+| CM5
+| 1.0
+| 2 GB
+| Sony UK
+
+| c04180
+| CM5
+| 1.0
+| 4 GB
+| Sony UK
+
+| d04180
+| CM5
+| 1.0
+| 8 GB
+| Sony UK
+
+| e04180
+| CM5
+| 1.0
+| 16 GB
+| Sony UK
+
+| d04190
+| 500
+| 1.0
+| 8 GB
+| Sony UK
+
+| e04190
+| 500+
+| 1.0
+| 16 GB
+| Sony UK
+
+| b041a0
+| CM5 Lite
+| 1.0
+| 2 GB
+| Sony UK
+
+| c041a0
+| CM5 Lite
+| 1.0
+| 4 GB
+| Sony UK
+
+| d041a0
+| CM5 Lite
+| 1.0
+| 8 GB
+| Sony UK
+
+| e041a0
+| CM5 Lite
+| 1.0
+| 16 GB
+| Sony UK
+
+|===
+
+=== Using revision codes for board identification
+
+From the command line we can use the following to get the revision code of the board:
+
+[source,console]
+----
+$ cat /proc/cpuinfo | grep Revision
+Revision      : c03111
+----
+
+In this example above, we have a hexadecimal revision code of `c03111`. Converting this to binary, we get `0 0 0 000 0 0 1 100 0000 0011 00010001 0001`. Spaces have been inserted to show the borders between each section of the revision code, according to the above table.
+
+Starting from the lowest order bits, the bottom four (0-3) are the board revision number, so this board has a revision of 1. The next eight bits (4-11) are the board type, in this case binary `00010001`, hex `11`, so this is a Raspberry Pi 4B. Using the same process, we can determine that the processor is a BCM2711, the board was manufactured by Sony UK, and it has 4 GB of RAM.
+
+==== Getting the revision code in your program
+
+Obviously there are so many programming languages out there it's not possible to give examples for all of them, but here are two quick examples for `C` and `Python`. Both these examples use a system call to run a bash command that gets the `cpuinfo` and pipes the result to `awk` to recover the required revision code. They then use bit operations to extract the `New`, `Model`, and `Memory` fields from the code.
+
+
+[source,c]
+----
+#include <stdio.h>
+#include <stdlib.h>
+
+int main( int argc, char *argv[] )
+{
+  FILE *fp;
+  char revcode[32];
+
+  fp = popen("cat /proc/cpuinfo | awk '/Revision/ {print $3}'", "r");
+  if (fp == NULL)
+    exit(1);
+  fgets(revcode, sizeof(revcode), fp);
+  pclose(fp);
+
+  int code = strtol(revcode, NULL, 16);
+  int new = (code >> 23) & 0x1;
+  int model = (code >> 4) & 0xff;
+  int mem = (code >> 20) & 0x7;
+
+  if (new && model == 0x11 && mem >= 3)  // Note, 3 in the mem field is 2 GB
+     printf("We are a 4B with at least 2 GB of RAM!\n" );
+
+  return 0;
+}
+----
+
+And the same in Python:
+
+[source,python]
+----
+import subprocess
+
+cmd = "cat /proc/cpuinfo | awk '/Revision/ {print $3}'"
+revcode = subprocess.check_output(cmd, shell=True)
+
+code = int(revcode, 16)
+new = (code >> 23) & 0x1
+model = (code >> 4) & 0xff
+mem = (code >> 20) & 0x7
+
+if new and model == 0x11 and mem >= 3 : # Note, 3 in the mem field is 2 GB
+    print("We are a 4B with at least 2 GB RAM!")
+----
+
+=== Best practices for revision code usage
+
+To avoid problems when new board revisions are created, do not use the revision code (for example, `c03111`).
+
+A naive implementation uses a list of supported revision codes, comparing the detected code with the list to decide if the device is supported.
+This breaks when a new board revision comes out or if the production location changes: each creates a new revision code not in the supported revision code list. This would cause rejections of new revisions of the same board type, despite the fact that they are always backwards-compatible. Every time a new revision appears, you would have to release a new supported revision code list containing the new revision code – an onerous support burden.
+
+Instead, use one of the following approaches:
+
+* Filter by the board-type field (3A, 4B, etc.), which indicates the model, but not the revision.
+* Filter by the amount-of-memory field, since RAM vaguely corresponds to the computing power of a board.
+
+For instance, you could limit support to Raspberry Pi 4B models with 2 GB of RAM or more.
+The examples in the previous section use this recommended approach.
+
+NOTE: Always check bit 23, the 'New' flag, to ensure that the revision code is the new version before checking any other fields.
+
+==== Check Raspberry Pi model and CPU across distributions
+
+Support and formatting for `/proc/cpuinfo` varies across Linux distributions. To check the model or CPU of a Raspberry Pi device on any Linux distribution (including Raspberry Pi OS), check the device tree:
+
+[source,console]
+----
+$ cat /proc/device-tree/compatible | tr '\0' '\n'
+raspberrypi,5-model-b
+brcm,bcm2712
+----
+
+This outputs two null-separated string values, each containing a comma-separated make and model. For instance, the Raspberry Pi 5 outputs the board and CPU strings above. These correspond to the following values:
+
+* `raspberrypi` (board make)
+* `5-model-b` (board model)
+* `brcm` (CPU make)
+* `bcm2712` (CPU model)
+
+Raspberry Pi models have the following device tree values:
+
+|===
+| Device Name                   | Make            | Model                       | CPU Make   | CPU
+
+| Raspberry Pi 500 /500+        | `raspberrypi`   | `500`                       | `brcm`     | `bcm2712`
+| Compute Module 5              | `raspberrypi`   | `5-compute-module`          | `brcm`     | `bcm2712`
+| Raspberry Pi 5                | `raspberrypi`   | `5-model-b`                 | `brcm`     | `bcm2712`
+| Raspberry Pi 400              | `raspberrypi`   | `400`                       | `brcm`     | `bcm2711`
+| Compute Module 4S             | `raspberrypi`   | `4s-compute-module`         | `brcm`     | `bcm2711`
+| Compute Module 4              | `raspberrypi`   | `4-compute-module`          | `brcm`     | `bcm2711`
+| Raspberry Pi 4 Model B        | `raspberrypi`   | `4-model-b`                 | `brcm`     | `bcm2711`
+| Raspberry Pi Zero 2 W         | `raspberrypi`   | `model-zero-2-w`            | `brcm`     | `bcm2837`
+| Compute Module 3+             | `raspberrypi`   | `3-plus-compute-module`     | `brcm`     | `bcm2837`
+| Compute Module 3              | `raspberrypi`   | `3-compute-module`          | `brcm`     | `bcm2837`
+| Raspberry Pi 3 Model A+       | `raspberrypi`   | `3-model-a-plus`            | `brcm`     | `bcm2837`
+| Raspberry Pi 3 Model B+       | `raspberrypi`   | `3-model-b-plus`            | `brcm`     | `bcm2837`
+| Raspberry Pi 3 Model B        | `raspberrypi`   | `3-model-b`                 | `brcm`     | `bcm2837`
+| Raspberry Pi 2 Model B Rev 1.2  | `raspberrypi`   | `2-model-b-rev2`            | `brcm`     | `bcm2837`
+| Raspberry Pi 2 Model B        | `raspberrypi`   | `2-model-b`                 | `brcm`     | `bcm2836`
+| Raspberry Pi Zero W           | `raspberrypi`   | `model-zero-w`              | `brcm`     | `bcm2835`
+| Raspberry Pi Zero             | `raspberrypi`   | `model-zero`                | `brcm`     | `bcm2835`
+| Compute Module 1              | `raspberrypi`   | `compute-module`            | `brcm`     | `bcm2835`
+| Raspberry Pi Model A+         | `raspberrypi`   | `model-a-plus`              | `brcm`     | `bcm2835`
+| Raspberry Pi Model B+         | `raspberrypi`   | `model-b-plus`              | `brcm`     | `bcm2835`
+| Raspberry Pi Model B Rev 2    | `raspberrypi`   | `model-b-rev2`              | `brcm`     | `bcm2835`
+| Raspberry Pi Model A          | `raspberrypi`   | `model-a`                   | `brcm`     | `bcm2835`
+| Raspberry Pi Model B          | `raspberrypi`   | `model-b`                   | `brcm`     | `bcm2835`
+|===

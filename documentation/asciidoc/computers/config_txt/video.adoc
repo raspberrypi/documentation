@@ -1,0 +1,111 @@
+== Video options
+
+=== HDMI mode
+
+To control HDMI settings, follow the instructions in xref:configuration.adoc#display-settings[Display settings] in the *Configuration* page.
+
+==== HDMI Pipeline for 4-series devices
+
+To support dual displays and modes up to 4Kp60, Raspberry Pi 4B, Compute Module 4, Compute Module 4S, and Raspberry Pi 400 generate two output pixels per clock cycle.
+
+Every HDMI mode has a list of timings that control all the parameters around sync pulse durations. These are typically defined through a pixel clock, and then a number of active pixels, a front porch, sync pulse, and back porch for each of the horizontal and vertical directions.
+
+Running everything at 2 pixels per clock means that the 4-series devices cannot support a timing where _any_ of the horizontal timings are not divisible by 2. The firmware and Linux kernel filter out any mode that does not fulfil this criteria.
+
+There is only one incompatible mode in the CEA and DMT standards: DMT mode 81, 1366x768 @ 60Hz. This mode has odd-numbered values for the horizontal sync and back porch timings and a width that indivisible by 8.
+
+If your monitor has this resolution, 4-series devices automatically drop down to the next mode advertised by the monitor; typically 1280x720.
+
+==== HDMI Pipeline for 5-series devices
+
+Raspberry Pi 5 and later, Raspberry Pi Compute Module 5 and later, and Raspberry Pi 500 and later, also work at two output pixels per clock cycle. These models have special handling for odd timings and can handle these modes directly.
+
+=== Composite video mode
+
+Composite video output can be found on each model of Raspberry Pi computer:
+
+|===
+| model | composite output
+
+| Raspberry Pi 1 A and B
+| RCA jack
+
+| Raspberry Pi Zero
+| Unpopulated `TV` header
+
+| Raspberry Pi Zero 2 W
+| Test pads on underside of board
+
+| Raspberry Pi 5
+| J7 pad next to HDMI socket
+
+| All other models
+| 3.5 mm AV jack
+|===
+
+NOTE: Composite video output is not available on Keyboard models.
+
+==== `enable_tvout`
+
+Set to `1` to enable composite video output and `0` to disable. On Flagship models since Raspberry Pi 4, Compute Modules since CM4, and Zero models, composite output is only available if you set this to `1`, which also disables HDMI output. Composite output is not available on Keyboard models.
+
+[%header,cols="1,1"]
+
+|===
+|Model
+|Default
+
+|Flagship models since Raspberry Pi 4B, Compute Modules since CM4, Keyboard models
+|0
+
+|All other models
+|1
+|===
+
+On supported models, you must disable HDMI output to enable composite output. HDMI output is disabled when no HDMI display is detected. Set `enable_tvout=0` to prevent composite being enabled when HDMI is disabled.
+
+To enable composite output, append `,composite` to the end of the `dtoverlay=vc4-kms-v3d` line in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`]:
+
+[source,ini]
+----
+dtoverlay=vc4-kms-v3d,composite
+----
+
+By default, this outputs composite NTSC video. To choose a different mode, instead append the following to the single line in `/boot/firmware/cmdline.txt`:
+
+[source,ini]
+----
+vc4.tv_norm=<video_mode>
+----
+
+Replace the `<video_mode>` placeholder with one of the following values:
+
+* `NTSC`
+* `NTSC-J`
+* `NTSC-443`
+* `PAL`
+* `PAL-M`
+* `PAL-N`
+* `PAL60`
+* `SECAM`
+
+=== LCD displays and touchscreens
+
+==== `ignore_lcd`
+
+By default, the Raspberry Pi Touch Displays are used when detected on the I2C bus. `ignore_lcd=1` skips this detection phase. This prevents the LCD display from being used.
+
+==== `disable_touchscreen`
+
+Enables and disables the touchscreen.
+
+`disable_touchscreen=1` disables the touchscreen component of the official Raspberry Pi Touch Displays.
+
+=== Generic display options
+
+==== `disable_fw_kms_setup`
+
+By default, the firmware parses the EDID of any HDMI attached display, picks an appropriate video mode, then passes the resolution and frame rate of the mode (and overscan parameters) to the Linux kernel by using settings on the kernel command line. In rare circumstances, the firmware can choose a mode not in the EDID that might be incompatible with the device. Use `disable_fw_kms_setup=1` to disable passing video mode parameters, which can avoid this problem. The Linux video mode system (KMS) instead parses the EDID itself and picks an appropriate mode.
+
+NOTE: On Raspberry Pi 5, this parameter defaults to `1`.
+

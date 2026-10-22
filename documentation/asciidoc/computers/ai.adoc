@@ -1,0 +1,2 @@
+include::ai/getting-started.adoc[]
+

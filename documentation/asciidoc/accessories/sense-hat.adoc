@@ -1,0 +1,5 @@
+include::sense-hat/intro.adoc[]
+
+include::sense-hat/hardware.adoc[]
+
+include::sense-hat/software.adoc[]

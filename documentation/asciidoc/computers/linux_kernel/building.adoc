@@ -1,0 +1,569 @@
+[[building]]
+== Build the kernel
+
+The default compilers and linkers distributed with an OS are configured to build executables to run on that OS. **Native builds** use these default compilers and linkers. **Cross-compilation** is the process of building code for a target other than the one running the build process.
+
+Cross-compilation of the Raspberry Pi kernel allows you to build a 64-bit kernel from a 32-bit OS, and the other way around. Alternatively, you can cross-compile a 32-bit or 64-bit Raspberry Pi kernel from a device other than a Raspberry Pi.
+
+The instructions below are divided into native builds and cross-compilation. Choose the section appropriate for your situation; although the two processes share many steps, there are also some important differences.
+
+[NOTE]
+====
+On Raspberry Pi OS, the firmware loads the kernel image (`$KERNEL.img`) directly from the boot partition. Other distributions, such as Ubuntu, install and select kernels differently. If your Raspberry Pi runs another distribution, follow that distribution's documentation to install a custom kernel.
+====
+
+=== Download kernel source
+
+Before you can build for any target, you need the kernel source. To get the kernel source, you need Git. Begin by installing Git on your device, if you don't already have it:
+
+[source,console]
+----
+$ sudo apt install git
+----
+
+Next, download the source code for the latest Raspberry Pi kernel:
+
+[source,console]
+----
+$ git clone --depth=1 https://github.com/raspberrypi/linux
+----
+
+This can take several minutes.
+
+[TIP]
+====
+The `git clone` command above downloads the current active branch, which we build Raspberry Pi OS images from, without any history. Omit `--depth=1` to download the entire repository, including the full history of all branches. This takes much longer and occupies much more storage.
+
+To download a different branch with no history, add the `--branch` option to the command above, replacing `<branch>` with the name of the branch you wish to download:
+
+[source,console]
+----
+$ git clone --depth=1 --branch <branch> https://github.com/raspberrypi/linux
+----
+
+For a full list of available branches, see the https://github.com/raspberrypi/linux[the Raspberry Pi kernel repository].
+====
+
+Now that you have the kernel source, build a fresh kernel xref:linux_kernel.adoc#natively-build-a-kernel[natively] or through xref:linux_kernel.adoc#cross-compile-the-kernel[cross-compilation].
+
+=== Natively build a kernel
+
+This guide assumes that your Raspberry Pi runs the latest version of xref:os.adoc[Raspberry Pi OS].
+
+First, install the build dependencies:
+
+[source,console]
+----
+$ sudo apt install bc bison flex libssl-dev make
+----
+
+[[native-build-configuration]]
+==== Build configuration
+
+This section describes how to apply the default configuration when you build a kernel. You can also configure your kernel in the following ways:
+
+* xref:linux_kernel.adoc#configure-the-kernel[enable and disable kernel features]
+* xref:linux_kernel.adoc#patch-the-kernel[apply patches from another source]
+
+To prepare the default configuration, run the appropriate commands from the sections below depending on your architecture and Raspberry Pi model.
+
+===== 64-bit architecture
+
+[tabs]
+======
+Raspberry Pi 3, 3+, CM3, CM3+, Zero 2 W, 4, 400, CM4, CM4S, 5, 500, 500+, and CM5::
++
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel8
+$ make bcm2711_defconfig
+----
+
+Raspberry Pi 5, 500, 500+, and CM5 (optimised)::
++
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel_2712
+$ make bcm2712_defconfig
+----
+======
+
+[NOTE]
+====
+`bcm2712_defconfig` builds `kernel_2712.img`, which is optimised for BCM2712 devices (Raspberry Pi 5, 500, 500+, CM5) and uses a 16K page size. `bcm2711_defconfig` builds `kernel8.img`, which also runs on these devices but with a 4K page size. On BCM2712 devices the firmware loads `kernel_2712.img` if present, otherwise it falls back to `kernel8.img`.
+====
+
+===== 32-bit architecture
+
+[tabs]
+======
+Raspberry Pi 1, CM1, Zero, Zero W::
++
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel
+$ make bcmrpi_defconfig
+----
+
+Raspberry Pi 2, 3, 3+, CM3, CM3+, Zero 2 W::
++
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel7
+$ make bcm2709_defconfig
+----
+
+Raspberry Pi 4, 400, CM4, CM4S (kernels before 6.18)::
++
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel7l
+$ make bcm2711_defconfig
+----
+======
+
+[NOTE]
+====
+The 32-bit distribution of Raspberry Pi OS on BCM2711 devices uses a 32-bit userland, but a _64-bit kernel_. From kernel version 6.18, 32-bit kernel builds are not supported on BCM2711 devices (Raspberry Pi 4, 400, CM4, CM4S); use the 64-bit `kernel8` build instead. For earlier kernel versions, set `ARCH=arm` to build a 32-bit kernel and `arm_64bit=0` in `config.txt` to boot it.
+====
+
+[[native-customisation]]
+==== Customise the kernel version using `LOCALVERSION`
+
+To prevent the kernel from overwriting existing modules in `/lib/modules` and to clarify that you run your own kernel in `uname` output, adjust `LOCALVERSION`.
+
+To adjust `LOCALVERSION`, change the following line in `.config`:
+
+[source,ini]
+----
+CONFIG_LOCALVERSION="-v8-MY_CUSTOM_KERNEL"
+----
+
+Each default configuration sets its own `LOCALVERSION` suffix, for example, `-v8` for `bcm2711_defconfig` (64-bit), `-v8-16k` for `bcm2712_defconfig`, and `-v7` for `bcm2709_defconfig`. Keep that suffix and append your own text, as in the example above.
+
+TIP: You can also change this setting graphically with `menuconfig` at *General setup* > *Local version - append to kernel release*. For more information about `menuconfig`, see xref:linux_kernel.adoc#configure-the-kernel[the kernel configuration instructions].
+
+[[native-build]]
+==== Build
+
+Next, build the kernel. This step can take a long time, depending on your Raspberry Pi model.
+
+* Run the following commands to build a 64-bit kernel:
++
+[source,console]
+----
+$ make -j6 Image.gz modules dtbs
+----
+
+* Run the following command to build a 32-bit kernel:
++
+[source,console]
+----
+$ make -j6 zImage modules dtbs
+----
+
+TIP: On multi-core Raspberry Pi models, the `make -j<n>` option distributes work between cores. This can speed up compilation significantly. Run `nproc` to see how many processors you have; we recommend passing a number 1.5x your number of processors.
+
+[[native-install]]
+==== Install the kernel
+
+Next, install the kernel modules onto the boot media:
+
+[source,console]
+----
+$ sudo make -j6 modules_install
+----
+
+Then, install the kernel and Device Tree blobs into the boot partition, backing up your original kernel.
+
+[IMPORTANT]
+====
+
+On BCM2712 devices (Raspberry Pi 5, 500, 500+, and CM5), the firmware loads `kernel_2712.img` (if present) in preference to `kernel8.img`.
+
+Raspberry Pi OS includes `kernel_2712.img` by default. If you build `KERNEL=kernel8` for one of these devices, you must add the following line to `config.txt`:
+
+[source,ini]
+----
+kernel=kernel8.img
+----
+====
+
+TIP: If you don't want to install the freshly-compiled kernel onto the Raspberry Pi where you run this command, copy the compiled kernel to the boot partition of a separate boot media instead of `/boot/firmware/`.
+
+To install the 64-bit kernel:
+
+* Run the following commands to create a backup image of the current kernel, and install the fresh kernel image, Device Tree blobs, overlays, and README:
++
+[source,console]
+----
+$ sudo cp /boot/firmware/$KERNEL.img /boot/firmware/$KERNEL-backup.img
+$ sudo cp arch/arm64/boot/Image.gz /boot/firmware/$KERNEL.img
+$ sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/firmware/
+$ sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/firmware/overlays/
+$ sudo cp arch/arm64/boot/dts/overlays/README /boot/firmware/overlays/
+----
+
+To install the 32-bit kernel:
+
+. Create a backup of your current kernel and install the fresh kernel image:
++
+[source,console]
+----
+$ sudo cp /boot/firmware/$KERNEL.img /boot/firmware/$KERNEL-backup.img
+$ sudo cp arch/arm/boot/zImage /boot/firmware/$KERNEL.img
+----
+. Depending on your xref:linux_kernel.adoc#identify-your-kernel-version[kernel version], run the following command:
+  ** For kernels up to version 6.4:
++
+[source,console]
+----
+$ sudo cp arch/arm/boot/dts/*.dtb /boot/firmware/
+----
+** For kernels version 6.5 and above:
++
+[source,console]
+----
+$ sudo cp arch/arm/boot/dts/broadcom/*.dtb /boot/firmware/
+----
+. Finally, copy over the overlays and README:
++
+[source,console]
+----
+$ sudo cp arch/arm/boot/dts/overlays/*.dtb* /boot/firmware/overlays/
+$ sudo cp arch/arm/boot/dts/overlays/README /boot/firmware/overlays/
+----
+
+Finally, run the following command to reboot your Raspberry Pi and run your freshly-compiled kernel:
+
+[source,console]
+----
+$ sudo reboot
+----
+
+After your Raspberry Pi restarts, xref:linux_kernel.adoc#check-your-kernel[check that your custom kernel is running].
+
+[TIP]
+====
+Alternatively, copy the kernel with a different filename (for example, `kernel-myconfig.img`) instead of overwriting the `$KERNEL.img` file. Then, edit `config.txt` in the boot partition to select your kernel:
+
+[source,ini]
+----
+kernel=kernel-myconfig.img
+----
+
+Combine this approach with a custom `LOCALVERSION` to keep your custom kernel separate from the stock kernel image managed by the system. With this arrangement, you can quickly revert to a stock kernel in the event that your kernel cannot boot.
+
+Raspberry Pi OS Bookworm and later include an `initramfs` by default, enabled by using `auto_initramfs` in `config.txt`.
+
+When `auto_initramfs` is set to `1`, the firmware expects the `initramfs` filename to match the kernel filename by replacing the `kernel` prefix with `initramfs` (and omitting any file extension). For example, `kernel-myconfig.img` looks for `initramfs-myconfig`.
+
+If you don't provide a matching filename, you must specify the ramdisk using an explicit `initramfs` directive without an `=` sign, for example:
+
+[source,ini]
+----
+initramfs <filename> followkernel
+----
+====
+
+[NOTE]
+====
+Building and updating `initramfs` is considered an advanced technique that's undertaken only by experienced users. It isn't officially supported by Raspberry Pi and we therefore don't provide instructions for it.
+
+If you overwrite `$KERNEL.img` with your own kernel, the existing `initramfs` on the boot partition still contains modules built for the previous kernel version. These are likely to be incompatible with the kernel, in which case they aren't loaded. The use of custom-built kernels where an `initramfs` is required falls outside the scope of this guide.
+====
+
+=== Cross-compile the kernel
+
+First, you will need a suitable Linux cross-compilation host. We tend to use Ubuntu; since Raspberry Pi OS is also a Debian distribution, compilation commands are similar.
+
+[[cross-compiled-dependencies]]
+==== Install required dependencies and toolchain
+
+To build the sources for cross-compilation, install the required dependencies onto your device. Run the following command to install most dependencies:
+
+[source,console]
+----
+$ sudo apt install bc bison flex libssl-dev make libc6-dev libncurses5-dev
+----
+
+Then, install the proper toolchain for the kernel architecture you wish to build:
+
+* To install the 64-bit toolchain to build a 64-bit kernel, run the following command:
++
+[source,console]
+----
+$ sudo apt install crossbuild-essential-arm64
+----
+
+* To install the 32-bit toolchain to build a 32-bit kernel, run the following command:
++
+[source,console]
+----
+$ sudo apt install crossbuild-essential-armhf
+----
+
+[[cross-compiled-build-configuration]]
+==== Build configuration
+
+This section describes how to apply the default configuration when you build a kernel. You can also configure your kernel in the following ways:
+
+* xref:linux_kernel.adoc#configure-the-kernel[enable and disable kernel features]
+* xref:linux_kernel.adoc#patch-the-kernel[apply patches from another source]
+
+To build the sources and Device Tree files, run the appropriate commands from the sections below depending on your architecture and Raspberry Pi model.
+
+===== 64-bit architecture
+
+[tabs]
+======
+Raspberry Pi 3, 3+, CM3, CM3+, Zero 2 W, 4, 400, CM4, CM4S, 5, 500, 500+, and CM5::
++
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel8
+$ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2711_defconfig
+----
+
+Raspberry Pi 5, 500, 500+, and CM5 (optimised)::
++
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel_2712
+$ make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bcm2712_defconfig
+----
+======
+
+[NOTE]
+====
+`bcm2712_defconfig` builds `kernel_2712.img`, which is optimised for BCM2712 devices (Raspberry Pi 5, 500, 500+, CM5) and uses a 16K page size. `kernel8.img`, built with `bcm2711_defconfig`, also runs on these devices with a 4K page size. The firmware loads `kernel_2712.img` if present, otherwise it falls back to `kernel8.img`.
+====
+
+===== 32-bit architecture
+
+[tabs]
+======
+Raspberry Pi 1, CM1, Zero, Zero W::
++
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
+----
+
+Raspberry Pi 2, 3, 3+, CM3, CM3+, Zero 2 W::
++
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel7
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
+----
+
+Raspberry Pi 4, 400, CM4, and CM4S (kernels before 6.18)::
++
+[source,console]
+----
+$ cd linux
+$ KERNEL=kernel7l
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2711_defconfig
+----
+======
+
+[NOTE]
+====
+From kernel version 6.18, 32-bit kernel builds are not supported on BCM2711 devices (Raspberry Pi 4, 400, CM4, and CM4S); use the 64-bit `kernel8` build instead.
+====
+
+[[cross-compiled-customisation]]
+==== Customise the kernel version using `LOCALVERSION`
+
+To prevent the kernel from overwriting existing modules in `/lib/modules` and to clarify that you run your own kernel in `uname` output, adjust `LOCALVERSION`.
+
+To adjust `LOCALVERSION`, change the following line in `.config`:
+
+[source,ini]
+----
+CONFIG_LOCALVERSION="-v8-MY_CUSTOM_KERNEL"
+----
+
+Each default configuration sets its own `LOCALVERSION` suffix, for example, `-v8` for `bcm2711_defconfig` (64-bit), `-v8-16k` for `bcm2712_defconfig`, and `-v7` for `bcm2709_defconfig`. Keep that suffix and append your own text, as in the example above.
+
+TIP: You can also change this setting graphically with `menuconfig` at *General setup* > *Local version - append to kernel release*. For more information about `menuconfig`, see xref:linux_kernel.adoc#configure-the-kernel[the kernel configuration instructions].
+
+[[cross-compiled-build]]
+==== Build
+
+* Run the following command to build a 64-bit kernel:
++
+[source,console]
+----
+$ make -j6 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- Image modules dtbs
+----
+
+* Run the following command to build a 32-bit kernel:
++
+[source,console]
+----
+$ make -j6 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
+----
+
+TIP: On multi-core devices, the `make -j<n>` option distributes work between cores. This can speed up compilation significantly. Run `nproc` to see how many processors you have; we recommend passing a number 1.5x your number of processors.
+
+[[cross-compiled-install]]
+==== Install the kernel
+
+Having built the kernel, you need to copy it onto your Raspberry Pi boot media (likely an SD card or SSD) and install the modules.
+
+===== Find your boot media
+
+First, run `lsblk`. Then, connect your boot media. Run `lsblk` again; the new device represents your boot media. You should see output similar to the following:
+
+----
+sdb
+   sdb1
+   sdb2
+----
+
+If `sdb` represents your boot media, `sdb1` represents the the `FAT32`-formatted **boot partition** and `sdb2` represents the (likely `ext4`-formatted) **root partition**.
+
+First, mount these partitions as `mnt/boot` and `mnt/root`, adjusting the partition letter to match the location of your boot media:
+
+[source,console]
+----
+$ mkdir mnt
+$ mkdir mnt/boot
+$ mkdir mnt/root
+$ sudo mount /dev/sdb1 mnt/boot
+$ sudo mount /dev/sdb2 mnt/root
+----
+
+===== Install
+
+Next, install the kernel modules onto the boot media:
+
+* For 64-bit kernels:
++
+[source,console]
+----
+$ sudo env "PATH=$PATH" make -j6 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- INSTALL_MOD_PATH=mnt/root modules_install
+----
+
+* For 32-bit kernels:
++
+[source,console]
+----
+$ sudo env "PATH=$PATH" make -j6 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/root modules_install
+----
+
+Next, install the kernel and Device Tree blobs into the boot partition, backing up your original kernel.
+
+[IMPORTANT]
+====
+On BCM2712 devices (Raspberry Pi 5, 500, 500+, and CM5), the firmware loads `kernel_2712.img` if it's present, and only falls back to `kernel8.img` if it isn't. Raspberry Pi OS installs `kernel_2712.img` by default. If you built `KERNEL=kernel8` for one of these devices, your new kernel doesn't run unless you also add the following line to `config.txt`:
+
+[source,ini]
+----
+kernel=kernel8.img
+----
+====
+
+To install the 64-bit kernel:
+
+* Run the following commands to create a backup image of the current kernel, install the fresh kernel image, overlays, README, and unmount the partitions:
++
+[source,console]
+----
+$ sudo cp mnt/boot/$KERNEL.img mnt/boot/$KERNEL-backup.img
+$ sudo cp arch/arm64/boot/Image mnt/boot/$KERNEL.img
+$ sudo cp arch/arm64/boot/dts/broadcom/*.dtb mnt/boot/
+$ sudo cp arch/arm64/boot/dts/overlays/*.dtb* mnt/boot/overlays/
+$ sudo cp arch/arm64/boot/dts/overlays/README mnt/boot/overlays/
+$ sudo umount mnt/boot
+$ sudo umount mnt/root
+----
+
+To install the 32-bit kernel:
+
+. Run the following commands to create a backup image of the current kernel and install the fresh kernel image:
++
+[source,console]
+----
+$ sudo cp mnt/boot/$KERNEL.img mnt/boot/$KERNEL-backup.img
+$ sudo cp arch/arm/boot/zImage mnt/boot/$KERNEL.img
+----
+
+. Depending on your xref:linux_kernel.adoc#identify-your-kernel-version[kernel version], run the following command to install Device Tree blobs:
+  ** For kernels up to version 6.4:
++
+[source,console]
+----
+$ sudo cp arch/arm/boot/dts/*.dtb mnt/boot/
+----
+** For kernels version 6.5 and above:
++
+[source,console]
+----
+$ sudo cp arch/arm/boot/dts/broadcom/*.dtb mnt/boot/
+----
+. Finally, install the overlays and README, and unmount the partitions:
++
+[source,console]
+----
+$ sudo cp arch/arm/boot/dts/overlays/*.dtb* mnt/boot/overlays/
+$ sudo cp arch/arm/boot/dts/overlays/README mnt/boot/overlays/
+$ sudo umount mnt/boot
+$ sudo umount mnt/root
+----
+
+Finally, connect the boot media to your Raspberry Pi and connect it to power to run your freshly compiled kernel. Then, xref:linux_kernel.adoc#check-your-kernel[check that your custom kernel is running].
+
+[TIP]
+====
+Alternatively, copy the kernel with a different filename (for example, `kernel-myconfig.img`) instead of overwriting the `$KERNEL.img` file. Then, edit `config.txt` in the boot partition to select your kernel:
+
+[source,ini]
+----
+kernel=kernel-myconfig.img
+----
+
+Combine this approach with a custom `LOCALVERSION` to keep your custom kernel separate from the stock kernel image managed by the system. With this arrangement, you can quickly revert to a stock kernel in the event that your kernel cannot boot.
+
+Raspberry Pi OS Bookworm and later include an `initramfs` by default, enabled by using `auto_initramfs` in `config.txt`.
+
+When `auto_initramfs` is set to `1`, the firmware expects the `initramfs` filename to match the kernel filename by replacing the `kernel` prefix with `initramfs` (and omitting any file extension). For example, `kernel-myconfig.img` looks for `initramfs-myconfig`.
+
+If you don't provide a matching filename, you must specify the ramdisk using an explicit `initramfs` directive without an `=` sign, for example:
+
+[source,ini]
+----
+initramfs <filename> followkernel
+----
+====
+
+[[check-your-kernel]]
+=== Check that your custom kernel is running
+
+After you boot your Raspberry Pi with the new kernel, run the following command:
+
+[source,console]
+----
+$ uname -r
+----
+
+The output ends with the `LOCALVERSION` that you set, for example, `6.18.54-v8-MY_CUSTOM_KERNEL`.
+
+If the output shows the stock kernel version instead, check the following:
+
+* On Raspberry Pi 5, 500, 500+, and CM5, the firmware boots `kernel_2712.img` in preference to `kernel8.img`. If you built `KERNEL=kernel8`, add `kernel=kernel8.img` to `config.txt`.
+* A `kernel=` or `os_prefix=` line in `config.txt` can select a different kernel file from the one you installed. Check `config.txt` for these lines, including inside conditional filter sections such as `[pi5]`.
+* Make sure you copied the kernel image to the boot partition (`/boot/firmware/` on a running system), not to the root partition.
+* When cross-compiling, make sure you unmounted the boot media before removing it, so that all files were written.

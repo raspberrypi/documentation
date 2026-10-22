@@ -1,0 +1,34 @@
+- if role? 'whitepaper'
+	.sidebarblock id=id class=role
+		.content
+			- if title?
+				.title 
+					h5 
+						a href=(attr 'link') target='_blank' =title
+			div.inner
+				div.coverimage data-link=(attr 'link')
+					- if title?
+						p.title =title
+					- if attr? 'subtitle'
+						p.subtitle =attr 'subtitle'
+				div
+					=content
+- elsif role? 'tutorial'
+	- update_attributes(fetch_tutorial_data)
+	.sidebarblock id=id class=role
+		.content
+			- if title?
+				.title 
+					h5 
+						a href=(attr 'link') target='_blank' =title
+			div.inner
+				=tutorial_image_sidebar
+				div
+					=content
+					=tutorial_description_sidebar
+- else
+	.sidebarblock id=id class=role
+		.content
+			- if title?
+				.title =title
+			=content

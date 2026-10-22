@@ -1,0 +1,160 @@
+[[samba]]
+== Samba (SMB/CIFS)
+
+Samba is a free software reimplementation of the https://en.wikipedia.org/wiki/Server_Message_Block[Server Message Block] (SMB) networking protocol. With Samba, you can share folders between Windows, macOS, and Linux machines.
+
+=== Install Samba on your Raspberry Pi
+
+By default, Raspberry Pi OS does not include Samba. To install Samba on your Raspberry Pi, run the following command, which installs all the dependencies you need to run a Samba server or client:
+
+[source,console]
+----
+$ sudo apt update
+$ sudo apt install samba samba-common-bin smbclient cifs-utils
+----
+
+=== Mount a folder shared from Windows
+
+First, you need to share a folder on your Windows device.
+
+==== Turn on sharing
+
+. Right click the system tray and select *Networking and Sharing Centre* from the menu.
+. Select *Change advanced sharing settings*.
+. Select *Turn on network discovery*.
+. Select *Turn on file and printer sharing*.
+. Click the *Save* button to save your changes.
+
+==== Share the folder
+
+Follow these steps to share a folder from Windows:
+
+. Right click the folder you want to share and select *Properties*.
+. Select the *Sharing* tab.
+. Click the *Advanced Sharing* button.
+. Select *Share this folder*; by default, Windows uses the folder name as the share name.
+. Click the *Permissions* button.
+. Configure the *Everyone* and *Full Control* permissions.
+. Click the *OK* button to leave the *Permissions* page.
+. Click the *OK* button again to leave the *Advanced Sharing* page.
+. Select the *Security* tab.
+. Configure the *Everyone* and *Full Control* permissions.
+. Click the *OK* button.
+
+The folder should now be shared. You can modify shared folder permissions by changing permissions on both the *Permissions* and *Security* pages.
+
+==== Windows 10 Sharing Wizard
+
+On Windows 10 there is a Sharing Wizard that helps with some of these steps.
+
+. Run the *Computer Management* application from the Start Bar.
+. Select *Shared Folders* > *Shares*.
+. Right click and select *New Share* to begin the Sharing Wizard.
+. Click the *Next* button.
+. Select the folder you wish to share, then click the *Next* button.
+. Click *Next* to use the sharing defaults or select *Custom* and set the required permissions.
+. Click the *OK* button.
+. Click the *Finish* button to share the folder.
+
+==== Mount the folder on the Raspberry Pi
+
+*Mounting* in Linux is the process of attaching a folder to a location, so firstly we need that location.
+
+[source,console]
+----
+$ mkdir windowshare
+----
+
+Now, we need to mount the remote folder to that location. The remote folder is the host name or IP address of the Windows PC, and the share name used when sharing it. We also need to provide the Windows username that will be used to access the remote machine. Don't forget to replace the `<username>` placeholder with your Raspberry Pi OS username.
+
+[source,console]
+----
+$ sudo mount.cifs //<hostname or IP address>/<shared windows folder> /home/<username>/windowshare -o user=<name>
+----
+
+You should now be able to view the content of the Windows share on your Raspberry Pi.
+
+[source,console]
+----
+$ ls windowshare/
+----
+
+==== "Host is down" error
+
+This error occurs when SMB protocol versions don't match and the Linux Samba client returns a misleading error message. By default, Raspberry Pi OS uses versions 2.1 and later, compatible with Windows 7 and later. Older devices, including some NAS devices, might require version 1.0. To fix this error, append a version entry (for example, `,vers=1.0`) to your mount command:
+
+[source,console]
+----
+$ sudo mount.cifs //IP/share /mnt/point -o user=<uname>,vers=1.0
+----
+
+You might need to try different versions to match up with the server version. Possible values are:
+
+|===
+| Version | Description
+
+| 1.0
+| Classic CIFS/SMBv1 protocol
+
+| 2.0
+| The SMBv2.002 protocol. Windows Vista Service Pack 1, and Windows Server 2008
+
+| 2.1
+| The SMBv2.1 protocol. Microsoft Windows 7 and Windows Server 2008R2
+
+| 3.0
+| The SMBv3.0 protocol.  Microsoft Windows 8 and Windows Server 2012
+
+| 3.02
+| The SMBv3.0.2 protocol. Microsoft Windows 8.1 and Windows Server 2012R2
+
+| 3.11
+| The SMBv3.1.1 protocol. Microsoft Windows 10 and Windows Server 2016
+
+| 3
+| The SMBv3.0 protocol version and above
+|===
+
+=== Sharing a Folder from your Raspberry Pi
+
+Firstly, create a folder to share. This example creates a folder called `shared` in the `home` folder of the current user:
+
+[source,console]
+----
+$ cd ~
+$ mkdir shared
+$ chmod 0740 shared
+----
+
+Now we need to tell Samba about your default user account when accessing that folder. When prompted, enter your password, replacing the `<username>` placeholder with the username of your primary user account:
+
+[source,console]
+----
+$ sudo smbpasswd -a <username>
+----
+
+Now we need to tell Samba to share this folder, using the Samba configuration file.
+
+[,bash]
+----
+sudo nano /etc/samba/smb.conf
+----
+
+At the end of the file, add the following to share the folder, giving the remote user read/write permissions. Replace the `<username>` placeholder with the username of the primary user account on your Raspberry Pi:
+
+----
+[share]
+    path = /home/<username>/shared
+    read only = no
+    public = yes
+    writable = yes
+----
+
+In the same file, find the `workgroup` line, and if necessary, change it to the name of the workgroup of your local Windows network.
+
+[,bash]
+----
+workgroup = <your workgroup name here>
+----
+
+The shared folder should now appear to Windows or macOS devices on the network. Enter your Raspberry Pi username and password to mount the folder.

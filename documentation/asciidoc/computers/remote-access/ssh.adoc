@@ -1,0 +1,252 @@
+[[ssh]]
+== Access a remote terminal with SSH
+
+You can access the terminal of a Raspberry Pi remotely from another computer on the same network using the **S**ecure **SH**ell (SSH) protocol.
+
+=== Enable the SSH server
+
+By default, Raspberry Pi OS disables the SSH server. Enable SSH in one of the following ways:
+
+[tabs]
+======
+On the desktop::
++
+. From the *Preferences* menu, launch *Control Centre*.
+. Navigate to the *Interfaces* tab.
+. Select *Enabled* next to *SSH*.
+. Click *OK*.
+
+While flashing a fresh OS image::
++
+To configure SSH on a completely new installation of Raspberry Pi OS:
++
+. Follow the instructions in the xref:../computers/getting-started.adoc#imager-install[Install with Imager] guide.
+. In the **Customisation > Remote Access** tab, toggle the **Enable SSH** switch to the active position.
+. Select **Use password authentication** to log in using the same username and password you use while physically using your Raspberry Pi. Select **Use public key authentication** to xref:remote-access.adoc#configure-ssh-without-a-password[configure an SSH key] for login with SSH key-based authentication.
+
+From the terminal::
++
+. Enter `sudo raspi-config` in a terminal window.
+. Select `Interfacing Options`.
+. Navigate to and select `SSH`.
+. Choose `Yes`.
+. Select `Ok`.
+. Choose `Finish`.
+
+Manually::
++
+. Create an empty file named `ssh` in the boot partition:
++
+[source,console]
+----
+$ sudo touch /boot/firmware/ssh
+----
+. Reboot the machine:
++
+[source,console]
+----
+$ sudo reboot
+----
+======
+
+=== Connect to an SSH server
+
+Open a terminal window on your computer and enter the following command, replacing the `<ip address>` placeholder with the xref:remote-access.adoc#ip-address[IP address of the Raspberry Pi you're trying to connect to] and `<username>` with your username:
+
+[source,console]
+----
+$ ssh <username>@<ip address>
+----
+
+When the connection works, you will see a security warning. Type `yes` to continue. You will only see this warning the first time you connect.
+
+Enter your account password when prompted.
+
+You now see the Raspberry Pi command prompt:
+
+[source,console?prompt=<username>@<hostname> ~ $]
+----
+<username>@<hostname> ~ $
+----
+
+You are now connected to the Raspberry Pi remotely, and can execute commands.
+
+NOTE: If you receive a `connection timed out` error, you might have entered the wrong IP address for the Raspberry Pi. Check the xref:remote-access.adoc#ip-address[IP address of the Raspberry Pi].
+
+==== Forward X11 over SSH
+
+NOTE: On macOS and Windows, you must install a third-party X server to use X11 forwarding.
+
+X11 enables graphical applications over SSH. Pass the `-Y` flag to forward an X session over SSH:
+
+[source,console]
+----
+$ ssh -Y <username>@<ip address>
+----
+
+When authenticated, you see the command line as usual. However, you can also open graphical windows that an X server can render for you. For example, type the following command to launch a https://www.geany.org/[Geany] window:
+
+[source,console]
+----
+$ geany &
+----
+
+=== Configure SSH without a password
+
+To remotely access your Raspberry Pi without providing a password each time you connect, use an SSH keypair.
+
+==== Preconfigure an OS image with Raspberry Pi Imager
+
+When configuring an operating system image with Raspberry Pi Imager, you can preconfigure SSH keys to use an existing key on the computer where you run Imager.
+
+. Follow the xref:getting-started.adoc#imager-install[install using Imager] guide to configure your boot image.
+. On the **Remote Access** tab, toggle the *Enable SSH* switch to the active position.
+. Select *Use public key authentication*.
+* If you already have an SSH public key stored in `~/.ssh/id_rsa.pub`, Imager automatically uses that public key to prefill the text box.
+* Otherwise, browse to the location of your public key.
+. Select **Next** to proceed with the imaging process.
+
+==== Manually configure an SSH key
+
+If you already have an installation of Raspberry Pi OS, you can update your existing configuration to use SSH key authentication.
+
+==== Check for existing SSH public keys
+
+To check for an existing SSH public key on the computer you use to remotely connect to the Raspberry Pi, run the following command:
+
+[source,console]
+----
+$ ls ~/.ssh
+----
+
+If you see files named `id_ed25519.pub`, `id_rsa.pub`, or `id_dsa.pub`, you already have an SSH key. Skip SSH keypair generation and proceed to xref:remote-access.adoc#add-ssh-key-identity[add the SSH key to your list of SSH identities].
+
+==== Generate new SSH keypair
+
+TIP: This guide provides instructions to generate a new RSA key. For additional security, you can instead generate a https://ed25519.cr.yp.to/[Ed25519] key. Pass `-t ed25519` to `ssh-keygen` and replace `rsa` with `ed25519` when referencing your public and private key file names to use an Ed25519 key.
+
+To generate a new SSH keypair, enter the following command:
+
+[source,console]
+----
+$ ssh-keygen
+----
+
+When asked where to save the key, press *Enter* to use the default location, `~/.ssh/id_rsa`.
+
+When asked for an optional keyphrase, press *Enter* to use no keyphrase.
+
+Run the following command to check the contents of the `.ssh` directory:
+
+[source,console]
+----
+$ ls ~/.ssh
+----
+
+You expect to see the files `id_rsa` and `id_rsa.pub`:
+
+----
+authorized_keys  id_rsa  id_rsa.pub  known_hosts
+----
+
+The `id_rsa` file contains your private key. Keep this secure on the computer you use to remotely connect to the Raspberry Pi.
+
+The `id_rsa.pub` file contains your public key. You will share this key with your Raspberry Pi. When you connect with the Raspberry Pi remotely, it will use this key to verify your identity.
+
+[[add-ssh-key-identity]]
+==== Add the SSH key to your list of SSH identities
+
+Start the SSH agent:
+
+[source,console]
+----
+$ eval "$(ssh-agent -s)"
+----
+
+Next, add your key identities to `ssh-agent` with the following command:
+
+[source,console]
+----
+$ ssh-add ~/.ssh/id_rsa
+----
+
+[[copy-your-public-key-to-your-raspberry-pi]]
+==== Copy a public key to your Raspberry Pi
+
+On the computer you use to remotely connect to the Raspberry Pi, use the following command to securely copy your public key to the Raspberry Pi:
+
+[source,console]
+----
+$ ssh-copy-id <username>@<ip address>
+----
+
+When prompted, enter the password for your user account on the Raspberry Pi.
+You can now connect to your Raspberry Pi without entering a password.
+
+==== Manually copy a public key to your Raspberry Pi
+
+If your operating system does not support `ssh-copy-id`, you can instead copy your public key with xref:remote-access.adoc#scp[`scp`].
+
+First, _on your Raspberry Pi_, create the directory where Linux expects to find keys:
+
+[source,console]
+----
+$ mkdir .ssh
+----
+
+Then, configure the proper permissions for the `.ssh` directory:
+
+[source,console]
+----
+$ chmod 700 .ssh
+----
+
+_On your usual computer_, use `scp` to copy your public key to a file named `.ssh/authorized_keys` on your Raspberry Pi:
+
+[source,console]
+----
+$ scp .ssh/id_rsa.pub <username>@<ip address>:.ssh/authorized_keys
+----
+
+TIP: The command above assumes you have never before authorised any keys to access your Raspberry Pi. If you have previously added at least one key, instead add a new line containing the public key to the end of the `authorized_keys` file to preserve your existing keys.
+
+When prompted, enter the password for your user account on the Raspberry Pi.
+
+Then, _on your Raspberry Pi_, configure permissions for the `authorized_keys` file:
+
+[source,console]
+----
+$ chmod 644 .ssh/authorized_keys
+----
+
+You can now connect to your Raspberry Pi without entering a password.
+
+=== Restrict which users can connect
+
+If you want to limit SSH access to specific user accounts, edit the SSH server configuration:
+
+[source,console]
+----
+$ sudo nano /etc/ssh/sshd_config
+----
+
+Locate the `AllowUsers` directive and add the usernames you want to permit. If the line doesn't exist, add it to the bottom of the file:
+
+[source,bash]
+----
+AllowUsers alice bob
+----
+
+You can also use `DenyUsers` to explicitly stop specific usernames from signing in:
+
+[source,bash]
+----
+DenyUsers jane john
+----
+
+Save the file and restart the SSH service to apply your changes:
+
+[source,console]
+----
+$ sudo systemctl restart ssh
+----

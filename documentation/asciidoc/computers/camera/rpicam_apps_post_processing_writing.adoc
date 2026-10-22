@@ -1,0 +1,51 @@
+=== Write your own post-processing stages
+
+With the `rpicam-apps` post-processing framework, users can create their own custom post-processing stages. You can even include algorithms and routines from OpenCV and TensorFlow Lite.
+
+==== Basic post-processing stages
+
+To create your own post-processing stage, derive a new class from the `PostProcessingStage` class.
+All post-processing stages must implement the following member functions:
+
+`char const *Name() const`:: Returns the name of the stage. Matched against stages listed in the JSON post-processing configuration file.
+`void Read(boost::property_tree::ptree const &params)`:: Reads the stage's configuration parameters from a provided JSON file.
+`void AdjustConfig(std::string const &use_case, StreamConfiguration *config)`:: Gives stages a chance to influence the configuration of the camera. Frequently empty for stages with no need to configure the camera.
+`void Configure()`:: Called just after the camera has been configured to allocate resources and check that the stage has access to necessary streams.
+`void Start()`:: Called when the camera starts. Frequently empty for stages with no need to configure the camera.
+`bool Process(CompletedRequest &completed_request)`:: Presents completed camera requests for post-processing. This is where you'll implement pixel manipulations and image analysis. Returns `true` if the post-processing framework should **not** deliver this request to the application.
+`void Stop()`:: Called when the camera stops. Used to shut down any active processing on asynchronous threads.
+`void Teardown()`:: Called when the camera configuration is destroyed. Use this as a deconstructor where you can de-allocate resources set up in the `Configure` method.
+
+In any stage implementation, call `RegisterStage` to register your stage with the system.
+
+Don't forget to add your stage to `meson.build` in the post-processing folder.
+When writing your own stages, keep these tips in mind:
+
+* The `Process` method blocks the imaging pipeline. If it takes too long, the pipeline will stutter. **Always delegate time-consuming algorithms to an asynchronous thread.**
+
+* When delegating work to another thread, you must copy the image buffers. For applications like image analysis that don't require full resolution, try using a low-resolution image stream.
+
+* The post-processing framework _uses parallelism to process every frame_. This improves throughput. However, some OpenCV and TensorFlow Lite functions introduce another layer of parallelism _within_ each frame. Consider serialising calls within each frame since post-processing already takes advantage of multiple threads.
+
+* Most streams, including the low resolution stream, use the YUV420 format. You may need to convert this to another format for certain OpenCV or TFLite functions.
+
+* For the best performance, always alter images in-place.
+
+For a basic example, see https://github.com/raspberrypi/rpicam-apps/blob/main/post_processing_stages/negate_stage.cpp[`negate_stage.cpp`]. This stage negates an image by turning light pixels dark and dark pixels light. This stage is mostly derived class boiler-plate, achieving the negation logic in barely half a dozen lines of code.
+
+For another example, see https://github.com/raspberrypi/rpicam-apps/blob/main/post_processing_stages/sobel_cv_stage.cpp[`sobel_cv_stage.cpp`], which implements a Sobel filter in just a few lines of OpenCV functions.
+
+==== TensorFlow Lite stages
+
+For stages that use TensorFlow Lite (TFLite), derive a new class from the `TfStage` class.
+This class delegates model execution to a separate thread to prevent camera stuttering.
+
+The `TfStage` class implements all the `PostProcessingStage` member functions post-processing stages must normally implement, _except for_ ``Name``.
+All `TfStage`-derived stages must implement the ``Name`` function, and should implement some or all of the following virtual member functions:
+
+`void readExtras()`:: The base class reads the named model and certain other parameters like the `refresh_rate`. Use this function to read extra parameters for the derived stage and check that the loaded model is correct (for example, has right input and output dimensions).
+`void checkConfiguration()`:: The base class fetches the low resolution stream that TFLite operates on and the full resolution stream in case the derived stage needs it. Use this function to check for the streams required by your stage. If your stage can't access one of the required streams, you might skip processing or throw an error.
+`void interpretOutputs()`:: Use this function to read and interpret the model output. _Runs in the same thread as the model when the model completes_.
+`void applyResults()`::  Use this function to apply results of the model (could be several frames old) to the current frame. Typically involves attaching metadata or drawing. _Runs in the main thread, before frames are delivered_.
+
+For an example implementation, see the https://github.com/raspberrypi/rpicam-apps/blob/main/post_processing_stages/object_classify_tf_stage.cpp[`object_classify_tf_stage.cpp`] and https://github.com/raspberrypi/rpicam-apps/blob/main/post_processing_stages/pose_estimation_tf_stage.cpp[`pose_estimation_tf_stage.cpp`].

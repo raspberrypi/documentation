@@ -1,0 +1,32 @@
+[
+	{
+		"input": {
+			"description": "Table cell",
+			"element": "td",
+			"attributes": [
+				{
+					"name": "class",
+					"value": ["markdownTableBodyNone"]
+				}
+			],
+			"parents": [],
+			"children": [],
+			"child_mappings": []
+		},
+		"output": {
+			"tree": [
+				{
+					"position": 0,
+					"element": "td",
+					"attributes": [
+					    {
+							"name": "class",
+							"value": ["tableblock"]
+						}
+					],
+					"children": []
+				}
+			]
+		}
+	}	
+]

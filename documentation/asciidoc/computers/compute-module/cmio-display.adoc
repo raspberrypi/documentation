@@ -1,0 +1,4 @@
+== Attach a Touch Display LCD panel
+
+* To connect to a Raspberry Pi Touch Display, see xref:../accessories/display.adoc[Touch Display].
+* To connect to a Raspberry Pi Touch Display 2, see xref:../accessories/touch-display-2.adoc#connect-to-raspberry-pi[Touch Display 2].

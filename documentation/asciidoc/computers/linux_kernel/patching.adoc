@@ -1,0 +1,78 @@
+== Patch the kernel
+
+When building your custom kernel, you might want to apply patches or collections of patches (patchsets) to the Linux kernel.
+
+Hardware manufacturers sometimes provide patchsets as a temporary measure to support new hardware before the patches make it into the Linux kernel and the Raspberry Pi kernel. However, patchsets for other purposes exist, for instance to enable a fully pre-emptible kernel for real-time usage.
+
+=== Identify your kernel version
+
+To check the kernel version currently running on your device, run the following command:
+
+[source,console]
+----
+$ uname -r
+----
+
+Always check your version of the kernel before applying patches. In a kernel source directory, run the following command to see the kernel version:
+
+[source,console]
+----
+$ head Makefile -n 4
+----
+
+You should see output similar to the following:
+
+----
+# SPDX-License-Identifier: GPL-2.0
+VERSION = 6
+PATCHLEVEL = 18
+SUBLEVEL = 37
+----
+
+In this instance, the sources are for a 6.18.37 kernel.
+
+=== Apply patches
+
+The application of patches depends on the format used to distribute the patch.
+
+Developers distribute most patches as a single file. Use the `patch` utility to apply these patches. The following commands download, uncompress, and patch our example kernel version with real-time kernel patches:
+
+[source,console]
+----
+$ wget https://www.kernel.org/pub/linux/kernel/projects/rt/6.18/patch-6.18.37-rt6.patch.gz
+$ gunzip patch-6.18.37-rt6.patch.gz
+$ cat patch-6.18.37-rt6.patch | patch -p1
+----
+
+[NOTE]
+====
+In Linux 6.12 and later, real-time (`PREEMPT_RT`) support is part of the mainline kernel for 64-bit Arm. On current Raspberry Pi kernel branches, you can build a 64-bit real-time kernel without applying a patch:
+
+. Run `menuconfig`, as described in xref:linux_kernel.adoc#configure-the-kernel[Configure the kernel].
+. Under *General setup*, enable *Configure standard kernel features (expert users)*.
+. Under *General setup*, enable *Fully Preemptible Kernel (Real-Time)*.
+
+Real-time patchsets from `kernel.org` contain additional changes that haven't yet been merged into the mainline kernel. Use them only if you need those changes.
+====
+
+Some developers distribute patches in the *mailbox format*, a folder containing multiple patch files. Use Git to apply these patches.
+
+[NOTE]
+====
+Before using Git to apply mailbox patches, configure your local Git installation with a name and email:
+
+[source,console]
+----
+$ git config --global user.name "your name"
+$ git config --global user.email "your email"
+----
+====
+
+To apply the mailbox formatted patches with Git, run the following command:
+
+[source,console]
+----
+$ git am -3 /path/to/patches/*
+----
+
+Always follow the instructions provided by the patch distributor. For instance, some patchsets require patching against a specific commit.

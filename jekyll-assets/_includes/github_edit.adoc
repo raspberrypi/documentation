@@ -1,0 +1,2 @@
+[.edit-link]
+Edit this {{ github_edit_link }}[on GitHub]

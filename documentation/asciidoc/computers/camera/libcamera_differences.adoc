@@ -1,0 +1,42 @@
+=== Differences between `rpicam` and `raspicam`
+
+The `rpicam-apps` emulate most features of the legacy `raspicam` applications. However, you might notice the following differences:
+
+* Boost `program_options` don't allow multi-character short versions of options, so where these were present they have had to be dropped. The long form options are named the same way, and any single-character short forms are preserved.
+
+* `rpicam-still` and `rpicam-jpeg` do not show the captured image in the preview window.
+
+* `rpicam-apps` removed the following `raspicam` features:
++
+** opacity (`--opacity`)
+** image effects (`--imxfx`)
+** colour effects (`--colfx`)
+** annotation (`--annotate`, `--annotateex`)
+** dynamic range compression, or DRC (`--drc`)
+** stereo (`--stereo`, `--decimate` and `--3dswap`)
+** image stabilisation (`--vstab`)
+** demo modes (`--demo`)
++
+xref:camera_software.adoc#post-processing-with-rpicam-apps[Post-processing] replaced many of these features.
+
+* `rpicam-apps` removed xref:camera_software.adoc#rotation[`rotation`] option support for 90° and 270° rotations.
+
+* `raspicam` conflated metering and exposure; `rpicam-apps` separates these options.
+* To disable Auto White Balance (AWB) in `rpicam-apps`, set a pair of colour gains with xref:camera_software.adoc#awbgains[`awbgains`] (for example, `1.0,1.0`).
+
+* `rpicam-apps` cannot set Auto White Balance (AWB) into greyworld mode for NoIR camera modules. Instead, pass the xref:camera_software.adoc#tuning-file[`tuning-file`] option a NoIR-specific tuning file like `imx219_noir.json`.
+
+* `rpicam-apps` does not provide explicit control of digital gain. Instead, the xref:camera_software.adoc#gain[`gain`] option sets it implicitly.
+
+* `rpicam-apps` removed the `--ISO` option. Instead, calculate the gain corresponding to the ISO value required. Vendors can provide mappings of gain to ISO.
+
+* `rpicam-apps` does not support setting a flicker period.
+
+* `rpicam-still` does not support burst capture. Instead, consider using `rpicam-vid` in MJPEG mode with `--segment 1` to force each frame into a separate file.
+
+* `rpicam-apps` uses open source drivers for all image sensors, so the mechanism for enabling or disabling on-sensor Defective Pixel Correction (DPC) is different. The imx477 driver on the Raspberry Pi HQ Camera enables on-sensor DPC by default. To disable on-sensor DPC on the HQ Camera, run the following command:
++
+[source,console]
+----
+$ sudo echo 0 > /sys/module/imx477/parameters/dpc_enable
+----

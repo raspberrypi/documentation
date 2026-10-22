@@ -1,0 +1,20 @@
+[[create-a-raspberry-pi-id]]
+== Create a Raspberry Pi ID
+
+To use Raspberry Pi services, you must first create a https://id.raspberrypi.com[Raspberry Pi ID].
+
+In a browser, navigate to https://id.raspberrypi.com[id.raspberrypi.com].
+
+Enter an email and password. Click the **Sign up** button to create your account.
+
+image::images/create_account_identity.png[width="80%"]
+
+After you create an account, you receive a verification email.
+
+image::images/verify_identity.png[width="80%"]
+
+Click the **Verify email** button in the email to verify your email address and complete account creation.
+
+image::images/signed_in_identity.png[width="80%"]
+
+After creating a Raspberry Pi ID, you can log in to Raspberry Pi services using the **Sign in with Raspberry Pi ID** button.

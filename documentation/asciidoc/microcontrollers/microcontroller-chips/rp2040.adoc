@@ -1,0 +1,77 @@
+== RP2040
+
+RP2040 is the original Raspberry Pi dual-core microcontroller. It's packaged in a 7 x 7 mm QFN-56 form factor and engineered for low cost, low power consumption embedded control applications. It delivers deterministic real-time performance, flexible I/O, and moderate computational capability for tasks such as motor control, signal processing, human-machine interfaces, and embedded data acquisition. For more detailed information about RP2040, see the https://pip.raspberrypi.com/documents/RP-008371-DS[RP2040 datasheet].
+
+RP2040 powers *Raspberry Pi Pico*, *Pico W*, *Pico H*, *Pico WH*, and other third-party RP2040-based microcontroller boards. For more information, see xref:pico-series.adoc[Raspberry Pi Pico] and <<RP2040_boards>>.
+
+.RP2040 microcontroller chip
+image::images/rp2040.jpg[width="75%"]
+
+=== RP2040 naming
+
+Raspberry Pi silicon chips follow a naming convention that starts with *RP* to refer to 'Raspberry Pi', followed by a number. Specifically, the microcontroller name, *RP2040*, is derived as follows:
+
+* *RP* specifies that the chip is Raspberry Pi silicon.
+* *2* refers to the number of processor cores.
+* *0* refers to the type of core processor (Cortex-M0+).
+* *4* refers to the amount of RAM, expressed as a logarithmic factor, which corresponds to 264 kB of on-chip SRAM.
+* *0* refers to the amount of non-volatile storage, expressed as a logarithmic factor (where 0 means that there is no on-board flash memory).
+
+image::images/rp2040_explanation.svg[width=640]
+
+[[RP2040_features]]
+=== RP2040 features
+
+RP2040 is a standalone microcontroller designed for embedded systems, real-time control, and I/O management. Specifically, RP2040 provides the following:
+
+* *Symmetric dual-core processor complex.* The dual-core Arm Cortex-M0+ processor runs at up to 133 MHz and provides symmetric multiprocessing. The CPU cores provide equal low-power and efficient processing performance, and can run tasks in parallel. This is useful for real-time control, multi-tasking, and general embedded tasks.
+* *Large on-chip memory.* The 264 kB of on-chip SRAM in six independent banks provides fast internal memory for running code and storage data, and allows simultaneous access by CPUs and peripherals.
+* *Support for external flash memory.* RP2040 has no built-in flash memory, and so doesn't store programs internally. Instead, RP2040 can run code directly from external flash memory over a fast QSPI interface, using caching to keep performance high. This allows you to choose how much flash storage your product needs and to use inexpensive, widely available chips.
+* *Thermal monitoring.* 4-channel ADC with internal temperature sensor, 500 kS/s, and 12-bit conversion; used for reading sensors and voltages, including an on-board temperature sensor.
+* *Flexible hardware control with Programmable I/O (PIO).* A mini processor subsystem that you can program to implement custom peripherals in hardware, consisting of two PIO blocks, each with four state machines (eight in total).
+* *Fixed function peripherals.* Built-in hardware blocks for standard protocols that handle common tasks and don't need to be implemented in software, including:
+    ** Two UARTs for serial communication.
+    ** Two SPI controllers for data transfer.
+    ** Two I2C controllers for communication with low-speed peripherals.
+    ** 16 PWM channels.
+    ** A USB 1.1 controller and PHY, with host and device support.
+
+=== Internal temperature sensor
+
+The internal temperature sensor in RP2040 is a low-resolution, user-calibrated sensor. If you don't calibrate the sensor, it's unlikely to be accurate.
+
+Accurate temperature measurement critically depends on knowing the *ADC reference voltage (VREF)*. Because the temperature conversion formula is highly sensitive to VREF, even small errors in this value can result in significant temperature inaccuracies. RP2040 doesn't include an internal fixed voltage reference for determining VREF, and so the reference voltage must either be:
+
+* Measured externally (noting that it can vary over time).
+* Provided by an external precision voltage reference.
+
+NOTE: The RP2040 sensor voltage falls as temperature rises.
+
+For more information about the internal temperature sensor in RP2040, see https://pip.raspberrypi.com/documents/RP-008371-DS[RP2040 datasheet: a microcontroller by Raspberry Pi].
+
+=== Sleep mode power
+
+RP2040 draws a typical ~180 μA, even in deep sleep. Sleep current depends on PVT:
+
+* *Process*; varies between chips.
+* *Voltage*; current varies linearly.
+* *Temperature*; current varies nonlinearly.
+
+For minimal current draw use cases, we recommend that you completely power off the system or the RP2040 part of the system. For information about how to do this, see https://pip.raspberrypi.com/documents/RP-004339-WP[Power switching RP2040 for low standby current applications], adjusting as needed for your use case.
+
+[[RP2040_boards]]
+=== RP2040-based boards
+
+You can use the first-generation of Raspberry Pi *Pico* microcontroller boards as development boards and as reference designs for other RP2040-based boards. For discussions about third-party RP2040-based boards, see the https://forums.raspberrypi.com/viewforum.php?f=147[Raspberry Pi forums].
+
+The design files for Raspberry Pi Pico and Pico W are openly available with no limitations. Raspberry Pi grants permission to use, copy, modify, and distribute the following designs for any purpose, with or without fee:
+
+* https://pip.raspberrypi.com/documents/RP-008379-DS[Raspberry Pi Pico] (Cadence Allegro)
+* https://pip.raspberrypi.com/documents/RP-008380-DS[Raspberry Pi Pico W] (Cadence Allegro)
+
+Raspberry Pi also offers design files for the RP2040 microcontroller:
+
+* https://pip.raspberrypi.com/documents/RP-008296-DS[Minimal Viable Board] (KiCad), a reference design for RP2040.
+* https://pip.raspberrypi.com/documents/RP-008395-DS[VGA Carrier Board] (KiCad), a reference for using a Raspberry Pi Pico board for multimedia (also relevant to RP2350).
+
+IMPORTANT: Designs are provided 'as-is' and the author disclaims all warranties with regard to the design, including all implied warranties of merchantability and fitness. In no event shall the author be liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data, or profits, whether in an action of contract, negligence, or other tortious action, arising out of or in connection with the use or performance of the design.

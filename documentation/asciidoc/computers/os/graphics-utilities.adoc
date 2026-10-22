@@ -1,0 +1,191 @@
+== Utilities
+
+There are several useful command-line utilities pre-installed in Raspberry Pi OS.
+
+=== `kmsprint`
+
+The `kmsprint` tool can be used to list the display-modes supported by the monitors attached to the Raspberry Pi.
+
+Use `kmsprint` to see the state of all displays connected to the Raspberry Pi, and `kmsprint -m` to list the display modes supported by each display.
+
+On Raspberry Pi 5 and later, display interfaces (such as HDMI, DSI, DPI, and VEC) are exposed across multiple separate DRM cards (/dev/dri/cardX), rather than on a single unified card as on Raspberry Pi 4 and earlier.
+
+To query a specific interface on Raspberry Pi 5, you might need to specify the device node using the `--device` (or `-d`) option:
+
+[source,console]
+----
+$ kmsprint --device=/dev/dri/card1
+----
+
+Card numbers are assigned dynamically at boot and can change between restarts depending on the attached hardware.
+
+=== `vclog`
+
+`vclog` displays log messages from the VideoCore GPU from Linux running on the Arm. It needs to be run as root.
+
+`sudo vclog --msg` prints out the message log, whilst `sudo vclog --assert` prints out the assertion log.
+
+=== `vcgencmd`
+
+The `vcgencmd` tool is used to output information from the VideoCore GPU on the Raspberry Pi. You can find source code for the `vcgencmd` utility https://github.com/raspberrypi/utils/tree/master/vcgencmd[on GitHub].
+
+To get a list of all commands supported by `vcgencmd`, use `vcgencmd commands`. Some useful commands and their required parameters are listed below.
+
+==== `vcos`
+
+The `vcos` command has two useful sub-commands:
+
+* `version` displays the build date and version of the firmware on the VideoCore
+* `log status` displays the error log status of the various VideoCore firmware areas
+
+==== `version`
+
+Displays the build date and version of the VideoCore firmware.
+
+==== `get_throttled`
+
+Returns the throttled state of the system. This is a bit pattern. A bit being set indicates the following meanings:
+
+[cols="^,,"]
+|===
+| Bit | Hexadecimal value | Meaning
+
+| 0
+| `0x1`
+| Undervoltage detected
+
+| 1
+| `0x2`
+| Arm frequency capped
+
+| 2
+| `0x4`
+| Currently throttled
+
+| 3
+| `0x8`
+| Soft temperature limit active
+
+| 16
+| `0x10000`
+| Undervoltage has occurred
+
+| 17
+| `0x20000`
+| Arm frequency capping has occurred
+
+| 18
+| `0x40000`
+| Throttling has occurred
+
+| 19
+| `0x80000`
+| Soft temperature limit has occurred
+|===
+
+==== `measure_temp`
+
+Returns the temperature of the SoC as measured by its internal temperature sensor.
+On Raspberry Pi 4, `measure_temp pmic` returns the temperature of the PMIC.
+
+==== `measure_clock [clock]`
+
+This returns the current frequency of the specified clock. Accepts the following clock values:
+
+[cols="^,"]
+|===
+| clock | Description
+
+| `arm`
+| Arm core(s)
+
+| `core`
+| GPU core
+
+| `h264`
+| H.264 block
+
+| `isp`
+| Image Sensor Pipeline
+
+| `v3d`
+| 3D block
+
+| `uart`
+| UART
+
+| `pwm`
+| PWM block (analogue audio output)
+
+| `emmc`
+| SD card interface
+
+| `pixel`
+| Pixel valves
+
+| `vec`
+| Analogue video encoder
+
+| `hdmi`
+| HDMI
+
+| `dpi`
+| Display Parallel Interface
+|===
+
+For example, `vcgencmd measure_clock arm`
+
+==== `measure_volts [block]`
+
+Displays the current voltages used by the specific block. Accepts the following block values:
+
+[cols="^,"]
+|===
+| block | Description
+
+| `core`
+| VC4 core voltage
+
+| `sdram_c`
+| SDRAM Core Voltage
+
+| `sdram_i`
+| SDRAM I/O voltage
+
+| `sdram_p`
+| SDRAM Phy Voltage
+|===
+
+==== `otp_dump`
+
+Displays the content of the OTP (one-time programmable) memory inside the SoC. These are 32-bit values, indexed from 8 to 64. See the xref:raspberry-pi.adoc#otp-register-and-bit-definitions[OTP bits page] for more details.
+
+[[getconfig]]
+==== `get_config [configuration item|int|str]`
+
+Displays the value of the configuration setting specified: alternatively, specify either `int` (integer) or `str` (string) to see all configuration items of the given type. For example, the following command returns the total memory on the device in megabytes:
+
+[source,console]
+----
+$ vcgencmd get_config total_mem
+----
+
+==== `get_mem type`
+
+Reports on the amount of memory addressable by the Arm and the GPU. To show the amount of Arm-addressable memory, use `vcgencmd get_mem arm`; to show the amount of GPU-addressable memory, use `vcgencmd get_mem gpu`. On devices with more than 1 GB of memory, the `arm` parameter will always return 1 GB minus the `gpu` memory value, since the GPU firmware is only aware of the first 1 GB of memory. To get an accurate report of the total memory on the device, see the `total_mem` configuration item and the <<getconfig,`get_config`>> section above.
+
+===== `codec_enabled [type]`
+
+Reports whether the specified codec type is enabled. Possible options for type are AGIF, FLAC, H263, H264, MJPA, MJPB, MJPG, MPG2, MPG4, MVC0, PCM, THRA, VORB, VP6, VP8, WMV9, WVC1. Because the H.265 HW block on the Raspberry Pi 4 and later device families isn't part of the VideoCore GPU, its status isn't accessed by this command.
+
+===== `mem_oom`
+
+Displays statistics on any OOM (out of memory) events occurring in the VideoCore memory space.
+
+===== `mem_reloc_stats`
+
+Displays statistics from the relocatable memory allocator on the VideoCore.
+
+===== `read_ring_osc`
+
+Returns the current speed, voltage and temperature of the ring oscillator.

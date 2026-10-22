@@ -1,0 +1,89 @@
+== NVMe SSD boot
+
+NVMe (Non-Volatile Memory express) is a standard for external storage access over a PCIe bus. You can connect NVMe drives to the PCIe slot on Compute Module 4 IO Board, the M.2 slot on Compute Module 5 IO Board, and Raspberry Pi 5 using an M.2 HAT+ or M.2 HAT+ Compact. With some additional configuration, you can boot from an NVMe drive.
+
+=== Prerequisites
+
+==== Hardware
+
+* NVMe M.2 SSD
+* an adapter to convert from PCIe to an M.2 standard.
+** For Raspberry Pi 5, we recommend the xref:../accessories/m2-hat-plus.adoc[M.2 HAT+ or M.2 HAT+ Compact], which converts from the Raspberry Pi device's *PCIe FFC* slot to an M Key interface.
+** For the CM4, search for a "PCI-E 3.0 ×1 lane to M.2 NGFF M-Key SSD NVMe PCI Express adapter card"
+
+To check that your NVMe drive is connected correctly, boot your Raspberry Pi from another storage device (such as an SD card) and run `ls -l /dev/nvme*`. Example output is shown below.
+
+----
+crw------- 1 root root 245, 0 Mar  9 14:58 /dev/nvme0
+brw-rw---- 1 root disk 259, 0 Mar  9 14:58 /dev/nvme0n1
+----
+
+==== Software
+
+First, ensure that your Raspberry Pi runs the latest software. Run the following command to update:
+
+[source,console]
+----
+$ sudo apt update && sudo apt full-upgrade
+----
+
+=== Edit the bootloader boot priority
+
+Use the Raspberry Pi Software Configuration Tool to update the bootloader:
+
+[source,console]
+----
+$ sudo raspi-config
+----
+
+Under `Advanced Options` > `Boot Order`, specify an option that includes NVMe.  It will then write these changes to the bootloader and return to the Config Tool, in which you can `Finish` and reboot.  Your Raspberry Pi will use the new boot order now.
+
+For CM4, use `rpiboot` to update the bootloader. You can find instructions for building `rpiboot` and configuring the IO board to switch the ROM to usbboot mode in the https://github.com/raspberrypi/usbboot[USB boot GitHub repository].
+
+For versions of CM4 with an eMMC, make sure you have set NVMe first in the boot order. Remember to add the NVMe boot mode `6` to `BOOT_ORDER` in `recovery/boot.conf`.
+
+CM4 Lite automatically boots from NVMe when the SD card slot is empty.
+
+=== NVMe `BOOT_ORDER`
+
+The `BOOT_ORDER` setting in EEPROM configuration controls boot behaviour.
+For NVMe boot, use boot mode `6`. For more information, see xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[Raspberry Pi bootloader configuration].
+
+=== Example
+
+Below is an example of UART output when the bootloader detects the NVMe drive:
+
+----
+Boot mode: SD (01) order f64
+Boot mode: USB-MSD (04) order f6
+Boot mode: NVME (06) order f
+VID 0x144d MN Samsung SSD 970 EVO Plus 250 GB
+NVME on
+----
+
+It will then find a FAT partition and load `start4.elf`:
+
+----
+Read start4.elf bytes  2937840 hnd 0x00050287 hash ''
+----
+
+It will then load the kernel and boot the OS:
+
+----
+MESS:00:00:07.096119:0: brfs: File read: /mfs/sd/kernel8.img
+MESS:00:00:07.098682:0: Loading 'kernel8.img' to 0x80000 size 0x1441a00
+MESS:00:00:07.146055:0:[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd083]
+----
+
+In Linux the SSD appears as `/dev/nvme0` and the "namespace" as `/dev/nvme0n1`. There will be two partitions `/dev/nvme0n1p1` (FAT) and `/dev/nvme0n1p2` (EXT4). Use `lsblk` to check the partition assignments:
+
+----
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+nvme0n1     259:0    0 232.9G  0 disk
+├─nvme0n1p1 259:1    0   256M  0 part /boot/firmware
+└─nvme0n1p2 259:2    0 232.6G  0 part /
+----
+
+=== Troubleshooting
+
+If the boot process fails, file an issue on the https://github.com/raspberrypi/rpi-eeprom[rpi-eeprom GitHub repository], being sure to attach a copy of the console and anything displayed on the screen during boot.

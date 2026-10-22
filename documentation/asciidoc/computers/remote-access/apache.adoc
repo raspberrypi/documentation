@@ -1,0 +1,7 @@
+== Set up an Apache web server
+
+Apache is a popular web server application you can install on the Raspberry Pi to allow it to serve web pages.
+
+On its own, Apache can serve HTML files over HTTP, and with additional modules can serve dynamic web pages using scripting languages such as PHP.
+
+To set up an Apache web server, see the official Apache documentation at https://httpd.apache.org/docs/.

@@ -1,0 +1,12 @@
+== Use the Build HAT from Python
+
+=== Install the Build HAT Python Library
+
+To install the Build HAT Python library, open a terminal window and run the following command:
+
+[source,console]
+----
+$ sudo apt install python3-build-hat 
+----
+
+For more information about the Build HAT Python Library see https://buildhat.readthedocs.io/[ReadTheDocs].

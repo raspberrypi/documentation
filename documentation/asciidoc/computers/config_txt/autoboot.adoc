@@ -1,0 +1,104 @@
+== `autoboot.txt`
+
+`autoboot.txt` is an optional configuration file placed in the initial boot partition that can be used to specify the `boot_partition` number.
+
+This file can be used in conjunction with the `tryboot` feature to implement A/B booting for fail-safe operating system upgrades. It is a native bootloader and firmware capability that operates independently of third-party multi-boot managers.
+
+NOTE: The `autoboot.txt` file only controls which boot partition the bootloader selects. Building a resilient, production-ready A/B update system requires dedicated partition layouts (such as redundant boot and root filesystems) and update tooling. For an automated solution, see xref:../services/connect.adoc#remoteupdate-intro[A/B Boot Update] and the https://github.com/raspberrypi/rpi-image-gen[rpi-image-gen] tool.
+
+The `autoboot.txt` file supports the `[all]`, `[none]`, and `[tryboot]` xref:../computers/config_txt.adoc#conditional-filters[conditional filters].
+
+See also the xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] boot flow.
+
+=== `boot_partition`
+
+Specifies the partition number for booting unless the partition number was already specified as a parameter to the `reboot` command (for example, `sudo reboot 2`).
+
+Partition numbers start at `1`. Specifying partition `0` instructs the bootloader to pick the default partition, which resolves to the first bootable FAT partition (normally partition 1).
+
+Bootable partitions must be formatted as FAT12, FAT16, or FAT32 and contain a `start.elf` file (or a `config.txt` file on Raspberry Pi 5) in order for the bootloader to classify them as bootable.
+
+=== Connection to `cmdline.txt` and root filesystem selection
+
+The bootloader only reads `autoboot.txt` to locate the target boot partition. It doesn't parse or act on `cmdline.txt` beyond passing its arguments to the operating system kernel.
+
+Root partition selection (`root=...`) is handled by the kernel through `cmdline.txt`. In a dual-slot A/B system, each boot partition typically contains its own independent `cmdline.txt` file pointing to its corresponding root partition. Alternatively, if identical files are used on each boot partition, you can use the `[boot_partition=N]` conditional filter in `config.txt` to select an alternate `cmdline.txt`:
+
+[source,ini]
+----
+[boot_partition=2]
+cmdline=cmdline_rootfs_a.txt
+
+[boot_partition=3]
+cmdline=cmdline_rootfs_b.txt
+----
+
+=== `tryboot_a_b`
+
+Set this property to `1` to load the normal `config.txt` and `boot.img` files instead of `tryboot.txt` and `tryboot.img` when the `tryboot` flag is set.
+
+This enables the `tryboot` switch to be made at the partition level rather than the file level, without having to modify configuration files in the A/B partitions.
+
+=== Example update flow for A/B booting
+
+Consider an A/B partition layout such as the following:
+
+* **Partition 1 (FAT):** Initial bootloader partition containing `autoboot.txt`.
+* **Partition 2 (FAT):** Slot A boot partition (`boot_partition=2`), containing firmware, kernel, and a `cmdline.txt` pointing to Root A.
+* **Partition 3 (FAT):** Slot B boot partition (`boot_partition=3`), containing firmware, kernel, and a `cmdline.txt` pointing to Root B.
+* **Partition 4:** Slot A root filesystem partition (Root A).
+* **Partition 5:** Slot B root filesystem partition (Root B).
+* **Partition 6:** An optional persistent data partition.
+
+Initial `autoboot.txt`:
+
+[source,ini]
+----
+[all]
+tryboot_a_b=1
+boot_partition=2
+[tryboot]
+boot_partition=3
+----
+
+==== Installing the update
+
+The system boots into partition 2 by default. A hypothetical update service then:
+
+. Installs the next version of the OS into partition 3 (and its corresponding root partition).
+. Tests the update by executing a tryboot reboot:
++
+[source,console]
+----
+$ sudo reboot "0 tryboot"
+----
+
+==== Committing or cancelling the update
+
+The system boots from partition 3 because the `[tryboot]` filter in `autoboot.txt` evaluates to true.
+
+If `tryboot` is active (`/proc/device-tree/chosen/bootloader/tryboot` equals `1`) and we've booted from the `tryboot` partition (`/proc/device-tree/chosen/bootloader/partition` matches the `boot_partition` set in the `[tryboot]` section of `autoboot.txt`):
+   * The hypothetical update service would then validate system health.
+     * **If successful:** Update `autoboot.txt` to swap the default and tryboot partitions, committing the update.
+     * **If failed:** Perform a normal reboot without altering `autoboot.txt`. The `tryboot` flag is automatically cleared, causing the system to revert to booting from partition 2.
+
+Updated `autoboot.txt` after committing:
+
+[source,ini]
+----
+[all]
+tryboot_a_b=1
+boot_partition=3
+[tryboot]
+boot_partition=2
+----
+
+[TIP]
+====
+Properties located under `/proc/device-tree/chosen/bootloader/` (such as `tryboot` and `partition`) are stored as raw 32-bit big-endian binary integers. Viewing them with tools like `cat` produces non-printable characters or appears blank. To read these integer values from a shell script, use:
+
+[source,bash]
+----
+printf "%d\n" "0x$(od /proc/device-tree/chosen/bootloader/tryboot -v -An -t x1 | tr -d ' ')"
+----
+====

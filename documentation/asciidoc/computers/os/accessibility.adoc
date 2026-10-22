@@ -1,0 +1,21 @@
+== Accessibility options
+
+=== Visual aids
+
+Users of Raspberry Pi OS with visual impairments can find helpful tools in the *Recommended Software* menu.
+
+We offer https://help.gnome.org/users/orca/stable/introduction.html.en[Orca screen reader] to ease navigation of Raspberry Pi Desktop, and a screen magnifier to increase the readability of UI and screen elements. You can also configure the size of UI elements from *Control Centre*.
+
+==== Orca screen reader
+
+You can install Orca screen reader from the *Recommended Software* section of the main Raspberry Pi menu. Alternatively, press *Ctrl* + *Alt* + *Space* to automatically install Orca.
+
+When booting Raspberry Pi OS for the first time after installing a new image, an automatic spoken reminder plays after 30 seconds. This reminder provides instructions on how to install Orca.
+
+==== Screen magnifier
+
+To magnify your screen, press  *Ctrl* + *Alt* + *M*. This increases the size of the displayed desktop and, as a result, only a portion of it is now visible on screen. Move your mouse cursor around to view different parts of the magnified desktop. To turn off screen magnification, press  *Ctrl* + *Alt* + *M*.
+
+==== Enlarge UI elements
+
+To enlarge the UI elements for easier viewing, select *Preferences > Control Centre*, then go to the *Defaults* tab. On this tab, you can choose to *Set Defaults* for different sizes of screen. The larger the screen that you select *Set Defaults* for, the larger the UI text, icons, and other elements appear.

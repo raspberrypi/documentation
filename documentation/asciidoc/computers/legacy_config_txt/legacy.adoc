@@ -1,0 +1,5 @@
+== Legacy options
+
+The `config.txt` options described here don't work with Raspberry Pi OS _Bookworm_ and later, and are no longer officially supported.
+
+However, they remain documented here as they can still be of benefit to you if you're doing bare-metal development.

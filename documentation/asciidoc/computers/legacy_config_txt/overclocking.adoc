@@ -1,0 +1,13 @@
+== Legacy overclocking options
+(See also xref:config_txt.adoc#overclocking-options[config.txt overclocking options].)
+
+=== Overclocking
+
+==== `never_over_voltage`
+
+Sets a bit in the one-time programmable (OTP) memory that prevents the device from being overvoltaged. This is intended to lock the Raspberry Pi down so the warranty bit cannot be set either inadvertently or maliciously by using an invalid overvoltage.
+
+==== `disable_auto_turbo`
+
+On Raspberry Pi 2 and 3, setting this flag will disable the GPU from moving into turbo mode, which it can do under particular loads.
+

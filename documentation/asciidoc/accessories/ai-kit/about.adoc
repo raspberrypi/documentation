@@ -1,0 +1,81 @@
+[[ai-kit]]
+
+This page exists for reference purposes only.
+
+The Raspberry Pi *AI Kit* is no longer in production and we recommend using one of the AI HATs described in xref:../accessories/ai-hat-plus.adoc[AI HATs]. Here, you can also find more information about the AI technology provided by the Hailo NPU used in both the AI Kit and the functionally equivalent Hailo-8L variant of AI HAT+.
+
+.The Raspberry Pi AI Kit
+image::images/ai-kit.jpg[width="80%"]
+
+== Hardware
+
+The AI Kit bundles the xref:m2-hat-plus.adoc#m2-hat-plus[Raspberry Pi M.2 HAT+] with a Hailo AI acceleration module for use with Raspberry Pi 5. The kit contains:
+
+* A Raspberry Pi M.2 HAT+, used to connect the AI module to your Raspberry Pi 5.
+* A Hailo AI module containing a neural processing unit (NPU), pre-installed onto your M.2 HAT+.
+* A thermal pad pre-fitted between the module and the M.2 HAT+.
+* A mounting hardware kit, consisting of a ribbon cable, spacers, and screws.
+* A 16 mm stacking GPIO header.
+
+The Hailo AI module provides:
+
+* A 13 tera-operations per second (TOPS) neural network inference accelerator built around the Hailo-8L chip.
+* An M.2 2242 form factor.
+
+Additionally, you need:
+
+- A Raspberry Pi 5.
+- A Phillips crosshead screwdriver.
+- Optionally, a Raspberry Pi Active Cooler (recommended). This is an aluminum heatsink with a fan that helps to dissipate heat from your Raspberry Pi 5, keeping it at a safe operating temperature.
+
+[[step1]]
+== Step 1. Mount an Active Cooler (recommended)
+
+We recommend that you mount an Active Cooler to your Raspberry Pi 5. If you want to skip this step, or if your Raspberry Pi 5 already has an Active Cooler mounted to it, move on to the next step.
+--
+image::images/ai-kit-installation-01.png[width="60%"]
+--
+
+First, ensure that your Raspberry Pi 5 is disconnected from power. Then:
+
+. *Prepare the cooler.* Remove the protective paper from the thermal pads at the bottom of the cooler. This exposes a sticky surface on each of the thermal pads.
+. *Position the cooler.* Align the two white push pins with the two dedicated heatsink holes on your Raspberry Pi 5. In this position, the thermal pads align with the wireless radio, the system-on-chip (SoC), and the power management integrated circuit (PMIC).
+. *Secure the cooler.* Press the cooler gently onto your Raspberry Pi 5. Then, evenly press the two white push pins down into the two dedicated heatsink holes on your Raspberry Pi 5 until they click.
+. *Connect the fan.* Plug the fan's JST connector into the fan socket on your Raspberry Pi 5.
+
+NOTE: Ensure that the push pins are undamaged and securely clipped to the Raspberry Pi 5 before use.
+
+We recommend that you don't remove the cooler after it's fitted to the Raspberry Pi 5. This is because removing the cooler can cause the push pins and thermal pads to degrade, which can lead to product damage.
+
+== Step 2. Mount the M.2 HAT+
+
+The M.2 HAT+ connects to a Raspberry Pi 5 using its PCIe port, which is a high-speed interface for connecting hardware components. First, ensure that your Raspberry Pi 5 is disconnected from power, and then:
+
+. *Fit the spacers.* Using a Phillips crosshead screwdriver, attach the four spacers to the yellow holes on your Raspberry Pi 5 using the four screws.
+. *Connect the GPIO stacking header.* Align the GPIO stacking header with the GPIO pins on your Raspberry Pi 5. Press down firmly until the header is fully seated. The orientation of the header doesn't matter so long as all the GPIO pins are correctly aligned and inserted.
+. *Disconnect the PCIe ribbon cable from your HAT.* Slide the retaining clips outwards from both sides of the PCIe connector on the HAT and then gently pull out the cable.
+. *Insert the PCIe ribbon cable into your Raspberry Pi.* Insert the other end of the ribbon cable into the PCIe connector on your Raspberry Pi 5. To do this, first slide the retaining clip of the PCIe connector on your Raspberry Pi 5 upwards from both sides. Then, insert the ribbon cable into the PCIe connector. Ensure that the metallic contact points are facing inwards (towards the USB ports).
+. *Secure the PCIe ribbon cable to your Raspberry Pi.* While holding the ribbon cable in place, push the retaining clip back into the connector from both sides, ensuring that the cable is evenly inserted.
++
+--
+image::images/ai-kit-installation-02.png[width="60%"]
+--
+. *Mount the HAT.* With the main components of your HAT facing upwards, align the mounting holes on the HAT with the spacers on your Raspberry Pi 5. Use the four remaining (shorter) screws to secure the HAT in place.
++
+--
+image::images/ai-kit-installation-03.png[width="60%"]
+--
+. *Insert the PCIe ribbon cable into your HAT.* Insert the unconnected end of the ribbon cable into the PCIe connector on your HAT. To do this, first slide the retaining clip of the PCIe connector on your HAT outwards from both sides. Then, insert the ribbon cable into the PCIe connector.
++
+--
+image::images/ai-kit-installation-04.png[width="60%"]
+--
+. *Secure the PCIe ribbon cable to your HAT.* While holding the ribbon cable in place, push the retaining clip back into the connector from both sides, ensuring that the cable is evenly inserted.
+
+WARNING: Always disconnect your Raspberry Pi from power before connecting or disconnecting a device from the M.2 slot.
+
+== Next steps: Run AI models
+
+For a list of available example models, see Hailo's https://hailo.ai/products/hailo-software/model-explorer-vision/[Model Explorer].
+
+To start running AI models on your Raspberry Pi 5, see xref:../computers/ai.adoc[AI software], which provides information and guidance on running AI-accelerated visual models.

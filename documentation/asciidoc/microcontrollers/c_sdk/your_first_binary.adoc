@@ -1,0 +1,40 @@
+== Your First Binaries
+
+=== Blink an LED
+
+The first program anyone writes when using a new microcontroller is to blink an LED on and off. The Raspberry Pi Pico boards come with a single LED on-board. The LED is connected to `GP25` on the board's microcontroller for Pico and Pico 2, and `WL_GPIO0` on the Infineon 43439 wireless chip for Pico W and Pico 2 W.
+
+video::images/Blink-an-LED.webm[width="80%"]
+
+You can blink this on and off by,
+
+. Download the https://github.com/raspberrypi/pico-sdk-prebuilts/releases/latest/download/blink_universal.uf2[Blink UF2] file. This file supports all Pico variants.
+. Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer.
+. It mounts as a Mass Storage Device called RPI-RP2 (Pico) or RP2350 (Pico 2).
+. Drag and drop the Blink UF2 binary onto the RPI-RP2 volume. Pico reboots.
+
+If it works, the on-board LED blinks.
+
+You can see the code for writing your own blink program on https://github.com/raspberrypi/pico-examples/blob/master/blink/blink.c[Github].
+
+=== Say "Hello World"
+
+The next program anyone writes is to say 'Hello World' over a USB serial connection.
+
+video::images/Hello-World.webm[width="80%"]
+
+. Download the https://github.com/raspberrypi/pico-sdk-prebuilts/releases/latest/download/hello_universal.uf2['Hello World' UF2].
+. Push and hold the BOOTSEL button and plug your Pico into the USB port of your Raspberry Pi or other computer.
+. It mounts as a Mass Storage Device called RPI-RP2 (Pico) or RP2350 (Pico 2).
+. Drag and drop the 'Hello World' UF2 binary onto the mounted volume. Pico reboots.
+. Open a Terminal window and type:
++
+[source,console]
+------
+$ sudo apt install minicom
+$ minicom -b 115200 -o -D /dev/ttyACM0
+------
+
+'Hello, world!' is printed to the Terminal.
+
+You can see the code for writing your own hello_world program on https://github.com/raspberrypi/pico-examples/blob/master/hello_world/usb/hello_usb.c[Github]

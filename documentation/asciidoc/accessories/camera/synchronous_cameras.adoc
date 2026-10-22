@@ -1,0 +1,109 @@
+[[synchronous-captures]]
+== Synchronous Captures
+
+The High Quality (HQ) Camera supports synchronous captures.
+One camera (the "source") can be configured to generate a pulse on its XVS (Vertical Sync) pin when a frame capture is initiated.
+Other ("sink") cameras can listen for this pulse, and capture a frame at the same time as the source camera.
+
+This method is largely superseded by xref:../computers/camera_software.adoc#software-camera-synchronisation[software camera synchronisation] which can operate over long distances without additional wires and has sub-millisecond accuracy. But when cameras are physically close, you can use wired synchronisation.
+
+NOTE: You can also operate Global Shutter (GS) Cameras in synchronous mode. However, the source camera records one extra frame. Instead, for GS Cameras we recommend using an xref:camera.adoc#external-trigger[external trigger source]. You can't synchronise a GS Camera and an HQ Camera.
+
+=== Connecting the cameras
+
+Solder a wire to the XVS test point of each camera, and connect them together.
+
+Solder a wire to the GND test point of each camera, and connect them together.
+
+*For GS Cameras only,* you must also connect the XHS (Horizontal Sync) test point of each camera together. On any GS Camera that you wish to act as a sink, bridge the two halves of the MAS pad with solder.
+
+NOTE: An earlier version of this document recommended an external pull-up for XVS. This is no longer recommended. Instead, ensure you have the latest version of Raspberry Pi OS and set the `always-on` property for all connected cameras.
+
+=== Driver configuration
+
+Configure the camera drivers to keep their 1.8 V power supplies on when not streaming, and optionally to select the source and sink roles.
+
+==== For the HQ Camera
+
+Edit `/boot/firmware/config.txt`. Change `camera_auto_detect=1` to `camera_auto_detect=0`.
+
+Append this line for a source camera:
+[source]
+----
+dtoverlay=imx477,always-on,sync-source
+----
+
+Or for a sink:
+[source]
+----
+dtoverlay=imx477,always-on,sync-sink
+----
+
+When using the CAM0 port on a Raspberry Pi 5, CM4 or CM5, append `,cam0` to that line without a space. If two cameras are on the same Raspberry Pi, you need two `dtoverlay` lines, only one of them ending with `,cam0`.
+
+Alternatively, if you wish to swap the cameras' roles at runtime (and they are not both connected to the same Raspberry Pi), omit `,sync-source` or `,sync-sink` above. Instead you can set a module parameter before starting each camera:
+
+For the Raspberry Pi with the source camera:
+[source,console]
+----
+$ echo 1 | sudo tee /sys/module/imx477/parameters/trigger_mode
+----
+
+For the Raspberry Pi with the sink camera:
+[source,console]
+----
+$ echo 2 | sudo tee /sys/module/imx477/parameters/trigger_mode
+----
+Do this every time the system is booted.
+
+==== For the GS Camera
+
+Edit `/boot/firmware/config.txt`. Change `camera_auto_detect=1` to `camera_auto_detect=0`.
+
+For either a source or a sink, append this line:
+[source]
+----
+dtoverlay=imx296,always-on
+----
+When using the CAM0 port on a Raspberry Pi 5, CM4 or CM5, append `,cam0` to that line without a space. If two cameras are on the same Raspberry Pi, you need two `dtoverlay` lines, only one of them ending with `,cam0`.
+
+On the GS Camera, the sink role is enabled by the MAS pin and can't be configured by software ("trigger_mode" and "sync-sink" relate to the xref:camera.adoc#external-trigger[external trigger method], and mustn't be set for this method).
+
+=== Libcamera configuration
+
+If the cameras don't all start within 1 second, the `rpicam` applications can time out. To prevent this, edit a configuration file on any Raspberry Pi with sink cameras.
+
+On Raspberry Pi 5 or CM5:
+[source,console]
+----
+$ cp /usr/share/libcamera/pipeline/rpi/pisp/example.yaml timeout.yaml
+----
+
+On other Raspberry Pi models:
+[source,console]
+----
+$ cp /usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml timeout.yaml
+----
+
+Now edit the copy. In both cases, delete the `#` (comment) from the `"camera_timeout_value_ms":` line, and change the number to `60000` (60 seconds).
+
+=== Starting the cameras
+
+Run the following commands to start the sink:
+
+[source,console]
+----
+$ export LIBCAMERA_RPI_CONFIG_FILE=timeout.yaml
+$ rpicam-vid --frames 300 --qt-preview -o sink.h264
+----
+
+Wait a few seconds, then run the following command to start the source:
+
+[source,console]
+----
+$ rpicam-vid --frames 300 --qt-preview -o source.h264
+----
+Frames must be synchronised. Use `--frames` to ensure the same number of frames are captured, and that the recordings are exactly the same length.
+Running the sink first ensures that no frames are missed.
+
+NOTE: When using the GS camera in synchronous mode, the sink doesn't record exactly the same number of frames as the source. **The source records one extra frame before the sink starts recording**. Because of this, you need to specify that the sink records one less frame with the `--frames` option.

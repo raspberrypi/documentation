@@ -1,0 +1,98 @@
+=== `rpicam-vid`
+
+`rpicam-vid` helps you capture video on Raspberry Pi devices. `rpicam-vid` displays a preview window and writes an encoded bitstream to the specified output. This produces an unpackaged video bitstream that is not wrapped in any kind of container (such as an mp4 file) format.
+
+NOTE: When available, `rpicam-vid` uses hardware H.264 encoding.
+
+For example, the following command writes a ten-second video to a file named `test.h264`:
+
+[source,console]
+----
+$ rpicam-vid -t 10s -o test.h264
+----
+
+You can play the resulting file with ffplay and other video players:
+
+[source,console]
+----
+$ ffplay test.h264
+----
+
+[WARNING]
+====
+Older versions of VLC were able to play H.264 files correctly, but recent versions don't – displaying only a few, or possibly garbled, frames. Either use a different media player, or save your files in a more widely supported container format – such as MP4 (see below).
+====
+
+On Raspberry Pi 5, you can output to the MP4 container format directly by specifying the `mp4` file extension for your output file:
+
+[source,console]
+----
+$ rpicam-vid  -t 10s -o test.mp4
+----
+
+On Raspberry Pi 4, or earlier devices, you can save MP4 files using:
+
+[source,console]
+----
+$ rpicam-vid -t 10s --codec libav -o test.mp4
+----
+
+==== Encoders
+
+`rpicam-vid` supports motion JPEG as well as both uncompressed and unformatted YUV420:
+
+[source,console]
+----
+$ rpicam-vid -t 10000 --codec mjpeg -o test.mjpeg
+----
+
+[source,console]
+----
+$ rpicam-vid -t 10000 --codec yuv420 -o test.data
+----
+
+The xref:camera_software.adoc#codec[`codec`] option determines the output format, not the extension of the output file.
+
+The xref:camera_software.adoc#segment[`segment`] option breaks output files up into chunks of the segment size (given in milliseconds). This is handy for breaking a motion JPEG stream up into individual JPEG files by specifying very short (1 millisecond) segments. For example, the following command combines segments of 1 millisecond with a counter in the output file name to generate a new filename for each segment:
+
+[source,console]
+----
+$ rpicam-vid -t 10000 --codec mjpeg --segment 1 -o test%05d.jpeg
+----
+
+==== Capture high framerate video
+
+To minimise frame drops for high framerate (> 60fps) video, try the following configuration tweaks:
+
+* Set the https://en.wikipedia.org/wiki/Advanced_Video_Coding#Levels[H.264 target level] to 4.2 with `--level 4.2`.
+* Disable software colour denoise processing by setting the xref:camera_software.adoc#denoise[`denoise`] option to `cdn_off`.
+* Disable the display window with xref:camera_software.adoc#nopreview[`nopreview`] to free up some additional CPU cycles.
+* Set `force_turbo=1` in xref:../computers/config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] to ensure that the CPU clock does not throttle during video capture. For more information, see xref:config_txt.adoc#force_turbo[the `force_turbo` documentation].
+* Adjust the ISP output resolution with `--width 1280 --height 720` or something even lower to achieve your framerate target.
+* On Raspberry Pi 4, you can overclock the GPU to improve performance by adding `gpu_freq=550` or higher in `/boot/firmware/config.txt`.  See xref:config_txt.adoc#overclocking[the overclocking documentation] for further details.
+
+The following command demonstrates how you might achieve 1280×720 120fps video:
+
+[source,console]
+----
+$ rpicam-vid --level 4.2 --framerate 120 --width 1280 --height 720 --save-pts timestamp.pts -o video.264 -t 10000 --denoise cdn_off -n
+----
+
+==== `libav` integration with `rpicam-vid`
+
+`rpicam-vid` can use the `ffmpeg`/`libav` codec backend to encode audio and video streams. You can either save these streams to a file or stream them over the network. `libav` uses hardware H.264 video encoding when present.
+
+To enable the `libav` backend, pass `libav` to the xref:camera_software.adoc#codec[`codec`] option:
+
+[source,console]
+----
+$ rpicam-vid --codec libav --libav-format avi --libav-audio --output example.avi
+----
+
+==== Low latency video with Raspberry Pi 5
+
+Raspberry Pi 5 uses software video encoders. These generally output frames with a longer latency than the old hardware encoders, and this can sometimes be an issue for real-time streaming applications.
+
+In this case, add the option `--low-latency` to the `rpicam-vid` command. This will alter certain encoder options to output the encoded frame more quickly.
+
+The downside is that coding efficiency is (slightly) less good, and that the processor's multiple cores might be used (slightly) less efficiently. The maximum framerate that can be encoded might be slightly reduced (though it will still easily achieve 1080p30).

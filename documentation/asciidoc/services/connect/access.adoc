@@ -1,0 +1,216 @@
+== Access your device in Connect
+
+After you've linked your Raspberry Pi device to your Connect account, you can access it from anywhere using only a web browser.
+
+You can do this using either of the following methods:
+
+* Screen sharing
+* Remote shell
+
+Screen sharing requires the **Wayland** window server. Raspberry Pi OS _Bookworm_ and later use Wayland by default. Screen sharing isn't compatible with Raspberry Pi OS Lite or systems that use the X window server.
+
+NOTE: Screen sharing and remote shell work whether your Raspberry Pi is on the same network or a different network than your browser. However, a direct local connection is faster and more responsive than one that goes over the internet or through a <<relay-servers,relay server>>.
+
+=== Screen-sharing interface
+[[screen-sharing]]
+
+Connect's screen-sharing interface is designed for both desktop and mobile devices.
+
+image::images/screen-sharing.png[alt="The Raspberry Pi Connect screen-sharing interface, which includes common keyboard function toggles and keys at the bottom left of the interface.",width="100%"]
+
+You can simulate common keyboard functions using the buttons at the bottom left of the interface:
+
+* **Keyboard**. Toggles the on-screen keyboard. Displayed only on mobile devices.
+* **Ctrl**. Simulates holding down this key on a physical keyboard.
+* **Super key**. Simulates holding down this key on a physical keyboard.
+* **Alt**. Simulates holding down this key on a physical keyboard.
+* **Esc**. Simulates a single press—pressing and then releasing—of this key.
+* **Tab**. Simulates a single press—pressing and then releasing—of this key.
+
+You can also use the buttons at the top of the browser window to complete other useful tasks:
+
+* **Copy from remote**. Transfer text from the device's remote clipboard to your local clipboard.
+* **Paste to remote**. Transfer text from your local clipboard to the device's remote clipboard.
+* **Enter full screen**. Expand the browser window to full size.
+* **Disconnect**. Terminate the sharing session.
+
+image::images/screen-sharing.png[alt="The Connect page, showing the Raspberry Pi dropdown menu.",width="100%"]
+
+==== Start screen sharing
+
+To start a screen sharing session:
+
+. Make sure your Raspberry Pi device is linked to your Connect account, is powered on, and that Raspberry Pi OS has booted.
+. From your PC, Mac, or other device, sign in to https://connect.raspberrypi.com[connect.raspberrypi.com].
++
+If your browser or operating system requests permission to find or connect to devices on your local network, allow it. If you disallow it, Connect still works, but sessions with devices on your local network can't use the local route.
++
+. Select the **Devices** tab.
++
+Devices available for screen sharing show a grey **Screen sharing** badge below the name of the device.
++
+image::images/devices.png[alt="The Connect page, showing devices listed as available for screen sharing.",width="100%"]
++
+. Select the **Connect via** button to the right of the device you want to access.
+. Select the **Screen sharing** option from the menu.
++
+A browser window opens that displays your device's desktop, and you can now use your device in the same way as a local device.
++
+image::images/waiting-for-screen-sharing.png[alt="A browser window open with a message indicating that a response is being awaited from the Raspberry Pi device.",width="100%"]
++
+When screen sharing has started, a green dot appears next to the **Screen sharing** badge in the Connect dashboard. This indicates an active screen sharing session. Hover over the dot to see the current number of screen sharing sessions.
++
+image::images/screen-sharing-in-progress.png[alt="The screen sharing interface showing sharing in progress.",width="100%"]
++
+The Connect icon in the system tray rotates when a screen sharing session is in progress. A desktop notification appears whenever a screen sharing session starts.
++
+image::images/screen-sharing-notification.png[alt="The Connect interface, showing the Turn Off Raspberry Pi Connect dropdown menu option.",width="100%"]
+
+==== Stop screen sharing
+
+To stop screen sharing:
+
+. Select the web browser window that displays the screen share.
+. Select the **Disconnect** button at the top left.
+
+image::images/screen-sharing-ended.png[alt="The screen sharing interface showing the message indicating the session ended.",width="100%"]
+
+==== Disallow and re-allow screen sharing
+
+You can disallow screen sharing from your Raspberry Pi device using either the interface or the command line.
+
+WARNING: If you disallow *both* shell access and screen sharing from a shell or screen sharing session, you must use other common remote access solutions such as SSH to access the device without being physically present.
+
+[tabs]
+====
+Interface::
++
+To disallow screen sharing:
++
+. On your Raspberry Pi device, select the Connect icon in the system tray, then deselect **Allow Screen Sharing**.
++
+Your device remains signed in to Connect, but screen sharing is now disallowed.
++
+. (Optional) Validate that screen sharing is disallowed:
+.. From your PC, Mac, or other device, sign in to https://connect.raspberrypi.com[connect.raspberrypi.com].
+.. Select the **Devices** tab and locate the Raspberry Pi device in the list: the **Screen sharing** badge and the **Screen sharing** option in the **Connect via** menu are now crossed out.
+
+Command line::
++
+To disallow screen sharing:
++
+. On your Raspberry Pi device, open the Terminal.
+. Enter the following command:
++
+[source,console]
+----
+$ rpi-connect vnc off
+----
++
+Your device remains signed in to Connect, but screen sharing is now disallowed.
++
+. (Optional) Validate that screen sharing is disallowed:
+.. From your PC, Mac, or other device, sign in to https://connect.raspberrypi.com[connect.raspberrypi.com].
+.. Select the **Devices** tab and locate the Raspberry Pi device in the list: the **Screen sharing** badge and the **Screen sharing** option in the **Connect via** menu are now crossed out.
++
+To re-allow screen sharing:
++
+. On your Raspberry Pi device, open the Terminal.
+. Enter the following command:
++
+[source,console]
+----
+$ rpi-connect vnc on
+----
+====
+
+=== Remote shell
+
+To access the remote shell:
+
+. From your PC, Mac, or other device, sign in to https://connect.raspberrypi.com[connect.raspberrypi.com].
++
+If your browser or operating system requests permission to find or connect to devices on your local network, allow it. If you disallow it, Connect still works, but sessions with devices on your local network can't use the local route.
++
+. Select the **Devices** tab and locate the Raspberry Pi device in the list.
++
+Devices available for remote shell access show a grey **Remote shell** badge below the name of the device.
++
+image::images/devices.png[alt="The Connect interface, showing the Devices list display.",width="100%"]
++
+. Select the **Connect via** button to the right of the device you want to access.
+. Select the **Remote shell** option from the menu. This opens a shell session on your device.
++
+image::images/waiting-for-remote-shell.png[alt="The waiting screen that is displayed during connection.",width="100%"]
++
+You can now use your device in the same way as a local device.
+
+image::images/remote-shell.png[alt="Window showing an open connection using the remote shell.",width="100%"]
+
+TIP: On some operating systems, the browser intercepts key combinations like **Ctrl+Shift+C** and **Ctrl+C**. Instead, you can use the right-click menu or **Ctrl+Insert** to copy and **Shift+Insert** to paste.
+
+A desktop notification appears whenever a remote shell session starts. While connected, a green dot appears next to the **Remote shell** badge in the Connect dashboard, indicating that a remote shell session is active. Hover over the dot to see the current number of remote shell sessions.
+
+image::images/remote-shell-in-progress.png[alt="The Connect interface, showing the Devices list, with the Remote shell icon containing a green circle. This indicates that a remote shell session is in progress.",width="100%"]
+
+TIP: Every remote shell connection creates a brand new connection, just like SSH. To persist background commands and configuration across multiple sessions, use `screen` or `tmux`.
+
+TIP: The `CONNECT_TTY` environment variable indicates that a session uses a remote shell provided by Connect.
+
+==== End a remote shell session
+
+To close a remote shell session, run the `exit` command from the command line, or close the browser window.
+
+image::images/remote-shell-ended.png[alt="Window showing that the remote shell connection has ended and that the window can now be closed.",width="100%"]
+
+==== Disallow and re-allow remote shell access
+
+You can disallow shell access from the interface or the command line.
+
+WARNING: If you disallow *both* shell access and screen sharing from a shell or screen sharing session, you must use other common remote access solutions such as SSH to access the device without being physically present.
+
+[tabs]
+====
+Interface::
++
+. On your Raspberry Pi device, select the Connect icon in the system tray.
+. Deselect **Allow Remote Shell Access**.
++
+Your device remains signed in to Connect, but you can't create a remote shell session from the Connect dashboard.
++
+image::images/disallow-screen-sharing.png[alt="The Connect interface, showing dropdown menu that contains an option to allow screen sharing.",width="100%"]
+
+Command line::
++
+. On your Raspberry Pi device, open the Terminal.
+. Enter the following command:
++
+[source,console]
+----
+$ rpi-connect shell off
+----
++
+In the Connect dashboard, the **Remote shell** badge and the **Remote shell** option in the **Connect via** menu appear crossed out.
++
+image::images/remote-shell-disabled.png[alt="The Connect interface, showing the Connect via dropdown menu in the Devices tab.",width="100%"]
+====
+
+To re-allow remote shell access:
+
+[tabs]
+====
+Interface::
++
+. On your Raspberry Pi device, select the Connect system tray icon.
+. Select **Allow Remote Shell Access**.
+
+Command line::
++
+. On your Raspberry Pi device, open the Terminal.
+. Enter the following command:
++
+[source,console]
+----
+$ rpi-connect shell on
+----
+====

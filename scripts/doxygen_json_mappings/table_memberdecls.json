@@ -1,0 +1,362 @@
+[
+	{
+		"input": {
+			"description": "Declaration tables (typedefs, functions, etc.) - parent table",
+			"element": "table",
+			"attributes": [
+				{
+					"name": "class",
+					"value": ["memberdecls"]
+				}
+			],
+			"parents": [],
+			"children": [],
+			"child_mappings": [
+		  	{
+					"input": {
+						"description": "Declaration tables (typedefs, functions, etc.) - header wrapper",
+						"element": "tr",
+						"attributes": [
+							{
+								"name": "class",
+								"value": ["heading"]
+							}
+						],
+						"parents": [],
+						"children": [],
+						"child_mappings": [
+						  {
+								"input": {
+									"description": "Declaration tables (typedefs, functions, etc.) - header cell",
+									"element": "td",
+									"attributes": [],
+									"parents": [],
+									"children": [],
+									"child_mappings": [
+									  {
+											"input": {
+												"description": "Declaration tables (typedefs, functions, etc.) - header element",
+												"element": "h2",
+												"attributes": [
+												  {
+														"name": "class",
+														"value": ["groupheader"]
+													}
+												],
+												"parents": [],
+												"children": [],
+												"child_mappings": []
+											},
+											"output": {
+												"tree": [
+												  {
+														"position": 0,
+														"element": "h2",
+														"attributes": [
+															{
+																"name": "data-target",
+																"value": ["true"]
+															}
+														],
+														"children": []
+													}
+												]
+											}
+										}
+									]
+								},
+								"output": {
+									"tree": []
+								}
+							}
+						]
+					},
+					"output": {
+						"tree": []
+					}
+				},
+				{
+					"input": {
+						"description": "Declaration tables (typedefs, functions, etc.) - table row wrapper",
+						"element": "tr",
+						"attributes": [
+						  {
+								"name": "class",
+								"value": ["memitem:*"]
+							}
+						],
+						"parents": [],
+						"children": [],
+						"child_mappings": [
+						  {
+								"input": {
+									"description": "Declaration tables (typedefs, functions, etc.) - actual content cell",
+									"element": "td",
+									"attributes": [
+									  {
+											"name": "class",
+											"value": ["memItemLeft"]
+										}
+									],
+									"parents": [],
+									"children": []
+								},
+								"output": {
+									"tree": [
+									  {
+											"position": 0,
+											"element": "span",
+											"attributes": [
+											  {
+													"name": "class",
+													"value": ["memItemLeft"]
+												},
+												{
+													"name": "data-target",
+													"value": ["true"]
+												}
+											],
+											"children": []
+										}
+									]
+								}
+							},
+							{
+								"input": {
+									"description": "Declaration tables (typedefs, functions, etc.) - actual content cell",
+									"element": "td",
+									"attributes": [
+									  {
+											"name": "class",
+											"value": ["memItemRight"]
+										}
+									],
+									"parents": [],
+									"children": []
+								},
+								"output": {
+									"tree": [
+									  {
+											"position": 0,
+											"element": "span",
+											"attributes": [
+											  {
+													"name": "class",
+													"value": ["memItemRight"]
+												},
+												{
+													"name": "data-target",
+													"value": ["true"]
+												}
+											],
+											"children": []
+										}
+									]
+								}
+							}
+						]
+					},
+					"output": {
+						"tree": [
+						  {
+								"position": 0,
+								"element": "ul",
+								"attributes": [
+								  {
+										"name": "class",
+										"value": ["memberdecls"]
+									}
+								],
+								"children": [
+								  {
+										"position": 0,
+										"element": "li",
+										"attributes": [
+										  {
+												"name": "class",
+												"value": ["memitem"]
+											}
+										],
+										"children": [
+										  {
+												"position": 0,
+												"element": "p",
+												"attributes": [
+													{
+														"name": "data-target",
+														"value": ["true"]
+													}
+												],
+												"children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"input": {
+						"description": "Declaration tables (typedefs, functions, etc.) - table row wrapper",
+						"element": "tr",
+						"attributes": [
+						  {
+								"name": "class",
+								"value": ["memdesc:*"]
+							}
+						],
+						"parents": [],
+						"children": [],
+						"child_mappings": [
+						  {
+								"input": {
+									"description": "Declaration tables (typedefs, functions, etc.) - actual content cell",
+									"element": "td",
+									"attributes": [
+									  {
+											"name": "class",
+											"value": ["mdescLeft"]
+										}
+									],
+									"parents": [],
+									"children": []
+								},
+								"output": {
+									"tree": [
+									  {
+											"position": 0,
+											"element": "span",
+											"attributes": [
+											  {
+													"name": "class",
+													"value": ["mdescLeft"]
+												},
+												{
+													"name": "data-target",
+													"value": ["true"]
+												}
+											],
+											"children": []
+										}
+									]
+								}
+							},
+							{
+								"input": {
+									"description": "Declaration tables (typedefs, functions, etc.) - actual content cell",
+									"element": "td",
+									"attributes": [
+									  {
+											"name": "class",
+											"value": ["mdescRight"]
+										}
+									],
+									"parents": [],
+									"children": []
+								},
+								"output": {
+									"tree": [
+									  {
+											"position": 0,
+											"element": "span",
+											"attributes": [
+											  {
+													"name": "class",
+													"value": ["mdescRight"]
+												},
+												{
+													"name": "data-target",
+													"value": ["true"]
+												}
+											],
+											"children": []
+										}
+									]
+								}
+							}
+						]
+					},
+					"output": {
+						"tree": [
+						  {
+								"position": 0,
+								"element": "ul",
+								"attributes": [
+								  {
+										"name": "class",
+										"value": ["memberdecls"]
+									}
+								],
+								"children": [
+								  {
+										"position": 0,
+										"element": "li",
+										"attributes": [
+										  {
+												"name": "class",
+												"value": ["memdesc"]
+											}
+										],
+										"children": [
+										  {
+												"position": 0,
+												"element": "p",
+												"attributes": [
+													{
+														"name": "data-target",
+														"value": ["true"]
+													}
+												],
+												"children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"input": {
+						"description": "Declaration tables (typedefs, functions, etc.) - table separator",
+						"element": "tr",
+						"attributes": [
+						  {
+								"name": "class",
+								"value": ["separator:*"]
+							}
+						],
+						"parents": [],
+						"children": [],
+						"child_mappings": [
+							{
+								"input": {
+									"description": "Declaration tables (typedefs, functions, etc.) - separator content cell",
+									"element": "td",
+									"attributes": [
+									  {
+											"name": "class",
+											"value": ["memSeparator"]
+										}
+									],
+									"parents": [],
+									"children": []
+								},
+								"output": {
+									"tree": []
+								}
+							}
+						]
+					},
+					"output": {
+						"tree": []
+					}
+				}
+			]
+		},
+		"output": {
+			"tree": []
+		}
+	}	
+]

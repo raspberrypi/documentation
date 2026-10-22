@@ -1,0 +1,235 @@
+== Manage software and firmware updates
+There are two ways to update your current operating system:
+
+* *APT-based*. We recommend this for most users. Use it to update the software, kernel, and stable firmware of your current Raspberry Pi OS installation. For instructions, see <<update-software>>.
+* *`rpi-update`*. Use this for experimental or pre-release kernel and firmware testing, development, or specific bug fixes. For instructions, see <<rpi-update>>.
+
+Normal firmware updates are included in APT updates (`raspi-firmware` package); `rpi-update` is only appropriate for developers and testers, or when you're specifically instructed by Raspberry Pi engineers to use it.
+
+If, instead of updating your current operating system, you want to upgrade from a previous version of Raspberry Pi OS to a new version (for example, from Bookworm to Trixie), reinstall the operating system from a new image. For instructions, see <<upgrade>>.
+
+[[update-software]]
+=== Update your current Raspberry Pi software
+Keep the software on your Raspberry Pi up to date. This helps to keep your Raspberry Pi secure from https://cve.mitre.org/index.html[vulnerabilities] and ensures that you get the latest bug fixes. It also updates your Linux kernel and firmware.
+
+The following instructions describe how to keep your _current_ installation of *Raspberry Pi OS* up to date within the same major version of the operating system you're running (for example, Trixie). They don't upgrade your Raspberry Pi OS to a new major release (for example, from Bookworm to Trixie). For instructions on upgrading your OS, see <<upgrade>>.
+
+We recommend using APT to keep your Raspberry Pi software up to date. You can also use APT to find a specific package or tool, inspect a package's metadata, install a specific package, and uninstall a specific package. For instructions, see <<manage-software>>.
+
+Packages themselves come from remotely hosted *Repositories* and are built by maintainers.  For most Pi devices, https://wiki.debian.org/DebianRepository[Debian] itself manages the repository; older devices (Zero, Zero W, Pi 1A / 1B / B+) use a repo provided by the https://raspbian.org[Raspbian] project instead.
+
+To use APT to update your current Raspberry Pi software with the latest fixes, Linux kernel, and firmware, run the following commands regularly:
+
+. *Update your package list.* APT maintains a list of available software sources in `/etc/apt/sources.list` and `/etc/apt/sources.list.d/`; run the following command to refresh your list of available software packages:
++
+[source,console]
+----
+$ sudo apt update
+----
+. *Update your installed packages to their latest versions.* Now that you have a list of what new versions are available, run the following command to download and install the updates. Because Raspberry Pi OS changes package dependencies more often that Debian, we recommend that you use `full-upgrade` instead of the standard `upgrade`:
++
+[source,console]
+----
+$ sudo apt full-upgrade
+----
+Before continuing with the update, check that you have enough free disk space. If `sudo apt full-upgrade` says that it needs extra space to complete the update, you can check that your system has at least that much free space available using `df -h`. You can then clean up downloaded files to make more space as described in <<clean>>.
+
+[[rpi-update]]
+=== Update pre-release firmware
+`rpi-update` is a command-line tool used to install experimental or pre-release firmware on a Raspberry Pi. On the Rasberry Pi 4 and 5, it also updates the EEPROM bootloader.
+
+`rpi-update` downloads the latest pre-release version of the Linux kernel, its matching modules, device tree files, and the latest version of the VideoCore firmware. It then installs these files into an existing Raspberry Pi OS install.
+
+WARNING: Pre-release firmware isn't guaranteed to work and can introduce instability, rendering your system unreliable or unbootable.
+
+All source data used by `rpi-update` comes from the https://github.com/raspberrypi/rpi-firmware[rpi-firmware repository], which contains a subset of data from the official https://github.com/raspberrypi/firmware[firmware repository].
+
+`rpi-update` is intended for use by developers and engineers for testing, development, and specific bug fixes. In most cases, you don't need to use `rpi-update`, and you should only do so if recommended by a Raspberry Pi engineer; for routine updates, we strongly recommend using APT instead, as described in <<update-software>>.
+
+. Make a backup of your system.
+. Run the following command to initiate the update:
++
+[source,console]
+----
+$ sudo rpi-update
+----
+. Reboot your Raspberry Pi for the changes to take effect:
++
+[source,console]
+----
+$ sudo reboot
+----
+
+For more information, see https://pip.raspberrypi.com/documents/RP-003476-WP[Updating Raspberry Pi firmware].
+
+[[downgrade]]
+=== Downgrade firmware to the last stable release
+If updating to the latest pre-release firmware causes issues, you can revert to the last stable firmware and then reboot for the downgrade to take effect:
+[source,console]
+----
+$ sudo apt update
+$ sudo apt install --reinstall raspi-firmware
+$ sudo reboot
+----
+
+This reinstalls the officially supported firmware from Raspberry Pi OS, restoring system stability.
+
+[[manage-software]]
+=== Manage software packages
+
+From the Terminal, *APT* is the default package manager used to install, update, and remove software within the Raspberry Pi OS you're currently running. You control it using Terminal commands like `apt-cache` and `apt install`.
+
+From the Desktop, you can use the *Preferences > Add / Remove Software* tool to manage software using the graphical interface.
+
+==== Search for software
+
+To find a specific package or tool, use `apt-cache search` followed by a keyword. This returns a list of packages with names and descriptions that include the keyword. For example, to show all packages related to `raspi`:
+
+[source,console]
+----
+$ apt-cache search raspi
+----
+
+==== View package details
+To view detailed information about a package, use `apt-cache show` followed by a package name. This displays information such as package version, size, and dependencies. For example, to view more detailed information about the `raspi-config` package:
+
+[source,console]
+----
+$ apt-cache show raspi-config
+----
+
+==== Install a package
+To install a specific package on your Raspberry Pi, use `sudo apt install` followed by the package name:
+
+[source,console]
+----
+$ sudo apt install <package-name>
+----
+
+This returns the amount of disk space that the package needs and you're asked to confirm the installation. To confirm the installation, enter `Y` followed by *Enter* or *Return* on your keyboard. To skip the confirmation prompt and automatically answer 'yes' at the time that you install the package, add `-y` to the command:
+
+[source,console]
+----
+$ sudo apt install -y <package-name>
+----
+
+==== Uninstall a package
+
+To uninstall a specific package on your Raspberry Pi, use `sudo apt remove` followed by the package name:
+
+[source,console]
+----
+$ sudo apt remove <package-name>
+----
+
+This returns the amount of disk space that removing the package gives you and you're asked to confirm the removal of the package. To confirm the removal, enter `Y` followed by *Enter* or *Return* on your keyboard to confirm the installation. To skip the confirmation prompt and automatically answer 'yes' at the time that you uninstall the package, add `-y` to the command:
+
+[source,console]
+----
+$ sudo apt remove -y <package-name>
+----
+
+To completely remove all traces of the package, including configuration files, use `purge` instead of `remove`:
+
+[source,console]
+----
+$ sudo apt purge <package-name>
+----
+
+==== Check disk space
+Before installing or updating software on your Raspberry Pi, check the available storage using the following command:
+
+[source,console]
+----
+$ df -h
+----
+
+[[clean]]
+==== Clean up files
+APT stores downloaded packages (`.deb` files) in `/var/cache/apt/archives`. During installation, APT downloads these packages and then copies files from these packages to the correct installation locations. Depending on the software you've installed, package files can take up a lot of disk space. Use the following command to delete old downloaded package files:
+
+[source,console]
+----
+$ sudo apt clean
+----
+[[upgrade]]
+=== Upgrade to a new major version
+Rather than an in-place upgrade on your existing boot media, we strongly recommend that you use a clean install to upgrade the OS version on your Raspberry Pi, like moving from Bookworm to Trixie. This involves using *Raspberry Pi Imager* to flash a new OS image onto new boot media.
+
+The following instructions require:
+
+* A new storage device for your boot media (typically a microSD card), and a way to connect it to a computer (for example, a USB card reader).
+* A computer to write a new OS image to your new boot media, and to store and move data between boot media.
+
+The following instructions assume that you're using a microSD card as your new boot media and Raspberry Pi Imager to install a new OS image onto that boot media. If you're using a different type of storage for your boot media, modify the steps below as appropriate.
+
+. *Create a backup of your current boot media.*
+
+WARNING: This step permanently deletes all files on the storage device you choose to use. Back them up before continuing.
+
+. *Prepare a new storage device with the new OS.* On a new storage device, install a new OS image with the latest Raspberry Pi OS version. For instructions, see xref:../computers/getting-started.adoc#imager-install[Install using Imager].
+. *Copy your existing files and configurations.* Use a storage device to copy important files from your Raspberry Pi.
+. *Insert the new boot media into your Raspberry Pi.* Insert the storage device containing the new OS into your Raspberry Pi.
+. *Boot your Raspberry Pi.* Connect your Raspberry Pi to power and power it on.
+
+=== Convert Raspberry Pi OS Lite into Raspberry Pi OS Desktop
+
+You can use APT to add the packages that turn the Lite version into the Desktop version.
+
+. Install your preferred desktop windowing system.
+* To install Wayland (recommended), run:
++
+[source,console]
+----
+$ sudo apt install rpd-wayland-core
+----
+* To install X, run:
++
+[source,console]
+----
+$ sudo apt install rpd-x-core
+----
+. Install the Raspberry Pi theme and Control Centre.
++
+[source,console]
+----
+$ sudo apt install rpd-theme
+$ sudo apt install rpd-preferences
+----
+. Add the applications.
++
+[source,console]
+----
+$ sudo apt install rpd-applications
+$ sudo apt install rpd-utilities
+$ sudo apt install rpd-developer
+$ sudo apt install rpd-graphics
+----
+. Add the extra features for your chosen windowing system, such as screenshot and remote desktop capabilities.
+* For Wayland, run:
++
+[source,console]
+----
+$ sudo apt install rpd-wayland-extras
+----
+* For X, run:
++
+[source,console]
+----
+$ sudo apt install rpd-x-extras
+----
+. Restart your Raspberry Pi to enter the desktop environment.
++
+[source,console]
+----
+$ sudo reboot
+----
+
+You now have all the packages that comprise Raspberry Pi OS Desktop.
+
+If you want to return to the Lite version of Raspberry Pi OS, you can remove these packages. Alternatively, to have the Lite experience without removing the desktop packages you've installed, follow the instructions in xref:../computers/configuration.adoc#console-or-desktop[Boot to console or desktop] to set your Raspberry Pi to boot to the command line.
+
+You can also install the recommended applications included in Raspberry Pi OS Full by going to your Raspberry Pi main menu and selecting **Preferences > Recommended Software**.
+
+
+

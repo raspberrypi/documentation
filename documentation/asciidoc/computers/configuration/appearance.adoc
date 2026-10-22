@@ -1,0 +1,118 @@
+== Desktop appearance
+
+Raspberry Pi OS provides multiple desktop styles and enables you to customise your desktop appearance. This section summarises how to configure the desktop appearance on your Raspberry Pi, including how to:
+
+* <<desktop-style>>
+* <<desktop-background>>
+* <<desktop-taskbar>>
+* <<desktop-dock>>
+* <<desktop-widgets>>
+
+Because all of these options relate to the desktop, they are configured from the desktop through the *Control Centre*.
+
+[[desktop-style]]
+=== Choose the desktop style
+
+Raspberry Pi OS provides three desktop styles:
+
+* *Taskbar.* This is the default in Raspberry Pi OS Trixie. The Raspberry Pi icon that opens the menu, the launcher applications, the open applications, and the widgets are all displayed in a taskbar. By default, the taskbar is at the top of the screen.
+* *Taskbar/Dock.* The Raspberry Pi icon that opens the application search, the launcher applications, and the open applications are all displayed in a dock. The widgets are displayed in a taskbar. By default, the dock is at the bottom of the screen and the taskbar at the top.
+* *Dock.* The Raspberry Pi logo that opens the application search, the launcher applications, the open applications and the widgets are all displayed in a dock. By default, the dock is at the bottom of the screen.
+
+To choose your desktop file, complete the following steps:
+
+. Select the Raspberry Pi icon in the top-left corner of the taskbar and then go to *Preferences > Control Centre*.
+. Open the *Defaults* tab in the left-side menu.
+. From the *Style* dropdown menu, choose the desktop style that you want to configure.
+
+Instructions in our documentation assume that you are using the default desktop style when describing how to navigate to *Control Centre* or other applications. To find applications when using the dock, select the Raspberry Pi icon in the dock and then locate the application in the grid or type its name in the search bar. Screenshots in this documentation show the default desktop style and appearance.
+
+[[desktop-background]]
+=== Customise your desktop background and themes
+
+Raspberry Pi OS desktop can be customised to change the desktop background, the display colours, and the filesystem locations it shows. You can also customise the appearance of windows displayed on the desktop.
+
+You can configure desktop appearance and behaviour from the *Control Centre*:
+
+. Select the Raspberry Pi icon in the top-left corner of the taskbar and then go to *Preferences > Control Centre*.
+. Open the *Desktop* tab in the left-side menu.
+. Choose one of the following properties to configure:
+** *Active Desktop.* Enable this to show icons on the desktop. This toggle also enables you to change the *Desktop Folder*, *Show Home Folder*, *Show Wastebasket*, and *Show Mounted Disks* settings in this tab.
+** *Layout.* Configure how the desktop background picture fits into the desktop area.
+** *Picture.* Choose the image to display on the desktop.
+** *Colour.* From the colour picker, choose the colour and transparency of the taskbar background and then choose *Select*.
+** *Text Colour.* From the colour picker, choose the colour and transparency of the taskbar text and then choose *Select*.
+** *Desktop Folder.* Choose what folder in your file system is used for files shown on the desktop. This setting can only be edited if *Active Desktop* is selected.
+** *Show Home Folder.* Enable this option to show a link to your home folder on the desktop. This setting can only be edited if *Active Desktop* is selected.
+** *Show Wastebasket.* Enable this option to show the wastebasket on the desktop. This setting can only be edited if *Active Desktop* is selected.
+** *Show Mounted Disks.* Enable this option to show mounted disks on the desktop. This setting can only be edited if *Active Desktop* is selected.
+
+You can configure desktop and window themes from the *Control Centre*:
+. Select the Raspberry Pi icon in the top-left corner of the taskbar and then go to *Preferences > Control Centre*.
+. Open the *Theme* tab in the left-side menu.
+. Configure any of the following properties:
+** *Font.* Choose the font that system text is displayed in.
+** *Highlight Colour.* Choose what background colour is used for active window headers and menu highlighting.
+** *Highlight Text Colour.* Choose what colour is used for text in highlighted areas.
+** *Mouse Cursor.* Choose the size of the mouse cursor.
+** *Theme.* Choose between *Light* and *Dark* mode.
+
+[[desktop-taskbar]]
+=== Configure the taskbar
+
+Raspberry Pi OS desktop displays the taskbar when the desktop style is *Taskbar* or *Taskbar/Dock*.
+
+You can configure the size, position, colour, autohide behaviour, and exclusivity of the taskbar from the *Control Centre*:
+
+. Select the Raspberry Pi icon in the top-left corner of the taskbar and then go to *Preferences > Control Centre*.
+. Open the *Taskbar* tab in the left-side menu.
+. Configure any of the following properties:
+** *Size.* Choose an icon size (for example, 48 x 48). This setting also changes the height of the taskbar.
+** *Position.* Choose whether the taskbar appears at the *Top* or *Bottom* of the screen.
+** *Colour.* From the colour picker, choose the colour and transparency of the taskbar background and then choose *Select*.
+** *Text Colour.* From the colour picker, choose the colour and transparency of the taskbar text and then choose *Select*.
+** *Autohide.* Enable this option to hide the taskbar when the cursor isn't hovering over it.
+** *Exclusive.* Enable this option to prevent maximised windows from covering the taskbar.
+
+[[desktop-dock]]
+=== Configure the dock
+
+Raspberry Pi OS desktop displays the dock when the desktop style is *Taskbar/Dock* or *Dock*.
+
+You can configure the size, position, colour, autohide behaviour, and exclusivity of the dock from the *Control Centre*:
+
+. Select the Raspberry Pi icon in the top-left corner of the taskbar and then go to *Preferences > Control Centre*.
+. Open the *Dock* tab in the left-side menu.
+. Configure any of the following properties:
+** *Size.* Choose an icon size (for example, 48 x 48). This setting also changes the height of the dock.
+** *Position.* Choose whether the dock appears at the *Top* or *Bottom* of the screen.
+** *Colour.* From the colour picker, choose the colour and transparency of the dock background and then choose *Select*.
+** *Text Colour.* From the colour picker, choose the colour and transparency of the dock text and then choose *Select*. This also changes the background colour of the notification badges to a colour that contrasts with the text.
+** *Autohide.* Enable this option to hide the dock when the cursor isn't hovering over it.
+** *Exclusive.* Enable this option to prevent maximised windows from covering the dock.
+
+[[desktop-widgets]]
+=== Configure your desktop widgets
+
+Raspberry Pi OS desktop displays widgets that indicate the status of services, provide access to system functions and applications, and define the layout of the taskbar or dock.
+
+You can configure the position and behaviour of your widgets from the *Control Centre*:
+
+. Select the Raspberry Pi icon in the top-left corner of the taskbar and then go to *Preferences > Control Centre*.
+. Open the *Widgets* tab in the left-side menu.
+. In this tab, you can configure your widgets:
+** *Add widgets to the taskbar or dock.* Widgets that aren't shown on your desktop are listed in the *Available* section. To add one of these widgets to the desktop:
+... Select the widget from the *Available* list.
+... Within the *Widgets* tab, go to the tab for the location to add the widget to; this is either *Taskbar* or *Dock*.
+... Depending on where you want to put the widget, select the *Add* button beneath either the *Left* or *Right* column.
+** *Reorder widgets in the dock or taskbar.*
+** *Remove widgets from the taskbar or dock.* To remove a widget from the desktop, select it from the list of widgets on the *Taskbar* or *Dock* tab and then select *Remove*.
+** *Configure the appearance or behaviour of a widget.*
+... Find and select the widget from the *Taskbar*, *Dock*, or *Available* section, depending on where the widget is located on your desktop.
+... If active, select *Configure...*. The *Configure <Name>* window opens, where *<Name>* is the name of this widget.
++
+Some widgets can't be configured. If this is the case, the *Configure...* button is not active.
+... In the *Configure <Name>* window, configure the settings as required.
+
+Changing the desktop style can change the position of some of your widgets, moving them from the taskbar to the dock or the dock to the taskbar. Your configuration for an individual widget overrides these defaults.
+

@@ -1,0 +1,7 @@
+include::getting-started/setting-up.adoc[]
+
+include::getting-started/install.adoc[]
+
+include::getting-started/configuring.adoc[]
+
+include::getting-started/wrapping-up.adoc[]

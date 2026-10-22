@@ -1,0 +1,83 @@
+[
+	{
+		"input": {
+			"description": "See Also - main container",
+			"element": "dl",
+			"attributes": [
+				{
+					"name": "class",
+					"value": ["section", "see"]
+				}
+			],
+			"parents": [],
+			"children": [],
+			"child_mappings": [
+			  {
+					"input": {
+						"description": "See Also - label",
+						"element": "dt",
+						"attributes": [],
+						"parents": [],
+						"children": [],
+						"child_mappings": []
+					},
+					"output": {
+						"tree": [
+							{
+								"position": 0,
+								"element": "span",
+								"attributes": [
+									{
+										"name": "class",
+										"value": ["label"]
+									}
+								],
+								"children": []
+							}
+						]
+					}
+				},
+				{
+					"input": {
+						"description": "See Also - link",
+						"element": "dd",
+						"attributes": [],
+						"parents": [],
+						"children": [],
+						"child_mappings": []
+					},
+					"output": {
+						"tree": [
+							{
+								"position": 0,
+								"element": "span",
+								"attributes": [
+									{
+										"name": "class",
+										"value": ["target"]
+									}
+								],
+								"children": []
+							}
+						]
+					}
+				}
+			]
+		},
+		"output": {
+			"tree": [
+				{
+					"position": 0,
+					"element": "p",
+					"attributes": [
+					  {
+							"name": "class",
+							"value": ["see"]
+						}
+					],
+					"children": []
+				}
+			]
+		}
+	}
+]

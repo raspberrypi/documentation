@@ -1,0 +1,61 @@
+== Starting a Debug Session
+
+The Debug Probe lets you load binaries through the SWD port and OpenOCD: you will not need to unplug, and then push-and-hold, the BOOTSEL button every time you push a new binary to your Pico. Using the Debug Probe to upload new binaries is an entirely hands-off affair.
+
+GDB is then used to debug the binary running on the Pico.
+
+We recommend the use of the Raspberry Pi Pico VSCode extension, which integrates the use of OpenOCD and GDB, to upload and debug programs. See Chapter 4 of https://pip.raspberrypi.com/documents/RP-008276-DS[Getting started with Raspberry Pi Pico] for more information.
+
+=== Standalone program upload
+
+After you have built a binary:
+
+[source,console]
+----
+$ sudo openocd -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c "adapter speed 5000" -c "program blink.elf verify reset exit"
+----
+
+NOTE: When you use the Debug Probe to upload a binary the ELF version of the file is used, not the UF2 file used when you drag-and-drop.
+
+=== Standalone debug session
+
+This will use `openocd` in server mode, and connect GDB, which gives you breakpoints and single-step over a console interface.
+
+[IMPORTANT]
+======
+To allow debugging, you must build your binaries as `Debug` rather than `Release` build type, for example,
+
+----
+$ cd ~/pico/pico-examples/
+$ rm -rf build
+$ mkdir build
+$ cd build
+$ export PICO_SDK_PATH=../../pico-sdk
+$ cmake -DCMAKE_BUILD_TYPE=Debug ..
+$ cd blink
+$ make -j4
+----
+
+In a debug build you will get more information when you run it under the debugger, as the compiler builds your program with the information to tell GDB what your program is doing.
+======
+
+NOTE: For computers that are _not_ Raspberry Pi devices, a variant of GDB that can debug Arm processors is required. Use one of the following alternatives depending on your operating system and device:
+* On Linux devices, use `gdb-multiarch`.
+* On macOS and Windows devices, use `arm-none-eabi-gdb` from the toolchain on https://gitlab.arm.com/tooling/gnu-toolchains-for-arm[Arm's Gitlab repository]
+
+To start an OpenOCD server, run the following command:
+
+[source,console]
+----
+$ sudo openocd -f interface/cmsis-dap.cfg -f target/rp2040.cfg -c "adapter speed 5000"
+----
+
+Then open a second terminal window, switch to the directory containing your built binary, and start a debugger to attach it to the OpenOCD server:
+
+[source,console]
+----
+$ gdb blink.elf
+> target remote localhost:3333
+> monitor reset init
+> continue
+----

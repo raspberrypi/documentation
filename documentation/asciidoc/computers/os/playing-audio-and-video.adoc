@@ -1,0 +1,166 @@
+== Play audio and video
+
+Raspberry Pi OS comes with https://www.videolan.org/[VLC media player] pre-installed. You can use VLC to play video and audio files. VLC uses hardware acceleration in Raspberry Pi OS, and supports many popular audio and video file formats.
+
+=== VLC media player
+
+==== VLC GUI
+
+To play an audio or video file from Raspberry Pi Desktop, double-click on a file in the file manager. This automatically launches VLC to play the file. Alternatively, from the *Sound & Video* menu, launch *VLC Media Player*. Then, from the *Media* menu, select *Open File...* and navigate to the file you want to play.
+
+By default, Raspberry Pi OS sends audio to your monitor over HDMI. To output audio to a different interface, such as the headphone jack or USB speakers, right-click on the speaker icon in the system tray and select an option.
+
+==== `vlc` CLI
+
+You can also launch VLC from the command line. For the examples below, we used a short clip from Big Buck Bunny. To download this clip from Raspberry Pi, run the following command:
+
+[source,console]
+----
+$ wget --trust-server-names http://rpltd.co/big-buck-bunny
+----
+
+To play the clip in VLC from the command line, run the following command:
+
+[source,console]
+----
+$ vlc big-buck-bunny-1080p.mp4
+----
+
+To prevent the VLC GUI staying open after your file has finished playing, add the `--play-and-exit` flag:
+
+[source,console]
+----
+$ vlc --play-and-exit big-buck-bunny-1080p.mp4
+----
+
+To play a video in fullscreen mode (which can result in smoother playback in some circumstances), add the `--fullscreen` flag:
+
+[source,console]
+----
+$ vlc --play-and-exit --fullscreen big-buck-bunny-1080p.mp4
+----
+
+==== Use `cvlc` to play media without a GUI
+
+If you use `cvlc` instead of `vlc` with any of these commands, then the VLC GUI won't be shown:
+
+[source,console]
+----
+$ cvlc --play-and-exit big-buck-bunny-1080p.mp4
+----
+
+=== Play audio and video on Raspberry Pi OS Lite
+
+Unlike the full version of Raspberry Pi OS, VLC doesn't come pre-installed on Raspberry Pi OS Lite. To play video and audio on Raspberry Pi OS Lite with VLC, install the required packages for playback without a desktop:
+
+[source,console]
+----
+$ sudo apt install --no-install-recommends vlc-bin vlc-plugin-base
+----
+
+For the examples below, we used a short audio clip. To download this clip from Raspberry Pi, run the following command:
+
+[source,console]
+----
+$ wget --trust-server-names http://rpltd.co/startup-music
+----
+
+To play the clip in VLC from the command line, run the following command:
+
+[source,console]
+----
+$ cvlc --play-and-exit computer-startup-music.mp3
+----
+
+=== Specify an audio output device
+
+To force audio output to a particular device, pass the `alsa` value to the the `-A` option to use https://www.alsa-project.org/wiki/Main_Page[ALSA] audio output, and the `--alsa-audio-device` option to specify an audio output device:
+
+[source,console]
+----
+$ cvlc --play-and-exit -A alsa --alsa-audio-device <alsa-device> computer-startup-music.mp3
+----
+
+Replace the `<alsa-device>` placeholder with one of the following options:
+
+|===
+| ALSA device | Description
+
+| `sysdefault:CARD=Headphones` | The headphone jack on Raspberry Pi 4 and earlier models
+
+| `sysdefault:CARD=vc4hdmi` | The HDMI output on devices with a single HDMI port (Zero models, CM4S, Compute Modules prior to CM4, and Flagship models prior to Raspberry Pi 4)
+
+| `sysdefault:CARD=vc4hdmi0` | The HDMI0 output on Flagship models since Raspberry Pi 4B, Compute Modules since CM4, and Keyboard models
+
+| `sysdefault:CARD=vc4hdmi1` | The HDMI1 output on Flagship models since Raspberry Pi 4B, Compute Modules since CM4, and Keyboard models
+
+|===
+
+[TIP]
+====
+Use the following command to get a list of all ALSA devices on your Raspberry Pi:
+
+[source,console]
+----
+$ aplay -L | grep sysdefault
+----
+====
+
+=== Specify a video output device
+
+You can specify a video output using either the VLC GUI, or by using `--drm-vout-display` from the console.
+
+To specify the video output from the console:
+
+. Boot your Raspberry Pi device to the xref:../computers/configuration.adoc#console-or-desktop[console].
+. Add the `--drm-vout-display` option:
++
+[source,console]
+----
+$ cvlc --play-and-exit --drm-vout-display <drm-device> big-buck-bunny-1080p.mp4
+----
++
+. Replace the `<drm-device>` placeholder with one of the following options:
++
+|===
+| DRM device | Description
++
+| `HDMI-A-1` | The HDMI output on a Raspberry Pi Zero, or Raspberry Pi Model 1, 2 or 3; *or* the HDMI0 output on a Raspberry Pi 4B and later, and all Keyboard models
++
+| `HDMI-A-2` | The HDMI1 output on Raspberry Pi 4B and later, Compute Module CM4 and later (excluding CM4S), and all Keyboard models
++
+| `DSI-1` | The Raspberry Pi Touch Display, Raspberry Pi Touch Display 2, or third-party DSI screen
++
+| `DSI-2` | The second DSI output for models with multiple DSI ports (Flagship models since Raspberry Pi 5, and all Compute Module models)
++
+|===
+
+[TIP]
+====
+Use the following command to get a list of all DRM devices on your Raspberry Pi.
+
+NOTE: using `kmsprint` without parameters only queries the first card found. Therefore this might not list all attached displays on Raspberry Pi 5 and later models. See xref:../computers/os.adoc#kmsprint[kmsprint.]
+
+[source,console]
+----
+$ kmsprint | grep Connector
+----
+====
+
+=== Specify both audio and video output devices
+
+You can combine audio and video output options. For example, to direct video output to the touchscreen, and audio output to the headphone jack, use the following combination of the commands above:
+
+[source,console]
+----
+$ cvlc --play-and-exit --fullscreen --drm-vout-display DSI-1 -A alsa --alsa-audio-device sysdefault:CARD=Headphones your_video.mp4
+----
+
+=== Improve stream playback performance
+
+If you have a raw H.264 stream, like those captured from a Raspberry Pi Camera Module, you can improve playback performance in VLC by wrapping the stream inside a container format such as MP4. You can use `ffmpeg` to convert stream content into a container file. For example, the following command converts a stream named `video.h264` to a MP4 container named `video.mp4` at 30fps:
+
+[source,console]
+----
+$ ffmpeg -r 30 -i video.h264 -c:v copy video.mp4
+----

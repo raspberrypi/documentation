@@ -1,0 +1,57 @@
+=== Configuration
+
+Most use cases work automatically with no need to alter the camera configuration. However, some common use cases do require configuration tweaks, including:
+
+* Third-party cameras (For any necessary configuration changes, see the manufacturer's instructions.)
+
+* Using a non-standard driver or overlay with an official Raspberry Pi camera
+
+Raspberry Pi OS recognises the following overlays in `/boot/firmware/config.txt`.
+
+|===
+| Camera Module | In `/boot/firmware/config.txt`
+
+| V1 camera (OV5647)
+| `dtoverlay=ov5647`
+
+| V2 camera (IMX219)
+| `dtoverlay=imx219`
+
+| HQ camera (IMX477)
+| `dtoverlay=imx477`
+
+| GS camera (IMX296)
+| `dtoverlay=imx296`
+
+| Camera Module 3 (IMX708)
+| `dtoverlay=imx708`
+
+| IMX290 and IMX327
+| `dtoverlay=imx290,clock-frequency=74250000` or `dtoverlay=imx290,clock-frequency=37125000` (both modules share the imx290 kernel driver; refer to instructions from the module vendor for the correct frequency)
+
+| IMX378
+| `dtoverlay=imx378`
+
+| OV9281
+| `dtoverlay=ov9281`
+|===
+
+To use one of these overlays, you must disable automatic camera detection. To disable automatic detection, set `camera_auto_detect=0` in `/boot/firmware/config.txt`. If `config.txt` already contains a line assigning an `camera_auto_detect` value, change the value to `0`. Reboot your Raspberry Pi with `sudo reboot` to load your changes.
+
+If your Raspberry Pi has two camera connectors (Raspberry Pi 5 or one of the Compute Modules, for example), then you can specify the use of camera connector 0 by adding `,cam0` to the `dtoverlay` that you used from the table above. If you do not add this, it will default to checking camera connector 1. Note that for official Raspberry Pi camera modules connected to SBCs (not Compute Modules), auto-detection will correctly identify all the cameras connected to your device.
+
+[[tuning-files]]
+==== Tweak camera behaviour with tuning files
+
+The Raspberry Pi `libcamera` implementation includes a **tuning file** for each camera. This file controls algorithms and hardware to produce the best image quality. `libcamera` can only determine the sensor in use, not the module. As a result, some modules require a tuning file override. Use the xref:camera_software.adoc#tuning-file[`tuning-file`] option to specify an override. You can also copy and alter existing tuning files to customise camera behaviour.
+
+For example, the no-IR-filter (NoIR) versions of sensors use Auto White Balance (AWB) settings different from the standard versions. On a Raspberry Pi 5 or later, you can specify the the NoIR tuning file for the IMX219 sensor with the following command:
+
+[source,console]
+----
+$ rpicam-hello --tuning-file /usr/share/libcamera/ipa/rpi/pisp/imx219_noir.json
+----
+
+NOTE: Raspberry Pi models prior to Raspberry Pi 5 use different tuning files. On those devices, use the files stored in `/usr/share/libcamera/ipa/rpi/vc4/` instead.
+
+`libcamera` maintains tuning files for a number of cameras, including third-party models. For instance, you can find the tuning file for the Soho Enterprises SE327M12 in `se327m12.json`.

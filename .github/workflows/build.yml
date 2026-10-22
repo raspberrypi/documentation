@@ -1,0 +1,50 @@
+name: Build
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    uses: $/.github/workflows/build-and-deploy.yml
+    permissions:
+      contents: read
+      actions: write
+    if: ${{ github.ref != 'refs/heads/develop' && github.ref != 'refs/heads/master' }}
+    with:
+      deploy: false
+
+  staging-build:
+    uses: $/.github/workflows/build-and-deploy.yml
+    permissions:
+      contents: read
+      actions: write
+    if: ${{ github.ref == 'refs/heads/develop' }}
+    with:
+      deploy: true
+      environment: staging
+      url: ${{ vars.STAGING_URL }}
+    secrets: inherit
+
+  production-build:
+    uses: $/.github/workflows/build-and-deploy.yml
+    permissions:
+      contents: read
+      actions: write
+    if: ${{ github.ref == 'refs/heads/master' }}
+    with:
+      deploy: true
+      environment: production
+      url: ${{ vars.PRODUCTION_URL }}
+    secrets: inherit

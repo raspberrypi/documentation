@@ -1,0 +1,43 @@
+== About the Debug Probe
+
+image::images/debug-probe.jpg[width="100%"]
+
+The Raspberry Pi Debug Probe is a USB device that provides both a UART serial port and a standard Arm Serial Wire Debug (SWD) interface. The probe is designed for easy, solderless, plug-and-play debugging. It has the following features:
+
+* USB to Arm https://support.arm.com/documentation/ihi0031/a/The-Serial-Wire-Debug-Port--SW-DP-/Introduction-to-the-ARM-Serial-Wire-Debug--SWD--protocol[Serial Wire Debug] (SWD) port
+* USB to UART bridge
+* Compatible with the https://support.arm.com/documentation/101451/0100/About-CMSIS-DAP[CMSIS-DAP] standard
+* Works with https://openocd.org/[OpenOCD] and other tools supporting CMSIS-DAP
+* Open source, easily upgradeable firmware
+
+NOTE: For more information on the Raspberry Pi three-pin debug connector see the https://rpltd.co/debug-spec[specification].
+
+This makes it easy to use a Raspberry Pi Pico on platforms such as Windows, macOS, and Linux that lack a GPIO header to connect directly to the Pico's serial UART or SWD port.
+
+=== The Debug Probe
+
+The probe operates at 3.3V nominal I/O voltage.
+
+image:images/the-probe.png[width="70%"]
+
+Included with the Debug Probe is a USB power cable and three debug cables:
+
+* three-pin JST-SH connector to 3-pin JST-SH connector cable
+* three-pin JST-SH connector to 0.1-inch header (female)
+* three-pin JST-SH connector to 0.1-inch header (male)
+
+The two 0.1-inch header cables — intended for breadboard (male) or direct connection to a board with header pins (female) — are coloured as below:
+
+Orange:: TX/SC (Output from Probe)
+Black:: GND
+Yellow:: RX/SD (Input to Probe or I/O)
+
+The cable with three-pin JST-SH connectors is intended to be used with the https://rpltd.co/debug-spec[standard three-pin connector] that newer Raspberry Pi boards use for the SWD debug port and UART connectors.
+
+WARNING: When the target is powered from a separate power source or computer, ensure a common reference before connecting signal lines. Either remove power from the target or connect GND between the target and the Raspberry Pi Debug Probe first; you can attach RX, TX, SC, and SD after GND is connected. Potential voltage differences between the two systems can cause damage to the probe.
+
+The Debug Probe has five LEDs, a red LED to indicate power, and four more activity indicator LEDs
+
+image::images/debug-leds.png[width="70%"]
+
+NOTE: OpenOCD switches both DAP LEDs on when the target is connected, and turns them off when it calls `DAP_DISCONNECT`.

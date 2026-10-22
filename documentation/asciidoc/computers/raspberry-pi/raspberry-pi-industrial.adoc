@@ -1,0 +1,234 @@
+== Industrial use of the Raspberry Pi
+
+Raspberry Pi is often used as part of another product. This documentation describes some extra facilities available to use other capabilities of your Raspberry Pi.
+
+=== One-time programmable settings
+
+[.whitepaper, title="Using the one-time programmable memory on Raspberry Pi single-board computers", subtitle="", link=https://pip.raspberrypi.com/documents/RP-003611-WP]
+****
+All Raspberry Pi single-board computers (SBCs) have an inbuilt area of one-time programmable (OTP) memory, which is actually part of the main system on a chip (SoC). As its name implies, OTP memory can be written to (that is, a binary 0 can be changed to a 1) only once. When a bit has been changed to 1, it can never be returned to 0. One way of looking at the OTP is to consider each bit as a fuse. Programming it involves deliberately blowing the fuse — an irreversible process, as you cannot get inside the chip to replace it!
+
+This whitepaper assumes that the Raspberry Pi is running the Raspberry Pi operating system (OS), and is fully up-to-date with the latest firmware and kernels.
+****
+
+There are a number of OTP values that can be used. To see a list of all the xref:raspberry-pi.adoc#otp-register-and-bit-definitions[OTP values], run the following command:
+
+[source,console]
+----
+$ vcgencmd otp_dump
+----
+
+Some interesting lines from this dump are:
+
+* 28 – Serial number
+* 29 – Ones complement of serial number
+* 30 – Board revision number
+
+Also, from 36 to 43 (inclusive), there are eight rows of 32 bits available for the customer.
+
+NOTE: On BCM2712 devices these numbers are different. Row 31 is the serial number and row 32 is the board revision number. The customer rows are 77 to 84 inclusive.
+
+Some of these rows can be programmed with `vcmailbox`. This is a Linux driver interface to the firmware which will handle the programming of the rows. To do this, refer to the https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface[documentation] and the vcmailbox https://github.com/raspberrypi/userland/blob/master/host_applications/linux/apps/vcmailbox/vcmailbox.c[example application].
+
+The vcmailbox application can be used directly from the command line on Raspberry Pi OS. An example usage would be:
+
+[source,console]
+----
+$ vcmailbox 0x00010004 8 8 0 0
+----
+
+...which will return something like:
+
+----
+0x00000020 0x80000000 0x00010004 0x00000008 0x800000008 0xnnnnnnnn 0x00000000 0x00000000
+----
+
+The above uses the https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface[mailbox property interface] `GET_BOARD_SERIAL` with a request size of 8 bytes and response size of 8 bytes (sending two integers for the request 0, 0). The response to this will be two integers (0x00000020 and 0x80000000) followed by the tag code, the request length, the response length (with the 31st bit set to indicate that it is a response) then the 64-bit serial number (where the MS 32 bits are always 0).
+
+=== Write and read customer OTP values
+
+WARNING: The OTP values are one-time programmable. After a bit has been changed from 0 to 1, it can't be changed back.
+
+To set the customer OTP values you will need to use the `SET_CUSTOMER_OTP` (0x38021) tag as follows:
+
+[source,console]
+----
+$ vcmailbox 0x00038021 [8 + number * 4] [8 + number * 4] [start_num] [number] [value] [value] [value] ...
+----
+
+* `start_num` = the first row to program from 0-7
+* `number` = number of rows to program
+* `value` = each value to program
+
+So, to program OTP customer rows 4, 5, and 6 to 0x11111111, 0x22222222, 0x33333333 respectively, you would use:
+
+[source,console]
+----
+$ vcmailbox 0x00038021 20 20 4 3 0x11111111 0x22222222 0x33333333
+----
+
+This will then program rows 40, 41, and 42.
+
+To read the values back, you can use:
+
+[source,console]
+----
+$ vcmailbox 0x00030021 20 20 4 3 0 0 0
+----
+
+This should display:
+
+----
+0x0000002c 0x80000000 0x00030021 0x00000014 0x80000014 0x00000000 0x00000003 0x11111111 0x22222222 0x33333333
+----
+
+If you'd like to integrate this functionality into your own code, you should be able to achieve this by using the vcmailbox.c code as an example.
+
+=== Locking OTP on non-BCM2712 devices
+
+It is possible to lock the OTP changes to avoid them being edited again.
+
+This can be done using a special argument with the OTP write mailbox:
+
+[source,console]
+----
+$ vcmailbox 0x00038021 8 8 0xffffffff 0xaffe0000
+----
+
+When locked, the customer OTP values can no longer be altered. Note that this locking operation is irreversible.
+
+=== Locking OTP on BCM2712 devices
+
+The customer region can be marked as read only with the following command.
+
+[source,console]
+----
+$ vcmailbox 0x00030086 4 4 0
+----
+
+OTP is only locked until the device is reset, so OTP locks need to be reapplied on every boot.
+
+=== Making customer OTP bits unreadable on non-BCM2712 devices
+
+It is possible to prevent the customer OTP bits from being read at all. This can be done using a special argument with the OTP write mailbox:
+
+[source,console]
+----
+$ vcmailbox 0x00038021 8 8 0xffffffff 0xaffebabe
+----
+
+This operation is unlikely to be useful for the vast majority of users, and is irreversible.
+
+=== Customer MAC addresses on BCM2712 devices
+
+On BCM2712 devices the Ethernet, Wi-Fi and Bluetooth MAC addresses are set in OTP memory. These values can change with customer values.
+
+Get customer mac address `vcmailbox 0x00030082/3/4 6 6 0 0`, where 2 is Ethernet, 3 is Wi-Fi and 4 is Bluetooth:
+
+[source,console]
+----
+$ vcmailbox 0x00030083 6 6 0 0
+0x00000020 0x80000000 0x00030083 0x00000006 0x80000006 0xddccbbaa 0x0000ffee 0x00000000
+----
+
+In order to set a customer MAC address, it has to be sent as two 32 words with the bytes in the right order. You can run a command to check it's formatted properly:
+
+[source,console]
+----
+$ vcmailbox 0x00030085 6 6 0x44332211 0x6655
+----
+
+Check the log to see if the MAC address matches your expectations:
+
+[source,console]
+----
+$ sudo vclog -m
+1057826.701: read mac address 11:22:33:44:55:66
+----
+
+A multicast address is not considered valid. The least significant bit in the most significant octet of a MAC address is the multicast bit, so make sure this is not set.
+
+You can then set the customer MAC address with the command `vcmailbox 0x00038082/3/4 6 6 <row1> <row0>`:
+
+[source,console]
+----
+$ vcmailbox 0x00038082 6 6 0x44332211 0x6655
+----
+
+If a customer MAC address is set to `ff:ff:ff:ff:ff:ff`, then it's ignored.
+
+=== Device-specific private key
+
+Devices that use the Broadcom BCM2712 processor have 16 rows of OTP data (512 bits) to support filesystem encryption.
+Devices that do not use BCM2712 have 8 rows of OTP (256 bits) available for use as a device-specific private key.
+
+These rows can be programmed and read using similar `vcmailbox` commands to those used for managing customer OTP rows. If
+secure-boot / file-system encryption is not required, then the device private key rows can be used to store general-purpose information.
+
+* The device private key rows can only be read by using the `vcmailbox` command which requires access to `/dev/vcio` which is restricted to the `video` group on Raspberry Pi OS.
+* Raspberry Pi computers do not have a hardware protected key store.  It is recommended that this feature is used in conjunction with https://github.com/raspberrypi/usbboot/blob/master/secure-boot-example/README.md[Secure Boot] in order to restrict access to this data.
+* Raspberry Pi OS does not support an encrypted root-filesystem.
+
+See https://gitlab.com/cryptsetup/cryptsetup[Cryptsetup] for more information about open-source disk encryption.
+
+==== Program a key into OTP with `rpi-otp-private-key`
+
+NOTE: The `rpi-otp-private-key` script only works on devices that use the Broadcom xref:processors.adoc#bcm2711[BCM2711] or xref:processors.adoc#bcm2712[BCM2712] processors.
+
+The https://github.com/raspberrypi/rpi-eeprom/blob/master/tools/rpi-otp-private-key[`rpi-otp-private-key`] script wraps the device private key `vcmailbox` APIs to make it easier to read and write a key in the OpenSSL format.
+
+NOTE: The https://github.com/raspberrypi/usbboot[`usbboot`] repository contains all the tools you need, including https://github.com/raspberrypi/rpi-eeprom[`rpi-eeprom`] as a Git submodule.
+
+Read the 32-byte key as a 64-character hex number:
+
+[source,console]
+----
+$ cd usbboot/tools
+$ rpi-otp-private-key
+----
+
+Example output:
+
+----
+f8dbc7b0a4fcfb1d706e298ac9d0485c2226ce8df7f7596ac77337bd09fbe160
+----
+
+Writes a 32-byte randomly generated number to the device private key.
+
+WARNING: This operation cannot be undone.
+
+[source,console]
+----
+$ rpi-otp-private-key -w $(openssl rand -hex 32)
+----
+
+NOTE: To specify the number of OTP rows to use, pass `-l <word count>`. To specify a start location in the key store, pass `-o <word offset>`.
+
+==== Mailbox API for reading/writing the key
+
+Read all of the rows.
+
+[source,console]
+----
+$ vcmailbox 0x00030081 40 40 0 8 0 0 0 0 0 0 0 0
+----
+
+Example output:
+
+----
+0x00000040 0x80000000 0x00030081 0x00000028 0x80000028 0x00000000 0x00000008 0xf8dbc7b0 0xa4fcfb1d 0x706e298a 0xc9d0485c 0x2226ce8d 0xf7f7596a 0xc77337bd 0x09fbe160 0x00000000
+----
+
+Write all of the row (replace the trailing eight zeros with the key data):
+
+[source,console]
+----
+$ vcmailbox 0x00038081 40 40 0 8 0 0 0 0 0 0 0 0
+----
+
+Write the key shown in the previous example:
+
+[source,console]
+----
+$ vcmailbox 0x38081 40 40 0 8 0xf8dbc7b0 0xa4fcfb1d 0x706e298a 0xc9d0485c 0x2226ce8d 0xf7f7596a 0xc77337bd 0x09fbe160
+----

@@ -1,0 +1,67 @@
+= RP1 I/O controller
+
+*RP1* is an in-house silicon chip built into later-generation Raspberry Pi computers to manage their peripherals, such as USB, Ethernet, GPIO, and storage interfaces. It complements the main processor by moving high-speed serial interfaces off the more expensive process node.
+
+video::aioB40BGQYU[youtube,width=80%,height=400px]
+
+Unlike Raspberry Pi xref:../microcontrollers/microcontroller-chips.adoc[microcontrollers], RP1 isn't a standalone chip; it's an I/O controller built into Raspberry Pi 5 and Compute Module 5. As a built-in I/O controller, RP1 isn't sold separately but people do write software for it, which is why it's described here.
+
+== Disambiguation of the RP1 name
+
+Raspberry Pi silicon chips follow a naming convention that starts with **RP** to refer to 'Raspberry Pi', followed by a number, with the number referring to the chip's generation. So RP1 is the first embedded I/O controller chip, and _isn't_ an abbreviation for the first Raspberry Pi single-board computer (Raspberry Pi 1 Model B).
+
+== RP1 overview
+
+RP1 measures approximately 12 x 12 mm in a BGA package with 0.65 mm pin spacing.
+
+It connects to the main CPU (BCM2712) on a Raspberry Pi 5 and Compute Module 5 over a PCIe 2.0 x4 link, and handles most external I/O.
+
+RP1 complements the main processor by managing peripherals and offloading I/O tasks from the main CPU. This continues Raspberry Pi's traditional two-chip architecture where the CPU manages core processing and a companion chip (in this case, RP1) manages peripherals. For more information, see <<interfaces>>.
+
+RP1 also integrates several internal system components to support high-performance, low-latency I/O operation. For more information, see <<features>>.
+
+RP1 includes dedicated multimedia and audio hardware to support display outputs, cameras, and basic audio functionality. For more information, see <<multimedia>>.
+
+[[interfaces]]
+== Peripheral interfaces
+
+RP1 provides the following peripheral interfaces:
+
+* 4-lane PCIe 2.0 endpoint
+* Gigabit Ethernet MAC
+* Two USB host controllers (providing more than twice the usable USB bandwidth compared to Raspberry Pi 4), each with:
+    ** One USB 3.0 port
+    ** One USB 2.0 port
+* Two SDIO/eMMC interfaces (not used on Raspberry Pi 5)
+* Two 4-lane MIPI transceivers supporting DSI and CSI-2 for display and camera interfaces
+* Low-speed peripherals, including:
+    ** SPI
+    ** UART
+    ** I2C
+    ** PWM
+    ** GPIO
+    ** I2S
+
+[[features]]
+== Internal features
+
+RP1 integrates the following internal system components:
+
+* Two Cortex M3 processors with tightly-coupled memories
+* An 8-channel DMA controller
+* Multiple PLLs
+* A 12-bit ADC with temperature sensor
+* 64 kB shared SRAM
+* Timing generator
+
+[[multimedia]]
+== Multimedia and audio components
+
+RP1 includes the following multimedia and audio blocks for video output and simple audio generation without external codecs:
+
+* Video DAC (3-channel, supporting PAL/NTSC and VGA; only one composite channel used on Raspberry Pi 5).
+* DPI video frame generator for displays connected to GPIO pins.
+* CSI-2 receiver, DMA and ISP front-end for framing and statistics generation for cameras connected to the MIPI ports.
+* DSI DMA and transmitter for displays connected to the MIPI ports.
+* Delta-sigma PWM audio out.
+* PDM microphone clock generator and stereo bitstream input.

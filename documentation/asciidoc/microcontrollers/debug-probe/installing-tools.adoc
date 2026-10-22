@@ -1,0 +1,12 @@
+== Install tools
+
+To use the Debug Probe, OpenOCD and the GNU Project Debugger (GDB) are required. An Integrated Development Environment (IDE) might also be useful.
+
+On Raspberry Pi OS, most Linux variants, macOS, and Microsoft Windows, we recommend that you install our VS Code extension. This extension bundles OpenOCD, Arm toolchains, GDB, and register definitions for Pico-series microcontrollers.
+
+For more information, see Chapter 3 of our https://pip.raspberrypi.com/documents/RP-008276-DS[Getting Started with Raspberry Pi Pico] guide.
+
+Alternatively, tools can be manually installed by following Appendix C in the guide.
+
+NOTE: Manual installation of the tools on Windows is not recommended.
+

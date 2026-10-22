@@ -1,0 +1,47 @@
+== Updating your firmware
+
+Raspberry Pi Audio Boards use an EEPROM that contains information that is used by the host Raspberry Pi device to select the appropriate driver at boot time. This information is programmed into the EEPROM during manufacture. There are some circumstances where the end user might want to update the EEPROM contents: this can be done from the command line.
+
+IMPORTANT: Before proceeding, update the version of Raspberry Pi OS running on your Raspberry Pi to the latest version.
+
+=== The EEPROM write-protect link
+
+During the programming process you will need to connect the two pads shown in the red box with a wire to pull down the EEPROM write-protect link.
+
+image::images/write_protect_tabs.jpg[width="80%"]
+
+NOTE: In some cases, the two pads might already have a 0 Ω resistor fitted to bridge the write-protect link, as illustrated in the picture of the Codec Zero board.
+
+=== Program the EEPROM
+
+When the write-protect line has been pulled down, the EEPROM can be programmed.
+
+First install the utilities and then run the programmer. Open up a terminal window and type the following:
+
+[source,console]
+----
+$ sudo apt update
+$ sudo apt install rpi-audio-utils
+$ sudo rpi-audio-flash
+----
+
+After starting, you will see a warning screen.
+
+image::images/firmware-update/warning.png[]
+
+Select *Yes* to proceed. You see a menu where you can select your hardware.
+
+image::images/firmware-update/select.png[]
+
+NOTE: If no HAT is present, or if the connected HAT is not a Raspberry Pi Audio board, you will be presented with an error screen. If the firmware has already been updated on the board, a message will be displayed informing you that you do not have to continue.
+
+After selecting the hardware, a screen will display while the new firmware is flashed to the HAT.
+
+image::images/firmware-update/flashing.png[]
+
+Afterwards a screen will display telling you that the new firmware has installed.
+
+image::images/firmware-update/flashed.png[]
+
+NOTE: If the firmware fails to install correctly, you will see an error screen. Try removing and reseating the HAT, then flash the firmware again.
+

@@ -1,0 +1,132 @@
+Raspberry Pi designs its own *microcontrollers*, which are standalone silicon chips for small embedded projects that provide real-time hardware control. These chips are used in Raspberry Pi *Pico* boards and can be used in third-party microcontroller boards. For more information about Raspberry Pi Pico, see xref:../microcontrollers/pico-series.adoc[Pico microcontroller boards].
+
+Raspberry Pi microcontrollers can be programmed using:
+
+* *C* or *{cpp}*, which are performance focussed and provide full control over hardware.
+* *MicroPython*, which provides simpler scripting for rapid development.
+
+For more information on developing with RP2040 or RP2350, see the xref:c_sdk.adoc#sdk-setup[C/{cpp} SDK] and xref:micropython.adoc#what-is-micropython[MicroPython] documentation.
+
+== Microcontroller overview
+
+Raspberry Pi microcontrollers are silicon chips that handle specific, real-time tasks, like controlling motors or reading sensors, in embedded systems. Raspberry Pi offers two microcontrollers:
+
+* xref:../microcontrollers/microcontroller-chips.adoc#rp2040[RP2040] is the original, general-purpose, dual-core Raspberry Pi microcontroller: a simple, cost-effective microcontroller unit (MCU).
+* xref:../microcontrollers/microcontroller-chips.adoc#rp2350[RP2350] is a high-performance, dual-core microcontroller for applications with flexible hardware control; it's a more powerful MCU with advanced features, memory, and security. RP2350 has four variants, described in xref:../microcontrollers/microcontroller-chips.adoc#RP2350_variants[RP2350 variants].
+
+=== Key features
+
+Both RP2040 and RP2350 share the following core features:
+
+* *Dual-core processors* for parallel processing.
+* *On-chip SRAM* for real-time workloads.
+* *Deterministic bus fabric* through a multi-master AHB crossbar that connects the CPUs, DMA, and peripherals to multi-bank SRAM.
+* *Built-in USB controller and PHY* that allows the microcontroller to act as either a USB device or USB host.
+* *Flexible general-purpose I/O (GPIO)* that can be configured for digital input/output or assigned to peripheral functions like UART, SPI, I2C, or PWM.
+* *Programmable I/O (PIO)*, a unique feature of Raspberry Pi microcontrollers that provides extended peripheral support.
+* *Built-in hardware peripherals* for interfaces such as UART, SPI, I2C, PWM, and so on, reducing software overhead and improving efficiency.
+* *High performance, low power consumption, and low power leakage* as a result of the modern 40 nm manufacturing process for microcontrollers.
+* *Low-power modes* to support extended-duration operation on battery power.
+* *Programming options* with C/{cpp} SDK or MicroPython; you can run Python through the MicroPython port and program it using the UF2 bootloader built into ROM for drag-and-drop programming.
+
+=== Feature comparison
+
+The following table provides a comparison between RP2040 and RP2350 microcontrollers. For more details about each microcontroller's features, see the dedicated sections for xref:../microcontrollers/microcontroller-chips.adoc#rp2040[RP2040] and xref:../microcontrollers/microcontroller-chips.adoc#rp2350[RP2350].
+
+.Comparison of Raspberry Pi microcontrollers (RP2040 and RP2350)
+[cols="3,3,4",options="header"]
+|===
+| Feature | RP2040 | RP2350
+
+| *Type*
+| General-purpose MCU
+| High-performance MCU
+
+| *Processor core*
+| Dual-core Arm Cortex-M0+
+| Dual-core Arm Cortex-M33 (higher performance, TrustZone support) or Hazard3 (RISC-V)
+
+| *Clock speed*
+| Up to 133 MHz
+| Up to 150 MHz
+
+| *On-chip SRAM*
+| 264 kB in six independent banks
+| 520 kB multi-bank performance
+
+| *Flash (non-volatile) memory*
+| No on-chip flash; support for up to 16 MB of off-chip flash memory through dedicated external (QSPI.XIP) bus.
+| Option for on-chip flash depending on variant; support for up to 32 MB of off-chip flash memory through dedicated external (QSPI.XIP) bus. See xref:../microcontrollers/microcontroller-chips.adoc#RP2350_variants[RP2350 variants].
+
+| *External volatile working memory (PSRAM)*
+| Not supported.
+| Supported by a QMI memory interface using the QSPI.XIP bus.
+
+| *GPIO pins*
+| 30 GPIO pins, 4 of which can be used as analogue inputs.
+| Depending on variant: 30 GPIO pins, 4 of which can be used as analogue inputs; or 48 GPIO pins, 8 of which can be used as analogue inputs. See xref:../microcontrollers/microcontroller-chips.adoc#RP2350_variants[RP2350 variants].
+
+| *Programmable Input/Output (PIO)*
+| Two PIO blocks, each with four state machines (eight in total).
+| Three PIO blocks, each with four state machines (twelve in total).
+
+| *Peripherals*
+| See xref:../microcontrollers/microcontroller-chips.adoc#RP2040_features[RP2040 features].
+| Expanded set; see xref:../microcontrollers/microcontroller-chips.adoc#RP2350_features[RP2350 features].
+
+| *Direct Memory Access (DMA) controller*
+| 12-channel DMA controller with peripheral pacing and chaining.
+| 16-channel DMA with enhanced throughput and flexibility.
+
+| *AHB crossbar*
+| A fully connected, multi-master AHB-Lite crossbar connecting CPUs, DMA, and peripherals to multi-bank SRAM and flash.
+| AHB5 crossbar, offering higher-throughput and bandwidth.
+
+| *Interpolator*
+| Dual interpolator blocks for fast integer maths and table lookup.
+| Dual interpolator blocks for fast integer maths and table lookup.
+
+| *Integer divider*
+| Separate hardware integer divider accessed through memory-mapped register.
+|Not present because the processors support hardware division in the CPU.
+
+| *Analogue-to-digital conversion (ADC)*
+| 4 analogue inputs with internal temperature sensor, 500 kS/s, and 12-bit conversion.
+| Depending on variant: 4 or 8 analogue inputs with internal temperature sensor, 500 kS/s, and 12-bit conversion.
+
+| *Core regulator architecture*
+| On-chip, programmable Low-Dropout (LDO) to generate core voltage.
+| On-chip buck converter (SMPS) for active operation plus optional low-quiescent-current programmable LDO mode for sleep states.
+
+| *On-chip Phase-Locked Loops (PLL)*
+| Two PLLs for core clock and USB clock generation.
+| Two PLLs for core clock and USB clock generation.
+
+| *Security features*
+| None (basic MCU).
+| Arm TrustZone; cryptographic accelerators.
+
+| *Deployment boards*
+| Raspberry Pi Pico; third-party RP2040-based boards.
+| Raspberry Pi Pico 2; third-party RP2350-based boards.
+
+| *Programming*
+|C/{cpp} SDK, MicroPython
+|C/{cpp} SDK, MicroPython
+|===
+
+include::microcontroller-chips/rp2040.adoc[]
+
+include::microcontroller-chips/rp2350.adoc[]
+
+== USB identifiers
+
+Many RP2040 and RP2350 chips use a combination of Raspberry Pi USB identifiers (Vendor ID and Product ID). If you make your own, third-party board based on RP2040 or RP2350, you might need a unique USB Product ID (PID) if:
+
+* You need to provide a custom Windows driver.
+* You want your device to be uniquely identifiable as a separate product.
+
+Raspberry Pi has permission from USB-IF to licence USB PID values for its Vendor ID (`0x2E8A`) for common silicon components used with RP2040 and RP2350. This means that you can assign unique PIDs under our Vendor ID (`0x2E8A`). To reserve a USB PID associated with Raspberry Pi's Vendor ID, follow the instructions in the https://github.com/raspberrypi/usb-pid[Raspberry Pi USB PID Git repository].
+
+If you don't need a unique PID, you can still uniquely distinguish devices using any of the following USB text fields: `iManufacturer`, `iProduct`, and `iSerial`.
+

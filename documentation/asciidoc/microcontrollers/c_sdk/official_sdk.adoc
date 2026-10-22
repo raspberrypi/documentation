@@ -1,0 +1,27 @@
+== Raspberry Pi Pico C/C++ SDK
+
+Our official C SDK can be used from the command line, or from popular integrated development environments like Visual Studio Code and CLion. To get started, download our C/{cpp} SDK and examples, and take a look at our https://pip.raspberrypi.com/documents/RP-008276-DS[getting started] documentation. Or for a quick setup see the next section.
+
+You can find documentation around the C/{cpp} SDK at:
+
+- xref:../pico-sdk/index_doxygen.adoc[Raspberry Pi Pico C/{cpp} SDK API documentation]
+
+- https://pip.raspberrypi.com/documents/RP-008276-DS[Getting started with Raspberry Pi Pico-series]
+
+- https://pip.raspberrypi.com/documents/RP-008257-DS[Wi-Fi and Bluetooth connectivity on Pico W-series devices]
+
+- https://pip.raspberrypi.com/documents/RP-009085-KB[Raspberry Pi Pico-series C/{cpp} SDK]
+
+- https://github.com/raspberrypi/pico-examples[The pico-examples repository]
+
+SDK source code is open source and available in the https://github.com/raspberrypi/pico-sdk[pico-sdk Github repository].
+
+[NOTE]
+====
+To build applications with the C/{cpp} SDK for a board _other than the Raspberry Pi Pico_, pass `-DPICO_BOARD=boardname` to CMake, where `boardname` is the name of your board. For example:
+
+* To build an application for the Adafruit Feather RP2040, pass `-DPICO_BOARD=adafruit_feather_rp2040`.
+* To build an application for Pico W, pass `-DPICO_BOARD=pico_w` (in addition to -DWIFI_SSID="Your Network" -DWIFI_PASSWORD="Your Password", if you want to connect to a wireless network).
+
+For more information, see the https://github.com/raspberrypi/pico-sdk/tree/master/src/boards[`boards/` directory] in the Raspberry Pi Pico SDK and the https://forums.raspberrypi.com/viewtopic.php?f=147&t=304393[forums].
+====

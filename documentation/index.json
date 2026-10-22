@@ -1,0 +1,360 @@
+{
+    "tabs": [
+        {
+            "title": "Computers",
+            "path": "computers",
+            "default_tab": "yes",
+            "subitems": [
+                {
+                    "title": "Getting started",
+                    "description": "How to get started with your Raspberry Pi",
+                    "image": "full-sized/Getting-Started.png",
+                    "subpath": "getting-started.adoc"
+                },
+                {
+                    "title": "Raspberry Pi OS",
+                    "description": "The official Raspberry Pi operating system",
+                    "image": "full-sized/Raspberry-Pi-OS.png",
+                    "subpath": "os.adoc"
+                },
+                {
+                    "title": "Configuration",
+                    "description": "Configuring your Raspberry Pi's settings",
+                    "image": "full-sized/Configuration.png",
+                    "subpath": "configuration.adoc"
+                },
+                {
+                    "title": "`config.txt`",
+                    "description": "Low-level settings control",
+                    "image": "full-sized/The-config-txt-file.png",
+                    "subpath": "config_txt.adoc"
+                },
+                {
+                    "title": "The Linux kernel",
+                    "description": "How to configure and build a custom kernel for your Raspberry Pi",
+                    "image": "full-sized/Linux-Kernel.png",
+                    "subpath": "linux_kernel.adoc"
+                },
+                {
+                    "title": "Remote access",
+                    "description": "Accessing your Raspberry Pi remotely",
+                    "image": "full-sized/Remote-Access.png",
+                    "subpath": "remote-access.adoc"
+                },
+                {
+                    "title": "Camera software",
+                    "description": "Software and libraries for Raspberry Pi camera hardware",
+                    "image": "full-sized/Camera.png",
+                    "subpath": "camera_software.adoc"
+                },
+                {
+                    "title": "AI software",
+                    "description": "Software and libraries for artificial intelligence on Raspberry Pi AI Kit and AI HATs",
+                    "image": "full-sized/ai.png",
+                    "subpath": "ai.adoc"
+                },
+                {
+                    "title": "Raspberry Pi computer hardware",
+                    "description": "Technical information about Raspberry Pi computer hardware",
+                    "image": "full-sized/Raspberry-Pi-Hardware.png",
+                    "subpath": "raspberry-pi.adoc"
+                },
+                {
+                    "title": "Classic single-board computers",
+                    "description": "Technical information about classic Raspberry Pi models",
+                    "image": "full-sized/sbc.png",
+                    "subpath": "sbcs.adoc"
+                },
+                {
+                    "title": "Zero models",
+                    "description": "Technical information about Raspberry Pi Zero models",
+                    "image": "full-sized/Zero.png",
+                    "subpath": "zero.adoc"
+                },
+                {
+                    "title": "Keyboard computers",
+                    "description": "Technical information about Raspberry Pi keyboard computers",
+                    "image": "full-sized/keyboard-computers.png",
+                    "subpath": "keyboard-computers.adoc"
+                },
+                {
+                    "title": "Compute Module hardware",
+                    "description": "Technical information about Raspberry Pi Compute Module hardware",
+                    "image": "full-sized/Compute-Module-Hardware.png",
+                    "subpath": "compute-module.adoc"
+                },
+                {
+                    "title": "Processors",
+                    "description": "Technical information about the CPUs used by Raspberry Pi",
+                    "image": "full-sized/Processors.png",
+                    "subpath": "processors.adoc"
+                },
+                {
+                    "title": "I/O controllers",
+                    "description": "Technical information about Raspberry Pi I/O controllers",
+                    "image": "full-sized/RP1.png",
+                    "subpath": "io-controllers.adoc"
+                },
+                {
+                    "title": "Software sources",
+                    "description": "Open source software by Raspberry Pi",
+                    "image": "full-sized/software-sources.png",
+                    "subpath": "software-sources.adoc"
+                },
+                {
+                    "title": "Legacy `config.txt` options",
+                    "description": "Options which might be useful for OSes other than Raspberry Pi OS",
+                    "image": "full-sized/Legacy-config-txt.png",
+                    "subpath": "legacy_config_txt.adoc"
+                }
+            ]
+        },
+        {
+            "title": "Accessories",
+            "path": "accessories",
+            "default_tab": "no",
+            "subitems": [
+                {
+                    "title": "SD Cards",
+                    "description": "Raspberry Pi's official SD cards",
+                    "image": "full-sized/sd-card.png",
+                    "subpath": "sd-cards.adoc"
+                },
+                {
+                    "title": "SSDs",
+                    "description": "Raspberry Pi's official Solid State Drives",
+                    "image": "full-sized/ssds.png",
+                    "subpath": "ssds.adoc"
+                },
+                {
+                    "title": "SSD Kit",
+                    "description": "Storage for your Raspberry Pi",
+                    "image": "full-sized/ssd-kit.png",
+                    "subpath": "ssd-kit.adoc"
+                },
+                {
+                    "title": "M.2 HAT+",
+                    "description": "Connect storage to your Raspberry Pi via PCIe",
+                    "image": "full-sized/m2-hat-plus.png",
+                    "subpath": "m2-hat-plus.adoc"
+                },
+                {
+                    "title": "Touch Display",
+                    "description": "The Raspberry Pi Touch Display",
+                    "image": "full-sized/Display.png",
+                    "subpath": "display.adoc"
+                },
+                {
+                    "title": "Touch Display 2",
+                    "description": "The Raspberry Pi Touch Display 2",
+                    "image": "full-sized/Touch-Display-2.png",
+                    "subpath": "touch-display-2.adoc"
+                },
+                {
+                    "title": "Monitor",
+                    "description": "The Raspberry Pi Monitor",
+                    "image": "full-sized/monitor.png",
+                    "subpath": "monitor.adoc"
+                },
+                {
+                    "title": "Camera",
+                    "description": "Raspberry Pi camera boards",
+                    "image": "full-sized/Camera.png",
+                    "subpath": "camera.adoc"
+                },
+                {
+                    "title": "AI Camera",
+                    "description": "An AI Camera for your Raspberry Pi",
+                    "image": "full-sized/ai-cam.png",
+                    "subpath": "ai-camera.adoc"
+                },
+                {
+                    "title": "Keyboard and mouse",
+                    "description": "Official Raspberry Pi keyboard and mouse",
+                    "image": "full-sized/Keyboard-and-Mouse.png",
+                    "subpath": "keyboard-and-mouse.adoc"
+                },
+                {
+                    "title": "USB accessories",
+                    "description": "Official Raspberry Pi USB 3 Hub and Raspberry Pi Flash Drive",
+                    "image": "full-sized/usb-accessories.png",
+                    "subpath": "usb.adoc"
+                },
+                {
+                    "title": "Build HAT",
+                    "description": "How to use the Build HAT",
+                    "image": "full-sized/Build-HAT.png",
+                    "subpath": "build-hat.adoc"
+                },
+                {
+                    "title": "Sense HAT",
+                    "description": "Monitor and visualise sensor data",
+                    "image": "full-sized/Sense-HAT.png",
+                    "subpath": "sense-hat.adoc"
+                },
+                {
+                    "title": "AI Kit",
+                    "description": "An NPU that connects to your Raspberry Pi via M.2",
+                    "image": "full-sized/ai-kit.png",
+                    "subpath": "ai-kit.adoc"
+                },
+                {
+                    "title": "AI HATs",
+                    "description": "NPU AI HATs for your Raspberry Pi",
+                    "image": "full-sized/ai-hat-plus.png",
+                    "subpath": "ai-hat-plus.adoc"
+                },
+                {
+                    "title": "Audio HATs",
+                    "description": "High-definition audio with Raspberry Pi",
+                    "image": "full-sized/Audio-HATs.png",
+                    "subpath": "audio.adoc"
+                },
+                {
+                    "title": "Designing a HAT",
+                    "description": "Information on the HAT specification",
+                    "image": "full-sized/Designing-a-HAT.png",
+                    "url": "https://pip.raspberrypi.com/documents/RP-008281-DS"
+                },
+                {
+                    "title": "TV HAT",
+                    "description": "Watch TV on your Raspberry Pi",
+                    "image": "full-sized/TV-HAT.png",
+                    "subpath": "tv-hat.adoc"
+                },
+                {
+                    "title": "Compute Module 5 Programming Jig",
+                    "description": "A single-head provisioning system that programs Compute Module 5 devices",
+                    "image": "full-sized/cm5-programming-jig.png",
+                    "subpath": "cm5-programming-jig.adoc"
+                },
+                {
+                    "title": "Smart Display Module",
+                    "description": "Integrate your Compute Module 5 with compatible digital signage",
+                    "image": "full-sized/smart-display-module.png",
+                    "subpath": "smart-display-module.adoc"
+                },
+                {
+                    "title": "Bumper",
+                    "description": "A protective case for your Raspberry Pi 5",
+                    "image": "full-sized/bumper.png",
+                    "subpath": "bumper.adoc"
+                }
+            ]
+        },
+        {
+            "title": "Microcontrollers",
+            "path": "microcontrollers",
+            "subitems": [
+                {
+                    "title": "Microcontroller chips",
+                    "description": "Raspberry Pi microcontroller chips, boards, and accessories",
+                    "image": "full-sized/silicon.png",
+                    "subpath": "microcontroller-chips.adoc"
+                },
+                {
+                    "title": "Radio modules",
+                    "description": "Radio module accessories for Raspberry Pi microcontrollers",
+                    "image": "full-sized/radiomodule.png",
+                    "subpath": "radio-modules.adoc"
+                },
+                {
+                    "title": "Pico microcontroller boards",
+                    "description": "Raspberry Pi Pico-series devices",
+                    "image": "full-sized/pico-series.png",
+                    "subpath": "pico-series.adoc"
+                },
+                {
+                    "title": "Raspberry Pi Debug Probe",
+                    "description": "Supports Arm Serial Wire Debug (SWD), and acts as a UART bridge",
+                    "image": "full-sized/Debug-Probe.png",
+                    "subpath": "debug-probe.adoc"
+                },
+                {
+                    "title": "MicroPython",
+                    "description": "Getting started with MicroPython",
+                    "image": "full-sized/MP.png",
+                    "subpath": "micropython.adoc"
+                },
+                {
+                    "title": "The C/C++ SDK",
+                    "description": "Getting started with the C/C++ SDK",
+                    "image": "full-sized/C-and-CPP.png",
+                    "subpath": "c_sdk.adoc"
+                }
+            ]
+        },
+        {
+            "title": "Services",
+            "path": "services",
+            "subitems": [
+                {
+                    "title": "Raspberry Pi ID",
+                    "description": "Our identity service",
+                    "image": "full-sized/Raspberry-Pi-ID.png",
+                    "subpath": "id.adoc"
+                },
+                {
+                    "title": "Raspberry Pi Connect",
+                    "description": "Connect to your Raspberry Pi from your browser",
+                    "image": "full-sized/Connect-BIG.png",
+                    "subpath": "connect.adoc"
+                },
+                {
+                    "title": "Raspberry Pi Connect for Organisations",
+                    "description": "Manage and share your Raspberry Pi devices across your team",
+                    "image": "full-sized/Organisations.png",
+                    "subpath": "connect-for-organisations.adoc"
+                },
+                {
+                    "title": "Bookshelf",
+                    "description": "Read titles published by Raspberry Pi Press",
+                    "image": "full-sized/Bookshelf.png",
+                    "subpath": "bookshelf.adoc"
+                }
+            ]
+        },
+        {
+            "title": "Security",
+            "path": "security",
+            "default_tab": "no",
+            "subitems": [
+                {
+                    "title": "Security overview",
+                    "description": "Overview of security options inside the Raspberry Pi hardware and software ecosystem",
+                    "image": "full-sized/security-overview.png",
+                    "subpath": "security.adoc"
+                },
+                {
+                    "title": "Security architecture",
+                    "description": "Security architecture inside the Raspberry Pi hardware and software ecosystem",
+                    "image": "full-sized/security-architecture.png",
+                    "subpath": "security-architecture.adoc"
+                },
+                {
+                    "title": "Secure Boot Provisioner",
+                    "description": "Raspberry Pi Secure Boot Provisioner for verified boot and disk encryption",
+                    "image": "full-sized/secure-boot-provisioner.png",
+                    "subpath": "secure-boot-provisioner.adoc"
+                },
+                {
+                    "title": "Operational security",
+                    "description": "Operational security options for your Raspberry Pi",
+                    "image": "full-sized/operational-security.png",
+                    "subpath": "operational-security.adoc"
+                },
+                {
+                    "title": "Firewalls using UFW",
+                    "description": "Using UFW to protect your Raspberry Pi",
+                    "image": "full-sized/ufw.png",
+                    "subpath": "ufw.adoc"
+                }
+            ]
+        },
+        {
+            "title": "Pico C SDK",
+            "from_json": "picosdk_index.json",
+            "directory": "pico-sdk"
+        }
+    ]
+}

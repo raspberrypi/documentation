@@ -1,0 +1,7 @@
+Raspberry Pi has created two radio modules, only one of which is available to buy as a standalone microcontroller accessory:
+
+* *Raspberry Pi Radio Module 1 (RM1)* is built into Raspberry Pi 4 and 5, and Compute Module 4 and 5. It isn't available as a standalone radio module or to purchase separately.
+* *Raspberry Pi Radio Module 2 (RM2)* is a standalone radio module designed to add wireless connectivity to Raspberry Pi xref:../microcontrollers/microcontroller-chips.adoc[microcontrollers]. For added flexibility, it also provides GPIO expansion options.
+
+include::radio-modules/rm2.adoc[]
+

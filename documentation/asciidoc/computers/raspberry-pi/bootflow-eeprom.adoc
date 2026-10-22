@@ -1,0 +1,99 @@
+== EEPROM boot flow
+
+Since Raspberry Pi 4, Raspberry Pi flagship devices use an EEPROM bootloader.
+The main difference between these and previous products is that the second-stage bootloader is loaded from SPI flash xref:raspberry-pi.adoc#raspberry-pi-boot-eeprom[EEPROM] instead of the `bootcode.bin` file used on previous products.
+
+=== First stage bootloader
+
+The boot flow for the ROM (first stage) is as follows:
+
+* SoC powers up
+* Read OTP to determine if the `nRPIBOOT` GPIO is configured
+* If `nRPIBOOT` GPIO is high or OTP does NOT define `nRPIBOOT` GPIO
+ ** Check OTP to see if `recovery.bin` can be loaded from SD/EMMC
+  *** If SD recovery.bin is enabled then check primary SD/EMMC for `recovery.bin`
+   **** Success – run `recovery.bin` and update the SPI EEPROM
+   **** Fail – continue
+ ** Check SPI EEPROM for second stage loader
+  *** Success – run second stage bootloader
+  *** Fail – continue
+* While True
+ ** Attempt to load `recovery.bin` from xref:compute-module.adoc#flash-compute-module-emmc[USB device boot]
+  *** Success – run `recovery.bin` and update the SPI EEPROM or switch to USB mass storage device mode
+  *** Fail – retry USB device boot
+
+NOTE: `recovery.bin` is a minimal second stage program used to reflash the bootloader SPI EEPROM image.
+
+=== Second stage bootloader
+
+This section describes the high-level flow of the second stage bootloader.
+
+For more information about each boot mode, see the xref:raspberry-pi.adoc#raspberry-pi-bootloader-configuration[bootloader configuration] page. For a description of the GPU firmware files loaded by this stage. see the xref:configuration.adoc#boot-folder-contents[boot folder] page.
+
+* Initialise clocks and SDRAM
+* Read the EEPROM configuration file
+* Check `PM_RSTS` register to determine if HALT is requested
+ ** Check `POWER_OFF_ON_HALT` and `WAKE_ON_GPIO` EEPROM configuration settings
+ ** If `POWER_OFF_ON_HALT` is `1` and `WAKE_ON_GPIO` is `0` then
+  *** Use PMIC to power off system
+ ** Else if `WAKE_ON_GPIO` is `1`
+  *** Enable fall-edge interrupts on GPIO3 to wake-up if GPIO3 is pulled low
+ ** Sleep
+* While True
+ ** Read the next boot-mode from the BOOT_ORDER parameter in the EEPROM config file.
+ ** If boot-mode == `RESTART`
+  *** Jump back to the first boot-mode in the `BOOT_ORDER` field
+ ** Else if boot-mode == `STOP`
+  *** Display start.elf not found xref:configuration.adoc#led-warning-flash-codes[error pattern] and wait forever.
+ ** Else if boot-mode == `SD CARD`
+  *** Attempt to load firmware from the SD card
+   **** Success – run the firmware
+   **** Failure – continue
+ ** Else if boot-mode == `NETWORK` then
+  *** Use DHCP protocol to request IP address
+  *** Load firmware from the DHCP or statically defined TFTP server
+  *** If the firmware is not found or a timeout or network error occurs then continue
+ ** Else if boot-mode == `USB-MSD` or boot-mode == `BCM-USB-MSD` then
+  *** While USB discover has not timed out
+   **** Check for USB mass storage devices
+   **** If a new mass storage device is found then
+    ***** For each drive (LUN)
+     ****** Attempt to load firmware
+      ******* Success – run the firmware
+      ******* Failed – advance to next LUN
+ ** Else if boot-mode == `NVME` then
+  *** Scan PCIe for an NVMe device and if found
+   **** Attempt to load firmware from the NVMe device
+    ***** Success – run the firmware
+    ***** Failure – continue
+ ** Else if boot-mode == `RPIBOOT` then
+  *** Attempt to load firmware using USB device mode from the USB OTG port – see https://github.com/raspberrypi/usbboot[USB boot]. There is no timeout for `RPIBOOT` mode.
+
+NOTE: The bootloader can also be updated before the firmware is started if a `pieeprom.upd` file is found. For more information about bootloader updates, see the xref:raspberry-pi.adoc#raspberry-pi-boot-eeprom[bootloader EEPROM] page.
+
+==== Differences on Raspberry Pi 5
+
+* The power button is used to wake up from PMIC `STANDBY` or `HALT` instead of `GPIO 3`.
+* Instead of loading `start.elf`, the firmware loads the Linux kernel. Effectively, the bootloader has an embedded version of `start.elf`.
+* USB boot is disabled by default when connected to a 3A power supply. Set `usb_max_current_enable=1` in `/boot/firmware/config.txt` to enable USB boot. Alternatively, you can press the power button a single time on a failed USB boot to temporarily enable `usb_max_current_enable` and continue booting. However, this setting will not persist after a reboot if enabled by pressing the power button.
+
+=== Fail-safe OS updates (`tryboot`)
+
+The bootloader/firmware provide a one-shot flag which, if set, is cleared but causes `tryboot.txt` to be loaded instead of `config.txt`. This alternate config would specify the pending OS update firmware, cmdline, kernel and os_prefix parameters. Since the flag is cleared before starting the firmware, a crash or reset will cause the original `config.txt` file to be loaded on the next reboot.
+
+To set the `tryboot` flag, add `tryboot` after the partition number in the `reboot` command. Normally, the partition number defaults to zero but it must be specified if extra arguments are added. Always use quotes when passing arguments to `reboot`: it accepts only a single argument:
+
+[source,console]
+----
+$ sudo reboot '0 tryboot'
+----
+
+All Raspberry Pi models support `tryboot`, however, on Raspberry Pi 4 Model B revision 1.0 and 1.1 the EEPROM must not be write protected. This is because older Raspberry Pi 4B devices have to reset the power supply (losing the tryboot state), so this is stored inside the EEPROM instead.
+
+If `secure-boot` is enabled, then `tryboot` mode will cause `tryboot.img` to be loaded instead of `boot.img`.
+
+=== `tryboot_a_b` mode
+If the `tryboot_a_b` property in xref:config_txt.adoc#autoboot-txt[autoboot.txt] is set to `1` then `config.txt` is loaded instead of `tryboot.txt`. This is because the `tryboot` switch has already been made at a higher level (the partition),  so it's unnecessary to have a `tryboot.txt` file within alternate partition itself.
+
+The `tryboot_a_b` property is implicitly set to `1` when loading files from within a `boot.img` ramdisk.
+

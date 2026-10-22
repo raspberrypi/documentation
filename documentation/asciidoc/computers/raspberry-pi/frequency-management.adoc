@@ -1,0 +1,111 @@
+== Frequency management and thermal control
+
+All Raspberry Pi models perform a degree of thermal management to avoid overheating under heavy load. The SoCs have an internal temperature sensor, which software on the GPU polls to ensure that temperatures do not exceed a limit which we define as 85°C on all models. It is possible to set this to a lower value, but not to a higher one. As the device approaches the limit, various frequencies and sometimes voltages used on the chip (Arm, GPU) are reduced. This reduces the amount of heat generated, keeping the temperature under control.
+
+When the core temperature is between 80°C and 85°C, the Arm cores will be progressively throttled back. If the temperature reaches 85°C, both the Arm cores and the GPU will be throttled back.
+
+For Raspberry Pi 3 Model B+, the PCB technology has been changed to provide better heat dissipation and increased thermal mass. In addition, a soft temperature limit has been introduced, with the goal of maximising the time for which a device can "sprint" before reaching the hard limit at 85°C. When the soft limit is reached, the clock speed is reduced from 1.4 GHz to 1.2 GHz, and the operating voltage is reduced slightly. This reduces the rate of temperature increase: we trade a short period at 1.4 GHz for a longer period at 1.2 GHz. By default, the soft limit is 60°C, and this can be changed by using the `temp_soft_limit` setting in xref:config_txt.adoc#overclocking-options[config.txt].
+
+The Raspberry Pi 4 Model B continues with the same PCB technology as the Raspberry Pi 3 Model B+, to help dissipate excess heat. There is currently no soft limit defined.
+
+=== Use DVFS
+
+NOTE: Discussion of DVFS applies to 4-series devices only (Raspberry Pi 4B, Compute Module 4, Compute Module 4S, and Raspberry Pi 400).
+
+Raspberry Pi 4 devices implement dynamic voltage and frequency scaling (DVFS). This technique allows 4-series devices to run at lower temperatures whilst still providing the same performance.
+
+Various clocks (for example, Arm, Core, V3D, ISP, H264, HEVC) inside the SoC are monitored by the firmware, and whenever they are not running at full speed, the voltage supplied to the particular part of the chip driven by the clock is reduced relative to the reduction from full speed. In effect, only enough voltage is supplied to keep the block running correctly at the specific speed at which it is running. This can result in significant reductions in power used by the SoC, and therefore in the overall heat being produced.
+
+Due to possible system stability problems involved with running an undervoltage, especially when using undervoltaged fixed clock peripherals (eg. PCIe), three DVFS modes are available and can be configured in xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] with the below properties. Most systems should use `dvfs=3`, headless systems might benefit from a small power reduction with `dvfs=1` at the risk of PCIe stability issues.
+
+[cols="1m,3"]
+|===
+| property=value | Description
+
+| dvfs=1
+| allow undervoltage
+
+| dvfs=2
+| fixed voltage for default operating frequencies
+
+| dvfs=3
+| scale voltage up on demand for over clocking (default). If `over_voltage` is specified in `config.txt` then dynamic voltage scaling is disabled causing the system to revert to `dvfs=2`.
+|===
+
+NOTE: This setting has been removed on 5-series devices and is effectively always mode 3.
+
+In addition, a more stepped CPU governor is also used to produce finer-grained control of Arm core frequencies, which means the DVFS is more effective. The steps are now 1500 MHz, 1000 MHz, 750 MHz, and 600 MHz. These steps can also help when the SoC is being throttled, and mean that throttling all the way back to 600 MHz is much less likely, giving an overall increase in fully loaded performance.
+
+The default CPU governor is `ondemand`. The governor can be manually changed with the `cpufreq-set` command (from the `cpufrequtils` package) to reduce idle power consumption:
+
+[source,console]
+----
+$ sudo apt install cpufrequtils
+$ sudo cpufreq-set -g powersave
+----
+
+=== Measure temperatures
+
+Due to the architecture of the SoCs used on Raspberry Pi devices, and the use of the upstream temperature monitoring code in the Raspberry Pi OS distribution, Linux-based temperature measurements can be inaccurate. However, the `vcgencmd` command provides an accurate and instantaneous reading of the current SoC temperature, as it communicates with the GPU directly:
+
+[source,console]
+----
+$ vcgencmd measure_temp
+----
+
+=== Add heatsinks
+
+Thanks to built-in throttling, heatsinks are not necessary to prevent overheating damage to the SoC. However, a heatsink or small fan can reduce thermal throttling and improve performance. Mount the Raspberry Pi vertically for the best airflow and thus slightly improved heat dissipation.
+
+=== Fan cases
+
+To ensure the best performance for your Raspberry Pi, use an active cooling solution such as a fan. Raspberry Pi firmware manages fan speeds for all official fans.
+
+==== Raspberry Pi 4 fan
+
+For Raspberry Pi 4, add the https://www.raspberrypi.com/products/raspberry-pi-4-case-fan/[Raspberry Pi 4 Case Fan] to the lid of the Raspberry Pi 4 case.
+
+The fan is rated at 0.18 A, operates at 5 V DC supplied through the 40-pin GPIO header, and typically draws 60 mA (300 mW).
+
+==== Raspberry Pi 5 fans
+
+For Raspberry Pi 5, use one of the official fan options:
+
+* https://www.raspberrypi.com/products/active-cooler/[Active Cooler]
+* https://www.raspberrypi.com/products/raspberry-pi-5-case/[Case for Raspberry Pi 5]
+
+Both of the Raspberry Pi 5 fan options plug into the four-pin JST-SH PWM fan connector located in the upper right of the board between the 40-pin GPIO header and the USB 2.0 ports.
+
+The fan connector pulls from the same current limit as USB peripherals.
+
+The official case fan draws approximately 60 mA at 5 V (300 mW).
+
+Given the extra cooling performance of the Active Cooler, we recommend it for customers who want to overclock their Raspberry Pi 5.
+
+The fan is scheduled to turn on and off based on the temperature of the SoC. The default temperature mapping is as follows:
+
+* Less than 50°C: the fan doesn't spin at all (0% speed).
+* 50°C: the fan turns on at a low speed (30% speed).
+* 60°C: the fan speed increases to a medium speed (50% speed).
+* 67.5°C: the fan speed increases to a high speed (70% speed).
+* 75°C: the fan increases to full speed (100% speed).
+
+Temperature decreases use the same mapping with a 5°C **hysteresis**; fan speed decreases when the temperature drops to 5°C below each of the above thresholds.
+
+NOTE: The temperature, hysteresis and speed figures given above can be adjusted by using the various `fan_tempN`, `fan_tempN_hyst` and `fan_tempN_speed` dtoverlay settings (where `N` is 0, 1, 2 or 3). See https://github.com/raspberrypi/linux/blob/rpi-6.12.y/arch/arm/boot/dts/overlays/README[the overlays README] for full details. For example, adding `dtparam=fan_temp0=55000` to `/boot/firmware/config.txt` will cause the fan to remain off until the Raspberry Pi 5's temperature reaches 55°C.
+
+At boot the fan is turned on, and the tachometer input is checked to see if the fan is spinning. If it is, then the `cooling_fan` device tree overlay is enabled. This overlay is in `bcm2712-rpi-5-b.dtb` by default, but with `status=disabled`.
+
+===== Raspberry Pi 5 fan connector pinout
+
+The Raspberry Pi 5 fan connector is a 1 mm pitch JST-SH socket containing the following four pins:
+
+[cols="1,2,2",width="50"%"]
+|===
+| Pin | Function | Wire colour
+
+| 1 | +5V | Red
+| 2 | PWM | Blue
+| 3 | GND | Black
+| 4 | Tach | Yellow
+|===

@@ -1,0 +1,20 @@
+== Getting started
+
+image:images/labelled-wiring.jpg[width="100%"]
+
+Depending on your setup, there are several ways to wire the Debug Probe to a xref:pico-series.adoc[Pico-series device]. Below, we connect the Debug Probe to a Raspberry Pi Pico H which has the newer three-pin JST-SH connector for SWD.
+
+video::4RCZBZsfsek[youtube,width=80%,height=400px]
+
+Connect the following:
+
+* The Debug Probe "D" port to Pico H SWD JST-SH connector
+* The Debug Probe "U" port, with the three-pin JST-SH connector to 0.1-inch header (male):
+** Debug Probe `RX` connected to Pico H `TX` pin
+** Debug Probe `TX` connected to Pico H `RX` pin
+** Debug Probe `GND` connected to Pico H `GND` pin
+
+NOTE: If you have a non-H Pico or Pico W (without a JST-SH connector) you can still connect it to a Debug Probe. Solder a male connector to the `SWCLK`, `GND`, and `SWDIO` header pins on the board. Using the alternate 3-pin JST-SH connector to 0.1-inch header (female) cable included with the Debug Probe, connect to the Debug Probe "D" port. Connect `SWCLK`, `GND`, and `SWDIO` on the Pico or Pico W to the `SC` (orange wire), `GND` (black wire), and `SD` (yellow wire) pins on the Debug Probe, respectively.
+
+image:images/wiring.png[width="70%"]
+

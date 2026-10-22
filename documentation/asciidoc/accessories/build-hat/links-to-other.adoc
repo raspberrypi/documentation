@@ -1,0 +1,16 @@
+== Further Resources
+
+You can download documentation on the,
+
+* https://pip.raspberrypi.com/documents/RP-008140-DS[Raspberry Pi Build HAT Serial Protocol]
+* https://pip.raspberrypi.com/documents/RP-008139-DS[Raspberry Pi Build HAT Python Library]
+
+and full details of the Python Library documentation can also be found https://buildhat.readthedocs.io/[on ReadTheDocs]. You can find more information on the .NET library in the https://github.com/dotnet/iot/tree/main/src/devices/BuildHat[.NET IoT] Github repository.
+
+You can also follow along with projects from the Raspberry Pi Foundation,
+
+* https://projects.raspberrypi.org/en/projects/lego-game-controller[LEGO® Game Controller]
+* https://projects.raspberrypi.org/en/projects/lego-robot-car[LEGO® Robot Car]
+* https://projects.raspberrypi.org/en/projects/lego-plotter[LEGO® Plotter]
+* https://projects.raspberrypi.org/en/projects/lego-robot-face[LEGO® Robot Face]
+* https://projects.raspberrypi.org/en/projects/lego-data-dash[LEGO® Data Dash]

@@ -1,0 +1,451 @@
+== Display Parallel Interface (DPI)
+
+[.whitepaper, title="Using a DPI Display on the Raspberry Pi", subtitle="", link=https://pip.raspberrypi.com/documents/RP-003471-WP]
+****
+Display Parallel Interface (DPI) displays can be connected to Raspberry Pi devices through the 40-pin general-purpose input/output (GPIO) connector as an alternative to using the dedicated Display Serial Interface (DSI) or High-Definition Multimedia Interface (HDMI) ports.
+****
+
+An up-to-24-bit parallel RGB interface is available on all Raspberry Pi boards with the 40 way header and the Compute Modules. This interface allows parallel RGB displays to be attached to the Raspberry Pi GPIO either in RGB24 (8 bits for red, green and blue) or RGB666 (6 bits per colour) or RGB565 (5 bits red, 6 green, and 5 blue).
+
+This interface is controlled by the GPU firmware and can be programmed by a user through special `config.txt` parameters and by enabling the correct Linux Device Tree overlay.
+
+=== GPIO pins
+
+One of the alternate functions selectable on Bank 0 of the Raspberry Pi GPIO is DPI (Display Parallel Interface) which is a simple clocked parallel interface (up to 8 bits of R, G and B; clock, enable, hsync, and vsync). This interface is available as alternate function 2 (ALT2) on GPIO Bank 0:
+
+[cols="1m,1m"]
+|===
+|GPIO |ALT2
+
+|GPIO0
+|PCLK
+
+|GPIO1
+|DE
+
+|GPIO2
+|LCD_VSYNC
+
+|GPIO3
+|LCD_HSYNC
+
+|GPIO4
+|DPI_D0
+
+|GPIO5
+|DPI_D1
+
+|GPIO6
+|DPI_D2
+
+|GPIO7
+|DPI_D3
+
+|GPIO8
+|DPI_D4
+
+|GPIO9
+|DPI_D5
+
+|GPIO10
+|DPI_D6
+
+|GPIO11
+|DPI_D7
+
+|GPIO12
+|DPI_D8
+
+|GPIO13
+|DPI_D9
+
+|GPIO14
+|DPI_D10
+
+|GPIO15
+|DPI_D11
+
+|GPIO16
+|DPI_D12
+
+|GPIO17
+|DPI_D13
+
+|GPIO18
+|DPI_D14
+
+|GPIO19
+|DPI_D15
+
+|GPIO20
+|DPI_D16
+
+|GPIO21
+|DPI_D17
+
+|GPIO22
+|DPI_D18
+
+|GPIO23
+|DPI_D19
+
+|GPIO24
+|DPI_D20
+
+|GPIO25
+|DPI_D21
+
+|GPIO26
+|DPI_D22
+
+|GPIO27
+|DPI_D23
+|===
+
+NOTE: There are various ways that the colour values can be presented on the DPI output pins in either 565, 666, or 24-bit modes (see the following table and the `output_format` part of the `dpi_output_format` parameter below):
+
+[cols="1,1,^1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"]
+|===
+.2+h|*Mode* .2+h|*RGB bits* 24+h|*GPIO*
+h|*27* h|*26* h|*25* h|*24* h|*23* h|*22* h|*21* h|*20* h|*19* h|*18* h|*17* h|*16* h|*15* h|*14* h|*13* h|*12* h|*11* h|*10* h|*9* h|*8* h|*7* h|*6* h|*5* h|*4*
+
+|1
+{set:cellbgcolor:!}
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+
+|2
+|565
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|-
+|7
+{set:cellbgcolor:#E20000}
+|6
+|5
+|4
+|3
+|7
+{set:cellbgcolor:#05FF0B}
+|6
+|5
+|4
+|3
+|2
+|7
+{set:cellbgcolor:#5D6CFF}
+|6
+|5
+|4
+|3
+
+|3
+{set:cellbgcolor:!}
+|565
+|-
+|-
+|-
+|7
+{set:cellbgcolor:#E20000}
+|6
+|5
+|4
+|3
+|-
+{set:cellbgcolor:!}
+|-
+|7
+{set:cellbgcolor:#05FF0B}
+|6
+|5
+|4
+|3
+|2
+|-
+{set:cellbgcolor:!}
+|-
+|-
+|7
+{set:cellbgcolor:#5D6CFF}
+|6
+|5
+|4
+|3
+
+|4
+{set:cellbgcolor:!}
+|565
+|-
+|-
+|7
+{set:cellbgcolor:#E20000}
+|6
+|5
+|4
+|3
+|-
+{set:cellbgcolor:!}
+|-
+|-
+|7
+{set:cellbgcolor:#05FF0B}
+|6
+|5
+|4
+|3
+|2
+|-
+{set:cellbgcolor:!}
+|-
+|7
+{set:cellbgcolor:#5D6CFF}
+|6
+|5
+|4
+|3
+|-
+{set:cellbgcolor:!}
+
+|5
+|666
+|-
+|-
+|-
+|-
+|-
+|-
+|7
+{set:cellbgcolor:#E20000}
+|6
+|5
+|4
+|3
+|2
+|7
+{set:cellbgcolor:#05FF0B}
+|6
+|5
+|4
+|3
+|2
+|7
+{set:cellbgcolor:#5D6CFF}
+|6
+|5
+|4
+|3
+|2
+
+|6
+{set:cellbgcolor:!}
+|666
+|-
+|-
+|7
+{set:cellbgcolor:#E20000}
+|6
+|5
+|4
+|3
+|2
+|-
+{set:cellbgcolor:!}
+|-
+|7
+{set:cellbgcolor:#05FF0B}
+|6
+|5
+|4
+|3
+|2
+|-
+{set:cellbgcolor:!}
+|-
+|7
+{set:cellbgcolor:#5D6CFF}
+|6
+|5
+|4
+|3
+|2
+
+|7
+{set:cellbgcolor:!}
+|888
+|7
+{set:cellbgcolor:#E20000}
+|6
+|5
+|4
+|3
+|2
+|1
+|0
+|7
+{set:cellbgcolor:#05FF0B}
+|6
+|5
+|4
+|3
+|2
+|1
+|0
+|7
+{set:cellbgcolor:#5D6CFF}
+|6
+|5
+|4
+|3
+|2
+|1
+|0
+
+|===
+{set:cellbgcolor:!}
+
+=== Disable other GPIO peripherals
+
+All other peripheral overlays that use conflicting GPIO pins must be disabled. In `config.txt`, take care to comment out or invert any dtparams that enable I2C or SPI:
+
+[source,ini]
+----
+dtparam=i2c_arm=off
+dtparam=spi=off
+----
+
+=== Configure a display
+
+The https://en.wikipedia.org/wiki/Direct_Rendering_Manager#Kernel_mode_setting[Kernel Mode Setting (KMS)] generic display interface enables output to arbitrary displays, as long as you have an appropriate driver.
+
+==== Auto detect
+
+Auto detect allows your Raspberry Pi to connect with a display without a manually configured device tree overlay.
+Auto detection is enabled by default. You can enable display auto detect by adding the following line to `config.txt`:
+
+[source,ini]
+----
+display_auto_detect=1
+----
+
+Replace the `1` with a `0` to disable auto detect.
+When you connect the official Raspberry Pi display with auto detect enabled, KMS determines the display model automatically and configures the appropriate display settings.
+
+==== Manually configure a display
+
+NOTE: From Raspberry Pi OS _Bookworm_ onwards, the `dpi_output_format` and `dpi_timings` entries in `config.txt` previously used to set up DPI have been superseded by the `vc4-kms-dpi-generic` overlay.
+
+To use any display other than the official Raspberry Pi display, you must specify a `dtoverlay` entry in `config.txt`. The panel manufacturer should configure timings for your display in Linux kernel code and provide an overlay to enable those settings. See the https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/vc4-kms-kippah-7inch-overlay.dts[Adafruit Kippah display entry] for an example. The following example demonstrates how to set a `dtoverlay` entry for the Kippah display in your xref:config_txt.adoc#what-is-config-txt[`/boot/firmware/config.txt`] file:
+
+[source,ini]
+----
+dtoverlay=vc4-kms-kippah-7inch-overlay
+----
+
+Display timings are usually defined in the kernel, but you can also define them in the provided `panel-dpi` driver. If your panel lacks a defined overlay in kernel code, you can use the `panel-dpi` driver to define display timings as parameters. This enables you to manually configure a device tree entry for any display.
+
+The following example demonstrates how you can define timings using device tree parameters:
+
+[source,ini]
+----
+dtoverlay=vc4-kms-v3d
+dtoverlay=vc4-kms-dpi-generic,hactive=480,hfp=26,hsync=16,hbp=10
+dtparam=vactive=640,vfp=25,vsync=10,vbp=16
+dtparam=clock-frequency=32000000,rgb666-padhi
+----
+
+NOTE: Device tree line length must not exceed 80 characters. When a setting requires a line longer than 80 characters, split the assignment of that parameter across multiple lines.
+
+Parameter display tree definitions support the following options:
+
+[cols="1,2"]
+|===
+| Option | Description
+
+| `clock-frequency`
+| Display clock frequency (Hz)
+
+| `hactive`
+| Horizontal active pixels
+
+| `hfp`
+| Horizontal front porch
+
+| `hsync`
+| Horizontal sync pulse width
+
+| `hbp`
+| Horizontal back porch
+
+| `vactive`
+| Vertical active lines
+
+| `vfp`
+| Vertical front porch
+
+| `vsync`
+| Vertical sync pulse width
+
+| `vbp`
+| Vertical back porch
+
+| `hsync-invert`
+| Horizontal sync active low
+
+| `vsync-invert`
+| Vertical sync active low
+
+| `de-invert`
+| Data Enable active low
+
+| `pixclk-invert`
+| Negative edge pixel clock
+
+| `width-mm`
+| Defines the screen width in millimetres
+
+| `height-mm`
+| Defines the screen height in millimetres
+
+| `rgb565`
+| Change to RGB565 output on GPIOs 0-19
+
+| `rgb666-padhi`
+| Change to RGB666 output on GPIOs 0-9, 12-17, and 20-25
+
+| `rgb888`
+| Change to RGB888 output on GPIOs 0-27
+
+| `bus-format`
+| Override the bus format for a MEDIA_BUS_FMT_* value, also overridden by rgbXXX overrides
+
+| `backlight-gpio`
+| Defines a GPIO to be used for backlight control (default value: none)
+|===

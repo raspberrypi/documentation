@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    <input type="checkbox" id="mobile-toggle" />
+    {% include header.html %}
+    <div id="docs-content">
+      <div id="toc-container-container">
+        <div id="toc-container">
+          <div id="toc-inner">
+            <div id="docs-header">
+              <h2 id="docs-header-title">
+                <a href="/documentation">
+                  Documentation
+                </a>
+              </h2>
+              <label class="mobile-menu-toggle" for="mobile-toggle">
+                <div class="mobile-menu-toggle-inner"></div>
+              </label>
+            </div>
+            {% include search.html %}
+          </div>
+          <div class="toc" role="navigation">
+          {% for subdir in site.data.nav %}
+            <ul class="sectlevel1">
+              <input class="toc-toggle-box" type="checkbox" id="{{ subdir.path }}" {% if page.url contains subdir.path %}checked{% endif %} />
+              <li>
+                <span>
+                  <label class="toc-toggle" for="{{ subdir.path }}" onclick="event.stopPropagation()">
+                    <div class="toc-toggle-container">
+                      <a class="level1" href="{{ site.baseurl }}{{ subdir.path }}">
+                        <a title="expand {{ item.title | markdownify }}" class="{% if page.url contains subdir.path %}bold {% endif %}toc-item">
+                          {{ subdir.title | markdownify }}
+                        </a>
+                      </a>
+                    </div>
+                  </label>
+                </span>
+              </li>
+              {% for item in subdir.toc %}
+                <div class="itemcontents">
+                  <ul class="sectlevel1">
+                    <input class="toc-toggle-box" type="checkbox" id="{{ item.path }}" {% if page.url contains item.path %}checked{% endif %} />
+                    <li>
+                      <span>
+                        <label class="toc-toggle" for="{{ item.path }}">
+                          <div class="toc-toggle-container">
+                            <a class="level2" href="{{ site.baseurl }}{{ item.path }}">
+                              <a title="expand {{ item.title | strip_html }}" class="{% if page.url contains item.path %}bold {% endif %}toc-item">
+                                {{ item.title | markdownify }}
+                              </a>
+                            </a>
+                          </div>
+                        </label>
+                      </span>
+                    </li>
+                    {% for entry in item.sections %}
+                    <div class="itemcontents">
+                      <ul class="sectlevel1">
+                        <li>
+                          <span>
+                            <label class="toc-toggle">
+                              <div class="toc-toggle-container">
+                                <a class="level3">
+                                  <a
+                                    href="{{ site.baseurl }}{{ item.path }}#{{ entry.anchor }}"
+                                    onclick="document.getElementById('mobile-toggle').checked = false"
+                                    class="toc-item no-dropdown"
+                                    >
+                                    {{ entry.heading | markdownify }}
+                                  </a>
+                                </a>
+                              </div>
+                            </label>
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endfor %}
+            </ul>
+          {% endfor %}
+
+            <ul class="sectlevel1">
+              <li>
+                <span>
+                  <label class="toc-toggle">
+                    <div class="toc-toggle-container">
+                      <a class="level1">
+                        <a title="Raspberry Pi compliance documents" class="toc-item no-dropdown" href="https://pip.raspberrypi.com/" target="_blank">
+                          <p>Product Information Portal</p>
+                        </a>
+                      </a>
+                    </div>
+                  </label>
+                </span>
+              </li>
+            </ul>
+
+            <ul class="sectlevel1">
+              <li>
+                <span>
+                  <label class="toc-toggle">
+                    <div class="toc-toggle-container">
+                      <a class="level1">
+                        <a title="Hands-on hardware and software tutorials" class="toc-item no-dropdown" href="https://www.raspberrypi.com/tutorials/" target="_blank">
+                          <p>Tutorials</p>
+                        </a>
+                      </a>
+                    </div>
+                  </label>
+                </span>
+              </li>
+            </ul>
+
+            <ul class="sectlevel1">
+              <li>
+                <span>
+                  <label class="toc-toggle">
+                    <div class="toc-toggle-container">
+                      <a class="level1">
+                        <a title="User and product support forums" class="toc-item no-dropdown" href="https://forums.raspberrypi.com" target="_blank">
+                          <p>Forums</p>
+                        </a>
+                      </a>
+                    </div>
+                  </label>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="docs-container">
+        <div id="main-window">
+          <section id="content" role="main">
+            <h1>{{ page.sub_title | markdownify | remove: '<p>' | remove: '</p>'}}</h1>
+            {{ content }}
+          </section>
+
+          <div id="on-this-page">
+            <div id="on-this-page-inner">
+              <h4>On this page</h4>
+              <div id="tocbot" class="js-toc"></div>
+            </div>
+          </div>
+        </div>
+
+        {% include legal.html %}
+        {% include footer.html %}
+
+        <!-- scripts that manipulate the page, placed at the bottom so they run after the page content has already loaded !-->
+        <script async type="text/javascript" src="{{ site.baseurl }}/scripts/asciidoctor-tabs.js?ver={{ site.time | date: '%s' }}"></script>
+        <script async type="text/javascript" src="{{ site.baseurl }}/scripts/clipboard.min.js?ver={{ site.time | date: '%s' }}"></script>
+        <script async type="text/javascript" src="{{ site.baseurl }}/scripts/copy-to-clipboard.js?ver={{ site.time | date: '%s' }}"></script>
+        <script type="text/javascript" src="{{ site.baseurl }}/scripts/tocbot.min.js?ver={{ site.time | date: '%s' }}"></script>
+        <script>
+          tocbot.init({
+              contentSelector: '#content',
+              headingSelector: 'h1, h2, h3, h4',
+              ignoreSelector: '.discrete',
+              includeHtml: true
+          });
+        </script>
+
+      </div>
+    </div>
+  </body>
+</html>

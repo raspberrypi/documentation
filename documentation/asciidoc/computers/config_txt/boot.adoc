@@ -1,0 +1,383 @@
+== Boot Options
+
+=== `start_file`, `fixup_file`
+
+These options specify the firmware files transferred to the VideoCore GPU prior to booting.
+
+`start_file` specifies the VideoCore firmware file to use.
+`fixup_file` specifies the file used to fix up memory locations used in the `start_file` to match the GPU memory split.
+
+The `start_file` and the `fixup_file` are a matched pair – using unmatched files will stop the board from booting. This is an advanced option, so we advise that you use `start_x` and `start_debug` rather than this option.
+
+NOTE: Cut-down firmware (`start*cd.elf` and `fixup*cd.dat`) cannot be selected this way – the system will fail to boot.  The only way to enable the cut-down firmware is to specify `gpu_mem=16`. The cut-down firmware removes support for codecs, 3D and debug logging as well as limiting the initial early-boot framebuffer to 1080p @16bpp – although KMS can replace this with up to 32bpp 4K framebuffer(s) at a later stage as with any firmware.
+
+NOTE: The Raspberry Pi 5, 500, 500+, and Compute Module 5 firmware is self-contained in the bootloader EEPROM.
+
+=== `cmdline`
+
+`cmdline` is the alternative filename on the boot partition from which to read the kernel command line string; the default value is `cmdline.txt`.
+
+=== `kernel`
+
+`kernel` is the alternative filename on the boot partition for loading the kernel. The default value on the Raspberry Pi 1, Zero and Zero W, and Raspberry Pi Compute Module 1 is `kernel.img`. The default value on the Raspberry Pi 2, 3, 3+ and Zero 2 W, and Raspberry Pi Compute Modules 3 and 3+ is `kernel7.img`. The default value on the Raspberry Pi 4 and 400, and Raspberry Pi Compute Module 4 is `kernel8.img`, or `kernel7l.img` if `arm_64bit` is set to 0.
+
+The Raspberry Pi 5, 500, 500+, and Compute Module 5 firmware defaults to loading `kernel_2712.img` because this image contains optimisations specific to those models (for example, 16K page-size). If this file is not present, then the common 64-bit kernel (`kernel8.img`) will be loaded instead.
+
+=== `arm_64bit`
+
+If set to 1, the kernel will be started in 64-bit mode. Setting to 0 selects 32-bit mode.
+
+In 64-bit mode, the firmware will choose an appropriate kernel (for example, `kernel8.img`), unless there is an explicit `kernel` option defined, in which case that is used instead.
+
+Defaults to 1 on Raspberry Pi 4, 400, and Compute Module 4 and 4S platforms. Defaults to 0 on all other platforms. However, if the name given in an explicit `kernel` option matches one of the known kernels then `arm_64bit` is set accordingly.
+
+64-bit kernels come in the following forms:
+
+* uncompressed image files
+* gzip archives of an image
+
+Both forms can use the `img` file extension; the bootloader recognises archives using signature bytes at the start of the file.
+
+The following Raspberry Pi models support this flag:
+
+* 2B rev 1.2
+* 3B
+* 3A+
+* 3B+
+* 4B
+* 400
+* Zero 2 W
+* Compute Module 3
+* Compute Module 3+
+* Compute Module 4
+* Compute Module 4S
+
+Flagship models since Raspberry Pi 5, Compute Modules since CM5, and Keyboard models since Raspberry Pi 500 _only_ support the 64-bit kernel. Models that only support a 64-bit kernel ignore this flag.
+
+=== `armstub`
+
+`armstub` is the filename on the boot partition from which to load the Arm stub. The default Arm stub is stored in firmware and is selected automatically based on the Raspberry Pi model and various settings.
+
+The stub is a small piece of Arm code that is run before the kernel. Its job is to set up low-level hardware like the interrupt controller before passing control to the kernel.
+
+=== `ramfsfile`
+
+`ramfsfile` is the optional filename on the boot partition of a `ramfs` to load.
+
+NOTE: Newer firmware supports the loading of multiple `ramfs` files. You should separate the multiple file names with commas, taking care not to exceed the 80-character line length limit. All the loaded files are concatenated in memory and treated as a single `ramfs` blob. More information is available https://forums.raspberrypi.com/viewtopic.php?f=63&t=10532[on the forums].
+
+=== `ramfsaddr`
+
+`ramfsaddr` is the memory address to which the `ramfsfile` should be loaded.
+
+[[initramfs]]
+=== `initramfs`
+
+NOTE: Building and updating `initramfs` is considered an advanced technique that's undertaken only by experienced users. It isn't officially supported by Raspberry Pi and we therefore don't provide instructions for it.
+
+The `initramfs` command specifies both the ramfs filename *and* the memory address to which to load it. It performs the actions of both `ramfsfile` and `ramfsaddr` in one parameter. The address can also be `followkernel` (or `0`) to place it in memory after the kernel image. Example values are: `initramfs initramf.gz 0x00800000` or `initramfs init.gz followkernel`. As with `ramfsfile`, newer firmwares allow the loading of multiple files by comma-separating their names.
+
+NOTE: This option uses different syntax from all the other options, and you should not use the `=` character here.
+
+[[auto_initramfs]]
+=== `auto_initramfs`
+
+If `auto_initramfs` is set to `1`, the firmware looks for an `initramfs` file to match the kernel. The file must be in the same location as the kernel image, and the name is derived from the name of the kernel by replacing the `kernel` prefix with `initramfs`, and removing any extension such as `.img`. For example, `kernel8.img` requires `initramfs8`. You can make use of `auto_initramfs` with custom kernel names provided the names begin with `kernel` and `initramfs` respectively and everything else matches (except for the absence of the file extension on the initramfs). Otherwise, an explicit xref:config_txt.adoc#initramfs[`initramfs`] statement is required.
+
+[[disable_poe_fan]]
+=== `disable_poe_fan`
+
+By default, a probe on the I2C bus will happen at startup, even when a PoE HAT is not attached. Setting this option to 1 disables control of a PoE HAT fan through I2C (on pins ID_SD & ID_SC). If you are not intending to use a PoE HAT, this is a helpful way to minimise boot time.
+
+=== `disable_splash`
+
+If `disable_splash` is set to `1`, the rainbow splash screen will not be shown on boot. The default value is `0`.
+
+=== `enable_uart`
+
+`enable_uart=1` (in conjunction with `console=serial0,115200` in `cmdline.txt`) requests that the kernel creates a serial console, accessible using GPIOs 14 and 15 (pins 8 and 10 on the 40-pin header). Editing `cmdline.txt` to remove the line `quiet` enables boot messages from the kernel to also appear there. See also `uart_2ndstage`.
+
+=== `force_eeprom_read`
+
+Set this option to `0` to prevent the firmware from trying to read an I2C HAT EEPROM (connected to pins ID_SD & ID_SC) at power up. See also xref:config_txt.adoc#disable_poe_fan[`disable_poe_fan`].
+
+[[os_prefix]]
+=== `os_prefix`
+
+`os_prefix` is an optional setting that allows you to choose between multiple versions of the kernel and Device Tree files installed on the same card. Any value in `os_prefix` is prepended to the name of any operating system files loaded by the firmware, where "operating system files" is defined to mean kernels, `initramfs`, `cmdline.txt`, `.dtbs` and overlays. The prefix would commonly be a directory name, but it could also be part of the filename such as "test-". For this reason, directory prefixes must include the trailing `/` character.
+
+In an attempt to reduce the chance of a non-bootable system, the firmware first tests the supplied prefix value for viability – unless the expected kernel and .dtb can be found at the new location/name, the prefix is ignored (set to ""). A special case of this viability test is applied to overlays, which will only be loaded from `+${os_prefix}${overlay_prefix}+` (where the default value of <<overlay_prefix,`overlay_prefix`>> is "overlays/") if `+${os_prefix}${overlay_prefix}README+` exists, otherwise it ignores `os_prefix` and treats overlays as shared.
+
+(The reason the firmware checks for the existence of key files rather than directories when checking prefixes is twofold: the prefix can't be a directory, and not all boot methods support testing for the existence of a directory.)
+
+NOTE: Any user-specified OS file can bypass all prefixes by using an absolute path (with respect to the boot partition) – just start the file path with a `/`, for example, `kernel=/my_common_kernel.img`.
+
+See also <<overlay_prefix,`overlay_prefix`>> and xref:legacy_config_txt.adoc#upstream_kernel[`upstream_kernel`].
+
+=== `otg_mode` (Raspberry Pi 4 only)
+
+USB On-The-Go (often abbreviated to OTG) is a feature that allows supporting USB devices with an appropriate OTG cable to configure themselves as USB hosts. On older Raspberry Pi devices, a single USB 2.0 controller was used in both USB host and device mode.
+
+A high-performance USB 3.0 controller, attached using PCIe, drives the main USB ports on Raspberry Pi 4B and later, and on Raspberry Pi 400 and later. The legacy USB 2.0 controller is still available on the USB-C power connector for use as a device (`otg_mode=0`, the default). Raspberry Pi Compute Module 4 and earlier do not include the USB 3.0 controller.
+
+`otg_mode=1` requests that a more capable XHCI USB 2.0 controller is used as an alternative host controller on that USB-C connector.
+
+NOTE: By default, Raspberry Pi OS includes a line in `/boot/firmware/config.txt` that enables this setting on Compute Module 4.
+
+
+[[overlay_prefix]]
+=== `overlay_prefix`
+
+Specifies a subdirectory/prefix from which to load overlays, and defaults to `overlays/` (note the trailing `/`). If used in conjunction with <<os_prefix,`os_prefix`>>, the `os_prefix` comes before the `overlay_prefix`; for example, `dtoverlay=disable-bt` attempts to load `+${os_prefix}${overlay_prefix}disable-bt.dtbo+`.
+
+NOTE: Unless `+${os_prefix}${overlay_prefix}README+` exists, overlays are shared with the main OS (that is, `os_prefix` is ignored).
+
+=== Configuration Properties
+
+Raspberry Pi 5 requires a `config.txt` file to be present to indicate that the partition is bootable.
+
+[[boot_ramdisk]]
+==== `boot_ramdisk`
+
+If this property is set to `1` then the bootloader will attempt load a ramdisk file called `boot.img` containing the xref:configuration.adoc#boot-folder-contents[boot filesystem]. Subsequent files (for example, `start4.elf`) are read from the ramdisk instead of the original boot file system.
+
+The primary purpose of `boot_ramdisk` is to support `secure-boot`, however, unsigned `boot.img` files can also be useful to Network Boot or `RPIBOOT` configurations.
+
+* The maximum size for a ramdisk file is 180 MB for Raspberry Pi 4 and later, and 128 MB for earlier devices. However, on devices with limited memory, for example, 256 MB, we recommend that you use a small ramdisk file, for example, 32 MB.
+* `boot.img` files are raw disk `.img` files. The recommended format is a plain FAT32 partition with no MBR.
+* The memory for the ramdisk filesystem is released before the operating system is started.
+* If xref:raspberry-pi.adoc#fail-safe-os-updates-tryboot[TRYBOOT] is selected then the bootloader will search for `tryboot.img` instead of `boot.img`.
+* See also xref:config_txt.adoc#autoboot-txt[autoboot.txt].
+
+For more information about `secure-boot` and creating `boot.img` files, see https://github.com/raspberrypi/usbboot/blob/master/Readme.md[USBBOOT].
+
+Default: `0`
+
+[[boot_load_flags]]
+==== `boot_load_flags`
+
+Experimental property for custom firmware (bare metal).
+
+Bit 0 (0x1) indicates that the .elf file is custom firmware. This disables any compatibility checks (for example, is USB MSD boot supported) and resets PCIe before starting the executable.
+
+Not relevant on Raspberry Pi 5 because there is no `start.elf` file.
+
+Default: `0x0`
+
+[[enable_rp1_uart]]
+==== `enable_rp1_uart`
+
+Raspberry Pi 5 only.
+
+When set to `1`, firmware initialises RP1 UART0 to 115200 bps and doesn't reset RP1 before starting the OS (separately configurable using `pciex4_reset=1`).
+This makes it easier to get UART output on the 40-pin header in early boot-code, for instance during bare-metal debug.
+
+Default: `0x0`
+
+[[pciex4_reset]]
+==== `pciex4_reset`
+
+Raspberry Pi 5 only.
+
+By default, the PCIe x4 controller used by `RP1` is reset before starting the operating system. If this parameter is set to `0` then the reset is disabled allowing operating system or bare metal code to inherit the PCIe configuration setup from the bootloader.
+
+Default: `1`
+
+[[sha256]]
+==== `sha256`
+
+If set to non-zero, enables the logging of SHA256 hashes for loaded files (the kernel, initramfs, Device Tree .dtb file, and overlays), as generated by the `sha256sum` utility. The logging output goes to the UART if enabled, and is also accessible through `sudo vclog --msg`. This option can be useful when debugging boot problems, but at the cost of potentially adding _many_ seconds to the boot time. Defaults to 0 on all platforms.
+
+[[uart_2ndstage]]
+==== `uart_2ndstage`
+
+If `uart_2ndstage` is `1` then enable debug logging to the UART. This option also automatically enables UART logging in `start.elf`. This is also described on the xref:config_txt.adoc#boot-options[Boot options] page.
+
+The `BOOT_UART` property also enables bootloader UART logging but does not enable UART logging in `start.elf` unless `uart_2ndstage=1` is also set.
+
+Default: `0`
+
+[[erase_eeprom]]
+==== `erase_eeprom`
+
+If `erase_eeprom` is set to `1` then `recovery.bin` will erase the entire SPI EEPROM instead of flashing the bootloader image. This property has no effect during a normal boot.
+
+Default: `0`
+
+[[set_reboot_arg1]]
+==== `set_reboot_arg1`
+Raspberry Pi 5 only.
+
+Sets the value of `boot_arg1` to be passed through a reset-safe register to the bootloader after a reboot.
+See xref:config_txt.adoc#boot_arg1[`boot_arg1`] for more details.
+
+To set the reboot argument at runtime without editing `config.txt`, you can use `vcmailbox`. For example, to set `boot_arg1` to `42` on the next reboot:
+
+[source,console]
+----
+$ sudo vcmailbox 0x0003808c 8 8 1 42
+----
+
+Default: ``
+
+[[set_reboot_order]]
+==== `set_reboot_order`
+
+Raspberry Pi 5 only.
+
+Sets the value of xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER] to be passed through a reset-safe register to the bootloader after a reboot. As with `tryboot`, this is a one-time setting and is automatically cleared after use.
+
+This property could be used to debug different xref:raspberry-pi.adoc#BOOT_ORDER[BOOT_ORDER] settings. Alternatively, it could be used in a provisioning system which has control over power and the `nRPIBOOT` GPIO to override the boot mode without specifying xref:config_txt.adoc#conditional-filters[conditional filter] statements in the EEPROM config.
+
+To set the reboot order at runtime without editing `config.txt`, you can use `vcmailbox`. For example, to test network boot on the next reboot:
+
+[source,console]
+----
+$ sudo vcmailbox 0x0003808b 4 4 0xf4612
+$ sudo reboot
+----
+
+Default: ``
+
+[[kernel_watchdog_timeout]]
+==== `kernel_watchdog_timeout`
+
+If set to a non-zero value (in seconds), this property enables a hardware watchdog timer that is handed over to the operating system (OS) at boot. If the OS does not regularly "kick" or reset the watchdog, the system will be reset after the specified timeout.
+
+This property sets the `systemd` `watchdog.open_timeout` parameter, which controls how long the OS has to initialise and start servicing the watchdog. The value is passed to the OS through the kernel command line. For ongoing operation, the OS must also regularly reset the watchdog, typically controlled by the `RuntimeWatchdogSec` parameter in `systemd`. For more information, see https://www.freedesktop.org/software/systemd/man/latest/systemd-system.conf.html#RuntimeWatchdogSec=[systemd watchdog documentation].
+
+[NOTE]
+====
+On Raspberry Pi OS _Bookworm_, the `RuntimeWatchdogSec` parameter is **not enabled by default** and this setting must be configured first in `/etc/systemd/system.conf` before the firmware kernel watchdog can be used.
+
+If both `BOOT_WATCHDOG_TIMEOUT` (EEPROM/bootloader setting, only supported on Raspberry Pi 4 and 5) and `kernel_watchdog_timeout` are set, the bootloader will seamlessly hand over from the bootloader watchdog to the kernel watchdog at the point the OS is started. This provides continuous watchdog coverage from power-on through to OS runtime.
+
+It is preferred to use `kernel_watchdog_timeout` rather than `dtparam=watchdog` because `kernel_watchdog_timeout` explicitly sets the `open_timeout` parameter, ensuring the watchdog is active until systemd takes over.
+====
+
+This is useful for ensuring that the system can recover from OS hangs or crashes after the boot process has completed.
+
+Default: `0` (disabled)
+
+[[kernel_watchdog_partition]]
+==== `kernel_watchdog_partition`
+
+If the kernel watchdog triggers (specifically, the OS fails to reset the watchdog within the timeout), this property specifies the partition number to boot from after the reset. This allows for automatic failover to a recovery or alternate partition.
+
+You can use this in conjunction with the xref:config_txt.adoc#the-expression-filter[expression filter] to apply different settings or select a different boot flow when the watchdog triggers a reboot to a specific partition.
+
+See also the xref:raspberry-pi.adoc#PARTITION[PARTITION] property for more information about how to use high partition numbers to detect a watchdog trigger.
+
+Default: `0` (default partition)
+
+
+[[eeprom_write_protect]]
+==== `eeprom_write_protect`
+
+Configures the EEPROM `write status register`. This can be set either to mark the entire EEPROM as write-protected, or to clear write-protection.
+
+This option must be used in conjunction with the EEPROM `/WP` pin which controls updates to the EEPROM `Write Status Register`.  Pulling `/WP` low (CM4 `EEPROM_nWP` or on a Raspberry Pi 4 `TP5`) does NOT write-protect the EEPROM unless the `Write Status Register` has also been configured.
+
+See the https://www.winbond.com/resource-files/w25x40cl_f%2020140325.pdf[Winbond W25x40cl] or https://www.winbond.com/hq/product/code-storage-flash-memory/serial-nor-flash/?__locale=en&partNo=W25Q16JV[Winbond W25Q16JV] datasheets for further details.
+
+`eeprom_write_protect` settings in `config.txt` for `recovery.bin`.
+
+|===
+| Value | Description
+
+| 1
+| Configures the write protect regions to cover the entire EEPROM.
+
+| 0
+| Clears the write protect regions.
+
+| -1
+| Do nothing.
+|===
+
+NOTE: `flashrom` does not support clearing of the write-protect regions and will fail to update the EEPROM if write-protect regions are defined.
+
+On Raspberry Pi 5 `/WP` is pulled low by default and consequently write-protect is enabled as soon as the `Write Status Register` is configured. To clear write-protect pull `/WP` high by connecting `TP14` and `TP1`.
+
+Default: `-1`
+
+[[os_check]]
+==== `os_check`
+
+On Raspberry Pi 5 the firmware automatically checks for a compatible Device Tree file before attempting to boot from the current partition. Otherwise, older non-compatible kernels would be loaded and then hang.
+To disable this check (for example, for bare-metal development), set `os_check=0` in config.txt
+
+Default: `1`
+
+[[bootloader_update]]
+==== `bootloader_update`
+
+You can set this option to 0 to block self-update without requiring the EEPROM configuration to be updated. This is sometimes useful when updating multiple Raspberry Pi devices through network boot because this option can be controlled per Raspberry Pi (for example, by using a serial number filter in `config.txt`).
+
+Default: `1`
+
+=== Secure Boot configuration properties
+
+[.whitepaper, title="How to use Raspberry Pi Secure Boot", subtitle="", link=https://pip.raspberrypi.com/documents/RP-003466-WP]
+****
+This whitepaper describes how to implement secure boot on devices based on Raspberry Pi 4. For an overview of our approach to implementing secure boot, see the https://pip.raspberrypi.com/documents/RP-004651-WP[Raspberry Pi 4 Boot Security] whitepaper.
+
+The secure boot system is intended for use with custom OS images such as those generated with `rpi-image-gen` or `buildroot`. Using it with Raspberry Pi OS isn't recommended.
+
+****
+
+The following `config.txt` properties are used to program the `secure-boot` OTP settings. These changes are irreversible and can only be programmed by using `RPIBOOT` when flashing the bootloader EEPROM image. This ensures that `secure-boot` cannot be set remotely or by accidentally inserting a stale SD card image.
+
+For more information about enabling `secure-boot`, see the following resources:
+
+* https://github.com/raspberrypi/usbboot/blob/master/Readme.md#secure-boot[Secure Boot readme] and the https://github.com/raspberrypi/usbboot/blob/master/secure-boot-example/README.md[Secure Boot tutorial] in the https://github.com/raspberrypi/usbboot[USBBOOT] repo.
+* xref:../security/security-architecture.adoc#secure-boot-chain-of-trust[Secure Boot Chain of Trust].
+* xref:../security/secure-boot-provisioner.adoc[Secure Boot Provisioner (`rpi-sb-provisioner`)].
+
+[[program_pubkey]]
+==== `program_pubkey`
+
+If this property is set to `1` then `recovery.bin` will write the hash of the public key in the EEPROM image to OTP.  When set, the bootloader rejects EEPROM images signed with different RSA keys or unsigned images.
+
+Default: `0`
+
+[[revoke_devkey]]
+==== `revoke_devkey`
+
+Raspberry Pi 4 only.
+
+If this property is set to `1` then `recovery.bin` will write a value to OTP that prevents the ROM from loading old versions of the second stage bootloader which do not support `secure-boot`. This prevents `secure-boot` from being turned off by reverting to an older release of the bootloader. Therefore, this property must be set if `secure-boot` is enabled on production devices.
+
+This property is automatically set by `recovery.bin` release version `2025/05/16` and later if `program_pubkey=1`.
+
+Default: `0`
+
+[[program_rpiboot_gpio]]
+==== `program_rpiboot_gpio`
+
+Raspberry Pi 4B and Raspberry Pi 400 only.
+
+Compute Module 4 and 4S have a dedicated `nRPIBOOT` jumper to select `RPIBOOT` mode. Raspberry Pi 4B and Raspberry Pi 400 lack a dedicated `nRPIBOOT` jumper so one of the following GPIOs must be selected for use as `nRPIBOOT`.
+
+* `2`
+* `4`
+* `5`
+* `6`
+* `7`
+* `8`
+
+You can use the GPIO as a general-purpose I/O pin after the OS has started. However, you should verify that this GPIO configuration does not conflict with any HATs which might pull the GPIO low during boot.
+
+Although `secure-boot` requires this property to be set on Raspberry Pi 4B and Raspberry Pi 400, it does not depend on `secure-boot`. For example, `RPIBOOT` can be useful for automated testing.
+
+For safety, this OTP value can _only_ be programmed by using `RPIBOOT`. As a result, you must first clear the bootloader EEPROM using `erase_eeprom`. The blank EEPROM causes the ROM to failover to `RPIBOOT` mode, which then allows this option to be set.
+
+Default: `{nbsp}`
+
+[[program_jtag_lock]]
+==== `program_jtag_lock`
+
+If this property is set to `1` then `recovery.bin` will program an OTP value that prevents VideoCore JTAG from being used. This option requires that `program_pubkey` and `revoke_devkey` are also set. This option can prevent failure analysis, and should only be set after the device has been fully tested.
+
+Default: `0`
+

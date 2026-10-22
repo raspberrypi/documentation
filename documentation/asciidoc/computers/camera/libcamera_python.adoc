@@ -1,0 +1,26 @@
+[[picamera2]]
+=== Use `libcamera` from Python with Picamera2
+
+The https://github.com/raspberrypi/picamera2[Picamera2 library] is a `rpicam`-based replacement for Picamera, which was a Python interface to the Raspberry Pi legacy camera stack. Picamera2 presents an easy-to-use Python API.
+
+Documentation about Picamera2 is available https://github.com/raspberrypi/picamera2[on GitHub] and in the https://pip.raspberrypi.com/documents/RP-008156-DS[Picamera2 manual].
+
+==== Installation
+
+Recent Raspberry Pi OS images include Picamera2 with all the GUI (Qt and OpenGL) dependencies. Recent Raspberry Pi OS Lite images include Picamera2 without the GUI dependencies, although preview images can still be displayed using DRM/KMS.
+
+If your image did not include Picamera2, run the following command to install Picamera2 with all of the GUI dependencies:
+
+[source,console]
+----
+$ sudo apt install -y python3-picamera2
+----
+
+If you don't want the GUI dependencies, you can run the following command to install Picamera2 without the GUI dependencies:
+
+[source,console]
+----
+$ sudo apt install -y python3-picamera2 --no-install-recommends
+----
+
+NOTE: If you previously installed Picamera2 with `pip`, uninstall it with: `pip3 uninstall picamera2`.
