@@ -38,7 +38,7 @@ jobs:
         run: pip3 install ninja==1.10.2.4
       - name: Install arm-none-eabi-gcc GNU Arm Embedded Toolchain
         if: ${{ inputs.deploy }}
-        uses: carlosperate/arm-none-eabi-gcc-action@98c40e51546516419841748d3210c290df0d2c6c # v1.13.0
+        uses: carlosperate/arm-none-eabi-gcc-action@49f4db4520f840e77ab1e99b24cfac2c540a21b1 # v1.14.1
       - name: Install Doxygen
         if: ${{ inputs.deploy }}
         run: |
