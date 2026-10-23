@@ -16,6 +16,8 @@ The following instructions describe how to keep your _current_ installation of *
 
 We recommend using APT to keep your Raspberry Pi software up to date. You can also use APT to find a specific package or tool, inspect a package's metadata, install a specific package, and uninstall a specific package. For instructions, see <<manage-software>>.
 
+Packages themselves come from remotely hosted *Repositories* and are built by maintainers.  For most Pi devices, https://wiki.debian.org/DebianRepository[Debian] itself manages the repository; older devices (Zero, Zero W, Pi 1A / 1B / B+) use a repo provided by the https://raspbian.org[Raspbian] project instead.
+
 To use APT to update your current Raspberry Pi software with the latest fixes, Linux kernel, and firmware, run the following commands regularly:
 
 . *Update your package list.* APT maintains a list of available software sources in `/etc/apt/sources.list` and `/etc/apt/sources.list.d/`; run the following command to refresh your list of available software packages:
