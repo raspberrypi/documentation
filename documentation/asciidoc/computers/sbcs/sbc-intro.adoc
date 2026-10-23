@@ -9,6 +9,8 @@ All components and ports are exposed, but you can buy a bumper or case to protec
 
 You can also connect various peripherals, such as a screen, keyboard, and mouse. For instructions, see xref:../computers/getting-started.adoc#setup[Set up your Raspberry Pi].
 
+NOTE: If you have a Raspberry Pi 400, 500, or 500+, the Raspberry Pi circuit board is built into the keyboard case. For more information about these devices, see xref:../computers/keyboard-computers.adoc[Keyboard computers].
+
 == Models
 
 Raspberry Pi devices have evolved through various models, improving on performance, connectivity, and functionality to serve different use cases.
@@ -19,8 +21,6 @@ Model variants within a generation of classic SBC models are sometimes designate
 
 * *Model B* indicates a full-featured variant that includes an Ethernet port and multiple USB ports, suitable for general-purpose use.
 * *Model A* indicates a lower-cost, smaller variant with no Ethernet port and fewer USB ports, suitable for more space-constrained applications.
-
-NOTE: If you have a Raspberry Pi 400, 500, or 500+, the Raspberry Pi circuit board is built into the keyboard case. For more information about these devices, see xref:../computers/keyboard-computers.adoc[Keyboard computers].
 
 === Model list
 
