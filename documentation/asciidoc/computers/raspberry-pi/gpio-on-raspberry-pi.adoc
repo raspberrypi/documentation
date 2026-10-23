@@ -82,7 +82,7 @@ Each pin is mapped to a specific function categorised into four primary types, s
 
 NOTE: GPIO pins 0 and 1, sometimes named `GPIO 0 (ID_SD)` and `GPIO 1 (ID_SC)`, respectively, are reserved for special-purpose use. Physically, these pins correspond with pins 27 and 28 on a Raspberry Pi board.
 
-=== GPIO pin inputs, outputs, and alternative functions
+=== GPIO pin inputs, outputs, and communication protocols
 
 GPIO pins can operate in two modes: <<inputs, inputs>> and <<outputs, outputs>>. Some GPIO pins can also control connected components using specific <<protocols, communication protocols>>, including *SPI*, *I2C*, *UART*, *PWM*, and *PCM*.
 
@@ -337,7 +337,7 @@ NOTE: Pad control settings, such as output drive strength and Schmitt-trigger fi
 
 This section covers the underlying architecture and low-level configuration of the GPIO hardware.
 
-=== GPIO permissions
+==== GPIO permissions
 
 To access GPIO ports, a user must be a member of the appropriate `gpio` group. The primary user account on a Raspberry Pi OS is a member of the `gpio` group by default. Other users of your Raspberry Pi must be added manually using the following command, replacing `<username>` with the actual username of the user:
 
@@ -346,7 +346,7 @@ To access GPIO ports, a user must be a member of the appropriate `gpio` group. T
 $ sudo usermod -a -G gpio <username>
 ----
 
-=== GPIO pads
+==== GPIO pads
 
 The external GPIO connections on the SoC are sometimes referred to as 'pads' in the https://pip.raspberrypi.com/documents/RP-008249-DS[BCM2835 peripherals datasheet]. In semiconductor terminology, pads are the chip's electrical connection points to the outside world.
 
@@ -360,7 +360,7 @@ The GPIO pads include configurable CMOS push-pull output drivers and input buffe
 
 Following a power-on reset, GPIO pins are generally configured as inputs. The default pull states are also applied, which are detailed in the *Alternative Function Assignments* table in the https://pip.raspberrypi.com/documents/RP-008249-DS[BCM2835 peripherals datasheet]. Most GPIOs have a default pull applied.
 
-=== Interrupts
+==== Interrupts
 
 Each GPIO pin configured as a general-purpose input can be configured as an interrupt source for the Arm processor. The following interrupt-generation modes are available:
 
