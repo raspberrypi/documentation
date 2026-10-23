@@ -114,7 +114,7 @@ Raspberry Pi Ltd uses the following third parties to process personal data in or
 |Billing contact details and payment information
 |United States and Ireland
 
-|https://www.freshworks.com[Freshworks, Inc. (Freshdesk)]
+|https://www.freshworks.com/[Freshworks, Inc. (Freshdesk)]
 |Customer support
 |Name, email address, and the contents of support requests
 |United States

@@ -1,4 +1,4 @@
-Raspberry Pi keyboard computers are complete personal computers built into a keyboard. They include the same system-on-chip (SoC) as Raspberry Pi single-board computers (SBC).
+Raspberry Pi keyboard computers are complete personal computers built into a keyboard. They include the same system-on-chip (SoC) as xref:../computers/sbcs.adoc[classic Raspberry Pi single-board computers (SBC)].
 
 Keyboard computers use model identifiers of the form `<X00>`, where `X` indicates the corresponding classic single-board computer (SBC) series device. For example, Raspberry Pi 400 is the keyboard version of Raspberry Pi 4.
 
@@ -31,7 +31,7 @@ Raspberry Pi 500+ offers additional features, including:
 
 == Specifications
 
-The following table list key similarities and differences between keyboard computer models.
+The following table lists key similarities and differences between keyboard computer models.
 
 .Specification comparison between keyboard computer models
 [cols="1,1,1,1", options="header"]
@@ -162,7 +162,7 @@ The Raspberry Pi 500 kit comes with the following:
 
 The Raspberry Pi 500+ keyboard computer, released 2025, is based on Raspberry Pi 5 (16 GB).
 
-Raspberry Pi 500+
+.Raspberry Pi 500+
 image::images/rpi500plus.png[width="100%"]
 
 The Raspberry Pi 500+ kit comes with the following:

@@ -42,7 +42,7 @@ Download and install Raspberry Pi Imager on to your computer (Windows, Mac, or L
 . Launch the Raspberry Pi Imager application in one of the following ways:
 * Find Imager in your *Applications* menu.
 * Select the Raspberry Pi Imager icon on your computer's desktop.
-* From the command line, run the AppImage file as root. For example, with the command: `sudo ./imager-<version>-amd64.AppImage`, where `<version>` is a number representing the most recent Imager version.
+* From the command line, run the AppImage file as root. For example, with the command: `sudo ./imager_<version>_amd64.AppImage`, where `<version>` is a number representing the most recent Imager version.
 
 ==== Step 2. Configure the fundamentals
 
