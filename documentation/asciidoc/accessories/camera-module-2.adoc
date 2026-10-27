@@ -1,0 +1,1 @@
+include::camera/camera-module-2.adoc[]

@@ -1,0 +1,4 @@
+[[night-vision]]
+== Night vision
+
+// TODO: no source content. Day vs. night vision setups (using NoIR with infrared light sources). Applies to the NoIR variants of Camera Module 2 and Camera Module 3.

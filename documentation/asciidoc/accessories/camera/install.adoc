@@ -1,13 +1,6 @@
 :figure-caption!:
+
 == Install a Raspberry Pi camera
-
-////
-TODO: Get a new video with more current products.
-
-The following video shows how to connect the original camera on the original Raspberry Pi:
-
-video::GImeVqHQzsE[youtube,width=80%,height=400px]
-////
 
 The process for installing a Raspberry Pi camera is broadly the same for all combinations of camera and board. There are some differences in the connectors; these differences are noted in the following steps.
 
@@ -43,11 +36,11 @@ The following descriptions assume that you're holding your Raspberry Pi board wi
 ** On Raspberry Pi 4, the camera connector is by the edge closest to you between the micro HDMI connector and the audio jack. It's labelled CAMERA.
 ** On Raspberry Pi 5, the two camera and display connectors are by the edge closest to you between the micro HDMI connector and the Ethernet port. They're labelled CAM/DISP0 and CAM/DISP1. You can use either of these connectors for your camera.
 ** On Raspberry Pi Compute Module 1/3/3+ IO board, the two camera connectors are on the left edge (the edge closest to the logo on the IO board) at the end closest to you. They're labelled CAM0 and CAM1. You can use either of these connectors for your camera.
-** On Raspberry Pi Compute Module 4 IO board, the two camera connectors are by the far left corner. They are labelled CAM0 and CAM1. You can use either of these connectors for your camera.
-** On Raspberry Pi Compute Module 5 IO board, the two camera connectors are at the left end of the furthest edge. They are labelled CAM/DISP0 and CAM/DISP1. You can use either of these connectors for your camera.
+** On Raspberry Pi Compute Module 4 IO board, the two camera connectors are by the far left corner. They're labelled CAM0 and CAM1. You can use either of these connectors for your camera.
+** On Raspberry Pi Compute Module 5 IO board, the two camera connectors are at the left end of the furthest edge. They're labelled CAM/DISP0 and CAM/DISP1. You can use either of these connectors for your camera.
 . Open the flap on the connector.
-.. If there is a strip of film holding the connector flap closed, remove it.
-.. Gently pull the flap out from the connector until you feel it stop. There is now some freedom of movement in the flap.
+.. If there's a strip of film holding the connector flap closed, remove it.
+.. Gently pull the flap out from the connector until you feel it stop. There's now some freedom of movement in the flap.
 .. Tilt the flap slightly away from the connector opening.
 . Insert the end of your camera cable with the metallic contacts facing away from the flap.
 +
@@ -65,7 +58,7 @@ Our cameras come with the Standard-Standard cable already attached. If you have 
 The camera connector is on the opposite side of the board to the camera lens. Hold the camera with the lens facing down or away from you.
 
 . Open the flap on the connector.
-.. Gently pull the flap out from the connector until you feel it stop. There is now some freedom of movement in the flap.
+.. Gently pull the flap out from the connector until you feel it stop. There's now some freedom of movement in the flap.
 .. Tilt the flap slightly away from the connector opening.
 . Insert the end of your camera cable with the metallic contacts facing away from the flap and towards the camera board.
 +
@@ -80,7 +73,9 @@ You can remove a cable from the connector by reversing these steps.
 
 . Reconnect your Raspberry Pi device to power and turn it on.
 . Ensure that your kernel and applications are all up to date by following the instructions on xref:../computers/os.adoc#update-software[keeping your operating system up to date].
-. Follow the setup instructions for xref:../computers/camera_software.adoc#rpicam-apps[`rpicam-apps`].
-. (Optional) If you want to use the Picamera2 Python library, follow the setup instructions for https://pip.raspberrypi.com/documents/RP-008156-DS[Picamera2 Python library].
+. Follow the setup instructions for xref:../accessories/camera-software.adoc#rpicam-apps[`rpicam-apps`].
+. (Optional) If you want to use the picamera2 Python library, follow the setup instructions for https://pip.raspberrypi.com/documents/RP-008156-DS[picamera2 Python library].
 
-// TODO should the picamera2 manual info be in the HTML docs instead/as well? Also. Camera software stuff could follow in here rather than being in computers section?
+// TODO should the picamera2 manual info be in the HTML docs instead/as well?
+
+// Not in IA: hardware specifications and mechanical drawings kept here pending a decision.

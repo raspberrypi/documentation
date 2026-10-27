@@ -42,12 +42,6 @@
                     "subpath": "remote-access.adoc"
                 },
                 {
-                    "title": "Camera software",
-                    "description": "Software and libraries for Raspberry Pi camera hardware",
-                    "image": "full-sized/Camera.png",
-                    "subpath": "camera_software.adoc"
-                },
-                {
                     "title": "AI software",
                     "description": "Software and libraries for artificial intelligence on Raspberry Pi AI Kit and AI HATs",
                     "image": "full-sized/ai.png",
@@ -157,14 +151,44 @@
                     "subpath": "monitor.adoc"
                 },
                 {
-                    "title": "Camera",
+                    "title": "Camera Module hardware",
                     "description": "Raspberry Pi camera boards",
                     "image": "full-sized/Camera.png",
                     "subpath": "camera.adoc"
                 },
                 {
+                    "title": "Camera Module software and installation",
+                    "description": "Software and libraries for Raspberry Pi camera hardware",
+                    "image": "full-sized/Camera.png",
+                    "subpath": "camera-software.adoc"
+                },
+                {
+                    "title": "Camera Module 2",
+                    "description": "An 8-megapixel camera available in standard and NoIR versions",
+                    "image": "full-sized/Camera.png",
+                    "subpath": "camera-module-2.adoc"
+                },
+                {
+                    "title": "High Quality Camera",
+                    "description": "A 12-megapixel camera for use with external lenses",
+                    "image": "full-sized/Camera.png",
+                    "subpath": "high-quality-camera.adoc"
+                },
+                {
+                    "title": "Camera Module 3",
+                    "description": "A 12-megapixel camera available in standard and NoIR versions, with standard and wide FoV",
+                    "image": "full-sized/Camera.png",
+                    "subpath": "camera-module-3.adoc"
+                },
+                {
+                    "title": "Global Shutter Camera",
+                    "description": "A 1.6-megapixel camera that uses a global shutter mechanism",
+                    "image": "full-sized/Camera.png",
+                    "subpath": "global-shutter-camera.adoc"
+                },
+                {
                     "title": "AI Camera",
-                    "description": "An AI Camera for your Raspberry Pi",
+                    "description": "AI camera for your Raspberry Pi",
                     "image": "full-sized/ai-cam.png",
                     "subpath": "ai-camera.adoc"
                 },

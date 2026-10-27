@@ -1,0 +1,12 @@
+This documentation describes how to use Raspberry Pi Camera Modules with Raspberry Pi software tools.
+
+All Raspberry Pi cameras can record high-resolution photographs and full HD 1080p video (or better) with our software tools.
+
+For more information about Raspberry Pi camera hardware, see the xref:../accessories/camera.adoc#about-the-camera-modules[camera hardware documentation].
+
+First, xref:../accessories/camera-software.adoc#install-a-raspberry-pi-camera[install your camera module]. Then, follow the guides in this section to put your camera module to use.
+
+[NOTE]
+====
+This guide does not cover the _legacy camera stack_, which was available in _Bullseye_ and earlier Raspberry Pi OS releases. The legacy camera stack, using applications like `raspivid`, `raspistill` and the original `Picamera` (_not_ `Picamera2`) Python library, has been deprecated for many years, and is unsupported. If you are using the legacy camera stack, it will only have support for the Camera Module 1, Camera Module 2 and the High Quality Camera, and will never support any newer camera modules. The remainder of this document is not applicable to the legacy camera stack.
+====
