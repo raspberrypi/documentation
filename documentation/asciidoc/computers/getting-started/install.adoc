@@ -34,7 +34,7 @@ TODO: Update this video for the new Imager look & flow (video::ntaXWS8Lk34[youtu
 
 Download and install Raspberry Pi Imager on to your computer (Windows, Mac, or Linux).
 
-. Install imager in of the following ways:
+. Install imager in one of the following ways:
 * On Windows and Mac, download the latest version from the https://www.raspberrypi.com/software/[Raspberry Pi website] and run the installer.
 * On Raspberry Pi OS, run `sudo apt install rpi-imager`.
 * On other Linux operating systems, download the latest version as an AppImage from the https://www.raspberrypi.com/software/[Raspberry Pi website] and make the AppImage executable.
@@ -104,7 +104,7 @@ image::images/imager/hostname-subtab.png[alt="Imager OS Customisation Hostname t
 
 ===== Localisation
 
-In the *Localisation* subtab, choose your capital city. Imager autocompletes the time zone and keyboard layout for that city. You can also change these settings independtly of one another.
+In the *Localisation* subtab, choose your capital city. Imager autocompletes the time zone and keyboard layout for that city. You can also change these settings independently of one another.
 
 Your selection also sets the Wi-Fi regulatory domain; the regulatory domain always corresponds to the selected capital city.
 
@@ -160,7 +160,6 @@ image::images/imager/os-customisation-site.png[alt="Raspberry Pi Connect page.",
 +
 image::images/imager/connect-auth-key.png[alt="Raspberry Pi Connect new auth key page.",width="60%"]
 ** If you're a member of one or more organisations, select the organisation or account to associate the key with. Then select *Create auth key and launch Raspberry Pi Imager*.
-** If you're a member of one or more organisations, select the organisation or account to associate the key with. Then select Create auth key and launch Raspberry Pi Imager.
 . Your browser might ask you whether you want to allow the site to open Raspberry Pi Imager. Confirm that you want to open Raspberry Pi Imager.
 ** Imager opens at the *Raspberry Pi Connect* tab, which shows a message to confirm that Imager received the authentication token from the browser and a field containing the token.
 ** If the token isn't copied across, you can copy it into Imager manually. Open the *Having trouble?* section of the Raspberry Pi Connect web page, copy the token, and paste it into the token field in Imager.
