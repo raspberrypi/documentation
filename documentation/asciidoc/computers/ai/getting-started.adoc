@@ -25,7 +25,7 @@ Running AI models requires a https://www.raspberrypi.com/products/raspberry-pi-5
 
 NOTE: The AI Kit is no longer in production; for new designs, we recommend using an AI HAT+ or AI HAT+ 2.
 
-If you want to run vision AI models, you additionally need a supported camera, such as Raspberry Pi Camera Module 3. We recommend attaching your camera before attaching your AI hardware. For instructions, see xref:../accessories/camera.adoc#install-a-raspberry-pi-camera[Install a Raspberry Pi Camera]. Skip reconnecting your Raspberry Pi to power because you must disconnect your Raspberry Pi from power for the next step.
+If you want to run vision AI models, you additionally need a supported camera, such as Raspberry Pi Camera Module 3. We recommend attaching your camera before attaching your AI hardware. For instructions, see xref:../accessories/camera-software.adoc#install-a-raspberry-pi-camera[Install a Raspberry Pi Camera]. Skip reconnecting your Raspberry Pi to power because you must disconnect your Raspberry Pi from power for the next step.
 
 Then, depending on your AI hardware, follow the instructions for attaching either an xref:../accessories/ai-hat-plus.adoc[AI HAT] (HAT+ or HAT+ 2) or xref:../accessories/ai-kit.adoc[AI Kit] to your Raspberry Pi 5.
 
@@ -217,11 +217,11 @@ This starts the camera and shows a preview window for five seconds. If the previ
 
 === Step 2. Run real-time visual AI demos
 
-After you've verified that everything is correctly installed, you can run camera AI demos using the `rpicam-apps` camera software. This software implements AI demos using a xref:camera_software.adoc#post-processing-with-rpicam-apps[post-processing framework]; this software uses pre-trained neural networks to run AI inference on camera frames using the NPU.
+After you've verified that everything is correctly installed, you can run camera AI demos using the `rpicam-apps` camera software. This software implements AI demos using a xref:../accessories/camera-software.adoc#post-processing-with-rpicam-apps[post-processing framework]; this software uses pre-trained neural networks to run AI inference on camera frames using the NPU.
 
 To highlight some of the capabilities of the NPU, this section outlines some demos that showcase different models and post-processing stages, such as drawing bounding boxes around objects or pose lines around people. Results are displayed either visually on the live preview window (default) or as text in the Raspberry Pi Terminal.
 
-The following demos use xref:camera_software.adoc#rpicam-hello[`rpicam-hello`], but you can also use other rpicam-apps, such as xref:camera_software.adoc#rpicam-vid[`rpicam-vid`] for video recordings and xref:camera_software.adoc#rpicam-still[`rpicam-still`] for still images. These applications might require you to add or modify some command line options to make them compatible.
+The following demos use xref:../accessories/camera-software.adoc#rpicam-hello[`rpicam-hello`], but you can also use other rpicam-apps, such as xref:../accessories/camera-software.adoc#rpicam-vid[`rpicam-vid`] for video recordings and xref:../accessories/camera-software.adoc#rpicam-still[`rpicam-still`] for still images. These applications might require you to add or modify some command line options to make them compatible.
 
 ==== Object detection
 

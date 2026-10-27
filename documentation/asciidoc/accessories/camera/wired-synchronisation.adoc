@@ -1,0 +1,41 @@
+[[wired-synchronisation]]
+==== Wired synchronisation
+
+The xref:../accessories/high-quality-camera.adoc#synchronous-captures[High Quality Camera] and the xref:../accessories/global-shutter-camera.adoc#synchronous-mode-xvs[Global Shutter Camera] can also be synchronised with a wire between the cameras. After connecting and configuring the cameras as described on their pages, configure libcamera and start the cameras as follows.
+
+===== Libcamera configuration
+
+If the cameras don't all start within 1 second, the `rpicam` applications can time out. To prevent this, edit a configuration file on any Raspberry Pi with sink cameras.
+
+On Raspberry Pi 5 or Compute Module 5:
+[source,console]
+----
+$ cp /usr/share/libcamera/pipeline/rpi/pisp/example.yaml timeout.yaml
+----
+
+On other Raspberry Pi models:
+[source,console]
+----
+$ cp /usr/share/libcamera/pipeline/rpi/vc4/rpi_apps.yaml timeout.yaml
+----
+
+Now edit the copy. In both cases, delete the `#` (comment) from the `"camera_timeout_value_ms":` line, and change the number to `60000` (60 seconds).
+
+===== Starting the cameras
+
+Run the following commands to start the sink:
+
+[source,console]
+----
+$ export LIBCAMERA_RPI_CONFIG_FILE=timeout.yaml
+$ rpicam-vid --frames 300 --qt-preview -o sink.h264
+----
+
+Wait a few seconds, then run the following command to start the source:
+
+[source,console]
+----
+$ rpicam-vid --frames 300 --qt-preview -o source.h264
+----
+Frames must be synchronised. Use `--frames` to ensure the same number of frames are captured, and that the recordings are exactly the same length.
+Running the sink first ensures that no frames are missed.

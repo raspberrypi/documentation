@@ -1,0 +1,5 @@
+=== Legacy Camera Modules
+
+*Camera Module 1.* A 5-megapixel camera that came in standard (visible light) and NoIR (visible light plus infrared) versions with a standard field of view (FoV).
+
+This device has reached end of life and is no longer available from Raspberry Pi. For business customers who need support, please visit the Raspberry Pi forums at https://www.raspberrypi.org/forums/[https://www.raspberrypi.org/forums/].

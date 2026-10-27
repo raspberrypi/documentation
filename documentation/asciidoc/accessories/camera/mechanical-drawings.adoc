@@ -1,0 +1,12 @@
+== Mechanical drawings and schematics
+
+Mechanical drawings and schematics are available on the Product Information Portal at the following locations:
+
+* https://pip.raspberrypi.com/categories/652-raspberry-pi-camera-module-2[Camera Module 2]
+* https://pip.raspberrypi.com/categories/786-raspberry-pi-camera-module-3[Camera Module 3]
+* https://pip.raspberrypi.com/categories/659-raspberry-pi-high-quality-camera[HQ Camera]
+* https://pip.raspberrypi.com/categories/810-raspberry-pi-global-shutter-camera[GS Camera]
+
+NOTE: Board dimensions and mounting-hole positions for Camera Module 3 are identical to Camera Module 2. However, due to changes in the size and position of the sensor module, it isn't mechanically compatible with the camera lid for the Raspberry Pi Zero case.
+
+In addition, the following figure shows the schematic for the Raspberry Pi CSI camera connector.

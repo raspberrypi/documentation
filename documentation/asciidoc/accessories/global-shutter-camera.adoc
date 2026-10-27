@@ -1,0 +1,1 @@
+include::camera/global-shutter-camera.adoc[]

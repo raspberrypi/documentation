@@ -1,4 +1,5 @@
 <IfModule mod_alias.c>
+Redirect 302 "/documentation/computers/camera_software.html" "/documentation/accessories/camera-software.html"
 Redirect 302 "/documentation/hardware/raspberrypi/conformity.md" "https://pip.raspberrypi.com"
 Redirect 410 "/documentation/configuration/wireless/access-point-routed.md"
 Redirect 410 "/documentation/configuration/wireless/access-point-bridged.md"

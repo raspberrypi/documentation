@@ -1,19 +1,51 @@
 :figure-caption!:
-== About the Camera Modules
+[[about-the-camera-modules]]
+== Camera Hardware
 
-There are several official Raspberry Pi camera modules.
+The official Raspberry Pi Camera Modules are:
 
-- *Camera Module 1.* A 5-megapixel camera that came in standard (visible light) and NoIR (visible light plus infrared) versions with a standard field of view (FoV). This device is no longer available from Raspberry Pi.
-- xref:../accessories/camera.adoc#camera-module-2[*Camera Module 2.*] A 8-megapixel camera available in standard and NoIR versions with a standard FoV.
-- xref:../accessories/camera.adoc#camera-module-3[*Camera Module 3.*] A 12-megapixel camera available in standard and NoIR versions. Both the standard and NoIR versions come with standard and wide FoV for a total of four different variants.
-+
-The Camera Module 3 sensor assembly is also available separately to enable you to fit these capabilities into smaller devices.
-- xref:../accessories/camera.adoc#hq-camera[*High Quality Camera.*] A 12-megapixel camera that comes with CS- or M12-mount variants for use with external lenses. This model is unavailable as a NoIR version.
-- xref:../accessories/ai-camera.adoc[*AI Camera.*] A 12-megapixel camera that provides low-latency and high-performance AI capabilities to any camera application. Tight integration with xref:../computers/camera_software.adoc[the Raspberry Pi camera software stack] enables users to deploy their own neural network models with minimal effort. This model is unavailable as a NoIR version.
-- xref:../accessories/camera.adoc#gs-camera[*Global Shutter Camera.*] A 1.5-megapixel camera that uses a global shutter mechanism. It captures light from every pixel in the scene at once and is ideal for fast-motion photography. It comes with a CS-mount for use with external lenses. This model is unavailable as a NoIR version.
+[cols="4,2,2,3,3,6",options="header",width=99%]
+|===
+| Camera | Resolution | NoIR version | Field of view (FoV) | Lens mount | Notes
+
+| xref:../accessories/camera-module-2.adoc#camera-module-2[Camera Module 2]
+| 8 MP
+| Yes
+| Standard
+|
+|
+
+| xref:../accessories/camera-module-3.adoc#camera-module-3[Camera Module 3]
+| 12 MP
+| Yes
+| Standard and wide (four variants in total)
+|
+| The Camera Module 3 Sensor Assembly is also available separately to enable you to fit these capabilities into smaller devices.
+
+| xref:../accessories/high-quality-camera.adoc#hq-camera[High Quality Camera]
+| 12 MP
+| No
+|
+| CS or M12, for use with external lenses
+|
+
+| xref:../accessories/ai-camera.adoc#ai-camera[AI Camera]
+| 12 MP
+| No
+|
+|
+| Provides low-latency and high-performance AI capabilities to any camera application. Tight integration with xref:../accessories/camera-software.adoc[the Raspberry Pi camera software stack] enables users to deploy their own neural network models with minimal effort.
+
+| xref:../accessories/global-shutter-camera.adoc#gs-camera[Global Shutter Camera]
+| 1.6 megapixels
+| No
+|
+| C/CS, for use with external lenses
+| Uses a global shutter mechanism. It captures light from every pixel in the scene at once and is ideal for fast-motion photography.
+|===
 
 To compare the hardware characteristics of these cameras, see the xref:../accessories/camera.adoc#hardware-specification[hardware specifications].
 
-NOTE: Raspberry Pi Camera Modules are compatible with all Raspberry Pi computers with CSI connectors.
+NOTE: Raspberry Pi Camera Modules are compatible with all Raspberry Pi computers with Camera Serial Interface (CSI) connectors.
 
-For information about the camera software, see the xref:../computers/camera_software.adoc[camera software documentation].
+For information about the camera software, see the xref:../accessories/camera-software.adoc[camera software documentation].
