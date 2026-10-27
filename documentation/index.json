@@ -159,31 +159,31 @@
                 {
                     "title": "Camera Module software and installation",
                     "description": "Software and libraries for Raspberry Pi camera hardware",
-                    "image": "full-sized/Camera.png",
+                    "image": "full-sized/Camera-Software.png",
                     "subpath": "camera-software.adoc"
                 },
                 {
                     "title": "Camera Module 2",
                     "description": "An 8-megapixel camera available in standard and NoIR versions",
-                    "image": "full-sized/Camera.png",
+                    "image": "full-sized/Camera-Module-2.png",
                     "subpath": "camera-module-2.adoc"
                 },
                 {
                     "title": "High Quality Camera",
                     "description": "A 12-megapixel camera for use with external lenses",
-                    "image": "full-sized/Camera.png",
+                    "image": "full-sized/High-Quality-Camera.png",
                     "subpath": "high-quality-camera.adoc"
                 },
                 {
                     "title": "Camera Module 3",
                     "description": "A 12-megapixel camera available in standard and NoIR versions, with standard and wide FoV",
-                    "image": "full-sized/Camera.png",
+                    "image": "full-sized/Camera-Module-3.png",
                     "subpath": "camera-module-3.adoc"
                 },
                 {
                     "title": "Global Shutter Camera",
                     "description": "A 1.6-megapixel camera that uses a global shutter mechanism",
-                    "image": "full-sized/Camera.png",
+                    "image": "full-sized/Global-Shutter-Camera.png",
                     "subpath": "global-shutter-camera.adoc"
                 },
                 {
