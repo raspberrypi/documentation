@@ -36,6 +36,18 @@ You can also use the buttons at the top of the browser window to complete other 
 
 image::images/screen-sharing.png[alt="The Connect page, showing the Raspberry Pi dropdown menu.",width="100%"]
 
+[[screen-sharing-resolution]]
+==== Screen resolution
+
+Connect shows your device's desktop at the resolution of its display, and it scales the image to fit your browser window.
+
+Where that resolution is derived from from depends on whether a display is connected to your Raspberry Pi:
+
+* **Display connected**. The desktop runs at the resolution of the connected display. Resizing your browser window only scales the image. Connect never changes the resolution of a physical display. To use a different resolution, change it on the device as described in xref:../computers/configuration.adoc#display-settings[Configure display settings]. You can do this from within a screen sharing session.
+* **No display connected**. Raspberry Pi OS creates a virtual display for the desktop. When a screen sharing session starts, Connect resizes the virtual display to match the size of your browser window, so the desktop fills the window with no scaling. Connect resizes it again whenever you resize the window or enter full screen, and any resolution you set on the device is replaced the next time the window changes size. If you need the desktop to stay at a fixed resolution, for example for a kiosk, connect a display.
+
+Connect only resizes the virtual display for one session at a time. The first session to connect controls the resolution for as long as it's connected, and other sessions show the same desktop scaled to fit their windows. When the controlling session disconnects, the next session to change its window size takes over.
+
 ==== Start screen sharing
 
 To start a screen sharing session:
