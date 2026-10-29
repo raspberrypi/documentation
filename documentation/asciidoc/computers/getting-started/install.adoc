@@ -34,7 +34,7 @@ TODO: Update this video for the new Imager look & flow (video::ntaXWS8Lk34[youtu
 
 Download and install Raspberry Pi Imager on to your computer (Windows, Mac, or Linux).
 
-. Install imager in one of the following ways:
+. Install Imager in one of the following ways:
 * On Windows and Mac, download the latest version from the https://www.raspberrypi.com/software/[Raspberry Pi website] and run the installer.
 * On Raspberry Pi OS, run `sudo apt install rpi-imager`.
 * On other Linux operating systems, download the latest version as an AppImage from the https://www.raspberrypi.com/software/[Raspberry Pi website] and make the AppImage executable.
