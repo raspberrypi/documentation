@@ -152,7 +152,7 @@ To configure Raspberry Pi Imager to support RPIBOOT, complete the following step
 . Use the toggle to select *Enable Rpiboot/Fastboot Support*.
 . Select *Apply* to save your changes and exit the *Debug Options* dialog.
 
-If you're using Raspberry Pi Imager to set up multiple jigs, you need to enable RPIBOOT support only once; Imager saves this settings for subsequent writes.
+If you're using Raspberry Pi Imager to set up multiple jigs, you need to enable RPIBOOT support only once; Imager saves this setting for subsequent writes.
 
 [[setup-step-write-os]]
 === Step 2: Write the operating system to the jig
@@ -163,7 +163,7 @@ With Imager configured to use the custom content repository, you can now write t
 
 . Connect power to the jig.
 +
-The jig boots into USB mass storage mode. Your computer detects the jig's internal storage as a removable drive.
+The jig boots into RPIBOOT mode. Imager can detect the jig's internal storage as a removable drive.
 
 . Open Raspberry Pi Imager on your computer.
 

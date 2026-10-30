@@ -80,7 +80,7 @@ Touch Display connects to a Raspberry Pi device using:
 
 - A *DSI connector*. Attach the appropriate flat flexible cable (FFC) to this to carry video and touch data.
 * Raspberry Pi 4 and earlier use the supplied 15-way to 15-way FFC.
-* Raspberry Pi 5 and Raspberry Pi Compute Module IO Boards use a Raspberry Pi Standard-Mini FFC (https://www.raspberrypi.com/products/display-cable/[sold separately]).
+* Raspberry Pi 5 and Raspberry Pi Compute Module IO Boards use a Raspberry Pi Standard – Mini Display FFC (https://www.raspberrypi.com/products/display-cable/[sold separately]).
 
 - The *GPIO header*. The supplied jumper wires carry power from the GPIO header on the Raspberry Pi to the display.
 
@@ -201,7 +201,7 @@ Raspberry Pi Compute Module::
 
 This section assumes that you're familiar with your Compute Module. For more information, see xref:../computers/compute-module.adoc[Raspberry Pi Compute Module].
 
-You can connect a Touch Display to a Raspberry Pi Compute Module that is attached to an IO Board. A Raspberry Pi Standard-Mini FFC (sold separately) is required to do this.
+You can connect a Touch Display to a Raspberry Pi Compute Module that's attached to an IO Board. A Raspberry Pi *Standard – Mini Display FFC* (sold separately) is required to do this.
 
 Before you begin, update your Compute Module's system software and firmware to the latest version.
 
