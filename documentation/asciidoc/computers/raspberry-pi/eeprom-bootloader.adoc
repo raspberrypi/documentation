@@ -53,7 +53,9 @@ If `1` then `sudo halt` will run in a lower power mode until either GPIO3 or GLO
 
 This setting is not relevant for Raspberry Pi 5 and later, Raspberry Pi Compute Module 5 and later, and Raspberry Pi 500 and later, because the xref:raspberry-pi.adoc#power-button[dedicated power button] can always be used to wake from `HALT` or `STANDBY`.
 
-Default: `1`
+The default bootloader images for Raspberry Pi 4, Raspberry Pi 400 and Raspberry Pi Compute Module 4 set this value to `1` in the bootloader config. A bootloader config that does not set `WAKE_ON_GPIO` uses `0`.
+
+Default: `0`
 
 [[POWER_OFF_ON_HALT]]
 ==== `POWER_OFF_ON_HALT`
