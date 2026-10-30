@@ -366,6 +366,27 @@ The system automatically determines whether to enable UART based on which hardwa
 | 1
 |===
 
+[[change-primary-uart]]
+==== Change the primary UART
+The primary UART is the serial interface assigned to the Linux console and exposed as the `/dev/serial0` device node. The default primary UART differs between models (see <<primary-and-secondary-uart>>), so you might want to change it, for example to move the serial console onto the 40-pin GPIO header or to free a UART for your own use.
+
+How you change the primary UART depends on your model:
+
+* *Raspberry Pi Zero W, Zero 2 W, 3, and 4.* On these models, the more capable PL011 `UART0` is connected to the Bluetooth controller by default, so the mini UART is the primary UART on GPIO 14 and 15. To make `UART0` the primary UART instead, either disable Bluetooth (see <<disable-bt-primary>>) or move Bluetooth to the mini UART to keep it enabled (see <<miniuart-bt-primary>>).
+* *Raspberry Pi 5, 500, 500+, and Compute Module 5.* The primary UART is the dedicated debug header (`UART10`) by default, so the serial console does not appear on the 40-pin GPIO header out of the box. To route console output to `UART0` on GPIO 14 and 15 instead, add the following to `config.txt`; when no cable is connected to the dedicated debug header, this routes the console to GPIO 14 and 15:
++
+[source,console]
+----
+enable_uart=1
+----
++
+For the firmware behaviour behind this setting, see <<primary-and-secondary-uart>>.
+* *All other models.* `UART0` is already the primary UART on GPIO 14 and 15, so no change is required.
+
+After changing the primary UART, enable or disable the serial console to suit your use case, as described in <<serial-port>>, then reboot your Raspberry Pi for the changes to take effect.
+
+NOTE: If you have recently switched to a Raspberry Pi 5 and your serial console no longer appears on the 40-pin GPIO header, this is expected: the primary UART is now the dedicated debug header. Add `enable_uart=1` to `config.txt`, as described above, to route the console back to GPIO 14 and 15.
+
 ==== Disable the Linux serial console
 By default, the primary UART is assigned to the Linux console. If you want to use the primary UART for connecting to other serial devices, you must disable the console while leaving the UART enabled. You can do this from the desktop and using the interactive `raspi-config` TUI:
 
@@ -428,6 +449,7 @@ You can find various UART Device Tree overlay definitions in the https://github.
 * https://github.com/raspberrypi/linux/blob/rpi-6.12.y/arch/arm/boot/dts/overlays/disable-bt-overlay.dts[`disable-bt`]
 * https://github.com/raspberrypi/linux/blob/rpi-6.12.y/arch/arm/boot/dts/overlays/miniuart-bt-overlay.dts[`miniuart-bt`]
 
+[[disable-bt-primary]]
 ===== Disable Bluetooth and make UART0 primary
 To disable the Bluetooth modem initialisation service and make the first PL011 (UART0) the primary UART:
 
@@ -452,6 +474,7 @@ dtoverlay=disable-bt
 . Save the file (*Ctrl+O*) and exit (*Ctrl+X*).
 . Reboot your Raspberry Pi for the changes to take effect.
 
+[[miniuart-bt-primary]]
 ===== Switch Bluetooth to use mini UART and make UART0 primary
 
 To keep Bluetooth enabled but reassign it to the mini UART while making the first PL011 (UART0) the primary UART:
