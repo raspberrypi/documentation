@@ -108,7 +108,7 @@ The Touch Display 2 box contains the following:
 .2+.^|Eight M2.5 screws
 a|
 * 15-way to 15-way (Raspberry Pi 4 and earlier)
-* 22-way to 15-way *Standard – Mini* (Raspberry Pi 5)
+* 22-way to 15-way *Standard – Mini Display*  (Raspberry Pi 5)
 .2+.^|GPIO power cable
 
 |*10-inch*
@@ -128,7 +128,7 @@ image::images/touch-display-2-whats-in-the-box.jpg["Parts included in the Touch 
 
 |*5-inch* and *7-inch*
 a|
-* Raspberry Pi 5 and later, and all CMIO Boards: supplied *Standard – Mini* 22-way to 15-way FFC
+* Raspberry Pi 5 and later, and all CMIO Boards: supplied 22-way to 15-way *Standard – Mini Display FFC*
 * Raspberry Pi 4 and earlier: supplied 15-way to 15-way FFC
 .2+.^|Supplied GPIO power cable connects the GPIO header on the Raspberry Pi to the display.
 
@@ -165,7 +165,7 @@ WARNING: Disconnect your Raspberry Pi from power before starting Step 1.
 
 Before you start, check that you have selected the correct flat flexible cable for your Raspberry Pi model:
 
-- For *Raspberry Pi 5*, use the *22-way to 15-way FFC*.
+- For *Raspberry Pi 5*, use the *22-way to 15-way FFC* (Standard – Mini Display FFC).
 - For all other Raspberry Pi models, use the *15-way to 15-way FFC*.
 
 To connect the FFC:
@@ -229,7 +229,7 @@ Raspberry Pi Compute Module::
 
 This section assumes that you're familiar with your Compute Module. For more information, see xref:../computers/compute-module.adoc[Raspberry Pi Compute Module].
 
-You can connect a Touch Display 2 to a Raspberry Pi Compute Module that is attached to an IO Board. You need a Raspberry Pi Standard-Mini FFC (sold separately) to do this.
+You can connect a Touch Display 2 to a Raspberry Pi Compute Module that's attached to an IO Board. You need a Raspberry Pi *Standard – Mini Display FFC* (sold separately) to do this.
 
 [discrete]
 ==== Step 1. Specify the display in `config.txt`

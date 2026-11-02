@@ -1,13 +1,20 @@
 [[flash-compute-module-emmc]]
 == Flash an image to a Compute Module
 
-TIP: To flash the same image to multiple Compute Modules, use the https://github.com/raspberrypi/rpi-sb-provisioner[Raspberry Pi Secure Boot Provisioner]. To customise an OS image to flash onto those devices, use https://github.com/RPi-Distro/pi-gen[pi-gen].
-
 [[flashing-the-compute-module-emmc]]
 
 The Compute Module has an on-board eMMC device connected to the primary SD card interface. This guide explains how to flash (write) an operating system image to the eMMC storage of a single Compute Module.
 
-**Lite** variants of Compute Modules do not have on-board eMMC. Instead, follow the procedure to flash a storage device for other Raspberry Pi devices at xref:../computers/getting-started.adoc#install[Install an operating system].
+**Lite** variants of Compute Modules don't have on-board eMMC. Instead, follow the procedure to flash a storage device for other Raspberry Pi devices at xref:../computers/getting-started.adoc#install[Install an operating system].
+
+
+[TIP]
+=====
+To flash the same image to multiple Compute Modules, use the https://github.com/raspberrypi/rpi-sb-provisioner[Raspberry Pi Secure Boot Provisioner]. To customise an OS image to flash onto those devices, use https://github.com/RPi-Distro/pi-gen[pi-gen].
+
+For CM5, we provide the Compute Module 5 Programming Jig. The jig connects directly with one CM5 at a time and programs it with an operating system and security configuration. For more information, see the xref:../accessories/cm5-programming-jig.adoc[jig documentation].
+=====
+
 
 === Prerequisites
 
@@ -52,9 +59,33 @@ To set up the Compute Module IO Board:
 
 === Set up the host device
 
-Next, let's set up software on the host device.
+To flash an operating system to the Compute Module, the host device must see the Compute Module as a USB mass storage device.
+
+You can configure this in one of the following ways:
+
+* If you're using Raspberry Pi Imager to install your Compute Module, <<set-rpiboot-imager, configure RPIBOOT support in Imager>>.
+* If you're using a different method to install the Compute Module, <<install-rpiboot-host, install `rpiboot` on your host device>>.
 
 TIP: For a host device, we recommend a Raspberry Pi 4 or newer running 64-bit Raspberry Pi OS.
+
+[[set-rpiboot-imager]]
+==== Configure RPIBOOT support in Imager
+
+You can configure Raspberry Pi Imager so that it can use `rpiboot` to detect the Compute Module and treat it as a mass storage device.
+
+. Install Raspberry Pi Imager and start it. For more information, see xref:../computers/getting-started.adoc#step-1-install-and-launch-imager[Install and launch Imager].
+. Configure RPIBOOT support:
+.. Open *Debug Options*:
+*** On Windows or Linux, enter *Ctrl+Alt+S*.
+*** On macOS, enter *Cmd+Option+S*.
+.. Scroll to *Advanced Features*.
+.. Use the toggle to select *Enable Rpiboot/Fastboot Support*.
+.. Select *Apply* to save your changes and exit the *Debug Options* dialog.
+
+This setting is saved by Imager and applied whenever it starts.
+
+[[install-rpiboot-host]]
+==== Install `rpiboot` on your host device
 
 [tabs]
 ======
@@ -75,7 +106,7 @@ $ sudo apt install rpiboot
 ----
 $ sudo rpiboot
 ----
-. After a few seconds, the Compute Module should appear as a mass storage device. Check the `/dev/` directory, likely `/dev/sda` or `/dev/sdb`, for the device. Alternatively, run `lsblk` and search for a device with a storage capacity that matches the capacity of your Compute Module.
+. After a few seconds, the Compute Module appears as a mass storage device. Check the `/dev/` directory, likely `/dev/sda` or `/dev/sdb`, for the device. Alternatively, run `lsblk` and search for a device with a storage capacity that matches the capacity of your Compute Module.
 
 macOS::
 +
@@ -89,14 +120,14 @@ To set up software on a macOS host device:
 ----
 $ rpiboot -d mass-storage-gadget64
 ----
-. When the command finishes running, you should see a message stating "The disk you inserted was not readable by this computer." Click **Ignore**. Your Compute Module should now appear as a mass storage device.
+. When the command finishes running, a message stating "The disk you inserted was not readable by this computer" appears. Select **Ignore**. Your Compute Module now appears as a mass storage device.
 
 Windows::
 +
 To set up software on a Windows 11 host device:
 +
 . Download the latest Windows installer from the https://github.com/raspberrypi/usbboot/releases[releases] page or https://github.com/raspberrypi/usbboot[build `rpiboot` from source].
-. Double-click on the installer to run it. This installs the drivers and boot tool. Do not close any driver installation windows which appear during the installation process.
+. Run the installer by double-clicking on it. This installs the drivers and boot tool. Don't close any driver installation windows that appear during the installation process.
 . Reboot
 . Connect the IO Board to power. Windows should discover the hardware and configure the required drivers.
 . Select **rpiboot - Mass Storage Gadget** from the start menu. After a few seconds, the Compute Module eMMC, NVMe or SD card appears as a USB mass storage device. This also provides a debug console as a serial port gadget.

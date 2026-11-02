@@ -339,7 +339,7 @@ This section covers the underlying architecture and low-level configuration of t
 
 ==== GPIO permissions
 
-To access GPIO ports, a user must be a member of the appropriate `gpio` group. The primary user account on a Raspberry Pi OS is a member of the `gpio` group by default. Other users of your Raspberry Pi must be added manually using the following command, replacing `<username>` with the actual username of the user:
+To access GPIO ports, a user must be a member of the appropriate `gpio` group. The primary user account in Raspberry Pi OS is a member of the `gpio` group by default. Other users must be added to this group manually using the following command, replacing `<username>` with the actual username of the user:
 
 [source,console]
 ----
