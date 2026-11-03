@@ -86,6 +86,14 @@ The following table compares the features and capabilities of the Raspberry Pi c
 | Adjustable
 | Adjustable
 
+| Autofocus
+| N/A
+| PDAF (visible light only) and CDAF (visible and infrared light)
+| PDAF (visible light only) and CDAF (visible and infrared light)
+| N/A
+| N/A
+| N/A
+
 | Focus range
 | Approx 10 cm to ∞
 | Approx 10 cm to ∞

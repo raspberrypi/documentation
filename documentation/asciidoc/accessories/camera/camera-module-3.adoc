@@ -22,38 +22,68 @@ image::images/cm3.jpg[Camera Module 3 normal and wide angle]
 .Camera Module 3 NoIR (left) and Camera Module 3 NoIR Wide (right)
 image::images/cm3_noir.jpg[Camera Module 3 NoIR normal and wide angle]
 
-For detailed information about the hardware characteristics and capabilities of this camera, see the xref:../accessories/camera.adoc#hardware-specification[hardware specifications].
+For detailed information about the hardware characteristics and capabilities of this camera, see xref:../accessories/camera.adoc#hardware-specification[Hardware specifications].
 
-NOTE: There's https://github.com/raspberrypi/libcamera/issues/43[some evidence] to suggest that Camera Module 3 might emit radio-frequency interference (RFI) at a harmonic of the CSI clock rate. This RFI is in a range to interfere with GPS L1 frequencies (1575 MHz). For details and proposed workarounds, see the https://github.com/raspberrypi/libcamera/issues/43[thread on GitHub].
+NOTE: There's some evidence to suggest that Camera Module 3 and the standalone Camera Module 3 Sensor Assembly might emit radio-frequency interference (RFI) at a harmonic of the Camera Serial Interface (CSI) clock rate. This RFI is in a range to interfere with GPS L1 frequencies (1575 MHz). For details and proposed workarounds, see the https://github.com/raspberrypi/libcamera/issues/43[thread on GitHub].
+
+[[camera-module-3-autofocus]]
+== Autofocus
+
+Camera Module 3 uses a voice coil motor (VCM) to move the lens and adjust focus. The Raspberry Pi camera software controls the VCM by automatically switching between two autofocus methods:
+
+* *Phase detection autofocus (PDAF)* is the faster and more reliable method, but works with visible light only.
+* *Contrast detection autofocus (CDAF)* works with both visible and infrared light, but is slower and less reliable than PDAF.
+
+NOTE: When you use a NoIR variant with infrared lighting, autofocus relies on CDAF, so it's slower and less reliable than with visible light. Autofocus with visible light can behave in the same way in particularly challenging conditions, such as low contrast or high image noise.
 
 == Transmission characteristics
 
 The IMX708 sensor in Camera Module 3 has the following spectral sensitivity characteristics.
 
-image::images/cm3-filter.png[Camera Module 3 Transmission Graph, width="65%"]
+image::images/cm3-filter.png[Camera Module 3 transmission graph, width="65%"]
 
 // Do we need another one of these for the NoIR characteristics?
 
+[[camera-module-3-sensor-assembly]]
 == Camera Module 3 Sensor Assembly
 
-The Raspberry Pi Camera Module 3 Sensor Assembly contains the same sensor and autofocus functionalities as Raspberry Pi Camera Module 3 AF (autofocus), enabling you to integrate the features of Camera Module 3 into a more diverse range of form factors.
+https://www.raspberrypi.com/products/camera-module-3-sensor-assembly/[Camera Module 3 Sensor Assembly] contains the same sensor and autofocus as Camera Module 3, but without the circuit board that carries the camera's support components. Use it to build Camera Module 3 imaging into a product that's too small for the 25 × 24 mm Camera Module 3 board.
 
-It provides a low-cost way to add imaging capability to smaller devices, reducing manufacturing complexity and time to market.
+The sensor assembly comes in the same four variants as Camera Module 3: standard normal FoV, standard wide FoV, NoIR normal FoV, and NoIR wide FoV. Field of view and <<camera-module-3-autofocus,autofocus>> behaviour are the same as the equivalent Camera Module 3 variant.
 
-.Specifications
+The Camera Module 3 Sensor Assembly has the following specifications:
+
 * Sony IMX708 sensor
 * Resolution: 12 megapixels
 * Sensor size: 7.4 mm sensor diagonal
-* Pixel size: 1.4 μm × 1.4 μm
+* Pixel size: 1.4 µm × 1.4 µm
 * Horizontal × vertical: 4608 × 2592 pixels
-* Integrated IR cut filter in standard variants; not present in NoIR variants
-* Phase detection autofocus
+* Integrated infrared cut filter (standard variants only)
+* Voice coil motor (VCM) to control the lens
+* Phase detection autofocus (visible light only)
+* Contrast detection autofocus (visible and infrared light)
 * Operating temperature: 0°C to 50°C
 * On-board EEPROM for storing camera data
 
-.Documents
+=== Connect the sensor assembly
+
+You can't connect the sensor assembly directly to a Raspberry Pi device. Instead, it needs a carrier board that provides the support circuitry found on Camera Module 3, mostly power supplies. A small connector on the back of the sensor assembly's flexible printed circuit (FPC) plugs into a matching socket on the carrier board. The carrier board then connects to the camera connector on your Raspberry Pi device.
+
+To design a carrier board, use the reference schematic and bill of materials (BOM) listed under <<camera-module-3-sensor-assembly-documents,Documents>>. The BOM includes the part number of the socket that connects to the sensor assembly. For the dimensions, focus range, and focal length of each variant, see the https://pip.raspberrypi.com/documents/RP-009789-MM[Raspberry Pi Camera Module 3 Sensor Assembly product brief].
+
+=== Software
+
+The sensor assembly uses the same software as Camera Module 3, including autofocus support. For setup and usage, see xref:../accessories/camera.adoc[Camera usage documentation].
+
+Automatic camera detection doesn't work with Compute Modules. If your carrier board connects to a Compute Module, turn off automatic detection and add the `imx708` overlay to `/boot/firmware/config.txt` yourself. For instructions, see the xref:../computers/compute-module.adoc#attach-a-camera-module[Compute Module camera documentation].
+
+[[camera-module-3-sensor-assembly-documents]]
+=== Documents
+
 * https://pip.raspberrypi.com/documents/RP-009789-MM-1-sensor-assembly-product-brief.pdf[Raspberry Pi Camera Module 3 Sensor Assembly product brief]
 * https://pip.raspberrypi.com/documents/RP-008969-SD[Raspberry Pi Camera Module 3 reference schematic]
+//TODO add BOM link
 
-.Obsolescence statement
-Raspberry Pi Camera Module 3 Sensor Assembly will remain in production until at least January 2030
+=== Obsolescence statement
+
+Raspberry Pi Camera Module 3 Sensor Assembly will remain in production until at least January 2030.
