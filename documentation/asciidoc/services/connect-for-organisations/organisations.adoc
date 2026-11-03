@@ -2502,11 +2502,13 @@ Your changes are automatically saved.
 To allow provisioner to automatically register device identities with your Connect organisation during provisioning, create a <<management-api-access-tokens, management API access token>>.
 
 . Open Raspberry Pi Connect, then select your organisation.
-. Navigate to the *API access tokens* section, then select the *Provisioning* tab.
-. Select *New* in the *Auth keys* section, follow the on-screen prompts to configure the key, then select *Create Auth key*.
-. Copy the key.
+. Select the *Settings* tab at the top of the page, then select *New* in the *API access tokens* section.
+. Enter a description for the access token, then select *Create Access token*.
++
+Your new access token appears.
+. Select the clipboard icon next to the access token to copy it. Copy this access token now because it can't be viewed again later.
 . Open the provisioner web UI at http://localhost:3142/options/get.
-. Scroll down to the *Cloud Services* section, then paste the key into the *Connect Management API Access Token* field.
+. Scroll down to the *Cloud Services* section, then paste the access token into the *Connect Management API Access Token* field.
 +
 .Enter the API access token in the *Cloud Services* table.
 image::images/provisioner-API.png[alt="The Cloud Services section of the provisioning web UI showing the field for the API access token and an optional prefix field", width="100%"]
