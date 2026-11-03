@@ -165,7 +165,15 @@ The first two steps are normally performed on a more powerful computer such as a
 
 ==== Model creation
 
-The creation of neural network models is beyond the scope of this guide. Existing models can be re-used, or new ones created using popular AI frameworks like TensorFlow or PyTorch.
+The creation of neural network models is beyond the scope of this guide, but you can reuse an existing model, or train your own model using either free or paid-for tools.
+
+===== Free tools
+
+All the tools you need to quantise, convert, and package a trained model for the AI Camera are available for free. Frameworks such as https://www.tensorflow.org/[TensorFlow] or https://pytorch.org/[PyTorch] provide a wide range of pre-trained models.
+
+===== Paid for tools
+
+If you prefer, you can pay to use commercial applications to label data and train models.
 
 For more information, see the official https://developer.aitrios.sony-semicon.com/en/raspberrypi-ai-camera[AITRIOS developer website].
 
