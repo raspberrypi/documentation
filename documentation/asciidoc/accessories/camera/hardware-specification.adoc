@@ -39,7 +39,7 @@ The following table compares the features and capabilities of the Raspberry Pi c
 | 1456 × 1088p60
 
 | Sensor
-| Sony IMX219
+| Sony IMX219 (manufactured before November 2026) or Sony IMX355 (manufactured from November 2026)
 | Sony IMX708
 | Sony IMX708
 | Sony IMX477
@@ -158,3 +158,5 @@ The following table compares the features and capabilities of the Raspberry Pi c
 | No
 | No
 |===
+
+NOTE: Camera Module 2s manufactured from November 2026 use the Sony IMX355 sensor instead of the Sony IMX219. Both sensors have the same 8-megapixel resolution. For more information, including how to identify which sensor your camera module uses, see xref:camera-module-2.adoc#sensor-change[Sensor change].

@@ -14,7 +14,7 @@ Raspberry Pi OS recognises the following overlays in `/boot/firmware/config.txt`
 | V1 camera (OV5647)
 | `dtoverlay=ov5647`
 
-| V2 camera (IMX219)
+| V2 camera (IMX219 or IMX355)
 | `dtoverlay=imx219`
 
 | HQ camera (IMX477)

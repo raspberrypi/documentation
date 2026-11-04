@@ -86,4 +86,5 @@ Automatic camera detection doesn't work with Compute Modules. If your carrier bo
 
 === Obsolescence statement
 
-Raspberry Pi Camera Module 3 Sensor Assembly will remain in production until at least January 2030.
+.Obsolescence statement
+Raspberry Pi Camera Module 3 Sensor Assembly will remain in production until at least January 2030
