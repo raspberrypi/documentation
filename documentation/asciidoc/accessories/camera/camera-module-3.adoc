@@ -82,9 +82,7 @@ Automatic camera detection doesn't work with Compute Modules. If your carrier bo
 
 * https://pip.raspberrypi.com/documents/RP-009789-MM-1-sensor-assembly-product-brief.pdf[Raspberry Pi Camera Module 3 Sensor Assembly product brief]
 * https://pip.raspberrypi.com/documents/RP-008969-SD[Raspberry Pi Camera Module 3 reference schematic]
-//TODO add BOM link
 
 === Obsolescence statement
 
-.Obsolescence statement
 Raspberry Pi Camera Module 3 Sensor Assembly will remain in production until at least January 2030
