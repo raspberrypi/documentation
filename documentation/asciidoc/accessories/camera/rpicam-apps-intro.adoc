@@ -34,7 +34,8 @@ The Raspberry Pi implementation of `libcamera` supports the following cameras:
 
 * Official cameras:
 ** OV5647 (V1)
-** IMX219 (V2)
+** IMX219 (V2 devices manufactured earlier than November 2026)
+** IMX355 (V2 devices manufactured later than Oct 2026)
 ** IMX708 (V3)
 ** IMX477 (HQ)
 ** IMX500 (AI)

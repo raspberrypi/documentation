@@ -26,7 +26,7 @@ Mainline Linux contains a range of existing drivers. The Raspberry Pi kernel tre
 | 5 MP Camera
 | Original Raspberry Pi Camera
 
-| Sony IMX219
+| Sony IMX219 and IMX355
 | 8 MP Camera
 | Revision 2 Raspberry Pi camera
 
