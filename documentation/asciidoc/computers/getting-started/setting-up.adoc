@@ -5,7 +5,7 @@ A Raspberry Pi device is a compact computer that is commonly used in two main wa
 Raspberry Pi devices are available in several series:
 
 * *Classic single-board computers (SBC).* Classic Raspberry Pi devices (sometimes referred to as 'flagship' models) that you can connect to a monitor, keyboard, and mouse like a desktop computer. For detailed information about classic SBCs, see xref:../computers/sbcs.adoc[Classic single-board computers].
-* *Raspberry Pi Zero.* A smaller version of classic Raspberry Pi devices with fewer USB ports and lower power consumption. For detailed information about Raspberry Pi Zero models, see xref:../computers/sbcs.adoc[Zero models].
+* *Raspberry Pi Zero.* A smaller version of classic Raspberry Pi devices with fewer USB ports and lower power consumption. For detailed information about Raspberry Pi Zero models, see xref:../computers/zero.adoc[Zero models].
 * *Raspberry Pi keyboard computers.* Devices that have the computer built into a keyboard case, designed to be plugged into a monitor and mouse. For detailed information about Raspberry Pi keyboard computers, see xref:../computers/keyboard-computers.adoc[Keyboard computers].
 * *Raspberry Pi Compute Modules.* Small system-on-module versions of Raspberry Pi computers designed for industrial and embedded applications. For detailed information about Raspberry Pi Compute Modules, see xref:../computers/compute-module.adoc[Compute Module hardware].
 * *Raspberry Pi Pico.* A microcontroller board that uses Raspberry Pi microcontrollers (RP2040 or RP2350). For detailed information about Raspberry Pi Pico, see xref:../microcontrollers/pico-series.adoc[Pico microcontroller boards].
