@@ -12,7 +12,7 @@
           <div id="toc-inner">
             <div id="docs-header">
               <h2 id="docs-header-title">
-                <a href="/documentation">
+                <a href="{{site.baseurl}}/">
                   Documentation
                 </a>
               </h2>
@@ -85,14 +85,16 @@
             </ul>
           {% endfor %}
 
+          {% if site.data.index.related %}
+          {% for entry in site.data.index.related.subitems %}
             <ul class="sectlevel1">
               <li>
                 <span>
                   <label class="toc-toggle">
                     <div class="toc-toggle-container">
                       <a class="level1">
-                        <a title="Raspberry Pi compliance documents" class="toc-item no-dropdown" href="https://pip.raspberrypi.com/" target="_blank">
-                          <p>Product Information Portal</p>
+                        <a title="{{ entry.description }}" class="toc-item no-dropdown" href="{{ entry.url }}" target="_blank">
+                          {{ entry.title | markdownify }}
                         </a>
                       </a>
                     </div>
@@ -100,38 +102,9 @@
                 </span>
               </li>
             </ul>
+          {% endfor %}
+          {% endif %}
 
-            <ul class="sectlevel1">
-              <li>
-                <span>
-                  <label class="toc-toggle">
-                    <div class="toc-toggle-container">
-                      <a class="level1">
-                        <a title="Hands-on hardware and software tutorials" class="toc-item no-dropdown" href="https://www.raspberrypi.com/tutorials/" target="_blank">
-                          <p>Tutorials</p>
-                        </a>
-                      </a>
-                    </div>
-                  </label>
-                </span>
-              </li>
-            </ul>
-
-            <ul class="sectlevel1">
-              <li>
-                <span>
-                  <label class="toc-toggle">
-                    <div class="toc-toggle-container">
-                      <a class="level1">
-                        <a title="User and product support forums" class="toc-item no-dropdown" href="https://forums.raspberrypi.com" target="_blank">
-                          <p>Forums</p>
-                        </a>
-                      </a>
-                    </div>
-                  </label>
-                </span>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
