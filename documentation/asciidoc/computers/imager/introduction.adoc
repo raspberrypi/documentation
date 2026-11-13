@@ -1,0 +1,14 @@
+[[about-imager]]
+== About Raspberry Pi Imager
+
+Raspberry Pi Imager is the recommended tool for installing an operating system (OS) onto boot media for your Raspberry Pi, such as a microSD card, a USB drive, or an NVMe drive. Imager downloads an OS image, writes it to your storage device, and then verifies that the image was written correctly.
+
+For operating systems that support it, Imager can also preconfigure your Raspberry Pi before first boot, including its hostname, localisation, user credentials, Wi-Fi network, SSH, and Raspberry Pi Connect. For more information, see <<os-customisation>>.
+
+Imager runs on Windows, macOS, Linux, and Raspberry Pi OS. Imager also runs on Raspberry Pi itself as part of *Network Install*, a bootloader feature that downloads Imager over Ethernet so that you can install an OS without using another computer. For more information, see xref:getting-started.adoc#network-install[Install over the network].
+
+By default, Imager lists the operating systems available for your Raspberry Pi model from an online list maintained by Raspberry Pi. You can also write an image file stored on your computer, or configure Imager to use your own list of images. For more information, see <<write-custom-image>> and <<custom-repositories>>.
+
+TIP: If you're setting up a Raspberry Pi for the first time, follow xref:getting-started.adoc#install[Install an OS onto boot media], which covers the essential steps. This page is the full reference for Imager.
+
+The source code for Imager is available in the https://github.com/raspberrypi/rpi-imager[rpi-imager repository] on GitHub.

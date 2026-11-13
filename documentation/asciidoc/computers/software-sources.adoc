@@ -156,7 +156,7 @@ A boot analysis service that gathers boot-time metrics from various different so
 === Tools
 
 https://github.com/raspberrypi/rpi-imager::
-The code for the Raspberry Pi Imager application which flashes an operating system to an SD card.
+The code for the Raspberry Pi Imager application which flashes an operating system to an SD card. For more information, see xref:imager.adoc[Raspberry Pi Imager].
 
 https://github.com/raspberrypi/rpi-image-gen::
 A build system for developing an operating system for an embedded Raspberry Pi system.

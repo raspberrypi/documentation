@@ -71,9 +71,9 @@ TIP: For a host device, we recommend a Raspberry Pi 4 or newer running 64-bit Ra
 [[set-rpiboot-imager]]
 ==== Configure RPIBOOT support in Imager
 
-You can configure Raspberry Pi Imager so that it can use `rpiboot` to detect the Compute Module and treat it as a mass storage device.
+You can configure Raspberry Pi Imager so that it can use `rpiboot` to detect the Compute Module and treat it as a mass storage device. For more information, see xref:imager.adoc#enable-rpiboot[Write to a Compute Module or USB boot device] in *Raspberry Pi Imager*.
 
-. Install Raspberry Pi Imager and start it. For more information, see xref:../computers/getting-started.adoc#step-1-install-and-launch-imager[Install and launch Imager].
+. Install Raspberry Pi Imager and start it. For more information, see xref:imager.adoc#install-imager[Install Imager].
 . Configure RPIBOOT support:
 .. Open *Debug Options*:
 *** On Windows or Linux, enter *Ctrl+Alt+S*.
@@ -137,7 +137,7 @@ To set up software on a Windows 11 host device:
 
 === Flash the eMMC
 
-You can use xref:../computers/getting-started.adoc#imager-install[Raspberry Pi Imager] to flash an operating system image to a Compute Module.
+You can use xref:imager.adoc[Raspberry Pi Imager] to flash an operating system image to a Compute Module.
 
 Alternatively, use `dd` to write a raw OS image (such as xref:../computers/os.adoc#introduction[Raspberry Pi OS]) to your Compute Module. Run the following command, replacing `/dev/sdX` with the path to the mass storage device representation of your Compute Module and `raw_os_image.img` with the path to your raw OS image:
 

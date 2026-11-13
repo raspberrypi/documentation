@@ -261,7 +261,7 @@ To do this, you need the following equipment:
 Complete the following steps:
 
 . On your computer, start Raspberry Pi Imager.
-. Configure Raspberry Pi Imager so that it can use `rpiboot` to detect the CM5 and treat it as a mass storage device.
+. Configure Raspberry Pi Imager so that it can use `rpiboot` to detect the CM5 and treat it as a mass storage device. For more information, see xref:../computers/imager.adoc#enable-rpiboot[Write to a Compute Module or USB boot device].
 .. Open *Debug Options*:
 *** On Windows or Linux, type *Ctrl + Alt + S*.
 *** On macOS, type *Cmd + Option + S*.

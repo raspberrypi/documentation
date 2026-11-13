@@ -21,7 +21,7 @@ To build the image and update artefacts, you need a Raspberry Pi running:
 
 * The latest 32-bit or 64-bit version of Raspberry Pi OS (_Trixie_).
 * The latest version of Connect or Connect Lite.
-* The latest version of https://www.raspberrypi.com/software/[Raspberry Pi Imager].
+* The latest version of xref:../computers/imager.adoc[Raspberry Pi Imager].
 
 To prepare the recipient device, you need:
 
@@ -122,7 +122,7 @@ $ sudo apt install rpi-imager
 +
 image::images/raspberrypi-imager.png[alt="Raspberry Pi Imager, showing the device page with a range of Raspberry Pi devices to select from.",width="80%"]
 +
-. On the **OS** tab, scroll to the bottom and select **Use Custom**.
+. On the **OS** tab, go to the bottom of the list and select **Use custom**. For more information, see xref:../computers/imager.adoc#write-custom-image[Write an image file from your computer].
 . Go to the `.img` file you built in Step 4, select it, then select **Open**.
 . Select **Next**, then choose the storage device to write the image to.
 . Select **Write**, then follow the on-screen prompts.
