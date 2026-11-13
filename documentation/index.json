@@ -321,7 +321,7 @@
                 {
                     "title": "Raspberry Pi Connect",
                     "description": "Connect to your Raspberry Pi from your browser",
-                    "image": "full-sized/Connect-BIG.png",
+                    "image": "full-sized/Connect.png",
                     "subpath": "connect.adoc"
                 },
                 {
