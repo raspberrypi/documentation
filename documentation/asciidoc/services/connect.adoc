@@ -1,16 +1,22 @@
 include::connect/introduction.adoc[]
 
-include::connect/install.adoc[]
+include::connect/get-started.adoc[]
 
 include::connect/access.adoc[]
 
 include::connect/remote-update.adoc[]
 
-include::connect/connect-otamaker.adoc[]
+include::connect/script-artefacts.adoc[]
 
 include::connect/ab-boot-update.adoc[]
 
-include::connect/manage.adoc[]
+include::connect/deploy-update.adoc[]
+
+include::connect/manage-devices.adoc[]
+
+include::connect/manage-client.adoc[]
+
+include::connect/auth-keys.adoc[]
 
 include::connect/troubleshooting.adoc[]
 

@@ -1,77 +1,50 @@
 [[remoteupdate-ab]]
+=== Set up A/B boot updates
 
-=== A/B Boot Update
+An A/B boot update replaces a device's entire operating system, and prevents a failed or faulty update from leaving the device unusable.
 
-The A/B boot update prevents a failed or faulty update from causing your device to stop working.
+A device configured for A/B boot has two independent slots, each made up of a boot partition and a system partition. One slot holds the current, working operating system; the update is written to the other slot. The device then boots from the updated slot, and if that fails, it reverts to booting from the known working slot. This repeats with each update.
 
-The configuration has two independent slots, each made up of a boot and a system partition. Slot A is used for the existing operating system (OS) and slot B is used for the update. The device boots from slot B, but reverts to booting from the known working partition, slot A, if that fails. This process repeats with each successive update.
+Setting up A/B boot happens in two parts:
 
-Configuring for A/B boot requires being able to physically access the device. This is because you must image the device with the appropriate A/B boot layout. However, once configured, you can then deliver remote updates using Raspberry Pi Connect.
+. <<ab-prepare-device,Prepare the device for A/B boot>>. You do this once for each device, and it needs physical access to the device, because you must write a new image with an A/B boot layout to its storage.
+. <<ab-build-update,Build an A/B update artefact>>. You do this for each new version of your operating system. You then <<update-remotely,deploy the artefact>> remotely.
 
-Raspberry Pi 5 and later devices that use EEPROM boot can also be configured to use A/B boot update. See xref:../computers/raspberry-pi.adoc#ab-bootloader-updates[A/B bootloader updates].
+You use https://github.com/raspberrypi/rpi-image-gen[`rpi-image-gen`] to build both the A/B boot image (an `.img` file) and the update artefacts (`.tar.zst` files), and https://www.raspberrypi.com/software/[Raspberry Pi Imager] to write the image to the device's storage.
 
-Use https://github.com/raspberrypi/rpi-image-gen[rpi-image-gen] to create both the A/B boot configuration (`.img` file) and the update artefacts (`update.tar.zst` files). Use https://www.raspberrypi.com/software/[Raspberry Pi Imager] to configure the `.img` file and write it to the storage device for transfer to the recipient Raspberry Pi.
+NOTE: Raspberry Pi 5 and later devices that use EEPROM boot can also use A/B updates for the bootloader. See xref:../computers/raspberry-pi.adoc#ab-bootloader-updates[A/B bootloader updates].
 
+[[ab-prerequisites]]
 ==== Prerequisites
 
-The following are required to use remote update and the A/B boot configuration:
+To build the image and update artefacts, you need a Raspberry Pi running:
 
-===== For creation of the A/B boot configuration and creation of the update artefact using rpi-image-gen:
-
-A Raspberry Pi device on which is installed:
-
-* The latest 32-bit or 64-bit version of Raspberry Pi OS (Trixie).
-* https://github.com/raspberrypi/rpi-image-gen[rpi-image-gen].
-* The latest version of Raspberry Pi Connect or Connect Lite.
+* The latest 32-bit or 64-bit version of Raspberry Pi OS (_Trixie_).
+* The latest version of Connect or Connect Lite.
 * The latest version of https://www.raspberrypi.com/software/[Raspberry Pi Imager].
 
-===== To configure the recipient device for A/B boot:
+To prepare the recipient device, you need:
 
-* A storage device (typically, microSD) to save the A/B boot layout to and a way to connect the storage device to the Raspberry Pi.
+* A Raspberry Pi 4 or later, with an internet connection.
+* A storage device (typically a microSD card) of at least 16 GB, and a way to connect it to the Raspberry Pi you build on.
 +
-You must have at least 16 GB of space, but you must decide exactly how much disk space you need based on your expected future requirements for the boot partition (firmware, kernel, device tree files, and possibly initramfs) and the system partition (kernel modules and system-level software such as the standard Linux command-line utilities).
+Choose a size based on how much space you expect to need in future for the boot partition (firmware, kernel, device tree files, and possibly an initramfs) and the system partition (kernel modules and system software, such as the standard Linux command line utilities).
 
-===== For the recipient device receiving the update artefact:
+[[ab-prepare-device]]
+==== Prepare a device for A/B boot
 
-* Raspberry Pi 4 or later that is:
-** Connected to the internet.
-** Opted in to remote updates.
-** Registered with, and signed in to, your Raspberry Pi Connect account.
+Standard Raspberry Pi OS installations don't use an A/B boot layout. In this procedure, you build an A/B boot image with `rpi-image-gen`, then write it to the recipient device's storage with Raspberry Pi Imager. The image also opts the device in to remote updates and links it to your Connect account, so you can send it updates remotely from then on.
 
-==== Implement A/B boot and remotely update the first image
-
-Follow the three stages below to implement the A/B configuration and send updates using Raspberry Pi Connect:
-
-. Stage 1: Prepare the recipient Raspberry Pi 4 and later device for remote updates by creating an A/B boot file, then deploy it to the device.
-. Stage 2: Create an update artefact file for deployment to the recipient device.
-. Stage 3: Use Raspberry Pi Connect's remote update feature to deploy the update artefact to the recipient device, then verify the update.
-
-==== Stage 1: Create A/B boot configuration
-
-Standard Raspberry Pi OS installations don't feature an A/B boot configuration. This stage shows you how to create one using https://github.com/raspberrypi/rpi-image-gen[rpi-image-gen] and https://www.raspberrypi.com/software/[Raspberry Pi Imager].
-
-rpi-image-gen outputs an `.img` file containing the A/B boot image.
-
-Raspberry Pi Imager then uses the `.img` file to write the operating system configuration to the storage device. This includes opting the device in to remote updates so that Raspberry Pi Connect can update it.
-
-You must have physical access to the recipient device to update it for the first time, but once you’ve configured it, you can send updates remotely thereafter.
-
-In Step 3, you generate an auth key to allow the recipient device to link to the Raspberry Pi Connect website. This auth key is tied to a single recipient device, so create a new key for each recipient device you want to update.
-
-NOTE: You must be using a Raspberry Pi device running the latest version of Raspberry Pi OS (Trixie) to create the update. The recipient device must be a Raspberry Pi 4 or later.
-
-To update a recipient device with an A/B boot configuration:
-
+[[ab-prepare-step-1]]
 ===== Step 1: Install rpi-image-gen
 
-. On the Raspberry Pi, from the command line, run the following command to clone the rpi-image-gen repository from GitHub:
+. On the Raspberry Pi you're building on, clone the `rpi-image-gen` repository from GitHub:
 +
 [source,console]
 ----
 $ git clone https://github.com/raspberrypi/rpi-image-gen.git
 ----
-
-. Navigate to the cloned directory, then install the dependencies by running the following commands:
+. Go to the cloned directory and install the dependencies:
 +
 [source,console]
 ----
@@ -79,195 +52,127 @@ $ cd rpi-image-gen
 $ sudo ./install_deps.sh
 ----
 
-===== Step 2: Prepare and configure the image
+[[ab-prepare-step-2]]
+===== Step 2: Configure the image
 
-TIP: rpi-image-gen contains an example application, with layers and configuration, to build an image compatible with remote updates.
+`rpi-image-gen` includes an example application, with layers and configuration, that builds an image compatible with remote updates. This procedure uses that example. For descriptions of the metadata in the `.yaml` files, see https://raspberrypi.github.io/rpi-image-gen/layer/index.html#_x_env_metadata[X-Env metadata] and https://raspberrypi.github.io/rpi-image-gen/layer/index.html[Layer].
 
-For descriptions of the `.yaml` file metadata, see https://raspberrypi.github.io/rpi-image-gen/layer/index.html#_x_env_metadata[X environment metadata] and https://raspberrypi.github.io/rpi-image-gen/layer/index.html[Layer].
+. Go to the `rpi-image-gen` directory.
+. Open `examples/ota/layer/ota.yaml` and customise the following metadata:
+** `X-Env-Layer-Name`
+** `X-Env-Layer-Category`
+** `X-Env-Layer-Desc`
+** `X-Env-Layer-Reqs`
+. Open `examples/ota/config/ota.yaml` and set the following environment variables:
+** **Version.** The version of the image. Set a starting version number now, and increase it each time you build an update artefact. If you don't set a version, it defaults to `1.0.0`.
+** **Device hostname.** The device's hostname, used in all images you build for this device. It must be unique. If you don't set a hostname, each build uses the default, `ota-device-1`.
+. (Optional) In `examples/ota/config/ota.yaml`, you can also:
+** Define additional packages to install at build time. For more information, see https://raspberrypi.github.io/rpi-image-gen/config/index.html#_packages[Packages].
+** Add wireless networking credentials. For more information, see https://github.com/raspberrypi/rpi-image-gen/tree/master/examples/ota[Wireless Networking].
 
-To prepare the image:
+[[ab-prepare-step-3]]
+===== Step 3: Create an auth key
 
-. Navigate to the rpi-image-gen installation folder
-. Open `examples/ota/layer/ota.yaml`
-. Customise the following metadata:
-- X-Env-Layer-Name.
-- X-Env-Layer-Category.
-- X-Env-Layer-Desc.
-- X-Env-Layer-Reqs.
-. Open `examples/ota/config/ota.yaml`
-. Set the following environment variables:
-- Version. Used to determine the version boot image. Set a starting version number now and increment it accordingly with each update artefact you create in the future. If you don’t specify a version number, it defaults to 1.0.0.
-- Device hostname. Used across all images created for this device. Must be unique. If you don't specify a device hostname, the default value `ota-device-1` is created for each build.
-. (Optional) open `examples/ota/config/ota.yaml` and:
-- Define additional packages to install at build time. For more information, see https://raspberrypi.github.io/rpi-image-gen/config/index.html#_packages[Packages].
-- Add wireless networking credentials. For more information, see https://github.com/raspberrypi/rpi-image-gen/tree/master/examples/ota[Wireless Networking].
+The image uses an auth key to link the recipient device to your Connect account. When the device first boots with the new image, it exchanges the auth key for an access token, which it saves in its user data partition. The access token persists across future updates, so you only need an auth key the first time.
 
-===== Step 3: Generate an auth key
+Each auth key links one device, so create a new auth key for each recipient device.
 
-In this step, you create the auth key and copy it down for use in Step 4.
+<<create-an-auth-key,Create an auth key>> in your personal account, or in the organisation that you're adding the device to, and copy it for use in Step 4.
 
-When you boot the recipient device after the A/B boot update (Step 6), it exchanges the auth key for an access token that is saved in the user data partition. This key persists across future updates, so you only have to generate it once.
+[[ab-prepare-step-4]]
+===== Step 4: Build the image
 
-For more information about creating auth keys for an organisation, see xref:../services/connect-for-organisations.adoc#organisation-auth-keys[Create auth keys].
-
-To generate the auth key:
-
-. Log in to Raspberry Pi Connect
-. Choose your organisation or *Personal* account from the account switcher at the top right.
-. Go to the *Provisioning* tab (for an organisation) or the *Settings* tab (for Personal), then select *New* in the Auth keys section (organisation) or *Create new auth key* (Personal).
-. Fill out the form, then select *Create auth key*.
-. Copy down the key.
-
-.The Auth key page in Raspberry Pi Connect allows you to copy the key to the clipboard.
-image::images/auth-key.png[alt="The Auth key view in Raspberry Pi Connect, showing an authorisation key ready to be copied and pasted", width="100%"]
-
-===== Step 4: Build the A/B boot configuration image
-
-Now that you’ve set up the application and created an auth key, create the boot configuration image using rpi-image-gen.
-
-This creates a `.img` file that will be written to the storage device with Raspberry Pi Imager in Step 5.
-
-To build the A/B boot configuration image:
-
-. From the command line, change directory to the rpi-image-gen folder.
+. Go to the `rpi-image-gen` directory:
 +
 [source,console]
 ----
 $ cd rpi-image-gen
 ----
-. Run the following command, replacing `rpuak_XXX` with the auth key you copied in Step 3 (organisation auth keys start with `rpoak_`).
+. Build the image, replacing `rpuak_XXX` with the auth key you created in Step 3. Organisation auth keys start with `rpoak_`.
 +
-Raspberry Pi 5 and later:
+For Raspberry Pi 5 and later:
 +
 [source,console]
 ----
 $ ./rpi-image-gen build -S ./examples/ota/ -c ota.yaml -- IGconf_connect_authkey=rpuak_XXX
 ----
 +
-Raspberry Pi 4:
+For Raspberry Pi 4:
 +
 [source,console]
 ----
 $ ./rpi-image-gen build -S ./examples/ota/ -c ota.yaml -- IGconf_device_layer=rpi4 IGconf_connect_authkey=rpuak_XXX
 ----
-+
-The application generates the file and saves it in the /rpi-image-gen/work/image-x.x.x folder (where x.x.x corresponds to the version environment variable you set in Step 2).
 
+`rpi-image-gen` saves the `.img` file in the `rpi-image-gen/work/image-x.x.x` directory, where `x.x.x` is the version you set in Step 2.
+
+[[ab-prepare-step-5]]
 ===== Step 5: Write the image
 
-Next, use Raspberry Pi Imager to create the operating system configuration and save it to the storage device.
+WARNING: Make sure you choose the right storage device in Raspberry Pi Imager. If the Raspberry Pi you're building on boots from its microSD card (`/dev/mmcblk0`), don't write to that card, or you'll overwrite its operating system. Only write to `/dev/mmcblk0` if your Raspberry Pi boots from another device, such as an NVMe SSD.
 
-WARNING: In the example target below, (`/dev/mmcblk0`) is only used if you’re booting from another device, such as an NVMe SSD. Be careful not to overwrite the operating system.
-
-To write the image:
-
-. If Raspberry Pi Imager is not already installed, run the following from the command line:
+. If Raspberry Pi Imager isn't installed, install it:
 +
 [source,console]
 ----
 $ sudo apt install rpi-imager
 ----
-. Open *Raspberry Pi Imager* from the *Accessories* menu in the graphical interface. Enter your password if prompted to.
-. Select the recipient device type: *Raspberry Pi 4* or *Raspberry Pi 5*, then select *Next*.
+. Open **Raspberry Pi Imager** from the **Accessories** menu. Enter your password if prompted.
+. Select the recipient device type, **Raspberry Pi 4** or **Raspberry Pi 5**, then select **Next**.
 +
-.Raspberry Pi Imager is used to write the image.
-image::images/raspberrypi-imager.png[alt="Raspberry Pi Imager open, showing the device page with a range of Raspberry Pi devices you can select", width="80%"]
+image::images/raspberrypi-imager.png[alt="Raspberry Pi Imager, showing the device page with a range of Raspberry Pi devices to select from.",width="80%"]
 +
-. On the OS tab, scroll all the way to the bottom and select *Use Custom*.
-. Navigate to the `.img` file you created in step 4, select it, then select *Open*.
-. Select *Next* and choose the storage device to save the A/B boot configuration to.
-. Select *Write*, then follow the on-screen prompts to complete the writing process.
-. When Raspberry Pi Imager finishes writing the operating system, select *Finish*.
+. On the **OS** tab, scroll to the bottom and select **Use Custom**.
+. Go to the `.img` file you built in Step 4, select it, then select **Open**.
+. Select **Next**, then choose the storage device to write the image to.
+. Select **Write**, then follow the on-screen prompts.
+. When Imager finishes writing, select **Finish**, then remove the storage device.
 
-You can now safely remove the storage device in preparation for Step 6.
-
-[discrete]
-===== Step 6: Deploy the `.img` file to the recipient device
+[[ab-prepare-step-6]]
+===== Step 6: Boot the recipient device
 
 . Power off the recipient device.
-. Attach the storage device from Step 5.
-. Power the recipient device on, then wait for it to boot with the new image.
-. Log in to Raspberry Pi Connect, then go to *Devices*.
+. Insert or attach the storage device you wrote in Step 5.
+. Power on the recipient device, and wait for it to boot with the new image.
+. Sign in to https://connect.raspberrypi.com[connect.raspberrypi.com], then go to the **Devices** tab.
 +
-The device appears on the Raspberry Pi Connect dashboard and the *Remote update* label appears beneath the device.
-
-The device is now ready to update remotely using Raspberry Pi Connect.
-
-[discrete]
-===== Step 7: Confirm the deployed version
-
-Confirm the version of the deployed image on the device is the same as the one you configured in Step 2.
-
-To confirm the deployed image version:
-
-. Select the device in Raspberry Pi Connect.
-. Select *Connect*.
-. From the command line, enter:
+The device appears, with a **Remote update** badge beneath its name.
+. Check that the device is running the version you set in Step 2. Open a <<remote-shell,remote shell>> on the device, then run the following command:
 +
 [source,console]
 ----
 $ cat /etc/rpi-issue
 ----
 +
-The command line returns something like the following:
+The output is similar to the following:
 +
-[source,console]
 ----
 Generated using rpi-image-gen e3828f885c860f15991468883d3b8484b0eaf9d8 on 2025-12-09
 Artefact version: 1.0.0
 ----
 
-==== Stage 2: Create update artefact
+The device is now ready to receive remote updates.
 
-Now the device is configured for A/B booting, you can deploy update artefacts to it using Raspberry Pi Connect.
+[[ab-build-update]]
+==== Build an A/B update artefact
 
-Update artefacts are created by rpi-image-gen as `.tar.zst` files. These are much smaller than the `.img` file you created in Stage 1, and are deployed in Stage 3 to the recipient device by Raspberry Pi Connect.
+After the device is set up for A/B boot, build an update artefact for each new version of your operating system. Update artefacts are `.tar.zst` files, much smaller than the `.img` file you used to prepare the device.
 
-For the purposes of illustration, we continue to use the example update from Stage 1 here. Amend these procedures to reflect the path and naming of your own update .yaml file.
+This procedure continues the example from <<ab-prepare-device,Prepare a device for A/B boot>>. If you use your own configuration, change the paths and file names to match.
 
-To build the update artefact:
-
-===== Step 1: Update the `ota.yaml` configuration
-
-. Increment the Version environment variable in the configuration `ota.yaml` file:
+. Increase the **Version** environment variable in the configuration file:
 +
 [source,console]
 ----
-${EDITOR:-vi} ./examples/ota/config/ota.yaml
+$ ${EDITOR:-vi} ./examples/ota/config/ota.yaml
 ----
-
-===== Step 2: Build the update
-
-. From the terminal, build the update by running the following command:
+. Build the update artefact:
 +
 [source,console]
 ----
 $ ./rpi-image-gen build -S ./examples/ota/ -c ota.yaml
 ----
 
-==== Stage 3: Update remotely
+`rpi-image-gen` generates a _deploy bundle_, which includes the update artefact (a `.tar.zst` file) and other assets. It writes the deploy bundle to the directory set by https://raspberrypi.github.io/rpi-image-gen/layer/deploy-base.html[`IGconf_deploy_dir`]. This deploy directory is the canonical location for production device assets. You upload the `.tar.zst` file from the deploy directory when you deploy the update.
 
-Use Raspberry Pi Connect to deploy the update artefact to the recipient Raspberry Pi device.
-
-===== Step 1: Deploy the artefact to the recipient device
-
-Deploy the artefact from the https://connect.raspberrypi.com/[Raspberry Pi Connect website], uploading the `.tar.zst` file you built in Stage 2, as described in <<update-remotely,Deploy the update artefact>>.
-
-If the recipient device belongs to an organisation, host the artefact first, then deploy it using its URI and checksum, as described in xref:../services/connect-for-organisations.adoc#deploy-remote-updates[Deploy remote updates in an organisation].
-
-===== Step 2: Verify the update
-
-When the deployment shows as *Succeeded*, connect to the recipient device using Raspberry Pi Connect and confirm the deployed version, as in Stage 1, Step 7:
-
-[source,console]
-----
-$ cat /etc/rpi-issue
-----
-
-The command line returns something like the following, indicating that the `Artefact version` number has changed:
-
-[source,console]
-----
-Generated using rpi-image-gen e3828f885c860f15991468883d3b8484b0eaf9d8 on 2025-12-09
-Artefact version: 1.1.0
-----
+Next, <<update-remotely,deploy the artefact>>.

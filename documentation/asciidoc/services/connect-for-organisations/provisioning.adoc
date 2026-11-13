@@ -1,0 +1,86 @@
+[[provision-devices]]
+== Provision devices
+
+Provisioning links devices to your organisation without anyone signing in on the Connect website. This is useful for devices that don't have a display, and for setting up many devices at once.
+
+You can provision devices with either of the following:
+
+* **Auth keys.** A temporary token that links a single device. For more information, see <<provisioning-auth-keys,Auth keys>>.
+* **Device identities.** A credential tied to a private key in the device's one-time programmable (OTP) memory, which you can register before the device is deployed. For more information, see <<device-identities,Device identities>>.
+
+You must be an administrator to provision devices. Both auth keys and device identities appear on the organisation's **Provisioning** tab.
+
+[[provisioning-comparison]]
+=== Choose a provisioning method
+
+.Auth keys compared with device identities
+[cols="1,2,2",options="header"]
+|===
+| | Auth key | Device identity
+
+| Links
+| A single device. Each auth key can only be used once.
+| The device whose private key it was created from. A device identity can be used more than once.
+
+| Credential on the device
+| The auth key, which you give to the Connect client when you sign in.
+| A private key stored in the device's OTP memory.
+
+| How you create it
+| On the **Provisioning** tab, or with the management API.
+| Only with the management API, either directly or through `rpi-sb-provisioner`.
+
+| Billing
+| From the time the device is linked to your organisation.
+| Creating device identities is free. Billing starts when the device first authenticates to your organisation.
+
+| Suitable for
+| Linking a few devices, or devices without a display.
+| Preparing many devices before you deploy them.
+|===
+
+Neither method sends a sign-in notification email. Instead, each sign-in is recorded in the organisation's <<audit-log,audit log>>.
+
+// TODO: Confirm that billing starts when a device first links with an auth key. Do device identities expire? If they do, add an Expiry row.
+
+[[provisioning-auth-keys]]
+=== Auth keys
+
+An auth key is a single-use, temporary token that links one device to your organisation. Organisation auth keys start with `rpoak_`, expire between 1 and 90 days after you create them, and you can have several active at once. For more information about auth keys, and how to use one on a device, see xref:../services/connect.adoc#auth-keys[Auth keys].
+
+You can set a device name and tags on an auth key, so that they're applied automatically when the device is linked.
+
+[[organisation-auth-keys]]
+==== Create an auth key on the Connect website
+
+. Select the **Provisioning** tab.
+. In the **Auth keys** section, select **New**.
+. Enter a description and an expiry time, between 1 and 90 days.
+. (Optional) Under **Device settings**, enter a **Name** for the device that the key links, and any **Tags** to apply to it.
+. Select **Create Auth key**.
+. Select the clipboard icon next to the new auth key to copy it.
++
+IMPORTANT: Connect only shows the auth key once. Copy it now, because you can't view it again later.
+
+[[provisioning-auth-keys-api]]
+==== Create auth keys with the management API
+
+To create auth keys automatically, for example from a provisioning script, use the <<create-an-auth-key,management API>>.
+
+[[device-identities]]
+=== Device identities
+
+A device identity links a device to your organisation using a private key stored in the device's one-time programmable (OTP) memory, so nobody has to sign in on the device. Unlike an auth key, a device identity can be used more than once.
+
+Because you only pay for a device from the time it first authenticates to your organisation, you can register device identities while you prepare devices, then ship them. Each device links to your organisation when it first boots and connects to the internet.
+
+[[create-device-identities]]
+==== Create device identities
+
+You can't create device identities on the Connect website. Creating one needs a signature made with the device's private key, which is only available on the device itself. Instead, use one of the following:
+
+* **`rpi-sb-provisioner`.** Registers a device identity for each device as it provisions it. For more information, see <<bulk-provisioning,Bulk provisioning>>.
+* **The management API.** Create a device identity directly. For more information, see <<create-a-device-identity,Create a device identity>>.
+
+After you've created device identities, you can view them on the **Provisioning** tab.
+
