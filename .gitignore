@@ -10,3 +10,5 @@ venv
 .vscode
 live_urls.csv
 dead_urls.csv
+remote_preview.config
+.remote_preview_details

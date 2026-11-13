@@ -1,0 +1,10 @@
+  {% if include.box.path %}
+    <a class="box" href="{{ site.baseurl }}{{ include.box.path }}">
+  {% else %}
+    <a class="box" href="{{ include.box.url }}">
+  {% endif %}
+      <span><img src="{{ site.baseurl }}{{ include.box.imagepath }}" width="121" height="121" alt=""></span>
+      <span class="title">{{ include.box.title | markdownify }}</span>
+      <span>{{ include.box.description }}</span>
+    </a>
+

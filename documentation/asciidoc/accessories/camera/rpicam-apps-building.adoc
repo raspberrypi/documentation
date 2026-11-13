@@ -130,7 +130,7 @@ First fetch the necessary dependencies for `rpicam-apps`.
 
 [source,console]
 ----
-$ sudo apt install -y cmake libboost-program-options-dev libdrm-dev libexif-dev
+$ sudo apt install -y cmake libboost-program-options-dev libdrm-dev libexif-dev libpng-dev
 $ sudo apt install -y meson ninja-build
 ----
 

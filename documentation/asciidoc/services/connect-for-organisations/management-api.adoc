@@ -1,0 +1,2025 @@
+[[organisations-management-api]]
+== Management API
+
+The management API lets you manage your organisation automatically, without using the Connect website. You can use it to:
+
+* Create and manage <<api-device-identities,device identities>> and <<api-auth-keys,auth keys>>, to link devices to your organisation.
+* List, update, and delete <<api-devices,devices>>.
+* Manage <<api-artefacts,update artefacts>> and <<api-deployments,deployments>>.
+
+Only administrators can create management API access tokens.
+
+[[management-api-authentication]]
+=== Authentication
+
+Authenticate every request with a <<management-api-access-tokens,management API access token>>, sent as a bearer token in the `+Authorization+` header:
+
+[source,http]
+----
+Authorization: Bearer rporg_accesstokenhere
+----
+
+If the access token is invalid, you get a **401 Unauthorized** response. Every request can also return **403 Forbidden** if the organisation is banned, or if updated Connect terms haven't been accepted.
+
+The base URL for all requests is https://api.connect.raspberrypi.com.
+
+[[management-api-rate-limits]]
+=== Rate limits
+
+Each management API access token can make up to 5,000 requests per hour. The limit is measured in fixed one-hour windows: the counter resets at the start of every hour, regardless of when you made your first request in that hour.
+
+Every response to an authenticated request includes the following headers so that you can track your usage:
+
+X-Rate-Limit-Limit:: The maximum number of requests allowed for each hour.
+X-Rate-Limit-Remaining:: The number of requests remaining in the current hour.
+X-Rate-Limit-Reset:: The number of seconds until the current hour ends and the counter resets.
+
+For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+X-Rate-Limit-Limit: 5000
+X-Rate-Limit-Remaining: 4999
+X-Rate-Limit-Reset: 3600
+----
+
+If you exceed the limit, you get a **429 Too Many Requests** response with the same headers. Wait for the number of seconds given in `+X-Rate-Limit-Reset+` before retrying. For example:
+
+[source,http]
+----
+HTTP/2 429
+X-Rate-Limit-Limit: 5000
+X-Rate-Limit-Remaining: 0
+X-Rate-Limit-Reset: 1800
+
+Throttled
+----
+
+NOTE: Requests made with an invalid access token still count towards the limit for that token, but don't include the rate limit headers in the response.
+
+[[api-device-identities]]
+=== Device identities
+
+Use these requests to create and manage device identities. For what device identities are and when to use them, see <<device-identities,Device identities>>.
+
+[[create-a-device-identity]]
+==== Create a device identity
+
+The request must include an `+X-Connect-Identity-Signature+` header. To generate it, construct a newline-separated payload containing, in this order:
+
+* The HTTP request method (for example, `+POST+`)
+* The full request URL
+* `+Authorization: <value>+`
+* `+Content-Type: <value>+`
+* `+Accept: <value>+` (if your HTTP client sends one)
+* The SHA256 hexadecimal digest of the HTTP request body (the JSON body of the `+POST+` shown below)
+
+Sign this payload with the device's private key using ECDSA with SHA256, then Base64-encode the result.
+
+For example, a request to register a device identity produces the following payload:
+
+[source]
+----
+POST
+https://api.connect.raspberrypi.com/organisation/device-identities
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/json
+Accept: */*
+<SHA256 hex digest of the HTTP request body>
+----
+
+On the device, use https://github.com/raspberrypi/utils/tree/master/rpifwcrypto[rpi-fw-crypto] to sign the payload. For example, with the payload written to `+payload.txt+`:
+
+[source,console]
+----
+$ rpi-fw-crypto sign --in payload.txt --key-id 1 --alg ec | base64 -w 0
+----
+
+The output is the `+X-Connect-Identity-Signature+` header value.
+
+To create a device identity for your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+signaturehere+`: the `+X-Connect-Identity-Signature+` value for this request.
+* `+-----BEGIN PUBLIC KEY-----...+`: the device's PEM-encoded public key.
+* `+my-device-identity+`: a description for the device identity, visible in the organisation's audit log.
+* `+pi5-001+`: the name assigned to the device when the identity is exchanged (optional, defaults to the device's hostname).
+* `+production+`, `+kiosk+`: (optional) tags applied to the device when the identity is exchanged. Each tag must contain only lowercase letters, numbers, hyphens, and underscores, with a maximum length of 30 characters. You can apply up to ten tags per device identity.
+
+[tabs]
+======
+JSON::
++
+[source,http]
+----
+POST /organisation/device-identities HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/json
+X-Connect-Identity-Signature: signaturehere
+
+{
+    "public_key": "-----BEGIN PUBLIC KEY-----...",
+    "description": "my-device-identity",
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"]
+}
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --header 'X-Connect-Identity-Signature: signaturehere' --header 'Content-Type: application/json' --data '{"public_key":"-----BEGIN PUBLIC KEY-----...","description":"my-device-identity","device_name":"pi5-001","tags":["production","kiosk"]}' https://api.connect.raspberrypi.com/organisation/device-identities
+----
+
+======
+
+If successful, you get a **201 Created** response with the device identity in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 201
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "096ce472-2cbd-412a-8295-6c03a1a07ba4",
+    "description": "my-device-identity",
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"],
+    "created_at": "2026-02-25T16:09:52Z",
+    "public_key": "-----BEGIN PUBLIC KEY-----..."
+}
+----
+
+The response contains the following fields:
+
+id:: A unique identifier for the device identity.
+description:: The description used to create the device identity.
+device_name:: The name that is assigned to the device when the identity is exchanged.
+tags:: The tags that are applied to the device when the identity is exchanged.
+created_at:: The date and time when the device identity was created (in ISO 8601 format).
+public_key:: The PEM-encoded public key for the device identity.
+
+Otherwise, you get one of the following responses:
+
+[cols="1,2,2a", options="header"]
+|===
+| Response | Description | Example
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+|
+
+| **422 Unprocessable Content**
+| The device identity can't be created.
+a|
+[source,json]
+----
+{"message":"Validation failed: Public key is invalid"}
+----
+|===
+
+[[list-device-identities]]
+==== List device identities
+
+To list all device identities in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/device-identities HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/device-identities
+----
+
+======
+
+If successful, you get a **200 OK** response with up to 100 of the organisation's device identities sorted alphabetically by description in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "device_identities": [
+        {
+            "id": "096ce472-2cbd-412a-8295-6c03a1a07ba4",
+            "description": "my-device-identity",
+            "device_name": "pi5-001",
+            "tags": [],
+            "created_at": "2026-02-25T16:09:52Z",
+            "public_key": "-----BEGIN PUBLIC KEY-----..."
+        }
+    ],
+    "meta": {
+        "page": 1,
+        "per_page": 100,
+        "total_count": 1,
+        "total_pages": 1
+    }
+}
+----
+
+The response contains the following fields:
+
+device_identities:: List of device identities in the organisation (up to 100 for each page).
+meta:: Pagination details.
+
+Each item in the `+device_identities+` list contains the following fields:
+
+id:: A unique identifier for the device identity.
+description:: The description used to create the device identity.
+device_name:: The name that is assigned to the device when the identity is exchanged.
+tags:: The tags that are applied to the device when the identity is exchanged.
+created_at:: The date and time when the device identity was created (in ISO 8601 format).
+public_key:: The PEM-encoded public key for the device identity.
+
+The `+meta+` object contains the following fields:
+
+page:: The current page number of the response.
+per_page:: The number of device identities for each page (maximum 100).
+total_count:: The total number of device identities in the organisation.
+total_pages:: The total number of pages of device identities for the organisation.
+
+If the management API access token is invalid, you get a **401 Unauthorized** response.
+
+The `+page+` and `+per_page+` query parameters work the same way as for <<list-devices,listing devices>>.
+
+==== Show a device identity
+
+To show a single device identity in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+device-identity-id+`: the unique identifier for the device identity.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/device-identities/device-identity-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/device-identities/device-identity-id
+----
+
+======
+
+If successful, you get a **200 OK** response with the device identity's details in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "096ce472-2cbd-412a-8295-6c03a1a07ba4",
+    "description": "my-device-identity",
+    "device_name": "pi5-001",
+    "tags": [],
+    "created_at": "2026-02-25T16:09:52Z",
+    "public_key": "-----BEGIN PUBLIC KEY-----..."
+}
+----
+
+Otherwise, you get one of the following responses:
+
+[cols="1,3", options="header"]
+|===
+| Response | Description
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+
+| **404 Not Found**
+| The device identity isn't found in the organisation.
+|===
+
+==== Update a device identity
+
+To update an existing device identity in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+device-identity-id+`: the unique identifier for the device identity.
+* `+my-renamed-device-identity+`: the new description for the device identity.
+* `+pi5-001+`: the new name that is assigned to the device when the identity is exchanged (optional).
+* `+production+`, `+kiosk+`: tags applied to the device when the identity is exchanged (optional).
+
+[tabs]
+======
+JSON::
++
+[source,http]
+----
+PATCH /organisation/device-identities/device-identity-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/json
+
+{
+    "description": "my-renamed-device-identity",
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"]
+}
+----
+
+curl::
++
+[source,console]
+----
+$ curl --request PATCH --header 'Authorization: Bearer rporg_accesstokenhere' --header 'Content-Type: application/json' --data '{"description":"my-renamed-device-identity","device_name":"pi5-001","tags":["production","kiosk"]}' https://api.connect.raspberrypi.com/organisation/device-identities/device-identity-id
+----
+
+======
+
+If successful, you get a **200 OK** response with the updated device identity in JSON format:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "096ce472-2cbd-412a-8295-6c03a1a07ba4",
+    "description": "my-renamed-device-identity",
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"],
+    "created_at": "2026-02-25T16:09:52Z",
+    "public_key": "-----BEGIN PUBLIC KEY-----..."
+}
+----
+
+NOTE: Once a device identity has been exchanged for a device, only the `+description+` can be updated. Any `+device_name+` or `+tags+` values in the request body are ignored, because those fields are only applied when the identity is first exchanged.
+
+Otherwise, you get one of the following responses:
+
+[cols="1,2,2a", options="header"]
+|===
+| Response | Description | Example
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+|
+
+| **404 Not Found**
+| The device identity isn't found in the organisation.
+|
+
+| **422 Unprocessable Content**
+| The device identity can't be updated.
+a|
+[source,json]
+----
+{"message":"Validation failed: Description can't be blank"}
+----
+|===
+
+==== Delete a device identity
+
+To delete a device identity in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+device-identity-id+`: the unique identifier for the device identity.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+DELETE /organisation/device-identities/device-identity-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --request DELETE --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/device-identities/device-identity-id
+----
+
+======
+
+If the device identity has already been exchanged for a device, the linked device is also deleted and signed out of Raspberry Pi Connect.
+
+If successful, you get a **200 OK** response with the deleted device identity's details in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "096ce472-2cbd-412a-8295-6c03a1a07ba4",
+    "description": "my-device-identity",
+    "device_name": "pi5-001",
+    "tags": [],
+    "created_at": "2026-02-25T16:09:52Z",
+    "public_key": "-----BEGIN PUBLIC KEY-----..."
+}
+----
+
+Otherwise, you get one of the following responses:
+
+[cols="1,3", options="header"]
+|===
+| Response | Description
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+
+| **404 Not Found**
+| The device identity isn't found in the organisation.
+|===
+
+[[api-auth-keys]]
+=== Auth keys
+
+Use these requests to create and manage auth keys, which link a single device to your organisation. To create auth keys on the Connect website instead, see <<organisation-auth-keys,Create auth keys>>.
+
+[[create-an-auth-key]]
+==== Create an auth key
+
+To create an auth key to xref:../services/connect.adoc#link-connect[link a device with Connect], use a management API access token to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+my-auth-key+`: a description for your auth key.
+* `+1+`: how many days until the auth key expires, between 1 and 90 (optional, defaults to 1 day).
+* `+pi5-001+`: name used when adding devices with this key (optional, defaults to the device's hostname).
+* `+production+`, `+kiosk+`: tags applied to the device when the auth key is exchanged (optional). Each tag must contain only lowercase letters, numbers, hyphens, and underscores, with a maximum length of 30 characters. You can apply up to 10 tags per auth key.
+
+[tabs]
+======
+JSON::
++
+[source,http]
+----
+POST /organisation/auth-keys HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/json
+
+{
+    "description": "my-auth-key",
+    "ttl_days": 1,
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"]
+}
+----
+
+HTTP::
++
+[source,http]
+----
+POST /organisation/auth-keys HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/x-www-form-urlencoded
+
+description=my-auth-key&ttl_days=1&device_name=pi5-001&tags[]=production&tags[]=kiosk
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --data-urlencode 'description=my-auth-key' --data-urlencode 'ttl_days=1' --data-urlencode 'device_name=pi5-001' --data-urlencode 'tags[]=production' --data-urlencode 'tags[]=kiosk' https://api.connect.raspberrypi.com/organisation/auth-keys
+----
+
+======
+
+If successful, you get a **201 Created** response with your auth key in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 201
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "12345",
+    "description": "my-auth-key",
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"],
+    "secret": "rpoak_123456",
+    "expires_at": "2025-01-01T00:00:30Z",
+    "exchanged_at": null,
+    "created_at": "2024-12-31T00:00:30Z"
+}
+----
+
+The response contains the following fields:
+
+id:: A unique identifier for the auth key.
+description:: The description used to create the auth key.
+device_name:: The name that is assigned to the device when the auth key is exchanged.
+tags:: The tags that are applied to the device when the auth key is exchanged.
+secret:: A random token prefixed with `+rpoak_+`.
+expires_at:: The date and time when the key expires (in ISO 8601 format).
+exchanged_at:: The date and time when the auth key was exchanged to link a device (in ISO 8601 format), or `+null+` if it hasn't been exchanged yet.
+created_at:: The date and time when the auth key was created (in ISO 8601 format).
+
+The `+secret+` can then be used to xref:../services/connect.adoc#link-connect[link a device with Connect] before it expires.
+
+Otherwise, you get one of the following responses:
+
+[cols="1,2,2a", options="header"]
+|===
+| Response | Description | Example
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+|
+
+| **422 Unprocessable Content**
+| The auth key can't be created.
+a|
+[source,json]
+----
+{"message":"Validation failed: Description can't be blank"}
+----
+|===
+
+
+[[list-auth-keys]]
+==== List auth keys
+
+To list all auth keys in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/auth-keys HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/auth-keys
+----
+
+======
+
+If successful, you get a **200 OK** response with up to 100 of the organisation's auth keys in JSON format, sorted with usable auth keys first, followed by expired and then exchanged auth keys, with the most recent first in each group. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "auth_keys": [
+        {
+            "id": "096ce472-2cbd-412a-8295-6c03a1a07ba4",
+            "description": "my-auth-key",
+            "device_name": "pi5-001",
+            "tags": ["production", "kiosk"],
+            "expires_at": "2026-02-26T16:09:52Z",
+            "exchanged_at": null,
+            "created_at": "2026-02-25T16:09:52Z"
+        }
+    ],
+    "meta": {
+        "page": 1,
+        "per_page": 100,
+        "total_count": 1,
+        "total_pages": 1
+    }
+}
+----
+
+The response contains the following fields:
+
+auth_keys:: List of auth keys in the organisation (up to 100 for each page).
+meta:: Pagination details.
+
+Each item in the `+auth_keys+` list contains the following fields:
+
+id:: A unique identifier for the auth key.
+description:: The description used to create the auth key.
+device_name:: The name that is assigned to the device when the auth key is exchanged.
+tags:: The tags that are applied to the device when the auth key is exchanged.
+expires_at:: The date and time when the key expires (in ISO 8601 format).
+exchanged_at:: The date and time when the auth key was exchanged to link a device (in ISO 8601 format), or `+null+` if it hasn't been exchanged yet.
+created_at:: The date and time when the auth key was created (in ISO 8601 format).
+
+NOTE: The `+secret+` is only included in the response when an auth key is first created and can't be viewed again later.
+
+The `+meta+` object contains the following fields:
+
+page:: The current page number of the response.
+per_page:: The number of auth keys for each page (maximum 100).
+total_count:: The total number of auth keys in the organisation.
+total_pages:: The total number of pages of auth keys for the organisation.
+
+If the management API access token is invalid, you get a **401 Unauthorized** response.
+
+The `+page+` and `+per_page+` query parameters work the same way as for <<list-devices,listing devices>>.
+
+==== Show an auth key
+
+To show a single auth key in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+auth-key-id+`: the unique identifier for the auth key.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/auth-keys/auth-key-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/auth-keys/auth-key-id
+----
+
+======
+
+If successful, you get a **200 OK** response with the auth key's details in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "096ce472-2cbd-412a-8295-6c03a1a07ba4",
+    "description": "my-auth-key",
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"],
+    "expires_at": "2026-02-26T16:09:52Z",
+    "exchanged_at": null,
+    "created_at": "2026-02-25T16:09:52Z"
+}
+----
+
+Otherwise, you get one of the following responses:
+
+[cols="1,3", options="header"]
+|===
+| Response | Description
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+
+| **404 Not Found**
+| The auth key isn't found in the organisation.
+|===
+
+==== Update an auth key
+
+To update an existing auth key in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+auth-key-id+`: the unique identifier for the auth key.
+* `+my-renamed-auth-key+`: the new description for the auth key.
+* `+pi5-001+`: the new name that is assigned to the device when the auth key is exchanged (optional).
+* `+production+`, `+kiosk+`: tags applied to the device when the auth key is exchanged (optional).
+
+[tabs]
+======
+JSON::
++
+[source,http]
+----
+PATCH /organisation/auth-keys/auth-key-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/json
+
+{
+    "description": "my-renamed-auth-key",
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"]
+}
+----
+
+curl::
++
+[source,console]
+----
+$ curl --request PATCH --header 'Authorization: Bearer rporg_accesstokenhere' --header 'Content-Type: application/json' --data '{"description":"my-renamed-auth-key","device_name":"pi5-001","tags":["production","kiosk"]}' https://api.connect.raspberrypi.com/organisation/auth-keys/auth-key-id
+----
+
+======
+
+If successful, you get a **200 OK** response with the updated auth key in JSON format:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "096ce472-2cbd-412a-8295-6c03a1a07ba4",
+    "description": "my-renamed-auth-key",
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"],
+    "expires_at": "2026-02-26T16:09:52Z",
+    "exchanged_at": null,
+    "created_at": "2026-02-25T16:09:52Z"
+}
+----
+
+Otherwise, you get one of the following responses:
+
+[cols="1,2,2a", options="header"]
+|===
+| Response | Description | Example
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+|
+
+| **404 Not Found**
+| The auth key isn't found in the organisation.
+|
+
+| **422 Unprocessable Content**
+| The auth key has expired or has already been exchanged.
+a|
+[source,json]
+----
+{"message":"This auth key can no longer be edited."}
+----
+
+| **422 Unprocessable Content**
+| The auth key can't be updated for any other reason.
+a|
+[source,json]
+----
+{"message":"Validation failed: Description can't be blank"}
+----
+|===
+
+==== Delete an auth key
+
+To delete an auth key in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+auth-key-id+`: the unique identifier for the auth key.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+DELETE /organisation/auth-keys/auth-key-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --request DELETE --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/auth-keys/auth-key-id
+----
+
+======
+
+You can delete any auth key, including ones that have expired or have already been exchanged. Deleting an auth key that has been exchanged doesn't affect the linked device.
+
+If successful, you get a **200 OK** response with the deleted auth key's details in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "096ce472-2cbd-412a-8295-6c03a1a07ba4",
+    "description": "my-auth-key",
+    "device_name": "pi5-001",
+    "tags": ["production", "kiosk"],
+    "expires_at": "2026-02-26T16:09:52Z",
+    "exchanged_at": null,
+    "created_at": "2026-02-25T16:09:52Z"
+}
+----
+
+Otherwise, you get one of the following responses:
+
+[cols="1,3", options="header"]
+|===
+| Response | Description
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+
+| **404 Not Found**
+| The auth key isn't found in the organisation.
+|===
+
+[[api-devices]]
+=== Devices
+
+Use these requests to list, view, update, and delete the devices in your organisation.
+
+[[list-devices]]
+==== List devices
+
+To list all devices in your organisation, use a management API access token to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/devices HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/devices
+----
+
+======
+
+If successful, you get a **200 OK** response with up to 100 of the organisation's devices sorted alphabetically by name in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "devices": [
+        {
+            "id": "69739b44-ebb2-468e-9e24-08126dec4925",
+            "name": "raspberrypi5",
+            "serial_number": "ea636879c4d47a37",
+            "tags": ["production", "kiosk"],
+            "board": {
+                "model": "Raspberry Pi 5",
+                "revision": "1.0",
+                "memory": "8 GB"
+            },
+            "os": {
+                "name": "Raspberry Pi OS",
+                "version": "13 (Trixie)"
+            },
+            "kernel_architecture": "aarch64",
+            "filters": {
+                "model": "5",
+                "memory": "8gb",
+                "os": "raspios-13"
+            }
+        }
+    ],
+    "meta": {
+        "page": 1,
+        "per_page": 100,
+        "total_count": 1,
+        "total_pages": 1
+    }
+}
+----
+
+The response contains the following fields:
+
+devices:: List of devices in the organisation (up to 100 for each page).
+meta:: Pagination details.
+
+Each item in the `+devices+` list contains the following fields:
+
+id:: A unique identifier for the device.
+name:: The name of the device.
+serial_number:: The serial number of the device.
+tags:: The tags applied to the device.
+board:: The device's board model, revision, and memory. `+null+` if unknown.
+os:: The operating system name and version running on the device. `+null+` if unknown.
+kernel_architecture:: The kernel architecture reported by the device (for example, `+aarch64+`). `+null+` if unknown.
+filters:: The qualifiers that match this device, for use with the `+query+` parameter (see below). Only includes attributes that are known for the device, so this object might be empty.
+
+The `+board+`, `+os+`, `+kernel_architecture+`, and `+filters+` fields are only populated for devices running Connect client version 2.9.0 or later.
+
+The `+meta+` object contains the following fields:
+
+page:: The current page number of the response.
+per_page:: The number of devices for each page (maximum 100).
+total_count:: The total number of devices in the organisation.
+total_pages:: The total number of pages of devices for the organisation.
+
+If the management API access token is invalid, you get a **401 Unauthorized** response.
+
+To fetch subsequent pages of devices, use the `+page+` parameter in the query string:
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/devices?page=2 HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' 'https://api.connect.raspberrypi.com/organisation/devices?page=2'
+----
+
+======
+
+To change the number of devices returned for each page, use the `+per_page+` parameter in the query string (with a maximum of 100):
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/devices?per_page=10 HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' 'https://api.connect.raspberrypi.com/organisation/devices?per_page=10'
+----
+
+======
+
+To filter the devices returned, use the `+query+` parameter in the query string. This accepts the same syntax as the <<search-filter-devices,search bar in the web interface>>, combining free-text search with structured filters:
+
+* Free text matches against device name and serial number.
+* The `+model:+`, `+memory:+`, `+os:+`, and `+tag:+` qualifiers filter by a specific attribute (for example, `+model:5+` or `+tag:production+`).
+
+You can combine multiple filters and free text in a single query. The value must be URL-encoded, including the spaces between terms.
+
+For example, to find Raspberry Pi 5 devices tagged `+production+`:
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/devices?query=model%3A5%20tag%3Aproduction HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --get --data-urlencode 'query=model:5 tag:production' https://api.connect.raspberrypi.com/organisation/devices
+----
+
+======
+
+The `+query+` parameter composes with the `+page+` and `+per_page+` parameters, so you can paginate through a filtered list.
+
+The `+filters+` object returned for each device lists the exact qualifier values that match it, so you can use those values to build a `+query+`. For example, a device with `+"os": "raspios-13"+` in its `+filters+` matches the query `+os:raspios-13+`.
+
+The `+model:+` qualifier accepts the following values:
+
+[cols="1,2"]
+|===
+| Value | Model
+
+| `+a+`
+| Raspberry Pi A
+
+| `+b+`
+| Raspberry Pi B
+
+| `+a++`
+| Raspberry Pi A+
+
+| `+b++`
+| Raspberry Pi B+
+
+| `+2b+`
+| Raspberry Pi 2B
+
+| `+cm1+`
+| Raspberry Pi CM1
+
+| `+3b+`
+| Raspberry Pi 3B
+
+| `+zero+`
+| Raspberry Pi Zero
+
+| `+cm3+`
+| Raspberry Pi CM3
+
+| `+zerow+`
+| Raspberry Pi Zero W
+
+| `+3b++`
+| Raspberry Pi 3B+
+
+| `+3a++`
+| Raspberry Pi 3A+
+
+| `+cm3++`
+| Raspberry Pi CM3+
+
+| `+4b+`
+| Raspberry Pi 4B
+
+| `+zero2w+`
+| Raspberry Pi Zero 2 W
+
+| `+400+`
+| Raspberry Pi 400
+
+| `+cm4+`
+| Raspberry Pi CM4
+
+| `+cm4s+`
+| Raspberry Pi CM4S
+
+| `+5+`
+| Raspberry Pi 5
+
+| `+cm5+`
+| Raspberry Pi CM5
+
+| `+500+`
+| Raspberry Pi 500
+
+| `+cm5lite+`
+| Raspberry Pi CM5 Lite
+
+| `+cm0+`
+| Raspberry Pi CM0
+|===
+
+The `+memory:+` qualifier accepts the following values:
+
+[cols="1,2"]
+|===
+| Value | Memory
+
+| `+256mb+`
+| 256 MB
+
+| `+512mb+`
+| 512 MB
+
+| `+1gb+`
+| 1 GB
+
+| `+2gb+`
+| 2 GB
+
+| `+4gb+`
+| 4 GB
+
+| `+8gb+`
+| 8 GB
+
+| `+16gb+`
+| 16 GB
+|===
+
+NOTE: As with the web interface, the `+model:+`, `+memory:+`, and `+os:+` qualifiers only match devices running Connect client version 2.9.0 or later.
+
+==== Show a device
+
+To show a single device in your organisation, use a management API access token to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+device-id+`: the unique identifier for your device.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/devices/device-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/devices/device-id
+----
+
+======
+
+If successful, you get a **200 OK** response with the device's details in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "69739b44-ebb2-468e-9e24-08126dec4925",
+    "name": "raspberrypi5",
+    "serial_number": "ea636879c4d47a37",
+    "tags": ["production", "kiosk"],
+    "board": {
+        "model": "Raspberry Pi 5",
+        "revision": "1.0",
+        "memory": "8 GB"
+    },
+    "os": {
+        "name": "Raspberry Pi OS",
+        "version": "13 (Trixie)"
+    },
+    "kernel_architecture": "aarch64",
+    "filters": {
+        "model": "5",
+        "memory": "8gb",
+        "os": "raspios-13"
+    }
+}
+----
+
+The response contains the same fields as each item in the `+devices+` list returned when you list devices. The `+board+`, `+os+`, `+kernel_architecture+`, and `+filters+` fields are only populated for devices running Connect client version 2.9.0 or later.
+
+Otherwise, you get one of the following responses:
+
+[cols="1,3", options="header"]
+|===
+| Response | Description
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+
+| **404 Not Found**
+| The given device ID is not found in the organisation.
+|===
+
+==== Update a device
+
+To update the name or tags of a device in your organisation, use a management API access token to make the following HTTP request.
+
+Both fields are optional: any field you omit from the request body is left unchanged.
+
+The `+tags+` field replaces the device's existing tags, so include any tags you want to keep. Tag names must be 30 characters or fewer and can only contain lowercase letters, numbers, hyphens, and underscores. Each device supports up to ten tags.
+
+To remove all tags, pass an empty list (`+"tags": []+`).
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+device-id+`: the unique identifier for your device.
+* `+raspberrypi5+`: the new name for the device (optional).
+* `+production+`, `+kiosk+`: the new tags for the device (optional).
+
+[tabs]
+======
+JSON::
++
+[source,http]
+----
+PATCH /organisation/devices/device-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/json
+
+{
+    "name": "raspberrypi5",
+    "tags": ["production", "kiosk"]
+}
+----
+
+curl::
++
+[source,console]
+----
+$ curl --request PATCH --header 'Authorization: Bearer rporg_accesstokenhere' --header 'Content-Type: application/json' --data '{"name":"raspberrypi5","tags":["production","kiosk"]}' https://api.connect.raspberrypi.com/organisation/devices/device-id
+----
+
+======
+
+If successful, you get a **200 OK** response with the updated device in JSON format:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "69739b44-ebb2-468e-9e24-08126dec4925",
+    "name": "raspberrypi5",
+    "serial_number": "ea636879c4d47a37",
+    "tags": ["production", "kiosk"],
+    "board": {
+        "model": "Raspberry Pi 5",
+        "revision": "1.0",
+        "memory": "8 GB"
+    },
+    "os": {
+        "name": "Raspberry Pi OS",
+        "version": "13 (Trixie)"
+    },
+    "kernel_architecture": "aarch64",
+    "filters": {
+        "model": "5",
+        "memory": "8gb",
+        "os": "raspios-13"
+    }
+}
+----
+
+Otherwise, you get one of the following responses:
+
+[cols="1,2,2a", options="header"]
+|===
+| Response | Description | Example
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+|
+
+| **404 Not Found**
+| The given device ID is not found in the organisation.
+|
+
+| **422 Unprocessable Content**
+| The device can't be updated.
+a|
+[source,json]
+----
+{"message":"Validation failed: Name can't be blank"}
+----
+|===
+
+==== Delete a device
+
+To delete a device in your organisation and sign it out of Raspberry Pi Connect, use a management API access token to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+device-id+`: the unique identifier for your device.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+DELETE /organisation/devices/device-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --request DELETE --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/devices/device-id
+----
+
+======
+
+If successful, you get a **200 OK** response with the deleted device's details in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "69739b44-ebb2-468e-9e24-08126dec4925",
+    "name": "raspberrypi5",
+    "serial_number": "ea636879c4d47a37",
+    "tags": ["production", "kiosk"],
+    "board": {
+        "model": "Raspberry Pi 5",
+        "revision": "1.0",
+        "memory": "8 GB"
+    },
+    "os": {
+        "name": "Raspberry Pi OS",
+        "version": "13 (Trixie)"
+    },
+    "kernel_architecture": "aarch64",
+    "filters": {
+        "model": "5",
+        "memory": "8gb",
+        "os": "raspios-13"
+    }
+}
+----
+
+Otherwise, you get one of the following responses:
+
+[cols="1,3", options="header"]
+|===
+| Response | Description
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+
+| **404 Not Found**
+| The given device ID is not found in the organisation.
+|===
+
+[[api-artefacts]]
+=== Artefacts
+
+Use these requests to manage your organisation's <<artefact-library,artefact library>>.
+
+==== List artefacts
+
+To list all remote update artefacts in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/artefacts HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/artefacts
+----
+
+======
+
+If successful, you get a **200 OK** response with up to 100 of the organisation's artefacts in JSON format, sorted alphabetically by name and then by when they were created, oldest first. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "artefacts": [
+        {
+            "id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
+            "name": "kiosk-v1.0",
+            "type": "uri",
+            "uri": "https://example.com/kiosk-v1.0.tar.zst",
+            "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6",
+            "expires_at": null,
+            "created_at": "2026-02-25T16:09:52Z"
+        }
+    ],
+    "meta": {
+        "page": 1,
+        "per_page": 100,
+        "total_count": 1,
+        "total_pages": 1
+    }
+}
+----
+
+[[artefact-fields]]
+Each artefact has the following fields:
+
+id:: A unique identifier for the artefact.
+name:: The artefact's name. Names don't have to be unique within the organisation.
+type:: How the artefact is provided: `+uri+` for an artefact you <<host-the-update-artefact,host yourself>>, or `+file+` for an artefact uploaded to Connect.
+uri:: The location from which devices download the artefact. For an uploaded artefact, this is a link to the uploaded file, or `+null+` once Connect has deleted the file.
+checksum:: The hex-encoded SHA-256 checksum of the artefact.
+expires_at:: The date and time when an uploaded artefact expires and can no longer be deployed (in ISO 8601 format), or `+null+` for an artefact you host yourself.
+created_at:: The date and time when the artefact was created (in ISO 8601 format).
+
+To filter the artefacts returned, use the `+name+` parameter in the query string. This performs a case-insensitive prefix match against the artefact name:
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/artefacts?name=kiosk HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --get --data-urlencode 'name=kiosk' https://api.connect.raspberrypi.com/organisation/artefacts
+----
+
+======
+
+The `+page+` and `+per_page+` query parameters work the same way as for <<list-devices,listing devices>>, and compose with the `+name+` parameter so you can paginate through a filtered list.
+
+If the management API access token is invalid, you get a **401 Unauthorized** response.
+
+==== Show an artefact
+
+To show a single remote update artefact in your organisation, use a <<management-api-access-tokens,management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `rporg_accesstokenhere`: your management API access token.
+* `artefact-id`: the unique identifier for the artefact.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/artefacts/artefact-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/artefacts/artefact-id
+----
+
+======
+
+If successful, you get a **200 OK** response with the artefact's <<artefact-fields,details>> in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
+    "name": "kiosk-v1.0",
+    "type": "uri",
+    "uri": "https://example.com/kiosk-v1.0.tar.zst",
+    "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6",
+    "expires_at": null,
+    "created_at": "2026-02-25T16:09:52Z"
+}
+----
+
+Otherwise, you get one of the following responses:
+
+[cols="1,3", options="header"]
+|===
+| Response | Description
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+
+| **404 Not Found**
+| The given artefact ID is not found in the organisation.
+|===
+
+[[create-artefact]]
+==== Create an artefact
+
+To create a remote update artefact for your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+NOTE: The management API can only create artefacts that you <<host-the-update-artefact,host yourself>>. To upload an artefact, use the <<artefact-library,Remote update tab>>.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+kiosk-v1.0+`: a name for the artefact. Names don't have to be unique within the organisation.
+* `+https://example.com/kiosk-v1.0.tar.zst+`: the URI from which devices download the artefact.
+* `+d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6+`: the hex-encoded SHA-256 checksum of the artefact.
+
+[tabs]
+======
+JSON::
++
+[source,http]
+----
+POST /organisation/artefacts HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/json
+
+{
+    "name": "kiosk-v1.0",
+    "uri": "https://example.com/kiosk-v1.0.tar.zst",
+    "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6"
+}
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --data-urlencode 'name=kiosk-v1.0' --data-urlencode 'uri=https://example.com/kiosk-v1.0.tar.zst' --data-urlencode 'checksum=d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6' https://api.connect.raspberrypi.com/organisation/artefacts
+----
+
+======
+
+If successful, you get a **201 Created** response with the artefact's details in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 201
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
+    "name": "kiosk-v1.0",
+    "type": "uri",
+    "uri": "https://example.com/kiosk-v1.0.tar.zst",
+    "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6",
+    "expires_at": null,
+    "created_at": "2026-02-25T16:09:52Z"
+}
+----
+
+Otherwise, you get one of the following responses:
+
+[cols="1,2,2a", options="header"]
+|===
+| Response | Description | Example
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+|
+
+| **422 Unprocessable Content**
+| The artefact can't be created.
+a|
+[source,json]
+----
+{"message":"Validation failed: Name can't be blank"}
+----
+|===
+
+==== Delete an artefact
+
+To delete an artefact in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+artefact-id+`: the artefact's `+id+` (as returned by <<create-artefact, Create an artefact>>).
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+DELETE /organisation/artefacts/artefact-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --request DELETE --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/artefacts/artefact-id
+----
+
+======
+
+If successful, you get a **200 OK** response with the deleted artefact's details in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
+    "name": "kiosk-v1.0",
+    "type": "uri",
+    "uri": "https://example.com/kiosk-v1.0.tar.zst",
+    "checksum": "d39fc02ad7878db7f6803f54dfce89346a763a603cb8e62221ba893fee9c5cc6",
+    "expires_at": null,
+    "created_at": "2026-02-25T16:09:52Z"
+}
+----
+
+Otherwise, you get one of the following responses:
+
+[cols="1,2,2a", options="header"]
+|===
+| Response | Description | Example
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+|
+
+| **404 Not Found**
+| The given artefact ID is not found in the organisation.
+|
+
+| **422 Unprocessable Content**
+| The artefact has been deployed to a device.
+a|
+[source,json]
+----
+{"message":"Cannot delete artefacts that have been deployed"}
+----
+|===
+
+[[api-deployments]]
+=== Deployments
+
+Use these requests to deploy update artefacts to devices, and to monitor and cancel deployments.
+
+==== List deployments
+
+To list remote update deployments for a device in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+device-id+`: the unique identifier for the device.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/devices/device-id/deployments HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/devices/device-id/deployments
+----
+
+======
+
+If successful, you get a **200 OK** response with up to 100 of the device's deployments in JSON format, ordered most recent first. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "deployments": [
+        {
+            "id": "fdf45c44-2c0e-4f12-9b04-3a6a1c0d3b8d",
+            "state": "failed",
+            "state_reason": "Checksum mismatch",
+            "device_id": "69739b44-ebb2-468e-9e24-08126dec4925",
+            "artefact_id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
+            "created_at": "2026-02-25T16:09:52Z",
+            "updated_at": "2026-02-25T16:10:30Z"
+        }
+    ],
+    "meta": {
+        "page": 1,
+        "per_page": 100,
+        "total_count": 1,
+        "total_pages": 1
+    }
+}
+----
+
+The `+state+` of each deployment is one of `+queued+`, `+in_progress+`, `+succeeded+`, `+failed+`, `+cancelled+`, or `+invalidated+`. For `+failed+` deployments, `+state_reason+` contains a human-readable explanation of why the deployment failed (for example, when a checksum mismatch occurs or the deployment is superseded by a newer one); for other states it is `+null+`.
+
+To filter the deployments returned, use the `+state+` parameter in the query string with one of the states listed above. For backwards compatibility, `+state=pending+` returns `+queued+` deployments:
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/devices/device-id/deployments?state=queued HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' 'https://api.connect.raspberrypi.com/organisation/devices/device-id/deployments?state=queued'
+----
+
+======
+
+The `+page+` and `+per_page+` query parameters work the same way as for <<list-devices,listing devices>>.
+
+Otherwise, you get one of the following responses:
+
+[cols="1,2,2a", options="header"]
+|===
+| Response | Description | Example
+
+| **400 Bad Request**
+| The `+state+` parameter isn't one of the recognised states.
+a|
+[source,json]
+----
+{"message":"Unknown state \"exploded\""}
+----
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+|
+
+| **404 Not Found**
+| The given device ID is not found in the organisation.
+|
+|===
+
+==== Show a deployment
+
+To show a single deployment in your organisation, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+deployment-id+`: the unique identifier for the deployment.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+GET /organisation/deployments/deployment-id HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/deployments/deployment-id
+----
+
+======
+
+If successful, you get a **200 OK** response with the deployment's details in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "fdf45c44-2c0e-4f12-9b04-3a6a1c0d3b8d",
+    "state": "succeeded",
+    "state_reason": null,
+    "device_id": "69739b44-ebb2-468e-9e24-08126dec4925",
+    "artefact_id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
+    "created_at": "2026-02-25T16:09:52Z",
+    "updated_at": "2026-02-25T16:10:30Z"
+}
+----
+
+Otherwise, you get one of the following responses:
+
+[cols="1,3", options="header"]
+|===
+| Response | Description
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+
+| **404 Not Found**
+| The deployment isn't found in the organisation.
+|===
+
+==== Create a deployment
+
+To deploy an artefact to a device, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request. The new deployment supersedes any deployment already queued for the device.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+device-id+`: the unique identifier for the recipient device.
+* `+artefact-id+`: the artefact's `+id+` (as returned by <<create-artefact,Create an artefact>>).
+
+[tabs]
+======
+JSON::
++
+[source,http]
+----
+POST /organisation/devices/device-id/deployments HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+Content-Type: application/json
+
+{
+    "artefact_id": "artefact-id"
+}
+----
+
+curl::
++
+[source,console]
+----
+$ curl --header 'Authorization: Bearer rporg_accesstokenhere' --data-urlencode 'artefact_id=artefact-id' https://api.connect.raspberrypi.com/organisation/devices/device-id/deployments
+----
+
+======
+
+If successful, you get a **201 Created** response with the deployment's details in JSON format. For example:
+
+[source,http]
+----
+HTTP/2 201
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "fdf45c44-2c0e-4f12-9b04-3a6a1c0d3b8d",
+    "state": "queued",
+    "state_reason": null,
+    "device_id": "69739b44-ebb2-468e-9e24-08126dec4925",
+    "artefact_id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
+    "created_at": "2026-02-25T16:09:52Z",
+    "updated_at": "2026-02-25T16:09:52Z"
+}
+----
+
+Otherwise, you get one of the following responses:
+
+[cols="1,2,2a", options="header"]
+|===
+| Response | Description | Example
+
+| **400 Bad Request**
+| `+artefact_id+` is missing.
+|
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+|
+
+| **404 Not Found**
+| The device or artefact is not found in the organisation, or the artefact has expired.
+|
+
+| **403 Forbidden**
+| Your organisation's free trial has ended and billing has not been set up.
+a|
+[source,json]
+----
+{"message":"Deployments are blocked until billing has been set up"}
+----
+|===
+
+==== Cancel a deployment
+
+To cancel a queued deployment, use a <<management-api-access-tokens, management API access token>> to make the following HTTP request.
+
+Replace these values in the code below:
+
+* `+rporg_accesstokenhere+`: your management API access token.
+* `+deployment-id+`: the unique identifier for the deployment.
+
+[tabs]
+======
+HTTP::
++
+[source,http]
+----
+PUT /organisation/deployments/deployment-id/cancel HTTP/1.1
+Host: api.connect.raspberrypi.com
+Authorization: Bearer rporg_accesstokenhere
+----
+
+curl::
++
+[source,console]
+----
+$ curl --request PUT --header 'Authorization: Bearer rporg_accesstokenhere' https://api.connect.raspberrypi.com/organisation/deployments/deployment-id/cancel
+----
+
+======
+
+If successful, you get a **200 OK** response with the updated deployment's details in JSON format:
+
+[source,http]
+----
+HTTP/2 200
+Content-Type: application/json; charset=utf-8
+
+{
+    "id": "fdf45c44-2c0e-4f12-9b04-3a6a1c0d3b8d",
+    "state": "cancelled",
+    "state_reason": null,
+    "device_id": "69739b44-ebb2-468e-9e24-08126dec4925",
+    "artefact_id": "ee92e7e6-2c2c-4e7d-9d80-2cce8a6c7e8a",
+    "created_at": "2026-02-25T16:09:52Z",
+    "updated_at": "2026-02-25T16:10:30Z"
+}
+----
+
+Otherwise, you get one of the following responses:
+
+[cols="1,2,2a", options="header"]
+|===
+| Response | Description | Example
+
+| **401 Unauthorized**
+| The management API access token is invalid.
+|
+
+| **404 Not Found**
+| The deployment isn't found in the organisation.
+|
+
+| **422 Unprocessable Content**
+| The deployment can't be cancelled because it isn't queued. Only queued deployments can be cancelled.
+a|
+[source,json]
+----
+{"message":"Cannot cancel deployment in state \"succeeded\""}
+----
+|===

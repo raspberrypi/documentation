@@ -1,0 +1,115 @@
+[[remoteupdate-otamaker]]
+=== Build a script artefact
+
+A script artefact packages a shell script that Connect runs as root on the recipient device. Use script artefacts for maintenance tasks such as upgrading packages, changing configuration, or installing software.
+
+A script artefact doesn't need a special partition layout, so you can deploy one to any opted-in device that runs a standard installation of Raspberry Pi OS. However, there's no automatic recovery if a script fails, so test your scripts carefully before you deploy them to remote devices.
+
+[[script-artefact-prerequisites]]
+==== Prerequisites
+
+* A recipient device that's <<remoteupdate-opt-in,opted in to remote updates>>.
+* The https://github.com/raspberrypi/utils/tree/master/otamaker[`otamaker`] utility. `otamaker` is included in the `rpi-connect-ota` package. To build artefacts on a computer other than a Raspberry Pi, download `otamaker` from the https://github.com/raspberrypi/utils[utils repository] on GitHub.
+
+[[script-artefact-step-1]]
+==== Step 1: Write the script
+
+Write the shell script you want to run on the recipient device. The script runs as root, so it has full access to the device's file system.
+
+Use the script's exit code to report the outcome of the update to Connect:
+
+* `0`: the update succeeded.
+* `2`: the update succeeded, and the device must reboot to finish applying it.
+* `3`: reserved. Don't use this exit code.
+* Any other non-zero exit code: the update failed.
+
+// TODO: Exit code 3 requests an A/B slot revert (EXIT_SLOT_REVERT). Document it, or keep it as reserved?
+
+Anything the script prints to standard output or standard error is recorded in the recipient device's `systemd` journal. You can view it after deployment to verify the update or diagnose a failure.
+
+For example, the following script, saved as `aptupgradescript`, upgrades all the packages installed on the recipient device, and reboots the device if any of the upgraded packages need a reboot:
+
+[source,shell]
+----
+#!/bin/sh
+export DEBIAN_FRONTEND=noninteractive
+if ! apt update; then
+    echo Package index update failed
+    exit 1 # EXIT_FAILURE
+fi
+if apt -y -o DPKG::Options::="--force-confnew" upgrade > output.txt 2>&1; then
+    if [ -r /var/run/reboot-required ]; then
+        echo Rebooting to finish the upgrade
+        exit 2 # EXIT_REBOOT
+    fi
+else
+    echo Upgrade failed:
+    echo
+    cat output.txt
+    exit 1 # EXIT_FAILURE
+fi
+echo Upgrade complete
+exit 0 # EXIT_SUCCESS
+----
+
+The script saves the output of `apt` to a file and prints it only if the upgrade fails, so a successful run records just `Upgrade complete`.
+
+[[script-artefact-step-2]]
+==== Step 2: Write the manifest
+
+Next, write a YAML manifest that describes the artefact and the payloads it contains.
+
+The following manifest, saved as `aptupgrade.yaml`, packages the script from Step 1:
+
+[source,yaml]
+----
+# Run apt upgrade on a remote device
+artefact:
+  name: aptupgrade
+  version: 1.0
+  device_type: rpi
+
+payloads:
+- name: aptupgradescript
+  type: script
+----
+
+The manifest has two sections:
+
+* `artefact`: the artefact's name and version.
+* `payloads`: the files to package. A `type` of `script` tells the recipient device to run the file. By default, each payload's `name` is the name of a file in the directory where you run `otamaker`.
+
+To package a file from another location, add a `source` field with the file's path:
+
+[source,yaml]
+----
+payloads:
+- name: aptupgradescript
+  type: script
+  source: scripts/aptupgradescript
+----
+
+Paths are relative to the directory where you run `otamaker`. To make them relative to a different directory, use the `-C` option:
+
+[source,console]
+----
+$ otamaker -C /path/to/payloads aptupgrade.yaml
+----
+
+NOTE: `otamaker` still accepts an older form, where the path is a comment after the payload's name, for example `- name: aptupgradescript # scripts/aptupgradescript`.
+
+[[script-artefact-step-3]]
+==== Step 3: Build the artefact
+
+Pass the manifest to `otamaker`:
+
+[source,console]
+----
+$ otamaker aptupgrade.yaml
+----
+
+`otamaker` creates a Zstandard-compressed update artefact (a `.tar.zst` file) that contains the manifest and the script, and outputs the artefact's SHA-256 checksum.
+
+// TODO: Current otamaker builds a transitional artefact by default and prints two SHA-256 values, one labelled "(whole artefact)" and one for the manifest. Update this step when the new artefact format is final.
+
+Next, <<update-remotely,deploy the artefact>>.

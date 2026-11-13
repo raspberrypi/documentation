@@ -11,7 +11,7 @@ The `start_file` and the `fixup_file` are a matched pair – using unmatched fil
 
 NOTE: Cut-down firmware (`start*cd.elf` and `fixup*cd.dat`) cannot be selected this way – the system will fail to boot.  The only way to enable the cut-down firmware is to specify `gpu_mem=16`. The cut-down firmware removes support for codecs, 3D and debug logging as well as limiting the initial early-boot framebuffer to 1080p @16bpp – although KMS can replace this with up to 32bpp 4K framebuffer(s) at a later stage as with any firmware.
 
-NOTE: The Raspberry Pi 5, 500, 500+, and Compute Module 5 firmware is self-contained in the bootloader EEPROM.
+NOTE: The firmware for Raspberry Pi 5, 500, 500+, and Compute Module 5 is stored within the bootloader EEPROM image, not in the boot partition. These devices ignore the `start*.elf` and `fixup*.dat` files in the boot partition, and ignore the `start_file` and `fixup_file` options in `config.txt`. To update the firmware on these devices, update the bootloader EEPROM. For more information, see xref:../computers/raspberry-pi.adoc#update-the-bootloader-configuration[Update the bootloader configuration].
 
 === `cmdline`
 

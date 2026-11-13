@@ -1,1 +1,13 @@
 include::connect-for-organisations/organisations.adoc[]
+
+include::connect-for-organisations/provisioning.adoc[]
+
+include::connect-for-organisations/bulk-provisioning.adoc[]
+
+include::connect-for-organisations/remote-updates.adoc[]
+
+include::connect-for-organisations/audit-log.adoc[]
+
+include::connect-for-organisations/organisation-settings.adoc[]
+
+include::connect-for-organisations/management-api.adoc[]

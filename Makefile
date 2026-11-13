@@ -8,6 +8,9 @@ SCRIPTS_DIR = scripts
 DOCUMENTATION_REDIRECTS_DIR = documentation/redirects
 DOCUMENTATION_INDEX = documentation/index.json
 SITE_CONFIG = _config.yml
+REMOTE_PREVIEW_ROOT = html-docs-previews
+REMOTE_PREVIEW_CONFIG = remote_preview.config
+REMOTE_PREVIEW_DETAILS = .remote_preview_details
 
 BUILD_DIR = build
 ASCIIDOC_BUILD_DIR = $(BUILD_DIR)/jekyll
@@ -27,7 +30,8 @@ JEKYLL_CMD = bundle exec jekyll
 
 .DEFAULT_GOAL := html
 
-.PHONY: clean run_ninja clean_ninja html serve_html clean_html build_doxygen_xml clean_doxygen_xml build_doxygen_adoc clean_doxygen_adoc fetch_submodules clean_submodules clean_everything
+.PHONY: clean run_ninja clean_ninja html serve_html clean_html build_doxygen_xml clean_doxygen_xml build_doxygen_adoc clean_doxygen_adoc fetch_submodules clean_submodules clean_everything link_check
+.PHONY: ssh_remote_preview create_remote_preview update_remote_preview delete_remote_preview remote_preview_status start_remote_preview stop_remote_preview restart_remote_preview remote_preview_url delete_remote_preview_details
 
 $(BUILD_DIR):
 	@mkdir -p $@
@@ -127,3 +131,54 @@ clean_html:
 # Check external links in all adoc files.
 link_check:
 	python3 $(SCRIPTS_DIR)/link_check.py
+
+# Test the SSH connection to a remote host
+ssh_remote_preview: $(REMOTE_PREVIEW_CONFIG)
+	@. ./$(REMOTE_PREVIEW_CONFIG) && ssh $${PREVIEW_USERNAME}@$${PREVIEW_HOST}
+
+# Export build files to a remote host (that also has jekyll installed) and run a preview server
+create_remote_preview: $(REMOTE_PREVIEW_CONFIG)
+	@. ./$(REMOTE_PREVIEW_CONFIG) && ssh $${PREVIEW_USERNAME}@$${PREVIEW_HOST} "$(REMOTE_PREVIEW_ROOT)/create_preview_dir.sh $${PREVIEW_NAME}"
+	@$(MAKE) delete_remote_preview_details
+	@$(MAKE) $(REMOTE_PREVIEW_DETAILS)
+	@$(MAKE) update_remote_preview
+	@sleep 1
+	@$(MAKE) start_remote_preview
+
+# Update the build files on a remote host (preview will auto-update)
+update_remote_preview: $(REMOTE_PREVIEW_CONFIG) html
+	@. ./$(REMOTE_PREVIEW_CONFIG) && rsync -e ssh -a --exclude "$(BUILD_DIR)/jekyll/.jekyll-cache" "$(BUILD_DIR)" _config.yml Gemfile Gemfile.lock "$${PREVIEW_USERNAME}@$${PREVIEW_HOST}:$(REMOTE_PREVIEW_ROOT)/$${PREVIEW_NAME}/"
+	@$(MAKE) remote_preview_url
+
+# Delete the build files on a remote host (preview will be stopped)
+delete_remote_preview: $(REMOTE_PREVIEW_CONFIG)
+	@. ./$(REMOTE_PREVIEW_CONFIG) && ssh $${PREVIEW_USERNAME}@$${PREVIEW_HOST} "$(REMOTE_PREVIEW_ROOT)/delete_preview.sh $${PREVIEW_NAME}"
+	@$(MAKE) delete_remote_preview_details
+
+# Display the status of a remote preview
+remote_preview_status: $(REMOTE_PREVIEW_CONFIG)
+	@. ./$(REMOTE_PREVIEW_CONFIG) && ssh $${PREVIEW_USERNAME}@$${PREVIEW_HOST} "$(REMOTE_PREVIEW_ROOT)/preview_server_status.sh $${PREVIEW_NAME}"
+
+# Manually start a remote preview
+start_remote_preview: $(REMOTE_PREVIEW_CONFIG)
+	@. ./$(REMOTE_PREVIEW_CONFIG) && ssh -t $${PREVIEW_USERNAME}@$${PREVIEW_HOST} "$(REMOTE_PREVIEW_ROOT)/start_preview_server.sh $${PREVIEW_NAME}"
+
+# Manually stop a remote preview
+stop_remote_preview: $(REMOTE_PREVIEW_CONFIG)
+	@. ./$(REMOTE_PREVIEW_CONFIG) && ssh $${PREVIEW_USERNAME}@$${PREVIEW_HOST} "$(REMOTE_PREVIEW_ROOT)/stop_preview_server.sh $${PREVIEW_NAME}"
+
+# Manually restart a remote preview
+restart_remote_preview: $(REMOTE_PREVIEW_CONFIG)
+	@. ./$(REMOTE_PREVIEW_CONFIG) && ssh -t $${PREVIEW_USERNAME}@$${PREVIEW_HOST} "$(REMOTE_PREVIEW_ROOT)/restart_preview_server.sh $${PREVIEW_NAME}"
+
+# Get the remote preview details
+$(REMOTE_PREVIEW_DETAILS): | $(REMOTE_PREVIEW_CONFIG)
+	@. ./$(REMOTE_PREVIEW_CONFIG) && ssh $${PREVIEW_USERNAME}@$${PREVIEW_HOST} "$(REMOTE_PREVIEW_ROOT)/preview_server_details.sh $${PREVIEW_NAME}" > $@
+
+# Display the URL of a remote preview (using the remote preview details)
+remote_preview_url: $(REMOTE_PREVIEW_CONFIG) $(REMOTE_PREVIEW_DETAILS)
+	@. ./$(REMOTE_PREVIEW_CONFIG) && . ./$(REMOTE_PREVIEW_DETAILS) && if test "$${PREVIEW_NAME}" = "$${CONFIGURED_NAME}" -a \( "$${PREVIEW_HOST}" = "$${CONFIGURED_HOST}" -o "$${PREVIEW_HOST}" = "$${CONFIGURED_IP}" \); then echo "Preview should be viewable at http://$${PREVIEW_HOST}:$${CONFIGURED_PORT}/documentation/"; else echo "Mismatch between $(REMOTE_PREVIEW_CONFIG) and $(REMOTE_PREVIEW_DETAILS)" >&2; exit 1; fi
+
+# Delete the remote preview details
+delete_remote_preview_details:
+	@rm -f $(REMOTE_PREVIEW_DETAILS)

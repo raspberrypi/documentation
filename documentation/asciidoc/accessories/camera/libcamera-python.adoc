@@ -9,9 +9,9 @@ For full documentation, see the https://pip.raspberrypi.com/documents/RP-008156-
 
 ==== Installation
 
-Recent Raspberry Pi OS images include Picamera2 with all the GUI (Qt and OpenGL) dependencies. Recent Raspberry Pi OS Lite images include Picamera2 without the GUI dependencies, although you can still display preview images by using Direct Rendering Manager (DRM) and Kernel Mode Setting (KMS).
+Recent Raspberry Pi OS images include Picamera2 with all the graphical user interface (GUI) dependencies, such as Qt and OpenGL. Recent Raspberry Pi OS Lite images include Picamera2 without the GUI dependencies, although you can still display preview images by using Direct Rendering Manager (DRM) and Kernel Mode Setting (KMS).
 
-If your image did not include Picamera2, run the following command to install Picamera2 with all of the GUI dependencies:
+If your image didn't include Picamera2, run the following command to install Picamera2 with all of the GUI dependencies:
 
 [source,console]
 ----
@@ -26,3 +26,66 @@ $ sudo apt install -y python3-picamera2 --no-install-recommends
 ----
 
 NOTE: If you previously installed Picamera2 with `pip`, uninstall it with: `pip3 uninstall picamera2`.
+
+==== Update Picamera2
+
+Picamera2 depends on other system packages, including `libcamera`. To keep these packages compatible with each other, update Picamera2 as part of a full system upgrade, rather than updating the `python3-picamera2` package on its own.
+
+WARNING: Back up any important files before you run a full system upgrade.
+
+To update Picamera2:
+
+. Update the list of available packages:
++
+[source,console]
+----
+$ sudo apt update
+----
+
+. Upgrade all installed packages, including Picamera2 and `libcamera`, so that they're up to date:
++
+[source,console]
+----
+$ sudo apt full-upgrade
+----
++
+Use `full-upgrade` rather than `upgrade`. Unlike `upgrade`, `full-upgrade` can install new dependencies and remove packages that conflict with them, so all your camera packages update together.
+
+. Reboot your Raspberry Pi to make sure that any updated kernel, firmware, and camera drivers are loaded:
++
+[source,console]
+----
+$ sudo reboot
+----
+
+. Optional: Check which version of Picamera2 is installed:
++
+[source,console]
+----
+$ dpkg -s python3-picamera2 | grep Version
+----
+
+TIP: If you're using an earlier Raspberry Pi OS image, consider installing the most recent image with Raspberry Pi Imager instead.
+
+==== Test your camera with a hello world script
+
+To check that Picamera2 works with your camera, create a file called `hello_world.py` containing the following code:
+
+[source,python]
+----
+from picamera2 import Picamera2
+import time
+
+picam2 = Picamera2()
+picam2.start(show_preview=True)
+time.sleep(5)
+----
+
+Run the script:
+
+[source,console]
+----
+$ python3 hello_world.py
+----
+
+A preview window opens and shows the camera feed for five seconds, then the script exits. Picamera2 chooses the type of preview window for you: a Qt window on Raspberry Pi OS with a desktop, or a DRM/KMS preview on Raspberry Pi OS Lite.

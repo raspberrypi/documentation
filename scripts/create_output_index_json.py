@@ -67,6 +67,12 @@ if __name__ == "__main__":
                 raise Exception("Tab '{}' in '{}' has neither '{}' nor '{}'".format(tab['title'], input_json, 'path', 'from_json'))
         if not found_default_tab:
             print("WARNING: no default_tab set in {} so index page will look odd".format(input_json))
+        if 'related' in data:
+            for subitem in data['related']['subitems']:
+                if 'subpath' in subitem:
+                    raise Exception("Subitems in 'related' can't use 'subpath'. Please use 'path' or 'url'.")
+                if 'image' in subitem:
+                    subitem['imagepath'] = os.path.join('/images', subitem['image'])
 
         with(open(output_json, 'w')) as output_fh:
             json.dump(data, output_fh, indent=4)

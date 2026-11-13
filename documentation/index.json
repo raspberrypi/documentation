@@ -321,7 +321,7 @@
                 {
                     "title": "Raspberry Pi Connect",
                     "description": "Connect to your Raspberry Pi from your browser",
-                    "image": "full-sized/Connect-BIG.png",
+                    "image": "full-sized/Connect.png",
                     "subpath": "connect.adoc"
                 },
                 {
@@ -380,5 +380,28 @@
             "from_json": "picosdk_index.json",
             "directory": "pico-sdk"
         }
-    ]
+    ],
+    "related": {
+        "title": "Related resources",
+        "subitems": [
+            {
+                "title": "Product Information Portal",
+                "description": "Documents, reports, and notices for all Raspberry Pi products",
+                "image": "full-sized/PIP.png",
+                "url": "https://pip.raspberrypi.com/"
+            },
+            {
+                "title": "Tutorials",
+                "description": "Hands-on hardware and software tutorials",
+                "image": "full-sized/Tutorials.png",
+                "url": "https://www.raspberrypi.com/tutorials/"
+            },
+            {
+                "title": "Forums",
+                "description": "User and product support forums",
+                "image": "full-sized/Forums.png",
+                "url": "https://forums.raspberrypi.com/"
+            }
+        ]
+    }
 }
