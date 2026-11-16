@@ -1,10 +1,21 @@
 == Attach a Camera Module
 
-The Compute Module has two CSI-2 camera interfaces: CAM1 and CAM0. This section explains how to connect one or two Raspberry Pi Cameras to a Compute Module using the CAM1 and CAM0 interfaces with a Compute Module I/O Board.
+The Compute Module has two camera interfaces that use the Camera Serial Interface 2 (CSI-2) standard: CAM1 and CAM0. This section explains how to connect one or two Raspberry Pi cameras to a Compute Module using the CAM1 and CAM0 interfaces.
+
+On the Compute Module 5 IO board (CM5IO), the camera connectors are combined camera and display connectors, labelled **CAM/DISP1** and **CAM/DISP0**. On all other Compute Module IO boards, they're labelled **CAM1** and **CAM0**.
+
+All Compute Module IO boards use the mini, 22-pin camera connector. To connect a camera to the connector, use one of the following:
+
+* The https://www.raspberrypi.com/products/camera-cable/[Raspberry Pi Standard – Mini camera cable].
+* A Compute Module Camera and Display Adaptor (CMCDA) board, which converts the mini, 22-pin connector on the IO board into a standard, 15-pin connector. Some Compute Module Development Kits include a CMCDA board. With a CMCDA board, use the Standard-Standard camera cable provided with your camera.
+
+NOTE: Camera cables and display cables aren't interchangeable. Make sure you use a camera cable.
+
+For instructions on handling the camera and seating the cable in the connector, see xref:../accessories/camera-software.adoc#install-a-raspberry-pi-camera[Install a Raspberry Pi camera].
 
 === Update your system
 
-Before configuring a camera, xref:../computers/raspberry-pi.adoc#update-the-bootloader-configuration[ensure that your Raspberry Pi firmware is up-to-date].:
+Before configuring a camera, xref:../computers/os.adoc#update-software[ensure that your software is up to date]:
 
 [source,console]
 ----
@@ -17,14 +28,13 @@ $ sudo apt full-upgrade
 To connect a single camera to a Compute Module, complete the following steps:
 
 . Disconnect the Compute Module from power.
-. Connect the Camera Module to the CAM1 port using a RPI-CAMERA board or a Raspberry Pi Zero camera cable.
+. Connect the camera to the **CAM1** port (**CAM/DISP1** on CM5IO) using the Standard-Mini camera cable or a CMCDA board.
 +
 image::images/CMIO-Cam-Adapter.jpg[alt="Connecting the adapter board", width="60%"]
 
-. _(CM5 only)_: Fit two jumpers on J6 per the board's written instructions.
+. _(CM5 only)_: Fit two jumpers on **J6**, as indicated on the silkscreen of the IO board.
 +
-image::images/cm5io-j6-cam1.png[alt="Jumpers on J6 for CAM1", width="60%"]
-
+image::images/cm5io-j6-cam1.png[alt="Jumpers on J6 for CAM/DISP1", width="60%"]
 
 . _(CM1, CM3, CM3+, and CM4S only)_: Connect the following GPIO pins with jumper cables:
   * `0` to `CD1_SDA`
@@ -48,7 +58,7 @@ camera_auto_detect=1
 dtparam=i2c_arm=on
 ----
 
-. _(CM1, CM3, CM3+, and CM4S only)_: Add the following directive to `/boot/firmware/config.txt` to accommodate the swapped GPIO pin assignment on the I/O board:
+. _(CM1, CM3, CM3+, and CM4S only)_: Add the following directive to `/boot/firmware/config.txt` to accommodate the swapped GPIO pin assignment on the IO board:
 +
 [source,ini]
 ----
@@ -66,55 +76,61 @@ dtparam=cam1_reg
 +
 [%header,cols="1,1"]
 |===
-| camera model
-| directive
+| Camera model
+| Directive
 
-| v1 camera
+| Camera Module 1
 | `dtoverlay=ov5647`
 
-| v2 camera
+| Camera Module 2
 | `dtoverlay=imx219`
 
-| v3 camera
+| Camera Module 3
 | `dtoverlay=imx708`
 
-| HQ camera
+| High Quality Camera
 | `dtoverlay=imx477`
 
-| GS camera
+| Global Shutter Camera
 | `dtoverlay=imx296`
-|===
 
+| AI Camera
+| `dtoverlay=imx500`
+|===
 . Reboot your Compute Module with `sudo reboot`.
 
 . Run the following command to check the list of detected cameras:
 +
 [source,console]
 ----
-$ rpicam-hello --list
+$ rpicam-hello --list-cameras
 ----
-You should see your camera model, referred to by the driver directive in the table above, in the output.
++
+The output lists your camera model, referred to by the driver directive in the previous table.
 
 === Connect two cameras
 
 To connect two cameras to a Compute Module, complete the following steps:
 
-. Follow the single camera instructions above.
+. Complete the steps in <<connect-one-camera,Connect one camera>>.
 . Disconnect the Compute Module from power.
-. Connect the Camera Module to the CAM0 port using a RPI-CAMERA board or a Raspberry Pi Zero camera cable.
+. Connect the second camera to the **CAM0** port (**CAM/DISP0** on CM5IO) using the Standard-Mini camera cable or a CMCDA board.
 +
-image::images/CMIO-Cam-Adapter.jpg[alt="Connect the adapter board", width="60%"]
+image::images/CMIO-Cam-Adapter.jpg[alt="Connecting the adapter board", width="60%"]
+
 . _(CM1, CM3, CM3+, and CM4S only)_: Connect the following GPIO pins with jumper cables:
   * `28` to `CD0_SDA`
   * `29` to `CD0_SCL`
   * `30` to `CAM0_I01`
   * `31` to `CAM0_I00`
 +
-image:images/CMIO-Cam-GPIO2.jpg[alt="GPIO connection with additional camera", width="60%"]
+image::images/CMIO-Cam-GPIO2.jpg[alt="GPIO connection with additional camera", width="60%"]
 
-. _(CM4)_: Connect the J6 GPIO pins with two vertical-orientation jumpers.
+. _(CM4 only)_: To enable **CAM0**, connect the **J6** GPIO pins with two vertical-orientation jumpers.
 +
-image:images/j6_vertical.jpg[alt="Connect the J6 GPIO pins in vertical orientation", width="60%"]
+image::images/j6_vertical.jpg[alt="Connect the J6 GPIO pins in vertical orientation", width="60%"]
+
+. _(CM5 only)_: **CAM/DISP0** doesn't need jumpers.
 
 . Reconnect the Compute Module to power.
 
@@ -129,22 +145,22 @@ dtparam=cam0_reg
 +
 [%header,cols="1,1"]
 |===
-| camera model
-| directive
+| Camera model
+| Directive
 
-| v1 camera
+| Camera Module 1
 | `dtoverlay=ov5647,cam0`
 
-| v2 camera
+| Camera Module 2
 | `dtoverlay=imx219,cam0`
 
-| v3 camera
+| Camera Module 3
 | `dtoverlay=imx708,cam0`
 
-| HQ camera
+| High Quality Camera
 | `dtoverlay=imx477,cam0`
 
-| GS camera
+| Global Shutter Camera
 | `dtoverlay=imx296,cam0`
 |===
 
@@ -154,40 +170,18 @@ dtparam=cam0_reg
 +
 [source,console]
 ----
-$ rpicam-hello --list
+$ rpicam-hello --list-cameras
 ----
 +
-You should see both camera models, referred to by the driver directives in the table above, in the output.
+The output lists both camera models, referred to by the driver directives in the previous table.
 
 === Software
 
-Raspberry Pi OS includes the `libcamera` library to help you take images with your Raspberry Pi.
-
-==== Take a picture
-
-Use the following command to immediately take a picture and save it to a file in PNG encoding using the `MMDDhhmmss` date format as a filename:
-
-[source,console]
-----
-$ rpicam-still --datetime -e png
-----
-
-Use the `-t` option to add a delay in milliseconds.
-Use the `--width` and `--height` options to specify a width and height for the image.
-
-==== Take a video
-
-Use the following command to immediately start recording a ten-second long video and save it to a file with the h264 codec named `video.h264`:
-
-[source,console]
-----
-$ rpicam-vid -t 10000 -o video.h264
-----
+To take pictures and record video with your cameras, use the `rpicam-apps` camera applications. For more information, see xref:../accessories/camera-software.adoc#rpicam-apps[`rpicam-apps`].
 
 ==== Specify which camera to use
 
-By default, `libcamera` always uses the camera with index `0` in the `--list-cameras` list.
-To specify a camera option, get an index value for each camera from the following command:
+By default, `rpicam-apps` use the camera with index `0` in the list of detected cameras. To get the index value for each camera, run the following command:
 
 [source,console]
 ----
@@ -206,85 +200,94 @@ Available cameras
                              4608x2592 [14.35 fps - (0, 0)/4608x2592 crop]
 ----
 
-In the above output:
+In this output:
 
-* `imx477` refers to a HQ camera with an index of `0`
-* `imx708` refers to a v3 camera with an index of `1`
+* `imx477` refers to a High Quality Camera with an index of `0`.
+* `imx708` refers to a Camera Module 3 with an index of `1`.
 
-To use the HQ camera, pass its index (`0`) to the `--camera` `libcamera` option:
-
-[source,console]
-----
-$ rpicam-hello --camera 0
-----
-
-To use the v3 camera, pass its index (`1`) to the `--camera` `libcamera` option:
+To use a specific camera, pass its index to the `--camera` option. For example, to use Camera Module 3, run the following command:
 
 [source,console]
 ----
 $ rpicam-hello --camera 1
 ----
 
+For more information, see xref:../accessories/camera-software.adoc#use-multiple-cameras[Use multiple cameras].
 
 === I2C mapping of GPIO pins
 
-By default, the supplied camera drivers assume that CAM1 uses `i2c-10` and CAM0 uses `i2c-0`. Compute module I/O boards map the following GPIO pins to `i2c-10` and `i2c-0`:
+Camera drivers get their configuration from the device tree. The camera overlays use the `i2c_csi_dsi0` and `i2c_csi_dsi1` nodes, and the device tree file for each board maps these nodes to the correct I2C controller:
 
-[%header,cols="1,1,1"]
+* On CM1, CM3, CM3+, CM4S, and CM4, both camera connectors share one I2C controller, using different GPIO pins for each connector.
+* On CM5, each **CAM/DISP** connector has its own I2C controller.
+
+The following table lists the GPIO pins that each Compute Module IO board uses for camera I2C:
+
+[%header,cols="2,2,2"]
 |===
-| I/O Board Model
-| `i2c-10` pins
-| `i2c-0` pins
+| IO board
+| CAM1 (**CAM/DISP1** on CM5IO)
+| CAM0 (**CAM/DISP0** on CM5IO)
 
-| CM4 I/O Board
-| GPIOs 44,45
-| GPIOs 0,1
+| CM5IO
+| GPIOs 0 and 1 (`i2c-0`), routed through **J6**
+| GPIOs 38 and 39 (`i2c-10`)
 
-| CM1, CM3, CM3+, CM4S I/O Board
-| GPIOs 0,1
-| GPIOs 28,29
+| CM4IO
+| GPIOs 44 and 45 (`i2c-10`)
+| GPIOs 0 and 1 (`i2c-0`)
+
+| CMIO and CMIO3 (CM1, CM3, CM3+, and CM4S)
+| GPIOs 0 and 1 (`i2c-10`)
+| GPIOs 28 and 29 (`i2c-0`)
 |===
 
-To connect a camera to the CM1, CM3, CM3+ and CM4S I/O Board, add the following directive to `/boot/firmware/config.txt` to accommodate the swapped pin assignment:
+NOTE: On the CM4IO and CM5IO, GPIOs 0 and 1 are also routed to pins 27 and 28 of the GPIO header.
+
+To connect a camera to the CMIO or CMIO3, add the following directive to `/boot/firmware/config.txt` to accommodate the swapped pin assignment:
 
 [source,ini]
 ----
 dtoverlay=cm-swap-i2c0
 ----
 
-Alternative boards might use other pin assignments. Check the documentation for your board and use the following alternate overrides depending on your layout:
+CM5 doesn't need this overlay, because each **CAM/DISP** connector has its own I2C controller.
+
+Custom carrier boards for CM1, CM3, CM3+, CM4S, CM4, and CM5 might use other pin assignments. Check the documentation for your board and use the following overrides depending on your layout:
 
 [%header,cols="1,1"]
 |===
 | Swap
 | Override
 
-| Use GPIOs 0,1 for i2c0
+| Use GPIOs 0 and 1 for `i2c0`
 | `i2c0-gpio0`
 
-| Use GPIOs 28,29 for i2c0 (default)
+| Use GPIOs 28 and 29 for `i2c0` (default)
 | `i2c0-gpio28`
 
-| Use GPIOs 44&45 for i2c0
+| Use GPIOs 44 and 45 for `i2c0`
 | `i2c0-gpio44`
 
-| Use GPIOs 0&1 for i2c10 (default)
+| Use GPIOs 0 and 1 for `i2c10` (default)
 | `i2c10-gpio0`
 
-| Use GPIOs 28&29 for i2c10
+| Use GPIOs 28 and 29 for `i2c10`
 | `i2c10-gpio28`
 
-| Use GPIOs 44&45 for i2c10
+| Use GPIOs 44 and 45 for `i2c10`
 | `i2c10-gpio44`
 |===
 
 ==== GPIO pins for shutdown
 
-For camera shutdown, Device Tree uses the pins assigned by the `cam1_reg` and `cam0_reg` overlays.
+For camera shutdown, the device tree uses the pins assigned by the `cam1_reg` and `cam0_reg` overlays.
 
-The CM4 IO board provides a single GPIO pin for both aliases, so both cameras share the same regulator.
+The CM4IO provides a single GPIO pin for both aliases, so both cameras share the same regulator.
 
-The CM1, CM3, CM3+, and CM4S I/O boards provides no GPIO pin for `cam1_reg` and `cam0_reg`, so the regulators are disabled on those boards. However, you can enable them with the following directives in `/boot/firmware/config.txt`:
+On the CM5IO, GPIO 34 controls the **CAM/DISP0** regulator. The **CAM/DISP1** regulator is always on, because its GPIO pin is permanently tied high.
+
+The CMIO and CMIO3 have no GPIO pins dedicated to the camera regulators, or to any other function. The wiring in the previous procedures uses GPIO 3 for `cam1_reg` and GPIO 31 for `cam0_reg`. When you enable the regulators, you can't use those GPIO pins for anything else. Because GPIO 3 is also used for `i2c-1`, the regulators are disabled by default. To enable them, add the following directives to `/boot/firmware/config.txt`:
 
 * `dtparam=cam1_reg`
 * `dtparam=cam0_reg`
@@ -296,4 +299,4 @@ To assign `cam1_reg` and `cam0_reg` to a specific pin on a custom board, use the
 
 For example, to use pin 42 as the regulator for CAM1, add the directive `dtparam=cam1_reg_gpio=42` to `/boot/firmware/config.txt`.
 
-These directives only work for GPIO pins connected directly to the SoC, not for expander GPIO pins.
+These directives work for GPIO pins connected directly to the system on chip (SoC), not for expander GPIO pins.
