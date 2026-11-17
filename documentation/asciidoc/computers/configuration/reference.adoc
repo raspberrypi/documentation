@@ -60,7 +60,7 @@ Raspberry Pi OS _Trixie_ includes the `auto_initramfs` keyword by default.
 
 ==== `ssh` or `ssh.txt`
 
-When this file is present, enables SSH at boot. Unless you've enabled SSH in xref:imager.adoc#customisation-remote-access[Imager], this is disabled by default.
+When this file is present, enables SSH at boot. Unless you've enabled SSH in Imager, this is disabled by default.
 
 The contents do not matter: even an empty file enables SSH.
 

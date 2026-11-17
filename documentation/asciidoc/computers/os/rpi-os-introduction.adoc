@@ -6,7 +6,7 @@ Raspberry Pi OS is based on the *Debian* Linux distribution and supports over 69
 
 == OS installation
 
-Raspberry Pi OS is installed using xref:imager.adoc[Raspberry Pi Imager], available for Windows, Mac, and Linux. For instructions, see xref:../computers/getting-started.adoc#imager-install[Install using Imager]. You can also download a disk image (ready-to-use file) of Raspberry Pi OS directly from https://raspberrypi.com/software/operating-systems[our website] and then write it to an SD card to start using your Raspberry Pi.
+Raspberry Pi OS is installed using Raspberry Pi Imager, available for Windows, Mac, and Linux. For instructions, see xref:../computers/getting-started.adoc#imager-install[Install using Imager]. You can also download a disk image (ready-to-use file) of Raspberry Pi OS directly from https://raspberrypi.com/software/operating-systems[our website] and then write it to an SD card to start using your Raspberry Pi.
 
 If you're running a previous version of *Raspberry Pi OS* and want to use the latest major version, don't perform an in-place update (updating the current system without reinstalling). Instead, start again by installing a new image of Raspberry Pi OS. For instructions, see xref:../computers/getting-started.adoc#imager-install[Install using Imager].
 

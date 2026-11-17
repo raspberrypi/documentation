@@ -1,4 +1,4 @@
-Key Raspberry Pi settings are configured as part of the setup process using Raspberry Pi Imager, described in xref:../computers/imager.adoc#os-customisation[Customise your operating system]. After installation, you can change your settings and configure additional settings; you can do this in different ways depending on your use case and technical level, described in <<config-methods>>.
+Key Raspberry Pi settings are configured as part of the setup process using Raspberry Pi Imager, described in xref:../computers/getting-started.adoc#imager-install[Install using Imager]. After installation, you can change your settings and configure additional settings; you can do this in different ways depending on your use case and technical level, described in <<config-methods>>.
 
 [[config-methods]]
 == Configuration methods

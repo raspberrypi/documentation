@@ -154,7 +154,7 @@ $ sudo apt clean
 ----
 [[upgrade]]
 === Upgrade to a new major version
-Rather than an in-place upgrade on your existing boot media, we strongly recommend that you use a clean install to upgrade the OS version on your Raspberry Pi, like moving from Bookworm to Trixie. This involves using xref:imager.adoc[Raspberry Pi Imager] to flash a new OS image onto new boot media.
+Rather than an in-place upgrade on your existing boot media, we strongly recommend that you use a clean install to upgrade the OS version on your Raspberry Pi, like moving from Bookworm to Trixie. This involves using *Raspberry Pi Imager* to flash a new OS image onto new boot media.
 
 The following instructions require:
 

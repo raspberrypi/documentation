@@ -191,7 +191,7 @@ Setting the WLAN country specifies where you use your Raspberry Pi. This allows 
 
 IMPORTANT: Selecting the correct Wi-Fi regulatory domain is critical because it determines available channels, transmit power, and overall network performance; incorrect settings can cause legal issues, increased interference, reduced capacity, and degraded connectivity.
 
-Typically, WLAN country is set when you install an OS onto your boot media using xref:imager.adoc#customisation-localisation[Imager], but you can also set it up or change it later through the desktop GUI or from the Terminal (through the `raspi-config` TUI and using `nmcli` commands).
+Typically, WLAN country is set when you install an OS onto your boot media using Imager, but you can also set it up or change it later through the desktop GUI or from the Terminal (through the `raspi-config` TUI and using `nmcli` commands).
 
 [tabs]
 ======

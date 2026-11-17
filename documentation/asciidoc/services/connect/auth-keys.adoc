@@ -29,7 +29,7 @@ To link many organisation devices without creating an auth key for each, organis
 
 You can create an auth key in any of the following ways:
 
-* **In Raspberry Pi Imager.** Imager can create and apply an auth key for you when you write Raspberry Pi OS. For more information, see xref:../computers/imager.adoc#customisation-connect[Raspberry Pi Connect] in *Raspberry Pi Imager*.
+* **In Raspberry Pi Imager.** Imager can create and apply an auth key for you when you write Raspberry Pi OS. For more information, see xref:../computers/getting-started.adoc#imager-install[customisation options in Imager].
 * **In a personal account.** Use the following procedure.
 * **In an organisation.** Administrators can create auth keys on the Connect website, as described in xref:../services/connect-for-organisations.adoc#organisation-auth-keys[Create auth keys in an organisation], or with the xref:../services/connect-for-organisations.adoc#organisations-management-api[management API].
 

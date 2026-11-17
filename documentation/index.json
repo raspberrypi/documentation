@@ -18,12 +18,6 @@
                     "subpath": "os.adoc"
                 },
                 {
-                    "title": "Raspberry Pi Imager",
-                    "description": "Install an operating system onto boot media with Raspberry Pi Imager",
-                    "image": "full-sized/imager.png",
-                    "subpath": "imager.adoc"
-                },
-                {
                     "title": "Configuration",
                     "description": "Configuring your Raspberry Pi's settings",
                     "image": "full-sized/Configuration.png",

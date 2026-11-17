@@ -113,7 +113,7 @@ Complete sign in by visiting https://connect.raspberrypi.com/verify/XXXX-XXXX
 
 An auth key is a single-use, temporary token that links a device to a Connect account without anyone signing in. For more information, including how long auth keys last, see <<auth-keys,Auth keys>>.
 
-The easiest way to use an auth key is to set one in the xref:../computers/imager.adoc#customisation-connect[customisation options in Raspberry Pi Imager] when you write Raspberry Pi OS to your storage device.
+The easiest way to use an auth key is to set one in the xref:../computers/getting-started.adoc#imager-install[customisation options in Raspberry Pi Imager] when you write Raspberry Pi OS to your storage device.
 
 To use an auth key on a device that's already running:
 
