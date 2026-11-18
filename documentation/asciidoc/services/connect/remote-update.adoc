@@ -68,7 +68,7 @@ $ sudo apt update
 $ sudo apt install rpi-connect rpi-connect-ota
 ----
 +
-If you use Connect Lite, install `rpi-connect-lite` instead of `rpi-connect`.
+Enter your password if prompted. If you use Connect Lite, install `rpi-connect-lite` instead of `rpi-connect`.
 . Opt in to remote updates using the `ota` (over-the-air) subcommand:
 +
 [source,console]

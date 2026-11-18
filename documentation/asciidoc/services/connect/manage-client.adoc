@@ -122,7 +122,7 @@ Signing out resets screen sharing and remote shell access to allowed. If you'd d
 [[uninstall]]
 ==== Uninstall the client
 
-To stop and remove the Connect client, run the following command:
+To stop and remove the Connect client, run the following command, and enter your password if prompted:
 
 [source,console]
 ----
@@ -136,7 +136,7 @@ If you installed Connect Lite, replace `rpi-connect` with `rpi-connect-lite`.
 
 WARNING: Updating Connect ends any screen-sharing or remote shell sessions that are in progress, including the session you're updating from. If you update over a remote shell, run the update in `screen` or `tmux` so that it continues after the session ends.
 
-To update to the latest version of Connect, run the following commands:
+To update to the latest version of Connect, run the following commands, and enter your password if prompted:
 
 [source,console]
 ----

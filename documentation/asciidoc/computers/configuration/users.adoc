@@ -195,6 +195,15 @@ You can require users to enter their password when booting the Raspberry Pi by t
 
 When you turn off auto login, you choose whether to separately require the password for signing in to the *console* and the *desktop*.
 
+By default, Raspberry Pi OS with desktop signs in to the desktop automatically when it starts up. Raspberry Pi OS Lite doesn't sign in automatically.
+
+[CAUTION]
+====
+While auto login is turned on, anyone with physical access to your Raspberry Pi can use your user account without a password. That includes your files, any passwords saved in your browser, and any accounts you're signed in to. If the <<disable-sudo-password,password for superuser commands>> is also turned off, they have full control of your Raspberry Pi.
+
+If other people might have access to your Raspberry Pi, for example in a shared office, a classroom, or a public place, turn off auto login.
+====
+
 [tabs]
 ======
 Desktop::
@@ -218,9 +227,18 @@ raspi-config::
 [[disable-sudo-password]]
 === Turn off password for superuser commands
 
-Prefixing a command in Raspberry Pi with `sudo` runs that command with superuser (admin) privileges. By default, Raspberry Pi OS requires you to enter your password when running sudo commands. This prevents unauthorised users from running `sudo` commands on your device.
+In Raspberry Pi OS, prefixing a command with `sudo` runs that command with superuser (admin) privileges. By default, Raspberry Pi OS requires you to enter your password when running sudo commands. This prevents unauthorised users and software from running `sudo` commands on your device. After you enter your password correctly, Raspberry Pi OS doesn't ask for it again for five minutes.
 
 You can override this setting after installation through either the desktop or by using the interactive `raspi-config` TUI.
+
+[WARNING]
+====
+Without a password for superuser commands, any person or program that can run commands as your user can take full control of your Raspberry Pi. This includes malicious software, and anyone who uses a session you've left signed in. If <<auto-login,auto login>> is also turned on, anyone with physical access to your Raspberry Pi has full control of it.
+
+We strongly recommend that you keep the password requirement turned on.
+====
+
+NOTE: Installations of Raspberry Pi OS from before version 6.2 (April 2026) don't require a password for `sudo` commands, and updating doesn't change this. To require a password, follow these steps and turn on *Admin Password*.
 
 [tabs]
 ======
