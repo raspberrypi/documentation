@@ -119,9 +119,11 @@ image::images/imager/user-subtab.png[alt="Imager OS Customisation User tab.",wid
 
 The username must be lowercase and contain only letters, numbers, underscores, and hyphens.
 
+IMPORTANT: Choose a strong password that you'll remember. You need it to run commands as a superuser (`sudo` commands), and to sign in if you turn off auto login. For advice, see the UK National Cyber Security Centre's guidance on https://www.ncsc.gov.uk/collection/top-tips-for-staying-secure-online/three-random-words[using three random words].
+
 * For a headless setup, these are the credentials used to connect to your Raspberry Pi over the network.
-* Creating a username and password at this stage doesn't require these credentials to be entered whenever you boot your Raspberry Pi. To require a password on boot, turn off Auto Login. For instructions, see xref:../computers/configuration.adoc#auto-login[Require a password from startup].
-* The password you set here is required when running commands as a superuser (`sudo` commands). If you prefer not to enter a password for these commands, you can turn off this requirement later. For instructions, see xref:../computers/configuration.adoc#disable-sudo-password[Turn off password for superuser commands] in the *Configuration* page.
+* By default, Raspberry Pi OS with desktop signs in to the desktop automatically when it starts up, so you don't need to enter these credentials then. If other people might have access to your Raspberry Pi, turn off auto login. For instructions, see xref:../computers/configuration.adoc#auto-login[Require a password from startup].
+* Raspberry Pi OS asks for the password you set here when you run commands as a superuser. We don't recommend turning off this requirement. For more information, see xref:../computers/configuration.adoc#disable-sudo-password[Turn off password for superuser commands] in the *Configuration* page.
 
 ===== Wi-Fi
 In the *Wi-Fi* subtab, select whether to connect to a *secure network* or an *open network*. Before this, if you're on a Mac computer, you might be asked whether you'd like to pre-fill the Wi-Fi password from the system keychain. Confirm whether you want to do this and enter your Mac computer credentials.

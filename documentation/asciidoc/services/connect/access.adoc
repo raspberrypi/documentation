@@ -18,7 +18,7 @@ Screen sharing requires:
 
 * The full Connect client (`rpi-connect`). Connect Lite doesn't support screen sharing.
 * The **Wayland** window server. Raspberry Pi OS _Bookworm_ and later use Wayland by default. Screen sharing doesn't work with systems that use the X window server.
-* A desktop session that's already running on the device. Connect shares an existing desktop session; it doesn't start a new one. To start a desktop session automatically when the device boots, enable **Desktop Autologin** in the **System Options** in `raspi-config`.
+* A desktop session that's already running on the device. Connect shares an existing desktop session; it doesn't start a new one. Raspberry Pi OS with desktop signs in to the desktop automatically by default. If you've turned off auto login, someone must sign in on the device before you can share its screen. For more information, see <<enable-remote-shell-at-all-times,Keep Connect running when you're signed out>>.
 
 [[start-screen-sharing]]
 ==== Start screen sharing
@@ -214,17 +214,24 @@ To check the change, sign in to https://connect.raspberrypi.com[connect.raspberr
 image::images/remote-shell-disabled.png[alt="The Connect Devices tab, showing the Connect via menu with the Remote shell option crossed out.",width="100%"]
 
 [[enable-remote-shell-at-all-times]]
-==== Keep Connect running when you're logged out
+==== Keep Connect running when you're signed out
 
-The Connect client runs as part of your user account, not as root. By default, it only runs while you're logged in to your Raspberry Pi. If you reboot a device that doesn't log in automatically, the client doesn't start and you can't reach the device through Connect.
+The Connect client runs as part of your user account, not as root. By default, it only runs while you're signed in to your Raspberry Pi. If you reboot a device that doesn't sign in automatically, the client doesn't start and you can't reach the device through Connect.
 
-To keep the Connect client running even when you aren't logged in, turn on user lingering for your account. Lingering is a `systemd` feature that keeps a user's services running after they log out. Run the following command from your user account:
+To keep the Connect client running even when you aren't signed in, turn on user lingering for your account. Lingering is a `systemd` feature that keeps a user's services running after they sign out. Run the following command from your user account:
 
 [source,console]
 ----
 $ loginctl enable-linger
 ----
 
-This keeps remote shell access available at all times. Screen sharing also needs a running desktop session; to start one automatically when the device boots, enable **Desktop Autologin** in the **System Options** in `raspi-config`.
+This keeps remote shell access available at all times.
 
 TIP: We recommend turning on lingering for all headless Raspberry Pi OS Lite setups, so that your device stays reachable after a remote reboot.
+
+Lingering doesn't start a desktop session, so whether screen sharing is available after a restart depends on desktop auto login:
+
+* With auto login turned on, which is the default for Raspberry Pi OS with desktop, the device signs in to the desktop when it starts up, so screen sharing and remote shell are both available. Anyone with physical access to the device can also use it without a password.
+* With auto login turned off, screen sharing isn't available after a restart until someone signs in on the device. Remote shell still works if you've turned on lingering.
+
+If other people might have access to your Raspberry Pi, for example in a shared office, a classroom, or a public place, we recommend turning off auto login. For instructions, see xref:../computers/configuration.adoc#auto-login[Require a password from startup].

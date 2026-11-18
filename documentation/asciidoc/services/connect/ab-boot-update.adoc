@@ -44,7 +44,7 @@ Standard Raspberry Pi OS installations don't use an A/B boot layout. In this pro
 ----
 $ git clone https://github.com/raspberrypi/rpi-image-gen.git
 ----
-. Go to the cloned directory and install the dependencies:
+. Go to the cloned directory and install the dependencies. Enter your password if prompted.
 +
 [source,console]
 ----
@@ -111,7 +111,7 @@ $ ./rpi-image-gen build -S ./examples/ota/ -c ota.yaml -- IGconf_device_layer=rp
 
 WARNING: Make sure you choose the right storage device in Raspberry Pi Imager. If the Raspberry Pi you're building on boots from its microSD card (`/dev/mmcblk0`), don't write to that card, or you'll overwrite its operating system. Only write to `/dev/mmcblk0` if your Raspberry Pi boots from another device, such as an NVMe SSD.
 
-. If Raspberry Pi Imager isn't installed, install it:
+. If Raspberry Pi Imager isn't installed, install it. Enter your password if prompted.
 +
 [source,console]
 ----

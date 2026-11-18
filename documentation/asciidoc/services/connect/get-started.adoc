@@ -158,7 +158,7 @@ image::images/sign-in-email.png[alt="The email notification sent when a new devi
 
 To check the link from the command line, run `rpi-connect status`. For more information, see <<view-connect-status,Check the Connect client's status>>.
 
-IMPORTANT: By default, the Connect client only runs while you're logged in to your Raspberry Pi. If you'll reboot the device remotely, or it doesn't log in automatically (for example, a headless or Raspberry Pi OS Lite setup), <<enable-remote-shell-at-all-times,keep Connect running when you're logged out>>, or you won't be able to reach the device after it restarts.
+IMPORTANT: By default, the Connect client only runs while you're signed in to your Raspberry Pi. If you reboot the device remotely, or it doesn't sign in automatically (for example, a headless or Raspberry Pi OS Lite setup), <<enable-remote-shell-at-all-times,keep Connect running when you're signed out>>, or you won't be able to reach the device after it restarts.
 
 IMPORTANT: If you receive a notification email for a device that you don't recognise, follow the steps in <<unrecognised-device,If you don't recognise a linked device>>.
 

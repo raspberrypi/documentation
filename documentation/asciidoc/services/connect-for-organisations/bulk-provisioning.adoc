@@ -25,14 +25,14 @@ For more information on rpi-sb-provisioner, see xref:../security/secure-boot-pro
 
 TIP: Building images uses a lot of disk space (several gigabytes for each build), and is noticeably faster on an SSD than on a microSD card. A Raspberry Pi 500+, or a Raspberry Pi 5 with an M.2 HAT+, makes a good host.
 
-. Update the software and firmware on the host device:
+. Update the software and firmware on the host device. Enter your password if prompted.
 +
 [source,console]
 ----
 $ sudo apt update
 $ sudo apt upgrade
 ----
-. Install Raspberry Pi Secure Boot Provisioner (`rpi-sb-provisioner`) on the host device:
+. Install Raspberry Pi Secure Boot Provisioner (`rpi-sb-provisioner`) on the host device. Enter your password if prompted.
 +
 [source,console]
 ----
@@ -58,7 +58,7 @@ image::images/provisioner-webui.png[alt="The Raspberry Pi Secure Boot Provisione
 ----
 $ git clone https://github.com/raspberrypi/rpi-image-gen.git
 ----
-. Go to the cloned directory and install the dependencies:
+. Go to the cloned directory and install the dependencies. Enter your password if prompted.
 +
 [source,console]
 ----
