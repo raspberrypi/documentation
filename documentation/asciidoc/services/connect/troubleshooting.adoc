@@ -7,8 +7,8 @@ If you're experiencing any issues with Connect, this section helps you diagnose 
 * **Multiple displays.** Screen sharing only supports sharing a single, primary display. If your Raspberry Pi is connected to more than one HDMI display, Connect sometimes shares the secondary display. To work around this, right-click the desktop, select **Desktop Preferences...**, and change the location of the taskbar.
 * **Older browsers.** Connect needs a browser that supports https://caniuse.com/?search=es2022[ECMAScript 2022] (ES13).
 * **Intercepted keys.** Browsers intercept some keys and key combinations, so you can't enter them in a Connect window. Screen sharing includes buttons for the most common ones. For more information, see <<screen-sharing-interface,Use the screen-sharing interface>>.
-* **Updating over a remote shell.** Updating Connect ends all remote shell sessions. For more information, see <<update,Update the client>>.
-* **Upgrading from version 1 to version 2.** Before you switch between `rpi-connect` and `rpi-connect-lite`, upgrade the package you currently have installed, so that Connect's services migrate to the version 2 format. If you have `rpi-connect` installed, run the following command, and enter your password if prompted:
+* **Updating over a remote shell.** Updating Connect ends all remote shell sessions, and stops an update that was started from one. For more information, see <<update-over-remote-shell,Update over a remote shell>>.
+* **Upgrading from version 1 to version 2.** Before you switch between `rpi-connect` and `rpi-connect-lite`, upgrade the package you currently have installed, so that Connect's services migrate to the version 2 format. If you have `rpi-connect` installed, run the following command and enter your password if prompted:
 +
 [source,console]
 ----
