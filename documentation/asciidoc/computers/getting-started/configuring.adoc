@@ -11,7 +11,7 @@ This section covers post-installation configuration, whether you:
 * Are using a Raspberry Pi with a pre-installed OS, or
 * Want to change settings after installation to tailor your Raspberry Pi to your needs.
 
-If you followed the steps to preconfigure your Raspberry Pi during OS customisation in Imager, as described in *Step 3* of xref:../computers/getting-started.adoc#install[Install an OS onto boot media], you don't need to configure your Raspberry Pi again unless you want to change any settings.
+If you followed the steps to preconfigure your Raspberry Pi during OS customisation in Imager, as described in xref:../computers/imager.adoc#os-customisation[Customise your operating system], you don't need to configure your Raspberry Pi again unless you want to change any settings.
 
 If you have a *desktop setup* and skipped OS customisation in Imager, or if you're using a Raspberry Pi with a pre-installed OS, you're presented with a configuration wizard on first boot.
 
@@ -160,5 +160,5 @@ If your Raspberry Pi doesn't boot within 5 minutes, check the status LED. If the
 If your Raspberry Pi still doesn't boot and the LED information doesn't help you to resolve the issue, try the following:
 
 * If you used a boot device other than an SD card, try booting from an SD card.
-* Re-image your SD card by following the instructions in xref:getting-started.adoc#imager-install[Install using Imager], completing the entire *Verify* step.
+* Re-image your SD card by following the instructions in xref:getting-started.adoc#imager-install[Install using Imager], letting verification finish. If verification fails, see xref:imager.adoc#troubleshooting-verify[Verification fails].
 * Using Imager on a host computer, xref:raspberry-pi.adoc#bootloader_reflash[reflash the bootloader] on your storage device and then xref:getting-started.adoc#imager-install[re-image your SD card].

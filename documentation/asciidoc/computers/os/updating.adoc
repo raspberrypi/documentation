@@ -154,7 +154,9 @@ $ sudo apt clean
 ----
 [[upgrade]]
 === Upgrade to a new major version
-Rather than an in-place upgrade on your existing boot media, we strongly recommend that you use a clean install to upgrade the OS version on your Raspberry Pi, like moving from Bookworm to Trixie. This involves using *Raspberry Pi Imager* to flash a new OS image onto new boot media.
+Rather than an in-place upgrade on your existing boot media, we strongly recommend that you use a clean install to upgrade the OS version on your Raspberry Pi, like moving from Bookworm to Trixie. This involves using xref:imager.adoc[Raspberry Pi Imager] to flash a new OS image onto new boot media.
+
+If your Raspberry Pi supports Network Install, you can use Network Install instead to reinstall Raspberry Pi OS on your existing storage device without another computer. We recommend this option for a Raspberry Pi 500+. For instructions, see xref:../computers/imager.adoc#network-install-new-version[Move to a new version of Raspberry Pi OS].
 
 The following instructions require:
 
@@ -164,10 +166,9 @@ The following instructions require:
 The following instructions assume that you're using a microSD card as your new boot media and Raspberry Pi Imager to install a new OS image onto that boot media. If you're using a different type of storage for your boot media, modify the steps below as appropriate.
 
 . *Create a backup of your current boot media.*
-
-WARNING: This step permanently deletes all files on the storage device you choose to use. Back them up before continuing.
-
 . *Prepare a new storage device with the new OS.* On a new storage device, install a new OS image with the latest Raspberry Pi OS version. For instructions, see xref:../computers/getting-started.adoc#imager-install[Install using Imager].
++
+WARNING: Writing the new OS permanently deletes all files on the storage device you choose. Back them up before continuing.
 . *Copy your existing files and configurations.* Use a storage device to copy important files from your Raspberry Pi.
 . *Insert the new boot media into your Raspberry Pi.* Insert the storage device containing the new OS into your Raspberry Pi.
 . *Boot your Raspberry Pi.* Connect your Raspberry Pi to power and power it on.
@@ -230,6 +231,3 @@ You now have all the packages that comprise Raspberry Pi OS Desktop.
 If you want to return to the Lite version of Raspberry Pi OS, you can remove these packages. Alternatively, to have the Lite experience without removing the desktop packages you've installed, follow the instructions in xref:../computers/configuration.adoc#console-or-desktop[Boot to console or desktop] to set your Raspberry Pi to boot to the command line.
 
 You can also install the recommended applications included in Raspberry Pi OS Full by going to your Raspberry Pi main menu and selecting **Preferences > Recommended Software**.
-
-
-

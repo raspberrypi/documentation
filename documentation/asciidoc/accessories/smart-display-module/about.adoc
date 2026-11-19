@@ -261,7 +261,7 @@ To do this, you need the following equipment:
 Complete the following steps:
 
 . On your computer, start Raspberry Pi Imager.
-. Configure Raspberry Pi Imager so that it can use `rpiboot` to detect the CM5 and treat it as a mass storage device.
+. Configure Raspberry Pi Imager so that it can detect the CM5 in USB boot mode and write to it directly over USB. For more information, see xref:../computers/imager.adoc#enable-rpiboot[Write to a Compute Module or USB boot device].
 .. Open *Debug Options*:
 *** On Windows or Linux, type *Ctrl + Alt + S*.
 *** On macOS, type *Cmd + Option + S*.
@@ -271,8 +271,8 @@ Complete the following steps:
 . Ensure that the host display is fully disconnected from a power supply.
 . Use the USB-C cable to connect the computer to the USB-C connector labelled *SERVICE* on the Smart Display Module.
 . Switch the boot mode switch from *NORMAL* to *USB*.
-. Power on the host display. The CM5 appears to Raspberry Pi Imager as a mass storage device.
-. On your computer, use Raspberry Pi Imager to install an operating system on the CM5. When the installation is complete, the computer ejects the mass storage device.
+. Power on the host display. The CM5 appears in Raspberry Pi Imager.
+. On your computer, use Raspberry Pi Imager to install an operating system on the CM5.
 . Disconnect the cable from the Smart Display Module.
 . Power off your display.
 . Switch the boot mode switch from *USB* back to *NORMAL*.

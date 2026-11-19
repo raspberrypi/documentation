@@ -118,7 +118,7 @@ To set up the jig for the first time, you need the following:
 [[setup-step-configure-imager]]
 === Step 1: Configure Raspberry Pi Imager
 
-You must first configure Raspberry Pi Imager to use the Compute Module 5 Programming Jig manifest and enable RPIBOOT support.
+You must first configure Raspberry Pi Imager to use the Compute Module 5 Programming Jig manifest and enable RPIBOOT support. For more information about these settings, see xref:../computers/imager.adoc#custom-repositories[Use a custom image repository] and xref:../computers/imager.adoc#enable-rpiboot[Write to a Compute Module or USB boot device].
 
 ==== Configure the manifest
 
@@ -163,7 +163,7 @@ With Imager configured to use the custom content repository, you can now write t
 
 . Connect power to the jig.
 +
-The jig boots into RPIBOOT mode. Imager can detect the jig's internal storage as a removable drive.
+The jig boots into RPIBOOT mode. Imager can detect the jig and write to its internal storage over USB.
 
 . Open Raspberry Pi Imager on your computer.
 

@@ -1,0 +1,52 @@
+[[install-imager]]
+== Install Imager
+
+Install Imager on the computer that you'll use to write your boot media.
+
+[tabs]
+======
+Windows::
++
+. Download the Windows installer from the https://www.raspberrypi.com/software/[Raspberry Pi software page].
+. Run the installer and follow the prompts.
+. Launch *Raspberry Pi Imager* from the *Start* menu or from the shortcut on your desktop.
+
+macOS::
++
+. Download the macOS disk image (`.dmg`) from the https://www.raspberrypi.com/software/[Raspberry Pi software page].
+. Open the disk image and drag *Raspberry Pi Imager* into your *Applications* folder.
+. Launch *Raspberry Pi Imager* from your *Applications* folder.
+
+Raspberry Pi OS::
++
+. Install Imager from the Raspberry Pi OS package repository:
++
+[source,console]
+----
+$ sudo apt update
+$ sudo apt install rpi-imager
+----
+. Launch *Raspberry Pi Imager* from the *Accessories* menu. Enter your password if prompted.
+
+Other Linux distributions::
++
+. Download the AppImage from the https://www.raspberrypi.com/software/[Raspberry Pi software page].
+. Make the AppImage executable, replacing `<version>` with the version number in the file name:
++
+[source,console]
+----
+$ chmod +x imager_<version>_amd64.AppImage
+----
+. Run the AppImage as root:
++
+[source,console]
+----
+$ sudo ./imager_<version>_amd64.AppImage
+----
+======
+
+NOTE: On Raspberry Pi OS Lite, which has no desktop, you can install the `rpi-imager-cli` package instead with `sudo apt install rpi-imager-cli`. This package has no graphical interface, and you can't install it alongside the `rpi-imager` package. For instructions, see <<command-line-cli>>.
+
+Imager checks for updates when it starts. If a later version is available, Imager prompts you to download it.
+
+To check which version of Imager you're running, select *App Options*. The version number is shown at the bottom of the *App Options* dialog.
