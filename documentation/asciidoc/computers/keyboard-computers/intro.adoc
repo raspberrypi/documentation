@@ -184,7 +184,7 @@ You can skip <<step1-bootmedia>> and start from <<step2-peripherals>> instead if
 - You have a Raspberry Pi 500+, which comes with an M.2 SSD preprogrammed with Raspberry Pi OS.
 - You got your Raspberry Pi 400 or 500 as part of a kit that includes a microSD card preprogrammed with Raspberry Pi OS.
 
-NOTE: The first releases of Raspberry Pi 500+ keyboard computers came with the previous Raspberry Pi OS, Bookworm. Newer Raspberry Pi 500+ keyboard computers come with the most recent Raspberry Pi OS, Trixie.
+NOTE: The first releases of Raspberry Pi 500+ keyboard computers came with Raspberry Pi OS Bookworm. Newer Raspberry Pi 500+ keyboard computers come with the most recent Raspberry Pi OS Trixie. To move a Raspberry Pi 500+ from Bookworm to Trixie, reinstall Raspberry Pi OS using Network Install. For instructions, see xref:../computers/imager.adoc#network-install-new-version[Move to a new version of Raspberry Pi OS].
 
 === Hardware prerequisites
 
@@ -209,7 +209,7 @@ If you aren't setting up a Raspberry Pi keyboard computer as part of a keyboard 
 This is a necessary step only if your keyboard computer didn't come as part of a kit, or if you're setting up a Raspberry Pi 500+ and want to use a microSD card instead of the preinstalled M.2 SSD.
 
 . On your computer, xref:../computers/getting-started.adoc#imager-install[install and launch Raspberry Pi Imager]. You use this tool to write xref:../computers/os.adoc#os-installation[Raspberry Pi OS] to your microSD card, which transforms it into boot media for your Raspberry Pi keyboard computer.
-. Follow the instructions in Imager to configure the Raspberry Pi device, OS, storage, customisation, and Imager options. For guidance on what to configure, see steps 2 to 4 in xref:../computers/getting-started.adoc#imager-install[Install using Imager].
+. Follow the instructions in Imager to configure the Raspberry Pi device, OS, storage, customisation, and Imager options. For guidance on what to configure, see xref:../computers/imager.adoc#write-an-image[Write an image] and xref:../computers/imager.adoc#os-customisation[Customise your operating system].
 . Write the image to your microSD card. This transforms the storage device into your boot media.
 . After Raspberry Pi Imager has completed writing the boot media, safely remove the microSD card from your computer and then insert it into your Raspberry Pi keyboard computer. Looking at the back of your keyboard computer, the microSD card slot is located to the right of the USB ports and to the left of the power port.
 

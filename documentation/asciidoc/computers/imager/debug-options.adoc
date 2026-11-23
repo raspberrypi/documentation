@@ -1,0 +1,36 @@
+[[debug-options]]
+== Debug options
+
+Debug options are advanced settings for troubleshooting, testing, and provisioning.
+
+Changing debug options can affect write performance and data integrity, so don't do this unless it is necessary.
+
+To open *Debug Options*, press *Ctrl+Alt+S* on Windows or Linux, or *Cmd+Option+S* on macOS. After making your changes, select *Apply*.
+
+The following options are the most commonly used.
+
+[[enable-rpiboot]]
+=== Write to a Compute Module or USB boot device (RPIBOOT)
+
+To write an image directly to a Compute Module, or to another device that boots in USB boot mode, Imager must be able to detect the device using `rpiboot`. Imager then writes to the device over USB using the fastboot protocol. To turn this on:
+
+. Open *Debug Options*.
+. Go to *Advanced Features*.
+. Turn on *Enable Rpiboot/Fastboot Support*.
+. Select *Apply*.
+
+Imager saves this setting and applies it whenever it starts.
+
+When you connect a device in USB boot mode, it appears in the *Device* tab as *Connected via USB*. For more information, see xref:compute-module.adoc#flash-compute-module-emmc[Flash an image to a Compute Module].
+
+=== Other options
+
+Force IPv4-only Downloads:: Downloads over IPv4 instead of IPv6. Turn this on if downloads fail because of broken IPv6 routing on your network.
+
+Counterfeit Card Mode (skip end-of-device checks):: Skips operations at the end of the storage device. Don't use this unless your SD card reports a larger capacity than it has. The image must be smaller than the card's real capacity.
+
+Force Secure Boot Available:: Shows the *Secure Boot* customisation subtab for every OS. This is equivalent to the `--enable-secure-boot` command-line option. For more information, see <<customisation-secure-boot>>.
+
+Direct I/O, async I/O, and periodic sync options:: Control how Imager writes data to the storage device. Don't change these unless you're diagnosing a write performance problem, or Raspberry Pi engineering staff ask you to.
+
+Verbose Performance Logging:: Logs detailed timing information for each write, to help diagnose performance problems.

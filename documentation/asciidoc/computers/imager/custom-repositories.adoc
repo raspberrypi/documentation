@@ -1,0 +1,91 @@
+[[custom-repositories]]
+== Use a custom image repository
+
+By default, Imager downloads its list of operating systems and devices from Raspberry Pi.
+
+Raspberry Pi uses custom lists for some products, such as the xref:../accessories/cm5-programming-jig.adoc[Compute Module 5 Programming Jig].
+
+You can also configure Imager to use a custom list of your own images, or to provision a specific product. A custom list is a JavaScript Object Notation (JSON) file, sometimes called a manifest, that follows the https://github.com/raspberrypi/rpi-imager/blob/main/doc/json-schema/os-list-schema.json[Imager OS list schema]. You can host the file on a web server, or store it on the computer that runs Imager.
+
+For guidance on creating and validating a list, see https://github.com/raspberrypi/rpi-imager/blob/main/doc/schema-notes.md[Using the Raspberry Pi Imager JSON Schema].
+
+To use a custom list, do one of the following:
+
+[tabs]
+======
+App options::
++
+. Select *App Options* in the bottom-left corner of Imager.
+. Next to *Content Repository*, select *Edit*.
+. Choose one of the following:
+** *Use custom file*: Browse to a JSON file on your computer.
+** *Use custom URL*: Enter the URL of a JSON file.
+. Select *Apply & Restart*. Imager resets your device and OS selections, and returns to the *Device* tab.
++
+To go back to the default list, repeat these steps and choose *Raspberry Pi (default)*.
+
+Link::
++
+Open an `rpi-imager://` link in your web browser. The link opens Imager with the repository already configured:
++
+----
+rpi-imager://open?repo=<url>
+----
++
+Replace `<url>` with the URL of your JSON file.
+
+Command line::
++
+Launch Imager with the `--repo` option, followed by a URL or the path to a JSON file. For example:
++
+[source,console]
+----
+$ rpi-imager --repo https://example.com/my-os-list.json
+----
++
+To make this easier to use regularly, create a shortcut that launches Imager with this option. For more command-line options, see <<command-line>>.
+
+Manifest file::
++
+Open a manifest file with the `.rpi-imager-manifest` extension. The file opens in Imager.
+======
+
+To set the repository that Network Install uses, see xref:raspberry-pi.adoc#IMAGER_REPO_URL[`IMAGER_REPO_URL`].
+
+[[custom-repository-interfaces]]
+=== Show the Interfaces & Features subtab
+
+The *Interfaces & Features* customisation subtab appears for operating systems in your custom list that support it. For more information about the subtab, see <<customisation-interfaces>>.
+
+To show the subtab for an OS in your custom list:
+
+. In the OS entry, set `init_format` to `cloudinit-rpi`.
+. In the OS entry, add a `capabilities` array that lists the interfaces and features the OS supports.
+. In the entry for each device in the `devices` array of the `imager` object, add a `capabilities` array that lists the interfaces and features the device supports.
+
+The capabilities available in the subtab include `i2c`, `spi`, `onewire`, `serial`, and `usb_otg` (USB Gadget Mode). Imager doesn't show an option on the subtab unless both the OS entry and the device entry list it. If the two entries have no capabilities in common, Imager doesn't show the subtab.
+
+NOTE: Capabilities can change between Imager versions. For the current list of capabilities, and the full list of OS and device fields, see the https://github.com/raspberrypi/rpi-imager/blob/main/doc/json-schema/os-list-schema.json[Imager OS list schema].
+
+The following example shows the I2C, SPI, and USB Gadget Mode options for Raspberry Pi 5. Other required fields are omitted:
+
+[source,json]
+----
+{
+  "imager": {
+    "devices": [
+      {
+        "name": "Raspberry Pi 5",
+        "capabilities": ["i2c", "spi", "onewire", "serial", "usb_otg"]
+      }
+    ]
+  },
+  "os_list": [
+    {
+      "name": "My OS",
+      "init_format": "cloudinit-rpi",
+      "capabilities": ["i2c", "spi", "usb_otg"]
+    }
+  ]
+}
+----

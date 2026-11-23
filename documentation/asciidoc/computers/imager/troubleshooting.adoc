@@ -1,0 +1,33 @@
+[[imager-troubleshooting]]
+== Troubleshooting
+
+[[troubleshooting-no-storage]]
+=== Imager doesn't show my storage device
+
+* Check that the storage device is connected and that your computer recognises it.
+* If the *Storage* tab says that all devices are hidden by the filter, the device might be one your computer treats as a system drive. Don't clear *Exclude system drives* unless you're certain that you've identified the correct device.
+* If the device is read-only, check for a write-protect switch on the SD card or adapter.
+* If Imager reports a permissions problem when listing storage devices, run Imager with administrator privileges. On Linux, run Imager as root.
+
+[[troubleshooting-os-list]]
+=== Imager can't download the OS list
+
+If Imager can't download the device list or OS list, check your internet connection and select *Retry*.
+
+You can still write an image file that's stored on your computer by selecting *Use custom* in the *OS* tab. For more information, see <<write-custom-image>>.
+
+If downloads fail on a network with broken IPv6 routing, turn on *Force IPv4-only Downloads* in <<debug-options>>.
+
+[[troubleshooting-verify]]
+=== Verification fails
+
+If verification fails, the image on your storage device doesn't match the original image. Try the following:
+
+* Write the image again.
+* Try a different card reader or USB port.
+* Try a different storage device. A storage device that repeatedly fails verification might be faulty, or might be a counterfeit that reports more capacity than it has.
+
+[[troubleshooting-boot]]
+=== My Raspberry Pi doesn't boot after writing an image
+
+Make sure you selected the correct Raspberry Pi model in the *Device* tab, and that you let verification finish. For more troubleshooting steps, see xref:getting-started.adoc#troubleshooting[Troubleshooting] in *Getting started*.

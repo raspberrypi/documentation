@@ -363,7 +363,7 @@ A headless Raspberry Pi operates without a monitor, keyboard, or mouse. You cont
 
 NOTE: VNC is incompatible with the Lite versions of Raspberry Pi OS.
 
-We recommend that you set up a headless device using *Raspberry Pi Imager*. This allows you to:
+We recommend that you set up a headless device using xref:imager.adoc[Raspberry Pi Imager]. This allows you to:
 
 * Choose between *Raspberry Pi OS* and *Raspberry Pi OS Lite*.
 * Configure networking.

@@ -41,7 +41,7 @@ NOTE: You can also reflash the bootloader using USB `rpiboot`. This method is ty
 To reflash the bootloader on your Raspberry Pi device:
 
 . Connect a spare or empty microSD storage device to your host computer.
-. Find and open Imager on your host computer.
+. Find and open xref:imager.adoc[Raspberry Pi Imager] on your host computer.
 . In the *Device* tab, select your Raspberry Pi model from the list, and then select *Next*.
 . In the *OS* tab, scroll down to the bottom of the list and select *Misc utility images > Bootloader > SD Card Boot*, then select *Next*.
 . In the *Storage* tab, select your storage device and then select *Next*.
