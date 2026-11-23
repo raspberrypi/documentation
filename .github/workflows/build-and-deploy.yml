@@ -30,9 +30,8 @@ jobs:
         run: |
           pip3 install --upgrade pip setuptools wheel
           pip3 install -r ./requirements.txt
-      - uses: ruby/setup-ruby@v1.338.0
+      - uses: ruby/setup-ruby@v1.343.0
         with:
-          ruby-version: 3.2
           bundler-cache: true
       - name: Install Ninja
         run: pip3 install ninja==1.10.2.4

@@ -9,7 +9,7 @@ workflows:
         - 'actions/setup-python@v7.1.0'
         - 'actions/upload-artifact@v7.0.2'
         - 'carlosperate/arm-none-eabi-gcc-action@v1.14.1'
-        - 'ruby/setup-ruby@v1.338.0'
+        - 'ruby/setup-ruby@v1.343.0'
     '.github/workflows/build.yml': []
     '.github/workflows/check_cr.yml':
         - 'actions/checkout@v7.0.1'
@@ -48,8 +48,8 @@ dependencies:
         commit: 'sha1-49f4db4520f840e77ab1e99b24cfac2c540a21b1'
         owner_id: 4189262
         repo_id: 418184053
-    'ruby/setup-ruby@v1.338.0':
-        ref: 'v1.338.0'
-        commit: 'sha1-b3aaceaef7e0ee231b499e7b5f49c03fc1d32199'
+    'ruby/setup-ruby@v1.343.0':
+        ref: 'v1.343.0'
+        commit: 'sha1-be3c7df29b3349ec6bcfc6b4792f1cf9f5237d18'
         owner_id: 210414
         repo_id: 231208785
